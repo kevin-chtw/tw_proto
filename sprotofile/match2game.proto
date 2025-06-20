@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package sproto;
+option go_package = "../sproto";
+
+message Match2GameReq {
+  string serverid = 1;
+  StartGameReq start_game_req = 2;
+}
+
+message StartGameReq {
+  string matchid = 1;
+  string tableid = 2;
+  repeated string players = 3;
+}
+
+

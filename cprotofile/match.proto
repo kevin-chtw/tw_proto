@@ -1,11 +1,21 @@
 syntax = "proto3";
 
-package proto;
-option go_package = "../proto";
+package cproto;
+option go_package = "../cproto";
+
+message MatchReq {
+  string serverid = 1;
+  SignupReq signup_req = 2;
+}
 
 message SignupReq {
   string matchid = 1;
   string playerid = 2;
+}
+
+message MatchAck {
+  string serverid = 1;
+  StartClientAck start_client_ack = 2;
 }
 
 message StartClientAck {
