@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "../proto";
+
+message SignupReq {
+  string matchid = 1;
+  string playerid = 2;
+}
+
+message StartClientAck {
+  string matchid = 1;
+  string gameserverid = 2;
+  string tableid = 3;
+  repeated string players = 4;
+}
