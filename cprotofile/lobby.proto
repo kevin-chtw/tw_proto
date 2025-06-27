@@ -1,18 +1,35 @@
 syntax = "proto3";
 
-package proto;
-option go_package = "../proto";
+package cproto;
+option go_package = "../cproto";
 
 message LobbyReq {
   string serverid = 1;
-  RegisterRequest register_req = 2;
+  LoginReq login_req = 2;
+  RegisterReq register_req = 3;
 }
 
 message LobbyAck {
-  string serverid = 1;
+  LoginAck login_ack = 1;
+  RegisterAck register_ack = 2;
 }
 
-message RegisterRequest {
+message LoginReq {
   string account = 1;
   string password = 2;
+}
+
+message LoginAck {
+  string serverid = 1;
+  string userid = 2;
+}
+
+message RegisterReq {
+  string account = 1;
+  string password = 2;
+}
+
+message RegisterAck {
+  string serverid = 1;
+  string userid = 2;
 }
