@@ -4,14 +4,33 @@ package sproto;
 option go_package = "../sproto";
 
 message Match2GameReq {
-  string serverid = 1;
-  StartGameReq start_game_req = 2;
+  StartGameReq start_game_req = 1;
+  CancelMatchReq cancel_match_req = 2;
 }
 
 message StartGameReq {
-  string matchid = 1;
-  string tableid = 2;
-  repeated string players = 3;
+  string match_server_id = 1; // 匹配服务器ID
+  string matchid = 2;
+  string tableid = 3;
+  repeated string players = 4;
+  repeated string game_config = 5;
+  int32 initial_chips = 6;
+  int32 score_base = 7;
 }
 
+message CancelMatchReq {
+  string matchid = 1;
+  string tableid = 2;
+}
+
+message Match2GameAck {
+  GameResultAck game_result_ack = 1;
+}
+
+message GameResultAck {
+  string matchid = 1;
+  string tableid = 2;
+  int32 end_reason = 3;
+  repeated int32 scores = 4;
+}
 

@@ -13,14 +13,90 @@ message SignupReq {
   string playerid = 2;
 }
 
+message EnterMatchReq {
+  string matchid = 1;
+  string tableid = 2;
+}
+
 message MatchAck {
   string serverid = 1;
-  StartClientAck start_client_ack = 2;
+  SingupAck singup_ack = 2;
+  StartClientAck start_client_ack = 3;
+  EnterMatchAck enter_match_ack = 4;
+  AddPlayerAck add_player_ack = 5;
+  GameBeginAck game_begin_ack = 6;
+  GameEndAck game_end_ack = 7;
+  MatchCancelAck cancel_ack = 8;
+  MatchStatusAck status_ack = 9;
+}
+
+message SingupAck {
+  string matchid = 1;
+  int32 error_code = 2; // 0: success, 1: match not found, 2: player already signed up
 }
 
 message StartClientAck {
   string matchid = 1;
-  string gameserverid = 2;
+  string tableid = 2;
+  repeated string players = 3;
+}
+
+message EnterMatchAck {
+  string matchid = 1;
+  string tableid = 2;
+  repeated string players = 3;
+}
+
+message AddPlayerAck {
+  string matchid = 2;
+  int32 error_code = 3; // 0: success, 1: match not found, 2: player not signed up
+}
+
+message GameBeginAck {
+  string serverid = 1;
+  string matchid = 2;
   string tableid = 3;
-  repeated string players = 4;
+}
+
+message GameEndAck {
+  string matchid = 1;
+  string tableid = 2;
+  repeated string players = 3; // List of player IDs
+  int32 winner = 4; // Player ID of the winner
+  int32 end_reason = 5; // 0: normal, 1: timeout, 2: player quit
+}
+
+message MatchCancelReq {
+  string matchid = 1;
+  string playerid = 2;
+}
+
+message MatchCancelAck {
+  string matchid = 1;
+  int32 error_code = 2; // 0: success, 1: match not found, 2: player not in match
+}
+
+message MatchStatusReq {
+  string matchid = 1;
+}
+
+message TableInfo {
+    string tableid = 1;
+    repeated string players = 2;
+    int32 status = 3; // 0: waiting, 1: playing, 2: ended
+    int64 create_at = 4; // unix timestamp
+}
+
+message MatchStatusAck {
+    string matchid = 1;
+    int32 status = 2; // 0: waiting, 1: matching, 2: playing, 3: ended
+    repeated string players = 3;
+    int32 timeout = 4; // seconds remaining
+    repeated TableInfo tables = 5;
+}
+
+message PlayerReadyNotify {
+  string matchid = 1;
+  string playerid = 2;
+  bool is_ready = 3;
 }

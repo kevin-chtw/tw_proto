@@ -130,19 +130,81 @@ func (x *SignupReq) GetPlayerid() string {
 	return ""
 }
 
+type EnterMatchReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid string `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid string `protobuf:"bytes,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
+}
+
+func (x *EnterMatchReq) Reset() {
+	*x = EnterMatchReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EnterMatchReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnterMatchReq) ProtoMessage() {}
+
+func (x *EnterMatchReq) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnterMatchReq.ProtoReflect.Descriptor instead.
+func (*EnterMatchReq) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *EnterMatchReq) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *EnterMatchReq) GetTableid() string {
+	if x != nil {
+		return x.Tableid
+	}
+	return ""
+}
+
 type MatchAck struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	Serverid       string          `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
-	StartClientAck *StartClientAck `protobuf:"bytes,2,opt,name=start_client_ack,json=startClientAck,proto3" json:"start_client_ack,omitempty"`
+	SingupAck      *SingupAck      `protobuf:"bytes,2,opt,name=singup_ack,json=singupAck,proto3" json:"singup_ack,omitempty"`
+	StartClientAck *StartClientAck `protobuf:"bytes,3,opt,name=start_client_ack,json=startClientAck,proto3" json:"start_client_ack,omitempty"`
+	EnterMatchAck  *EnterMatchAck  `protobuf:"bytes,4,opt,name=enter_match_ack,json=enterMatchAck,proto3" json:"enter_match_ack,omitempty"`
+	AddPlayerAck   *AddPlayerAck   `protobuf:"bytes,5,opt,name=add_player_ack,json=addPlayerAck,proto3" json:"add_player_ack,omitempty"`
+	GameBeginAck   *GameBeginAck   `protobuf:"bytes,6,opt,name=game_begin_ack,json=gameBeginAck,proto3" json:"game_begin_ack,omitempty"`
+	GameEndAck     *GameEndAck     `protobuf:"bytes,7,opt,name=game_end_ack,json=gameEndAck,proto3" json:"game_end_ack,omitempty"`
+	CancelAck      *MatchCancelAck `protobuf:"bytes,8,opt,name=cancel_ack,json=cancelAck,proto3" json:"cancel_ack,omitempty"`
+	StatusAck      *MatchStatusAck `protobuf:"bytes,9,opt,name=status_ack,json=statusAck,proto3" json:"status_ack,omitempty"`
 }
 
 func (x *MatchAck) Reset() {
 	*x = MatchAck{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_match_proto_msgTypes[2]
+		mi := &file_match_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -155,7 +217,7 @@ func (x *MatchAck) String() string {
 func (*MatchAck) ProtoMessage() {}
 
 func (x *MatchAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[2]
+	mi := &file_match_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -168,7 +230,7 @@ func (x *MatchAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchAck.ProtoReflect.Descriptor instead.
 func (*MatchAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{2}
+	return file_match_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MatchAck) GetServerid() string {
@@ -178,6 +240,13 @@ func (x *MatchAck) GetServerid() string {
 	return ""
 }
 
+func (x *MatchAck) GetSingupAck() *SingupAck {
+	if x != nil {
+		return x.SingupAck
+	}
+	return nil
+}
+
 func (x *MatchAck) GetStartClientAck() *StartClientAck {
 	if x != nil {
 		return x.StartClientAck
@@ -185,21 +254,117 @@ func (x *MatchAck) GetStartClientAck() *StartClientAck {
 	return nil
 }
 
+func (x *MatchAck) GetEnterMatchAck() *EnterMatchAck {
+	if x != nil {
+		return x.EnterMatchAck
+	}
+	return nil
+}
+
+func (x *MatchAck) GetAddPlayerAck() *AddPlayerAck {
+	if x != nil {
+		return x.AddPlayerAck
+	}
+	return nil
+}
+
+func (x *MatchAck) GetGameBeginAck() *GameBeginAck {
+	if x != nil {
+		return x.GameBeginAck
+	}
+	return nil
+}
+
+func (x *MatchAck) GetGameEndAck() *GameEndAck {
+	if x != nil {
+		return x.GameEndAck
+	}
+	return nil
+}
+
+func (x *MatchAck) GetCancelAck() *MatchCancelAck {
+	if x != nil {
+		return x.CancelAck
+	}
+	return nil
+}
+
+func (x *MatchAck) GetStatusAck() *MatchStatusAck {
+	if x != nil {
+		return x.StatusAck
+	}
+	return nil
+}
+
+type SingupAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid   string `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	ErrorCode int32  `protobuf:"varint,2,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: success, 1: match not found, 2: player already signed up
+}
+
+func (x *SingupAck) Reset() {
+	*x = SingupAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SingupAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SingupAck) ProtoMessage() {}
+
+func (x *SingupAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SingupAck.ProtoReflect.Descriptor instead.
+func (*SingupAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *SingupAck) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *SingupAck) GetErrorCode() int32 {
+	if x != nil {
+		return x.ErrorCode
+	}
+	return 0
+}
+
 type StartClientAck struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Matchid      string   `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
-	Gameserverid string   `protobuf:"bytes,2,opt,name=gameserverid,proto3" json:"gameserverid,omitempty"`
-	Tableid      string   `protobuf:"bytes,3,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	Players      []string `protobuf:"bytes,4,rep,name=players,proto3" json:"players,omitempty"`
+	Matchid string   `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid string   `protobuf:"bytes,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Players []string `protobuf:"bytes,3,rep,name=players,proto3" json:"players,omitempty"`
 }
 
 func (x *StartClientAck) Reset() {
 	*x = StartClientAck{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_match_proto_msgTypes[3]
+		mi := &file_match_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -212,7 +377,7 @@ func (x *StartClientAck) String() string {
 func (*StartClientAck) ProtoMessage() {}
 
 func (x *StartClientAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[3]
+	mi := &file_match_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -225,19 +390,12 @@ func (x *StartClientAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartClientAck.ProtoReflect.Descriptor instead.
 func (*StartClientAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{3}
+	return file_match_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *StartClientAck) GetMatchid() string {
 	if x != nil {
 		return x.Matchid
-	}
-	return ""
-}
-
-func (x *StartClientAck) GetGameserverid() string {
-	if x != nil {
-		return x.Gameserverid
 	}
 	return ""
 }
@@ -256,6 +414,636 @@ func (x *StartClientAck) GetPlayers() []string {
 	return nil
 }
 
+type EnterMatchAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid string   `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid string   `protobuf:"bytes,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Players []string `protobuf:"bytes,3,rep,name=players,proto3" json:"players,omitempty"`
+}
+
+func (x *EnterMatchAck) Reset() {
+	*x = EnterMatchAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EnterMatchAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnterMatchAck) ProtoMessage() {}
+
+func (x *EnterMatchAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnterMatchAck.ProtoReflect.Descriptor instead.
+func (*EnterMatchAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *EnterMatchAck) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *EnterMatchAck) GetTableid() string {
+	if x != nil {
+		return x.Tableid
+	}
+	return ""
+}
+
+func (x *EnterMatchAck) GetPlayers() []string {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
+type AddPlayerAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid   string `protobuf:"bytes,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	ErrorCode int32  `protobuf:"varint,3,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: success, 1: match not found, 2: player not signed up
+}
+
+func (x *AddPlayerAck) Reset() {
+	*x = AddPlayerAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AddPlayerAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddPlayerAck) ProtoMessage() {}
+
+func (x *AddPlayerAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddPlayerAck.ProtoReflect.Descriptor instead.
+func (*AddPlayerAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *AddPlayerAck) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *AddPlayerAck) GetErrorCode() int32 {
+	if x != nil {
+		return x.ErrorCode
+	}
+	return 0
+}
+
+type GameBeginAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Serverid string `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
+	Matchid  string `protobuf:"bytes,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid  string `protobuf:"bytes,3,opt,name=tableid,proto3" json:"tableid,omitempty"`
+}
+
+func (x *GameBeginAck) Reset() {
+	*x = GameBeginAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GameBeginAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GameBeginAck) ProtoMessage() {}
+
+func (x *GameBeginAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GameBeginAck.ProtoReflect.Descriptor instead.
+func (*GameBeginAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GameBeginAck) GetServerid() string {
+	if x != nil {
+		return x.Serverid
+	}
+	return ""
+}
+
+func (x *GameBeginAck) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *GameBeginAck) GetTableid() string {
+	if x != nil {
+		return x.Tableid
+	}
+	return ""
+}
+
+type GameEndAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid   string   `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid   string   `protobuf:"bytes,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Players   []string `protobuf:"bytes,3,rep,name=players,proto3" json:"players,omitempty"`                       // List of player IDs
+	Winner    int32    `protobuf:"varint,4,opt,name=winner,proto3" json:"winner,omitempty"`                        // Player ID of the winner
+	EndReason int32    `protobuf:"varint,5,opt,name=end_reason,json=endReason,proto3" json:"end_reason,omitempty"` // 0: normal, 1: timeout, 2: player quit
+}
+
+func (x *GameEndAck) Reset() {
+	*x = GameEndAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GameEndAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GameEndAck) ProtoMessage() {}
+
+func (x *GameEndAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GameEndAck.ProtoReflect.Descriptor instead.
+func (*GameEndAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GameEndAck) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *GameEndAck) GetTableid() string {
+	if x != nil {
+		return x.Tableid
+	}
+	return ""
+}
+
+func (x *GameEndAck) GetPlayers() []string {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
+func (x *GameEndAck) GetWinner() int32 {
+	if x != nil {
+		return x.Winner
+	}
+	return 0
+}
+
+func (x *GameEndAck) GetEndReason() int32 {
+	if x != nil {
+		return x.EndReason
+	}
+	return 0
+}
+
+type MatchCancelReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid  string `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Playerid string `protobuf:"bytes,2,opt,name=playerid,proto3" json:"playerid,omitempty"`
+}
+
+func (x *MatchCancelReq) Reset() {
+	*x = MatchCancelReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MatchCancelReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchCancelReq) ProtoMessage() {}
+
+func (x *MatchCancelReq) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchCancelReq.ProtoReflect.Descriptor instead.
+func (*MatchCancelReq) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *MatchCancelReq) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *MatchCancelReq) GetPlayerid() string {
+	if x != nil {
+		return x.Playerid
+	}
+	return ""
+}
+
+type MatchCancelAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid   string `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	ErrorCode int32  `protobuf:"varint,2,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: success, 1: match not found, 2: player not in match
+}
+
+func (x *MatchCancelAck) Reset() {
+	*x = MatchCancelAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MatchCancelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchCancelAck) ProtoMessage() {}
+
+func (x *MatchCancelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchCancelAck.ProtoReflect.Descriptor instead.
+func (*MatchCancelAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *MatchCancelAck) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *MatchCancelAck) GetErrorCode() int32 {
+	if x != nil {
+		return x.ErrorCode
+	}
+	return 0
+}
+
+type MatchStatusReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid string `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+}
+
+func (x *MatchStatusReq) Reset() {
+	*x = MatchStatusReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MatchStatusReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchStatusReq) ProtoMessage() {}
+
+func (x *MatchStatusReq) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchStatusReq.ProtoReflect.Descriptor instead.
+func (*MatchStatusReq) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *MatchStatusReq) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+type TableInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Tableid  string   `protobuf:"bytes,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Players  []string `protobuf:"bytes,2,rep,name=players,proto3" json:"players,omitempty"`
+	Status   int32    `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`                     // 0: waiting, 1: playing, 2: ended
+	CreateAt int64    `protobuf:"varint,4,opt,name=create_at,json=createAt,proto3" json:"create_at,omitempty"` // unix timestamp
+}
+
+func (x *TableInfo) Reset() {
+	*x = TableInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TableInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TableInfo) ProtoMessage() {}
+
+func (x *TableInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TableInfo.ProtoReflect.Descriptor instead.
+func (*TableInfo) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *TableInfo) GetTableid() string {
+	if x != nil {
+		return x.Tableid
+	}
+	return ""
+}
+
+func (x *TableInfo) GetPlayers() []string {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
+func (x *TableInfo) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *TableInfo) GetCreateAt() int64 {
+	if x != nil {
+		return x.CreateAt
+	}
+	return 0
+}
+
+type MatchStatusAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid string       `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Status  int32        `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"` // 0: waiting, 1: matching, 2: playing, 3: ended
+	Players []string     `protobuf:"bytes,3,rep,name=players,proto3" json:"players,omitempty"`
+	Timeout int32        `protobuf:"varint,4,opt,name=timeout,proto3" json:"timeout,omitempty"` // seconds remaining
+	Tables  []*TableInfo `protobuf:"bytes,5,rep,name=tables,proto3" json:"tables,omitempty"`
+}
+
+func (x *MatchStatusAck) Reset() {
+	*x = MatchStatusAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MatchStatusAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchStatusAck) ProtoMessage() {}
+
+func (x *MatchStatusAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchStatusAck.ProtoReflect.Descriptor instead.
+func (*MatchStatusAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *MatchStatusAck) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *MatchStatusAck) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *MatchStatusAck) GetPlayers() []string {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
+func (x *MatchStatusAck) GetTimeout() int32 {
+	if x != nil {
+		return x.Timeout
+	}
+	return 0
+}
+
+func (x *MatchStatusAck) GetTables() []*TableInfo {
+	if x != nil {
+		return x.Tables
+	}
+	return nil
+}
+
+type PlayerReadyNotify struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matchid  string `protobuf:"bytes,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Playerid string `protobuf:"bytes,2,opt,name=playerid,proto3" json:"playerid,omitempty"`
+	IsReady  bool   `protobuf:"varint,3,opt,name=is_ready,json=isReady,proto3" json:"is_ready,omitempty"`
+}
+
+func (x *PlayerReadyNotify) Reset() {
+	*x = PlayerReadyNotify{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_match_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PlayerReadyNotify) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayerReadyNotify) ProtoMessage() {}
+
+func (x *PlayerReadyNotify) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayerReadyNotify.ProtoReflect.Descriptor instead.
+func (*PlayerReadyNotify) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *PlayerReadyNotify) GetMatchid() string {
+	if x != nil {
+		return x.Matchid
+	}
+	return ""
+}
+
+func (x *PlayerReadyNotify) GetPlayerid() string {
+	if x != nil {
+		return x.Playerid
+	}
+	return ""
+}
+
+func (x *PlayerReadyNotify) GetIsReady() bool {
+	if x != nil {
+		return x.IsReady
+	}
+	return false
+}
+
 var File_match_proto protoreflect.FileDescriptor
 
 var file_match_proto_rawDesc = []byte{
@@ -270,23 +1058,116 @@ var file_match_proto_rawDesc = []byte{
 	0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d,
 	0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72,
 	0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72,
-	0x69, 0x64, 0x22, 0x68, 0x0a, 0x08, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x41, 0x63, 0x6b, 0x12, 0x1a,
-	0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64, 0x12, 0x40, 0x0a, 0x10, 0x73, 0x74,
-	0x61, 0x72, 0x74, 0x5f, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x74,
-	0x61, 0x72, 0x74, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x41, 0x63, 0x6b, 0x52, 0x0e, 0x73, 0x74,
-	0x61, 0x72, 0x74, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x41, 0x63, 0x6b, 0x22, 0x82, 0x01, 0x0a,
-	0x0e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x43, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x41, 0x63, 0x6b, 0x12,
-	0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x22, 0x0a, 0x0c, 0x67, 0x61, 0x6d,
-	0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0c, 0x67, 0x61, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64, 0x12, 0x18, 0x0a,
-	0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x69, 0x64, 0x22, 0x43, 0x0a, 0x0d, 0x45, 0x6e, 0x74, 0x65, 0x72, 0x4d, 0x61, 0x74, 0x63, 0x68,
+	0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x18, 0x0a,
+	0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x22, 0xf5, 0x03, 0x0a, 0x08, 0x4d, 0x61, 0x74, 0x63,
+	0x68, 0x41, 0x63, 0x6b, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64,
+	0x12, 0x30, 0x0a, 0x0a, 0x73, 0x69, 0x6e, 0x67, 0x75, 0x70, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x69,
+	0x6e, 0x67, 0x75, 0x70, 0x41, 0x63, 0x6b, 0x52, 0x09, 0x73, 0x69, 0x6e, 0x67, 0x75, 0x70, 0x41,
+	0x63, 0x6b, 0x12, 0x40, 0x0a, 0x10, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x63, 0x6c, 0x69, 0x65,
+	0x6e, 0x74, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x43, 0x6c, 0x69, 0x65, 0x6e,
+	0x74, 0x41, 0x63, 0x6b, 0x52, 0x0e, 0x73, 0x74, 0x61, 0x72, 0x74, 0x43, 0x6c, 0x69, 0x65, 0x6e,
+	0x74, 0x41, 0x63, 0x6b, 0x12, 0x3d, 0x0a, 0x0f, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x5f, 0x6d, 0x61,
+	0x74, 0x63, 0x68, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e,
+	0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x45, 0x6e, 0x74, 0x65, 0x72, 0x4d, 0x61, 0x74, 0x63,
+	0x68, 0x41, 0x63, 0x6b, 0x52, 0x0d, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x4d, 0x61, 0x74, 0x63, 0x68,
+	0x41, 0x63, 0x6b, 0x12, 0x3a, 0x0a, 0x0e, 0x61, 0x64, 0x64, 0x5f, 0x70, 0x6c, 0x61, 0x79, 0x65,
+	0x72, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x41, 0x64, 0x64, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x41, 0x63,
+	0x6b, 0x52, 0x0c, 0x61, 0x64, 0x64, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x41, 0x63, 0x6b, 0x12,
+	0x3a, 0x0a, 0x0e, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x62, 0x65, 0x67, 0x69, 0x6e, 0x5f, 0x61, 0x63,
+	0x6b, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2e, 0x47, 0x61, 0x6d, 0x65, 0x42, 0x65, 0x67, 0x69, 0x6e, 0x41, 0x63, 0x6b, 0x52, 0x0c, 0x67,
+	0x61, 0x6d, 0x65, 0x42, 0x65, 0x67, 0x69, 0x6e, 0x41, 0x63, 0x6b, 0x12, 0x34, 0x0a, 0x0c, 0x67,
+	0x61, 0x6d, 0x65, 0x5f, 0x65, 0x6e, 0x64, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x07, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x12, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x47, 0x61, 0x6d, 0x65, 0x45,
+	0x6e, 0x64, 0x41, 0x63, 0x6b, 0x52, 0x0a, 0x67, 0x61, 0x6d, 0x65, 0x45, 0x6e, 0x64, 0x41, 0x63,
+	0x6b, 0x12, 0x35, 0x0a, 0x0a, 0x63, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x5f, 0x61, 0x63, 0x6b, 0x18,
+	0x08, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4d,
+	0x61, 0x74, 0x63, 0x68, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x41, 0x63, 0x6b, 0x52, 0x09, 0x63,
+	0x61, 0x6e, 0x63, 0x65, 0x6c, 0x41, 0x63, 0x6b, 0x12, 0x35, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x74,
+	0x75, 0x73, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x09, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74, 0x75,
+	0x73, 0x41, 0x63, 0x6b, 0x52, 0x09, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x41, 0x63, 0x6b, 0x22,
+	0x44, 0x0a, 0x09, 0x53, 0x69, 0x6e, 0x67, 0x75, 0x70, 0x41, 0x63, 0x6b, 0x12, 0x18, 0x0a, 0x07,
+	0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d,
+	0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x5f,
+	0x63, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x65, 0x72, 0x72, 0x6f,
+	0x72, 0x43, 0x6f, 0x64, 0x65, 0x22, 0x5e, 0x0a, 0x0e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x43, 0x6c,
+	0x69, 0x65, 0x6e, 0x74, 0x41, 0x63, 0x6b, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69,
+	0x64, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x70,
+	0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x70, 0x6c,
+	0x61, 0x79, 0x65, 0x72, 0x73, 0x22, 0x5d, 0x0a, 0x0d, 0x45, 0x6e, 0x74, 0x65, 0x72, 0x4d, 0x61,
+	0x74, 0x63, 0x68, 0x41, 0x63, 0x6b, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64,
+	0x12, 0x18, 0x0a, 0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x6c,
+	0x61, 0x79, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x70, 0x6c, 0x61,
+	0x79, 0x65, 0x72, 0x73, 0x22, 0x47, 0x0a, 0x0c, 0x41, 0x64, 0x64, 0x50, 0x6c, 0x61, 0x79, 0x65,
+	0x72, 0x41, 0x63, 0x6b, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x1d,
+	0x0a, 0x0a, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x09, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x6f, 0x64, 0x65, 0x22, 0x5e, 0x0a,
+	0x0c, 0x47, 0x61, 0x6d, 0x65, 0x42, 0x65, 0x67, 0x69, 0x6e, 0x41, 0x63, 0x6b, 0x12, 0x1a, 0x0a,
+	0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74,
+	0x63, 0x68, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63,
+	0x68, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x22, 0x91, 0x01,
+	0x0a, 0x0a, 0x47, 0x61, 0x6d, 0x65, 0x45, 0x6e, 0x64, 0x41, 0x63, 0x6b, 0x12, 0x18, 0x0a, 0x07,
+	0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d,
+	0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69,
+	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64,
+	0x12, 0x18, 0x0a, 0x07, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28,
+	0x09, 0x52, 0x07, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x77, 0x69,
+	0x6e, 0x6e, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x77, 0x69, 0x6e, 0x6e,
+	0x65, 0x72, 0x12, 0x1d, 0x0a, 0x0a, 0x65, 0x6e, 0x64, 0x5f, 0x72, 0x65, 0x61, 0x73, 0x6f, 0x6e,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x61, 0x73, 0x6f,
+	0x6e, 0x22, 0x46, 0x0a, 0x0e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c,
+	0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x1a, 0x0a,
+	0x08, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x08, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x69, 0x64, 0x22, 0x49, 0x0a, 0x0e, 0x4d, 0x61, 0x74,
+	0x63, 0x68, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x41, 0x63, 0x6b, 0x12, 0x18, 0x0a, 0x07, 0x6d,
+	0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61,
+	0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x5f, 0x63,
+	0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x65, 0x72, 0x72, 0x6f, 0x72,
+	0x43, 0x6f, 0x64, 0x65, 0x22, 0x2a, 0x0a, 0x0e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x74, 0x61,
+	0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64,
+	0x22, 0x74, 0x0a, 0x09, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x18, 0x0a,
+	0x07, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
 	0x74, 0x61, 0x62, 0x6c, 0x65, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x6c, 0x61, 0x79, 0x65,
-	0x72, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72,
-	0x73, 0x42, 0x0b, 0x5a, 0x09, 0x2e, 0x2e, 0x2f, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72,
+	0x73, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x1b, 0x0a, 0x09, 0x63, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x5f, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x63, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x41, 0x74, 0x22, 0xa1, 0x01, 0x0a, 0x0e, 0x4d, 0x61, 0x74, 0x63, 0x68,
+	0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x41, 0x63, 0x6b, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74,
+	0x63, 0x68, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63,
+	0x68, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x70,
+	0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x70, 0x6c,
+	0x61, 0x79, 0x65, 0x72, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x69, 0x6d, 0x65, 0x6f, 0x75, 0x74,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x74, 0x69, 0x6d, 0x65, 0x6f, 0x75, 0x74, 0x12,
+	0x29, 0x0a, 0x06, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x11, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x49, 0x6e,
+	0x66, 0x6f, 0x52, 0x06, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x22, 0x64, 0x0a, 0x11, 0x50, 0x6c,
+	0x61, 0x79, 0x65, 0x72, 0x52, 0x65, 0x61, 0x64, 0x79, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12,
+	0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x6c, 0x61,
+	0x79, 0x65, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x6c, 0x61,
+	0x79, 0x65, 0x72, 0x69, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x69, 0x73, 0x5f, 0x72, 0x65, 0x61, 0x64,
+	0x79, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x69, 0x73, 0x52, 0x65, 0x61, 0x64, 0x79,
+	0x42, 0x0b, 0x5a, 0x09, 0x2e, 0x2e, 0x2f, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -301,21 +1182,41 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_match_proto_goTypes = []interface{}{
-	(*MatchReq)(nil),       // 0: cproto.MatchReq
-	(*SignupReq)(nil),      // 1: cproto.SignupReq
-	(*MatchAck)(nil),       // 2: cproto.MatchAck
-	(*StartClientAck)(nil), // 3: cproto.StartClientAck
+	(*MatchReq)(nil),          // 0: cproto.MatchReq
+	(*SignupReq)(nil),         // 1: cproto.SignupReq
+	(*EnterMatchReq)(nil),     // 2: cproto.EnterMatchReq
+	(*MatchAck)(nil),          // 3: cproto.MatchAck
+	(*SingupAck)(nil),         // 4: cproto.SingupAck
+	(*StartClientAck)(nil),    // 5: cproto.StartClientAck
+	(*EnterMatchAck)(nil),     // 6: cproto.EnterMatchAck
+	(*AddPlayerAck)(nil),      // 7: cproto.AddPlayerAck
+	(*GameBeginAck)(nil),      // 8: cproto.GameBeginAck
+	(*GameEndAck)(nil),        // 9: cproto.GameEndAck
+	(*MatchCancelReq)(nil),    // 10: cproto.MatchCancelReq
+	(*MatchCancelAck)(nil),    // 11: cproto.MatchCancelAck
+	(*MatchStatusReq)(nil),    // 12: cproto.MatchStatusReq
+	(*TableInfo)(nil),         // 13: cproto.TableInfo
+	(*MatchStatusAck)(nil),    // 14: cproto.MatchStatusAck
+	(*PlayerReadyNotify)(nil), // 15: cproto.PlayerReadyNotify
 }
 var file_match_proto_depIdxs = []int32{
-	1, // 0: cproto.MatchReq.signup_req:type_name -> cproto.SignupReq
-	3, // 1: cproto.MatchAck.start_client_ack:type_name -> cproto.StartClientAck
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1,  // 0: cproto.MatchReq.signup_req:type_name -> cproto.SignupReq
+	4,  // 1: cproto.MatchAck.singup_ack:type_name -> cproto.SingupAck
+	5,  // 2: cproto.MatchAck.start_client_ack:type_name -> cproto.StartClientAck
+	6,  // 3: cproto.MatchAck.enter_match_ack:type_name -> cproto.EnterMatchAck
+	7,  // 4: cproto.MatchAck.add_player_ack:type_name -> cproto.AddPlayerAck
+	8,  // 5: cproto.MatchAck.game_begin_ack:type_name -> cproto.GameBeginAck
+	9,  // 6: cproto.MatchAck.game_end_ack:type_name -> cproto.GameEndAck
+	11, // 7: cproto.MatchAck.cancel_ack:type_name -> cproto.MatchCancelAck
+	14, // 8: cproto.MatchAck.status_ack:type_name -> cproto.MatchStatusAck
+	13, // 9: cproto.MatchStatusAck.tables:type_name -> cproto.TableInfo
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
@@ -349,7 +1250,7 @@ func file_match_proto_init() {
 			}
 		}
 		file_match_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MatchAck); i {
+			switch v := v.(*EnterMatchReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -361,7 +1262,151 @@ func file_match_proto_init() {
 			}
 		}
 		file_match_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MatchAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SingupAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StartClientAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EnterMatchAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddPlayerAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GameBeginAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GameEndAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MatchCancelReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MatchCancelAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MatchStatusReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TableInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MatchStatusAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_match_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PlayerReadyNotify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -379,7 +1424,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_match_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

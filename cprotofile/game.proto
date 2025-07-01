@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package cproto;
+option go_package = "../cproto";
+
+message GameReq {
+  string serverid = 1;
+  string matchid = 2;
+  string tableid = 3;
+  bytes data = 4;
+}
+
+message GameAck {
+  string serverid = 1;
+  string matchid = 2;
+  string tableid = 3;
+  bytes data = 4;
+}
