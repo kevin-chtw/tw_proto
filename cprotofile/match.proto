@@ -5,12 +5,20 @@ option go_package = "../cproto";
 
 message MatchReq {
   string serverid = 1;
-  SignupReq signup_req = 2;
+  oneof req {
+    SignupReq signup_req = 2;
+    SignoutReq signout_req = 3;
+    EnterMatchReq enter_match_req = 4;
+    MatchStatusReq match_status_req = 5;
+  }
 }
 
 message SignupReq {
   string matchid = 1;
-  string playerid = 2;
+}
+
+message SignoutReq {
+  string matchid = 1;
 }
 
 message EnterMatchReq {
@@ -18,16 +26,22 @@ message EnterMatchReq {
   string tableid = 2;
 }
 
+message MatchStatusReq {
+  string matchid = 1;
+}
+
 message MatchAck {
   string serverid = 1;
-  SingupAck singup_ack = 2;
-  StartClientAck start_client_ack = 3;
-  EnterMatchAck enter_match_ack = 4;
-  AddPlayerAck add_player_ack = 5;
-  GameBeginAck game_begin_ack = 6;
-  GameEndAck game_end_ack = 7;
-  MatchCancelAck cancel_ack = 8;
-  MatchStatusAck status_ack = 9;
+  oneof ack {
+    SingupAck singup_ack = 2;
+    StartClientAck start_client_ack = 3;
+    EnterMatchAck enter_match_ack = 4;
+    AddPlayerAck add_player_ack = 5;
+    GameBeginAck game_begin_ack = 6;
+    GameEndAck game_end_ack = 7;
+    MatchCancelAck cancel_ack = 8;
+    MatchStatusAck status_ack = 9;
+  }
 }
 
 message SingupAck {
@@ -74,10 +88,6 @@ message MatchCancelReq {
 message MatchCancelAck {
   string matchid = 1;
   int32 error_code = 2; // 0: success, 1: match not found, 2: player not in match
-}
-
-message MatchStatusReq {
-  string matchid = 1;
 }
 
 message TableInfo {
