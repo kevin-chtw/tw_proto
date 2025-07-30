@@ -33,7 +33,7 @@ message MatchStatusReq {
 message MatchAck {
   string serverid = 1;
   oneof ack {
-    SingupAck singup_ack = 2;
+    SignupAck signup_ack = 2;
     StartClientAck start_client_ack = 3;
     EnterMatchAck enter_match_ack = 4;
     AddPlayerAck add_player_ack = 5;
@@ -44,7 +44,7 @@ message MatchAck {
   }
 }
 
-message SingupAck {
+message SignupAck {
   string matchid = 1;
   int32 error_code = 2; // 0: success, 1: match not found, 2: player already signed up
 }

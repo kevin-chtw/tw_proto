@@ -341,7 +341,7 @@ type MatchAck struct {
 	Serverid string `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
 	// Types that are assignable to Ack:
 	//
-	//	*MatchAck_SingupAck
+	//	*MatchAck_SignupAck
 	//	*MatchAck_StartClientAck
 	//	*MatchAck_EnterMatchAck
 	//	*MatchAck_AddPlayerAck
@@ -398,9 +398,9 @@ func (m *MatchAck) GetAck() isMatchAck_Ack {
 	return nil
 }
 
-func (x *MatchAck) GetSingupAck() *SingupAck {
-	if x, ok := x.GetAck().(*MatchAck_SingupAck); ok {
-		return x.SingupAck
+func (x *MatchAck) GetSignupAck() *SignupAck {
+	if x, ok := x.GetAck().(*MatchAck_SignupAck); ok {
+		return x.SignupAck
 	}
 	return nil
 }
@@ -458,8 +458,8 @@ type isMatchAck_Ack interface {
 	isMatchAck_Ack()
 }
 
-type MatchAck_SingupAck struct {
-	SingupAck *SingupAck `protobuf:"bytes,2,opt,name=singup_ack,json=singupAck,proto3,oneof"`
+type MatchAck_SignupAck struct {
+	SignupAck *SignupAck `protobuf:"bytes,2,opt,name=signup_ack,json=signupAck,proto3,oneof"`
 }
 
 type MatchAck_StartClientAck struct {
@@ -490,7 +490,7 @@ type MatchAck_StatusAck struct {
 	StatusAck *MatchStatusAck `protobuf:"bytes,9,opt,name=status_ack,json=statusAck,proto3,oneof"`
 }
 
-func (*MatchAck_SingupAck) isMatchAck_Ack() {}
+func (*MatchAck_SignupAck) isMatchAck_Ack() {}
 
 func (*MatchAck_StartClientAck) isMatchAck_Ack() {}
 
@@ -506,7 +506,7 @@ func (*MatchAck_CancelAck) isMatchAck_Ack() {}
 
 func (*MatchAck_StatusAck) isMatchAck_Ack() {}
 
-type SingupAck struct {
+type SignupAck struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -515,8 +515,8 @@ type SingupAck struct {
 	ErrorCode int32  `protobuf:"varint,2,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: success, 1: match not found, 2: player already signed up
 }
 
-func (x *SingupAck) Reset() {
-	*x = SingupAck{}
+func (x *SignupAck) Reset() {
+	*x = SignupAck{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_match_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -524,13 +524,13 @@ func (x *SingupAck) Reset() {
 	}
 }
 
-func (x *SingupAck) String() string {
+func (x *SignupAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SingupAck) ProtoMessage() {}
+func (*SignupAck) ProtoMessage() {}
 
-func (x *SingupAck) ProtoReflect() protoreflect.Message {
+func (x *SignupAck) ProtoReflect() protoreflect.Message {
 	mi := &file_match_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -542,19 +542,19 @@ func (x *SingupAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SingupAck.ProtoReflect.Descriptor instead.
-func (*SingupAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use SignupAck.ProtoReflect.Descriptor instead.
+func (*SignupAck) Descriptor() ([]byte, []int) {
 	return file_match_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *SingupAck) GetMatchid() string {
+func (x *SignupAck) GetMatchid() string {
 	if x != nil {
 		return x.Matchid
 	}
 	return ""
 }
 
-func (x *SingupAck) GetErrorCode() int32 {
+func (x *SignupAck) GetErrorCode() int32 {
 	if x != nil {
 		return x.ErrorCode
 	}
@@ -1244,9 +1244,9 @@ var file_match_proto_rawDesc = []byte{
 	0x74, 0x63, 0x68, 0x69, 0x64, 0x22, 0x8c, 0x04, 0x0a, 0x08, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x41,
 	0x63, 0x6b, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x69, 0x64, 0x12, 0x32,
-	0x0a, 0x0a, 0x73, 0x69, 0x6e, 0x67, 0x75, 0x70, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x69, 0x6e, 0x67,
-	0x75, 0x70, 0x41, 0x63, 0x6b, 0x48, 0x00, 0x52, 0x09, 0x73, 0x69, 0x6e, 0x67, 0x75, 0x70, 0x41,
+	0x0a, 0x0a, 0x73, 0x69, 0x67, 0x6e, 0x75, 0x70, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x11, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x69, 0x67, 0x6e,
+	0x75, 0x70, 0x41, 0x63, 0x6b, 0x48, 0x00, 0x52, 0x09, 0x73, 0x69, 0x67, 0x6e, 0x75, 0x70, 0x41,
 	0x63, 0x6b, 0x12, 0x42, 0x0a, 0x10, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x63, 0x6c, 0x69, 0x65,
 	0x6e, 0x74, 0x5f, 0x61, 0x63, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x43, 0x6c, 0x69, 0x65, 0x6e,
@@ -1274,7 +1274,7 @@ var file_match_proto_rawDesc = []byte{
 	0x63, 0x6b, 0x18, 0x09, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x41, 0x63, 0x6b,
 	0x48, 0x00, 0x52, 0x09, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x41, 0x63, 0x6b, 0x42, 0x05, 0x0a,
-	0x03, 0x61, 0x63, 0x6b, 0x22, 0x44, 0x0a, 0x09, 0x53, 0x69, 0x6e, 0x67, 0x75, 0x70, 0x41, 0x63,
+	0x03, 0x61, 0x63, 0x6b, 0x22, 0x44, 0x0a, 0x09, 0x53, 0x69, 0x67, 0x6e, 0x75, 0x70, 0x41, 0x63,
 	0x6b, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x65,
 	0x72, 0x72, 0x6f, 0x72, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
@@ -1367,7 +1367,7 @@ var file_match_proto_goTypes = []interface{}{
 	(*EnterMatchReq)(nil),     // 3: cproto.EnterMatchReq
 	(*MatchStatusReq)(nil),    // 4: cproto.MatchStatusReq
 	(*MatchAck)(nil),          // 5: cproto.MatchAck
-	(*SingupAck)(nil),         // 6: cproto.SingupAck
+	(*SignupAck)(nil),         // 6: cproto.SignupAck
 	(*StartClientAck)(nil),    // 7: cproto.StartClientAck
 	(*EnterMatchAck)(nil),     // 8: cproto.EnterMatchAck
 	(*AddPlayerAck)(nil),      // 9: cproto.AddPlayerAck
@@ -1384,7 +1384,7 @@ var file_match_proto_depIdxs = []int32{
 	2,  // 1: cproto.MatchReq.signout_req:type_name -> cproto.SignoutReq
 	3,  // 2: cproto.MatchReq.enter_match_req:type_name -> cproto.EnterMatchReq
 	4,  // 3: cproto.MatchReq.match_status_req:type_name -> cproto.MatchStatusReq
-	6,  // 4: cproto.MatchAck.singup_ack:type_name -> cproto.SingupAck
+	6,  // 4: cproto.MatchAck.signup_ack:type_name -> cproto.SignupAck
 	7,  // 5: cproto.MatchAck.start_client_ack:type_name -> cproto.StartClientAck
 	8,  // 6: cproto.MatchAck.enter_match_ack:type_name -> cproto.EnterMatchAck
 	9,  // 7: cproto.MatchAck.add_player_ack:type_name -> cproto.AddPlayerAck
@@ -1479,7 +1479,7 @@ func file_match_proto_init() {
 			}
 		}
 		file_match_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SingupAck); i {
+			switch v := v.(*SignupAck); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1618,7 +1618,7 @@ func file_match_proto_init() {
 		(*MatchReq_MatchStatusReq)(nil),
 	}
 	file_match_proto_msgTypes[5].OneofWrappers = []interface{}{
-		(*MatchAck_SingupAck)(nil),
+		(*MatchAck_SignupAck)(nil),
 		(*MatchAck_StartClientAck)(nil),
 		(*MatchAck_EnterMatchAck)(nil),
 		(*MatchAck_AddPlayerAck)(nil),
