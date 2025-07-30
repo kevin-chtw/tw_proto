@@ -13,3 +13,20 @@ message GetPlayerAck {
   string account = 2;
   int32 error_code = 3; // 0: success, 1: player not found, 2: incorrect password
 }
+
+message CheckRoomCardsReq {
+  string userid = 1;
+}
+
+message CheckRoomCardsAck {
+  int32 count = 1;
+}
+
+message DeductRoomCardsReq {
+  string userid = 1;
+  int32 count = 2;
+}
+
+message DeductRoomCardsAck {
+  bool success = 1;
+}

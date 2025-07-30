@@ -16,6 +16,8 @@ message StartGameReq {
   repeated string game_config = 5;
   int32 initial_chips = 6;
   int32 score_base = 7;
+  int32 match_type = 8; // 0: 普通匹配, 1: 房卡模式
+  int32 round_count = 9; // 总局数
 }
 
 message CancelMatchReq {

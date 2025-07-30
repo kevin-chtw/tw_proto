@@ -138,6 +138,202 @@ func (x *GetPlayerAck) GetErrorCode() int32 {
 	return 0
 }
 
+type CheckRoomCardsReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Userid string `protobuf:"bytes,1,opt,name=userid,proto3" json:"userid,omitempty"`
+}
+
+func (x *CheckRoomCardsReq) Reset() {
+	*x = CheckRoomCardsReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_lobby2db_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CheckRoomCardsReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CheckRoomCardsReq) ProtoMessage() {}
+
+func (x *CheckRoomCardsReq) ProtoReflect() protoreflect.Message {
+	mi := &file_lobby2db_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CheckRoomCardsReq.ProtoReflect.Descriptor instead.
+func (*CheckRoomCardsReq) Descriptor() ([]byte, []int) {
+	return file_lobby2db_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CheckRoomCardsReq) GetUserid() string {
+	if x != nil {
+		return x.Userid
+	}
+	return ""
+}
+
+type CheckRoomCardsAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Count int32 `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`
+}
+
+func (x *CheckRoomCardsAck) Reset() {
+	*x = CheckRoomCardsAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_lobby2db_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CheckRoomCardsAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CheckRoomCardsAck) ProtoMessage() {}
+
+func (x *CheckRoomCardsAck) ProtoReflect() protoreflect.Message {
+	mi := &file_lobby2db_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CheckRoomCardsAck.ProtoReflect.Descriptor instead.
+func (*CheckRoomCardsAck) Descriptor() ([]byte, []int) {
+	return file_lobby2db_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CheckRoomCardsAck) GetCount() int32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+type DeductRoomCardsReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Userid string `protobuf:"bytes,1,opt,name=userid,proto3" json:"userid,omitempty"`
+	Count  int32  `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
+}
+
+func (x *DeductRoomCardsReq) Reset() {
+	*x = DeductRoomCardsReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_lobby2db_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeductRoomCardsReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeductRoomCardsReq) ProtoMessage() {}
+
+func (x *DeductRoomCardsReq) ProtoReflect() protoreflect.Message {
+	mi := &file_lobby2db_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeductRoomCardsReq.ProtoReflect.Descriptor instead.
+func (*DeductRoomCardsReq) Descriptor() ([]byte, []int) {
+	return file_lobby2db_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DeductRoomCardsReq) GetUserid() string {
+	if x != nil {
+		return x.Userid
+	}
+	return ""
+}
+
+func (x *DeductRoomCardsReq) GetCount() int32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+type DeductRoomCardsAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+}
+
+func (x *DeductRoomCardsAck) Reset() {
+	*x = DeductRoomCardsAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_lobby2db_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeductRoomCardsAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeductRoomCardsAck) ProtoMessage() {}
+
+func (x *DeductRoomCardsAck) ProtoReflect() protoreflect.Message {
+	mi := &file_lobby2db_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeductRoomCardsAck.ProtoReflect.Descriptor instead.
+func (*DeductRoomCardsAck) Descriptor() ([]byte, []int) {
+	return file_lobby2db_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DeductRoomCardsAck) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_lobby2db_proto protoreflect.FileDescriptor
 
 var file_lobby2db_proto_rawDesc = []byte{
@@ -152,9 +348,21 @@ var file_lobby2db_proto_rawDesc = []byte{
 	0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e,
 	0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74,
 	0x12, 0x1d, 0x0a, 0x0a, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x03,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x6f, 0x64, 0x65, 0x42,
-	0x0b, 0x5a, 0x09, 0x2e, 0x2e, 0x2f, 0x73, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x6f, 0x64, 0x65, 0x22,
+	0x2b, 0x0a, 0x11, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x52, 0x6f, 0x6f, 0x6d, 0x43, 0x61, 0x72, 0x64,
+	0x73, 0x52, 0x65, 0x71, 0x12, 0x16, 0x0a, 0x06, 0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x22, 0x29, 0x0a, 0x11,
+	0x43, 0x68, 0x65, 0x63, 0x6b, 0x52, 0x6f, 0x6f, 0x6d, 0x43, 0x61, 0x72, 0x64, 0x73, 0x41, 0x63,
+	0x6b, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x42, 0x0a, 0x12, 0x44, 0x65, 0x64, 0x75, 0x63,
+	0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x43, 0x61, 0x72, 0x64, 0x73, 0x52, 0x65, 0x71, 0x12, 0x16, 0x0a,
+	0x06, 0x75, 0x73, 0x65, 0x72, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75,
+	0x73, 0x65, 0x72, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x2e, 0x0a, 0x12, 0x44,
+	0x65, 0x64, 0x75, 0x63, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x43, 0x61, 0x72, 0x64, 0x73, 0x41, 0x63,
+	0x6b, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x42, 0x0b, 0x5a, 0x09, 0x2e,
+	0x2e, 0x2f, 0x73, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -169,10 +377,14 @@ func file_lobby2db_proto_rawDescGZIP() []byte {
 	return file_lobby2db_proto_rawDescData
 }
 
-var file_lobby2db_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_lobby2db_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_lobby2db_proto_goTypes = []interface{}{
-	(*GetPlayerReq)(nil), // 0: sproto.GetPlayerReq
-	(*GetPlayerAck)(nil), // 1: sproto.GetPlayerAck
+	(*GetPlayerReq)(nil),       // 0: sproto.GetPlayerReq
+	(*GetPlayerAck)(nil),       // 1: sproto.GetPlayerAck
+	(*CheckRoomCardsReq)(nil),  // 2: sproto.CheckRoomCardsReq
+	(*CheckRoomCardsAck)(nil),  // 3: sproto.CheckRoomCardsAck
+	(*DeductRoomCardsReq)(nil), // 4: sproto.DeductRoomCardsReq
+	(*DeductRoomCardsAck)(nil), // 5: sproto.DeductRoomCardsAck
 }
 var file_lobby2db_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -212,6 +424,54 @@ func file_lobby2db_proto_init() {
 				return nil
 			}
 		}
+		file_lobby2db_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CheckRoomCardsReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_lobby2db_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CheckRoomCardsAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_lobby2db_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeductRoomCardsReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_lobby2db_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeductRoomCardsAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -219,7 +479,7 @@ func file_lobby2db_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_lobby2db_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
