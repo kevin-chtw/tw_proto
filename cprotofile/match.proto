@@ -5,145 +5,39 @@ option go_package = "../cproto";
 
 message MatchReq {
   string serverid = 1;
+  int32 matchid = 2; // 比赛ID
   oneof req {
-    SignupReq signup_req = 2;
-    SignoutReq signout_req = 3;
-    EnterMatchReq enter_match_req = 4;
-    MatchStatusReq match_status_req = 5;
-    RoomCardCreateReq room_card_create_req = 6;
-    RoomCardJoinReq room_card_join_req = 7;
+    CreateRoomReq create_room_req = 3;
+    JoinRoomReq join_room_req = 4;
   }
-}
-
-message SignupReq {
-  string matchid = 1;
-}
-
-message SignoutReq {
-  string matchid = 1;
-}
-
-message EnterMatchReq {
-  string matchid = 1;
-  string tableid = 2;
-}
-
-message MatchStatusReq {
-  string matchid = 1;
 }
 
 message MatchAck {
   string serverid = 1;
+  int32 matchid = 2; // 比赛ID
   oneof ack {
-    SignupAck signup_ack = 2;
-    StartClientAck start_client_ack = 3;
-    EnterMatchAck enter_match_ack = 4;
-    AddPlayerAck add_player_ack = 5;
-    GameBeginAck game_begin_ack = 6;
-    GameEndAck game_end_ack = 7;
-    MatchCancelAck cancel_ack = 8;
-    MatchStatusAck status_ack = 9;
-    RoomCardCreateAck room_card_create_ack = 10;
-    RoomCardJoinAck room_card_join_ack = 11;
+    CreateRoomAck create_room_ack = 3;
+    JoinRoomAck join_room_ack = 4;
   }
 }
 
-message SignupAck {
-  string matchid = 1;
-  int32 error_code = 2; // 0: success, 1: match not found, 2: player already signed up
+message CreateRoomReq {
+  int32 gameid =  1; // 游戏ID
+  int32 game_count = 2; // 局数
 }
 
-message StartClientAck {
-  string matchid = 1;
-  string tableid = 2;
-  repeated string players = 3;
+message JoinRoomReq {
+  int32 gameid = 1; // 游戏ID
+  int32 tableid = 2; // 桌号
 }
 
-message EnterMatchAck {
-  string matchid = 1;
-  string tableid = 2;
-  repeated string players = 3;
+message CreateRoomAck {
+  int32 gameid = 1; // 房间ID
+  int32 error_code = 2; // 0: 成功, 1: 房间已存在, 2: 房间已满
 }
 
-message AddPlayerAck {
-  string matchid = 2;
-  int32 error_code = 3; // 0: success, 1: match not found, 2: player not signed up
-}
-
-message GameBeginAck {
-  string serverid = 1;
-  string matchid = 2;
-  string tableid = 3;
-}
-
-message GameEndAck {
-  string matchid = 1;
-  string tableid = 2;
-  repeated string players = 3; // List of player IDs
-  int32 winner = 4; // Player ID of the winner
-  int32 end_reason = 5; // 0: normal, 1: timeout, 2: player quit
-}
-
-message MatchCancelReq {
-  string matchid = 1;
-  string playerid = 2;
-}
-
-message MatchCancelAck {
-  string matchid = 1;
-  int32 error_code = 2; // 0: success, 1: match not found, 2: player not in match
-}
-
-message TableInfo {
-    string tableid = 1;
-    repeated string players = 2;
-    int32 status = 3; // 0: waiting, 1: playing, 2: ended
-    int64 create_at = 4; // unix timestamp
-}
-
-message MatchStatusAck {
-    string matchid = 1;
-    int32 status = 2; // 0: waiting, 1: matching, 2: playing, 3: ended
-    repeated string players = 3;
-    int32 timeout = 4; // seconds remaining
-    repeated TableInfo tables = 5;
-    int32 match_type = 6; // 0: normal, 1: room card
-    string creator = 7; // room card creator uid
-}
-
-message PlayerReadyNotify {
-  string matchid = 1;
-  string playerid = 2;
-  bool is_ready = 3;
-}
-
-// 房卡创建请求
-message RoomCardCreateReq {
-  string game_type = 1; // 游戏类型
-  int32 max_players = 2; // 最大玩家数
-  int32 round_count = 3; // 总局数
-  string password = 4; // 房间密码(可选)
-}
-
-// 房卡创建响应
-message RoomCardCreateAck {
-  string matchid = 1; // 房间ID
-  int32 error_code = 2; // 0: 成功, 1: 房卡不足, 2: 创建失败
-  string invite_code = 3; // 邀请码
-}
-
-// 房卡加入请求
-message RoomCardJoinReq {
-  string matchid = 1; // 房间ID
-  string invite_code = 2; // 邀请码
-  string password = 3; // 房间密码(如果有)
-}
-
-// 房卡加入响应
-message RoomCardJoinAck {
-  string matchid = 1;
-  int32 error_code = 2; // 0: 成功, 1: 房间不存在, 2: 密码错误, 3: 房间已满
-  string creator = 3; // 房主UID
-  int32 current_players = 4; // 当前玩家人数
-  int32 max_players = 5; // 最大玩家人数
+message JoinRoomAck {
+  int32 gameid = 1; // 房间ID
+  int32 tableid = 2; // 桌号
+  int32 error_code = 3; // 0: 成功, 1: 房间不存在, 2: 密码错误, 3: 房间已满
 }

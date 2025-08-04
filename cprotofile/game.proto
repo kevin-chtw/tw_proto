@@ -5,14 +5,48 @@ option go_package = "../cproto";
 
 message GameReq {
   string serverid = 1;
-  string matchid = 2;
-  string tableid = 3;
-  bytes data = 4;
+  int32 gameid = 2; // 游戏ID
+  int32 matchid = 3; // 比赛ID
+  int32 tableid = 4; // 桌号
+  oneof req {
+    EnterGameReq enter_game_req = 5;
+    TableMsgReq table_msg_req = 6;
+  }
 }
 
 message GameAck {
   string serverid = 1;
-  string matchid = 2;
-  string tableid = 3;
-  bytes data = 4;
+  int32 gameid = 2; // 游戏ID
+  int32 matchid = 3; // 比赛ID
+  int32 tableid = 4; // 桌号
+  oneof ack {
+    EnterGameAck enter_game_ack = 5;
+    TablePlayerAck table_player_ack = 6;
+    TableMsgAck table_msg_ack = 7;
+    TableEndAck table_end_ack = 8;
+  }
+}
+
+message EnterGameReq {  
+}
+
+message TableMsgReq {
+  bytes msg = 1; // 消息内容
+}
+
+message EnterGameAck {
+  int32 error_code = 1; // 0: 成功, 1: 桌号不存在, 2: 玩家已在桌上
+  bytes table_info = 2; // 桌子信息
+} 
+
+message TablePlayerAck {
+  string playerid = 1; // 玩家ID
+  int32 seatnum = 2; // 座位号
+}
+
+message TableMsgAck {
+  bytes msg = 1; // 消息内容
+}
+
+message TableEndAck {
 }

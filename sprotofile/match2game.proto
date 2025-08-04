@@ -4,35 +4,68 @@ package sproto;
 option go_package = "../sproto";
 
 message Match2GameReq {
-  StartGameReq start_game_req = 1;
-  CancelMatchReq cancel_match_req = 2;
-}
-
-message StartGameReq {
-  string match_server_id = 1; // 匹配服务器ID
-  string matchid = 2;
-  string tableid = 3;
-  repeated string players = 4;
-  repeated string game_config = 5;
-  int32 initial_chips = 6;
-  int32 score_base = 7;
-  int32 match_type = 8; // 0: 普通匹配, 1: 房卡模式
-  int32 round_count = 9; // 总局数
-}
-
-message CancelMatchReq {
-  string matchid = 1;
-  string tableid = 2;
+  int32 gameid = 1; // 游戏ID
+  int32 matchid = 2;
+  int32 tableid = 3;
+  oneof req {
+    AddTableReq add_table_req = 4;
+    CancelTableReq cancel_table_req = 5;
+    AddPlayerReq add_player_req = 6;
+  }
 }
 
 message Match2GameAck {
-  GameResultAck game_result_ack = 1;
+  int32 gameid = 1; // 游戏ID
+  int32 matchid = 2;
+  int32 tableid = 3;
+  oneof ack {
+    AddTableAck add_table_ack = 4;
+    AddPlayerAck add_player_ack = 5;
+    CancelTableAck cancel_table_ack = 6;
+    TableResultAck table_result_ack = 7;
+  }
 }
 
-message GameResultAck {
-  string matchid = 1;
-  string tableid = 2;
-  int32 end_reason = 3;
-  repeated int32 scores = 4;
+message AddTableReq {  
+  string game_config = 1;
+  int32 score_base = 2;
+  int32 match_type = 3; // 0: 普通匹配, 1: 房卡模式
+  int32 round_count = 4; // 总局数
+  int32 player_count = 5; // 玩家数量
+  string match_server_id = 6; // 匹配服务ID
 }
 
+message AddPlayerReq {
+  string playerid = 1; // 玩家ID
+  int32 seatnum = 2; // 座位号
+  string icon_url = 3; // 玩家头像
+  string nickname = 4; // 玩家昵称
+  int32 score = 5; // 玩家分数
+}
+
+message CancelTableReq {
+  int32 reason = 1; // 取消原因
+}
+
+message AddTableAck {    
+  int32 error_code = 1; // 0: 成功, 1: 桌号不存在, 2: 玩家已在桌上
+}
+
+message AddPlayerAck{
+  int32 error_code = 1; // 0: 成功, 1: 桌号不存在, 2: 玩家已在桌上
+}
+
+message CancelTableAck {
+  int32 error_code = 1; // 0: 成功, 1: 桌号不存在
+}   
+
+message TableResultAck {     
+  int32 error_code = 1; // 0: 成功, 1: 桌号不存在, 2: 其他错误
+  repeated PlayerResult playerids = 2; // 玩家ID列表
+}
+
+message PlayerResult {
+  string playerid = 1; // 玩家ID
+  int32 score = 2; // 玩家得分
+  int32 rank = 3; // 玩家排名
+}
