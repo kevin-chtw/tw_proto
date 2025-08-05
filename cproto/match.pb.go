@@ -219,8 +219,7 @@ func (*MatchAck_JoinRoomAck) isMatchAck_Ack() {}
 
 type CreateRoomReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Gameid        int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"`                        // 游戏ID
-	GameCount     int32                  `protobuf:"varint,2,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"` // 局数
+	GameCount     int32                  `protobuf:"varint,1,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"` // 局数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -253,13 +252,6 @@ func (x *CreateRoomReq) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateRoomReq.ProtoReflect.Descriptor instead.
 func (*CreateRoomReq) Descriptor() ([]byte, []int) {
 	return file_match_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *CreateRoomReq) GetGameid() int32 {
-	if x != nil {
-		return x.Gameid
-	}
-	return 0
 }
 
 func (x *CreateRoomReq) GetGameCount() int32 {
@@ -323,8 +315,8 @@ func (x *JoinRoomReq) GetTableid() int32 {
 
 type CreateRoomAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Gameid        int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"`                        // 房间ID
-	ErrorCode     int32                  `protobuf:"varint,2,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: 成功, 1: 房间已存在, 2: 房间已满
+	ErrorCode     int32                  `protobuf:"varint,1,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: 成功, 1: 房间已存在, 2: 房间已满
+	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`                      // 桌号
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -359,13 +351,6 @@ func (*CreateRoomAck) Descriptor() ([]byte, []int) {
 	return file_match_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *CreateRoomAck) GetGameid() int32 {
-	if x != nil {
-		return x.Gameid
-	}
-	return 0
-}
-
 func (x *CreateRoomAck) GetErrorCode() int32 {
 	if x != nil {
 		return x.ErrorCode
@@ -373,11 +358,17 @@ func (x *CreateRoomAck) GetErrorCode() int32 {
 	return 0
 }
 
+func (x *CreateRoomAck) GetTableid() int32 {
+	if x != nil {
+		return x.Tableid
+	}
+	return 0
+}
+
 type JoinRoomAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Gameid        int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"`                        // 房间ID
-	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`                      // 桌号
 	ErrorCode     int32                  `protobuf:"varint,3,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: 成功, 1: 房间不存在, 2: 密码错误, 3: 房间已满
+	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`                      // 桌号
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -412,9 +403,9 @@ func (*JoinRoomAck) Descriptor() ([]byte, []int) {
 	return file_match_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *JoinRoomAck) GetGameid() int32 {
+func (x *JoinRoomAck) GetErrorCode() int32 {
 	if x != nil {
-		return x.Gameid
+		return x.ErrorCode
 	}
 	return 0
 }
@@ -422,13 +413,6 @@ func (x *JoinRoomAck) GetGameid() int32 {
 func (x *JoinRoomAck) GetTableid() int32 {
 	if x != nil {
 		return x.Tableid
-	}
-	return 0
-}
-
-func (x *JoinRoomAck) GetErrorCode() int32 {
-	if x != nil {
-		return x.ErrorCode
 	}
 	return 0
 }
@@ -449,23 +433,21 @@ const file_match_proto_rawDesc = "" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12?\n" +
 	"\x0fcreate_room_ack\x18\x03 \x01(\v2\x15.cproto.CreateRoomAckH\x00R\rcreateRoomAck\x129\n" +
 	"\rjoin_room_ack\x18\x04 \x01(\v2\x13.cproto.JoinRoomAckH\x00R\vjoinRoomAckB\x05\n" +
-	"\x03ack\"F\n" +
-	"\rCreateRoomReq\x12\x16\n" +
-	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x1d\n" +
+	"\x03ack\".\n" +
+	"\rCreateRoomReq\x12\x1d\n" +
 	"\n" +
-	"game_count\x18\x02 \x01(\x05R\tgameCount\"?\n" +
+	"game_count\x18\x01 \x01(\x05R\tgameCount\"?\n" +
 	"\vJoinRoomReq\x12\x16\n" +
 	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x18\n" +
+	"\atableid\x18\x02 \x01(\x05R\atableid\"H\n" +
+	"\rCreateRoomAck\x12\x1d\n" +
+	"\n" +
+	"error_code\x18\x01 \x01(\x05R\terrorCode\x12\x18\n" +
 	"\atableid\x18\x02 \x01(\x05R\atableid\"F\n" +
-	"\rCreateRoomAck\x12\x16\n" +
-	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x1d\n" +
+	"\vJoinRoomAck\x12\x1d\n" +
 	"\n" +
-	"error_code\x18\x02 \x01(\x05R\terrorCode\"^\n" +
-	"\vJoinRoomAck\x12\x16\n" +
-	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x18\n" +
-	"\atableid\x18\x02 \x01(\x05R\atableid\x12\x1d\n" +
-	"\n" +
-	"error_code\x18\x03 \x01(\x05R\terrorCodeB\vZ\t../cprotob\x06proto3"
+	"error_code\x18\x03 \x01(\x05R\terrorCode\x12\x18\n" +
+	"\atableid\x18\x02 \x01(\x05R\atableidB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_match_proto_rawDescOnce sync.Once

@@ -285,10 +285,9 @@ type AddTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GameConfig    string                 `protobuf:"bytes,1,opt,name=game_config,json=gameConfig,proto3" json:"game_config,omitempty"`
 	ScoreBase     int32                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`
-	MatchType     int32                  `protobuf:"varint,3,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`              // 0: 普通匹配, 1: 房卡模式
-	RoundCount    int32                  `protobuf:"varint,4,opt,name=round_count,json=roundCount,proto3" json:"round_count,omitempty"`           // 总局数
-	PlayerCount   int32                  `protobuf:"varint,5,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`        // 玩家数量
-	MatchServerId string                 `protobuf:"bytes,6,opt,name=match_server_id,json=matchServerId,proto3" json:"match_server_id,omitempty"` // 匹配服务ID
+	MatchType     int32                  `protobuf:"varint,3,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`       // 0: 普通匹配, 1: 房卡模式
+	GameCount     int32                  `protobuf:"varint,4,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`       // 游戏局数
+	PlayerCount   int32                  `protobuf:"varint,5,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"` // 玩家数量
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -344,9 +343,9 @@ func (x *AddTableReq) GetMatchType() int32 {
 	return 0
 }
 
-func (x *AddTableReq) GetRoundCount() int32 {
+func (x *AddTableReq) GetGameCount() int32 {
 	if x != nil {
-		return x.RoundCount
+		return x.GameCount
 	}
 	return 0
 }
@@ -356,13 +355,6 @@ func (x *AddTableReq) GetPlayerCount() int32 {
 		return x.PlayerCount
 	}
 	return 0
-}
-
-func (x *AddTableReq) GetMatchServerId() string {
-	if x != nil {
-		return x.MatchServerId
-	}
-	return ""
 }
 
 type AddPlayerReq struct {
@@ -750,18 +742,17 @@ const file_match2game_proto_rawDesc = "" +
 	"\x0eadd_player_ack\x18\x05 \x01(\v2\x14.sproto.AddPlayerAckH\x00R\faddPlayerAck\x12B\n" +
 	"\x10cancel_table_ack\x18\x06 \x01(\v2\x16.sproto.CancelTableAckH\x00R\x0ecancelTableAck\x12B\n" +
 	"\x10table_result_ack\x18\a \x01(\v2\x16.sproto.TableResultAckH\x00R\x0etableResultAckB\x05\n" +
-	"\x03ack\"\xd8\x01\n" +
+	"\x03ack\"\xae\x01\n" +
 	"\vAddTableReq\x12\x1f\n" +
 	"\vgame_config\x18\x01 \x01(\tR\n" +
 	"gameConfig\x12\x1d\n" +
 	"\n" +
 	"score_base\x18\x02 \x01(\x05R\tscoreBase\x12\x1d\n" +
 	"\n" +
-	"match_type\x18\x03 \x01(\x05R\tmatchType\x12\x1f\n" +
-	"\vround_count\x18\x04 \x01(\x05R\n" +
-	"roundCount\x12!\n" +
-	"\fplayer_count\x18\x05 \x01(\x05R\vplayerCount\x12&\n" +
-	"\x0fmatch_server_id\x18\x06 \x01(\tR\rmatchServerId\"\x91\x01\n" +
+	"match_type\x18\x03 \x01(\x05R\tmatchType\x12\x1d\n" +
+	"\n" +
+	"game_count\x18\x04 \x01(\x05R\tgameCount\x12!\n" +
+	"\fplayer_count\x18\x05 \x01(\x05R\vplayerCount\"\x91\x01\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x18\n" +
 	"\aseatnum\x18\x02 \x01(\x05R\aseatnum\x12\x19\n" +

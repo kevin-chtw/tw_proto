@@ -22,8 +22,7 @@ message MatchAck {
 }
 
 message CreateRoomReq {
-  int32 gameid =  1; // 游戏ID
-  int32 game_count = 2; // 局数
+  int32 game_count = 1; // 局数
 }
 
 message JoinRoomReq {
@@ -32,12 +31,11 @@ message JoinRoomReq {
 }
 
 message CreateRoomAck {
-  int32 gameid = 1; // 房间ID
-  int32 error_code = 2; // 0: 成功, 1: 房间已存在, 2: 房间已满
+  int32 error_code = 1; // 0: 成功, 1: 房间已存在, 2: 房间已满
+  int32 tableid = 2; // 桌号
 }
 
 message JoinRoomAck {
-  int32 gameid = 1; // 房间ID
-  int32 tableid = 2; // 桌号
   int32 error_code = 3; // 0: 成功, 1: 房间不存在, 2: 密码错误, 3: 房间已满
+  int32 tableid = 2; // 桌号
 }
