@@ -283,11 +283,11 @@ func (*Match2GameAck_TableResultAck) isMatch2GameAck_Ack() {}
 
 type AddTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	GameConfig    string                 `protobuf:"bytes,1,opt,name=game_config,json=gameConfig,proto3" json:"game_config,omitempty"`
-	ScoreBase     int32                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`
-	MatchType     int32                  `protobuf:"varint,3,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`       // 0: 普通匹配, 1: 房卡模式
-	GameCount     int32                  `protobuf:"varint,4,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`       // 游戏局数
-	PlayerCount   int32                  `protobuf:"varint,5,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"` // 玩家数量
+	MatchType     int32                  `protobuf:"varint,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`       // 0: 普通匹配, 1: 房卡模式
+	ScoreBase     int32                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`       // 分数基数
+	GameCount     int32                  `protobuf:"varint,3,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`       // 游戏局数
+	PlayerCount   int32                  `protobuf:"varint,4,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"` // 玩家数量
+	GameConfig    string                 `protobuf:"bytes,5,opt,name=game_config,json=gameConfig,proto3" json:"game_config,omitempty"`     // 游戏配置
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -322,23 +322,16 @@ func (*AddTableReq) Descriptor() ([]byte, []int) {
 	return file_match2game_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *AddTableReq) GetGameConfig() string {
+func (x *AddTableReq) GetMatchType() int32 {
 	if x != nil {
-		return x.GameConfig
+		return x.MatchType
 	}
-	return ""
+	return 0
 }
 
 func (x *AddTableReq) GetScoreBase() int32 {
 	if x != nil {
 		return x.ScoreBase
-	}
-	return 0
-}
-
-func (x *AddTableReq) GetMatchType() int32 {
-	if x != nil {
-		return x.MatchType
 	}
 	return 0
 }
@@ -355,6 +348,13 @@ func (x *AddTableReq) GetPlayerCount() int32 {
 		return x.PlayerCount
 	}
 	return 0
+}
+
+func (x *AddTableReq) GetGameConfig() string {
+	if x != nil {
+		return x.GameConfig
+	}
+	return ""
 }
 
 type AddPlayerReq struct {
@@ -743,16 +743,16 @@ const file_match2game_proto_rawDesc = "" +
 	"\x10cancel_table_ack\x18\x06 \x01(\v2\x16.sproto.CancelTableAckH\x00R\x0ecancelTableAck\x12B\n" +
 	"\x10table_result_ack\x18\a \x01(\v2\x16.sproto.TableResultAckH\x00R\x0etableResultAckB\x05\n" +
 	"\x03ack\"\xae\x01\n" +
-	"\vAddTableReq\x12\x1f\n" +
-	"\vgame_config\x18\x01 \x01(\tR\n" +
-	"gameConfig\x12\x1d\n" +
+	"\vAddTableReq\x12\x1d\n" +
+	"\n" +
+	"match_type\x18\x01 \x01(\x05R\tmatchType\x12\x1d\n" +
 	"\n" +
 	"score_base\x18\x02 \x01(\x05R\tscoreBase\x12\x1d\n" +
 	"\n" +
-	"match_type\x18\x03 \x01(\x05R\tmatchType\x12\x1d\n" +
-	"\n" +
-	"game_count\x18\x04 \x01(\x05R\tgameCount\x12!\n" +
-	"\fplayer_count\x18\x05 \x01(\x05R\vplayerCount\"\x91\x01\n" +
+	"game_count\x18\x03 \x01(\x05R\tgameCount\x12!\n" +
+	"\fplayer_count\x18\x04 \x01(\x05R\vplayerCount\x12\x1f\n" +
+	"\vgame_config\x18\x05 \x01(\tR\n" +
+	"gameConfig\"\x91\x01\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x18\n" +
 	"\aseatnum\x18\x02 \x01(\x05R\aseatnum\x12\x19\n" +

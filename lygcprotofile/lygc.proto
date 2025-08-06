@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package lygcproto;
+option go_package = "../lygcproto";
+
+message LYGCReq {
+  oneof req {
+    LYGCActionReq lygc_action_req = 1;
+    LYGCTrustReq lygc_trust_req = 2;
+    LYGCAnimationReq lygc_animation_req = 3;
+  }
+}
+
+message LYGCAck {
+  oneof ack {
+    LYGCGameStartAck lygc_game_start_ack = 1;
+    LYGCActionAck lygc_action_ack = 2;
+    LYGCTrustAck lygc_trust_ack = 3;
+    LYGCAnimationAck lygc_animation_ack = 4;
+  }
+}
+message LYGCActionReq {
+  int32 action = 1; // 动作类型
+  int32 card = 2; // 手牌或牌堆中的牌
+}
+
+message LYGCTrustReq {
+  bool trust = 1; // 是否托管
+}
+
+message LYGCAnimationReq {
+  int32 animation_type = 1; // 动画类型
+}
+
+message LYGCGameStartAck {
+  int32 game_id = 1; // 游戏ID
+  repeated int32 player_ids = 2; // 玩家ID列表
+}
+
+message LYGCActionAck {
+  int32 player_id = 1; // 玩家ID
+  int32 action = 2; // 动作类型
+  int32 card = 3; // 手牌或牌堆中的牌
+}
+
+message LYGCTrustAck {
+  int32 player_id = 1; // 玩家ID
+  bool trust = 2; // 是否托管
+}
+
+message LYGCAnimationAck {
+  int32 player_id = 1; // 玩家ID
+  int32 animation_type = 2; // 动画类型
+}   
+
+message LYGCGameEndAck {
+  int32 game_id = 1; // 游戏ID
+  repeated LYGCPlayerResult player_results = 2; // 玩家结果列表
+}   
+
+message LYGCPlayerResult {
+  int32 player_id = 1; // 玩家ID
+  int32 score = 2; // 玩家得分
+  repeated int32 cards = 3; // 玩家手牌
+}

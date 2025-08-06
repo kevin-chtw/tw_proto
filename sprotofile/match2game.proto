@@ -27,11 +27,11 @@ message Match2GameAck {
 }
 
 message AddTableReq {  
-  string game_config = 1;
-  int32 score_base = 2;
-  int32 match_type = 3; // 0: 普通匹配, 1: 房卡模式
-  int32 game_count = 4; // 游戏局数
-  int32 player_count = 5; // 玩家数量
+  int32 match_type = 1; // 0: 普通匹配, 1: 房卡模式
+  int32 score_base = 2; // 分数基数
+  int32 game_count = 3; // 游戏局数
+  int32 player_count = 4; // 玩家数量
+  string game_config = 5; // 游戏配置
 }
 
 message AddPlayerReq {
