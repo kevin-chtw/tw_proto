@@ -1,0 +1,120 @@
+syntax = "proto3";
+
+package scproto;
+option go_package = "../scproto";
+
+message SCReq {
+  oneof req {
+    SCRequestReq sc_request_req = 1;
+    SCTrustReq sc_trust_req = 2;
+    SCAnimationReq sc_animation_req = 3;
+  }
+}
+
+message SCAck {
+  oneof ack {
+    SCGameStartAck sc_game_start_ack = 1;
+    SCPlaceAck sc_place_ack = 2;
+    SCOpenDoorAck sc_open_door_ack = 3;
+    SCActionAck sc_action_ack = 4;
+    SCPengAck sc_peng_ack = 5;
+    SCGangAck sc_gang_ack = 6;
+    SCWinAck sc_win_ack = 7;
+    SCDrawAck sc_draw_ack = 8;
+    SCDiscardAck sc_discard_ack = 9;
+    SCScoreChangeAck sc_score_change_ack = 10;
+    SCResultAck sc_result_ack = 11;
+    SCTrustAck sc_trust_ack = 12;
+    SCAnimationAck sc_animation_ack = 13;
+  }
+}
+message SCRequestReq {
+  int32 seat = 1; //座位号
+  int32 request_type = 2; // 动作类型
+  int32 requestid = 3; // 请求ID
+  int32 tile = 4; // 牌
+}
+
+message SCTrustReq {
+  int32 seat = 1; //座位号
+  bool trust = 2; // 是否托管
+}
+
+message SCAnimationReq {
+  int32 seat = 1; //座位号
+  int32 requestid = 2; // 请求ID
+}
+
+message SCGameStartAck {
+  int32 tile_count = 1; //牌库总张数
+  repeated int32 scores = 2;//带入分
+}
+
+message SCPlaceAck {
+  int32 banker = 1;
+}
+
+message SCOpenDoorAck {
+  int32 seat = 1; //座位号
+  repeated int32 tiles = 2; // 手牌列表
+}
+
+message SCActionAck {
+  int32 seat = 1; // //座位号
+  int32 request_type = 2; // 动作类型
+  int32 requestid = 3; // 请求ID
+}
+
+message SCPengAck {
+  int32 seat = 1; //座位号
+  int32 discard_seat = 2;//出牌座位号
+  int32 tile = 3; //碰的牌列表
+}
+
+message SCGangAck {
+  int32 seat = 1; //座位号
+  int32 discard_seat = 2;//出牌座位号
+  int32 tile = 3; //碰的牌列表
+  int32 gang_type = 4; //杠牌的类型(0:明杠 1： 暗杠 2：补杠)
+}
+
+message SCWinAck {
+  repeated int32 seats = 1; //座位号
+  int32 pao_seat = 2; //点炮玩家
+  int32 tile = 3; //胡的牌
+  repeated int32 hu_type = 4; // 胡的类型
+}
+
+message SCDrawAck {
+  int32 seat = 1;//座位号
+  int32 tile = 2; //胡的牌
+  int32 draw_type = 3; //0-空，1-普通，2-杠后
+}
+
+message SCDiscardAck {
+  int32 seat = 1; //座位号
+  int32 tile = 2; // 丢弃的牌
+}
+
+message SCScoreChangeAck {
+  repeated int32 scores = 1; //得分列表
+}
+
+message SCTrustAck {
+  int32 seat = 1; // 玩家ID
+  bool trust = 2; // 是否托管
+}
+
+message SCAnimationAck {
+  int32 requestid = 1; 
+}   
+
+message SCResultAck {
+  repeated SCPlayerResult player_results = 2; // 玩家结果列表
+}   
+
+message SCPlayerResult {
+  int32 seat = 1; // 玩家ID
+  int32 score = 2; // 玩家得分
+  repeated int32 tiles = 3; // 玩家手牌
+}
