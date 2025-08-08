@@ -14,20 +14,20 @@ message SCReq {
 message SCAck {
   oneof ack {
     SCGameStartAck sc_game_start_ack = 1;
-    SCPlaceAck sc_place_ack = 2;
-    SCOpenDoorAck sc_open_door_ack = 3;
-    SCActionAck sc_action_ack = 4;
-    SCPengAck sc_peng_ack = 5;
-    SCGangAck sc_gang_ack = 6;
-    SCWinAck sc_win_ack = 7;
-    SCDrawAck sc_draw_ack = 8;
-    SCDiscardAck sc_discard_ack = 9;
-    SCScoreChangeAck sc_score_change_ack = 10;
-    SCResultAck sc_result_ack = 11;
-    SCTrustAck sc_trust_ack = 12;
-    SCAnimationAck sc_animation_ack = 13;
+    SCOpenDoorAck sc_open_door_ack = 2;
+    SCRequestAck sc_request_ack = 3;
+    SCPengAck sc_peng_ack = 4;
+    SCGangAck sc_gang_ack = 5;
+    SCWinAck sc_win_ack = 6;
+    SCDrawAck sc_draw_ack = 7;
+    SCDiscardAck sc_discard_ack = 8;
+    SCScoreChangeAck sc_score_change_ack = 9;
+    SCResultAck sc_result_ack = 10;
+    SCTrustAck sc_trust_ack = 11;
+    SCAnimationAck sc_animation_ack = 12;
   }
 }
+
 message SCRequestReq {
   int32 seat = 1; //座位号
   int32 request_type = 2; // 动作类型
@@ -46,12 +46,9 @@ message SCAnimationReq {
 }
 
 message SCGameStartAck {
-  int32 tile_count = 1; //牌库总张数
-  repeated int32 scores = 2;//带入分
-}
-
-message SCPlaceAck {
-  int32 banker = 1;
+  int32 banker = 1; //庄家
+  int32 tile_count = 2; //牌库总张数
+  repeated int64 scores = 3;//带入分
 }
 
 message SCOpenDoorAck {
@@ -59,7 +56,7 @@ message SCOpenDoorAck {
   repeated int32 tiles = 2; // 手牌列表
 }
 
-message SCActionAck {
+message SCRequestAck {
   int32 seat = 1; // //座位号
   int32 request_type = 2; // 动作类型
   int32 requestid = 3; // 请求ID

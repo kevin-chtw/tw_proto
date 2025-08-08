@@ -36,10 +36,10 @@ message AddTableReq {
 
 message AddPlayerReq {
   string playerid = 1; // 玩家ID
-  int32 seatnum = 2; // 座位号
+  int32 seat = 2; // 座位号
   string icon_url = 3; // 玩家头像
   string nickname = 4; // 玩家昵称
-  int32 score = 5; // 玩家分数
+  int64 score = 5; // 玩家分数
 }
 
 message CancelTableReq {

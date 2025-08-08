@@ -360,10 +360,10 @@ func (x *AddTableReq) GetGameConfig() string {
 type AddPlayerReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"`              // 玩家ID
-	Seatnum       int32                  `protobuf:"varint,2,opt,name=seatnum,proto3" json:"seatnum,omitempty"`               // 座位号
+	Seat          int32                  `protobuf:"varint,2,opt,name=seat,proto3" json:"seat,omitempty"`                     // 座位号
 	IconUrl       string                 `protobuf:"bytes,3,opt,name=icon_url,json=iconUrl,proto3" json:"icon_url,omitempty"` // 玩家头像
 	Nickname      string                 `protobuf:"bytes,4,opt,name=nickname,proto3" json:"nickname,omitempty"`              // 玩家昵称
-	Score         int32                  `protobuf:"varint,5,opt,name=score,proto3" json:"score,omitempty"`                   // 玩家分数
+	Score         int64                  `protobuf:"varint,5,opt,name=score,proto3" json:"score,omitempty"`                   // 玩家分数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -405,9 +405,9 @@ func (x *AddPlayerReq) GetPlayerid() string {
 	return ""
 }
 
-func (x *AddPlayerReq) GetSeatnum() int32 {
+func (x *AddPlayerReq) GetSeat() int32 {
 	if x != nil {
-		return x.Seatnum
+		return x.Seat
 	}
 	return 0
 }
@@ -426,7 +426,7 @@ func (x *AddPlayerReq) GetNickname() string {
 	return ""
 }
 
-func (x *AddPlayerReq) GetScore() int32 {
+func (x *AddPlayerReq) GetScore() int64 {
 	if x != nil {
 		return x.Score
 	}
@@ -752,13 +752,13 @@ const file_match2game_proto_rawDesc = "" +
 	"game_count\x18\x03 \x01(\x05R\tgameCount\x12!\n" +
 	"\fplayer_count\x18\x04 \x01(\x05R\vplayerCount\x12\x1f\n" +
 	"\vgame_config\x18\x05 \x01(\tR\n" +
-	"gameConfig\"\x91\x01\n" +
+	"gameConfig\"\x8b\x01\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
-	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x18\n" +
-	"\aseatnum\x18\x02 \x01(\x05R\aseatnum\x12\x19\n" +
+	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x12\n" +
+	"\x04seat\x18\x02 \x01(\x05R\x04seat\x12\x19\n" +
 	"\bicon_url\x18\x03 \x01(\tR\aiconUrl\x12\x1a\n" +
 	"\bnickname\x18\x04 \x01(\tR\bnickname\x12\x14\n" +
-	"\x05score\x18\x05 \x01(\x05R\x05score\"(\n" +
+	"\x05score\x18\x05 \x01(\x03R\x05score\"(\n" +
 	"\x0eCancelTableReq\x12\x16\n" +
 	"\x06reason\x18\x01 \x01(\x05R\x06reason\",\n" +
 	"\vAddTableAck\x12\x1d\n" +
