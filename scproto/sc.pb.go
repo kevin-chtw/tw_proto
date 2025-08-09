@@ -126,9 +126,9 @@ type SCAck struct {
 	//	*SCAck_ScGameStartAck
 	//	*SCAck_ScOpenDoorAck
 	//	*SCAck_ScRequestAck
-	//	*SCAck_ScPengAck
-	//	*SCAck_ScGangAck
-	//	*SCAck_ScWinAck
+	//	*SCAck_ScPonAck
+	//	*SCAck_ScKonAck
+	//	*SCAck_ScHuAck
 	//	*SCAck_ScDrawAck
 	//	*SCAck_ScDiscardAck
 	//	*SCAck_ScScoreChangeAck
@@ -204,28 +204,28 @@ func (x *SCAck) GetScRequestAck() *SCRequestAck {
 	return nil
 }
 
-func (x *SCAck) GetScPengAck() *SCPengAck {
+func (x *SCAck) GetScPonAck() *SCPonAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScPengAck); ok {
-			return x.ScPengAck
+		if x, ok := x.Ack.(*SCAck_ScPonAck); ok {
+			return x.ScPonAck
 		}
 	}
 	return nil
 }
 
-func (x *SCAck) GetScGangAck() *SCGangAck {
+func (x *SCAck) GetScKonAck() *SCKonAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScGangAck); ok {
-			return x.ScGangAck
+		if x, ok := x.Ack.(*SCAck_ScKonAck); ok {
+			return x.ScKonAck
 		}
 	}
 	return nil
 }
 
-func (x *SCAck) GetScWinAck() *SCWinAck {
+func (x *SCAck) GetScHuAck() *SCHuAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScWinAck); ok {
-			return x.ScWinAck
+		if x, ok := x.Ack.(*SCAck_ScHuAck); ok {
+			return x.ScHuAck
 		}
 	}
 	return nil
@@ -301,16 +301,16 @@ type SCAck_ScRequestAck struct {
 	ScRequestAck *SCRequestAck `protobuf:"bytes,3,opt,name=sc_request_ack,json=scRequestAck,proto3,oneof"`
 }
 
-type SCAck_ScPengAck struct {
-	ScPengAck *SCPengAck `protobuf:"bytes,4,opt,name=sc_peng_ack,json=scPengAck,proto3,oneof"`
+type SCAck_ScPonAck struct {
+	ScPonAck *SCPonAck `protobuf:"bytes,4,opt,name=sc_pon_ack,json=scPonAck,proto3,oneof"`
 }
 
-type SCAck_ScGangAck struct {
-	ScGangAck *SCGangAck `protobuf:"bytes,5,opt,name=sc_gang_ack,json=scGangAck,proto3,oneof"`
+type SCAck_ScKonAck struct {
+	ScKonAck *SCKonAck `protobuf:"bytes,5,opt,name=sc_kon_ack,json=scKonAck,proto3,oneof"`
 }
 
-type SCAck_ScWinAck struct {
-	ScWinAck *SCWinAck `protobuf:"bytes,6,opt,name=sc_win_ack,json=scWinAck,proto3,oneof"`
+type SCAck_ScHuAck struct {
+	ScHuAck *SCHuAck `protobuf:"bytes,6,opt,name=sc_hu_ack,json=scHuAck,proto3,oneof"`
 }
 
 type SCAck_ScDrawAck struct {
@@ -343,11 +343,11 @@ func (*SCAck_ScOpenDoorAck) isSCAck_Ack() {}
 
 func (*SCAck_ScRequestAck) isSCAck_Ack() {}
 
-func (*SCAck_ScPengAck) isSCAck_Ack() {}
+func (*SCAck_ScPonAck) isSCAck_Ack() {}
 
-func (*SCAck_ScGangAck) isSCAck_Ack() {}
+func (*SCAck_ScKonAck) isSCAck_Ack() {}
 
-func (*SCAck_ScWinAck) isSCAck_Ack() {}
+func (*SCAck_ScHuAck) isSCAck_Ack() {}
 
 func (*SCAck_ScDrawAck) isSCAck_Ack() {}
 
@@ -705,29 +705,29 @@ func (x *SCRequestAck) GetRequestid() int32 {
 	return 0
 }
 
-type SCPengAck struct {
+type SCPonAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                  //座位号
-	DiscardSeat   int32                  `protobuf:"varint,2,opt,name=discard_seat,json=discardSeat,proto3" json:"discard_seat,omitempty"` //出牌座位号
-	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                  //碰的牌列表
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"` //座位号
+	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"` //出牌座位号
+	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"` //碰的牌列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SCPengAck) Reset() {
-	*x = SCPengAck{}
+func (x *SCPonAck) Reset() {
+	*x = SCPonAck{}
 	mi := &file_sc_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SCPengAck) String() string {
+func (x *SCPonAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SCPengAck) ProtoMessage() {}
+func (*SCPonAck) ProtoMessage() {}
 
-func (x *SCPengAck) ProtoReflect() protoreflect.Message {
+func (x *SCPonAck) ProtoReflect() protoreflect.Message {
 	mi := &file_sc_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -739,56 +739,56 @@ func (x *SCPengAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SCPengAck.ProtoReflect.Descriptor instead.
-func (*SCPengAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use SCPonAck.ProtoReflect.Descriptor instead.
+func (*SCPonAck) Descriptor() ([]byte, []int) {
 	return file_sc_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *SCPengAck) GetSeat() int32 {
+func (x *SCPonAck) GetSeat() int32 {
 	if x != nil {
 		return x.Seat
 	}
 	return 0
 }
 
-func (x *SCPengAck) GetDiscardSeat() int32 {
+func (x *SCPonAck) GetFrom() int32 {
 	if x != nil {
-		return x.DiscardSeat
+		return x.From
 	}
 	return 0
 }
 
-func (x *SCPengAck) GetTile() int32 {
+func (x *SCPonAck) GetTile() int32 {
 	if x != nil {
 		return x.Tile
 	}
 	return 0
 }
 
-type SCGangAck struct {
+type SCKonAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                  //座位号
-	DiscardSeat   int32                  `protobuf:"varint,2,opt,name=discard_seat,json=discardSeat,proto3" json:"discard_seat,omitempty"` //出牌座位号
-	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                  //碰的牌列表
-	GangType      int32                  `protobuf:"varint,4,opt,name=gang_type,json=gangType,proto3" json:"gang_type,omitempty"`          //杠牌的类型(0:明杠 1： 暗杠 2：补杠)
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                      //座位号
+	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                      //出牌座位号
+	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                      //碰的牌列表
+	KonType       int32                  `protobuf:"varint,4,opt,name=kon_type,json=konType,proto3" json:"kon_type,omitempty"` //杠牌的类型(0:明杠 1： 暗杠 2：补杠)
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SCGangAck) Reset() {
-	*x = SCGangAck{}
+func (x *SCKonAck) Reset() {
+	*x = SCKonAck{}
 	mi := &file_sc_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SCGangAck) String() string {
+func (x *SCKonAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SCGangAck) ProtoMessage() {}
+func (*SCKonAck) ProtoMessage() {}
 
-func (x *SCGangAck) ProtoReflect() protoreflect.Message {
+func (x *SCKonAck) ProtoReflect() protoreflect.Message {
 	mi := &file_sc_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -800,63 +800,62 @@ func (x *SCGangAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SCGangAck.ProtoReflect.Descriptor instead.
-func (*SCGangAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use SCKonAck.ProtoReflect.Descriptor instead.
+func (*SCKonAck) Descriptor() ([]byte, []int) {
 	return file_sc_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *SCGangAck) GetSeat() int32 {
+func (x *SCKonAck) GetSeat() int32 {
 	if x != nil {
 		return x.Seat
 	}
 	return 0
 }
 
-func (x *SCGangAck) GetDiscardSeat() int32 {
+func (x *SCKonAck) GetFrom() int32 {
 	if x != nil {
-		return x.DiscardSeat
+		return x.From
 	}
 	return 0
 }
 
-func (x *SCGangAck) GetTile() int32 {
+func (x *SCKonAck) GetTile() int32 {
 	if x != nil {
 		return x.Tile
 	}
 	return 0
 }
 
-func (x *SCGangAck) GetGangType() int32 {
+func (x *SCKonAck) GetKonType() int32 {
 	if x != nil {
-		return x.GangType
+		return x.KonType
 	}
 	return 0
 }
 
-type SCWinAck struct {
+type SCHuAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seats         []int32                `protobuf:"varint,1,rep,packed,name=seats,proto3" json:"seats,omitempty"`                 //座位号
-	PaoSeat       int32                  `protobuf:"varint,2,opt,name=pao_seat,json=paoSeat,proto3" json:"pao_seat,omitempty"`     //点炮玩家
-	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                          //胡的牌
-	HuType        []int32                `protobuf:"varint,4,rep,packed,name=hu_type,json=huType,proto3" json:"hu_type,omitempty"` // 胡的类型
+	PaoSeat       int32                  `protobuf:"varint,1,opt,name=pao_seat,json=paoSeat,proto3" json:"pao_seat,omitempty"` //点炮玩家
+	Tile          int32                  `protobuf:"varint,2,opt,name=tile,proto3" json:"tile,omitempty"`                      //胡的牌
+	HuData        []*SCHuData            `protobuf:"bytes,3,rep,name=hu_data,json=huData,proto3" json:"hu_data,omitempty"`     // 胡的类型
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SCWinAck) Reset() {
-	*x = SCWinAck{}
+func (x *SCHuAck) Reset() {
+	*x = SCHuAck{}
 	mi := &file_sc_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SCWinAck) String() string {
+func (x *SCHuAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SCWinAck) ProtoMessage() {}
+func (*SCHuAck) ProtoMessage() {}
 
-func (x *SCWinAck) ProtoReflect() protoreflect.Message {
+func (x *SCHuAck) ProtoReflect() protoreflect.Message {
 	mi := &file_sc_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -868,35 +867,80 @@ func (x *SCWinAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SCWinAck.ProtoReflect.Descriptor instead.
-func (*SCWinAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use SCHuAck.ProtoReflect.Descriptor instead.
+func (*SCHuAck) Descriptor() ([]byte, []int) {
 	return file_sc_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *SCWinAck) GetSeats() []int32 {
-	if x != nil {
-		return x.Seats
-	}
-	return nil
-}
-
-func (x *SCWinAck) GetPaoSeat() int32 {
+func (x *SCHuAck) GetPaoSeat() int32 {
 	if x != nil {
 		return x.PaoSeat
 	}
 	return 0
 }
 
-func (x *SCWinAck) GetTile() int32 {
+func (x *SCHuAck) GetTile() int32 {
 	if x != nil {
 		return x.Tile
 	}
 	return 0
 }
 
-func (x *SCWinAck) GetHuType() []int32 {
+func (x *SCHuAck) GetHuData() []*SCHuData {
 	if x != nil {
-		return x.HuType
+		return x.HuData
+	}
+	return nil
+}
+
+type SCHuData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                             //座位号
+	HuTypes       []int32                `protobuf:"varint,2,rep,packed,name=hu_types,json=huTypes,proto3" json:"hu_types,omitempty"` // 胡的类型
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCHuData) Reset() {
+	*x = SCHuData{}
+	mi := &file_sc_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCHuData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCHuData) ProtoMessage() {}
+
+func (x *SCHuData) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCHuData.ProtoReflect.Descriptor instead.
+func (*SCHuData) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *SCHuData) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *SCHuData) GetHuTypes() []int32 {
+	if x != nil {
+		return x.HuTypes
 	}
 	return nil
 }
@@ -912,7 +956,7 @@ type SCDrawAck struct {
 
 func (x *SCDrawAck) Reset() {
 	*x = SCDrawAck{}
-	mi := &file_sc_proto_msgTypes[11]
+	mi := &file_sc_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -924,7 +968,7 @@ func (x *SCDrawAck) String() string {
 func (*SCDrawAck) ProtoMessage() {}
 
 func (x *SCDrawAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[11]
+	mi := &file_sc_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -937,7 +981,7 @@ func (x *SCDrawAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCDrawAck.ProtoReflect.Descriptor instead.
 func (*SCDrawAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{11}
+	return file_sc_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SCDrawAck) GetSeat() int32 {
@@ -971,7 +1015,7 @@ type SCDiscardAck struct {
 
 func (x *SCDiscardAck) Reset() {
 	*x = SCDiscardAck{}
-	mi := &file_sc_proto_msgTypes[12]
+	mi := &file_sc_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -983,7 +1027,7 @@ func (x *SCDiscardAck) String() string {
 func (*SCDiscardAck) ProtoMessage() {}
 
 func (x *SCDiscardAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[12]
+	mi := &file_sc_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -996,7 +1040,7 @@ func (x *SCDiscardAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCDiscardAck.ProtoReflect.Descriptor instead.
 func (*SCDiscardAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{12}
+	return file_sc_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *SCDiscardAck) GetSeat() int32 {
@@ -1022,7 +1066,7 @@ type SCScoreChangeAck struct {
 
 func (x *SCScoreChangeAck) Reset() {
 	*x = SCScoreChangeAck{}
-	mi := &file_sc_proto_msgTypes[13]
+	mi := &file_sc_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1034,7 +1078,7 @@ func (x *SCScoreChangeAck) String() string {
 func (*SCScoreChangeAck) ProtoMessage() {}
 
 func (x *SCScoreChangeAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[13]
+	mi := &file_sc_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1047,7 +1091,7 @@ func (x *SCScoreChangeAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCScoreChangeAck.ProtoReflect.Descriptor instead.
 func (*SCScoreChangeAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{13}
+	return file_sc_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *SCScoreChangeAck) GetScores() []int32 {
@@ -1067,7 +1111,7 @@ type SCTrustAck struct {
 
 func (x *SCTrustAck) Reset() {
 	*x = SCTrustAck{}
-	mi := &file_sc_proto_msgTypes[14]
+	mi := &file_sc_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1079,7 +1123,7 @@ func (x *SCTrustAck) String() string {
 func (*SCTrustAck) ProtoMessage() {}
 
 func (x *SCTrustAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[14]
+	mi := &file_sc_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1092,7 +1136,7 @@ func (x *SCTrustAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCTrustAck.ProtoReflect.Descriptor instead.
 func (*SCTrustAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{14}
+	return file_sc_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SCTrustAck) GetSeat() int32 {
@@ -1118,7 +1162,7 @@ type SCAnimationAck struct {
 
 func (x *SCAnimationAck) Reset() {
 	*x = SCAnimationAck{}
-	mi := &file_sc_proto_msgTypes[15]
+	mi := &file_sc_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1130,7 +1174,7 @@ func (x *SCAnimationAck) String() string {
 func (*SCAnimationAck) ProtoMessage() {}
 
 func (x *SCAnimationAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[15]
+	mi := &file_sc_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1143,7 +1187,7 @@ func (x *SCAnimationAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCAnimationAck.ProtoReflect.Descriptor instead.
 func (*SCAnimationAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{15}
+	return file_sc_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SCAnimationAck) GetRequestid() int32 {
@@ -1162,7 +1206,7 @@ type SCResultAck struct {
 
 func (x *SCResultAck) Reset() {
 	*x = SCResultAck{}
-	mi := &file_sc_proto_msgTypes[16]
+	mi := &file_sc_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1174,7 +1218,7 @@ func (x *SCResultAck) String() string {
 func (*SCResultAck) ProtoMessage() {}
 
 func (x *SCResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[16]
+	mi := &file_sc_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1187,7 +1231,7 @@ func (x *SCResultAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCResultAck.ProtoReflect.Descriptor instead.
 func (*SCResultAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{16}
+	return file_sc_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SCResultAck) GetPlayerResults() []*SCPlayerResult {
@@ -1208,7 +1252,7 @@ type SCPlayerResult struct {
 
 func (x *SCPlayerResult) Reset() {
 	*x = SCPlayerResult{}
-	mi := &file_sc_proto_msgTypes[17]
+	mi := &file_sc_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1220,7 +1264,7 @@ func (x *SCPlayerResult) String() string {
 func (*SCPlayerResult) ProtoMessage() {}
 
 func (x *SCPlayerResult) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[17]
+	mi := &file_sc_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1233,7 +1277,7 @@ func (x *SCPlayerResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCPlayerResult.ProtoReflect.Descriptor instead.
 func (*SCPlayerResult) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{17}
+	return file_sc_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *SCPlayerResult) GetSeat() int32 {
@@ -1267,15 +1311,16 @@ const file_sc_proto_rawDesc = "" +
 	"\fsc_trust_req\x18\x02 \x01(\v2\x13.scproto.SCTrustReqH\x00R\n" +
 	"scTrustReq\x12C\n" +
 	"\x10sc_animation_req\x18\x03 \x01(\v2\x17.scproto.SCAnimationReqH\x00R\x0escAnimationReqB\x05\n" +
-	"\x03req\"\xf0\x05\n" +
+	"\x03req\"\xe7\x05\n" +
 	"\x05SCAck\x12D\n" +
 	"\x11sc_game_start_ack\x18\x01 \x01(\v2\x17.scproto.SCGameStartAckH\x00R\x0escGameStartAck\x12A\n" +
 	"\x10sc_open_door_ack\x18\x02 \x01(\v2\x16.scproto.SCOpenDoorAckH\x00R\rscOpenDoorAck\x12=\n" +
-	"\x0esc_request_ack\x18\x03 \x01(\v2\x15.scproto.SCRequestAckH\x00R\fscRequestAck\x124\n" +
-	"\vsc_peng_ack\x18\x04 \x01(\v2\x12.scproto.SCPengAckH\x00R\tscPengAck\x124\n" +
-	"\vsc_gang_ack\x18\x05 \x01(\v2\x12.scproto.SCGangAckH\x00R\tscGangAck\x121\n" +
+	"\x0esc_request_ack\x18\x03 \x01(\v2\x15.scproto.SCRequestAckH\x00R\fscRequestAck\x121\n" +
 	"\n" +
-	"sc_win_ack\x18\x06 \x01(\v2\x11.scproto.SCWinAckH\x00R\bscWinAck\x124\n" +
+	"sc_pon_ack\x18\x04 \x01(\v2\x11.scproto.SCPonAckH\x00R\bscPonAck\x121\n" +
+	"\n" +
+	"sc_kon_ack\x18\x05 \x01(\v2\x11.scproto.SCKonAckH\x00R\bscKonAck\x12.\n" +
+	"\tsc_hu_ack\x18\x06 \x01(\v2\x10.scproto.SCHuAckH\x00R\ascHuAck\x124\n" +
 	"\vsc_draw_ack\x18\a \x01(\v2\x12.scproto.SCDrawAckH\x00R\tscDrawAck\x12=\n" +
 	"\x0esc_discard_ack\x18\b \x01(\v2\x15.scproto.SCDiscardAckH\x00R\fscDiscardAck\x12J\n" +
 	"\x13sc_score_change_ack\x18\t \x01(\v2\x19.scproto.SCScoreChangeAckH\x00R\x10scScoreChangeAck\x12:\n" +
@@ -1308,21 +1353,23 @@ const file_sc_proto_rawDesc = "" +
 	"\fSCRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
-	"\trequestid\x18\x03 \x01(\x05R\trequestid\"V\n" +
-	"\tSCPengAck\x12\x12\n" +
-	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
-	"\fdiscard_seat\x18\x02 \x01(\x05R\vdiscardSeat\x12\x12\n" +
-	"\x04tile\x18\x03 \x01(\x05R\x04tile\"s\n" +
-	"\tSCGangAck\x12\x12\n" +
-	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
-	"\fdiscard_seat\x18\x02 \x01(\x05R\vdiscardSeat\x12\x12\n" +
-	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x1b\n" +
-	"\tgang_type\x18\x04 \x01(\x05R\bgangType\"h\n" +
-	"\bSCWinAck\x12\x14\n" +
-	"\x05seats\x18\x01 \x03(\x05R\x05seats\x12\x19\n" +
-	"\bpao_seat\x18\x02 \x01(\x05R\apaoSeat\x12\x12\n" +
-	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x17\n" +
-	"\ahu_type\x18\x04 \x03(\x05R\x06huType\"P\n" +
+	"\trequestid\x18\x03 \x01(\x05R\trequestid\"F\n" +
+	"\bSCPonAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
+	"\x04tile\x18\x03 \x01(\x05R\x04tile\"a\n" +
+	"\bSCKonAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
+	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x19\n" +
+	"\bkon_type\x18\x04 \x01(\x05R\akonType\"d\n" +
+	"\aSCHuAck\x12\x19\n" +
+	"\bpao_seat\x18\x01 \x01(\x05R\apaoSeat\x12\x12\n" +
+	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12*\n" +
+	"\ahu_data\x18\x03 \x03(\v2\x11.scproto.SCHuDataR\x06huData\"9\n" +
+	"\bSCHuData\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x19\n" +
+	"\bhu_types\x18\x02 \x03(\x05R\ahuTypes\"P\n" +
 	"\tSCDrawAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12\x1b\n" +
@@ -1358,7 +1405,7 @@ func file_sc_proto_rawDescGZIP() []byte {
 	return file_sc_proto_rawDescData
 }
 
-var file_sc_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_sc_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_sc_proto_goTypes = []any{
 	(*SCReq)(nil),            // 0: scproto.SCReq
 	(*SCAck)(nil),            // 1: scproto.SCAck
@@ -1368,16 +1415,17 @@ var file_sc_proto_goTypes = []any{
 	(*SCGameStartAck)(nil),   // 5: scproto.SCGameStartAck
 	(*SCOpenDoorAck)(nil),    // 6: scproto.SCOpenDoorAck
 	(*SCRequestAck)(nil),     // 7: scproto.SCRequestAck
-	(*SCPengAck)(nil),        // 8: scproto.SCPengAck
-	(*SCGangAck)(nil),        // 9: scproto.SCGangAck
-	(*SCWinAck)(nil),         // 10: scproto.SCWinAck
-	(*SCDrawAck)(nil),        // 11: scproto.SCDrawAck
-	(*SCDiscardAck)(nil),     // 12: scproto.SCDiscardAck
-	(*SCScoreChangeAck)(nil), // 13: scproto.SCScoreChangeAck
-	(*SCTrustAck)(nil),       // 14: scproto.SCTrustAck
-	(*SCAnimationAck)(nil),   // 15: scproto.SCAnimationAck
-	(*SCResultAck)(nil),      // 16: scproto.SCResultAck
-	(*SCPlayerResult)(nil),   // 17: scproto.SCPlayerResult
+	(*SCPonAck)(nil),         // 8: scproto.SCPonAck
+	(*SCKonAck)(nil),         // 9: scproto.SCKonAck
+	(*SCHuAck)(nil),          // 10: scproto.SCHuAck
+	(*SCHuData)(nil),         // 11: scproto.SCHuData
+	(*SCDrawAck)(nil),        // 12: scproto.SCDrawAck
+	(*SCDiscardAck)(nil),     // 13: scproto.SCDiscardAck
+	(*SCScoreChangeAck)(nil), // 14: scproto.SCScoreChangeAck
+	(*SCTrustAck)(nil),       // 15: scproto.SCTrustAck
+	(*SCAnimationAck)(nil),   // 16: scproto.SCAnimationAck
+	(*SCResultAck)(nil),      // 17: scproto.SCResultAck
+	(*SCPlayerResult)(nil),   // 18: scproto.SCPlayerResult
 }
 var file_sc_proto_depIdxs = []int32{
 	2,  // 0: scproto.SCReq.sc_request_req:type_name -> scproto.SCRequestReq
@@ -1386,21 +1434,22 @@ var file_sc_proto_depIdxs = []int32{
 	5,  // 3: scproto.SCAck.sc_game_start_ack:type_name -> scproto.SCGameStartAck
 	6,  // 4: scproto.SCAck.sc_open_door_ack:type_name -> scproto.SCOpenDoorAck
 	7,  // 5: scproto.SCAck.sc_request_ack:type_name -> scproto.SCRequestAck
-	8,  // 6: scproto.SCAck.sc_peng_ack:type_name -> scproto.SCPengAck
-	9,  // 7: scproto.SCAck.sc_gang_ack:type_name -> scproto.SCGangAck
-	10, // 8: scproto.SCAck.sc_win_ack:type_name -> scproto.SCWinAck
-	11, // 9: scproto.SCAck.sc_draw_ack:type_name -> scproto.SCDrawAck
-	12, // 10: scproto.SCAck.sc_discard_ack:type_name -> scproto.SCDiscardAck
-	13, // 11: scproto.SCAck.sc_score_change_ack:type_name -> scproto.SCScoreChangeAck
-	16, // 12: scproto.SCAck.sc_result_ack:type_name -> scproto.SCResultAck
-	14, // 13: scproto.SCAck.sc_trust_ack:type_name -> scproto.SCTrustAck
-	15, // 14: scproto.SCAck.sc_animation_ack:type_name -> scproto.SCAnimationAck
-	17, // 15: scproto.SCResultAck.player_results:type_name -> scproto.SCPlayerResult
-	16, // [16:16] is the sub-list for method output_type
-	16, // [16:16] is the sub-list for method input_type
-	16, // [16:16] is the sub-list for extension type_name
-	16, // [16:16] is the sub-list for extension extendee
-	0,  // [0:16] is the sub-list for field type_name
+	8,  // 6: scproto.SCAck.sc_pon_ack:type_name -> scproto.SCPonAck
+	9,  // 7: scproto.SCAck.sc_kon_ack:type_name -> scproto.SCKonAck
+	10, // 8: scproto.SCAck.sc_hu_ack:type_name -> scproto.SCHuAck
+	12, // 9: scproto.SCAck.sc_draw_ack:type_name -> scproto.SCDrawAck
+	13, // 10: scproto.SCAck.sc_discard_ack:type_name -> scproto.SCDiscardAck
+	14, // 11: scproto.SCAck.sc_score_change_ack:type_name -> scproto.SCScoreChangeAck
+	17, // 12: scproto.SCAck.sc_result_ack:type_name -> scproto.SCResultAck
+	15, // 13: scproto.SCAck.sc_trust_ack:type_name -> scproto.SCTrustAck
+	16, // 14: scproto.SCAck.sc_animation_ack:type_name -> scproto.SCAnimationAck
+	11, // 15: scproto.SCHuAck.hu_data:type_name -> scproto.SCHuData
+	18, // 16: scproto.SCResultAck.player_results:type_name -> scproto.SCPlayerResult
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_sc_proto_init() }
@@ -1417,9 +1466,9 @@ func file_sc_proto_init() {
 		(*SCAck_ScGameStartAck)(nil),
 		(*SCAck_ScOpenDoorAck)(nil),
 		(*SCAck_ScRequestAck)(nil),
-		(*SCAck_ScPengAck)(nil),
-		(*SCAck_ScGangAck)(nil),
-		(*SCAck_ScWinAck)(nil),
+		(*SCAck_ScPonAck)(nil),
+		(*SCAck_ScKonAck)(nil),
+		(*SCAck_ScHuAck)(nil),
 		(*SCAck_ScDrawAck)(nil),
 		(*SCAck_ScDiscardAck)(nil),
 		(*SCAck_ScScoreChangeAck)(nil),
@@ -1433,7 +1482,7 @@ func file_sc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sc_proto_rawDesc), len(file_sc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

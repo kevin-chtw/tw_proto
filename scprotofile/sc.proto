@@ -16,9 +16,9 @@ message SCAck {
     SCGameStartAck sc_game_start_ack = 1;
     SCOpenDoorAck sc_open_door_ack = 2;
     SCRequestAck sc_request_ack = 3;
-    SCPengAck sc_peng_ack = 4;
-    SCGangAck sc_gang_ack = 5;
-    SCWinAck sc_win_ack = 6;
+    SCPonAck sc_pon_ack = 4;
+    SCKonAck sc_kon_ack = 5;
+    SCHuAck sc_hu_ack = 6;
     SCDrawAck sc_draw_ack = 7;
     SCDiscardAck sc_discard_ack = 8;
     SCScoreChangeAck sc_score_change_ack = 9;
@@ -62,24 +62,28 @@ message SCRequestAck {
   int32 requestid = 3; // 请求ID
 }
 
-message SCPengAck {
+message SCPonAck {
   int32 seat = 1; //座位号
-  int32 discard_seat = 2;//出牌座位号
+  int32 from = 2;//出牌座位号
   int32 tile = 3; //碰的牌列表
 }
 
-message SCGangAck {
+message SCKonAck {
   int32 seat = 1; //座位号
-  int32 discard_seat = 2;//出牌座位号
+  int32 from = 2;//出牌座位号
   int32 tile = 3; //碰的牌列表
-  int32 gang_type = 4; //杠牌的类型(0:明杠 1： 暗杠 2：补杠)
+  int32 kon_type = 4; //杠牌的类型(0:明杠 1： 暗杠 2：补杠)
 }
 
-message SCWinAck {
-  repeated int32 seats = 1; //座位号
-  int32 pao_seat = 2; //点炮玩家
-  int32 tile = 3; //胡的牌
-  repeated int32 hu_type = 4; // 胡的类型
+message SCHuAck {
+  int32 pao_seat = 1; //点炮玩家
+  int32 tile = 2; //胡的牌
+  repeated SCHuData hu_data = 3; // 胡的类型
+}
+
+message SCHuData {
+  int32 seat = 1; //座位号
+  repeated int32 hu_types = 2; // 胡的类型
 }
 
 message SCDrawAck {
