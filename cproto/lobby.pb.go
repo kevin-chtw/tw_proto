@@ -185,58 +185,6 @@ func (x *LoginReq) GetPassword() string {
 	return ""
 }
 
-type LoginAck struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Serverid      string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
-	Userid        string                 `protobuf:"bytes,2,opt,name=userid,proto3" json:"userid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LoginAck) Reset() {
-	*x = LoginAck{}
-	mi := &file_lobby_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LoginAck) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LoginAck) ProtoMessage() {}
-
-func (x *LoginAck) ProtoReflect() protoreflect.Message {
-	mi := &file_lobby_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LoginAck.ProtoReflect.Descriptor instead.
-func (*LoginAck) Descriptor() ([]byte, []int) {
-	return file_lobby_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *LoginAck) GetServerid() string {
-	if x != nil {
-		return x.Serverid
-	}
-	return ""
-}
-
-func (x *LoginAck) GetUserid() string {
-	if x != nil {
-		return x.Userid
-	}
-	return ""
-}
-
 type RegisterReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Account       string                 `protobuf:"bytes,1,opt,name=account,proto3" json:"account,omitempty"`
@@ -247,7 +195,7 @@ type RegisterReq struct {
 
 func (x *RegisterReq) Reset() {
 	*x = RegisterReq{}
-	mi := &file_lobby_proto_msgTypes[4]
+	mi := &file_lobby_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -259,7 +207,7 @@ func (x *RegisterReq) String() string {
 func (*RegisterReq) ProtoMessage() {}
 
 func (x *RegisterReq) ProtoReflect() protoreflect.Message {
-	mi := &file_lobby_proto_msgTypes[4]
+	mi := &file_lobby_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -272,7 +220,7 @@ func (x *RegisterReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterReq.ProtoReflect.Descriptor instead.
 func (*RegisterReq) Descriptor() ([]byte, []int) {
-	return file_lobby_proto_rawDescGZIP(), []int{4}
+	return file_lobby_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *RegisterReq) GetAccount() string {
@@ -285,6 +233,58 @@ func (x *RegisterReq) GetAccount() string {
 func (x *RegisterReq) GetPassword() string {
 	if x != nil {
 		return x.Password
+	}
+	return ""
+}
+
+type LoginAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Serverid      string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
+	Userid        string                 `protobuf:"bytes,2,opt,name=userid,proto3" json:"userid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LoginAck) Reset() {
+	*x = LoginAck{}
+	mi := &file_lobby_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LoginAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LoginAck) ProtoMessage() {}
+
+func (x *LoginAck) ProtoReflect() protoreflect.Message {
+	mi := &file_lobby_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LoginAck.ProtoReflect.Descriptor instead.
+func (*LoginAck) Descriptor() ([]byte, []int) {
+	return file_lobby_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *LoginAck) GetServerid() string {
+	if x != nil {
+		return x.Serverid
+	}
+	return ""
+}
+
+func (x *LoginAck) GetUserid() string {
+	if x != nil {
+		return x.Userid
 	}
 	return ""
 }
@@ -355,13 +355,13 @@ const file_lobby_proto_rawDesc = "" +
 	"\fregister_ack\x18\x02 \x01(\v2\x13.cproto.RegisterAckR\vregisterAck\"@\n" +
 	"\bLoginReq\x12\x18\n" +
 	"\aaccount\x18\x01 \x01(\tR\aaccount\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"C\n" +
+	"\vRegisterReq\x12\x18\n" +
+	"\aaccount\x18\x01 \x01(\tR\aaccount\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\">\n" +
 	"\bLoginAck\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x16\n" +
-	"\x06userid\x18\x02 \x01(\tR\x06userid\"C\n" +
-	"\vRegisterReq\x12\x18\n" +
-	"\aaccount\x18\x01 \x01(\tR\aaccount\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"A\n" +
+	"\x06userid\x18\x02 \x01(\tR\x06userid\"A\n" +
 	"\vRegisterAck\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x16\n" +
 	"\x06userid\x18\x02 \x01(\tR\x06useridB\vZ\t../cprotob\x06proto3"
@@ -383,14 +383,14 @@ var file_lobby_proto_goTypes = []any{
 	(*LobbyReq)(nil),    // 0: cproto.LobbyReq
 	(*LobbyAck)(nil),    // 1: cproto.LobbyAck
 	(*LoginReq)(nil),    // 2: cproto.LoginReq
-	(*LoginAck)(nil),    // 3: cproto.LoginAck
-	(*RegisterReq)(nil), // 4: cproto.RegisterReq
+	(*RegisterReq)(nil), // 3: cproto.RegisterReq
+	(*LoginAck)(nil),    // 4: cproto.LoginAck
 	(*RegisterAck)(nil), // 5: cproto.RegisterAck
 }
 var file_lobby_proto_depIdxs = []int32{
 	2, // 0: cproto.LobbyReq.login_req:type_name -> cproto.LoginReq
-	4, // 1: cproto.LobbyReq.register_req:type_name -> cproto.RegisterReq
-	3, // 2: cproto.LobbyAck.login_ack:type_name -> cproto.LoginAck
+	3, // 1: cproto.LobbyReq.register_req:type_name -> cproto.RegisterReq
+	4, // 2: cproto.LobbyAck.login_ack:type_name -> cproto.LoginAck
 	5, // 3: cproto.LobbyAck.register_ack:type_name -> cproto.RegisterAck
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type

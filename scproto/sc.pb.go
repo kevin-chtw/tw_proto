@@ -22,15 +22,12 @@ const (
 )
 
 type SCReq struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Types that are valid to be assigned to Req:
-	//
-	//	*SCReq_ScRequestReq
-	//	*SCReq_ScTrustReq
-	//	*SCReq_ScAnimationReq
-	Req           isSCReq_Req `protobuf_oneof:"req"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	ScRequestReq   *SCRequestReq          `protobuf:"bytes,1,opt,name=sc_request_req,json=scRequestReq,proto3" json:"sc_request_req,omitempty"`
+	ScTrustReq     *SCTrustReq            `protobuf:"bytes,2,opt,name=sc_trust_req,json=scTrustReq,proto3" json:"sc_trust_req,omitempty"`
+	ScAnimationReq *SCAnimationReq        `protobuf:"bytes,3,opt,name=sc_animation_req,json=scAnimationReq,proto3" json:"sc_animation_req,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *SCReq) Reset() {
@@ -63,81 +60,43 @@ func (*SCReq) Descriptor() ([]byte, []int) {
 	return file_sc_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *SCReq) GetReq() isSCReq_Req {
-	if x != nil {
-		return x.Req
-	}
-	return nil
-}
-
 func (x *SCReq) GetScRequestReq() *SCRequestReq {
 	if x != nil {
-		if x, ok := x.Req.(*SCReq_ScRequestReq); ok {
-			return x.ScRequestReq
-		}
+		return x.ScRequestReq
 	}
 	return nil
 }
 
 func (x *SCReq) GetScTrustReq() *SCTrustReq {
 	if x != nil {
-		if x, ok := x.Req.(*SCReq_ScTrustReq); ok {
-			return x.ScTrustReq
-		}
+		return x.ScTrustReq
 	}
 	return nil
 }
 
 func (x *SCReq) GetScAnimationReq() *SCAnimationReq {
 	if x != nil {
-		if x, ok := x.Req.(*SCReq_ScAnimationReq); ok {
-			return x.ScAnimationReq
-		}
+		return x.ScAnimationReq
 	}
 	return nil
 }
 
-type isSCReq_Req interface {
-	isSCReq_Req()
-}
-
-type SCReq_ScRequestReq struct {
-	ScRequestReq *SCRequestReq `protobuf:"bytes,1,opt,name=sc_request_req,json=scRequestReq,proto3,oneof"`
-}
-
-type SCReq_ScTrustReq struct {
-	ScTrustReq *SCTrustReq `protobuf:"bytes,2,opt,name=sc_trust_req,json=scTrustReq,proto3,oneof"`
-}
-
-type SCReq_ScAnimationReq struct {
-	ScAnimationReq *SCAnimationReq `protobuf:"bytes,3,opt,name=sc_animation_req,json=scAnimationReq,proto3,oneof"`
-}
-
-func (*SCReq_ScRequestReq) isSCReq_Req() {}
-
-func (*SCReq_ScTrustReq) isSCReq_Req() {}
-
-func (*SCReq_ScAnimationReq) isSCReq_Req() {}
-
 type SCAck struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Types that are valid to be assigned to Ack:
-	//
-	//	*SCAck_ScGameStartAck
-	//	*SCAck_ScOpenDoorAck
-	//	*SCAck_ScRequestAck
-	//	*SCAck_ScPonAck
-	//	*SCAck_ScKonAck
-	//	*SCAck_ScHuAck
-	//	*SCAck_ScDrawAck
-	//	*SCAck_ScDiscardAck
-	//	*SCAck_ScScoreChangeAck
-	//	*SCAck_ScResultAck
-	//	*SCAck_ScTrustAck
-	//	*SCAck_ScAnimationAck
-	Ack           isSCAck_Ack `protobuf_oneof:"ack"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	ScGameStartAck   *SCGameStartAck        `protobuf:"bytes,1,opt,name=sc_game_start_ack,json=scGameStartAck,proto3" json:"sc_game_start_ack,omitempty"`
+	ScOpenDoorAck    *SCOpenDoorAck         `protobuf:"bytes,2,opt,name=sc_open_door_ack,json=scOpenDoorAck,proto3" json:"sc_open_door_ack,omitempty"`
+	ScRequestAck     *SCRequestAck          `protobuf:"bytes,3,opt,name=sc_request_ack,json=scRequestAck,proto3" json:"sc_request_ack,omitempty"`
+	ScPonAck         *SCPonAck              `protobuf:"bytes,4,opt,name=sc_pon_ack,json=scPonAck,proto3" json:"sc_pon_ack,omitempty"`
+	ScKonAck         *SCKonAck              `protobuf:"bytes,5,opt,name=sc_kon_ack,json=scKonAck,proto3" json:"sc_kon_ack,omitempty"`
+	ScHuAck          *SCHuAck               `protobuf:"bytes,6,opt,name=sc_hu_ack,json=scHuAck,proto3" json:"sc_hu_ack,omitempty"`
+	ScDrawAck        *SCDrawAck             `protobuf:"bytes,7,opt,name=sc_draw_ack,json=scDrawAck,proto3" json:"sc_draw_ack,omitempty"`
+	ScDiscardAck     *SCDiscardAck          `protobuf:"bytes,8,opt,name=sc_discard_ack,json=scDiscardAck,proto3" json:"sc_discard_ack,omitempty"`
+	ScScoreChangeAck *SCScoreChangeAck      `protobuf:"bytes,9,opt,name=sc_score_change_ack,json=scScoreChangeAck,proto3" json:"sc_score_change_ack,omitempty"`
+	ScResultAck      *SCResultAck           `protobuf:"bytes,10,opt,name=sc_result_ack,json=scResultAck,proto3" json:"sc_result_ack,omitempty"`
+	ScTrustAck       *SCTrustAck            `protobuf:"bytes,11,opt,name=sc_trust_ack,json=scTrustAck,proto3" json:"sc_trust_ack,omitempty"`
+	ScAnimationAck   *SCAnimationAck        `protobuf:"bytes,12,opt,name=sc_animation_ack,json=scAnimationAck,proto3" json:"sc_animation_ack,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *SCAck) Reset() {
@@ -170,196 +129,89 @@ func (*SCAck) Descriptor() ([]byte, []int) {
 	return file_sc_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SCAck) GetAck() isSCAck_Ack {
-	if x != nil {
-		return x.Ack
-	}
-	return nil
-}
-
 func (x *SCAck) GetScGameStartAck() *SCGameStartAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScGameStartAck); ok {
-			return x.ScGameStartAck
-		}
+		return x.ScGameStartAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScOpenDoorAck() *SCOpenDoorAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScOpenDoorAck); ok {
-			return x.ScOpenDoorAck
-		}
+		return x.ScOpenDoorAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScRequestAck() *SCRequestAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScRequestAck); ok {
-			return x.ScRequestAck
-		}
+		return x.ScRequestAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScPonAck() *SCPonAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScPonAck); ok {
-			return x.ScPonAck
-		}
+		return x.ScPonAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScKonAck() *SCKonAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScKonAck); ok {
-			return x.ScKonAck
-		}
+		return x.ScKonAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScHuAck() *SCHuAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScHuAck); ok {
-			return x.ScHuAck
-		}
+		return x.ScHuAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScDrawAck() *SCDrawAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScDrawAck); ok {
-			return x.ScDrawAck
-		}
+		return x.ScDrawAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScDiscardAck() *SCDiscardAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScDiscardAck); ok {
-			return x.ScDiscardAck
-		}
+		return x.ScDiscardAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScScoreChangeAck() *SCScoreChangeAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScScoreChangeAck); ok {
-			return x.ScScoreChangeAck
-		}
+		return x.ScScoreChangeAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScResultAck() *SCResultAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScResultAck); ok {
-			return x.ScResultAck
-		}
+		return x.ScResultAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScTrustAck() *SCTrustAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScTrustAck); ok {
-			return x.ScTrustAck
-		}
+		return x.ScTrustAck
 	}
 	return nil
 }
 
 func (x *SCAck) GetScAnimationAck() *SCAnimationAck {
 	if x != nil {
-		if x, ok := x.Ack.(*SCAck_ScAnimationAck); ok {
-			return x.ScAnimationAck
-		}
+		return x.ScAnimationAck
 	}
 	return nil
 }
-
-type isSCAck_Ack interface {
-	isSCAck_Ack()
-}
-
-type SCAck_ScGameStartAck struct {
-	ScGameStartAck *SCGameStartAck `protobuf:"bytes,1,opt,name=sc_game_start_ack,json=scGameStartAck,proto3,oneof"`
-}
-
-type SCAck_ScOpenDoorAck struct {
-	ScOpenDoorAck *SCOpenDoorAck `protobuf:"bytes,2,opt,name=sc_open_door_ack,json=scOpenDoorAck,proto3,oneof"`
-}
-
-type SCAck_ScRequestAck struct {
-	ScRequestAck *SCRequestAck `protobuf:"bytes,3,opt,name=sc_request_ack,json=scRequestAck,proto3,oneof"`
-}
-
-type SCAck_ScPonAck struct {
-	ScPonAck *SCPonAck `protobuf:"bytes,4,opt,name=sc_pon_ack,json=scPonAck,proto3,oneof"`
-}
-
-type SCAck_ScKonAck struct {
-	ScKonAck *SCKonAck `protobuf:"bytes,5,opt,name=sc_kon_ack,json=scKonAck,proto3,oneof"`
-}
-
-type SCAck_ScHuAck struct {
-	ScHuAck *SCHuAck `protobuf:"bytes,6,opt,name=sc_hu_ack,json=scHuAck,proto3,oneof"`
-}
-
-type SCAck_ScDrawAck struct {
-	ScDrawAck *SCDrawAck `protobuf:"bytes,7,opt,name=sc_draw_ack,json=scDrawAck,proto3,oneof"`
-}
-
-type SCAck_ScDiscardAck struct {
-	ScDiscardAck *SCDiscardAck `protobuf:"bytes,8,opt,name=sc_discard_ack,json=scDiscardAck,proto3,oneof"`
-}
-
-type SCAck_ScScoreChangeAck struct {
-	ScScoreChangeAck *SCScoreChangeAck `protobuf:"bytes,9,opt,name=sc_score_change_ack,json=scScoreChangeAck,proto3,oneof"`
-}
-
-type SCAck_ScResultAck struct {
-	ScResultAck *SCResultAck `protobuf:"bytes,10,opt,name=sc_result_ack,json=scResultAck,proto3,oneof"`
-}
-
-type SCAck_ScTrustAck struct {
-	ScTrustAck *SCTrustAck `protobuf:"bytes,11,opt,name=sc_trust_ack,json=scTrustAck,proto3,oneof"`
-}
-
-type SCAck_ScAnimationAck struct {
-	ScAnimationAck *SCAnimationAck `protobuf:"bytes,12,opt,name=sc_animation_ack,json=scAnimationAck,proto3,oneof"`
-}
-
-func (*SCAck_ScGameStartAck) isSCAck_Ack() {}
-
-func (*SCAck_ScOpenDoorAck) isSCAck_Ack() {}
-
-func (*SCAck_ScRequestAck) isSCAck_Ack() {}
-
-func (*SCAck_ScPonAck) isSCAck_Ack() {}
-
-func (*SCAck_ScKonAck) isSCAck_Ack() {}
-
-func (*SCAck_ScHuAck) isSCAck_Ack() {}
-
-func (*SCAck_ScDrawAck) isSCAck_Ack() {}
-
-func (*SCAck_ScDiscardAck) isSCAck_Ack() {}
-
-func (*SCAck_ScScoreChangeAck) isSCAck_Ack() {}
-
-func (*SCAck_ScResultAck) isSCAck_Ack() {}
-
-func (*SCAck_ScTrustAck) isSCAck_Ack() {}
-
-func (*SCAck_ScAnimationAck) isSCAck_Ack() {}
 
 type SCRequestReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1305,31 +1157,29 @@ var File_sc_proto protoreflect.FileDescriptor
 
 const file_sc_proto_rawDesc = "" +
 	"\n" +
-	"\bsc.proto\x12\ascproto\"\xcb\x01\n" +
-	"\x05SCReq\x12=\n" +
-	"\x0esc_request_req\x18\x01 \x01(\v2\x15.scproto.SCRequestReqH\x00R\fscRequestReq\x127\n" +
-	"\fsc_trust_req\x18\x02 \x01(\v2\x13.scproto.SCTrustReqH\x00R\n" +
-	"scTrustReq\x12C\n" +
-	"\x10sc_animation_req\x18\x03 \x01(\v2\x17.scproto.SCAnimationReqH\x00R\x0escAnimationReqB\x05\n" +
-	"\x03req\"\xe7\x05\n" +
-	"\x05SCAck\x12D\n" +
-	"\x11sc_game_start_ack\x18\x01 \x01(\v2\x17.scproto.SCGameStartAckH\x00R\x0escGameStartAck\x12A\n" +
-	"\x10sc_open_door_ack\x18\x02 \x01(\v2\x16.scproto.SCOpenDoorAckH\x00R\rscOpenDoorAck\x12=\n" +
-	"\x0esc_request_ack\x18\x03 \x01(\v2\x15.scproto.SCRequestAckH\x00R\fscRequestAck\x121\n" +
+	"\bsc.proto\x12\ascproto\"\xbe\x01\n" +
+	"\x05SCReq\x12;\n" +
+	"\x0esc_request_req\x18\x01 \x01(\v2\x15.scproto.SCRequestReqR\fscRequestReq\x125\n" +
+	"\fsc_trust_req\x18\x02 \x01(\v2\x13.scproto.SCTrustReqR\n" +
+	"scTrustReq\x12A\n" +
+	"\x10sc_animation_req\x18\x03 \x01(\v2\x17.scproto.SCAnimationReqR\x0escAnimationReq\"\xc8\x05\n" +
+	"\x05SCAck\x12B\n" +
+	"\x11sc_game_start_ack\x18\x01 \x01(\v2\x17.scproto.SCGameStartAckR\x0escGameStartAck\x12?\n" +
+	"\x10sc_open_door_ack\x18\x02 \x01(\v2\x16.scproto.SCOpenDoorAckR\rscOpenDoorAck\x12;\n" +
+	"\x0esc_request_ack\x18\x03 \x01(\v2\x15.scproto.SCRequestAckR\fscRequestAck\x12/\n" +
 	"\n" +
-	"sc_pon_ack\x18\x04 \x01(\v2\x11.scproto.SCPonAckH\x00R\bscPonAck\x121\n" +
+	"sc_pon_ack\x18\x04 \x01(\v2\x11.scproto.SCPonAckR\bscPonAck\x12/\n" +
 	"\n" +
-	"sc_kon_ack\x18\x05 \x01(\v2\x11.scproto.SCKonAckH\x00R\bscKonAck\x12.\n" +
-	"\tsc_hu_ack\x18\x06 \x01(\v2\x10.scproto.SCHuAckH\x00R\ascHuAck\x124\n" +
-	"\vsc_draw_ack\x18\a \x01(\v2\x12.scproto.SCDrawAckH\x00R\tscDrawAck\x12=\n" +
-	"\x0esc_discard_ack\x18\b \x01(\v2\x15.scproto.SCDiscardAckH\x00R\fscDiscardAck\x12J\n" +
-	"\x13sc_score_change_ack\x18\t \x01(\v2\x19.scproto.SCScoreChangeAckH\x00R\x10scScoreChangeAck\x12:\n" +
+	"sc_kon_ack\x18\x05 \x01(\v2\x11.scproto.SCKonAckR\bscKonAck\x12,\n" +
+	"\tsc_hu_ack\x18\x06 \x01(\v2\x10.scproto.SCHuAckR\ascHuAck\x122\n" +
+	"\vsc_draw_ack\x18\a \x01(\v2\x12.scproto.SCDrawAckR\tscDrawAck\x12;\n" +
+	"\x0esc_discard_ack\x18\b \x01(\v2\x15.scproto.SCDiscardAckR\fscDiscardAck\x12H\n" +
+	"\x13sc_score_change_ack\x18\t \x01(\v2\x19.scproto.SCScoreChangeAckR\x10scScoreChangeAck\x128\n" +
 	"\rsc_result_ack\x18\n" +
-	" \x01(\v2\x14.scproto.SCResultAckH\x00R\vscResultAck\x127\n" +
-	"\fsc_trust_ack\x18\v \x01(\v2\x13.scproto.SCTrustAckH\x00R\n" +
-	"scTrustAck\x12C\n" +
-	"\x10sc_animation_ack\x18\f \x01(\v2\x17.scproto.SCAnimationAckH\x00R\x0escAnimationAckB\x05\n" +
-	"\x03ack\"w\n" +
+	" \x01(\v2\x14.scproto.SCResultAckR\vscResultAck\x125\n" +
+	"\fsc_trust_ack\x18\v \x01(\v2\x13.scproto.SCTrustAckR\n" +
+	"scTrustAck\x12A\n" +
+	"\x10sc_animation_ack\x18\f \x01(\v2\x17.scproto.SCAnimationAckR\x0escAnimationAck\"w\n" +
 	"\fSCRequestReq\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
@@ -1456,25 +1306,6 @@ func init() { file_sc_proto_init() }
 func file_sc_proto_init() {
 	if File_sc_proto != nil {
 		return
-	}
-	file_sc_proto_msgTypes[0].OneofWrappers = []any{
-		(*SCReq_ScRequestReq)(nil),
-		(*SCReq_ScTrustReq)(nil),
-		(*SCReq_ScAnimationReq)(nil),
-	}
-	file_sc_proto_msgTypes[1].OneofWrappers = []any{
-		(*SCAck_ScGameStartAck)(nil),
-		(*SCAck_ScOpenDoorAck)(nil),
-		(*SCAck_ScRequestAck)(nil),
-		(*SCAck_ScPonAck)(nil),
-		(*SCAck_ScKonAck)(nil),
-		(*SCAck_ScHuAck)(nil),
-		(*SCAck_ScDrawAck)(nil),
-		(*SCAck_ScDiscardAck)(nil),
-		(*SCAck_ScScoreChangeAck)(nil),
-		(*SCAck_ScResultAck)(nil),
-		(*SCAck_ScTrustAck)(nil),
-		(*SCAck_ScAnimationAck)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

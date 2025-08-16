@@ -4,28 +4,24 @@ package scproto;
 option go_package = "../scproto";
 
 message SCReq {
-  oneof req {
-    SCRequestReq sc_request_req = 1;
-    SCTrustReq sc_trust_req = 2;
-    SCAnimationReq sc_animation_req = 3;
-  }
+  SCRequestReq sc_request_req = 1;
+  SCTrustReq sc_trust_req = 2;
+  SCAnimationReq sc_animation_req = 3;  
 }
 
 message SCAck {
-  oneof ack {
-    SCGameStartAck sc_game_start_ack = 1;
-    SCOpenDoorAck sc_open_door_ack = 2;
-    SCRequestAck sc_request_ack = 3;
-    SCPonAck sc_pon_ack = 4;
-    SCKonAck sc_kon_ack = 5;
-    SCHuAck sc_hu_ack = 6;
-    SCDrawAck sc_draw_ack = 7;
-    SCDiscardAck sc_discard_ack = 8;
-    SCScoreChangeAck sc_score_change_ack = 9;
-    SCResultAck sc_result_ack = 10;
-    SCTrustAck sc_trust_ack = 11;
-    SCAnimationAck sc_animation_ack = 12;
-  }
+  SCGameStartAck sc_game_start_ack = 1;
+  SCOpenDoorAck sc_open_door_ack = 2;
+  SCRequestAck sc_request_ack = 3;
+  SCPonAck sc_pon_ack = 4;
+  SCKonAck sc_kon_ack = 5;
+  SCHuAck sc_hu_ack = 6;
+  SCDrawAck sc_draw_ack = 7;
+  SCDiscardAck sc_discard_ack = 8;
+  SCScoreChangeAck sc_score_change_ack = 9;
+  SCResultAck sc_result_ack = 10;
+  SCTrustAck sc_trust_ack = 11;
+  SCAnimationAck sc_animation_ack = 12;
 }
 
 message SCRequestReq {

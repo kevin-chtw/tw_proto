@@ -9,6 +9,7 @@ package cproto
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -22,14 +23,10 @@ const (
 )
 
 type MatchReq struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	Serverid string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
-	Matchid  int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
-	// Types that are valid to be assigned to Req:
-	//
-	//	*MatchReq_CreateRoomReq
-	//	*MatchReq_JoinRoomReq
-	Req           isMatchReq_Req `protobuf_oneof:"req"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Serverid      string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
+	Req           *anypb.Any             `protobuf:"bytes,3,opt,name=req,proto3" json:"req,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -78,56 +75,18 @@ func (x *MatchReq) GetMatchid() int32 {
 	return 0
 }
 
-func (x *MatchReq) GetReq() isMatchReq_Req {
+func (x *MatchReq) GetReq() *anypb.Any {
 	if x != nil {
 		return x.Req
 	}
 	return nil
 }
 
-func (x *MatchReq) GetCreateRoomReq() *CreateRoomReq {
-	if x != nil {
-		if x, ok := x.Req.(*MatchReq_CreateRoomReq); ok {
-			return x.CreateRoomReq
-		}
-	}
-	return nil
-}
-
-func (x *MatchReq) GetJoinRoomReq() *JoinRoomReq {
-	if x != nil {
-		if x, ok := x.Req.(*MatchReq_JoinRoomReq); ok {
-			return x.JoinRoomReq
-		}
-	}
-	return nil
-}
-
-type isMatchReq_Req interface {
-	isMatchReq_Req()
-}
-
-type MatchReq_CreateRoomReq struct {
-	CreateRoomReq *CreateRoomReq `protobuf:"bytes,3,opt,name=create_room_req,json=createRoomReq,proto3,oneof"`
-}
-
-type MatchReq_JoinRoomReq struct {
-	JoinRoomReq *JoinRoomReq `protobuf:"bytes,4,opt,name=join_room_req,json=joinRoomReq,proto3,oneof"`
-}
-
-func (*MatchReq_CreateRoomReq) isMatchReq_Req() {}
-
-func (*MatchReq_JoinRoomReq) isMatchReq_Req() {}
-
 type MatchAck struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	Serverid string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
-	Matchid  int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
-	// Types that are valid to be assigned to Ack:
-	//
-	//	*MatchAck_CreateRoomAck
-	//	*MatchAck_JoinRoomAck
-	Ack           isMatchAck_Ack `protobuf_oneof:"ack"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Serverid      string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
+	Ack           *anypb.Any             `protobuf:"bytes,3,opt,name=ack,proto3" json:"ack,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -176,46 +135,12 @@ func (x *MatchAck) GetMatchid() int32 {
 	return 0
 }
 
-func (x *MatchAck) GetAck() isMatchAck_Ack {
+func (x *MatchAck) GetAck() *anypb.Any {
 	if x != nil {
 		return x.Ack
 	}
 	return nil
 }
-
-func (x *MatchAck) GetCreateRoomAck() *CreateRoomAck {
-	if x != nil {
-		if x, ok := x.Ack.(*MatchAck_CreateRoomAck); ok {
-			return x.CreateRoomAck
-		}
-	}
-	return nil
-}
-
-func (x *MatchAck) GetJoinRoomAck() *JoinRoomAck {
-	if x != nil {
-		if x, ok := x.Ack.(*MatchAck_JoinRoomAck); ok {
-			return x.JoinRoomAck
-		}
-	}
-	return nil
-}
-
-type isMatchAck_Ack interface {
-	isMatchAck_Ack()
-}
-
-type MatchAck_CreateRoomAck struct {
-	CreateRoomAck *CreateRoomAck `protobuf:"bytes,3,opt,name=create_room_ack,json=createRoomAck,proto3,oneof"`
-}
-
-type MatchAck_JoinRoomAck struct {
-	JoinRoomAck *JoinRoomAck `protobuf:"bytes,4,opt,name=join_room_ack,json=joinRoomAck,proto3,oneof"`
-}
-
-func (*MatchAck_CreateRoomAck) isMatchAck_Ack() {}
-
-func (*MatchAck_JoinRoomAck) isMatchAck_Ack() {}
 
 type CreateRoomReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -421,19 +346,15 @@ var File_match_proto protoreflect.FileDescriptor
 
 const file_match_proto_rawDesc = "" +
 	"\n" +
-	"\vmatch.proto\x12\x06cproto\"\xc3\x01\n" +
+	"\vmatch.proto\x12\x06cproto\x1a\x19google/protobuf/any.proto\"h\n" +
 	"\bMatchReq\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
-	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12?\n" +
-	"\x0fcreate_room_req\x18\x03 \x01(\v2\x15.cproto.CreateRoomReqH\x00R\rcreateRoomReq\x129\n" +
-	"\rjoin_room_req\x18\x04 \x01(\v2\x13.cproto.JoinRoomReqH\x00R\vjoinRoomReqB\x05\n" +
-	"\x03req\"\xc3\x01\n" +
+	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12&\n" +
+	"\x03req\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03req\"h\n" +
 	"\bMatchAck\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
-	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12?\n" +
-	"\x0fcreate_room_ack\x18\x03 \x01(\v2\x15.cproto.CreateRoomAckH\x00R\rcreateRoomAck\x129\n" +
-	"\rjoin_room_ack\x18\x04 \x01(\v2\x13.cproto.JoinRoomAckH\x00R\vjoinRoomAckB\x05\n" +
-	"\x03ack\".\n" +
+	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12&\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\".\n" +
 	"\rCreateRoomReq\x12\x1d\n" +
 	"\n" +
 	"game_count\x18\x01 \x01(\x05R\tgameCount\"?\n" +
@@ -469,31 +390,22 @@ var file_match_proto_goTypes = []any{
 	(*JoinRoomReq)(nil),   // 3: cproto.JoinRoomReq
 	(*CreateRoomAck)(nil), // 4: cproto.CreateRoomAck
 	(*JoinRoomAck)(nil),   // 5: cproto.JoinRoomAck
+	(*anypb.Any)(nil),     // 6: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	2, // 0: cproto.MatchReq.create_room_req:type_name -> cproto.CreateRoomReq
-	3, // 1: cproto.MatchReq.join_room_req:type_name -> cproto.JoinRoomReq
-	4, // 2: cproto.MatchAck.create_room_ack:type_name -> cproto.CreateRoomAck
-	5, // 3: cproto.MatchAck.join_room_ack:type_name -> cproto.JoinRoomAck
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	6, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	6, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
 func file_match_proto_init() {
 	if File_match_proto != nil {
 		return
-	}
-	file_match_proto_msgTypes[0].OneofWrappers = []any{
-		(*MatchReq_CreateRoomReq)(nil),
-		(*MatchReq_JoinRoomReq)(nil),
-	}
-	file_match_proto_msgTypes[1].OneofWrappers = []any{
-		(*MatchAck_CreateRoomAck)(nil),
-		(*MatchAck_JoinRoomAck)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

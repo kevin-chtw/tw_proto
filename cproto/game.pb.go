@@ -9,6 +9,7 @@ package cproto
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -22,16 +23,12 @@ const (
 )
 
 type GameReq struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	Serverid string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
-	Gameid   int32                  `protobuf:"varint,2,opt,name=gameid,proto3" json:"gameid,omitempty"`   // 游戏ID
-	Matchid  int32                  `protobuf:"varint,3,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
-	Tableid  int32                  `protobuf:"varint,4,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
-	// Types that are valid to be assigned to Req:
-	//
-	//	*GameReq_EnterGameReq
-	//	*GameReq_TableMsgReq
-	Req           isGameReq_Req `protobuf_oneof:"req"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Serverid      string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
+	Gameid        int32                  `protobuf:"varint,2,opt,name=gameid,proto3" json:"gameid,omitempty"`   // 游戏ID
+	Matchid       int32                  `protobuf:"varint,3,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
+	Tableid       int32                  `protobuf:"varint,4,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
+	Req           *anypb.Any             `protobuf:"bytes,5,opt,name=req,proto3" json:"req,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -94,60 +91,20 @@ func (x *GameReq) GetTableid() int32 {
 	return 0
 }
 
-func (x *GameReq) GetReq() isGameReq_Req {
+func (x *GameReq) GetReq() *anypb.Any {
 	if x != nil {
 		return x.Req
 	}
 	return nil
 }
 
-func (x *GameReq) GetEnterGameReq() *EnterGameReq {
-	if x != nil {
-		if x, ok := x.Req.(*GameReq_EnterGameReq); ok {
-			return x.EnterGameReq
-		}
-	}
-	return nil
-}
-
-func (x *GameReq) GetTableMsgReq() *TableMsgReq {
-	if x != nil {
-		if x, ok := x.Req.(*GameReq_TableMsgReq); ok {
-			return x.TableMsgReq
-		}
-	}
-	return nil
-}
-
-type isGameReq_Req interface {
-	isGameReq_Req()
-}
-
-type GameReq_EnterGameReq struct {
-	EnterGameReq *EnterGameReq `protobuf:"bytes,5,opt,name=enter_game_req,json=enterGameReq,proto3,oneof"`
-}
-
-type GameReq_TableMsgReq struct {
-	TableMsgReq *TableMsgReq `protobuf:"bytes,6,opt,name=table_msg_req,json=tableMsgReq,proto3,oneof"`
-}
-
-func (*GameReq_EnterGameReq) isGameReq_Req() {}
-
-func (*GameReq_TableMsgReq) isGameReq_Req() {}
-
 type GameAck struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	Serverid string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
-	Gameid   int32                  `protobuf:"varint,2,opt,name=gameid,proto3" json:"gameid,omitempty"`   // 游戏ID
-	Matchid  int32                  `protobuf:"varint,3,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
-	Tableid  int32                  `protobuf:"varint,4,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
-	// Types that are valid to be assigned to Ack:
-	//
-	//	*GameAck_EnterGameAck
-	//	*GameAck_TablePlayerAck
-	//	*GameAck_TableMsgAck
-	//	*GameAck_TableEndAck
-	Ack           isGameAck_Ack `protobuf_oneof:"ack"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Serverid      string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
+	Gameid        int32                  `protobuf:"varint,2,opt,name=gameid,proto3" json:"gameid,omitempty"`   // 游戏ID
+	Matchid       int32                  `protobuf:"varint,3,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
+	Tableid       int32                  `protobuf:"varint,4,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
+	Ack           *anypb.Any             `protobuf:"bytes,5,opt,name=ack,proto3" json:"ack,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -210,76 +167,12 @@ func (x *GameAck) GetTableid() int32 {
 	return 0
 }
 
-func (x *GameAck) GetAck() isGameAck_Ack {
+func (x *GameAck) GetAck() *anypb.Any {
 	if x != nil {
 		return x.Ack
 	}
 	return nil
 }
-
-func (x *GameAck) GetEnterGameAck() *EnterGameAck {
-	if x != nil {
-		if x, ok := x.Ack.(*GameAck_EnterGameAck); ok {
-			return x.EnterGameAck
-		}
-	}
-	return nil
-}
-
-func (x *GameAck) GetTablePlayerAck() *TablePlayerAck {
-	if x != nil {
-		if x, ok := x.Ack.(*GameAck_TablePlayerAck); ok {
-			return x.TablePlayerAck
-		}
-	}
-	return nil
-}
-
-func (x *GameAck) GetTableMsgAck() *TableMsgAck {
-	if x != nil {
-		if x, ok := x.Ack.(*GameAck_TableMsgAck); ok {
-			return x.TableMsgAck
-		}
-	}
-	return nil
-}
-
-func (x *GameAck) GetTableEndAck() *TableEndAck {
-	if x != nil {
-		if x, ok := x.Ack.(*GameAck_TableEndAck); ok {
-			return x.TableEndAck
-		}
-	}
-	return nil
-}
-
-type isGameAck_Ack interface {
-	isGameAck_Ack()
-}
-
-type GameAck_EnterGameAck struct {
-	EnterGameAck *EnterGameAck `protobuf:"bytes,5,opt,name=enter_game_ack,json=enterGameAck,proto3,oneof"`
-}
-
-type GameAck_TablePlayerAck struct {
-	TablePlayerAck *TablePlayerAck `protobuf:"bytes,6,opt,name=table_player_ack,json=tablePlayerAck,proto3,oneof"`
-}
-
-type GameAck_TableMsgAck struct {
-	TableMsgAck *TableMsgAck `protobuf:"bytes,7,opt,name=table_msg_ack,json=tableMsgAck,proto3,oneof"`
-}
-
-type GameAck_TableEndAck struct {
-	TableEndAck *TableEndAck `protobuf:"bytes,8,opt,name=table_end_ack,json=tableEndAck,proto3,oneof"`
-}
-
-func (*GameAck_EnterGameAck) isGameAck_Ack() {}
-
-func (*GameAck_TablePlayerAck) isGameAck_Ack() {}
-
-func (*GameAck_TableMsgAck) isGameAck_Ack() {}
-
-func (*GameAck_TableEndAck) isGameAck_Ack() {}
 
 type EnterGameReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -550,25 +443,19 @@ var File_game_proto protoreflect.FileDescriptor
 const file_game_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"game.proto\x12\x06cproto\"\xf1\x01\n" +
+	"game.proto\x12\x06cproto\x1a\x19google/protobuf/any.proto\"\x99\x01\n" +
 	"\aGameReq\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x16\n" +
 	"\x06gameid\x18\x02 \x01(\x05R\x06gameid\x12\x18\n" +
 	"\amatchid\x18\x03 \x01(\x05R\amatchid\x12\x18\n" +
-	"\atableid\x18\x04 \x01(\x05R\atableid\x12<\n" +
-	"\x0eenter_game_req\x18\x05 \x01(\v2\x14.cproto.EnterGameReqH\x00R\fenterGameReq\x129\n" +
-	"\rtable_msg_req\x18\x06 \x01(\v2\x13.cproto.TableMsgReqH\x00R\vtableMsgReqB\x05\n" +
-	"\x03req\"\xf0\x02\n" +
+	"\atableid\x18\x04 \x01(\x05R\atableid\x12&\n" +
+	"\x03req\x18\x05 \x01(\v2\x14.google.protobuf.AnyR\x03req\"\x99\x01\n" +
 	"\aGameAck\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x16\n" +
 	"\x06gameid\x18\x02 \x01(\x05R\x06gameid\x12\x18\n" +
 	"\amatchid\x18\x03 \x01(\x05R\amatchid\x12\x18\n" +
-	"\atableid\x18\x04 \x01(\x05R\atableid\x12<\n" +
-	"\x0eenter_game_ack\x18\x05 \x01(\v2\x14.cproto.EnterGameAckH\x00R\fenterGameAck\x12B\n" +
-	"\x10table_player_ack\x18\x06 \x01(\v2\x16.cproto.TablePlayerAckH\x00R\x0etablePlayerAck\x129\n" +
-	"\rtable_msg_ack\x18\a \x01(\v2\x13.cproto.TableMsgAckH\x00R\vtableMsgAck\x129\n" +
-	"\rtable_end_ack\x18\b \x01(\v2\x13.cproto.TableEndAckH\x00R\vtableEndAckB\x05\n" +
-	"\x03ack\"\x0e\n" +
+	"\atableid\x18\x04 \x01(\x05R\atableid\x12&\n" +
+	"\x03ack\x18\x05 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x0e\n" +
 	"\fEnterGameReq\"\x1f\n" +
 	"\vTableMsgReq\x12\x10\n" +
 	"\x03msg\x18\x01 \x01(\fR\x03msg\"L\n" +
@@ -606,35 +493,22 @@ var file_game_proto_goTypes = []any{
 	(*TablePlayerAck)(nil), // 5: cproto.TablePlayerAck
 	(*TableMsgAck)(nil),    // 6: cproto.TableMsgAck
 	(*TableEndAck)(nil),    // 7: cproto.TableEndAck
+	(*anypb.Any)(nil),      // 8: google.protobuf.Any
 }
 var file_game_proto_depIdxs = []int32{
-	2, // 0: cproto.GameReq.enter_game_req:type_name -> cproto.EnterGameReq
-	3, // 1: cproto.GameReq.table_msg_req:type_name -> cproto.TableMsgReq
-	4, // 2: cproto.GameAck.enter_game_ack:type_name -> cproto.EnterGameAck
-	5, // 3: cproto.GameAck.table_player_ack:type_name -> cproto.TablePlayerAck
-	6, // 4: cproto.GameAck.table_msg_ack:type_name -> cproto.TableMsgAck
-	7, // 5: cproto.GameAck.table_end_ack:type_name -> cproto.TableEndAck
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	8, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
+	8, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_game_proto_init() }
 func file_game_proto_init() {
 	if File_game_proto != nil {
 		return
-	}
-	file_game_proto_msgTypes[0].OneofWrappers = []any{
-		(*GameReq_EnterGameReq)(nil),
-		(*GameReq_TableMsgReq)(nil),
-	}
-	file_game_proto_msgTypes[1].OneofWrappers = []any{
-		(*GameAck_EnterGameAck)(nil),
-		(*GameAck_TablePlayerAck)(nil),
-		(*GameAck_TableMsgAck)(nil),
-		(*GameAck_TableEndAck)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

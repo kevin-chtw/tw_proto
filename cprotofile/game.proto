@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/any.proto";
+
 package cproto;
 option go_package = "../cproto";
 
@@ -8,10 +10,7 @@ message GameReq {
   int32 gameid = 2; // 游戏ID
   int32 matchid = 3; // 比赛ID
   int32 tableid = 4; // 桌号
-  oneof req {
-    EnterGameReq enter_game_req = 5;
-    TableMsgReq table_msg_req = 6;
-  }
+  google.protobuf.Any req = 5;
 }
 
 message GameAck {
@@ -19,12 +18,7 @@ message GameAck {
   int32 gameid = 2; // 游戏ID
   int32 matchid = 3; // 比赛ID
   int32 tableid = 4; // 桌号
-  oneof ack {
-    EnterGameAck enter_game_ack = 5;
-    TablePlayerAck table_player_ack = 6;
-    TableMsgAck table_msg_ack = 7;
-    TableEndAck table_end_ack = 8;
-  }
+  google.protobuf.Any ack = 5;
 }
 
 message EnterGameReq {  

@@ -19,14 +19,14 @@ message LoginReq {
   string password = 2;
 }
 
-message LoginAck {
-  string serverid = 1;
-  string userid = 2;
-}
-
 message RegisterReq {
   string account = 1;
   string password = 2;
+}
+
+message LoginAck {
+  string serverid = 1;
+  string userid = 2;
 }
 
 message RegisterAck {
