@@ -1,1 +1,1 @@
-protoc --go_out=../sproto *.proto  
+protoc -I=/usr/local/include -I=. --go_out=../sproto *.proto  

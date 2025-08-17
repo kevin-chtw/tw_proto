@@ -27,7 +27,6 @@ type Proxy2MatchReq struct {
 	//
 	//	*Proxy2MatchReq_OnlineReq
 	//	*Proxy2MatchReq_OfflineReq
-	//	*Proxy2MatchReq_CreateRoomReq
 	Req           isProxy2MatchReq_Req `protobuf_oneof:"req"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -88,15 +87,6 @@ func (x *Proxy2MatchReq) GetOfflineReq() *OfflineReq {
 	return nil
 }
 
-func (x *Proxy2MatchReq) GetCreateRoomReq() *CreateRoomReq {
-	if x != nil {
-		if x, ok := x.Req.(*Proxy2MatchReq_CreateRoomReq); ok {
-			return x.CreateRoomReq
-		}
-	}
-	return nil
-}
-
 type isProxy2MatchReq_Req interface {
 	isProxy2MatchReq_Req()
 }
@@ -109,75 +99,9 @@ type Proxy2MatchReq_OfflineReq struct {
 	OfflineReq *OfflineReq `protobuf:"bytes,2,opt,name=offline_req,json=offlineReq,proto3,oneof"`
 }
 
-type Proxy2MatchReq_CreateRoomReq struct {
-	CreateRoomReq *CreateRoomReq `protobuf:"bytes,3,opt,name=create_room_req,json=createRoomReq,proto3,oneof"`
-}
-
 func (*Proxy2MatchReq_OnlineReq) isProxy2MatchReq_Req() {}
 
 func (*Proxy2MatchReq_OfflineReq) isProxy2MatchReq_Req() {}
-
-func (*Proxy2MatchReq_CreateRoomReq) isProxy2MatchReq_Req() {}
-
-type CreateRoomReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	GameCount     int32                  `protobuf:"varint,1,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`
-	MaxPlayers    int32                  `protobuf:"varint,2,opt,name=max_players,json=maxPlayers,proto3" json:"max_players,omitempty"`
-	GameType      string                 `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateRoomReq) Reset() {
-	*x = CreateRoomReq{}
-	mi := &file_proxy2match_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateRoomReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateRoomReq) ProtoMessage() {}
-
-func (x *CreateRoomReq) ProtoReflect() protoreflect.Message {
-	mi := &file_proxy2match_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateRoomReq.ProtoReflect.Descriptor instead.
-func (*CreateRoomReq) Descriptor() ([]byte, []int) {
-	return file_proxy2match_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CreateRoomReq) GetGameCount() int32 {
-	if x != nil {
-		return x.GameCount
-	}
-	return 0
-}
-
-func (x *CreateRoomReq) GetMaxPlayers() int32 {
-	if x != nil {
-		return x.MaxPlayers
-	}
-	return 0
-}
-
-func (x *CreateRoomReq) GetGameType() string {
-	if x != nil {
-		return x.GameType
-	}
-	return ""
-}
 
 type Proxy2MatchAck struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -192,7 +116,7 @@ type Proxy2MatchAck struct {
 
 func (x *Proxy2MatchAck) Reset() {
 	*x = Proxy2MatchAck{}
-	mi := &file_proxy2match_proto_msgTypes[2]
+	mi := &file_proxy2match_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -204,7 +128,7 @@ func (x *Proxy2MatchAck) String() string {
 func (*Proxy2MatchAck) ProtoMessage() {}
 
 func (x *Proxy2MatchAck) ProtoReflect() protoreflect.Message {
-	mi := &file_proxy2match_proto_msgTypes[2]
+	mi := &file_proxy2match_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -217,7 +141,7 @@ func (x *Proxy2MatchAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Proxy2MatchAck.ProtoReflect.Descriptor instead.
 func (*Proxy2MatchAck) Descriptor() ([]byte, []int) {
-	return file_proxy2match_proto_rawDescGZIP(), []int{2}
+	return file_proxy2match_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Proxy2MatchAck) GetReq() isProxy2MatchAck_Req {
@@ -270,7 +194,7 @@ type OnlineReq struct {
 
 func (x *OnlineReq) Reset() {
 	*x = OnlineReq{}
-	mi := &file_proxy2match_proto_msgTypes[3]
+	mi := &file_proxy2match_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -282,7 +206,7 @@ func (x *OnlineReq) String() string {
 func (*OnlineReq) ProtoMessage() {}
 
 func (x *OnlineReq) ProtoReflect() protoreflect.Message {
-	mi := &file_proxy2match_proto_msgTypes[3]
+	mi := &file_proxy2match_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -295,7 +219,7 @@ func (x *OnlineReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OnlineReq.ProtoReflect.Descriptor instead.
 func (*OnlineReq) Descriptor() ([]byte, []int) {
-	return file_proxy2match_proto_rawDescGZIP(), []int{3}
+	return file_proxy2match_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *OnlineReq) GetUid() string {
@@ -314,7 +238,7 @@ type OnlineAck struct {
 
 func (x *OnlineAck) Reset() {
 	*x = OnlineAck{}
-	mi := &file_proxy2match_proto_msgTypes[4]
+	mi := &file_proxy2match_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -326,7 +250,7 @@ func (x *OnlineAck) String() string {
 func (*OnlineAck) ProtoMessage() {}
 
 func (x *OnlineAck) ProtoReflect() protoreflect.Message {
-	mi := &file_proxy2match_proto_msgTypes[4]
+	mi := &file_proxy2match_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -339,7 +263,7 @@ func (x *OnlineAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OnlineAck.ProtoReflect.Descriptor instead.
 func (*OnlineAck) Descriptor() ([]byte, []int) {
-	return file_proxy2match_proto_rawDescGZIP(), []int{4}
+	return file_proxy2match_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *OnlineAck) GetUid() string {
@@ -358,7 +282,7 @@ type OfflineReq struct {
 
 func (x *OfflineReq) Reset() {
 	*x = OfflineReq{}
-	mi := &file_proxy2match_proto_msgTypes[5]
+	mi := &file_proxy2match_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -370,7 +294,7 @@ func (x *OfflineReq) String() string {
 func (*OfflineReq) ProtoMessage() {}
 
 func (x *OfflineReq) ProtoReflect() protoreflect.Message {
-	mi := &file_proxy2match_proto_msgTypes[5]
+	mi := &file_proxy2match_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -383,7 +307,7 @@ func (x *OfflineReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OfflineReq.ProtoReflect.Descriptor instead.
 func (*OfflineReq) Descriptor() ([]byte, []int) {
-	return file_proxy2match_proto_rawDescGZIP(), []int{5}
+	return file_proxy2match_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *OfflineReq) GetUid() string {
@@ -402,7 +326,7 @@ type OfflineAck struct {
 
 func (x *OfflineAck) Reset() {
 	*x = OfflineAck{}
-	mi := &file_proxy2match_proto_msgTypes[6]
+	mi := &file_proxy2match_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -414,7 +338,7 @@ func (x *OfflineAck) String() string {
 func (*OfflineAck) ProtoMessage() {}
 
 func (x *OfflineAck) ProtoReflect() protoreflect.Message {
-	mi := &file_proxy2match_proto_msgTypes[6]
+	mi := &file_proxy2match_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -427,7 +351,7 @@ func (x *OfflineAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OfflineAck.ProtoReflect.Descriptor instead.
 func (*OfflineAck) Descriptor() ([]byte, []int) {
-	return file_proxy2match_proto_rawDescGZIP(), []int{6}
+	return file_proxy2match_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *OfflineAck) GetUid() string {
@@ -441,20 +365,13 @@ var File_proxy2match_proto protoreflect.FileDescriptor
 
 const file_proxy2match_proto_rawDesc = "" +
 	"\n" +
-	"\x11proxy2match.proto\x12\x06sproto\"\xc3\x01\n" +
+	"\x11proxy2match.proto\x12\x06sproto\"\x82\x01\n" +
 	"\x0eProxy2MatchReq\x122\n" +
 	"\n" +
 	"online_req\x18\x01 \x01(\v2\x11.sproto.OnlineReqH\x00R\tonlineReq\x125\n" +
 	"\voffline_req\x18\x02 \x01(\v2\x12.sproto.OfflineReqH\x00R\n" +
-	"offlineReq\x12?\n" +
-	"\x0fcreate_room_req\x18\x03 \x01(\v2\x15.sproto.CreateRoomReqH\x00R\rcreateRoomReqB\x05\n" +
-	"\x03req\"l\n" +
-	"\rCreateRoomReq\x12\x1d\n" +
-	"\n" +
-	"game_count\x18\x01 \x01(\x05R\tgameCount\x12\x1f\n" +
-	"\vmax_players\x18\x02 \x01(\x05R\n" +
-	"maxPlayers\x12\x1b\n" +
-	"\tgame_type\x18\x03 \x01(\tR\bgameType\"\x82\x01\n" +
+	"offlineReqB\x05\n" +
+	"\x03req\"\x82\x01\n" +
 	"\x0eProxy2MatchAck\x122\n" +
 	"\n" +
 	"online_ack\x18\x01 \x01(\v2\x11.sproto.OnlineAckH\x00R\tonlineAck\x125\n" +
@@ -484,27 +401,25 @@ func file_proxy2match_proto_rawDescGZIP() []byte {
 	return file_proxy2match_proto_rawDescData
 }
 
-var file_proxy2match_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_proxy2match_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_proxy2match_proto_goTypes = []any{
 	(*Proxy2MatchReq)(nil), // 0: sproto.Proxy2MatchReq
-	(*CreateRoomReq)(nil),  // 1: sproto.CreateRoomReq
-	(*Proxy2MatchAck)(nil), // 2: sproto.Proxy2MatchAck
-	(*OnlineReq)(nil),      // 3: sproto.OnlineReq
-	(*OnlineAck)(nil),      // 4: sproto.OnlineAck
-	(*OfflineReq)(nil),     // 5: sproto.OfflineReq
-	(*OfflineAck)(nil),     // 6: sproto.OfflineAck
+	(*Proxy2MatchAck)(nil), // 1: sproto.Proxy2MatchAck
+	(*OnlineReq)(nil),      // 2: sproto.OnlineReq
+	(*OnlineAck)(nil),      // 3: sproto.OnlineAck
+	(*OfflineReq)(nil),     // 4: sproto.OfflineReq
+	(*OfflineAck)(nil),     // 5: sproto.OfflineAck
 }
 var file_proxy2match_proto_depIdxs = []int32{
-	3, // 0: sproto.Proxy2MatchReq.online_req:type_name -> sproto.OnlineReq
-	5, // 1: sproto.Proxy2MatchReq.offline_req:type_name -> sproto.OfflineReq
-	1, // 2: sproto.Proxy2MatchReq.create_room_req:type_name -> sproto.CreateRoomReq
-	4, // 3: sproto.Proxy2MatchAck.online_ack:type_name -> sproto.OnlineAck
-	6, // 4: sproto.Proxy2MatchAck.offline_ack:type_name -> sproto.OfflineAck
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	2, // 0: sproto.Proxy2MatchReq.online_req:type_name -> sproto.OnlineReq
+	4, // 1: sproto.Proxy2MatchReq.offline_req:type_name -> sproto.OfflineReq
+	3, // 2: sproto.Proxy2MatchAck.online_ack:type_name -> sproto.OnlineAck
+	5, // 3: sproto.Proxy2MatchAck.offline_ack:type_name -> sproto.OfflineAck
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_proxy2match_proto_init() }
@@ -515,9 +430,8 @@ func file_proxy2match_proto_init() {
 	file_proxy2match_proto_msgTypes[0].OneofWrappers = []any{
 		(*Proxy2MatchReq_OnlineReq)(nil),
 		(*Proxy2MatchReq_OfflineReq)(nil),
-		(*Proxy2MatchReq_CreateRoomReq)(nil),
 	}
-	file_proxy2match_proto_msgTypes[2].OneofWrappers = []any{
+	file_proxy2match_proto_msgTypes[1].OneofWrappers = []any{
 		(*Proxy2MatchAck_OnlineAck)(nil),
 		(*Proxy2MatchAck_OfflineAck)(nil),
 	}
@@ -527,7 +441,7 @@ func file_proxy2match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proxy2match_proto_rawDesc), len(file_proxy2match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

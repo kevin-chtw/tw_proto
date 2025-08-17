@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/any.proto";
+
 package sproto;
 option go_package = "../sproto";
 
@@ -7,23 +9,14 @@ message Match2GameReq {
   int32 gameid = 1; // 游戏ID
   int32 matchid = 2;
   int32 tableid = 3;
-  oneof req {
-    AddTableReq add_table_req = 4;
-    CancelTableReq cancel_table_req = 5;
-    AddPlayerReq add_player_req = 6;
-  }
+  google.protobuf.Any req = 4; // 请求内容
 }
 
 message Match2GameAck {
   int32 gameid = 1; // 游戏ID
   int32 matchid = 2;
   int32 tableid = 3;
-  oneof ack {
-    AddTableAck add_table_ack = 4;
-    AddPlayerAck add_player_ack = 5;
-    CancelTableAck cancel_table_ack = 6;
-    TableResultAck table_result_ack = 7;
-  }
+  google.protobuf.Any ack = 4; // 响应内容
 }
 
 message AddTableReq {  

@@ -9,6 +9,7 @@ package sproto
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -22,16 +23,11 @@ const (
 )
 
 type Match2GameReq struct {
-	state   protoimpl.MessageState `protogen:"open.v1"`
-	Gameid  int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"` // 游戏ID
-	Matchid int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
-	Tableid int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	// Types that are valid to be assigned to Req:
-	//
-	//	*Match2GameReq_AddTableReq
-	//	*Match2GameReq_CancelTableReq
-	//	*Match2GameReq_AddPlayerReq
-	Req           isMatch2GameReq_Req `protobuf_oneof:"req"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Gameid        int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"` // 游戏ID
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid       int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Req           *anypb.Any             `protobuf:"bytes,4,opt,name=req,proto3" json:"req,omitempty"` // 请求内容
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -87,74 +83,19 @@ func (x *Match2GameReq) GetTableid() int32 {
 	return 0
 }
 
-func (x *Match2GameReq) GetReq() isMatch2GameReq_Req {
+func (x *Match2GameReq) GetReq() *anypb.Any {
 	if x != nil {
 		return x.Req
 	}
 	return nil
 }
 
-func (x *Match2GameReq) GetAddTableReq() *AddTableReq {
-	if x != nil {
-		if x, ok := x.Req.(*Match2GameReq_AddTableReq); ok {
-			return x.AddTableReq
-		}
-	}
-	return nil
-}
-
-func (x *Match2GameReq) GetCancelTableReq() *CancelTableReq {
-	if x != nil {
-		if x, ok := x.Req.(*Match2GameReq_CancelTableReq); ok {
-			return x.CancelTableReq
-		}
-	}
-	return nil
-}
-
-func (x *Match2GameReq) GetAddPlayerReq() *AddPlayerReq {
-	if x != nil {
-		if x, ok := x.Req.(*Match2GameReq_AddPlayerReq); ok {
-			return x.AddPlayerReq
-		}
-	}
-	return nil
-}
-
-type isMatch2GameReq_Req interface {
-	isMatch2GameReq_Req()
-}
-
-type Match2GameReq_AddTableReq struct {
-	AddTableReq *AddTableReq `protobuf:"bytes,4,opt,name=add_table_req,json=addTableReq,proto3,oneof"`
-}
-
-type Match2GameReq_CancelTableReq struct {
-	CancelTableReq *CancelTableReq `protobuf:"bytes,5,opt,name=cancel_table_req,json=cancelTableReq,proto3,oneof"`
-}
-
-type Match2GameReq_AddPlayerReq struct {
-	AddPlayerReq *AddPlayerReq `protobuf:"bytes,6,opt,name=add_player_req,json=addPlayerReq,proto3,oneof"`
-}
-
-func (*Match2GameReq_AddTableReq) isMatch2GameReq_Req() {}
-
-func (*Match2GameReq_CancelTableReq) isMatch2GameReq_Req() {}
-
-func (*Match2GameReq_AddPlayerReq) isMatch2GameReq_Req() {}
-
 type Match2GameAck struct {
-	state   protoimpl.MessageState `protogen:"open.v1"`
-	Gameid  int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"` // 游戏ID
-	Matchid int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
-	Tableid int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	// Types that are valid to be assigned to Ack:
-	//
-	//	*Match2GameAck_AddTableAck
-	//	*Match2GameAck_AddPlayerAck
-	//	*Match2GameAck_CancelTableAck
-	//	*Match2GameAck_TableResultAck
-	Ack           isMatch2GameAck_Ack `protobuf_oneof:"ack"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Gameid        int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"` // 游戏ID
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid       int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Ack           *anypb.Any             `protobuf:"bytes,4,opt,name=ack,proto3" json:"ack,omitempty"` // 响应内容
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -210,76 +151,12 @@ func (x *Match2GameAck) GetTableid() int32 {
 	return 0
 }
 
-func (x *Match2GameAck) GetAck() isMatch2GameAck_Ack {
+func (x *Match2GameAck) GetAck() *anypb.Any {
 	if x != nil {
 		return x.Ack
 	}
 	return nil
 }
-
-func (x *Match2GameAck) GetAddTableAck() *AddTableAck {
-	if x != nil {
-		if x, ok := x.Ack.(*Match2GameAck_AddTableAck); ok {
-			return x.AddTableAck
-		}
-	}
-	return nil
-}
-
-func (x *Match2GameAck) GetAddPlayerAck() *AddPlayerAck {
-	if x != nil {
-		if x, ok := x.Ack.(*Match2GameAck_AddPlayerAck); ok {
-			return x.AddPlayerAck
-		}
-	}
-	return nil
-}
-
-func (x *Match2GameAck) GetCancelTableAck() *CancelTableAck {
-	if x != nil {
-		if x, ok := x.Ack.(*Match2GameAck_CancelTableAck); ok {
-			return x.CancelTableAck
-		}
-	}
-	return nil
-}
-
-func (x *Match2GameAck) GetTableResultAck() *TableResultAck {
-	if x != nil {
-		if x, ok := x.Ack.(*Match2GameAck_TableResultAck); ok {
-			return x.TableResultAck
-		}
-	}
-	return nil
-}
-
-type isMatch2GameAck_Ack interface {
-	isMatch2GameAck_Ack()
-}
-
-type Match2GameAck_AddTableAck struct {
-	AddTableAck *AddTableAck `protobuf:"bytes,4,opt,name=add_table_ack,json=addTableAck,proto3,oneof"`
-}
-
-type Match2GameAck_AddPlayerAck struct {
-	AddPlayerAck *AddPlayerAck `protobuf:"bytes,5,opt,name=add_player_ack,json=addPlayerAck,proto3,oneof"`
-}
-
-type Match2GameAck_CancelTableAck struct {
-	CancelTableAck *CancelTableAck `protobuf:"bytes,6,opt,name=cancel_table_ack,json=cancelTableAck,proto3,oneof"`
-}
-
-type Match2GameAck_TableResultAck struct {
-	TableResultAck *TableResultAck `protobuf:"bytes,7,opt,name=table_result_ack,json=tableResultAck,proto3,oneof"`
-}
-
-func (*Match2GameAck_AddTableAck) isMatch2GameAck_Ack() {}
-
-func (*Match2GameAck_AddPlayerAck) isMatch2GameAck_Ack() {}
-
-func (*Match2GameAck_CancelTableAck) isMatch2GameAck_Ack() {}
-
-func (*Match2GameAck_TableResultAck) isMatch2GameAck_Ack() {}
 
 type AddTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -725,24 +602,17 @@ var File_match2game_proto protoreflect.FileDescriptor
 
 const file_match2game_proto_rawDesc = "" +
 	"\n" +
-	"\x10match2game.proto\x12\x06sproto\"\x9f\x02\n" +
+	"\x10match2game.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"\x83\x01\n" +
 	"\rMatch2GameReq\x12\x16\n" +
 	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
-	"\atableid\x18\x03 \x01(\x05R\atableid\x129\n" +
-	"\radd_table_req\x18\x04 \x01(\v2\x13.sproto.AddTableReqH\x00R\vaddTableReq\x12B\n" +
-	"\x10cancel_table_req\x18\x05 \x01(\v2\x16.sproto.CancelTableReqH\x00R\x0ecancelTableReq\x12<\n" +
-	"\x0eadd_player_req\x18\x06 \x01(\v2\x14.sproto.AddPlayerReqH\x00R\faddPlayerReqB\x05\n" +
-	"\x03req\"\xe3\x02\n" +
+	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
+	"\x03req\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03req\"\x83\x01\n" +
 	"\rMatch2GameAck\x12\x16\n" +
 	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
-	"\atableid\x18\x03 \x01(\x05R\atableid\x129\n" +
-	"\radd_table_ack\x18\x04 \x01(\v2\x13.sproto.AddTableAckH\x00R\vaddTableAck\x12<\n" +
-	"\x0eadd_player_ack\x18\x05 \x01(\v2\x14.sproto.AddPlayerAckH\x00R\faddPlayerAck\x12B\n" +
-	"\x10cancel_table_ack\x18\x06 \x01(\v2\x16.sproto.CancelTableAckH\x00R\x0ecancelTableAck\x12B\n" +
-	"\x10table_result_ack\x18\a \x01(\v2\x16.sproto.TableResultAckH\x00R\x0etableResultAckB\x05\n" +
-	"\x03ack\"\xae\x01\n" +
+	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
+	"\x03ack\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xae\x01\n" +
 	"\vAddTableReq\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\x05R\tmatchType\x12\x1d\n" +
@@ -803,38 +673,23 @@ var file_match2game_proto_goTypes = []any{
 	(*CancelTableAck)(nil), // 7: sproto.CancelTableAck
 	(*TableResultAck)(nil), // 8: sproto.TableResultAck
 	(*PlayerResult)(nil),   // 9: sproto.PlayerResult
+	(*anypb.Any)(nil),      // 10: google.protobuf.Any
 }
 var file_match2game_proto_depIdxs = []int32{
-	2, // 0: sproto.Match2GameReq.add_table_req:type_name -> sproto.AddTableReq
-	4, // 1: sproto.Match2GameReq.cancel_table_req:type_name -> sproto.CancelTableReq
-	3, // 2: sproto.Match2GameReq.add_player_req:type_name -> sproto.AddPlayerReq
-	5, // 3: sproto.Match2GameAck.add_table_ack:type_name -> sproto.AddTableAck
-	6, // 4: sproto.Match2GameAck.add_player_ack:type_name -> sproto.AddPlayerAck
-	7, // 5: sproto.Match2GameAck.cancel_table_ack:type_name -> sproto.CancelTableAck
-	8, // 6: sproto.Match2GameAck.table_result_ack:type_name -> sproto.TableResultAck
-	9, // 7: sproto.TableResultAck.playerids:type_name -> sproto.PlayerResult
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	10, // 0: sproto.Match2GameReq.req:type_name -> google.protobuf.Any
+	10, // 1: sproto.Match2GameAck.ack:type_name -> google.protobuf.Any
+	9,  // 2: sproto.TableResultAck.playerids:type_name -> sproto.PlayerResult
+	3,  // [3:3] is the sub-list for method output_type
+	3,  // [3:3] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_match2game_proto_init() }
 func file_match2game_proto_init() {
 	if File_match2game_proto != nil {
 		return
-	}
-	file_match2game_proto_msgTypes[0].OneofWrappers = []any{
-		(*Match2GameReq_AddTableReq)(nil),
-		(*Match2GameReq_CancelTableReq)(nil),
-		(*Match2GameReq_AddPlayerReq)(nil),
-	}
-	file_match2game_proto_msgTypes[1].OneofWrappers = []any{
-		(*Match2GameAck_AddTableAck)(nil),
-		(*Match2GameAck_AddPlayerAck)(nil),
-		(*Match2GameAck_CancelTableAck)(nil),
-		(*Match2GameAck_TableResultAck)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
