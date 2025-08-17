@@ -24,7 +24,8 @@ message AddTableReq {
   int32 score_base = 2; // 分数基数
   int32 game_count = 3; // 游戏局数
   int32 player_count = 4; // 玩家数量
-  string game_config = 5; // 游戏配置
+  string property = 5; // 游戏配置
+  map<string,int32> fdproperty = 6; // 好友房自选配置
 }
 
 message AddPlayerReq {

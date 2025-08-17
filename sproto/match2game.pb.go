@@ -160,11 +160,12 @@ func (x *Match2GameAck) GetAck() *anypb.Any {
 
 type AddTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MatchType     int32                  `protobuf:"varint,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`       // 0: 普通匹配, 1: 房卡模式
-	ScoreBase     int32                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`       // 分数基数
-	GameCount     int32                  `protobuf:"varint,3,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`       // 游戏局数
-	PlayerCount   int32                  `protobuf:"varint,4,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"` // 玩家数量
-	GameConfig    string                 `protobuf:"bytes,5,opt,name=game_config,json=gameConfig,proto3" json:"game_config,omitempty"`     // 游戏配置
+	MatchType     int32                  `protobuf:"varint,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`                                                            // 0: 普通匹配, 1: 房卡模式
+	ScoreBase     int32                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                            // 分数基数
+	GameCount     int32                  `protobuf:"varint,3,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 游戏局数
+	PlayerCount   int32                  `protobuf:"varint,4,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`                                                      // 玩家数量
+	Property      string                 `protobuf:"bytes,5,opt,name=property,proto3" json:"property,omitempty"`                                                                                // 游戏配置
+	Fdproperty    map[string]int32       `protobuf:"bytes,6,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -227,11 +228,18 @@ func (x *AddTableReq) GetPlayerCount() int32 {
 	return 0
 }
 
-func (x *AddTableReq) GetGameConfig() string {
+func (x *AddTableReq) GetProperty() string {
 	if x != nil {
-		return x.GameConfig
+		return x.Property
 	}
 	return ""
+}
+
+func (x *AddTableReq) GetFdproperty() map[string]int32 {
+	if x != nil {
+		return x.Fdproperty
+	}
+	return nil
 }
 
 type AddPlayerReq struct {
@@ -612,7 +620,7 @@ const file_match2game_proto_rawDesc = "" +
 	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
-	"\x03ack\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xae\x01\n" +
+	"\x03ack\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xad\x02\n" +
 	"\vAddTableReq\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\x05R\tmatchType\x12\x1d\n" +
@@ -620,9 +628,14 @@ const file_match2game_proto_rawDesc = "" +
 	"score_base\x18\x02 \x01(\x05R\tscoreBase\x12\x1d\n" +
 	"\n" +
 	"game_count\x18\x03 \x01(\x05R\tgameCount\x12!\n" +
-	"\fplayer_count\x18\x04 \x01(\x05R\vplayerCount\x12\x1f\n" +
-	"\vgame_config\x18\x05 \x01(\tR\n" +
-	"gameConfig\"\x8b\x01\n" +
+	"\fplayer_count\x18\x04 \x01(\x05R\vplayerCount\x12\x1a\n" +
+	"\bproperty\x18\x05 \x01(\tR\bproperty\x12C\n" +
+	"\n" +
+	"fdproperty\x18\x06 \x03(\v2#.sproto.AddTableReq.FdpropertyEntryR\n" +
+	"fdproperty\x1a=\n" +
+	"\x0fFdpropertyEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x8b\x01\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x12\n" +
 	"\x04seat\x18\x02 \x01(\x05R\x04seat\x12\x19\n" +
@@ -661,7 +674,7 @@ func file_match2game_proto_rawDescGZIP() []byte {
 	return file_match2game_proto_rawDescData
 }
 
-var file_match2game_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_match2game_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_match2game_proto_goTypes = []any{
 	(*Match2GameReq)(nil),  // 0: sproto.Match2GameReq
 	(*Match2GameAck)(nil),  // 1: sproto.Match2GameAck
@@ -673,17 +686,19 @@ var file_match2game_proto_goTypes = []any{
 	(*CancelTableAck)(nil), // 7: sproto.CancelTableAck
 	(*TableResultAck)(nil), // 8: sproto.TableResultAck
 	(*PlayerResult)(nil),   // 9: sproto.PlayerResult
-	(*anypb.Any)(nil),      // 10: google.protobuf.Any
+	nil,                    // 10: sproto.AddTableReq.FdpropertyEntry
+	(*anypb.Any)(nil),      // 11: google.protobuf.Any
 }
 var file_match2game_proto_depIdxs = []int32{
-	10, // 0: sproto.Match2GameReq.req:type_name -> google.protobuf.Any
-	10, // 1: sproto.Match2GameAck.ack:type_name -> google.protobuf.Any
-	9,  // 2: sproto.TableResultAck.playerids:type_name -> sproto.PlayerResult
-	3,  // [3:3] is the sub-list for method output_type
-	3,  // [3:3] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	11, // 0: sproto.Match2GameReq.req:type_name -> google.protobuf.Any
+	11, // 1: sproto.Match2GameAck.ack:type_name -> google.protobuf.Any
+	10, // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
+	9,  // 3: sproto.TableResultAck.playerids:type_name -> sproto.PlayerResult
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_match2game_proto_init() }
@@ -697,7 +712,7 @@ func file_match2game_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match2game_proto_rawDesc), len(file_match2game_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

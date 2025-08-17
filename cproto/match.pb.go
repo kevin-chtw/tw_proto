@@ -144,7 +144,9 @@ func (x *MatchAck) GetAck() *anypb.Any {
 
 type CreateRoomReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	GameCount     int32                  `protobuf:"varint,1,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"` // 局数
+	GameCount     int32                  `protobuf:"varint,1,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 局数
+	Desn          string                 `protobuf:"bytes,2,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        //配置描述
+	Properties    map[string]int32       `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 配置信息
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -186,17 +188,74 @@ func (x *CreateRoomReq) GetGameCount() int32 {
 	return 0
 }
 
+func (x *CreateRoomReq) GetDesn() string {
+	if x != nil {
+		return x.Desn
+	}
+	return ""
+}
+
+func (x *CreateRoomReq) GetProperties() map[string]int32 {
+	if x != nil {
+		return x.Properties
+	}
+	return nil
+}
+
+type CancelRoomReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancelRoomReq) Reset() {
+	*x = CancelRoomReq{}
+	mi := &file_match_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancelRoomReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelRoomReq) ProtoMessage() {}
+
+func (x *CancelRoomReq) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelRoomReq.ProtoReflect.Descriptor instead.
+func (*CancelRoomReq) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CancelRoomReq) GetTableid() int32 {
+	if x != nil {
+		return x.Tableid
+	}
+	return 0
+}
+
 type JoinRoomReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Gameid        int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"`   // 游戏ID
-	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *JoinRoomReq) Reset() {
 	*x = JoinRoomReq{}
-	mi := &file_match_proto_msgTypes[3]
+	mi := &file_match_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -208,7 +267,7 @@ func (x *JoinRoomReq) String() string {
 func (*JoinRoomReq) ProtoMessage() {}
 
 func (x *JoinRoomReq) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[3]
+	mi := &file_match_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -221,14 +280,7 @@ func (x *JoinRoomReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JoinRoomReq.ProtoReflect.Descriptor instead.
 func (*JoinRoomReq) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *JoinRoomReq) GetGameid() int32 {
-	if x != nil {
-		return x.Gameid
-	}
-	return 0
+	return file_match_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *JoinRoomReq) GetTableid() int32 {
@@ -240,15 +292,16 @@ func (x *JoinRoomReq) GetTableid() int32 {
 
 type CreateRoomAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ErrorCode     int32                  `protobuf:"varint,1,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: 成功, 1: 房间已存在, 2: 房间已满
-	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`                      // 桌号
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`                                                                                 // 桌号
+	Desn          string                 `protobuf:"bytes,2,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        //配置描述
+	Properties    map[string]int32       `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 配置信息
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateRoomAck) Reset() {
 	*x = CreateRoomAck{}
-	mi := &file_match_proto_msgTypes[4]
+	mi := &file_match_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -260,7 +313,7 @@ func (x *CreateRoomAck) String() string {
 func (*CreateRoomAck) ProtoMessage() {}
 
 func (x *CreateRoomAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[4]
+	mi := &file_match_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -273,14 +326,7 @@ func (x *CreateRoomAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRoomAck.ProtoReflect.Descriptor instead.
 func (*CreateRoomAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *CreateRoomAck) GetErrorCode() int32 {
-	if x != nil {
-		return x.ErrorCode
-	}
-	return 0
+	return file_match_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateRoomAck) GetTableid() int32 {
@@ -290,17 +336,76 @@ func (x *CreateRoomAck) GetTableid() int32 {
 	return 0
 }
 
+func (x *CreateRoomAck) GetDesn() string {
+	if x != nil {
+		return x.Desn
+	}
+	return ""
+}
+
+func (x *CreateRoomAck) GetProperties() map[string]int32 {
+	if x != nil {
+		return x.Properties
+	}
+	return nil
+}
+
+type CancelRoomAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancelRoomAck) Reset() {
+	*x = CancelRoomAck{}
+	mi := &file_match_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancelRoomAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelRoomAck) ProtoMessage() {}
+
+func (x *CancelRoomAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelRoomAck.ProtoReflect.Descriptor instead.
+func (*CancelRoomAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CancelRoomAck) GetTableid() int32 {
+	if x != nil {
+		return x.Tableid
+	}
+	return 0
+}
+
 type JoinRoomAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ErrorCode     int32                  `protobuf:"varint,3,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: 成功, 1: 房间不存在, 2: 密码错误, 3: 房间已满
-	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`                      // 桌号
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`                                                                                 // 桌号
+	Desn          string                 `protobuf:"bytes,2,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        //配置描述
+	Properties    map[string]int32       `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 配置信息
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *JoinRoomAck) Reset() {
 	*x = JoinRoomAck{}
-	mi := &file_match_proto_msgTypes[5]
+	mi := &file_match_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -312,7 +417,7 @@ func (x *JoinRoomAck) String() string {
 func (*JoinRoomAck) ProtoMessage() {}
 
 func (x *JoinRoomAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[5]
+	mi := &file_match_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -325,14 +430,7 @@ func (x *JoinRoomAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JoinRoomAck.ProtoReflect.Descriptor instead.
 func (*JoinRoomAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *JoinRoomAck) GetErrorCode() int32 {
-	if x != nil {
-		return x.ErrorCode
-	}
-	return 0
+	return file_match_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *JoinRoomAck) GetTableid() int32 {
@@ -340,6 +438,20 @@ func (x *JoinRoomAck) GetTableid() int32 {
 		return x.Tableid
 	}
 	return 0
+}
+
+func (x *JoinRoomAck) GetDesn() string {
+	if x != nil {
+		return x.Desn
+	}
+	return ""
+}
+
+func (x *JoinRoomAck) GetProperties() map[string]int32 {
+	if x != nil {
+		return x.Properties
+	}
+	return nil
 }
 
 var File_match_proto protoreflect.FileDescriptor
@@ -354,21 +466,41 @@ const file_match_proto_rawDesc = "" +
 	"\bMatchAck\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12&\n" +
-	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\".\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xc8\x01\n" +
 	"\rCreateRoomReq\x12\x1d\n" +
 	"\n" +
-	"game_count\x18\x01 \x01(\x05R\tgameCount\"?\n" +
-	"\vJoinRoomReq\x12\x16\n" +
-	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x18\n" +
-	"\atableid\x18\x02 \x01(\x05R\atableid\"H\n" +
-	"\rCreateRoomAck\x12\x1d\n" +
+	"game_count\x18\x01 \x01(\x05R\tgameCount\x12\x12\n" +
+	"\x04desn\x18\x02 \x01(\tR\x04desn\x12E\n" +
 	"\n" +
-	"error_code\x18\x01 \x01(\x05R\terrorCode\x12\x18\n" +
-	"\atableid\x18\x02 \x01(\x05R\atableid\"F\n" +
-	"\vJoinRoomAck\x12\x1d\n" +
+	"properties\x18\x03 \x03(\v2%.cproto.CreateRoomReq.PropertiesEntryR\n" +
+	"properties\x1a=\n" +
+	"\x0fPropertiesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\")\n" +
+	"\rCancelRoomReq\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\"'\n" +
+	"\vJoinRoomReq\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\"\xc3\x01\n" +
+	"\rCreateRoomAck\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x12\n" +
+	"\x04desn\x18\x02 \x01(\tR\x04desn\x12E\n" +
 	"\n" +
-	"error_code\x18\x03 \x01(\x05R\terrorCode\x12\x18\n" +
-	"\atableid\x18\x02 \x01(\x05R\atableidB\vZ\t../cprotob\x06proto3"
+	"properties\x18\x03 \x03(\v2%.cproto.CreateRoomAck.PropertiesEntryR\n" +
+	"properties\x1a=\n" +
+	"\x0fPropertiesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\")\n" +
+	"\rCancelRoomAck\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\"\xbf\x01\n" +
+	"\vJoinRoomAck\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x12\n" +
+	"\x04desn\x18\x02 \x01(\tR\x04desn\x12C\n" +
+	"\n" +
+	"properties\x18\x03 \x03(\v2#.cproto.JoinRoomAck.PropertiesEntryR\n" +
+	"properties\x1a=\n" +
+	"\x0fPropertiesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
 var (
 	file_match_proto_rawDescOnce sync.Once
@@ -382,24 +514,32 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_match_proto_goTypes = []any{
 	(*MatchReq)(nil),      // 0: cproto.MatchReq
 	(*MatchAck)(nil),      // 1: cproto.MatchAck
 	(*CreateRoomReq)(nil), // 2: cproto.CreateRoomReq
-	(*JoinRoomReq)(nil),   // 3: cproto.JoinRoomReq
-	(*CreateRoomAck)(nil), // 4: cproto.CreateRoomAck
-	(*JoinRoomAck)(nil),   // 5: cproto.JoinRoomAck
-	(*anypb.Any)(nil),     // 6: google.protobuf.Any
+	(*CancelRoomReq)(nil), // 3: cproto.CancelRoomReq
+	(*JoinRoomReq)(nil),   // 4: cproto.JoinRoomReq
+	(*CreateRoomAck)(nil), // 5: cproto.CreateRoomAck
+	(*CancelRoomAck)(nil), // 6: cproto.CancelRoomAck
+	(*JoinRoomAck)(nil),   // 7: cproto.JoinRoomAck
+	nil,                   // 8: cproto.CreateRoomReq.PropertiesEntry
+	nil,                   // 9: cproto.CreateRoomAck.PropertiesEntry
+	nil,                   // 10: cproto.JoinRoomAck.PropertiesEntry
+	(*anypb.Any)(nil),     // 11: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	6, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	6, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	11, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	11, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	8,  // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
+	9,  // 3: cproto.CreateRoomAck.properties:type_name -> cproto.CreateRoomAck.PropertiesEntry
+	10, // 4: cproto.JoinRoomAck.properties:type_name -> cproto.JoinRoomAck.PropertiesEntry
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
@@ -413,7 +553,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

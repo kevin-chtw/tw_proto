@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+package haebpb;
+option go_package = "../haebpb";
+
+message HAEBReq {
+  HAEBRequestReq haeb_request_req = 1;
+  HAEBTrustReq haeb_trust_req = 2;
+  HAEBAnimationReq haeb_animation_req = 3;  
+}
+
+message HAEBAck {
+  HAEBGameStartAck haeb_game_start_ack = 1;
+  HAEBOpenDoorAck haeb_open_door_ack = 2;
+  HAEBRequestAck haeb_request_ack = 3;
+  HAEBPonAck haeb_pon_ack = 4;
+  HAEBKonAck haeb_kon_ack = 5;
+  HAEBHuAck haeb_hu_ack = 6;
+  HAEBDrawAck haeb_draw_ack = 7;
+  HAEBDiscardAck haeb_discard_ack = 8;
+  HAEBScoreChangeAck haeb_score_change_ack = 9;
+  HAEBResultAck haeb_result_ack = 10;
+  HAEBTrustAck haeb_trust_ack = 11;
+  HAEBAnimationAck haeb_animation_ack = 12;
+}
+
+message HAEBRequestReq {
+  int32 seat = 1; //座位号
+  int32 request_type = 2; // 动作类型
+  int32 requestid = 3; // 请求ID
+  int32 tile = 4; // 牌
+}
+
+message HAEBTrustReq {
+  int32 seat = 1; //座位号
+  bool trust = 2; // 是否托管
+}
+
+message HAEBAnimationReq {
+  int32 seat = 1; //座位号
+  int32 requestid = 2; // 请求ID
+}
+
+message HAEBGameStartAck {
+  int32 banker = 1; //庄家
+  int32 tile_count = 2; //牌库总张数
+  repeated int64 scores = 3;//带入分
+}
+
+message HAEBOpenDoorAck {
+  int32 seat = 1; //座位号
+  repeated int32 tiles = 2; // 手牌列表
+}
+
+message HAEBRequestAck {
+  int32 seat = 1; // //座位号
+  int32 request_type = 2; // 动作类型
+  int32 requestid = 3; // 请求ID
+}
+
+message HAEBPonAck {
+  int32 seat = 1; //座位号
+  int32 from = 2;//出牌座位号
+  int32 tile = 3; //碰的牌列表
+}
+
+message HAEBKonAck {
+  int32 seat = 1; //座位号
+  int32 from = 2;//出牌座位号
+  int32 tile = 3; //碰的牌列表
+  int32 kon_type = 4; //杠牌的类型(0:明杠 1： 暗杠 2：补杠)
+}
+
+message HAEBHuAck {
+  int32 pao_seat = 1; //点炮玩家
+  int32 tile = 2; //胡的牌
+  repeated HAEBHuData hu_data = 3; // 胡的类型
+}
+
+message HAEBHuData {
+  int32 seat = 1; //座位号
+  repeated int32 hu_types = 2; // 胡的类型
+}
+
+message HAEBDrawAck {
+  int32 seat = 1;//座位号
+  int32 tile = 2; //胡的牌
+  int32 draw_type = 3; //0-空，1-普通，2-杠后
+}
+
+message HAEBDiscardAck {
+  int32 seat = 1; //座位号
+  int32 tile = 2; // 丢弃的牌
+}
+
+message HAEBScoreChangeAck {
+  repeated int32 scores = 1; //得分列表
+}
+
+message HAEBTrustAck {
+  int32 seat = 1; // 玩家ID
+  bool trust = 2; // 是否托管
+}
+
+message HAEBAnimationAck {
+  int32 requestid = 1; 
+}   
+
+message HAEBResultAck {
+  repeated HAEBPlayerResult player_results = 2; // 玩家结果列表
+}   
+
+message HAEBPlayerResult {
+  int32 seat = 1; // 玩家ID
+  int32 score = 2; // 玩家得分
+  repeated int32 tiles = 3; // 玩家手牌
+}
