@@ -21,11 +21,12 @@ message Match2GameAck {
 
 message AddTableReq {  
   int32 match_type = 1; // 0: 普通匹配, 1: 房卡模式
-  int32 score_base = 2; // 分数基数
+  int64 score_base = 2; // 分数基数
   int32 game_count = 3; // 游戏局数
   int32 player_count = 4; // 玩家数量
   string property = 5; // 游戏配置
-  map<string,int32> fdproperty = 6; // 好友房自选配置
+  string creator = 6; // 创建者
+  map<string,int32> fdproperty = 7; // 好友房自选配置
 }
 
 message AddPlayerReq {
@@ -38,22 +39,11 @@ message AddPlayerReq {
 
 message CancelTableReq {
   int32 reason = 1; // 取消原因
-}
+} 
 
-message AddTableAck {    
-  int32 error_code = 1; // 0: 成功, 1: 桌号不存在, 2: 玩家已在桌上
-}
+message EmptyAck {}
 
-message AddPlayerAck{
-  int32 error_code = 1; // 0: 成功, 1: 桌号不存在, 2: 玩家已在桌上
-}
-
-message CancelTableAck {
-  int32 error_code = 1; // 0: 成功, 1: 桌号不存在
-}   
-
-message TableResultAck {     
-  int32 error_code = 1; // 0: 成功, 1: 桌号不存在, 2: 其他错误
+message TableResultAck {
   repeated PlayerResult playerids = 2; // 玩家ID列表
 }
 
@@ -62,3 +52,4 @@ message PlayerResult {
   int32 score = 2; // 玩家得分
   int32 rank = 3; // 玩家排名
 }
+
