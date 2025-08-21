@@ -438,6 +438,80 @@ func (*TableEndAck) Descriptor() ([]byte, []int) {
 	return file_game_proto_rawDescGZIP(), []int{7}
 }
 
+// 历史消息开始
+type HisBeginAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HisBeginAck) Reset() {
+	*x = HisBeginAck{}
+	mi := &file_game_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HisBeginAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HisBeginAck) ProtoMessage() {}
+
+func (x *HisBeginAck) ProtoReflect() protoreflect.Message {
+	mi := &file_game_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HisBeginAck.ProtoReflect.Descriptor instead.
+func (*HisBeginAck) Descriptor() ([]byte, []int) {
+	return file_game_proto_rawDescGZIP(), []int{8}
+}
+
+// 历史消息结束
+type HisEndAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HisEndAck) Reset() {
+	*x = HisEndAck{}
+	mi := &file_game_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HisEndAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HisEndAck) ProtoMessage() {}
+
+func (x *HisEndAck) ProtoReflect() protoreflect.Message {
+	mi := &file_game_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HisEndAck.ProtoReflect.Descriptor instead.
+func (*HisEndAck) Descriptor() ([]byte, []int) {
+	return file_game_proto_rawDescGZIP(), []int{9}
+}
+
 var File_game_proto protoreflect.FileDescriptor
 
 const file_game_proto_rawDesc = "" +
@@ -469,7 +543,9 @@ const file_game_proto_rawDesc = "" +
 	"\aseatnum\x18\x02 \x01(\x05R\aseatnum\"\x1f\n" +
 	"\vTableMsgAck\x12\x10\n" +
 	"\x03msg\x18\x01 \x01(\fR\x03msg\"\r\n" +
-	"\vTableEndAckB\vZ\t../cprotob\x06proto3"
+	"\vTableEndAck\"\r\n" +
+	"\vHisBeginAck\"\v\n" +
+	"\tHisEndAckB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_game_proto_rawDescOnce sync.Once
@@ -483,7 +559,7 @@ func file_game_proto_rawDescGZIP() []byte {
 	return file_game_proto_rawDescData
 }
 
-var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_game_proto_goTypes = []any{
 	(*GameReq)(nil),        // 0: cproto.GameReq
 	(*GameAck)(nil),        // 1: cproto.GameAck
@@ -493,16 +569,18 @@ var file_game_proto_goTypes = []any{
 	(*TablePlayerAck)(nil), // 5: cproto.TablePlayerAck
 	(*TableMsgAck)(nil),    // 6: cproto.TableMsgAck
 	(*TableEndAck)(nil),    // 7: cproto.TableEndAck
-	(*anypb.Any)(nil),      // 8: google.protobuf.Any
+	(*HisBeginAck)(nil),    // 8: cproto.HisBeginAck
+	(*HisEndAck)(nil),      // 9: cproto.HisEndAck
+	(*anypb.Any)(nil),      // 10: google.protobuf.Any
 }
 var file_game_proto_depIdxs = []int32{
-	8, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
-	8, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	10, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
+	10, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
+	2,  // [2:2] is the sub-list for method output_type
+	2,  // [2:2] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_game_proto_init() }
@@ -516,7 +594,7 @@ func file_game_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_proto_rawDesc), len(file_game_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

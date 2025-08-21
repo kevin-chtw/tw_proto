@@ -44,3 +44,11 @@ message TableMsgAck {
 
 message TableEndAck {
 }
+
+// 历史消息开始
+message HisBeginAck {
+}
+
+// 历史消息结束
+message HisEndAck {
+}

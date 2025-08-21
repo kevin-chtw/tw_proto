@@ -160,7 +160,7 @@ func (x *Match2GameAck) GetAck() *anypb.Any {
 
 type AddTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MatchType     int32                  `protobuf:"varint,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`                                                            // 0: 普通匹配, 1: 房卡模式
+	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`                                                             // 比赛服务类型
 	ScoreBase     int64                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                            // 分数基数
 	GameCount     int32                  `protobuf:"varint,3,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 游戏局数
 	PlayerCount   int32                  `protobuf:"varint,4,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`                                                      // 玩家数量
@@ -201,11 +201,11 @@ func (*AddTableReq) Descriptor() ([]byte, []int) {
 	return file_match2game_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *AddTableReq) GetMatchType() int32 {
+func (x *AddTableReq) GetMatchType() string {
 	if x != nil {
 		return x.MatchType
 	}
-	return 0
+	return ""
 }
 
 func (x *AddTableReq) GetScoreBase() int64 {
@@ -454,7 +454,6 @@ type PlayerResult struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
 	Score         int32                  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`      // 玩家得分
-	Rank          int32                  `protobuf:"varint,3,opt,name=rank,proto3" json:"rank,omitempty"`        // 玩家排名
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -503,13 +502,6 @@ func (x *PlayerResult) GetScore() int32 {
 	return 0
 }
 
-func (x *PlayerResult) GetRank() int32 {
-	if x != nil {
-		return x.Rank
-	}
-	return 0
-}
-
 var File_match2game_proto protoreflect.FileDescriptor
 
 const file_match2game_proto_rawDesc = "" +
@@ -527,7 +519,7 @@ const file_match2game_proto_rawDesc = "" +
 	"\x03ack\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xc7\x02\n" +
 	"\vAddTableReq\x12\x1d\n" +
 	"\n" +
-	"match_type\x18\x01 \x01(\x05R\tmatchType\x12\x1d\n" +
+	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1d\n" +
 	"\n" +
 	"score_base\x18\x02 \x01(\x03R\tscoreBase\x12\x1d\n" +
 	"\n" +
@@ -552,11 +544,10 @@ const file_match2game_proto_rawDesc = "" +
 	"\n" +
 	"\bEmptyAck\"D\n" +
 	"\x0eTableResultAck\x122\n" +
-	"\tplayerids\x18\x02 \x03(\v2\x14.sproto.PlayerResultR\tplayerids\"T\n" +
+	"\tplayerids\x18\x02 \x03(\v2\x14.sproto.PlayerResultR\tplayerids\"@\n" +
 	"\fPlayerResult\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x14\n" +
-	"\x05score\x18\x02 \x01(\x05R\x05score\x12\x12\n" +
-	"\x04rank\x18\x03 \x01(\x05R\x04rankB\vZ\t../sprotob\x06proto3"
+	"\x05score\x18\x02 \x01(\x05R\x05scoreB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_match2game_proto_rawDescOnce sync.Once

@@ -20,7 +20,7 @@ message Match2GameAck {
 }
 
 message AddTableReq {  
-  int32 match_type = 1; // 0: 普通匹配, 1: 房卡模式
+  string match_type = 1; // 比赛服务类型
   int64 score_base = 2; // 分数基数
   int32 game_count = 3; // 游戏局数
   int32 player_count = 4; // 玩家数量
@@ -50,6 +50,5 @@ message TableResultAck {
 message PlayerResult {
   string playerid = 1; // 玩家ID
   int32 score = 2; // 玩家得分
-  int32 rank = 3; // 玩家排名
 }
 
