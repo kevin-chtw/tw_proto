@@ -25,10 +25,9 @@ const (
 type GameReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Serverid      string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
-	Gameid        int32                  `protobuf:"varint,2,opt,name=gameid,proto3" json:"gameid,omitempty"`   // 游戏ID
-	Matchid       int32                  `protobuf:"varint,3,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
-	Tableid       int32                  `protobuf:"varint,4,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
-	Req           *anypb.Any             `protobuf:"bytes,5,opt,name=req,proto3" json:"req,omitempty"`
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
+	Tableid       int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
+	Req           *anypb.Any             `protobuf:"bytes,4,opt,name=req,proto3" json:"req,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -70,13 +69,6 @@ func (x *GameReq) GetServerid() string {
 	return ""
 }
 
-func (x *GameReq) GetGameid() int32 {
-	if x != nil {
-		return x.Gameid
-	}
-	return 0
-}
-
 func (x *GameReq) GetMatchid() int32 {
 	if x != nil {
 		return x.Matchid
@@ -101,10 +93,9 @@ func (x *GameReq) GetReq() *anypb.Any {
 type GameAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Serverid      string                 `protobuf:"bytes,1,opt,name=serverid,proto3" json:"serverid,omitempty"`
-	Gameid        int32                  `protobuf:"varint,2,opt,name=gameid,proto3" json:"gameid,omitempty"`   // 游戏ID
-	Matchid       int32                  `protobuf:"varint,3,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
-	Tableid       int32                  `protobuf:"varint,4,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
-	Ack           *anypb.Any             `protobuf:"bytes,5,opt,name=ack,proto3" json:"ack,omitempty"`
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
+	Tableid       int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
+	Ack           *anypb.Any             `protobuf:"bytes,4,opt,name=ack,proto3" json:"ack,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -144,13 +135,6 @@ func (x *GameAck) GetServerid() string {
 		return x.Serverid
 	}
 	return ""
-}
-
-func (x *GameAck) GetGameid() int32 {
-	if x != nil {
-		return x.Gameid
-	}
-	return 0
 }
 
 func (x *GameAck) GetMatchid() int32 {
@@ -210,113 +194,17 @@ func (*EnterGameReq) Descriptor() ([]byte, []int) {
 	return file_game_proto_rawDescGZIP(), []int{2}
 }
 
-type TableMsgReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Msg           []byte                 `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty"` // 消息内容
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TableMsgReq) Reset() {
-	*x = TableMsgReq{}
-	mi := &file_game_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TableMsgReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TableMsgReq) ProtoMessage() {}
-
-func (x *TableMsgReq) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TableMsgReq.ProtoReflect.Descriptor instead.
-func (*TableMsgReq) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *TableMsgReq) GetMsg() []byte {
-	if x != nil {
-		return x.Msg
-	}
-	return nil
-}
-
-type EnterGameAck struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ErrorCode     int32                  `protobuf:"varint,1,opt,name=error_code,json=errorCode,proto3" json:"error_code,omitempty"` // 0: 成功, 1: 桌号不存在, 2: 玩家已在桌上
-	TableInfo     []byte                 `protobuf:"bytes,2,opt,name=table_info,json=tableInfo,proto3" json:"table_info,omitempty"`  // 桌子信息
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnterGameAck) Reset() {
-	*x = EnterGameAck{}
-	mi := &file_game_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnterGameAck) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnterGameAck) ProtoMessage() {}
-
-func (x *EnterGameAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnterGameAck.ProtoReflect.Descriptor instead.
-func (*EnterGameAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *EnterGameAck) GetErrorCode() int32 {
-	if x != nil {
-		return x.ErrorCode
-	}
-	return 0
-}
-
-func (x *EnterGameAck) GetTableInfo() []byte {
-	if x != nil {
-		return x.TableInfo
-	}
-	return nil
-}
-
 type TablePlayerAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
-	Seatnum       int32                  `protobuf:"varint,2,opt,name=seatnum,proto3" json:"seatnum,omitempty"`  // 座位号
+	Seat          int32                  `protobuf:"varint,2,opt,name=seat,proto3" json:"seat,omitempty"`        // 座位号
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *TablePlayerAck) Reset() {
 	*x = TablePlayerAck{}
-	mi := &file_game_proto_msgTypes[5]
+	mi := &file_game_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -328,7 +216,7 @@ func (x *TablePlayerAck) String() string {
 func (*TablePlayerAck) ProtoMessage() {}
 
 func (x *TablePlayerAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[5]
+	mi := &file_game_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -341,7 +229,7 @@ func (x *TablePlayerAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TablePlayerAck.ProtoReflect.Descriptor instead.
 func (*TablePlayerAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{5}
+	return file_game_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *TablePlayerAck) GetPlayerid() string {
@@ -351,11 +239,55 @@ func (x *TablePlayerAck) GetPlayerid() string {
 	return ""
 }
 
-func (x *TablePlayerAck) GetSeatnum() int32 {
+func (x *TablePlayerAck) GetSeat() int32 {
 	if x != nil {
-		return x.Seatnum
+		return x.Seat
 	}
 	return 0
+}
+
+type TableMsgReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Msg           []byte                 `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty"` // 消息内容
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TableMsgReq) Reset() {
+	*x = TableMsgReq{}
+	mi := &file_game_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TableMsgReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TableMsgReq) ProtoMessage() {}
+
+func (x *TableMsgReq) ProtoReflect() protoreflect.Message {
+	mi := &file_game_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TableMsgReq.ProtoReflect.Descriptor instead.
+func (*TableMsgReq) Descriptor() ([]byte, []int) {
+	return file_game_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *TableMsgReq) GetMsg() []byte {
+	if x != nil {
+		return x.Msg
+	}
+	return nil
 }
 
 type TableMsgAck struct {
@@ -367,7 +299,7 @@ type TableMsgAck struct {
 
 func (x *TableMsgAck) Reset() {
 	*x = TableMsgAck{}
-	mi := &file_game_proto_msgTypes[6]
+	mi := &file_game_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -379,7 +311,7 @@ func (x *TableMsgAck) String() string {
 func (*TableMsgAck) ProtoMessage() {}
 
 func (x *TableMsgAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[6]
+	mi := &file_game_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -392,7 +324,7 @@ func (x *TableMsgAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TableMsgAck.ProtoReflect.Descriptor instead.
 func (*TableMsgAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{6}
+	return file_game_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *TableMsgAck) GetMsg() []byte {
@@ -402,26 +334,73 @@ func (x *TableMsgAck) GetMsg() []byte {
 	return nil
 }
 
-type TableEndAck struct {
+// 单局游戏开始
+type GameBeginAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	CurGameCount  int32                  `protobuf:"varint,1,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TableEndAck) Reset() {
-	*x = TableEndAck{}
+func (x *GameBeginAck) Reset() {
+	*x = GameBeginAck{}
+	mi := &file_game_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GameBeginAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GameBeginAck) ProtoMessage() {}
+
+func (x *GameBeginAck) ProtoReflect() protoreflect.Message {
+	mi := &file_game_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GameBeginAck.ProtoReflect.Descriptor instead.
+func (*GameBeginAck) Descriptor() ([]byte, []int) {
+	return file_game_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GameBeginAck) GetCurGameCount() int32 {
+	if x != nil {
+		return x.CurGameCount
+	}
+	return 0
+}
+
+// 一轮游戏结束
+type GameOverAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CurGameCount  int32                  `protobuf:"varint,1,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GameOverAck) Reset() {
+	*x = GameOverAck{}
 	mi := &file_game_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TableEndAck) String() string {
+func (x *GameOverAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TableEndAck) ProtoMessage() {}
+func (*GameOverAck) ProtoMessage() {}
 
-func (x *TableEndAck) ProtoReflect() protoreflect.Message {
+func (x *GameOverAck) ProtoReflect() protoreflect.Message {
 	mi := &file_game_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -433,9 +412,16 @@ func (x *TableEndAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TableEndAck.ProtoReflect.Descriptor instead.
-func (*TableEndAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use GameOverAck.ProtoReflect.Descriptor instead.
+func (*GameOverAck) Descriptor() ([]byte, []int) {
 	return file_game_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GameOverAck) GetCurGameCount() int32 {
+	if x != nil {
+		return x.CurGameCount
+	}
+	return 0
 }
 
 // 历史消息开始
@@ -517,33 +503,29 @@ var File_game_proto protoreflect.FileDescriptor
 const file_game_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"game.proto\x12\x06cproto\x1a\x19google/protobuf/any.proto\"\x99\x01\n" +
+	"game.proto\x12\x06cproto\x1a\x19google/protobuf/any.proto\"\x81\x01\n" +
 	"\aGameReq\x12\x1a\n" +
-	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x16\n" +
-	"\x06gameid\x18\x02 \x01(\x05R\x06gameid\x12\x18\n" +
-	"\amatchid\x18\x03 \x01(\x05R\amatchid\x12\x18\n" +
-	"\atableid\x18\x04 \x01(\x05R\atableid\x12&\n" +
-	"\x03req\x18\x05 \x01(\v2\x14.google.protobuf.AnyR\x03req\"\x99\x01\n" +
+	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
+	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
+	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
+	"\x03req\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03req\"\x81\x01\n" +
 	"\aGameAck\x12\x1a\n" +
-	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x16\n" +
-	"\x06gameid\x18\x02 \x01(\x05R\x06gameid\x12\x18\n" +
-	"\amatchid\x18\x03 \x01(\x05R\amatchid\x12\x18\n" +
-	"\atableid\x18\x04 \x01(\x05R\atableid\x12&\n" +
-	"\x03ack\x18\x05 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x0e\n" +
-	"\fEnterGameReq\"\x1f\n" +
-	"\vTableMsgReq\x12\x10\n" +
-	"\x03msg\x18\x01 \x01(\fR\x03msg\"L\n" +
-	"\fEnterGameAck\x12\x1d\n" +
-	"\n" +
-	"error_code\x18\x01 \x01(\x05R\terrorCode\x12\x1d\n" +
-	"\n" +
-	"table_info\x18\x02 \x01(\fR\ttableInfo\"F\n" +
+	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
+	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
+	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
+	"\x03ack\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x0e\n" +
+	"\fEnterGameReq\"@\n" +
 	"\x0eTablePlayerAck\x12\x1a\n" +
-	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x18\n" +
-	"\aseatnum\x18\x02 \x01(\x05R\aseatnum\"\x1f\n" +
+	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x12\n" +
+	"\x04seat\x18\x02 \x01(\x05R\x04seat\"\x1f\n" +
+	"\vTableMsgReq\x12\x10\n" +
+	"\x03msg\x18\x01 \x01(\fR\x03msg\"\x1f\n" +
 	"\vTableMsgAck\x12\x10\n" +
-	"\x03msg\x18\x01 \x01(\fR\x03msg\"\r\n" +
-	"\vTableEndAck\"\r\n" +
+	"\x03msg\x18\x01 \x01(\fR\x03msg\"4\n" +
+	"\fGameBeginAck\x12$\n" +
+	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\"3\n" +
+	"\vGameOverAck\x12$\n" +
+	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\"\r\n" +
 	"\vHisBeginAck\"\v\n" +
 	"\tHisEndAckB\vZ\t../cprotob\x06proto3"
 
@@ -564,11 +546,11 @@ var file_game_proto_goTypes = []any{
 	(*GameReq)(nil),        // 0: cproto.GameReq
 	(*GameAck)(nil),        // 1: cproto.GameAck
 	(*EnterGameReq)(nil),   // 2: cproto.EnterGameReq
-	(*TableMsgReq)(nil),    // 3: cproto.TableMsgReq
-	(*EnterGameAck)(nil),   // 4: cproto.EnterGameAck
-	(*TablePlayerAck)(nil), // 5: cproto.TablePlayerAck
-	(*TableMsgAck)(nil),    // 6: cproto.TableMsgAck
-	(*TableEndAck)(nil),    // 7: cproto.TableEndAck
+	(*TablePlayerAck)(nil), // 3: cproto.TablePlayerAck
+	(*TableMsgReq)(nil),    // 4: cproto.TableMsgReq
+	(*TableMsgAck)(nil),    // 5: cproto.TableMsgAck
+	(*GameBeginAck)(nil),   // 6: cproto.GameBeginAck
+	(*GameOverAck)(nil),    // 7: cproto.GameOverAck
 	(*HisBeginAck)(nil),    // 8: cproto.HisBeginAck
 	(*HisEndAck)(nil),      // 9: cproto.HisEndAck
 	(*anypb.Any)(nil),      // 10: google.protobuf.Any

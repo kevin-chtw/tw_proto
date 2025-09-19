@@ -6,17 +6,15 @@ package sproto;
 option go_package = "../sproto";
 
 message Match2GameReq {
-  int32 gameid = 1; // 游戏ID
-  int32 matchid = 2;
-  int32 tableid = 3;
-  google.protobuf.Any req = 4; // 请求内容
+  int32 matchid = 1;
+  int32 tableid = 2;
+  google.protobuf.Any req = 3; // 请求内容
 }
 
 message Match2GameAck {
-  int32 gameid = 1; // 游戏ID
-  int32 matchid = 2;
-  int32 tableid = 3;
-  google.protobuf.Any ack = 4; // 响应内容
+  int32 matchid = 1;
+  int32 tableid = 2;
+  google.protobuf.Any ack = 3; // 响应内容
 }
 
 message AddTableReq {  
@@ -45,11 +43,14 @@ message EmptyAck {}
 
 message GameResultAck {
   int32 cur_game_count = 1; // 当前游戏局数
-  bool is_over = 2; // 是否结束
-  repeated PlayerResult players = 3; // 玩家ID列表
+  repeated PlayerResult players = 2; // 玩家ID列表
 }
 
 message PlayerResult {
   string playerid = 1; // 玩家ID
   int64 score = 2; // 玩家得分
+}
+
+message GameOverAck {
+  int32 cur_game_count = 1; // 当前游戏局数
 }

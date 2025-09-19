@@ -24,10 +24,9 @@ const (
 
 type Match2GameReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Gameid        int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"` // 游戏ID
-	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
-	Tableid       int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	Req           *anypb.Any             `protobuf:"bytes,4,opt,name=req,proto3" json:"req,omitempty"` // 请求内容
+	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Req           *anypb.Any             `protobuf:"bytes,3,opt,name=req,proto3" json:"req,omitempty"` // 请求内容
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,13 +61,6 @@ func (*Match2GameReq) Descriptor() ([]byte, []int) {
 	return file_match2game_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Match2GameReq) GetGameid() int32 {
-	if x != nil {
-		return x.Gameid
-	}
-	return 0
-}
-
 func (x *Match2GameReq) GetMatchid() int32 {
 	if x != nil {
 		return x.Matchid
@@ -92,10 +84,9 @@ func (x *Match2GameReq) GetReq() *anypb.Any {
 
 type Match2GameAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Gameid        int32                  `protobuf:"varint,1,opt,name=gameid,proto3" json:"gameid,omitempty"` // 游戏ID
-	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
-	Tableid       int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	Ack           *anypb.Any             `protobuf:"bytes,4,opt,name=ack,proto3" json:"ack,omitempty"` // 响应内容
+	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Ack           *anypb.Any             `protobuf:"bytes,3,opt,name=ack,proto3" json:"ack,omitempty"` // 响应内容
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -128,13 +119,6 @@ func (x *Match2GameAck) ProtoReflect() protoreflect.Message {
 // Deprecated: Use Match2GameAck.ProtoReflect.Descriptor instead.
 func (*Match2GameAck) Descriptor() ([]byte, []int) {
 	return file_match2game_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *Match2GameAck) GetGameid() int32 {
-	if x != nil {
-		return x.Gameid
-	}
-	return 0
 }
 
 func (x *Match2GameAck) GetMatchid() int32 {
@@ -409,8 +393,7 @@ func (*EmptyAck) Descriptor() ([]byte, []int) {
 type GameResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CurGameCount  int32                  `protobuf:"varint,1,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
-	IsOver        bool                   `protobuf:"varint,2,opt,name=is_over,json=isOver,proto3" json:"is_over,omitempty"`                     // 是否结束
-	Players       []*PlayerResult        `protobuf:"bytes,3,rep,name=players,proto3" json:"players,omitempty"`                                  // 玩家ID列表
+	Players       []*PlayerResult        `protobuf:"bytes,2,rep,name=players,proto3" json:"players,omitempty"`                                  // 玩家ID列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -450,13 +433,6 @@ func (x *GameResultAck) GetCurGameCount() int32 {
 		return x.CurGameCount
 	}
 	return 0
-}
-
-func (x *GameResultAck) GetIsOver() bool {
-	if x != nil {
-		return x.IsOver
-	}
-	return false
 }
 
 func (x *GameResultAck) GetPlayers() []*PlayerResult {
@@ -518,21 +494,63 @@ func (x *PlayerResult) GetScore() int64 {
 	return 0
 }
 
+type GameOverAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CurGameCount  int32                  `protobuf:"varint,1,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GameOverAck) Reset() {
+	*x = GameOverAck{}
+	mi := &file_match2game_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GameOverAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GameOverAck) ProtoMessage() {}
+
+func (x *GameOverAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match2game_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GameOverAck.ProtoReflect.Descriptor instead.
+func (*GameOverAck) Descriptor() ([]byte, []int) {
+	return file_match2game_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GameOverAck) GetCurGameCount() int32 {
+	if x != nil {
+		return x.CurGameCount
+	}
+	return 0
+}
+
 var File_match2game_proto protoreflect.FileDescriptor
 
 const file_match2game_proto_rawDesc = "" +
 	"\n" +
-	"\x10match2game.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"\x83\x01\n" +
-	"\rMatch2GameReq\x12\x16\n" +
-	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x18\n" +
-	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
-	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
-	"\x03req\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03req\"\x83\x01\n" +
-	"\rMatch2GameAck\x12\x16\n" +
-	"\x06gameid\x18\x01 \x01(\x05R\x06gameid\x12\x18\n" +
-	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
-	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
-	"\x03ack\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xc7\x02\n" +
+	"\x10match2game.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"k\n" +
+	"\rMatch2GameReq\x12\x18\n" +
+	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
+	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
+	"\x03req\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03req\"k\n" +
+	"\rMatch2GameAck\x12\x18\n" +
+	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
+	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xc7\x02\n" +
 	"\vAddTableReq\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1d\n" +
@@ -558,14 +576,15 @@ const file_match2game_proto_rawDesc = "" +
 	"\x0eCancelTableReq\x12\x16\n" +
 	"\x06reason\x18\x01 \x01(\x05R\x06reason\"\n" +
 	"\n" +
-	"\bEmptyAck\"~\n" +
+	"\bEmptyAck\"e\n" +
 	"\rGameResultAck\x12$\n" +
-	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\x12\x17\n" +
-	"\ais_over\x18\x02 \x01(\bR\x06isOver\x12.\n" +
-	"\aplayers\x18\x03 \x03(\v2\x14.sproto.PlayerResultR\aplayers\"@\n" +
+	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\x12.\n" +
+	"\aplayers\x18\x02 \x03(\v2\x14.sproto.PlayerResultR\aplayers\"@\n" +
 	"\fPlayerResult\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x14\n" +
-	"\x05score\x18\x02 \x01(\x03R\x05scoreB\vZ\t../sprotob\x06proto3"
+	"\x05score\x18\x02 \x01(\x03R\x05score\"3\n" +
+	"\vGameOverAck\x12$\n" +
+	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCountB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_match2game_proto_rawDescOnce sync.Once
@@ -579,7 +598,7 @@ func file_match2game_proto_rawDescGZIP() []byte {
 	return file_match2game_proto_rawDescData
 }
 
-var file_match2game_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_match2game_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_match2game_proto_goTypes = []any{
 	(*Match2GameReq)(nil),  // 0: sproto.Match2GameReq
 	(*Match2GameAck)(nil),  // 1: sproto.Match2GameAck
@@ -589,19 +608,20 @@ var file_match2game_proto_goTypes = []any{
 	(*EmptyAck)(nil),       // 5: sproto.EmptyAck
 	(*GameResultAck)(nil),  // 6: sproto.GameResultAck
 	(*PlayerResult)(nil),   // 7: sproto.PlayerResult
-	nil,                    // 8: sproto.AddTableReq.FdpropertyEntry
-	(*anypb.Any)(nil),      // 9: google.protobuf.Any
+	(*GameOverAck)(nil),    // 8: sproto.GameOverAck
+	nil,                    // 9: sproto.AddTableReq.FdpropertyEntry
+	(*anypb.Any)(nil),      // 10: google.protobuf.Any
 }
 var file_match2game_proto_depIdxs = []int32{
-	9, // 0: sproto.Match2GameReq.req:type_name -> google.protobuf.Any
-	9, // 1: sproto.Match2GameAck.ack:type_name -> google.protobuf.Any
-	8, // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
-	7, // 3: sproto.GameResultAck.players:type_name -> sproto.PlayerResult
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	10, // 0: sproto.Match2GameReq.req:type_name -> google.protobuf.Any
+	10, // 1: sproto.Match2GameAck.ack:type_name -> google.protobuf.Any
+	9,  // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
+	7,  // 3: sproto.GameResultAck.players:type_name -> sproto.PlayerResult
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_match2game_proto_init() }
@@ -615,7 +635,7 @@ func file_match2game_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match2game_proto_rawDesc), len(file_match2game_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
