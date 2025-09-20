@@ -731,7 +731,6 @@ class TablePlayerAck final :
   enum : int {
     kPlayeridFieldNumber = 1,
     kSeatFieldNumber = 2,
-    kScoreFieldNumber = 3,
   };
   // string playerid = 1;
   void clear_playerid();
@@ -756,15 +755,6 @@ class TablePlayerAck final :
   void _internal_set_seat(int32_t value);
   public:
 
-  // int32 score = 3;
-  void clear_score();
-  int32_t score() const;
-  void set_score(int32_t value);
-  private:
-  int32_t _internal_score() const;
-  void _internal_set_score(int32_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:cproto.TablePlayerAck)
  private:
   class _Internal;
@@ -774,7 +764,6 @@ class TablePlayerAck final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr playerid_;
   int32_t seat_;
-  int32_t score_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_game_2eproto;
 };
@@ -2054,26 +2043,6 @@ inline void TablePlayerAck::_internal_set_seat(int32_t value) {
 inline void TablePlayerAck::set_seat(int32_t value) {
   _internal_set_seat(value);
   // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.seat)
-}
-
-// int32 score = 3;
-inline void TablePlayerAck::clear_score() {
-  score_ = 0;
-}
-inline int32_t TablePlayerAck::_internal_score() const {
-  return score_;
-}
-inline int32_t TablePlayerAck::score() const {
-  // @@protoc_insertion_point(field_get:cproto.TablePlayerAck.score)
-  return _internal_score();
-}
-inline void TablePlayerAck::_internal_set_score(int32_t value) {
-  
-  score_ = value;
-}
-inline void TablePlayerAck::set_score(int32_t value) {
-  _internal_set_score(value);
-  // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.score)
 }
 
 // -------------------------------------------------------------------

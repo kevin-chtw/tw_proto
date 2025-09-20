@@ -61,8 +61,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EnterGameReqDefaultTypeInternal
 constexpr TablePlayerAck::TablePlayerAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : playerid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , seat_(0)
-  , score_(0){}
+  , seat_(0){}
 struct TablePlayerAckDefaultTypeInternal {
   constexpr TablePlayerAckDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -182,7 +181,6 @@ const uint32_t TableStruct_game_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, playerid_),
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, seat_),
-  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, score_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::TableMsgReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -229,12 +227,12 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 10, -1, -1, sizeof(::cproto::GameAck)},
   { 20, -1, -1, sizeof(::cproto::EnterGameReq)},
   { 26, -1, -1, sizeof(::cproto::TablePlayerAck)},
-  { 35, -1, -1, sizeof(::cproto::TableMsgReq)},
-  { 42, -1, -1, sizeof(::cproto::TableMsgAck)},
-  { 49, -1, -1, sizeof(::cproto::GameBeginAck)},
-  { 56, -1, -1, sizeof(::cproto::GameOverAck)},
-  { 63, -1, -1, sizeof(::cproto::HisBeginAck)},
-  { 69, -1, -1, sizeof(::cproto::HisEndAck)},
+  { 34, -1, -1, sizeof(::cproto::TableMsgReq)},
+  { 41, -1, -1, sizeof(::cproto::TableMsgAck)},
+  { 48, -1, -1, sizeof(::cproto::GameBeginAck)},
+  { 55, -1, -1, sizeof(::cproto::GameOverAck)},
+  { 62, -1, -1, sizeof(::cproto::HisBeginAck)},
+  { 68, -1, -1, sizeof(::cproto::HisEndAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -257,20 +255,20 @@ const char descriptor_table_protodef_game_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\001(\0132\024.google.protobuf.Any\"`\n\007GameAck\022\020\n\010"
   "serverid\030\001 \001(\t\022\017\n\007matchid\030\002 \001(\005\022\017\n\007table"
   "id\030\003 \001(\005\022!\n\003ack\030\004 \001(\0132\024.google.protobuf."
-  "Any\"\016\n\014EnterGameReq\"\?\n\016TablePlayerAck\022\020\n"
-  "\010playerid\030\001 \001(\t\022\014\n\004seat\030\002 \001(\005\022\r\n\005score\030\003"
-  " \001(\005\"\032\n\013TableMsgReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013Tabl"
-  "eMsgAck\022\013\n\003msg\030\001 \001(\014\"&\n\014GameBeginAck\022\026\n\016"
-  "cur_game_count\030\001 \001(\005\"%\n\013GameOverAck\022\026\n\016c"
-  "ur_game_count\030\001 \001(\005\"\r\n\013HisBeginAck\"\013\n\tHi"
-  "sEndAckB\013Z\t../cprotob\006proto3"
+  "Any\"\016\n\014EnterGameReq\"0\n\016TablePlayerAck\022\020\n"
+  "\010playerid\030\001 \001(\t\022\014\n\004seat\030\002 \001(\005\"\032\n\013TableMs"
+  "gReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013TableMsgAck\022\013\n\003msg\030"
+  "\001 \001(\014\"&\n\014GameBeginAck\022\026\n\016cur_game_count\030"
+  "\001 \001(\005\"%\n\013GameOverAck\022\026\n\016cur_game_count\030\001"
+  " \001(\005\"\r\n\013HisBeginAck\"\013\n\tHisEndAckB\013Z\t../c"
+  "protob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_game_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_game_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_game_2eproto = {
-  false, false, 508, descriptor_table_protodef_game_2eproto, "game.proto", 
+  false, false, 493, descriptor_table_protodef_game_2eproto, "game.proto", 
   &descriptor_table_game_2eproto_once, descriptor_table_game_2eproto_deps, 1, 10,
   schemas, file_default_instances, TableStruct_game_2eproto::offsets,
   file_level_metadata_game_2eproto, file_level_enum_descriptors_game_2eproto, file_level_service_descriptors_game_2eproto,
@@ -968,9 +966,7 @@ TablePlayerAck::TablePlayerAck(const TablePlayerAck& from)
     playerid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_playerid(), 
       GetArenaForAllocation());
   }
-  ::memcpy(&seat_, &from.seat_,
-    static_cast<size_t>(reinterpret_cast<char*>(&score_) -
-    reinterpret_cast<char*>(&seat_)) + sizeof(score_));
+  seat_ = from.seat_;
   // @@protoc_insertion_point(copy_constructor:cproto.TablePlayerAck)
 }
 
@@ -979,10 +975,7 @@ playerid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlr
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   playerid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&seat_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&score_) -
-    reinterpret_cast<char*>(&seat_)) + sizeof(score_));
+seat_ = 0;
 }
 
 TablePlayerAck::~TablePlayerAck() {
@@ -1014,9 +1007,7 @@ void TablePlayerAck::Clear() {
   (void) cached_has_bits;
 
   playerid_.ClearToEmpty();
-  ::memset(&seat_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&score_) -
-      reinterpret_cast<char*>(&seat_)) + sizeof(score_));
+  seat_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1040,14 +1031,6 @@ const char* TablePlayerAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           seat_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 score = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          score_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1097,12 +1080,6 @@ uint8_t* TablePlayerAck::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_seat(), target);
   }
 
-  // int32 score = 3;
-  if (this->_internal_score() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_score(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1129,11 +1106,6 @@ size_t TablePlayerAck::ByteSizeLong() const {
   // int32 seat = 2;
   if (this->_internal_seat() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_seat());
-  }
-
-  // int32 score = 3;
-  if (this->_internal_score() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_score());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1164,9 +1136,6 @@ void TablePlayerAck::MergeFrom(const TablePlayerAck& from) {
   if (from._internal_seat() != 0) {
     _internal_set_seat(from._internal_seat());
   }
-  if (from._internal_score() != 0) {
-    _internal_set_score(from._internal_score());
-  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1191,12 +1160,7 @@ void TablePlayerAck::InternalSwap(TablePlayerAck* other) {
       &playerid_, lhs_arena,
       &other->playerid_, rhs_arena
   );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(TablePlayerAck, score_)
-      + sizeof(TablePlayerAck::score_)
-      - PROTOBUF_FIELD_OFFSET(TablePlayerAck, seat_)>(
-          reinterpret_cast<char*>(&seat_),
-          reinterpret_cast<char*>(&other->seat_));
+  swap(seat_, other->seat_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TablePlayerAck::GetMetadata() const {
