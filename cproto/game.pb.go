@@ -198,6 +198,7 @@ type TablePlayerAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
 	Seat          int32                  `protobuf:"varint,2,opt,name=seat,proto3" json:"seat,omitempty"`        // 座位号
+	Score         int32                  `protobuf:"varint,3,opt,name=score,proto3" json:"score,omitempty"`      // 分数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -242,6 +243,13 @@ func (x *TablePlayerAck) GetPlayerid() string {
 func (x *TablePlayerAck) GetSeat() int32 {
 	if x != nil {
 		return x.Seat
+	}
+	return 0
+}
+
+func (x *TablePlayerAck) GetScore() int32 {
+	if x != nil {
+		return x.Score
 	}
 	return 0
 }
@@ -514,10 +522,11 @@ const file_game_proto_rawDesc = "" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
 	"\x03ack\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x0e\n" +
-	"\fEnterGameReq\"@\n" +
+	"\fEnterGameReq\"V\n" +
 	"\x0eTablePlayerAck\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x12\n" +
-	"\x04seat\x18\x02 \x01(\x05R\x04seat\"\x1f\n" +
+	"\x04seat\x18\x02 \x01(\x05R\x04seat\x12\x14\n" +
+	"\x05score\x18\x03 \x01(\x05R\x05score\"\x1f\n" +
 	"\vTableMsgReq\x12\x10\n" +
 	"\x03msg\x18\x01 \x01(\fR\x03msg\"\x1f\n" +
 	"\vTableMsgAck\x12\x10\n" +

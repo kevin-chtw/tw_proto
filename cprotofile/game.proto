@@ -25,6 +25,7 @@ message EnterGameReq {
 message TablePlayerAck {
   string playerid = 1; // 玩家ID
   int32 seat = 2; // 座位号
+  int32 score = 3; // 分数
 }
 
 message TableMsgReq {

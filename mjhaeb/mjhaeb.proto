@@ -45,6 +45,7 @@ message HAEBGameStartAck {
   int32 banker = 1; //庄家
   int32 tile_count = 2; //牌库总张数
   repeated int64 scores = 3;//带入分
+  string property = 4; //配置串
 }
 
 message HAEBOpenDoorAck {
