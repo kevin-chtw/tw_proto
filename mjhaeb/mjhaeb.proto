@@ -108,11 +108,13 @@ message HAEBAnimationAck {
 }   
 
 message HAEBResultAck {
+  bool liuju = 1; // 流局标记
   repeated HAEBPlayerResult player_results = 2; // 玩家结果列表
 }   
 
 message HAEBPlayerResult {
   int32 seat = 1; // 玩家ID
-  int32 score = 2; // 玩家得分
-  repeated int32 tiles = 3; // 玩家手牌
+  int64 cur_score = 2; // 当前分数
+  int64 win_score = 3; // 总得分
+  repeated int32 tiles = 4; // 玩家手牌
 }

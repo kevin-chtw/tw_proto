@@ -1059,6 +1059,7 @@ func (x *HAEBAnimationAck) GetRequestid() int32 {
 
 type HAEBResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Liuju         bool                   `protobuf:"varint,1,opt,name=liuju,proto3" json:"liuju,omitempty"`                                     // 流局标记
 	PlayerResults []*HAEBPlayerResult    `protobuf:"bytes,2,rep,name=player_results,json=playerResults,proto3" json:"player_results,omitempty"` // 玩家结果列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1094,6 +1095,13 @@ func (*HAEBResultAck) Descriptor() ([]byte, []int) {
 	return file_mjhaeb_proto_rawDescGZIP(), []int{17}
 }
 
+func (x *HAEBResultAck) GetLiuju() bool {
+	if x != nil {
+		return x.Liuju
+	}
+	return false
+}
+
 func (x *HAEBResultAck) GetPlayerResults() []*HAEBPlayerResult {
 	if x != nil {
 		return x.PlayerResults
@@ -1103,9 +1111,10 @@ func (x *HAEBResultAck) GetPlayerResults() []*HAEBPlayerResult {
 
 type HAEBPlayerResult struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`          // 玩家ID
-	Score         int32                  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`        // 玩家得分
-	Tiles         []int32                `protobuf:"varint,3,rep,packed,name=tiles,proto3" json:"tiles,omitempty"` // 玩家手牌
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                         // 玩家ID
+	CurScore      int64                  `protobuf:"varint,2,opt,name=cur_score,json=curScore,proto3" json:"cur_score,omitempty"` // 当前分数
+	WinScore      int64                  `protobuf:"varint,3,opt,name=win_score,json=winScore,proto3" json:"win_score,omitempty"` // 总得分
+	Tiles         []int32                `protobuf:"varint,4,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`                // 玩家手牌
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1147,9 +1156,16 @@ func (x *HAEBPlayerResult) GetSeat() int32 {
 	return 0
 }
 
-func (x *HAEBPlayerResult) GetScore() int32 {
+func (x *HAEBPlayerResult) GetCurScore() int64 {
 	if x != nil {
-		return x.Score
+		return x.CurScore
+	}
+	return 0
+}
+
+func (x *HAEBPlayerResult) GetWinScore() int64 {
+	if x != nil {
+		return x.WinScore
 	}
 	return 0
 }
@@ -1242,13 +1258,15 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05trust\x18\x02 \x01(\bR\x05trust\"0\n" +
 	"\x10HAEBAnimationAck\x12\x1c\n" +
-	"\trequestid\x18\x01 \x01(\x05R\trequestid\"P\n" +
-	"\rHAEBResultAck\x12?\n" +
-	"\x0eplayer_results\x18\x02 \x03(\v2\x18.haebpb.HAEBPlayerResultR\rplayerResults\"R\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\"f\n" +
+	"\rHAEBResultAck\x12\x14\n" +
+	"\x05liuju\x18\x01 \x01(\bR\x05liuju\x12?\n" +
+	"\x0eplayer_results\x18\x02 \x03(\v2\x18.haebpb.HAEBPlayerResultR\rplayerResults\"v\n" +
 	"\x10HAEBPlayerResult\x12\x12\n" +
-	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
-	"\x05score\x18\x02 \x01(\x05R\x05score\x12\x14\n" +
-	"\x05tiles\x18\x03 \x03(\x05R\x05tilesB\vZ\t../haebpbb\x06proto3"
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x1b\n" +
+	"\tcur_score\x18\x02 \x01(\x03R\bcurScore\x12\x1b\n" +
+	"\twin_score\x18\x03 \x01(\x03R\bwinScore\x12\x14\n" +
+	"\x05tiles\x18\x04 \x03(\x05R\x05tilesB\vZ\t../haebpbb\x06proto3"
 
 var (
 	file_mjhaeb_proto_rawDescOnce sync.Once
