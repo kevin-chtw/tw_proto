@@ -95,6 +95,7 @@ type HAEBAck struct {
 	HaebResultAck      *HAEBResultAck         `protobuf:"bytes,10,opt,name=haeb_result_ack,json=haebResultAck,proto3" json:"haeb_result_ack,omitempty"`
 	HaebTrustAck       *HAEBTrustAck          `protobuf:"bytes,11,opt,name=haeb_trust_ack,json=haebTrustAck,proto3" json:"haeb_trust_ack,omitempty"`
 	HaebAnimationAck   *HAEBAnimationAck      `protobuf:"bytes,12,opt,name=haeb_animation_ack,json=haebAnimationAck,proto3" json:"haeb_animation_ack,omitempty"`
+	HaebChowAck        *HAEBChowAck           `protobuf:"bytes,13,opt,name=haeb_chow_ack,json=haebChowAck,proto3" json:"haeb_chow_ack,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -213,12 +214,19 @@ func (x *HAEBAck) GetHaebAnimationAck() *HAEBAnimationAck {
 	return nil
 }
 
+func (x *HAEBAck) GetHaebChowAck() *HAEBChowAck {
+	if x != nil {
+		return x.HaebChowAck
+	}
+	return nil
+}
+
 type HAEBRequestReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                  //座位号
 	RequestType   int32                  `protobuf:"varint,2,opt,name=request_type,json=requestType,proto3" json:"request_type,omitempty"` // 动作类型
 	Requestid     int32                  `protobuf:"varint,3,opt,name=requestid,proto3" json:"requestid,omitempty"`                        // 请求ID
-	Tile          int32                  `protobuf:"varint,4,opt,name=tile,proto3" json:"tile,omitempty"`                                  // 牌
+	Tile          int32                  `protobuf:"varint,4,opt,name=tile,proto3" json:"tile,omitempty"`                                  // 牌 （吃为吃牌的最左牌id）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -565,6 +573,74 @@ func (x *HAEBRequestAck) GetRequestid() int32 {
 	return 0
 }
 
+type HAEBChowAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                         //座位号
+	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                         //出牌座位号
+	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                         //吃的牌
+	LeftTile      int32                  `protobuf:"varint,4,opt,name=left_tile,json=leftTile,proto3" json:"left_tile,omitempty"` //最左的牌
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HAEBChowAck) Reset() {
+	*x = HAEBChowAck{}
+	mi := &file_mjhaeb_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HAEBChowAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HAEBChowAck) ProtoMessage() {}
+
+func (x *HAEBChowAck) ProtoReflect() protoreflect.Message {
+	mi := &file_mjhaeb_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HAEBChowAck.ProtoReflect.Descriptor instead.
+func (*HAEBChowAck) Descriptor() ([]byte, []int) {
+	return file_mjhaeb_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *HAEBChowAck) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *HAEBChowAck) GetFrom() int32 {
+	if x != nil {
+		return x.From
+	}
+	return 0
+}
+
+func (x *HAEBChowAck) GetTile() int32 {
+	if x != nil {
+		return x.Tile
+	}
+	return 0
+}
+
+func (x *HAEBChowAck) GetLeftTile() int32 {
+	if x != nil {
+		return x.LeftTile
+	}
+	return 0
+}
+
 type HAEBPonAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"` //座位号
@@ -576,7 +652,7 @@ type HAEBPonAck struct {
 
 func (x *HAEBPonAck) Reset() {
 	*x = HAEBPonAck{}
-	mi := &file_mjhaeb_proto_msgTypes[8]
+	mi := &file_mjhaeb_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -588,7 +664,7 @@ func (x *HAEBPonAck) String() string {
 func (*HAEBPonAck) ProtoMessage() {}
 
 func (x *HAEBPonAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[8]
+	mi := &file_mjhaeb_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -601,7 +677,7 @@ func (x *HAEBPonAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBPonAck.ProtoReflect.Descriptor instead.
 func (*HAEBPonAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{8}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *HAEBPonAck) GetSeat() int32 {
@@ -637,7 +713,7 @@ type HAEBKonAck struct {
 
 func (x *HAEBKonAck) Reset() {
 	*x = HAEBKonAck{}
-	mi := &file_mjhaeb_proto_msgTypes[9]
+	mi := &file_mjhaeb_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -649,7 +725,7 @@ func (x *HAEBKonAck) String() string {
 func (*HAEBKonAck) ProtoMessage() {}
 
 func (x *HAEBKonAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[9]
+	mi := &file_mjhaeb_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -662,7 +738,7 @@ func (x *HAEBKonAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBKonAck.ProtoReflect.Descriptor instead.
 func (*HAEBKonAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{9}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *HAEBKonAck) GetSeat() int32 {
@@ -704,7 +780,7 @@ type HAEBHuAck struct {
 
 func (x *HAEBHuAck) Reset() {
 	*x = HAEBHuAck{}
-	mi := &file_mjhaeb_proto_msgTypes[10]
+	mi := &file_mjhaeb_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -716,7 +792,7 @@ func (x *HAEBHuAck) String() string {
 func (*HAEBHuAck) ProtoMessage() {}
 
 func (x *HAEBHuAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[10]
+	mi := &file_mjhaeb_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -729,7 +805,7 @@ func (x *HAEBHuAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBHuAck.ProtoReflect.Descriptor instead.
 func (*HAEBHuAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{10}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *HAEBHuAck) GetPaoSeat() int32 {
@@ -763,7 +839,7 @@ type HAEBHuData struct {
 
 func (x *HAEBHuData) Reset() {
 	*x = HAEBHuData{}
-	mi := &file_mjhaeb_proto_msgTypes[11]
+	mi := &file_mjhaeb_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -775,7 +851,7 @@ func (x *HAEBHuData) String() string {
 func (*HAEBHuData) ProtoMessage() {}
 
 func (x *HAEBHuData) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[11]
+	mi := &file_mjhaeb_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -788,7 +864,7 @@ func (x *HAEBHuData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBHuData.ProtoReflect.Descriptor instead.
 func (*HAEBHuData) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{11}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *HAEBHuData) GetSeat() int32 {
@@ -816,7 +892,7 @@ type HAEBDrawAck struct {
 
 func (x *HAEBDrawAck) Reset() {
 	*x = HAEBDrawAck{}
-	mi := &file_mjhaeb_proto_msgTypes[12]
+	mi := &file_mjhaeb_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -828,7 +904,7 @@ func (x *HAEBDrawAck) String() string {
 func (*HAEBDrawAck) ProtoMessage() {}
 
 func (x *HAEBDrawAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[12]
+	mi := &file_mjhaeb_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -841,7 +917,7 @@ func (x *HAEBDrawAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBDrawAck.ProtoReflect.Descriptor instead.
 func (*HAEBDrawAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{12}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *HAEBDrawAck) GetSeat() int32 {
@@ -875,7 +951,7 @@ type HAEBDiscardAck struct {
 
 func (x *HAEBDiscardAck) Reset() {
 	*x = HAEBDiscardAck{}
-	mi := &file_mjhaeb_proto_msgTypes[13]
+	mi := &file_mjhaeb_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -887,7 +963,7 @@ func (x *HAEBDiscardAck) String() string {
 func (*HAEBDiscardAck) ProtoMessage() {}
 
 func (x *HAEBDiscardAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[13]
+	mi := &file_mjhaeb_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -900,7 +976,7 @@ func (x *HAEBDiscardAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBDiscardAck.ProtoReflect.Descriptor instead.
 func (*HAEBDiscardAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{13}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *HAEBDiscardAck) GetSeat() int32 {
@@ -926,7 +1002,7 @@ type HAEBScoreChangeAck struct {
 
 func (x *HAEBScoreChangeAck) Reset() {
 	*x = HAEBScoreChangeAck{}
-	mi := &file_mjhaeb_proto_msgTypes[14]
+	mi := &file_mjhaeb_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -938,7 +1014,7 @@ func (x *HAEBScoreChangeAck) String() string {
 func (*HAEBScoreChangeAck) ProtoMessage() {}
 
 func (x *HAEBScoreChangeAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[14]
+	mi := &file_mjhaeb_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -951,7 +1027,7 @@ func (x *HAEBScoreChangeAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBScoreChangeAck.ProtoReflect.Descriptor instead.
 func (*HAEBScoreChangeAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{14}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *HAEBScoreChangeAck) GetScores() []int32 {
@@ -971,7 +1047,7 @@ type HAEBTrustAck struct {
 
 func (x *HAEBTrustAck) Reset() {
 	*x = HAEBTrustAck{}
-	mi := &file_mjhaeb_proto_msgTypes[15]
+	mi := &file_mjhaeb_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -983,7 +1059,7 @@ func (x *HAEBTrustAck) String() string {
 func (*HAEBTrustAck) ProtoMessage() {}
 
 func (x *HAEBTrustAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[15]
+	mi := &file_mjhaeb_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -996,7 +1072,7 @@ func (x *HAEBTrustAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBTrustAck.ProtoReflect.Descriptor instead.
 func (*HAEBTrustAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{15}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *HAEBTrustAck) GetSeat() int32 {
@@ -1022,7 +1098,7 @@ type HAEBAnimationAck struct {
 
 func (x *HAEBAnimationAck) Reset() {
 	*x = HAEBAnimationAck{}
-	mi := &file_mjhaeb_proto_msgTypes[16]
+	mi := &file_mjhaeb_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1034,7 +1110,7 @@ func (x *HAEBAnimationAck) String() string {
 func (*HAEBAnimationAck) ProtoMessage() {}
 
 func (x *HAEBAnimationAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[16]
+	mi := &file_mjhaeb_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1047,7 +1123,7 @@ func (x *HAEBAnimationAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBAnimationAck.ProtoReflect.Descriptor instead.
 func (*HAEBAnimationAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{16}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *HAEBAnimationAck) GetRequestid() int32 {
@@ -1067,7 +1143,7 @@ type HAEBResultAck struct {
 
 func (x *HAEBResultAck) Reset() {
 	*x = HAEBResultAck{}
-	mi := &file_mjhaeb_proto_msgTypes[17]
+	mi := &file_mjhaeb_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1079,7 +1155,7 @@ func (x *HAEBResultAck) String() string {
 func (*HAEBResultAck) ProtoMessage() {}
 
 func (x *HAEBResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[17]
+	mi := &file_mjhaeb_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1092,7 +1168,7 @@ func (x *HAEBResultAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBResultAck.ProtoReflect.Descriptor instead.
 func (*HAEBResultAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{17}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *HAEBResultAck) GetLiuju() bool {
@@ -1121,7 +1197,7 @@ type HAEBPlayerResult struct {
 
 func (x *HAEBPlayerResult) Reset() {
 	*x = HAEBPlayerResult{}
-	mi := &file_mjhaeb_proto_msgTypes[18]
+	mi := &file_mjhaeb_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1133,7 +1209,7 @@ func (x *HAEBPlayerResult) String() string {
 func (*HAEBPlayerResult) ProtoMessage() {}
 
 func (x *HAEBPlayerResult) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[18]
+	mi := &file_mjhaeb_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1146,7 +1222,7 @@ func (x *HAEBPlayerResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBPlayerResult.ProtoReflect.Descriptor instead.
 func (*HAEBPlayerResult) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{18}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *HAEBPlayerResult) GetSeat() int32 {
@@ -1185,7 +1261,7 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\aHAEBReq\x12@\n" +
 	"\x10haeb_request_req\x18\x01 \x01(\v2\x16.haebpb.HAEBRequestReqR\x0ehaebRequestReq\x12:\n" +
 	"\x0ehaeb_trust_req\x18\x02 \x01(\v2\x14.haebpb.HAEBTrustReqR\fhaebTrustReq\x12F\n" +
-	"\x12haeb_animation_req\x18\x03 \x01(\v2\x18.haebpb.HAEBAnimationReqR\x10haebAnimationReq\"\x86\x06\n" +
+	"\x12haeb_animation_req\x18\x03 \x01(\v2\x18.haebpb.HAEBAnimationReqR\x10haebAnimationReq\"\xbf\x06\n" +
 	"\aHAEBAck\x12G\n" +
 	"\x13haeb_game_start_ack\x18\x01 \x01(\v2\x18.haebpb.HAEBGameStartAckR\x10haebGameStartAck\x12D\n" +
 	"\x12haeb_open_door_ack\x18\x02 \x01(\v2\x17.haebpb.HAEBOpenDoorAckR\x0fhaebOpenDoorAck\x12@\n" +
@@ -1201,7 +1277,8 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\x0fhaeb_result_ack\x18\n" +
 	" \x01(\v2\x15.haebpb.HAEBResultAckR\rhaebResultAck\x12:\n" +
 	"\x0ehaeb_trust_ack\x18\v \x01(\v2\x14.haebpb.HAEBTrustAckR\fhaebTrustAck\x12F\n" +
-	"\x12haeb_animation_ack\x18\f \x01(\v2\x18.haebpb.HAEBAnimationAckR\x10haebAnimationAck\"y\n" +
+	"\x12haeb_animation_ack\x18\f \x01(\v2\x18.haebpb.HAEBAnimationAckR\x10haebAnimationAck\x127\n" +
+	"\rhaeb_chow_ack\x18\r \x01(\v2\x13.haebpb.HAEBChowAckR\vhaebChowAck\"y\n" +
 	"\x0eHAEBRequestReq\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
@@ -1225,7 +1302,12 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\x0eHAEBRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
-	"\trequestid\x18\x03 \x01(\x05R\trequestid\"H\n" +
+	"\trequestid\x18\x03 \x01(\x05R\trequestid\"f\n" +
+	"\vHAEBChowAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
+	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x1b\n" +
+	"\tleft_tile\x18\x04 \x01(\x05R\bleftTile\"H\n" +
 	"\n" +
 	"HAEBPonAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
@@ -1280,7 +1362,7 @@ func file_mjhaeb_proto_rawDescGZIP() []byte {
 	return file_mjhaeb_proto_rawDescData
 }
 
-var file_mjhaeb_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_mjhaeb_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_mjhaeb_proto_goTypes = []any{
 	(*HAEBReq)(nil),            // 0: haebpb.HAEBReq
 	(*HAEBAck)(nil),            // 1: haebpb.HAEBAck
@@ -1290,17 +1372,18 @@ var file_mjhaeb_proto_goTypes = []any{
 	(*HAEBGameStartAck)(nil),   // 5: haebpb.HAEBGameStartAck
 	(*HAEBOpenDoorAck)(nil),    // 6: haebpb.HAEBOpenDoorAck
 	(*HAEBRequestAck)(nil),     // 7: haebpb.HAEBRequestAck
-	(*HAEBPonAck)(nil),         // 8: haebpb.HAEBPonAck
-	(*HAEBKonAck)(nil),         // 9: haebpb.HAEBKonAck
-	(*HAEBHuAck)(nil),          // 10: haebpb.HAEBHuAck
-	(*HAEBHuData)(nil),         // 11: haebpb.HAEBHuData
-	(*HAEBDrawAck)(nil),        // 12: haebpb.HAEBDrawAck
-	(*HAEBDiscardAck)(nil),     // 13: haebpb.HAEBDiscardAck
-	(*HAEBScoreChangeAck)(nil), // 14: haebpb.HAEBScoreChangeAck
-	(*HAEBTrustAck)(nil),       // 15: haebpb.HAEBTrustAck
-	(*HAEBAnimationAck)(nil),   // 16: haebpb.HAEBAnimationAck
-	(*HAEBResultAck)(nil),      // 17: haebpb.HAEBResultAck
-	(*HAEBPlayerResult)(nil),   // 18: haebpb.HAEBPlayerResult
+	(*HAEBChowAck)(nil),        // 8: haebpb.HAEBChowAck
+	(*HAEBPonAck)(nil),         // 9: haebpb.HAEBPonAck
+	(*HAEBKonAck)(nil),         // 10: haebpb.HAEBKonAck
+	(*HAEBHuAck)(nil),          // 11: haebpb.HAEBHuAck
+	(*HAEBHuData)(nil),         // 12: haebpb.HAEBHuData
+	(*HAEBDrawAck)(nil),        // 13: haebpb.HAEBDrawAck
+	(*HAEBDiscardAck)(nil),     // 14: haebpb.HAEBDiscardAck
+	(*HAEBScoreChangeAck)(nil), // 15: haebpb.HAEBScoreChangeAck
+	(*HAEBTrustAck)(nil),       // 16: haebpb.HAEBTrustAck
+	(*HAEBAnimationAck)(nil),   // 17: haebpb.HAEBAnimationAck
+	(*HAEBResultAck)(nil),      // 18: haebpb.HAEBResultAck
+	(*HAEBPlayerResult)(nil),   // 19: haebpb.HAEBPlayerResult
 }
 var file_mjhaeb_proto_depIdxs = []int32{
 	2,  // 0: haebpb.HAEBReq.haeb_request_req:type_name -> haebpb.HAEBRequestReq
@@ -1309,22 +1392,23 @@ var file_mjhaeb_proto_depIdxs = []int32{
 	5,  // 3: haebpb.HAEBAck.haeb_game_start_ack:type_name -> haebpb.HAEBGameStartAck
 	6,  // 4: haebpb.HAEBAck.haeb_open_door_ack:type_name -> haebpb.HAEBOpenDoorAck
 	7,  // 5: haebpb.HAEBAck.haeb_request_ack:type_name -> haebpb.HAEBRequestAck
-	8,  // 6: haebpb.HAEBAck.haeb_pon_ack:type_name -> haebpb.HAEBPonAck
-	9,  // 7: haebpb.HAEBAck.haeb_kon_ack:type_name -> haebpb.HAEBKonAck
-	10, // 8: haebpb.HAEBAck.haeb_hu_ack:type_name -> haebpb.HAEBHuAck
-	12, // 9: haebpb.HAEBAck.haeb_draw_ack:type_name -> haebpb.HAEBDrawAck
-	13, // 10: haebpb.HAEBAck.haeb_discard_ack:type_name -> haebpb.HAEBDiscardAck
-	14, // 11: haebpb.HAEBAck.haeb_score_change_ack:type_name -> haebpb.HAEBScoreChangeAck
-	17, // 12: haebpb.HAEBAck.haeb_result_ack:type_name -> haebpb.HAEBResultAck
-	15, // 13: haebpb.HAEBAck.haeb_trust_ack:type_name -> haebpb.HAEBTrustAck
-	16, // 14: haebpb.HAEBAck.haeb_animation_ack:type_name -> haebpb.HAEBAnimationAck
-	11, // 15: haebpb.HAEBHuAck.hu_data:type_name -> haebpb.HAEBHuData
-	18, // 16: haebpb.HAEBResultAck.player_results:type_name -> haebpb.HAEBPlayerResult
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	9,  // 6: haebpb.HAEBAck.haeb_pon_ack:type_name -> haebpb.HAEBPonAck
+	10, // 7: haebpb.HAEBAck.haeb_kon_ack:type_name -> haebpb.HAEBKonAck
+	11, // 8: haebpb.HAEBAck.haeb_hu_ack:type_name -> haebpb.HAEBHuAck
+	13, // 9: haebpb.HAEBAck.haeb_draw_ack:type_name -> haebpb.HAEBDrawAck
+	14, // 10: haebpb.HAEBAck.haeb_discard_ack:type_name -> haebpb.HAEBDiscardAck
+	15, // 11: haebpb.HAEBAck.haeb_score_change_ack:type_name -> haebpb.HAEBScoreChangeAck
+	18, // 12: haebpb.HAEBAck.haeb_result_ack:type_name -> haebpb.HAEBResultAck
+	16, // 13: haebpb.HAEBAck.haeb_trust_ack:type_name -> haebpb.HAEBTrustAck
+	17, // 14: haebpb.HAEBAck.haeb_animation_ack:type_name -> haebpb.HAEBAnimationAck
+	8,  // 15: haebpb.HAEBAck.haeb_chow_ack:type_name -> haebpb.HAEBChowAck
+	12, // 16: haebpb.HAEBHuAck.hu_data:type_name -> haebpb.HAEBHuData
+	19, // 17: haebpb.HAEBResultAck.player_results:type_name -> haebpb.HAEBPlayerResult
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_mjhaeb_proto_init() }
@@ -1338,7 +1422,7 @@ func file_mjhaeb_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mjhaeb_proto_rawDesc), len(file_mjhaeb_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
