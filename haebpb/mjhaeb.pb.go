@@ -463,8 +463,9 @@ func (x *HAEBGameStartAck) GetProperty() string {
 
 type HAEBOpenDoorAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`          //座位号
-	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"` // 手牌列表
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                                   //座位号
+	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`                                                                                          // 手牌列表
+	CallData      map[int32]*CallData    `protobuf:"bytes,3,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -509,6 +510,13 @@ func (x *HAEBOpenDoorAck) GetSeat() int32 {
 func (x *HAEBOpenDoorAck) GetTiles() []int32 {
 	if x != nil {
 		return x.Tiles
+	}
+	return nil
+}
+
+func (x *HAEBOpenDoorAck) GetCallData() map[int32]*CallData {
+	if x != nil {
+		return x.CallData
 	}
 	return nil
 }
@@ -575,10 +583,11 @@ func (x *HAEBRequestAck) GetRequestid() int32 {
 
 type HAEBChowAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                         //座位号
-	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                         //出牌座位号
-	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                         //吃的牌
-	LeftTile      int32                  `protobuf:"varint,4,opt,name=left_tile,json=leftTile,proto3" json:"left_tile,omitempty"` //最左的牌
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                                   //座位号
+	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                                                                                                   //出牌座位号
+	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                                                                                   //吃的牌
+	LeftTile      int32                  `protobuf:"varint,4,opt,name=left_tile,json=leftTile,proto3" json:"left_tile,omitempty"`                                                                           //最左的牌
+	CallData      map[int32]*CallData    `protobuf:"bytes,5,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -641,11 +650,19 @@ func (x *HAEBChowAck) GetLeftTile() int32 {
 	return 0
 }
 
+func (x *HAEBChowAck) GetCallData() map[int32]*CallData {
+	if x != nil {
+		return x.CallData
+	}
+	return nil
+}
+
 type HAEBPonAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"` //座位号
-	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"` //出牌座位号
-	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"` //碰的牌列表
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                                   //座位号
+	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                                                                                                   //出牌座位号
+	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                                                                                   //碰的牌列表
+	CallData      map[int32]*CallData    `protobuf:"bytes,4,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -699,6 +716,13 @@ func (x *HAEBPonAck) GetTile() int32 {
 		return x.Tile
 	}
 	return 0
+}
+
+func (x *HAEBPonAck) GetCallData() map[int32]*CallData {
+	if x != nil {
+		return x.CallData
+	}
+	return nil
 }
 
 type HAEBKonAck struct {
@@ -883,9 +907,10 @@ func (x *HAEBHuData) GetHuTypes() []int32 {
 
 type HAEBDrawAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                         //座位号
-	Tile          int32                  `protobuf:"varint,2,opt,name=tile,proto3" json:"tile,omitempty"`                         //胡的牌
-	DrawType      int32                  `protobuf:"varint,3,opt,name=draw_type,json=drawType,proto3" json:"draw_type,omitempty"` //0-空，1-普通，2-杠后
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                                   //座位号
+	Tile          int32                  `protobuf:"varint,2,opt,name=tile,proto3" json:"tile,omitempty"`                                                                                                   //胡的牌
+	DrawType      int32                  `protobuf:"varint,3,opt,name=draw_type,json=drawType,proto3" json:"draw_type,omitempty"`                                                                           //0-空，1-普通，2-杠后
+	CallData      map[int32]*CallData    `protobuf:"bytes,4,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -939,6 +964,13 @@ func (x *HAEBDrawAck) GetDrawType() int32 {
 		return x.DrawType
 	}
 	return 0
+}
+
+func (x *HAEBDrawAck) GetCallData() map[int32]*CallData {
+	if x != nil {
+		return x.CallData
+	}
+	return nil
 }
 
 type HAEBDiscardAck struct {
@@ -1253,6 +1285,50 @@ func (x *HAEBPlayerResult) GetTiles() []int32 {
 	return nil
 }
 
+type CallData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CallTiles     map[int32]int64        `protobuf:"bytes,2,rep,name=call_tiles,json=callTiles,proto3" json:"call_tiles,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 听牌列表(牌-番数或倍数)
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CallData) Reset() {
+	*x = CallData{}
+	mi := &file_mjhaeb_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CallData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CallData) ProtoMessage() {}
+
+func (x *CallData) ProtoReflect() protoreflect.Message {
+	mi := &file_mjhaeb_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CallData.ProtoReflect.Descriptor instead.
+func (*CallData) Descriptor() ([]byte, []int) {
+	return file_mjhaeb_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *CallData) GetCallTiles() map[int32]int64 {
+	if x != nil {
+		return x.CallTiles
+	}
+	return nil
+}
+
 var File_mjhaeb_proto protoreflect.FileDescriptor
 
 const file_mjhaeb_proto_rawDesc = "" +
@@ -1295,24 +1371,36 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\n" +
 	"tile_count\x18\x02 \x01(\x05R\ttileCount\x12\x16\n" +
 	"\x06scores\x18\x03 \x03(\x03R\x06scores\x12\x1a\n" +
-	"\bproperty\x18\x04 \x01(\tR\bproperty\";\n" +
+	"\bproperty\x18\x04 \x01(\tR\bproperty\"\xce\x01\n" +
 	"\x0fHAEBOpenDoorAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
-	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"e\n" +
+	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\x12B\n" +
+	"\tcall_data\x18\x03 \x03(\v2%.haebpb.HAEBOpenDoorAck.CallDataEntryR\bcallData\x1aM\n" +
+	"\rCallDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12&\n" +
+	"\x05value\x18\x02 \x01(\v2\x10.haebpb.CallDataR\x05value:\x028\x01\"e\n" +
 	"\x0eHAEBRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
-	"\trequestid\x18\x03 \x01(\x05R\trequestid\"f\n" +
+	"\trequestid\x18\x03 \x01(\x05R\trequestid\"\xf5\x01\n" +
 	"\vHAEBChowAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
 	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x1b\n" +
-	"\tleft_tile\x18\x04 \x01(\x05R\bleftTile\"H\n" +
+	"\tleft_tile\x18\x04 \x01(\x05R\bleftTile\x12>\n" +
+	"\tcall_data\x18\x05 \x03(\v2!.haebpb.HAEBChowAck.CallDataEntryR\bcallData\x1aM\n" +
+	"\rCallDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12&\n" +
+	"\x05value\x18\x02 \x01(\v2\x10.haebpb.CallDataR\x05value:\x028\x01\"\xd6\x01\n" +
 	"\n" +
 	"HAEBPonAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
-	"\x04tile\x18\x03 \x01(\x05R\x04tile\"c\n" +
+	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12=\n" +
+	"\tcall_data\x18\x04 \x03(\v2 .haebpb.HAEBPonAck.CallDataEntryR\bcallData\x1aM\n" +
+	"\rCallDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12&\n" +
+	"\x05value\x18\x02 \x01(\v2\x10.haebpb.CallDataR\x05value:\x028\x01\"c\n" +
 	"\n" +
 	"HAEBKonAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
@@ -1326,11 +1414,15 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\n" +
 	"HAEBHuData\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x19\n" +
-	"\bhu_types\x18\x02 \x03(\x05R\ahuTypes\"R\n" +
+	"\bhu_types\x18\x02 \x03(\x05R\ahuTypes\"\xe1\x01\n" +
 	"\vHAEBDrawAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12\x1b\n" +
-	"\tdraw_type\x18\x03 \x01(\x05R\bdrawType\"8\n" +
+	"\tdraw_type\x18\x03 \x01(\x05R\bdrawType\x12>\n" +
+	"\tcall_data\x18\x04 \x03(\v2!.haebpb.HAEBDrawAck.CallDataEntryR\bcallData\x1aM\n" +
+	"\rCallDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12&\n" +
+	"\x05value\x18\x02 \x01(\v2\x10.haebpb.CallDataR\x05value:\x028\x01\"8\n" +
 	"\x0eHAEBDiscardAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\",\n" +
@@ -1348,7 +1440,13 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x1b\n" +
 	"\tcur_score\x18\x02 \x01(\x03R\bcurScore\x12\x1b\n" +
 	"\twin_score\x18\x03 \x01(\x03R\bwinScore\x12\x14\n" +
-	"\x05tiles\x18\x04 \x03(\x05R\x05tilesB\vZ\t../haebpbb\x06proto3"
+	"\x05tiles\x18\x04 \x03(\x05R\x05tiles\"\x88\x01\n" +
+	"\bCallData\x12>\n" +
+	"\n" +
+	"call_tiles\x18\x02 \x03(\v2\x1f.haebpb.CallData.CallTilesEntryR\tcallTiles\x1a<\n" +
+	"\x0eCallTilesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../haebpbb\x06proto3"
 
 var (
 	file_mjhaeb_proto_rawDescOnce sync.Once
@@ -1362,7 +1460,7 @@ func file_mjhaeb_proto_rawDescGZIP() []byte {
 	return file_mjhaeb_proto_rawDescData
 }
 
-var file_mjhaeb_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_mjhaeb_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
 var file_mjhaeb_proto_goTypes = []any{
 	(*HAEBReq)(nil),            // 0: haebpb.HAEBReq
 	(*HAEBAck)(nil),            // 1: haebpb.HAEBAck
@@ -1384,6 +1482,12 @@ var file_mjhaeb_proto_goTypes = []any{
 	(*HAEBAnimationAck)(nil),   // 17: haebpb.HAEBAnimationAck
 	(*HAEBResultAck)(nil),      // 18: haebpb.HAEBResultAck
 	(*HAEBPlayerResult)(nil),   // 19: haebpb.HAEBPlayerResult
+	(*CallData)(nil),           // 20: haebpb.CallData
+	nil,                        // 21: haebpb.HAEBOpenDoorAck.CallDataEntry
+	nil,                        // 22: haebpb.HAEBChowAck.CallDataEntry
+	nil,                        // 23: haebpb.HAEBPonAck.CallDataEntry
+	nil,                        // 24: haebpb.HAEBDrawAck.CallDataEntry
+	nil,                        // 25: haebpb.CallData.CallTilesEntry
 }
 var file_mjhaeb_proto_depIdxs = []int32{
 	2,  // 0: haebpb.HAEBReq.haeb_request_req:type_name -> haebpb.HAEBRequestReq
@@ -1402,13 +1506,22 @@ var file_mjhaeb_proto_depIdxs = []int32{
 	16, // 13: haebpb.HAEBAck.haeb_trust_ack:type_name -> haebpb.HAEBTrustAck
 	17, // 14: haebpb.HAEBAck.haeb_animation_ack:type_name -> haebpb.HAEBAnimationAck
 	8,  // 15: haebpb.HAEBAck.haeb_chow_ack:type_name -> haebpb.HAEBChowAck
-	12, // 16: haebpb.HAEBHuAck.hu_data:type_name -> haebpb.HAEBHuData
-	19, // 17: haebpb.HAEBResultAck.player_results:type_name -> haebpb.HAEBPlayerResult
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	21, // 16: haebpb.HAEBOpenDoorAck.call_data:type_name -> haebpb.HAEBOpenDoorAck.CallDataEntry
+	22, // 17: haebpb.HAEBChowAck.call_data:type_name -> haebpb.HAEBChowAck.CallDataEntry
+	23, // 18: haebpb.HAEBPonAck.call_data:type_name -> haebpb.HAEBPonAck.CallDataEntry
+	12, // 19: haebpb.HAEBHuAck.hu_data:type_name -> haebpb.HAEBHuData
+	24, // 20: haebpb.HAEBDrawAck.call_data:type_name -> haebpb.HAEBDrawAck.CallDataEntry
+	19, // 21: haebpb.HAEBResultAck.player_results:type_name -> haebpb.HAEBPlayerResult
+	25, // 22: haebpb.CallData.call_tiles:type_name -> haebpb.CallData.CallTilesEntry
+	20, // 23: haebpb.HAEBOpenDoorAck.CallDataEntry.value:type_name -> haebpb.CallData
+	20, // 24: haebpb.HAEBChowAck.CallDataEntry.value:type_name -> haebpb.CallData
+	20, // 25: haebpb.HAEBPonAck.CallDataEntry.value:type_name -> haebpb.CallData
+	20, // 26: haebpb.HAEBDrawAck.CallDataEntry.value:type_name -> haebpb.CallData
+	27, // [27:27] is the sub-list for method output_type
+	27, // [27:27] is the sub-list for method input_type
+	27, // [27:27] is the sub-list for extension type_name
+	27, // [27:27] is the sub-list for extension extendee
+	0,  // [0:27] is the sub-list for field type_name
 }
 
 func init() { file_mjhaeb_proto_init() }
@@ -1422,7 +1535,7 @@ func file_mjhaeb_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mjhaeb_proto_rawDesc), len(file_mjhaeb_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
