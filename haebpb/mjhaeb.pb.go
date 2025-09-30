@@ -96,6 +96,7 @@ type HAEBAck struct {
 	HaebTrustAck       *HAEBTrustAck          `protobuf:"bytes,11,opt,name=haeb_trust_ack,json=haebTrustAck,proto3" json:"haeb_trust_ack,omitempty"`
 	HaebAnimationAck   *HAEBAnimationAck      `protobuf:"bytes,12,opt,name=haeb_animation_ack,json=haebAnimationAck,proto3" json:"haeb_animation_ack,omitempty"`
 	HaebChowAck        *HAEBChowAck           `protobuf:"bytes,13,opt,name=haeb_chow_ack,json=haebChowAck,proto3" json:"haeb_chow_ack,omitempty"`
+	HaebTingAck        *HAEBTingAck           `protobuf:"bytes,14,opt,name=haeb_ting_ack,json=haebTingAck,proto3" json:"haeb_ting_ack,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -217,6 +218,13 @@ func (x *HAEBAck) GetHaebAnimationAck() *HAEBAnimationAck {
 func (x *HAEBAck) GetHaebChowAck() *HAEBChowAck {
 	if x != nil {
 		return x.HaebChowAck
+	}
+	return nil
+}
+
+func (x *HAEBAck) GetHaebTingAck() *HAEBTingAck {
+	if x != nil {
+		return x.HaebTingAck
 	}
 	return nil
 }
@@ -587,7 +595,8 @@ type HAEBChowAck struct {
 	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                                                                                                   //出牌座位号
 	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                                                                                   //吃的牌
 	LeftTile      int32                  `protobuf:"varint,4,opt,name=left_tile,json=leftTile,proto3" json:"left_tile,omitempty"`                                                                           //最左的牌
-	CallData      map[int32]*CallData    `protobuf:"bytes,5,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
+	Ting          bool                   `protobuf:"varint,5,opt,name=ting,proto3" json:"ting,omitempty"`                                                                                                   //是否吃听
+	CallData      map[int32]*CallData    `protobuf:"bytes,6,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -650,6 +659,13 @@ func (x *HAEBChowAck) GetLeftTile() int32 {
 	return 0
 }
 
+func (x *HAEBChowAck) GetTing() bool {
+	if x != nil {
+		return x.Ting
+	}
+	return false
+}
+
 func (x *HAEBChowAck) GetCallData() map[int32]*CallData {
 	if x != nil {
 		return x.CallData
@@ -662,6 +678,7 @@ type HAEBPonAck struct {
 	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                                   //座位号
 	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                                                                                                   //出牌座位号
 	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                                                                                   //碰的牌列表
+	Ting          bool                   `protobuf:"varint,5,opt,name=ting,proto3" json:"ting,omitempty"`                                                                                                   //是否碰听
 	CallData      map[int32]*CallData    `protobuf:"bytes,4,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -716,6 +733,13 @@ func (x *HAEBPonAck) GetTile() int32 {
 		return x.Tile
 	}
 	return 0
+}
+
+func (x *HAEBPonAck) GetTing() bool {
+	if x != nil {
+		return x.Ting
+	}
+	return false
 }
 
 func (x *HAEBPonAck) GetCallData() map[int32]*CallData {
@@ -1025,6 +1049,66 @@ func (x *HAEBDiscardAck) GetTile() int32 {
 	return 0
 }
 
+type HAEBTingAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                         //座位号
+	Tile          int32                  `protobuf:"varint,2,opt,name=tile,proto3" json:"tile,omitempty"`                         //丢弃的牌
+	TianTing      bool                   `protobuf:"varint,3,opt,name=tian_ting,json=tianTing,proto3" json:"tian_ting,omitempty"` //是否天听
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HAEBTingAck) Reset() {
+	*x = HAEBTingAck{}
+	mi := &file_mjhaeb_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HAEBTingAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HAEBTingAck) ProtoMessage() {}
+
+func (x *HAEBTingAck) ProtoReflect() protoreflect.Message {
+	mi := &file_mjhaeb_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HAEBTingAck.ProtoReflect.Descriptor instead.
+func (*HAEBTingAck) Descriptor() ([]byte, []int) {
+	return file_mjhaeb_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *HAEBTingAck) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *HAEBTingAck) GetTile() int32 {
+	if x != nil {
+		return x.Tile
+	}
+	return 0
+}
+
+func (x *HAEBTingAck) GetTianTing() bool {
+	if x != nil {
+		return x.TianTing
+	}
+	return false
+}
+
 type HAEBScoreChangeAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Scores        []int32                `protobuf:"varint,1,rep,packed,name=scores,proto3" json:"scores,omitempty"` //得分列表
@@ -1034,7 +1118,7 @@ type HAEBScoreChangeAck struct {
 
 func (x *HAEBScoreChangeAck) Reset() {
 	*x = HAEBScoreChangeAck{}
-	mi := &file_mjhaeb_proto_msgTypes[15]
+	mi := &file_mjhaeb_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1046,7 +1130,7 @@ func (x *HAEBScoreChangeAck) String() string {
 func (*HAEBScoreChangeAck) ProtoMessage() {}
 
 func (x *HAEBScoreChangeAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[15]
+	mi := &file_mjhaeb_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1059,7 +1143,7 @@ func (x *HAEBScoreChangeAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBScoreChangeAck.ProtoReflect.Descriptor instead.
 func (*HAEBScoreChangeAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{15}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *HAEBScoreChangeAck) GetScores() []int32 {
@@ -1079,7 +1163,7 @@ type HAEBTrustAck struct {
 
 func (x *HAEBTrustAck) Reset() {
 	*x = HAEBTrustAck{}
-	mi := &file_mjhaeb_proto_msgTypes[16]
+	mi := &file_mjhaeb_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1091,7 +1175,7 @@ func (x *HAEBTrustAck) String() string {
 func (*HAEBTrustAck) ProtoMessage() {}
 
 func (x *HAEBTrustAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[16]
+	mi := &file_mjhaeb_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1104,7 +1188,7 @@ func (x *HAEBTrustAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBTrustAck.ProtoReflect.Descriptor instead.
 func (*HAEBTrustAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{16}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *HAEBTrustAck) GetSeat() int32 {
@@ -1130,7 +1214,7 @@ type HAEBAnimationAck struct {
 
 func (x *HAEBAnimationAck) Reset() {
 	*x = HAEBAnimationAck{}
-	mi := &file_mjhaeb_proto_msgTypes[17]
+	mi := &file_mjhaeb_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1142,7 +1226,7 @@ func (x *HAEBAnimationAck) String() string {
 func (*HAEBAnimationAck) ProtoMessage() {}
 
 func (x *HAEBAnimationAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[17]
+	mi := &file_mjhaeb_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1155,7 +1239,7 @@ func (x *HAEBAnimationAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBAnimationAck.ProtoReflect.Descriptor instead.
 func (*HAEBAnimationAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{17}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *HAEBAnimationAck) GetRequestid() int32 {
@@ -1175,7 +1259,7 @@ type HAEBResultAck struct {
 
 func (x *HAEBResultAck) Reset() {
 	*x = HAEBResultAck{}
-	mi := &file_mjhaeb_proto_msgTypes[18]
+	mi := &file_mjhaeb_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1187,7 +1271,7 @@ func (x *HAEBResultAck) String() string {
 func (*HAEBResultAck) ProtoMessage() {}
 
 func (x *HAEBResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[18]
+	mi := &file_mjhaeb_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1200,7 +1284,7 @@ func (x *HAEBResultAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBResultAck.ProtoReflect.Descriptor instead.
 func (*HAEBResultAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{18}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *HAEBResultAck) GetLiuju() bool {
@@ -1229,7 +1313,7 @@ type HAEBPlayerResult struct {
 
 func (x *HAEBPlayerResult) Reset() {
 	*x = HAEBPlayerResult{}
-	mi := &file_mjhaeb_proto_msgTypes[19]
+	mi := &file_mjhaeb_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1241,7 +1325,7 @@ func (x *HAEBPlayerResult) String() string {
 func (*HAEBPlayerResult) ProtoMessage() {}
 
 func (x *HAEBPlayerResult) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[19]
+	mi := &file_mjhaeb_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1254,7 +1338,7 @@ func (x *HAEBPlayerResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBPlayerResult.ProtoReflect.Descriptor instead.
 func (*HAEBPlayerResult) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{19}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *HAEBPlayerResult) GetSeat() int32 {
@@ -1294,7 +1378,7 @@ type CallData struct {
 
 func (x *CallData) Reset() {
 	*x = CallData{}
-	mi := &file_mjhaeb_proto_msgTypes[20]
+	mi := &file_mjhaeb_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1306,7 +1390,7 @@ func (x *CallData) String() string {
 func (*CallData) ProtoMessage() {}
 
 func (x *CallData) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[20]
+	mi := &file_mjhaeb_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1319,7 +1403,7 @@ func (x *CallData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallData.ProtoReflect.Descriptor instead.
 func (*CallData) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{20}
+	return file_mjhaeb_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CallData) GetCallTiles() map[int32]int64 {
@@ -1337,7 +1421,7 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\aHAEBReq\x12@\n" +
 	"\x10haeb_request_req\x18\x01 \x01(\v2\x16.haebpb.HAEBRequestReqR\x0ehaebRequestReq\x12:\n" +
 	"\x0ehaeb_trust_req\x18\x02 \x01(\v2\x14.haebpb.HAEBTrustReqR\fhaebTrustReq\x12F\n" +
-	"\x12haeb_animation_req\x18\x03 \x01(\v2\x18.haebpb.HAEBAnimationReqR\x10haebAnimationReq\"\xbf\x06\n" +
+	"\x12haeb_animation_req\x18\x03 \x01(\v2\x18.haebpb.HAEBAnimationReqR\x10haebAnimationReq\"\xf8\x06\n" +
 	"\aHAEBAck\x12G\n" +
 	"\x13haeb_game_start_ack\x18\x01 \x01(\v2\x18.haebpb.HAEBGameStartAckR\x10haebGameStartAck\x12D\n" +
 	"\x12haeb_open_door_ack\x18\x02 \x01(\v2\x17.haebpb.HAEBOpenDoorAckR\x0fhaebOpenDoorAck\x12@\n" +
@@ -1354,7 +1438,8 @@ const file_mjhaeb_proto_rawDesc = "" +
 	" \x01(\v2\x15.haebpb.HAEBResultAckR\rhaebResultAck\x12:\n" +
 	"\x0ehaeb_trust_ack\x18\v \x01(\v2\x14.haebpb.HAEBTrustAckR\fhaebTrustAck\x12F\n" +
 	"\x12haeb_animation_ack\x18\f \x01(\v2\x18.haebpb.HAEBAnimationAckR\x10haebAnimationAck\x127\n" +
-	"\rhaeb_chow_ack\x18\r \x01(\v2\x13.haebpb.HAEBChowAckR\vhaebChowAck\"y\n" +
+	"\rhaeb_chow_ack\x18\r \x01(\v2\x13.haebpb.HAEBChowAckR\vhaebChowAck\x127\n" +
+	"\rhaeb_ting_ack\x18\x0e \x01(\v2\x13.haebpb.HAEBTingAckR\vhaebTingAck\"y\n" +
 	"\x0eHAEBRequestReq\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
@@ -1382,21 +1467,23 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\x0eHAEBRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
-	"\trequestid\x18\x03 \x01(\x05R\trequestid\"\xf5\x01\n" +
+	"\trequestid\x18\x03 \x01(\x05R\trequestid\"\x89\x02\n" +
 	"\vHAEBChowAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
 	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x1b\n" +
-	"\tleft_tile\x18\x04 \x01(\x05R\bleftTile\x12>\n" +
-	"\tcall_data\x18\x05 \x03(\v2!.haebpb.HAEBChowAck.CallDataEntryR\bcallData\x1aM\n" +
+	"\tleft_tile\x18\x04 \x01(\x05R\bleftTile\x12\x12\n" +
+	"\x04ting\x18\x05 \x01(\bR\x04ting\x12>\n" +
+	"\tcall_data\x18\x06 \x03(\v2!.haebpb.HAEBChowAck.CallDataEntryR\bcallData\x1aM\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12&\n" +
-	"\x05value\x18\x02 \x01(\v2\x10.haebpb.CallDataR\x05value:\x028\x01\"\xd6\x01\n" +
+	"\x05value\x18\x02 \x01(\v2\x10.haebpb.CallDataR\x05value:\x028\x01\"\xea\x01\n" +
 	"\n" +
 	"HAEBPonAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
-	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12=\n" +
+	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x12\n" +
+	"\x04ting\x18\x05 \x01(\bR\x04ting\x12=\n" +
 	"\tcall_data\x18\x04 \x03(\v2 .haebpb.HAEBPonAck.CallDataEntryR\bcallData\x1aM\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12&\n" +
@@ -1425,7 +1512,11 @@ const file_mjhaeb_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\v2\x10.haebpb.CallDataR\x05value:\x028\x01\"8\n" +
 	"\x0eHAEBDiscardAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
-	"\x04tile\x18\x02 \x01(\x05R\x04tile\",\n" +
+	"\x04tile\x18\x02 \x01(\x05R\x04tile\"R\n" +
+	"\vHAEBTingAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
+	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12\x1b\n" +
+	"\ttian_ting\x18\x03 \x01(\bR\btianTing\",\n" +
 	"\x12HAEBScoreChangeAck\x12\x16\n" +
 	"\x06scores\x18\x01 \x03(\x05R\x06scores\"8\n" +
 	"\fHAEBTrustAck\x12\x12\n" +
@@ -1460,7 +1551,7 @@ func file_mjhaeb_proto_rawDescGZIP() []byte {
 	return file_mjhaeb_proto_rawDescData
 }
 
-var file_mjhaeb_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
+var file_mjhaeb_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_mjhaeb_proto_goTypes = []any{
 	(*HAEBReq)(nil),            // 0: haebpb.HAEBReq
 	(*HAEBAck)(nil),            // 1: haebpb.HAEBAck
@@ -1477,17 +1568,18 @@ var file_mjhaeb_proto_goTypes = []any{
 	(*HAEBHuData)(nil),         // 12: haebpb.HAEBHuData
 	(*HAEBDrawAck)(nil),        // 13: haebpb.HAEBDrawAck
 	(*HAEBDiscardAck)(nil),     // 14: haebpb.HAEBDiscardAck
-	(*HAEBScoreChangeAck)(nil), // 15: haebpb.HAEBScoreChangeAck
-	(*HAEBTrustAck)(nil),       // 16: haebpb.HAEBTrustAck
-	(*HAEBAnimationAck)(nil),   // 17: haebpb.HAEBAnimationAck
-	(*HAEBResultAck)(nil),      // 18: haebpb.HAEBResultAck
-	(*HAEBPlayerResult)(nil),   // 19: haebpb.HAEBPlayerResult
-	(*CallData)(nil),           // 20: haebpb.CallData
-	nil,                        // 21: haebpb.HAEBOpenDoorAck.CallDataEntry
-	nil,                        // 22: haebpb.HAEBChowAck.CallDataEntry
-	nil,                        // 23: haebpb.HAEBPonAck.CallDataEntry
-	nil,                        // 24: haebpb.HAEBDrawAck.CallDataEntry
-	nil,                        // 25: haebpb.CallData.CallTilesEntry
+	(*HAEBTingAck)(nil),        // 15: haebpb.HAEBTingAck
+	(*HAEBScoreChangeAck)(nil), // 16: haebpb.HAEBScoreChangeAck
+	(*HAEBTrustAck)(nil),       // 17: haebpb.HAEBTrustAck
+	(*HAEBAnimationAck)(nil),   // 18: haebpb.HAEBAnimationAck
+	(*HAEBResultAck)(nil),      // 19: haebpb.HAEBResultAck
+	(*HAEBPlayerResult)(nil),   // 20: haebpb.HAEBPlayerResult
+	(*CallData)(nil),           // 21: haebpb.CallData
+	nil,                        // 22: haebpb.HAEBOpenDoorAck.CallDataEntry
+	nil,                        // 23: haebpb.HAEBChowAck.CallDataEntry
+	nil,                        // 24: haebpb.HAEBPonAck.CallDataEntry
+	nil,                        // 25: haebpb.HAEBDrawAck.CallDataEntry
+	nil,                        // 26: haebpb.CallData.CallTilesEntry
 }
 var file_mjhaeb_proto_depIdxs = []int32{
 	2,  // 0: haebpb.HAEBReq.haeb_request_req:type_name -> haebpb.HAEBRequestReq
@@ -1501,27 +1593,28 @@ var file_mjhaeb_proto_depIdxs = []int32{
 	11, // 8: haebpb.HAEBAck.haeb_hu_ack:type_name -> haebpb.HAEBHuAck
 	13, // 9: haebpb.HAEBAck.haeb_draw_ack:type_name -> haebpb.HAEBDrawAck
 	14, // 10: haebpb.HAEBAck.haeb_discard_ack:type_name -> haebpb.HAEBDiscardAck
-	15, // 11: haebpb.HAEBAck.haeb_score_change_ack:type_name -> haebpb.HAEBScoreChangeAck
-	18, // 12: haebpb.HAEBAck.haeb_result_ack:type_name -> haebpb.HAEBResultAck
-	16, // 13: haebpb.HAEBAck.haeb_trust_ack:type_name -> haebpb.HAEBTrustAck
-	17, // 14: haebpb.HAEBAck.haeb_animation_ack:type_name -> haebpb.HAEBAnimationAck
+	16, // 11: haebpb.HAEBAck.haeb_score_change_ack:type_name -> haebpb.HAEBScoreChangeAck
+	19, // 12: haebpb.HAEBAck.haeb_result_ack:type_name -> haebpb.HAEBResultAck
+	17, // 13: haebpb.HAEBAck.haeb_trust_ack:type_name -> haebpb.HAEBTrustAck
+	18, // 14: haebpb.HAEBAck.haeb_animation_ack:type_name -> haebpb.HAEBAnimationAck
 	8,  // 15: haebpb.HAEBAck.haeb_chow_ack:type_name -> haebpb.HAEBChowAck
-	21, // 16: haebpb.HAEBOpenDoorAck.call_data:type_name -> haebpb.HAEBOpenDoorAck.CallDataEntry
-	22, // 17: haebpb.HAEBChowAck.call_data:type_name -> haebpb.HAEBChowAck.CallDataEntry
-	23, // 18: haebpb.HAEBPonAck.call_data:type_name -> haebpb.HAEBPonAck.CallDataEntry
-	12, // 19: haebpb.HAEBHuAck.hu_data:type_name -> haebpb.HAEBHuData
-	24, // 20: haebpb.HAEBDrawAck.call_data:type_name -> haebpb.HAEBDrawAck.CallDataEntry
-	19, // 21: haebpb.HAEBResultAck.player_results:type_name -> haebpb.HAEBPlayerResult
-	25, // 22: haebpb.CallData.call_tiles:type_name -> haebpb.CallData.CallTilesEntry
-	20, // 23: haebpb.HAEBOpenDoorAck.CallDataEntry.value:type_name -> haebpb.CallData
-	20, // 24: haebpb.HAEBChowAck.CallDataEntry.value:type_name -> haebpb.CallData
-	20, // 25: haebpb.HAEBPonAck.CallDataEntry.value:type_name -> haebpb.CallData
-	20, // 26: haebpb.HAEBDrawAck.CallDataEntry.value:type_name -> haebpb.CallData
-	27, // [27:27] is the sub-list for method output_type
-	27, // [27:27] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	15, // 16: haebpb.HAEBAck.haeb_ting_ack:type_name -> haebpb.HAEBTingAck
+	22, // 17: haebpb.HAEBOpenDoorAck.call_data:type_name -> haebpb.HAEBOpenDoorAck.CallDataEntry
+	23, // 18: haebpb.HAEBChowAck.call_data:type_name -> haebpb.HAEBChowAck.CallDataEntry
+	24, // 19: haebpb.HAEBPonAck.call_data:type_name -> haebpb.HAEBPonAck.CallDataEntry
+	12, // 20: haebpb.HAEBHuAck.hu_data:type_name -> haebpb.HAEBHuData
+	25, // 21: haebpb.HAEBDrawAck.call_data:type_name -> haebpb.HAEBDrawAck.CallDataEntry
+	20, // 22: haebpb.HAEBResultAck.player_results:type_name -> haebpb.HAEBPlayerResult
+	26, // 23: haebpb.CallData.call_tiles:type_name -> haebpb.CallData.CallTilesEntry
+	21, // 24: haebpb.HAEBOpenDoorAck.CallDataEntry.value:type_name -> haebpb.CallData
+	21, // 25: haebpb.HAEBChowAck.CallDataEntry.value:type_name -> haebpb.CallData
+	21, // 26: haebpb.HAEBPonAck.CallDataEntry.value:type_name -> haebpb.CallData
+	21, // 27: haebpb.HAEBDrawAck.CallDataEntry.value:type_name -> haebpb.CallData
+	28, // [28:28] is the sub-list for method output_type
+	28, // [28:28] is the sub-list for method input_type
+	28, // [28:28] is the sub-list for extension type_name
+	28, // [28:28] is the sub-list for extension extendee
+	0,  // [0:28] is the sub-list for field type_name
 }
 
 func init() { file_mjhaeb_proto_init() }
@@ -1535,7 +1628,7 @@ func file_mjhaeb_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mjhaeb_proto_rawDesc), len(file_mjhaeb_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   26,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
