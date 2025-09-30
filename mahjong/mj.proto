@@ -1,0 +1,122 @@
+syntax = "proto3";
+
+package mjpb;
+option go_package = "../mjpb";
+
+message MJRequestReq {
+  int32 seat = 1; //座位号
+  int32 request_type = 2; // 动作类型
+  int32 requestid = 3; // 请求ID
+  int32 tile = 4; // 牌 （吃为吃牌的最左牌id）
+}
+
+message MJTrustReq {
+  int32 seat = 1; //座位号
+  bool trust = 2; // 是否托管
+}
+
+message MJAnimationReq {
+  int32 seat = 1; //座位号
+  int32 requestid = 2; // 请求ID
+}
+
+message MJGameStartAck {
+  int32 banker = 1; //庄家
+  int32 tile_count = 2; //牌库总张数
+  repeated int64 scores = 3;//带入分
+  string property = 4; //配置串
+}
+
+message MJOpenDoorAck {
+  int32 seat = 1; //座位号
+  repeated int32 tiles = 2; // 手牌列表
+  map<int32,CallData> call_data = 3; // 打出的牌-听牌列表
+}
+
+message MJRequestAck {
+  int32 seat = 1; // //座位号
+  int32 request_type = 2; // 动作类型
+  int32 requestid = 3; // 请求ID
+}
+
+message MJChowAck {
+  int32 seat = 1; //座位号
+  int32 from = 2;//出牌座位号
+  int32 tile = 3; //吃的牌
+  int32 left_tile = 4; //最左的牌
+  bool ting = 5; //是否吃听
+  map<int32,CallData> call_data = 6; // 打出的牌-听牌列表  
+}
+
+message MJPonAck {
+  int32 seat = 1; //座位号
+  int32 from = 2;//出牌座位号
+  int32 tile = 3; //碰的牌列表
+  bool ting = 5; //是否碰听
+  map<int32,CallData> call_data = 4; // 打出的牌-听牌列表
+}
+
+message MJKonAck {
+  int32 seat = 1; //座位号
+  int32 from = 2;//出牌座位号
+  int32 tile = 3; //碰的牌列表
+  int32 kon_type = 4; //杠牌的类型(0:明杠 1： 暗杠 2：补杠)
+}
+
+message MJHuAck {
+  int32 pao_seat = 1; //点炮玩家
+  int32 tile = 2; //胡的牌
+  repeated MJHuData hu_data = 3; // 胡的类型
+}
+
+message MJHuData {
+  int32 seat = 1; //座位号
+  repeated int32 hu_types = 2; // 胡的类型
+}
+
+message MJDrawAck {
+  int32 seat = 1;//座位号
+  int32 tile = 2; //胡的牌
+  int32 draw_type = 3; //0-空，1-普通，2-杠后
+  map<int32,CallData> call_data = 4; // 打出的牌-听牌列表
+}
+
+message MJDiscardAck {
+  int32 seat = 1; //座位号
+  int32 tile = 2; // 丢弃的牌
+}
+
+message MJTingAck {
+  int32 seat = 1; //座位号
+  int32 tile = 2; //丢弃的牌
+  bool tian_ting = 3; //是否天听
+}
+
+message MJScoreChangeAck {
+  repeated int32 scores = 1; //得分列表
+}
+
+message MJTrustAck {
+  int32 seat = 1; // 玩家ID
+  bool trust = 2; // 是否托管
+}
+
+message MJAnimationAck {
+  int32 requestid = 1; 
+}   
+
+message MJResultAck {
+  bool liuju = 1; // 流局标记
+  repeated MJPlayerResult player_results = 2; // 玩家结果列表
+}   
+
+message MJPlayerResult {
+  int32 seat = 1; // 玩家ID
+  int64 cur_score = 2; // 当前分数
+  int64 win_score = 3; // 总得分
+  repeated int32 tiles = 4; // 玩家手牌
+}
+
+message CallData { 
+  map<int32, int64> call_tiles = 2; // 听牌列表(牌-番数或倍数)
+}

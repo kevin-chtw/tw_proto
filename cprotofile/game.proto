@@ -27,7 +27,7 @@ message TablePlayerAck {
   int32 seat = 2; // 座位号
 }
 
-message TableMsgReq {
+message TableMsgReq {  
   bytes msg = 1; // 消息内容
 }
 
