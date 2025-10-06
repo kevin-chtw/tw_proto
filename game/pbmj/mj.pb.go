@@ -4,7 +4,7 @@
 // 	protoc        v3.19.3
 // source: mj.proto
 
-package mjpb
+package pbmj
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -1209,7 +1209,7 @@ var File_mj_proto protoreflect.FileDescriptor
 
 const file_mj_proto_rawDesc = "" +
 	"\n" +
-	"\bmj.proto\x12\x04mjpb\"w\n" +
+	"\bmj.proto\x12\x04pbmj\"w\n" +
 	"\fMJRequestReq\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
@@ -1231,10 +1231,10 @@ const file_mj_proto_rawDesc = "" +
 	"\rMJOpenDoorAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\x12>\n" +
-	"\tcall_data\x18\x03 \x03(\v2!.mjpb.MJOpenDoorAck.CallDataEntryR\bcallData\x1aK\n" +
+	"\tcall_data\x18\x03 \x03(\v2!.pbmj.MJOpenDoorAck.CallDataEntryR\bcallData\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.mjpb.CallDataR\x05value:\x028\x01\"c\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"c\n" +
 	"\fMJRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
@@ -1245,19 +1245,19 @@ const file_mj_proto_rawDesc = "" +
 	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x1b\n" +
 	"\tleft_tile\x18\x04 \x01(\x05R\bleftTile\x12\x12\n" +
 	"\x04ting\x18\x05 \x01(\bR\x04ting\x12:\n" +
-	"\tcall_data\x18\x06 \x03(\v2\x1d.mjpb.MJChowAck.CallDataEntryR\bcallData\x1aK\n" +
+	"\tcall_data\x18\x06 \x03(\v2\x1d.pbmj.MJChowAck.CallDataEntryR\bcallData\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.mjpb.CallDataR\x05value:\x028\x01\"\xe2\x01\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\xe2\x01\n" +
 	"\bMJPonAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
 	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x12\n" +
 	"\x04ting\x18\x05 \x01(\bR\x04ting\x129\n" +
-	"\tcall_data\x18\x04 \x03(\v2\x1c.mjpb.MJPonAck.CallDataEntryR\bcallData\x1aK\n" +
+	"\tcall_data\x18\x04 \x03(\v2\x1c.pbmj.MJPonAck.CallDataEntryR\bcallData\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.mjpb.CallDataR\x05value:\x028\x01\"a\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"a\n" +
 	"\bMJKonAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
@@ -1266,7 +1266,7 @@ const file_mj_proto_rawDesc = "" +
 	"\aMJHuAck\x12\x19\n" +
 	"\bpao_seat\x18\x01 \x01(\x05R\apaoSeat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12'\n" +
-	"\ahu_data\x18\x03 \x03(\v2\x0e.mjpb.MJHuDataR\x06huData\"9\n" +
+	"\ahu_data\x18\x03 \x03(\v2\x0e.pbmj.MJHuDataR\x06huData\"9\n" +
 	"\bMJHuData\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x19\n" +
 	"\bhu_types\x18\x02 \x03(\x05R\ahuTypes\"\xd9\x01\n" +
@@ -1274,10 +1274,10 @@ const file_mj_proto_rawDesc = "" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12\x1b\n" +
 	"\tdraw_type\x18\x03 \x01(\x05R\bdrawType\x12:\n" +
-	"\tcall_data\x18\x04 \x03(\v2\x1d.mjpb.MJDrawAck.CallDataEntryR\bcallData\x1aK\n" +
+	"\tcall_data\x18\x04 \x03(\v2\x1d.pbmj.MJDrawAck.CallDataEntryR\bcallData\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.mjpb.CallDataR\x05value:\x028\x01\"6\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"6\n" +
 	"\fMJDiscardAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\"P\n" +
@@ -1295,7 +1295,7 @@ const file_mj_proto_rawDesc = "" +
 	"\trequestid\x18\x01 \x01(\x05R\trequestid\"`\n" +
 	"\vMJResultAck\x12\x14\n" +
 	"\x05liuju\x18\x01 \x01(\bR\x05liuju\x12;\n" +
-	"\x0eplayer_results\x18\x02 \x03(\v2\x14.mjpb.MJPlayerResultR\rplayerResults\"t\n" +
+	"\x0eplayer_results\x18\x02 \x03(\v2\x14.pbmj.MJPlayerResultR\rplayerResults\"t\n" +
 	"\x0eMJPlayerResult\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x1b\n" +
 	"\tcur_score\x18\x02 \x01(\x03R\bcurScore\x12\x1b\n" +
@@ -1303,10 +1303,10 @@ const file_mj_proto_rawDesc = "" +
 	"\x05tiles\x18\x04 \x03(\x05R\x05tiles\"\x86\x01\n" +
 	"\bCallData\x12<\n" +
 	"\n" +
-	"call_tiles\x18\x02 \x03(\v2\x1d.mjpb.CallData.CallTilesEntryR\tcallTiles\x1a<\n" +
+	"call_tiles\x18\x02 \x03(\v2\x1d.pbmj.CallData.CallTilesEntryR\tcallTiles\x1a<\n" +
 	"\x0eCallTilesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\tZ\a../mjpbb\x06proto3"
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\aZ\x05/pbmjb\x06proto3"
 
 var (
 	file_mj_proto_rawDescOnce sync.Once
@@ -1322,44 +1322,44 @@ func file_mj_proto_rawDescGZIP() []byte {
 
 var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_mj_proto_goTypes = []any{
-	(*MJRequestReq)(nil),     // 0: mjpb.MJRequestReq
-	(*MJTrustReq)(nil),       // 1: mjpb.MJTrustReq
-	(*MJAnimationReq)(nil),   // 2: mjpb.MJAnimationReq
-	(*MJGameStartAck)(nil),   // 3: mjpb.MJGameStartAck
-	(*MJOpenDoorAck)(nil),    // 4: mjpb.MJOpenDoorAck
-	(*MJRequestAck)(nil),     // 5: mjpb.MJRequestAck
-	(*MJChowAck)(nil),        // 6: mjpb.MJChowAck
-	(*MJPonAck)(nil),         // 7: mjpb.MJPonAck
-	(*MJKonAck)(nil),         // 8: mjpb.MJKonAck
-	(*MJHuAck)(nil),          // 9: mjpb.MJHuAck
-	(*MJHuData)(nil),         // 10: mjpb.MJHuData
-	(*MJDrawAck)(nil),        // 11: mjpb.MJDrawAck
-	(*MJDiscardAck)(nil),     // 12: mjpb.MJDiscardAck
-	(*MJTingAck)(nil),        // 13: mjpb.MJTingAck
-	(*MJScoreChangeAck)(nil), // 14: mjpb.MJScoreChangeAck
-	(*MJTrustAck)(nil),       // 15: mjpb.MJTrustAck
-	(*MJAnimationAck)(nil),   // 16: mjpb.MJAnimationAck
-	(*MJResultAck)(nil),      // 17: mjpb.MJResultAck
-	(*MJPlayerResult)(nil),   // 18: mjpb.MJPlayerResult
-	(*CallData)(nil),         // 19: mjpb.CallData
-	nil,                      // 20: mjpb.MJOpenDoorAck.CallDataEntry
-	nil,                      // 21: mjpb.MJChowAck.CallDataEntry
-	nil,                      // 22: mjpb.MJPonAck.CallDataEntry
-	nil,                      // 23: mjpb.MJDrawAck.CallDataEntry
-	nil,                      // 24: mjpb.CallData.CallTilesEntry
+	(*MJRequestReq)(nil),     // 0: pbmj.MJRequestReq
+	(*MJTrustReq)(nil),       // 1: pbmj.MJTrustReq
+	(*MJAnimationReq)(nil),   // 2: pbmj.MJAnimationReq
+	(*MJGameStartAck)(nil),   // 3: pbmj.MJGameStartAck
+	(*MJOpenDoorAck)(nil),    // 4: pbmj.MJOpenDoorAck
+	(*MJRequestAck)(nil),     // 5: pbmj.MJRequestAck
+	(*MJChowAck)(nil),        // 6: pbmj.MJChowAck
+	(*MJPonAck)(nil),         // 7: pbmj.MJPonAck
+	(*MJKonAck)(nil),         // 8: pbmj.MJKonAck
+	(*MJHuAck)(nil),          // 9: pbmj.MJHuAck
+	(*MJHuData)(nil),         // 10: pbmj.MJHuData
+	(*MJDrawAck)(nil),        // 11: pbmj.MJDrawAck
+	(*MJDiscardAck)(nil),     // 12: pbmj.MJDiscardAck
+	(*MJTingAck)(nil),        // 13: pbmj.MJTingAck
+	(*MJScoreChangeAck)(nil), // 14: pbmj.MJScoreChangeAck
+	(*MJTrustAck)(nil),       // 15: pbmj.MJTrustAck
+	(*MJAnimationAck)(nil),   // 16: pbmj.MJAnimationAck
+	(*MJResultAck)(nil),      // 17: pbmj.MJResultAck
+	(*MJPlayerResult)(nil),   // 18: pbmj.MJPlayerResult
+	(*CallData)(nil),         // 19: pbmj.CallData
+	nil,                      // 20: pbmj.MJOpenDoorAck.CallDataEntry
+	nil,                      // 21: pbmj.MJChowAck.CallDataEntry
+	nil,                      // 22: pbmj.MJPonAck.CallDataEntry
+	nil,                      // 23: pbmj.MJDrawAck.CallDataEntry
+	nil,                      // 24: pbmj.CallData.CallTilesEntry
 }
 var file_mj_proto_depIdxs = []int32{
-	20, // 0: mjpb.MJOpenDoorAck.call_data:type_name -> mjpb.MJOpenDoorAck.CallDataEntry
-	21, // 1: mjpb.MJChowAck.call_data:type_name -> mjpb.MJChowAck.CallDataEntry
-	22, // 2: mjpb.MJPonAck.call_data:type_name -> mjpb.MJPonAck.CallDataEntry
-	10, // 3: mjpb.MJHuAck.hu_data:type_name -> mjpb.MJHuData
-	23, // 4: mjpb.MJDrawAck.call_data:type_name -> mjpb.MJDrawAck.CallDataEntry
-	18, // 5: mjpb.MJResultAck.player_results:type_name -> mjpb.MJPlayerResult
-	24, // 6: mjpb.CallData.call_tiles:type_name -> mjpb.CallData.CallTilesEntry
-	19, // 7: mjpb.MJOpenDoorAck.CallDataEntry.value:type_name -> mjpb.CallData
-	19, // 8: mjpb.MJChowAck.CallDataEntry.value:type_name -> mjpb.CallData
-	19, // 9: mjpb.MJPonAck.CallDataEntry.value:type_name -> mjpb.CallData
-	19, // 10: mjpb.MJDrawAck.CallDataEntry.value:type_name -> mjpb.CallData
+	20, // 0: pbmj.MJOpenDoorAck.call_data:type_name -> pbmj.MJOpenDoorAck.CallDataEntry
+	21, // 1: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
+	22, // 2: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
+	10, // 3: pbmj.MJHuAck.hu_data:type_name -> pbmj.MJHuData
+	23, // 4: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
+	18, // 5: pbmj.MJResultAck.player_results:type_name -> pbmj.MJPlayerResult
+	24, // 6: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
+	19, // 7: pbmj.MJOpenDoorAck.CallDataEntry.value:type_name -> pbmj.CallData
+	19, // 8: pbmj.MJChowAck.CallDataEntry.value:type_name -> pbmj.CallData
+	19, // 9: pbmj.MJPonAck.CallDataEntry.value:type_name -> pbmj.CallData
+	19, // 10: pbmj.MJDrawAck.CallDataEntry.value:type_name -> pbmj.CallData
 	11, // [11:11] is the sub-list for method output_type
 	11, // [11:11] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name

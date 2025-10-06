@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.19.3
-// source: mjhaeb.proto
+// source: haeb.proto
 
-package haebpb
+package pbhaeb
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -31,7 +31,7 @@ type HAEBReq struct {
 
 func (x *HAEBReq) Reset() {
 	*x = HAEBReq{}
-	mi := &file_mjhaeb_proto_msgTypes[0]
+	mi := &file_haeb_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *HAEBReq) String() string {
 func (*HAEBReq) ProtoMessage() {}
 
 func (x *HAEBReq) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[0]
+	mi := &file_haeb_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *HAEBReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBReq.ProtoReflect.Descriptor instead.
 func (*HAEBReq) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{0}
+	return file_haeb_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *HAEBReq) GetReq() *anypb.Any {
@@ -75,7 +75,7 @@ type HAEBAck struct {
 
 func (x *HAEBAck) Reset() {
 	*x = HAEBAck{}
-	mi := &file_mjhaeb_proto_msgTypes[1]
+	mi := &file_haeb_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -87,7 +87,7 @@ func (x *HAEBAck) String() string {
 func (*HAEBAck) ProtoMessage() {}
 
 func (x *HAEBAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mjhaeb_proto_msgTypes[1]
+	mi := &file_haeb_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -100,7 +100,7 @@ func (x *HAEBAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HAEBAck.ProtoReflect.Descriptor instead.
 func (*HAEBAck) Descriptor() ([]byte, []int) {
-	return file_mjhaeb_proto_rawDescGZIP(), []int{1}
+	return file_haeb_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *HAEBAck) GetAck() *anypb.Any {
@@ -110,37 +110,87 @@ func (x *HAEBAck) GetAck() *anypb.Any {
 	return nil
 }
 
-var File_mjhaeb_proto protoreflect.FileDescriptor
+// 发送宝牌消息
+type HaebBaoAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tile          int32                  `protobuf:"varint,1,opt,name=tile,proto3" json:"tile,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
 
-const file_mjhaeb_proto_rawDesc = "" +
+func (x *HaebBaoAck) Reset() {
+	*x = HaebBaoAck{}
+	mi := &file_haeb_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HaebBaoAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HaebBaoAck) ProtoMessage() {}
+
+func (x *HaebBaoAck) ProtoReflect() protoreflect.Message {
+	mi := &file_haeb_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HaebBaoAck.ProtoReflect.Descriptor instead.
+func (*HaebBaoAck) Descriptor() ([]byte, []int) {
+	return file_haeb_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *HaebBaoAck) GetTile() int32 {
+	if x != nil {
+		return x.Tile
+	}
+	return 0
+}
+
+var File_haeb_proto protoreflect.FileDescriptor
+
+const file_haeb_proto_rawDesc = "" +
 	"\n" +
-	"\fmjhaeb.proto\x12\x06haebpb\x1a\x19google/protobuf/any.proto\"1\n" +
+	"\n" +
+	"haeb.proto\x12\x06pbhaeb\x1a\x19google/protobuf/any.proto\"1\n" +
 	"\aHAEBReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"1\n" +
 	"\aHAEBAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ackB\vZ\t../haebpbb\x06proto3"
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\" \n" +
+	"\n" +
+	"HaebBaoAck\x12\x12\n" +
+	"\x04tile\x18\x01 \x01(\x05R\x04tileB\tZ\a/pbhaebb\x06proto3"
 
 var (
-	file_mjhaeb_proto_rawDescOnce sync.Once
-	file_mjhaeb_proto_rawDescData []byte
+	file_haeb_proto_rawDescOnce sync.Once
+	file_haeb_proto_rawDescData []byte
 )
 
-func file_mjhaeb_proto_rawDescGZIP() []byte {
-	file_mjhaeb_proto_rawDescOnce.Do(func() {
-		file_mjhaeb_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_mjhaeb_proto_rawDesc), len(file_mjhaeb_proto_rawDesc)))
+func file_haeb_proto_rawDescGZIP() []byte {
+	file_haeb_proto_rawDescOnce.Do(func() {
+		file_haeb_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_haeb_proto_rawDesc), len(file_haeb_proto_rawDesc)))
 	})
-	return file_mjhaeb_proto_rawDescData
+	return file_haeb_proto_rawDescData
 }
 
-var file_mjhaeb_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_mjhaeb_proto_goTypes = []any{
-	(*HAEBReq)(nil),   // 0: haebpb.HAEBReq
-	(*HAEBAck)(nil),   // 1: haebpb.HAEBAck
-	(*anypb.Any)(nil), // 2: google.protobuf.Any
+var file_haeb_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_haeb_proto_goTypes = []any{
+	(*HAEBReq)(nil),    // 0: pbhaeb.HAEBReq
+	(*HAEBAck)(nil),    // 1: pbhaeb.HAEBAck
+	(*HaebBaoAck)(nil), // 2: pbhaeb.HaebBaoAck
+	(*anypb.Any)(nil),  // 3: google.protobuf.Any
 }
-var file_mjhaeb_proto_depIdxs = []int32{
-	2, // 0: haebpb.HAEBReq.req:type_name -> google.protobuf.Any
-	2, // 1: haebpb.HAEBAck.ack:type_name -> google.protobuf.Any
+var file_haeb_proto_depIdxs = []int32{
+	3, // 0: pbhaeb.HAEBReq.req:type_name -> google.protobuf.Any
+	3, // 1: pbhaeb.HAEBAck.ack:type_name -> google.protobuf.Any
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -148,26 +198,26 @@ var file_mjhaeb_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_mjhaeb_proto_init() }
-func file_mjhaeb_proto_init() {
-	if File_mjhaeb_proto != nil {
+func init() { file_haeb_proto_init() }
+func file_haeb_proto_init() {
+	if File_haeb_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mjhaeb_proto_rawDesc), len(file_mjhaeb_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_haeb_proto_rawDesc), len(file_haeb_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_mjhaeb_proto_goTypes,
-		DependencyIndexes: file_mjhaeb_proto_depIdxs,
-		MessageInfos:      file_mjhaeb_proto_msgTypes,
+		GoTypes:           file_haeb_proto_goTypes,
+		DependencyIndexes: file_haeb_proto_depIdxs,
+		MessageInfos:      file_haeb_proto_msgTypes,
 	}.Build()
-	File_mjhaeb_proto = out.File
-	file_mjhaeb_proto_goTypes = nil
-	file_mjhaeb_proto_depIdxs = nil
+	File_haeb_proto = out.File
+	file_haeb_proto_goTypes = nil
+	file_haeb_proto_depIdxs = nil
 }

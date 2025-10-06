@@ -1,8 +1,8 @@
 syntax = "proto3";
 import "google/protobuf/any.proto";
 
-package haebpb;
-option go_package = "../haebpb";
+package pbhaeb;
+option go_package = "/pbhaeb";
 
 message HAEBReq {
   google.protobuf.Any req = 1;
@@ -12,3 +12,7 @@ message HAEBAck {
   google.protobuf.Any ack = 1;
 }
 
+//发送宝牌消息
+message HaebBaoAck {
+  int32 tile = 1;
+}
