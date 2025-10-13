@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package cproto;
+option go_package = "../cproto";
+
+message AccountReq {
+  google.protobuf.Any req = 1;
+}
+
+message AccountAck {
+  google.protobuf.Any ack = 1;
+}
+
+message LoginReq {
+  string account = 1;
+  string password = 2;
+}
+
+message RegisterReq {
+  string account = 1; 
+  string password = 2;
+  string avatar = 3; //随机生成的头像内容
+}
+
+message PlayerInfoAck {
+  string uid = 1; // 玩家ID
+  string nickname = 2; // 玩家昵称
+  string avatar = 3; // 玩家头像
+  int32 vip = 4; // VIP等级
+  int64 diamond = 5; // 钻石
+}
