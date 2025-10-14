@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package sproto;
+option go_package = "../sproto";
+
+message Match2AccountReq {
+  google.protobuf.Any req = 1; // 请求内容
+}
+
+message Match2AccountAck {
+  google.protobuf.Any ack = 1; // 响应内容
+}
+
+message PayReq {
+    string uid = 1; //用户id
+    int64 diamond = 2; //钻石数量
+}
+
+message PayAck {
+    string uid = 1; //用于id
+    int64 diamond = 2; //钻石数量
+}

@@ -20,7 +20,8 @@ message MatchAck {
 message CreateRoomReq {
   int32 game_count = 1; // 局数
   string desn = 2; //配置描述
-  map<string, int32> properties = 3; // 配置信息
+  int32 pay_type = 3; //付费类型 // 0:队长支付，1：AA支付
+  map<string, int32> properties = 4; // 配置信息  
 }
 
 message CancelRoomReq {
