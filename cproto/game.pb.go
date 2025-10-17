@@ -196,8 +196,12 @@ func (*EnterGameReq) Descriptor() ([]byte, []int) {
 
 type TablePlayerAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
-	Seat          int32                  `protobuf:"varint,2,opt,name=seat,proto3" json:"seat,omitempty"`        // 座位号
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`           // 玩家ID
+	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"` // 玩家昵称
+	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`     // 玩家头像
+	Vip           int32                  `protobuf:"varint,4,opt,name=vip,proto3" json:"vip,omitempty"`          // VIP等级
+	Diamond       int64                  `protobuf:"varint,5,opt,name=diamond,proto3" json:"diamond,omitempty"`  // 钻石
+	Seat          int32                  `protobuf:"varint,6,opt,name=seat,proto3" json:"seat,omitempty"`        // 座位号
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -232,11 +236,39 @@ func (*TablePlayerAck) Descriptor() ([]byte, []int) {
 	return file_game_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *TablePlayerAck) GetPlayerid() string {
+func (x *TablePlayerAck) GetUid() string {
 	if x != nil {
-		return x.Playerid
+		return x.Uid
 	}
 	return ""
+}
+
+func (x *TablePlayerAck) GetNickname() string {
+	if x != nil {
+		return x.Nickname
+	}
+	return ""
+}
+
+func (x *TablePlayerAck) GetAvatar() string {
+	if x != nil {
+		return x.Avatar
+	}
+	return ""
+}
+
+func (x *TablePlayerAck) GetVip() int32 {
+	if x != nil {
+		return x.Vip
+	}
+	return 0
+}
+
+func (x *TablePlayerAck) GetDiamond() int64 {
+	if x != nil {
+		return x.Diamond
+	}
+	return 0
 }
 
 func (x *TablePlayerAck) GetSeat() int32 {
@@ -514,10 +546,14 @@ const file_game_proto_rawDesc = "" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
 	"\x03ack\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x0e\n" +
-	"\fEnterGameReq\"@\n" +
-	"\x0eTablePlayerAck\x12\x1a\n" +
-	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x12\n" +
-	"\x04seat\x18\x02 \x01(\x05R\x04seat\"\x1f\n" +
+	"\fEnterGameReq\"\x96\x01\n" +
+	"\x0eTablePlayerAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
+	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
+	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x12\x10\n" +
+	"\x03vip\x18\x04 \x01(\x05R\x03vip\x12\x18\n" +
+	"\adiamond\x18\x05 \x01(\x03R\adiamond\x12\x12\n" +
+	"\x04seat\x18\x06 \x01(\x05R\x04seat\"\x1f\n" +
 	"\vTableMsgReq\x12\x10\n" +
 	"\x03msg\x18\x01 \x01(\fR\x03msg\"\x1f\n" +
 	"\vTableMsgAck\x12\x10\n" +

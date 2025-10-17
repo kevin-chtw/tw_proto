@@ -729,24 +729,74 @@ class TablePlayerAck final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPlayeridFieldNumber = 1,
-    kSeatFieldNumber = 2,
+    kUidFieldNumber = 1,
+    kNicknameFieldNumber = 2,
+    kAvatarFieldNumber = 3,
+    kDiamondFieldNumber = 5,
+    kVipFieldNumber = 4,
+    kSeatFieldNumber = 6,
   };
-  // string playerid = 1;
-  void clear_playerid();
-  const std::string& playerid() const;
+  // string uid = 1;
+  void clear_uid();
+  const std::string& uid() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_playerid(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_playerid();
-  PROTOBUF_NODISCARD std::string* release_playerid();
-  void set_allocated_playerid(std::string* playerid);
+  void set_uid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_uid();
+  PROTOBUF_NODISCARD std::string* release_uid();
+  void set_allocated_uid(std::string* uid);
   private:
-  const std::string& _internal_playerid() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_playerid(const std::string& value);
-  std::string* _internal_mutable_playerid();
+  const std::string& _internal_uid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_uid(const std::string& value);
+  std::string* _internal_mutable_uid();
   public:
 
-  // int32 seat = 2;
+  // string nickname = 2;
+  void clear_nickname();
+  const std::string& nickname() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_nickname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_nickname();
+  PROTOBUF_NODISCARD std::string* release_nickname();
+  void set_allocated_nickname(std::string* nickname);
+  private:
+  const std::string& _internal_nickname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_nickname(const std::string& value);
+  std::string* _internal_mutable_nickname();
+  public:
+
+  // string avatar = 3;
+  void clear_avatar();
+  const std::string& avatar() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_avatar(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_avatar();
+  PROTOBUF_NODISCARD std::string* release_avatar();
+  void set_allocated_avatar(std::string* avatar);
+  private:
+  const std::string& _internal_avatar() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_avatar(const std::string& value);
+  std::string* _internal_mutable_avatar();
+  public:
+
+  // int64 diamond = 5;
+  void clear_diamond();
+  int64_t diamond() const;
+  void set_diamond(int64_t value);
+  private:
+  int64_t _internal_diamond() const;
+  void _internal_set_diamond(int64_t value);
+  public:
+
+  // int32 vip = 4;
+  void clear_vip();
+  int32_t vip() const;
+  void set_vip(int32_t value);
+  private:
+  int32_t _internal_vip() const;
+  void _internal_set_vip(int32_t value);
+  public:
+
+  // int32 seat = 6;
   void clear_seat();
   int32_t seat() const;
   void set_seat(int32_t value);
@@ -762,7 +812,11 @@ class TablePlayerAck final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr playerid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr uid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr avatar_;
+  int64_t diamond_;
+  int32_t vip_;
   int32_t seat_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_game_2eproto;
@@ -1974,58 +2028,200 @@ inline void GameAck::set_allocated_ack(::PROTOBUF_NAMESPACE_ID::Any* ack) {
 
 // TablePlayerAck
 
-// string playerid = 1;
-inline void TablePlayerAck::clear_playerid() {
-  playerid_.ClearToEmpty();
+// string uid = 1;
+inline void TablePlayerAck::clear_uid() {
+  uid_.ClearToEmpty();
 }
-inline const std::string& TablePlayerAck::playerid() const {
-  // @@protoc_insertion_point(field_get:cproto.TablePlayerAck.playerid)
-  return _internal_playerid();
+inline const std::string& TablePlayerAck::uid() const {
+  // @@protoc_insertion_point(field_get:cproto.TablePlayerAck.uid)
+  return _internal_uid();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void TablePlayerAck::set_playerid(ArgT0&& arg0, ArgT... args) {
+void TablePlayerAck::set_uid(ArgT0&& arg0, ArgT... args) {
  
- playerid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.playerid)
+ uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.uid)
 }
-inline std::string* TablePlayerAck::mutable_playerid() {
-  std::string* _s = _internal_mutable_playerid();
-  // @@protoc_insertion_point(field_mutable:cproto.TablePlayerAck.playerid)
+inline std::string* TablePlayerAck::mutable_uid() {
+  std::string* _s = _internal_mutable_uid();
+  // @@protoc_insertion_point(field_mutable:cproto.TablePlayerAck.uid)
   return _s;
 }
-inline const std::string& TablePlayerAck::_internal_playerid() const {
-  return playerid_.Get();
+inline const std::string& TablePlayerAck::_internal_uid() const {
+  return uid_.Get();
 }
-inline void TablePlayerAck::_internal_set_playerid(const std::string& value) {
+inline void TablePlayerAck::_internal_set_uid(const std::string& value) {
   
-  playerid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* TablePlayerAck::_internal_mutable_playerid() {
+inline std::string* TablePlayerAck::_internal_mutable_uid() {
   
-  return playerid_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return uid_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* TablePlayerAck::release_playerid() {
-  // @@protoc_insertion_point(field_release:cproto.TablePlayerAck.playerid)
-  return playerid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* TablePlayerAck::release_uid() {
+  // @@protoc_insertion_point(field_release:cproto.TablePlayerAck.uid)
+  return uid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void TablePlayerAck::set_allocated_playerid(std::string* playerid) {
-  if (playerid != nullptr) {
+inline void TablePlayerAck::set_allocated_uid(std::string* uid) {
+  if (uid != nullptr) {
     
   } else {
     
   }
-  playerid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), playerid,
+  uid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), uid,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (playerid_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    playerid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (uid_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.TablePlayerAck.playerid)
+  // @@protoc_insertion_point(field_set_allocated:cproto.TablePlayerAck.uid)
 }
 
-// int32 seat = 2;
+// string nickname = 2;
+inline void TablePlayerAck::clear_nickname() {
+  nickname_.ClearToEmpty();
+}
+inline const std::string& TablePlayerAck::nickname() const {
+  // @@protoc_insertion_point(field_get:cproto.TablePlayerAck.nickname)
+  return _internal_nickname();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TablePlayerAck::set_nickname(ArgT0&& arg0, ArgT... args) {
+ 
+ nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.nickname)
+}
+inline std::string* TablePlayerAck::mutable_nickname() {
+  std::string* _s = _internal_mutable_nickname();
+  // @@protoc_insertion_point(field_mutable:cproto.TablePlayerAck.nickname)
+  return _s;
+}
+inline const std::string& TablePlayerAck::_internal_nickname() const {
+  return nickname_.Get();
+}
+inline void TablePlayerAck::_internal_set_nickname(const std::string& value) {
+  
+  nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TablePlayerAck::_internal_mutable_nickname() {
+  
+  return nickname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TablePlayerAck::release_nickname() {
+  // @@protoc_insertion_point(field_release:cproto.TablePlayerAck.nickname)
+  return nickname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TablePlayerAck::set_allocated_nickname(std::string* nickname) {
+  if (nickname != nullptr) {
+    
+  } else {
+    
+  }
+  nickname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nickname,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (nickname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.TablePlayerAck.nickname)
+}
+
+// string avatar = 3;
+inline void TablePlayerAck::clear_avatar() {
+  avatar_.ClearToEmpty();
+}
+inline const std::string& TablePlayerAck::avatar() const {
+  // @@protoc_insertion_point(field_get:cproto.TablePlayerAck.avatar)
+  return _internal_avatar();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TablePlayerAck::set_avatar(ArgT0&& arg0, ArgT... args) {
+ 
+ avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.avatar)
+}
+inline std::string* TablePlayerAck::mutable_avatar() {
+  std::string* _s = _internal_mutable_avatar();
+  // @@protoc_insertion_point(field_mutable:cproto.TablePlayerAck.avatar)
+  return _s;
+}
+inline const std::string& TablePlayerAck::_internal_avatar() const {
+  return avatar_.Get();
+}
+inline void TablePlayerAck::_internal_set_avatar(const std::string& value) {
+  
+  avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TablePlayerAck::_internal_mutable_avatar() {
+  
+  return avatar_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TablePlayerAck::release_avatar() {
+  // @@protoc_insertion_point(field_release:cproto.TablePlayerAck.avatar)
+  return avatar_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TablePlayerAck::set_allocated_avatar(std::string* avatar) {
+  if (avatar != nullptr) {
+    
+  } else {
+    
+  }
+  avatar_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), avatar,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (avatar_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.TablePlayerAck.avatar)
+}
+
+// int32 vip = 4;
+inline void TablePlayerAck::clear_vip() {
+  vip_ = 0;
+}
+inline int32_t TablePlayerAck::_internal_vip() const {
+  return vip_;
+}
+inline int32_t TablePlayerAck::vip() const {
+  // @@protoc_insertion_point(field_get:cproto.TablePlayerAck.vip)
+  return _internal_vip();
+}
+inline void TablePlayerAck::_internal_set_vip(int32_t value) {
+  
+  vip_ = value;
+}
+inline void TablePlayerAck::set_vip(int32_t value) {
+  _internal_set_vip(value);
+  // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.vip)
+}
+
+// int64 diamond = 5;
+inline void TablePlayerAck::clear_diamond() {
+  diamond_ = int64_t{0};
+}
+inline int64_t TablePlayerAck::_internal_diamond() const {
+  return diamond_;
+}
+inline int64_t TablePlayerAck::diamond() const {
+  // @@protoc_insertion_point(field_get:cproto.TablePlayerAck.diamond)
+  return _internal_diamond();
+}
+inline void TablePlayerAck::_internal_set_diamond(int64_t value) {
+  
+  diamond_ = value;
+}
+inline void TablePlayerAck::set_diamond(int64_t value) {
+  _internal_set_diamond(value);
+  // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.diamond)
+}
+
+// int32 seat = 6;
 inline void TablePlayerAck::clear_seat() {
   seat_ = 0;
 }

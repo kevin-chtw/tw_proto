@@ -23,8 +23,12 @@ message EnterGameReq {
 }
 
 message TablePlayerAck {
-  string playerid = 1; // 玩家ID
-  int32 seat = 2; // 座位号
+  string uid = 1; // 玩家ID
+  string nickname = 2; // 玩家昵称
+  string avatar = 3; // 玩家头像
+  int32 vip = 4; // VIP等级
+  int64 diamond = 5; // 钻石
+  int32 seat = 6; // 座位号
 }
 
 message TableMsgReq {  

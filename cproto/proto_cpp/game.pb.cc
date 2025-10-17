@@ -60,7 +60,11 @@ struct EnterGameReqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EnterGameReqDefaultTypeInternal _EnterGameReq_default_instance_;
 constexpr TablePlayerAck::TablePlayerAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : playerid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : uid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , avatar_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , diamond_(int64_t{0})
+  , vip_(0)
   , seat_(0){}
 struct TablePlayerAckDefaultTypeInternal {
   constexpr TablePlayerAckDefaultTypeInternal()
@@ -179,7 +183,11 @@ const uint32_t TableStruct_game_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, playerid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, uid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, nickname_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, avatar_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, vip_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, diamond_),
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, seat_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::TableMsgReq, _internal_metadata_),
@@ -227,12 +235,12 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 10, -1, -1, sizeof(::cproto::GameAck)},
   { 20, -1, -1, sizeof(::cproto::EnterGameReq)},
   { 26, -1, -1, sizeof(::cproto::TablePlayerAck)},
-  { 34, -1, -1, sizeof(::cproto::TableMsgReq)},
-  { 41, -1, -1, sizeof(::cproto::TableMsgAck)},
-  { 48, -1, -1, sizeof(::cproto::GameBeginAck)},
-  { 55, -1, -1, sizeof(::cproto::GameOverAck)},
-  { 62, -1, -1, sizeof(::cproto::HisBeginAck)},
-  { 68, -1, -1, sizeof(::cproto::HisEndAck)},
+  { 38, -1, -1, sizeof(::cproto::TableMsgReq)},
+  { 45, -1, -1, sizeof(::cproto::TableMsgAck)},
+  { 52, -1, -1, sizeof(::cproto::GameBeginAck)},
+  { 59, -1, -1, sizeof(::cproto::GameOverAck)},
+  { 66, -1, -1, sizeof(::cproto::HisBeginAck)},
+  { 72, -1, -1, sizeof(::cproto::HisEndAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -255,20 +263,21 @@ const char descriptor_table_protodef_game_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\001(\0132\024.google.protobuf.Any\"`\n\007GameAck\022\020\n\010"
   "serverid\030\001 \001(\t\022\017\n\007matchid\030\002 \001(\005\022\017\n\007table"
   "id\030\003 \001(\005\022!\n\003ack\030\004 \001(\0132\024.google.protobuf."
-  "Any\"\016\n\014EnterGameReq\"0\n\016TablePlayerAck\022\020\n"
-  "\010playerid\030\001 \001(\t\022\014\n\004seat\030\002 \001(\005\"\032\n\013TableMs"
-  "gReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013TableMsgAck\022\013\n\003msg\030"
-  "\001 \001(\014\"&\n\014GameBeginAck\022\026\n\016cur_game_count\030"
-  "\001 \001(\005\"%\n\013GameOverAck\022\026\n\016cur_game_count\030\001"
-  " \001(\005\"\r\n\013HisBeginAck\"\013\n\tHisEndAckB\013Z\t../c"
-  "protob\006proto3"
+  "Any\"\016\n\014EnterGameReq\"k\n\016TablePlayerAck\022\013\n"
+  "\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006avatar\030\003"
+  " \001(\t\022\013\n\003vip\030\004 \001(\005\022\017\n\007diamond\030\005 \001(\003\022\014\n\004se"
+  "at\030\006 \001(\005\"\032\n\013TableMsgReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013"
+  "TableMsgAck\022\013\n\003msg\030\001 \001(\014\"&\n\014GameBeginAck"
+  "\022\026\n\016cur_game_count\030\001 \001(\005\"%\n\013GameOverAck\022"
+  "\026\n\016cur_game_count\030\001 \001(\005\"\r\n\013HisBeginAck\"\013"
+  "\n\tHisEndAckB\013Z\t../cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_game_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_game_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_game_2eproto = {
-  false, false, 493, descriptor_table_protodef_game_2eproto, "game.proto", 
+  false, false, 552, descriptor_table_protodef_game_2eproto, "game.proto", 
   &descriptor_table_game_2eproto_once, descriptor_table_game_2eproto_deps, 1, 10,
   schemas, file_default_instances, TableStruct_game_2eproto::offsets,
   file_level_metadata_game_2eproto, file_level_enum_descriptors_game_2eproto, file_level_service_descriptors_game_2eproto,
@@ -958,24 +967,53 @@ TablePlayerAck::TablePlayerAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 TablePlayerAck::TablePlayerAck(const TablePlayerAck& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  playerid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    playerid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_playerid().empty()) {
-    playerid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_playerid(), 
+  if (!from._internal_uid().empty()) {
+    uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_uid(), 
       GetArenaForAllocation());
   }
-  seat_ = from.seat_;
+  nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_nickname().empty()) {
+    nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nickname(), 
+      GetArenaForAllocation());
+  }
+  avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_avatar().empty()) {
+    avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_avatar(), 
+      GetArenaForAllocation());
+  }
+  ::memcpy(&diamond_, &from.diamond_,
+    static_cast<size_t>(reinterpret_cast<char*>(&seat_) -
+    reinterpret_cast<char*>(&diamond_)) + sizeof(seat_));
   // @@protoc_insertion_point(copy_constructor:cproto.TablePlayerAck)
 }
 
 inline void TablePlayerAck::SharedCtor() {
-playerid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  playerid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-seat_ = 0;
+nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&diamond_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&seat_) -
+    reinterpret_cast<char*>(&diamond_)) + sizeof(seat_));
 }
 
 TablePlayerAck::~TablePlayerAck() {
@@ -987,7 +1025,9 @@ TablePlayerAck::~TablePlayerAck() {
 
 inline void TablePlayerAck::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  playerid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  uid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  nickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  avatar_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void TablePlayerAck::ArenaDtor(void* object) {
@@ -1006,8 +1046,12 @@ void TablePlayerAck::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  playerid_.ClearToEmpty();
-  seat_ = 0;
+  uid_.ClearToEmpty();
+  nickname_.ClearToEmpty();
+  avatar_.ClearToEmpty();
+  ::memset(&diamond_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&seat_) -
+      reinterpret_cast<char*>(&diamond_)) + sizeof(seat_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1017,19 +1061,55 @@ const char* TablePlayerAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string playerid = 1;
+      // string uid = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_playerid();
+          auto str = _internal_mutable_uid();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.TablePlayerAck.playerid"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.TablePlayerAck.uid"));
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 seat = 2;
+      // string nickname = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_nickname();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.TablePlayerAck.nickname"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string avatar = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_avatar();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.TablePlayerAck.avatar"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 vip = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          vip_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 diamond = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          diamond_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 seat = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
           seat_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -1064,20 +1144,52 @@ uint8_t* TablePlayerAck::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string playerid = 1;
-  if (!this->_internal_playerid().empty()) {
+  // string uid = 1;
+  if (!this->_internal_uid().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_playerid().data(), static_cast<int>(this->_internal_playerid().length()),
+      this->_internal_uid().data(), static_cast<int>(this->_internal_uid().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.TablePlayerAck.playerid");
+      "cproto.TablePlayerAck.uid");
     target = stream->WriteStringMaybeAliased(
-        1, this->_internal_playerid(), target);
+        1, this->_internal_uid(), target);
   }
 
-  // int32 seat = 2;
+  // string nickname = 2;
+  if (!this->_internal_nickname().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_nickname().data(), static_cast<int>(this->_internal_nickname().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.TablePlayerAck.nickname");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_nickname(), target);
+  }
+
+  // string avatar = 3;
+  if (!this->_internal_avatar().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.TablePlayerAck.avatar");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_avatar(), target);
+  }
+
+  // int32 vip = 4;
+  if (this->_internal_vip() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_vip(), target);
+  }
+
+  // int64 diamond = 5;
+  if (this->_internal_diamond() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(5, this->_internal_diamond(), target);
+  }
+
+  // int32 seat = 6;
   if (this->_internal_seat() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_seat(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_seat(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1096,14 +1208,38 @@ size_t TablePlayerAck::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string playerid = 1;
-  if (!this->_internal_playerid().empty()) {
+  // string uid = 1;
+  if (!this->_internal_uid().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_playerid());
+        this->_internal_uid());
   }
 
-  // int32 seat = 2;
+  // string nickname = 2;
+  if (!this->_internal_nickname().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_nickname());
+  }
+
+  // string avatar = 3;
+  if (!this->_internal_avatar().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_avatar());
+  }
+
+  // int64 diamond = 5;
+  if (this->_internal_diamond() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_diamond());
+  }
+
+  // int32 vip = 4;
+  if (this->_internal_vip() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_vip());
+  }
+
+  // int32 seat = 6;
   if (this->_internal_seat() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_seat());
   }
@@ -1130,8 +1266,20 @@ void TablePlayerAck::MergeFrom(const TablePlayerAck& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_playerid().empty()) {
-    _internal_set_playerid(from._internal_playerid());
+  if (!from._internal_uid().empty()) {
+    _internal_set_uid(from._internal_uid());
+  }
+  if (!from._internal_nickname().empty()) {
+    _internal_set_nickname(from._internal_nickname());
+  }
+  if (!from._internal_avatar().empty()) {
+    _internal_set_avatar(from._internal_avatar());
+  }
+  if (from._internal_diamond() != 0) {
+    _internal_set_diamond(from._internal_diamond());
+  }
+  if (from._internal_vip() != 0) {
+    _internal_set_vip(from._internal_vip());
   }
   if (from._internal_seat() != 0) {
     _internal_set_seat(from._internal_seat());
@@ -1157,10 +1305,25 @@ void TablePlayerAck::InternalSwap(TablePlayerAck* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &playerid_, lhs_arena,
-      &other->playerid_, rhs_arena
+      &uid_, lhs_arena,
+      &other->uid_, rhs_arena
   );
-  swap(seat_, other->seat_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &nickname_, lhs_arena,
+      &other->nickname_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &avatar_, lhs_arena,
+      &other->avatar_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TablePlayerAck, seat_)
+      + sizeof(TablePlayerAck::seat_)
+      - PROTOBUF_FIELD_OFFSET(TablePlayerAck, diamond_)>(
+          reinterpret_cast<char*>(&diamond_),
+          reinterpret_cast<char*>(&other->diamond_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TablePlayerAck::GetMetadata() const {

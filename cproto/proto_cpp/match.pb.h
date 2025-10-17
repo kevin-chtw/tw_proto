@@ -621,11 +621,12 @@ class CreateRoomReq final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPropertiesFieldNumber = 3,
+    kPropertiesFieldNumber = 4,
     kDesnFieldNumber = 2,
     kGameCountFieldNumber = 1,
+    kPayTypeFieldNumber = 3,
   };
-  // map<string, int32> properties = 3;
+  // map<string, int32> properties = 4;
   int properties_size() const;
   private:
   int _internal_properties_size() const;
@@ -665,6 +666,15 @@ class CreateRoomReq final :
   void _internal_set_game_count(int32_t value);
   public:
 
+  // int32 pay_type = 3;
+  void clear_pay_type();
+  int32_t pay_type() const;
+  void set_pay_type(int32_t value);
+  private:
+  int32_t _internal_pay_type() const;
+  void _internal_set_pay_type(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:cproto.CreateRoomReq)
  private:
   class _Internal;
@@ -679,6 +689,7 @@ class CreateRoomReq final :
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> properties_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desn_;
   int32_t game_count_;
+  int32_t pay_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_match_2eproto;
 };
@@ -1948,7 +1959,27 @@ inline void CreateRoomReq::set_allocated_desn(std::string* desn) {
   // @@protoc_insertion_point(field_set_allocated:cproto.CreateRoomReq.desn)
 }
 
-// map<string, int32> properties = 3;
+// int32 pay_type = 3;
+inline void CreateRoomReq::clear_pay_type() {
+  pay_type_ = 0;
+}
+inline int32_t CreateRoomReq::_internal_pay_type() const {
+  return pay_type_;
+}
+inline int32_t CreateRoomReq::pay_type() const {
+  // @@protoc_insertion_point(field_get:cproto.CreateRoomReq.pay_type)
+  return _internal_pay_type();
+}
+inline void CreateRoomReq::_internal_set_pay_type(int32_t value) {
+  
+  pay_type_ = value;
+}
+inline void CreateRoomReq::set_pay_type(int32_t value) {
+  _internal_set_pay_type(value);
+  // @@protoc_insertion_point(field_set:cproto.CreateRoomReq.pay_type)
+}
+
+// map<string, int32> properties = 4;
 inline int CreateRoomReq::_internal_properties_size() const {
   return properties_.size();
 }

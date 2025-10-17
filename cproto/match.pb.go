@@ -146,7 +146,8 @@ type CreateRoomReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GameCount     int32                  `protobuf:"varint,1,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 局数
 	Desn          string                 `protobuf:"bytes,2,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        //配置描述
-	Properties    map[string]int32       `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 配置信息
+	PayType       int32                  `protobuf:"varint,3,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty"`                                                                  //付费类型 // 0:队长支付，1：AA支付
+	Properties    map[string]int32       `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 配置信息
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -193,6 +194,13 @@ func (x *CreateRoomReq) GetDesn() string {
 		return x.Desn
 	}
 	return ""
+}
+
+func (x *CreateRoomReq) GetPayType() int32 {
+	if x != nil {
+		return x.PayType
+	}
+	return 0
 }
 
 func (x *CreateRoomReq) GetProperties() map[string]int32 {
@@ -466,13 +474,14 @@ const file_match_proto_rawDesc = "" +
 	"\bMatchAck\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12&\n" +
-	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xc8\x01\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xe3\x01\n" +
 	"\rCreateRoomReq\x12\x1d\n" +
 	"\n" +
 	"game_count\x18\x01 \x01(\x05R\tgameCount\x12\x12\n" +
-	"\x04desn\x18\x02 \x01(\tR\x04desn\x12E\n" +
+	"\x04desn\x18\x02 \x01(\tR\x04desn\x12\x19\n" +
+	"\bpay_type\x18\x03 \x01(\x05R\apayType\x12E\n" +
 	"\n" +
-	"properties\x18\x03 \x03(\v2%.cproto.CreateRoomReq.PropertiesEntryR\n" +
+	"properties\x18\x04 \x03(\v2%.cproto.CreateRoomReq.PropertiesEntryR\n" +
 	"properties\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
