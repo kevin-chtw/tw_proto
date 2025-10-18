@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.19.3
-// source: account.proto
+// source: account_remote.proto
 
 package sproto
 
@@ -31,7 +31,7 @@ type AccountReq struct {
 
 func (x *AccountReq) Reset() {
 	*x = AccountReq{}
-	mi := &file_account_proto_msgTypes[0]
+	mi := &file_account_remote_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *AccountReq) String() string {
 func (*AccountReq) ProtoMessage() {}
 
 func (x *AccountReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[0]
+	mi := &file_account_remote_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *AccountReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccountReq.ProtoReflect.Descriptor instead.
 func (*AccountReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{0}
+	return file_account_remote_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AccountReq) GetReq() *anypb.Any {
@@ -75,7 +75,7 @@ type AccountAck struct {
 
 func (x *AccountAck) Reset() {
 	*x = AccountAck{}
-	mi := &file_account_proto_msgTypes[1]
+	mi := &file_account_remote_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -87,7 +87,7 @@ func (x *AccountAck) String() string {
 func (*AccountAck) ProtoMessage() {}
 
 func (x *AccountAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[1]
+	mi := &file_account_remote_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -100,7 +100,7 @@ func (x *AccountAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccountAck.ProtoReflect.Descriptor instead.
 func (*AccountAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{1}
+	return file_account_remote_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AccountAck) GetAck() *anypb.Any {
@@ -119,7 +119,7 @@ type PlayerInfoReq struct {
 
 func (x *PlayerInfoReq) Reset() {
 	*x = PlayerInfoReq{}
-	mi := &file_account_proto_msgTypes[2]
+	mi := &file_account_remote_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +131,7 @@ func (x *PlayerInfoReq) String() string {
 func (*PlayerInfoReq) ProtoMessage() {}
 
 func (x *PlayerInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[2]
+	mi := &file_account_remote_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +144,7 @@ func (x *PlayerInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerInfoReq.ProtoReflect.Descriptor instead.
 func (*PlayerInfoReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{2}
+	return file_account_remote_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *PlayerInfoReq) GetUid() string {
@@ -167,7 +167,7 @@ type PlayerInfoAck struct {
 
 func (x *PlayerInfoAck) Reset() {
 	*x = PlayerInfoAck{}
-	mi := &file_account_proto_msgTypes[3]
+	mi := &file_account_remote_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -179,7 +179,7 @@ func (x *PlayerInfoAck) String() string {
 func (*PlayerInfoAck) ProtoMessage() {}
 
 func (x *PlayerInfoAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[3]
+	mi := &file_account_remote_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -192,7 +192,7 @@ func (x *PlayerInfoAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerInfoAck.ProtoReflect.Descriptor instead.
 func (*PlayerInfoAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{3}
+	return file_account_remote_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *PlayerInfoAck) GetUid() string {
@@ -240,7 +240,7 @@ type ChangeDiamondReq struct {
 
 func (x *ChangeDiamondReq) Reset() {
 	*x = ChangeDiamondReq{}
-	mi := &file_account_proto_msgTypes[4]
+	mi := &file_account_remote_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -252,7 +252,7 @@ func (x *ChangeDiamondReq) String() string {
 func (*ChangeDiamondReq) ProtoMessage() {}
 
 func (x *ChangeDiamondReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[4]
+	mi := &file_account_remote_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -265,7 +265,7 @@ func (x *ChangeDiamondReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeDiamondReq.ProtoReflect.Descriptor instead.
 func (*ChangeDiamondReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{4}
+	return file_account_remote_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ChangeDiamondReq) GetUid() string {
@@ -292,7 +292,7 @@ type ChangeDiamondAck struct {
 
 func (x *ChangeDiamondAck) Reset() {
 	*x = ChangeDiamondAck{}
-	mi := &file_account_proto_msgTypes[5]
+	mi := &file_account_remote_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -304,7 +304,7 @@ func (x *ChangeDiamondAck) String() string {
 func (*ChangeDiamondAck) ProtoMessage() {}
 
 func (x *ChangeDiamondAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[5]
+	mi := &file_account_remote_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -317,7 +317,7 @@ func (x *ChangeDiamondAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeDiamondAck.ProtoReflect.Descriptor instead.
 func (*ChangeDiamondAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{5}
+	return file_account_remote_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ChangeDiamondAck) GetUid() string {
@@ -334,11 +334,11 @@ func (x *ChangeDiamondAck) GetDiamond() int64 {
 	return 0
 }
 
-var File_account_proto protoreflect.FileDescriptor
+var File_account_remote_proto protoreflect.FileDescriptor
 
-const file_account_proto_rawDesc = "" +
+const file_account_remote_proto_rawDesc = "" +
 	"\n" +
-	"\raccount.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"4\n" +
+	"\x14account_remote.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"4\n" +
 	"\n" +
 	"AccountReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"4\n" +
@@ -361,19 +361,19 @@ const file_account_proto_rawDesc = "" +
 	"\adiamond\x18\x02 \x01(\x03R\adiamondB\vZ\t../sprotob\x06proto3"
 
 var (
-	file_account_proto_rawDescOnce sync.Once
-	file_account_proto_rawDescData []byte
+	file_account_remote_proto_rawDescOnce sync.Once
+	file_account_remote_proto_rawDescData []byte
 )
 
-func file_account_proto_rawDescGZIP() []byte {
-	file_account_proto_rawDescOnce.Do(func() {
-		file_account_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)))
+func file_account_remote_proto_rawDescGZIP() []byte {
+	file_account_remote_proto_rawDescOnce.Do(func() {
+		file_account_remote_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)))
 	})
-	return file_account_proto_rawDescData
+	return file_account_remote_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_account_proto_goTypes = []any{
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),       // 0: sproto.AccountReq
 	(*AccountAck)(nil),       // 1: sproto.AccountAck
 	(*PlayerInfoReq)(nil),    // 2: sproto.PlayerInfoReq
@@ -382,7 +382,7 @@ var file_account_proto_goTypes = []any{
 	(*ChangeDiamondAck)(nil), // 5: sproto.ChangeDiamondAck
 	(*anypb.Any)(nil),        // 6: google.protobuf.Any
 }
-var file_account_proto_depIdxs = []int32{
+var file_account_remote_proto_depIdxs = []int32{
 	6, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
 	6, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
 	2, // [2:2] is the sub-list for method output_type
@@ -392,26 +392,26 @@ var file_account_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_account_proto_init() }
-func file_account_proto_init() {
-	if File_account_proto != nil {
+func init() { file_account_remote_proto_init() }
+func file_account_remote_proto_init() {
+	if File_account_remote_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_account_proto_goTypes,
-		DependencyIndexes: file_account_proto_depIdxs,
-		MessageInfos:      file_account_proto_msgTypes,
+		GoTypes:           file_account_remote_proto_goTypes,
+		DependencyIndexes: file_account_remote_proto_depIdxs,
+		MessageInfos:      file_account_remote_proto_msgTypes,
 	}.Build()
-	File_account_proto = out.File
-	file_account_proto_goTypes = nil
-	file_account_proto_depIdxs = nil
+	File_account_remote_proto = out.File
+	file_account_remote_proto_goTypes = nil
+	file_account_remote_proto_depIdxs = nil
 }

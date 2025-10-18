@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package sproto;
+option go_package = "../sproto";
+
+message TourneyReq {
+  google.protobuf.Any req = 1;
+}
+
+message TourneyAck {
+  google.protobuf.Any ack = 1;
+}
+
+message TourneyUpdateReq {
+  repeated TourneyInfo infos = 1;
+}
+
+message TourneyInfo {
+    int32 id = 1; //比赛ID
+    string name = 2; //比赛名称
+    string game_type = 3; //游戏类型
+    string match_type = 4; //比赛类型
+    string serverid = 5; //服务器ID
+    int32 diamond = 6; //钻石
+    int32 online = 7; //在线人数
+}
