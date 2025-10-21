@@ -47,3 +47,11 @@ message JoinRoomAck {
   string desn = 2; //配置描述
   map<string, int32> properties = 3; // 配置信息
 }
+
+message StartClientAck {
+  string match_type = 1; //比赛类型
+  string game_type = 2; //游戏类型
+  string server_id = 3; //游戏服务Id
+  int32 match_id = 4; //比赛ID
+  int32 table_id = 5; //桌号
+}

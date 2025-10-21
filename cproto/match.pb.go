@@ -462,6 +462,82 @@ func (x *JoinRoomAck) GetProperties() map[string]int32 {
 	return nil
 }
 
+type StartClientAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"` //比赛类型
+	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`    //游戏类型
+	ServerId      string                 `protobuf:"bytes,3,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`    //游戏服务Id
+	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`      //比赛ID
+	TableId       int32                  `protobuf:"varint,5,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`      //桌号
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartClientAck) Reset() {
+	*x = StartClientAck{}
+	mi := &file_match_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartClientAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartClientAck) ProtoMessage() {}
+
+func (x *StartClientAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartClientAck.ProtoReflect.Descriptor instead.
+func (*StartClientAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *StartClientAck) GetMatchType() string {
+	if x != nil {
+		return x.MatchType
+	}
+	return ""
+}
+
+func (x *StartClientAck) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+func (x *StartClientAck) GetServerId() string {
+	if x != nil {
+		return x.ServerId
+	}
+	return ""
+}
+
+func (x *StartClientAck) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *StartClientAck) GetTableId() int32 {
+	if x != nil {
+		return x.TableId
+	}
+	return 0
+}
+
 var File_match_proto protoreflect.FileDescriptor
 
 const file_match_proto_rawDesc = "" +
@@ -509,7 +585,14 @@ const file_match_proto_rawDesc = "" +
 	"properties\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x9f\x01\n" +
+	"\x0eStartClientAck\x12\x1d\n" +
+	"\n" +
+	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1b\n" +
+	"\tgame_type\x18\x02 \x01(\tR\bgameType\x12\x1b\n" +
+	"\tserver_id\x18\x03 \x01(\tR\bserverId\x12\x19\n" +
+	"\bmatch_id\x18\x04 \x01(\x05R\amatchId\x12\x19\n" +
+	"\btable_id\x18\x05 \x01(\x05R\atableIdB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_match_proto_rawDescOnce sync.Once
@@ -523,27 +606,28 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_match_proto_goTypes = []any{
-	(*MatchReq)(nil),      // 0: cproto.MatchReq
-	(*MatchAck)(nil),      // 1: cproto.MatchAck
-	(*CreateRoomReq)(nil), // 2: cproto.CreateRoomReq
-	(*CancelRoomReq)(nil), // 3: cproto.CancelRoomReq
-	(*JoinRoomReq)(nil),   // 4: cproto.JoinRoomReq
-	(*CreateRoomAck)(nil), // 5: cproto.CreateRoomAck
-	(*CancelRoomAck)(nil), // 6: cproto.CancelRoomAck
-	(*JoinRoomAck)(nil),   // 7: cproto.JoinRoomAck
-	nil,                   // 8: cproto.CreateRoomReq.PropertiesEntry
-	nil,                   // 9: cproto.CreateRoomAck.PropertiesEntry
-	nil,                   // 10: cproto.JoinRoomAck.PropertiesEntry
-	(*anypb.Any)(nil),     // 11: google.protobuf.Any
+	(*MatchReq)(nil),       // 0: cproto.MatchReq
+	(*MatchAck)(nil),       // 1: cproto.MatchAck
+	(*CreateRoomReq)(nil),  // 2: cproto.CreateRoomReq
+	(*CancelRoomReq)(nil),  // 3: cproto.CancelRoomReq
+	(*JoinRoomReq)(nil),    // 4: cproto.JoinRoomReq
+	(*CreateRoomAck)(nil),  // 5: cproto.CreateRoomAck
+	(*CancelRoomAck)(nil),  // 6: cproto.CancelRoomAck
+	(*JoinRoomAck)(nil),    // 7: cproto.JoinRoomAck
+	(*StartClientAck)(nil), // 8: cproto.StartClientAck
+	nil,                    // 9: cproto.CreateRoomReq.PropertiesEntry
+	nil,                    // 10: cproto.CreateRoomAck.PropertiesEntry
+	nil,                    // 11: cproto.JoinRoomAck.PropertiesEntry
+	(*anypb.Any)(nil),      // 12: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	11, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	11, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
-	8,  // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
-	9,  // 3: cproto.CreateRoomAck.properties:type_name -> cproto.CreateRoomAck.PropertiesEntry
-	10, // 4: cproto.JoinRoomAck.properties:type_name -> cproto.JoinRoomAck.PropertiesEntry
+	12, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	12, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	9,  // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
+	10, // 3: cproto.CreateRoomAck.properties:type_name -> cproto.CreateRoomAck.PropertiesEntry
+	11, // 4: cproto.JoinRoomAck.properties:type_name -> cproto.JoinRoomAck.PropertiesEntry
 	5,  // [5:5] is the sub-list for method output_type
 	5,  // [5:5] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
@@ -562,7 +646,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

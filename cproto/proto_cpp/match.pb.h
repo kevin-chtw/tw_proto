@@ -50,7 +50,7 @@ struct TableStruct_match_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -91,6 +91,9 @@ extern MatchAckDefaultTypeInternal _MatchAck_default_instance_;
 class MatchReq;
 struct MatchReqDefaultTypeInternal;
 extern MatchReqDefaultTypeInternal _MatchReq_default_instance_;
+class StartClientAck;
+struct StartClientAckDefaultTypeInternal;
+extern StartClientAckDefaultTypeInternal _StartClientAck_default_instance_;
 }  // namespace cproto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::cproto::CancelRoomAck* Arena::CreateMaybeMessage<::cproto::CancelRoomAck>(Arena*);
@@ -104,6 +107,7 @@ template<> ::cproto::JoinRoomAck_PropertiesEntry_DoNotUse* Arena::CreateMaybeMes
 template<> ::cproto::JoinRoomReq* Arena::CreateMaybeMessage<::cproto::JoinRoomReq>(Arena*);
 template<> ::cproto::MatchAck* Arena::CreateMaybeMessage<::cproto::MatchAck>(Arena*);
 template<> ::cproto::MatchReq* Arena::CreateMaybeMessage<::cproto::MatchReq>(Arena*);
+template<> ::cproto::StartClientAck* Arena::CreateMaybeMessage<::cproto::StartClientAck>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace cproto {
 
@@ -1553,6 +1557,211 @@ class JoinRoomAck final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_match_2eproto;
 };
+// -------------------------------------------------------------------
+
+class StartClientAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.StartClientAck) */ {
+ public:
+  inline StartClientAck() : StartClientAck(nullptr) {}
+  ~StartClientAck() override;
+  explicit constexpr StartClientAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  StartClientAck(const StartClientAck& from);
+  StartClientAck(StartClientAck&& from) noexcept
+    : StartClientAck() {
+    *this = ::std::move(from);
+  }
+
+  inline StartClientAck& operator=(const StartClientAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StartClientAck& operator=(StartClientAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StartClientAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StartClientAck* internal_default_instance() {
+    return reinterpret_cast<const StartClientAck*>(
+               &_StartClientAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(StartClientAck& a, StartClientAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(StartClientAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StartClientAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StartClientAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StartClientAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const StartClientAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const StartClientAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StartClientAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.StartClientAck";
+  }
+  protected:
+  explicit StartClientAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMatchTypeFieldNumber = 1,
+    kGameTypeFieldNumber = 2,
+    kServerIdFieldNumber = 3,
+    kMatchIdFieldNumber = 4,
+    kTableIdFieldNumber = 5,
+  };
+  // string match_type = 1;
+  void clear_match_type();
+  const std::string& match_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_match_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_match_type();
+  PROTOBUF_NODISCARD std::string* release_match_type();
+  void set_allocated_match_type(std::string* match_type);
+  private:
+  const std::string& _internal_match_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_match_type(const std::string& value);
+  std::string* _internal_mutable_match_type();
+  public:
+
+  // string game_type = 2;
+  void clear_game_type();
+  const std::string& game_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_game_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_game_type();
+  PROTOBUF_NODISCARD std::string* release_game_type();
+  void set_allocated_game_type(std::string* game_type);
+  private:
+  const std::string& _internal_game_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_game_type(const std::string& value);
+  std::string* _internal_mutable_game_type();
+  public:
+
+  // string server_id = 3;
+  void clear_server_id();
+  const std::string& server_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_server_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_server_id();
+  PROTOBUF_NODISCARD std::string* release_server_id();
+  void set_allocated_server_id(std::string* server_id);
+  private:
+  const std::string& _internal_server_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_server_id(const std::string& value);
+  std::string* _internal_mutable_server_id();
+  public:
+
+  // int32 match_id = 4;
+  void clear_match_id();
+  int32_t match_id() const;
+  void set_match_id(int32_t value);
+  private:
+  int32_t _internal_match_id() const;
+  void _internal_set_match_id(int32_t value);
+  public:
+
+  // int32 table_id = 5;
+  void clear_table_id();
+  int32_t table_id() const;
+  void set_table_id(int32_t value);
+  private:
+  int32_t _internal_table_id() const;
+  void _internal_set_table_id(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.StartClientAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr match_type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr game_type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr server_id_;
+  int32_t match_id_;
+  int32_t table_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
 // ===================================================================
 
 
@@ -2292,9 +2501,208 @@ JoinRoomAck::mutable_properties() {
   return _internal_mutable_properties();
 }
 
+// -------------------------------------------------------------------
+
+// StartClientAck
+
+// string match_type = 1;
+inline void StartClientAck::clear_match_type() {
+  match_type_.ClearToEmpty();
+}
+inline const std::string& StartClientAck::match_type() const {
+  // @@protoc_insertion_point(field_get:cproto.StartClientAck.match_type)
+  return _internal_match_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StartClientAck::set_match_type(ArgT0&& arg0, ArgT... args) {
+ 
+ match_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.StartClientAck.match_type)
+}
+inline std::string* StartClientAck::mutable_match_type() {
+  std::string* _s = _internal_mutable_match_type();
+  // @@protoc_insertion_point(field_mutable:cproto.StartClientAck.match_type)
+  return _s;
+}
+inline const std::string& StartClientAck::_internal_match_type() const {
+  return match_type_.Get();
+}
+inline void StartClientAck::_internal_set_match_type(const std::string& value) {
+  
+  match_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* StartClientAck::_internal_mutable_match_type() {
+  
+  return match_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* StartClientAck::release_match_type() {
+  // @@protoc_insertion_point(field_release:cproto.StartClientAck.match_type)
+  return match_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void StartClientAck::set_allocated_match_type(std::string* match_type) {
+  if (match_type != nullptr) {
+    
+  } else {
+    
+  }
+  match_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), match_type,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (match_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    match_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.StartClientAck.match_type)
+}
+
+// string game_type = 2;
+inline void StartClientAck::clear_game_type() {
+  game_type_.ClearToEmpty();
+}
+inline const std::string& StartClientAck::game_type() const {
+  // @@protoc_insertion_point(field_get:cproto.StartClientAck.game_type)
+  return _internal_game_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StartClientAck::set_game_type(ArgT0&& arg0, ArgT... args) {
+ 
+ game_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.StartClientAck.game_type)
+}
+inline std::string* StartClientAck::mutable_game_type() {
+  std::string* _s = _internal_mutable_game_type();
+  // @@protoc_insertion_point(field_mutable:cproto.StartClientAck.game_type)
+  return _s;
+}
+inline const std::string& StartClientAck::_internal_game_type() const {
+  return game_type_.Get();
+}
+inline void StartClientAck::_internal_set_game_type(const std::string& value) {
+  
+  game_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* StartClientAck::_internal_mutable_game_type() {
+  
+  return game_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* StartClientAck::release_game_type() {
+  // @@protoc_insertion_point(field_release:cproto.StartClientAck.game_type)
+  return game_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void StartClientAck::set_allocated_game_type(std::string* game_type) {
+  if (game_type != nullptr) {
+    
+  } else {
+    
+  }
+  game_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), game_type,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (game_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    game_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.StartClientAck.game_type)
+}
+
+// string server_id = 3;
+inline void StartClientAck::clear_server_id() {
+  server_id_.ClearToEmpty();
+}
+inline const std::string& StartClientAck::server_id() const {
+  // @@protoc_insertion_point(field_get:cproto.StartClientAck.server_id)
+  return _internal_server_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StartClientAck::set_server_id(ArgT0&& arg0, ArgT... args) {
+ 
+ server_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.StartClientAck.server_id)
+}
+inline std::string* StartClientAck::mutable_server_id() {
+  std::string* _s = _internal_mutable_server_id();
+  // @@protoc_insertion_point(field_mutable:cproto.StartClientAck.server_id)
+  return _s;
+}
+inline const std::string& StartClientAck::_internal_server_id() const {
+  return server_id_.Get();
+}
+inline void StartClientAck::_internal_set_server_id(const std::string& value) {
+  
+  server_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* StartClientAck::_internal_mutable_server_id() {
+  
+  return server_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* StartClientAck::release_server_id() {
+  // @@protoc_insertion_point(field_release:cproto.StartClientAck.server_id)
+  return server_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void StartClientAck::set_allocated_server_id(std::string* server_id) {
+  if (server_id != nullptr) {
+    
+  } else {
+    
+  }
+  server_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), server_id,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (server_id_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    server_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.StartClientAck.server_id)
+}
+
+// int32 match_id = 4;
+inline void StartClientAck::clear_match_id() {
+  match_id_ = 0;
+}
+inline int32_t StartClientAck::_internal_match_id() const {
+  return match_id_;
+}
+inline int32_t StartClientAck::match_id() const {
+  // @@protoc_insertion_point(field_get:cproto.StartClientAck.match_id)
+  return _internal_match_id();
+}
+inline void StartClientAck::_internal_set_match_id(int32_t value) {
+  
+  match_id_ = value;
+}
+inline void StartClientAck::set_match_id(int32_t value) {
+  _internal_set_match_id(value);
+  // @@protoc_insertion_point(field_set:cproto.StartClientAck.match_id)
+}
+
+// int32 table_id = 5;
+inline void StartClientAck::clear_table_id() {
+  table_id_ = 0;
+}
+inline int32_t StartClientAck::_internal_table_id() const {
+  return table_id_;
+}
+inline int32_t StartClientAck::table_id() const {
+  // @@protoc_insertion_point(field_get:cproto.StartClientAck.table_id)
+  return _internal_table_id();
+}
+inline void StartClientAck::_internal_set_table_id(int32_t value) {
+  
+  table_id_ = value;
+}
+inline void StartClientAck::set_table_id(int32_t value) {
+  _internal_set_table_id(value);
+  // @@protoc_insertion_point(field_set:cproto.StartClientAck.table_id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
