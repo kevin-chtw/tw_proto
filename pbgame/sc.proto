@@ -11,3 +11,37 @@ message SCReq {
 message SCAck {
   google.protobuf.Any ack = 1;
 }
+
+message SCSwapTilesReq { // 换三张
+  int32 requestid = 1; // 请求ID
+  repeated int32 tiles = 2; //换出的牌
+}
+
+message SCDingQueReq { // 定缺
+  int32 requestid = 1; // 请求ID
+  int32 tile = 2; //牌
+}
+
+message SCSwapTilesAck { // 换三张
+  int32 requestid = 1;
+}
+
+message SCCSwapTilesResultAck { // 换三张
+  int32 swap_type = 1; //0-逆时针，1-顺时针，2-交叉
+  repeated SCSwapTiles swap_tiles = 2;
+}
+
+message SCSwapTiles {
+  int32 from = 1;
+  int32 to = 2;
+  repeated int32 tiles = 3;
+}
+
+message SCDingQueAck {
+  int32 requestid = 1; // 请求ID
+}
+
+message SCDingQueResultAck {
+  repeated int32 tiles = 1;
+}
+

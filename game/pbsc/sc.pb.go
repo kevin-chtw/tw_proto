@@ -110,6 +110,354 @@ func (x *SCAck) GetAck() *anypb.Any {
 	return nil
 }
 
+type SCSwapTilesReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Requestid     int32                  `protobuf:"varint,1,opt,name=requestid,proto3" json:"requestid,omitempty"` // 请求ID
+	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`  //换出的牌
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCSwapTilesReq) Reset() {
+	*x = SCSwapTilesReq{}
+	mi := &file_sc_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCSwapTilesReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCSwapTilesReq) ProtoMessage() {}
+
+func (x *SCSwapTilesReq) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCSwapTilesReq.ProtoReflect.Descriptor instead.
+func (*SCSwapTilesReq) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SCSwapTilesReq) GetRequestid() int32 {
+	if x != nil {
+		return x.Requestid
+	}
+	return 0
+}
+
+func (x *SCSwapTilesReq) GetTiles() []int32 {
+	if x != nil {
+		return x.Tiles
+	}
+	return nil
+}
+
+type SCDingQueReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Requestid     int32                  `protobuf:"varint,1,opt,name=requestid,proto3" json:"requestid,omitempty"` // 请求ID
+	Tile          int32                  `protobuf:"varint,2,opt,name=tile,proto3" json:"tile,omitempty"`           //牌
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCDingQueReq) Reset() {
+	*x = SCDingQueReq{}
+	mi := &file_sc_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCDingQueReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCDingQueReq) ProtoMessage() {}
+
+func (x *SCDingQueReq) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCDingQueReq.ProtoReflect.Descriptor instead.
+func (*SCDingQueReq) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SCDingQueReq) GetRequestid() int32 {
+	if x != nil {
+		return x.Requestid
+	}
+	return 0
+}
+
+func (x *SCDingQueReq) GetTile() int32 {
+	if x != nil {
+		return x.Tile
+	}
+	return 0
+}
+
+type SCSwapTilesAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Requestid     int32                  `protobuf:"varint,1,opt,name=requestid,proto3" json:"requestid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCSwapTilesAck) Reset() {
+	*x = SCSwapTilesAck{}
+	mi := &file_sc_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCSwapTilesAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCSwapTilesAck) ProtoMessage() {}
+
+func (x *SCSwapTilesAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCSwapTilesAck.ProtoReflect.Descriptor instead.
+func (*SCSwapTilesAck) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *SCSwapTilesAck) GetRequestid() int32 {
+	if x != nil {
+		return x.Requestid
+	}
+	return 0
+}
+
+type SCCSwapTilesResultAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SwapType      int32                  `protobuf:"varint,1,opt,name=swap_type,json=swapType,proto3" json:"swap_type,omitempty"` //0-逆时针，1-顺时针，2-交叉
+	SwapTiles     []*SCSwapTiles         `protobuf:"bytes,2,rep,name=swap_tiles,json=swapTiles,proto3" json:"swap_tiles,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCCSwapTilesResultAck) Reset() {
+	*x = SCCSwapTilesResultAck{}
+	mi := &file_sc_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCCSwapTilesResultAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCCSwapTilesResultAck) ProtoMessage() {}
+
+func (x *SCCSwapTilesResultAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCCSwapTilesResultAck.ProtoReflect.Descriptor instead.
+func (*SCCSwapTilesResultAck) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *SCCSwapTilesResultAck) GetSwapType() int32 {
+	if x != nil {
+		return x.SwapType
+	}
+	return 0
+}
+
+func (x *SCCSwapTilesResultAck) GetSwapTiles() []*SCSwapTiles {
+	if x != nil {
+		return x.SwapTiles
+	}
+	return nil
+}
+
+type SCSwapTiles struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	From          int32                  `protobuf:"varint,1,opt,name=from,proto3" json:"from,omitempty"`
+	To            int32                  `protobuf:"varint,2,opt,name=to,proto3" json:"to,omitempty"`
+	Tiles         []int32                `protobuf:"varint,3,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCSwapTiles) Reset() {
+	*x = SCSwapTiles{}
+	mi := &file_sc_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCSwapTiles) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCSwapTiles) ProtoMessage() {}
+
+func (x *SCSwapTiles) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCSwapTiles.ProtoReflect.Descriptor instead.
+func (*SCSwapTiles) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *SCSwapTiles) GetFrom() int32 {
+	if x != nil {
+		return x.From
+	}
+	return 0
+}
+
+func (x *SCSwapTiles) GetTo() int32 {
+	if x != nil {
+		return x.To
+	}
+	return 0
+}
+
+func (x *SCSwapTiles) GetTiles() []int32 {
+	if x != nil {
+		return x.Tiles
+	}
+	return nil
+}
+
+type SCDingQueAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Requestid     int32                  `protobuf:"varint,1,opt,name=requestid,proto3" json:"requestid,omitempty"` // 请求ID
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCDingQueAck) Reset() {
+	*x = SCDingQueAck{}
+	mi := &file_sc_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCDingQueAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCDingQueAck) ProtoMessage() {}
+
+func (x *SCDingQueAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCDingQueAck.ProtoReflect.Descriptor instead.
+func (*SCDingQueAck) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SCDingQueAck) GetRequestid() int32 {
+	if x != nil {
+		return x.Requestid
+	}
+	return 0
+}
+
+type SCDingQueResultAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tiles         []int32                `protobuf:"varint,1,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCDingQueResultAck) Reset() {
+	*x = SCDingQueResultAck{}
+	mi := &file_sc_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCDingQueResultAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCDingQueResultAck) ProtoMessage() {}
+
+func (x *SCDingQueResultAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCDingQueResultAck.ProtoReflect.Descriptor instead.
+func (*SCDingQueResultAck) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *SCDingQueResultAck) GetTiles() []int32 {
+	if x != nil {
+		return x.Tiles
+	}
+	return nil
+}
+
 var File_sc_proto protoreflect.FileDescriptor
 
 const file_sc_proto_rawDesc = "" +
@@ -118,7 +466,27 @@ const file_sc_proto_rawDesc = "" +
 	"\x05SCReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"/\n" +
 	"\x05SCAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ackB\aZ\x05/pbscb\x06proto3"
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"D\n" +
+	"\x0eSCSwapTilesReq\x12\x1c\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\x12\x14\n" +
+	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"@\n" +
+	"\fSCDingQueReq\x12\x1c\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\x12\x12\n" +
+	"\x04tile\x18\x02 \x01(\x05R\x04tile\".\n" +
+	"\x0eSCSwapTilesAck\x12\x1c\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\"f\n" +
+	"\x15SCCSwapTilesResultAck\x12\x1b\n" +
+	"\tswap_type\x18\x01 \x01(\x05R\bswapType\x120\n" +
+	"\n" +
+	"swap_tiles\x18\x02 \x03(\v2\x11.pbsc.SCSwapTilesR\tswapTiles\"G\n" +
+	"\vSCSwapTiles\x12\x12\n" +
+	"\x04from\x18\x01 \x01(\x05R\x04from\x12\x0e\n" +
+	"\x02to\x18\x02 \x01(\x05R\x02to\x12\x14\n" +
+	"\x05tiles\x18\x03 \x03(\x05R\x05tiles\",\n" +
+	"\fSCDingQueAck\x12\x1c\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\"*\n" +
+	"\x12SCDingQueResultAck\x12\x14\n" +
+	"\x05tiles\x18\x01 \x03(\x05R\x05tilesB\aZ\x05/pbscb\x06proto3"
 
 var (
 	file_sc_proto_rawDescOnce sync.Once
@@ -132,20 +500,28 @@ func file_sc_proto_rawDescGZIP() []byte {
 	return file_sc_proto_rawDescData
 }
 
-var file_sc_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_sc_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_sc_proto_goTypes = []any{
-	(*SCReq)(nil),     // 0: pbsc.SCReq
-	(*SCAck)(nil),     // 1: pbsc.SCAck
-	(*anypb.Any)(nil), // 2: google.protobuf.Any
+	(*SCReq)(nil),                 // 0: pbsc.SCReq
+	(*SCAck)(nil),                 // 1: pbsc.SCAck
+	(*SCSwapTilesReq)(nil),        // 2: pbsc.SCSwapTilesReq
+	(*SCDingQueReq)(nil),          // 3: pbsc.SCDingQueReq
+	(*SCSwapTilesAck)(nil),        // 4: pbsc.SCSwapTilesAck
+	(*SCCSwapTilesResultAck)(nil), // 5: pbsc.SCCSwapTilesResultAck
+	(*SCSwapTiles)(nil),           // 6: pbsc.SCSwapTiles
+	(*SCDingQueAck)(nil),          // 7: pbsc.SCDingQueAck
+	(*SCDingQueResultAck)(nil),    // 8: pbsc.SCDingQueResultAck
+	(*anypb.Any)(nil),             // 9: google.protobuf.Any
 }
 var file_sc_proto_depIdxs = []int32{
-	2, // 0: pbsc.SCReq.req:type_name -> google.protobuf.Any
-	2, // 1: pbsc.SCAck.ack:type_name -> google.protobuf.Any
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	9, // 0: pbsc.SCReq.req:type_name -> google.protobuf.Any
+	9, // 1: pbsc.SCAck.ack:type_name -> google.protobuf.Any
+	6, // 2: pbsc.SCCSwapTilesResultAck.swap_tiles:type_name -> pbsc.SCSwapTiles
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_sc_proto_init() }
@@ -159,7 +535,7 @@ func file_sc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sc_proto_rawDesc), len(file_sc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
