@@ -19,14 +19,14 @@ message SCSwapTilesReq { // 换三张
 
 message SCDingQueReq { // 定缺
   int32 requestid = 1; // 请求ID
-  int32 tile = 2; //牌
+  int32 color = 2; //花色
 }
 
 message SCSwapTilesAck { // 换三张
   int32 requestid = 1;
 }
 
-message SCCSwapTilesResultAck { // 换三张
+message SCSwapTilesResultAck { // 换三张
   int32 swap_type = 1; //0-逆时针，1-顺时针，2-交叉
   repeated SCSwapTiles swap_tiles = 2;
 }
@@ -42,6 +42,6 @@ message SCDingQueAck {
 }
 
 message SCDingQueResultAck {
-  repeated int32 tiles = 1;
+  repeated int32 colors = 1;
 }
 

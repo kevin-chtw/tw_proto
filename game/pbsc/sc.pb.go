@@ -165,7 +165,7 @@ func (x *SCSwapTilesReq) GetTiles() []int32 {
 type SCDingQueReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Requestid     int32                  `protobuf:"varint,1,opt,name=requestid,proto3" json:"requestid,omitempty"` // 请求ID
-	Tile          int32                  `protobuf:"varint,2,opt,name=tile,proto3" json:"tile,omitempty"`           //牌
+	Color         int32                  `protobuf:"varint,2,opt,name=color,proto3" json:"color,omitempty"`         //花色
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -207,9 +207,9 @@ func (x *SCDingQueReq) GetRequestid() int32 {
 	return 0
 }
 
-func (x *SCDingQueReq) GetTile() int32 {
+func (x *SCDingQueReq) GetColor() int32 {
 	if x != nil {
-		return x.Tile
+		return x.Color
 	}
 	return 0
 }
@@ -258,7 +258,7 @@ func (x *SCSwapTilesAck) GetRequestid() int32 {
 	return 0
 }
 
-type SCCSwapTilesResultAck struct {
+type SCSwapTilesResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SwapType      int32                  `protobuf:"varint,1,opt,name=swap_type,json=swapType,proto3" json:"swap_type,omitempty"` //0-逆时针，1-顺时针，2-交叉
 	SwapTiles     []*SCSwapTiles         `protobuf:"bytes,2,rep,name=swap_tiles,json=swapTiles,proto3" json:"swap_tiles,omitempty"`
@@ -266,20 +266,20 @@ type SCCSwapTilesResultAck struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SCCSwapTilesResultAck) Reset() {
-	*x = SCCSwapTilesResultAck{}
+func (x *SCSwapTilesResultAck) Reset() {
+	*x = SCSwapTilesResultAck{}
 	mi := &file_sc_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SCCSwapTilesResultAck) String() string {
+func (x *SCSwapTilesResultAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SCCSwapTilesResultAck) ProtoMessage() {}
+func (*SCSwapTilesResultAck) ProtoMessage() {}
 
-func (x *SCCSwapTilesResultAck) ProtoReflect() protoreflect.Message {
+func (x *SCSwapTilesResultAck) ProtoReflect() protoreflect.Message {
 	mi := &file_sc_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -291,19 +291,19 @@ func (x *SCCSwapTilesResultAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SCCSwapTilesResultAck.ProtoReflect.Descriptor instead.
-func (*SCCSwapTilesResultAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use SCSwapTilesResultAck.ProtoReflect.Descriptor instead.
+func (*SCSwapTilesResultAck) Descriptor() ([]byte, []int) {
 	return file_sc_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *SCCSwapTilesResultAck) GetSwapType() int32 {
+func (x *SCSwapTilesResultAck) GetSwapType() int32 {
 	if x != nil {
 		return x.SwapType
 	}
 	return 0
 }
 
-func (x *SCCSwapTilesResultAck) GetSwapTiles() []*SCSwapTiles {
+func (x *SCSwapTilesResultAck) GetSwapTiles() []*SCSwapTiles {
 	if x != nil {
 		return x.SwapTiles
 	}
@@ -416,7 +416,7 @@ func (x *SCDingQueAck) GetRequestid() int32 {
 
 type SCDingQueResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tiles         []int32                `protobuf:"varint,1,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`
+	Colors        []int32                `protobuf:"varint,1,rep,packed,name=colors,proto3" json:"colors,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -451,9 +451,9 @@ func (*SCDingQueResultAck) Descriptor() ([]byte, []int) {
 	return file_sc_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *SCDingQueResultAck) GetTiles() []int32 {
+func (x *SCDingQueResultAck) GetColors() []int32 {
 	if x != nil {
-		return x.Tiles
+		return x.Colors
 	}
 	return nil
 }
@@ -469,13 +469,13 @@ const file_sc_proto_rawDesc = "" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"D\n" +
 	"\x0eSCSwapTilesReq\x12\x1c\n" +
 	"\trequestid\x18\x01 \x01(\x05R\trequestid\x12\x14\n" +
-	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"@\n" +
+	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"B\n" +
 	"\fSCDingQueReq\x12\x1c\n" +
-	"\trequestid\x18\x01 \x01(\x05R\trequestid\x12\x12\n" +
-	"\x04tile\x18\x02 \x01(\x05R\x04tile\".\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\x12\x14\n" +
+	"\x05color\x18\x02 \x01(\x05R\x05color\".\n" +
 	"\x0eSCSwapTilesAck\x12\x1c\n" +
-	"\trequestid\x18\x01 \x01(\x05R\trequestid\"f\n" +
-	"\x15SCCSwapTilesResultAck\x12\x1b\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\"e\n" +
+	"\x14SCSwapTilesResultAck\x12\x1b\n" +
 	"\tswap_type\x18\x01 \x01(\x05R\bswapType\x120\n" +
 	"\n" +
 	"swap_tiles\x18\x02 \x03(\v2\x11.pbsc.SCSwapTilesR\tswapTiles\"G\n" +
@@ -484,9 +484,9 @@ const file_sc_proto_rawDesc = "" +
 	"\x02to\x18\x02 \x01(\x05R\x02to\x12\x14\n" +
 	"\x05tiles\x18\x03 \x03(\x05R\x05tiles\",\n" +
 	"\fSCDingQueAck\x12\x1c\n" +
-	"\trequestid\x18\x01 \x01(\x05R\trequestid\"*\n" +
-	"\x12SCDingQueResultAck\x12\x14\n" +
-	"\x05tiles\x18\x01 \x03(\x05R\x05tilesB\aZ\x05/pbscb\x06proto3"
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\",\n" +
+	"\x12SCDingQueResultAck\x12\x16\n" +
+	"\x06colors\x18\x01 \x03(\x05R\x06colorsB\aZ\x05/pbscb\x06proto3"
 
 var (
 	file_sc_proto_rawDescOnce sync.Once
@@ -502,21 +502,21 @@ func file_sc_proto_rawDescGZIP() []byte {
 
 var file_sc_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_sc_proto_goTypes = []any{
-	(*SCReq)(nil),                 // 0: pbsc.SCReq
-	(*SCAck)(nil),                 // 1: pbsc.SCAck
-	(*SCSwapTilesReq)(nil),        // 2: pbsc.SCSwapTilesReq
-	(*SCDingQueReq)(nil),          // 3: pbsc.SCDingQueReq
-	(*SCSwapTilesAck)(nil),        // 4: pbsc.SCSwapTilesAck
-	(*SCCSwapTilesResultAck)(nil), // 5: pbsc.SCCSwapTilesResultAck
-	(*SCSwapTiles)(nil),           // 6: pbsc.SCSwapTiles
-	(*SCDingQueAck)(nil),          // 7: pbsc.SCDingQueAck
-	(*SCDingQueResultAck)(nil),    // 8: pbsc.SCDingQueResultAck
-	(*anypb.Any)(nil),             // 9: google.protobuf.Any
+	(*SCReq)(nil),                // 0: pbsc.SCReq
+	(*SCAck)(nil),                // 1: pbsc.SCAck
+	(*SCSwapTilesReq)(nil),       // 2: pbsc.SCSwapTilesReq
+	(*SCDingQueReq)(nil),         // 3: pbsc.SCDingQueReq
+	(*SCSwapTilesAck)(nil),       // 4: pbsc.SCSwapTilesAck
+	(*SCSwapTilesResultAck)(nil), // 5: pbsc.SCSwapTilesResultAck
+	(*SCSwapTiles)(nil),          // 6: pbsc.SCSwapTiles
+	(*SCDingQueAck)(nil),         // 7: pbsc.SCDingQueAck
+	(*SCDingQueResultAck)(nil),   // 8: pbsc.SCDingQueResultAck
+	(*anypb.Any)(nil),            // 9: google.protobuf.Any
 }
 var file_sc_proto_depIdxs = []int32{
 	9, // 0: pbsc.SCReq.req:type_name -> google.protobuf.Any
 	9, // 1: pbsc.SCAck.ack:type_name -> google.protobuf.Any
-	6, // 2: pbsc.SCCSwapTilesResultAck.swap_tiles:type_name -> pbsc.SCSwapTiles
+	6, // 2: pbsc.SCSwapTilesResultAck.swap_tiles:type_name -> pbsc.SCSwapTiles
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
