@@ -23,6 +23,7 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
+#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_table_driven.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
@@ -50,7 +51,7 @@ struct TableStruct_match_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[20]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -64,6 +65,12 @@ extern CancelRoomAckDefaultTypeInternal _CancelRoomAck_default_instance_;
 class CancelRoomReq;
 struct CancelRoomReqDefaultTypeInternal;
 extern CancelRoomReqDefaultTypeInternal _CancelRoomReq_default_instance_;
+class ContinueAck;
+struct ContinueAckDefaultTypeInternal;
+extern ContinueAckDefaultTypeInternal _ContinueAck_default_instance_;
+class ContinueReq;
+struct ContinueReqDefaultTypeInternal;
+extern ContinueReqDefaultTypeInternal _ContinueReq_default_instance_;
 class CreateRoomAck;
 struct CreateRoomAckDefaultTypeInternal;
 extern CreateRoomAckDefaultTypeInternal _CreateRoomAck_default_instance_;
@@ -76,6 +83,9 @@ extern CreateRoomReqDefaultTypeInternal _CreateRoomReq_default_instance_;
 class CreateRoomReq_PropertiesEntry_DoNotUse;
 struct CreateRoomReq_PropertiesEntry_DoNotUseDefaultTypeInternal;
 extern CreateRoomReq_PropertiesEntry_DoNotUseDefaultTypeInternal _CreateRoomReq_PropertiesEntry_DoNotUse_default_instance_;
+class ExistMatchAck;
+struct ExistMatchAckDefaultTypeInternal;
+extern ExistMatchAckDefaultTypeInternal _ExistMatchAck_default_instance_;
 class JoinRoomAck;
 struct JoinRoomAckDefaultTypeInternal;
 extern JoinRoomAckDefaultTypeInternal _JoinRoomAck_default_instance_;
@@ -91,6 +101,21 @@ extern MatchAckDefaultTypeInternal _MatchAck_default_instance_;
 class MatchReq;
 struct MatchReqDefaultTypeInternal;
 extern MatchReqDefaultTypeInternal _MatchReq_default_instance_;
+class RestAck;
+struct RestAckDefaultTypeInternal;
+extern RestAckDefaultTypeInternal _RestAck_default_instance_;
+class SignoutAck;
+struct SignoutAckDefaultTypeInternal;
+extern SignoutAckDefaultTypeInternal _SignoutAck_default_instance_;
+class SignoutReq;
+struct SignoutReqDefaultTypeInternal;
+extern SignoutReqDefaultTypeInternal _SignoutReq_default_instance_;
+class SignupAck;
+struct SignupAckDefaultTypeInternal;
+extern SignupAckDefaultTypeInternal _SignupAck_default_instance_;
+class SignupReq;
+struct SignupReqDefaultTypeInternal;
+extern SignupReqDefaultTypeInternal _SignupReq_default_instance_;
 class StartClientAck;
 struct StartClientAckDefaultTypeInternal;
 extern StartClientAckDefaultTypeInternal _StartClientAck_default_instance_;
@@ -98,15 +123,23 @@ extern StartClientAckDefaultTypeInternal _StartClientAck_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::cproto::CancelRoomAck* Arena::CreateMaybeMessage<::cproto::CancelRoomAck>(Arena*);
 template<> ::cproto::CancelRoomReq* Arena::CreateMaybeMessage<::cproto::CancelRoomReq>(Arena*);
+template<> ::cproto::ContinueAck* Arena::CreateMaybeMessage<::cproto::ContinueAck>(Arena*);
+template<> ::cproto::ContinueReq* Arena::CreateMaybeMessage<::cproto::ContinueReq>(Arena*);
 template<> ::cproto::CreateRoomAck* Arena::CreateMaybeMessage<::cproto::CreateRoomAck>(Arena*);
 template<> ::cproto::CreateRoomAck_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::CreateRoomAck_PropertiesEntry_DoNotUse>(Arena*);
 template<> ::cproto::CreateRoomReq* Arena::CreateMaybeMessage<::cproto::CreateRoomReq>(Arena*);
 template<> ::cproto::CreateRoomReq_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::CreateRoomReq_PropertiesEntry_DoNotUse>(Arena*);
+template<> ::cproto::ExistMatchAck* Arena::CreateMaybeMessage<::cproto::ExistMatchAck>(Arena*);
 template<> ::cproto::JoinRoomAck* Arena::CreateMaybeMessage<::cproto::JoinRoomAck>(Arena*);
 template<> ::cproto::JoinRoomAck_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::JoinRoomAck_PropertiesEntry_DoNotUse>(Arena*);
 template<> ::cproto::JoinRoomReq* Arena::CreateMaybeMessage<::cproto::JoinRoomReq>(Arena*);
 template<> ::cproto::MatchAck* Arena::CreateMaybeMessage<::cproto::MatchAck>(Arena*);
 template<> ::cproto::MatchReq* Arena::CreateMaybeMessage<::cproto::MatchReq>(Arena*);
+template<> ::cproto::RestAck* Arena::CreateMaybeMessage<::cproto::RestAck>(Arena*);
+template<> ::cproto::SignoutAck* Arena::CreateMaybeMessage<::cproto::SignoutAck>(Arena*);
+template<> ::cproto::SignoutReq* Arena::CreateMaybeMessage<::cproto::SignoutReq>(Arena*);
+template<> ::cproto::SignupAck* Arena::CreateMaybeMessage<::cproto::SignupAck>(Arena*);
+template<> ::cproto::SignupReq* Arena::CreateMaybeMessage<::cproto::SignupReq>(Arena*);
 template<> ::cproto::StartClientAck* Arena::CreateMaybeMessage<::cproto::StartClientAck>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace cproto {
@@ -991,6 +1024,360 @@ class JoinRoomReq final :
 };
 // -------------------------------------------------------------------
 
+class SignupReq final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.SignupReq) */ {
+ public:
+  inline SignupReq() : SignupReq(nullptr) {}
+  explicit constexpr SignupReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SignupReq(const SignupReq& from);
+  SignupReq(SignupReq&& from) noexcept
+    : SignupReq() {
+    *this = ::std::move(from);
+  }
+
+  inline SignupReq& operator=(const SignupReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SignupReq& operator=(SignupReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SignupReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SignupReq* internal_default_instance() {
+    return reinterpret_cast<const SignupReq*>(
+               &_SignupReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(SignupReq& a, SignupReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SignupReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SignupReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SignupReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SignupReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SignupReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SignupReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.SignupReq";
+  }
+  protected:
+  explicit SignupReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.SignupReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SignoutReq final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.SignoutReq) */ {
+ public:
+  inline SignoutReq() : SignoutReq(nullptr) {}
+  explicit constexpr SignoutReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SignoutReq(const SignoutReq& from);
+  SignoutReq(SignoutReq&& from) noexcept
+    : SignoutReq() {
+    *this = ::std::move(from);
+  }
+
+  inline SignoutReq& operator=(const SignoutReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SignoutReq& operator=(SignoutReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SignoutReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SignoutReq* internal_default_instance() {
+    return reinterpret_cast<const SignoutReq*>(
+               &_SignoutReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(SignoutReq& a, SignoutReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SignoutReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SignoutReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SignoutReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SignoutReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SignoutReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SignoutReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.SignoutReq";
+  }
+  protected:
+  explicit SignoutReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.SignoutReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ContinueReq final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.ContinueReq) */ {
+ public:
+  inline ContinueReq() : ContinueReq(nullptr) {}
+  explicit constexpr ContinueReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ContinueReq(const ContinueReq& from);
+  ContinueReq(ContinueReq&& from) noexcept
+    : ContinueReq() {
+    *this = ::std::move(from);
+  }
+
+  inline ContinueReq& operator=(const ContinueReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ContinueReq& operator=(ContinueReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ContinueReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ContinueReq* internal_default_instance() {
+    return reinterpret_cast<const ContinueReq*>(
+               &_ContinueReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(ContinueReq& a, ContinueReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ContinueReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ContinueReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ContinueReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ContinueReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const ContinueReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const ContinueReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.ContinueReq";
+  }
+  protected:
+  explicit ContinueReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.ContinueReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
 class CreateRoomAck_PropertiesEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<CreateRoomAck_PropertiesEntry_DoNotUse, 
     std::string, int32_t,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
@@ -1064,7 +1451,7 @@ class CreateRoomAck final :
                &_CreateRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    10;
 
   friend void swap(CreateRoomAck& a, CreateRoomAck& b) {
     a.Swap(&b);
@@ -1250,7 +1637,7 @@ class CancelRoomAck final :
                &_CancelRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    11;
 
   friend void swap(CancelRoomAck& a, CancelRoomAck& b) {
     a.Swap(&b);
@@ -1421,7 +1808,7 @@ class JoinRoomAck final :
                &_JoinRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    13;
 
   friend void swap(JoinRoomAck& a, JoinRoomAck& b) {
     a.Swap(&b);
@@ -1607,7 +1994,7 @@ class StartClientAck final :
                &_StartClientAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    14;
 
   friend void swap(StartClientAck& a, StartClientAck& b) {
     a.Swap(&b);
@@ -1759,6 +2146,596 @@ class StartClientAck final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr server_id_;
   int32_t match_id_;
   int32_t table_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SignupAck final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.SignupAck) */ {
+ public:
+  inline SignupAck() : SignupAck(nullptr) {}
+  explicit constexpr SignupAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SignupAck(const SignupAck& from);
+  SignupAck(SignupAck&& from) noexcept
+    : SignupAck() {
+    *this = ::std::move(from);
+  }
+
+  inline SignupAck& operator=(const SignupAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SignupAck& operator=(SignupAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SignupAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SignupAck* internal_default_instance() {
+    return reinterpret_cast<const SignupAck*>(
+               &_SignupAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(SignupAck& a, SignupAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SignupAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SignupAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SignupAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SignupAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SignupAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SignupAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.SignupAck";
+  }
+  protected:
+  explicit SignupAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.SignupAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SignoutAck final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.SignoutAck) */ {
+ public:
+  inline SignoutAck() : SignoutAck(nullptr) {}
+  explicit constexpr SignoutAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SignoutAck(const SignoutAck& from);
+  SignoutAck(SignoutAck&& from) noexcept
+    : SignoutAck() {
+    *this = ::std::move(from);
+  }
+
+  inline SignoutAck& operator=(const SignoutAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SignoutAck& operator=(SignoutAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SignoutAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SignoutAck* internal_default_instance() {
+    return reinterpret_cast<const SignoutAck*>(
+               &_SignoutAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    16;
+
+  friend void swap(SignoutAck& a, SignoutAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SignoutAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SignoutAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SignoutAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SignoutAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SignoutAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SignoutAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.SignoutAck";
+  }
+  protected:
+  explicit SignoutAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.SignoutAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ContinueAck final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.ContinueAck) */ {
+ public:
+  inline ContinueAck() : ContinueAck(nullptr) {}
+  explicit constexpr ContinueAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ContinueAck(const ContinueAck& from);
+  ContinueAck(ContinueAck&& from) noexcept
+    : ContinueAck() {
+    *this = ::std::move(from);
+  }
+
+  inline ContinueAck& operator=(const ContinueAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ContinueAck& operator=(ContinueAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ContinueAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ContinueAck* internal_default_instance() {
+    return reinterpret_cast<const ContinueAck*>(
+               &_ContinueAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  friend void swap(ContinueAck& a, ContinueAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ContinueAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ContinueAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ContinueAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ContinueAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const ContinueAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const ContinueAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.ContinueAck";
+  }
+  protected:
+  explicit ContinueAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.ContinueAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RestAck final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.RestAck) */ {
+ public:
+  inline RestAck() : RestAck(nullptr) {}
+  explicit constexpr RestAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RestAck(const RestAck& from);
+  RestAck(RestAck&& from) noexcept
+    : RestAck() {
+    *this = ::std::move(from);
+  }
+
+  inline RestAck& operator=(const RestAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RestAck& operator=(RestAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RestAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RestAck* internal_default_instance() {
+    return reinterpret_cast<const RestAck*>(
+               &_RestAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(RestAck& a, RestAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RestAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RestAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RestAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RestAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const RestAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const RestAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.RestAck";
+  }
+  protected:
+  explicit RestAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.RestAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ExistMatchAck final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.ExistMatchAck) */ {
+ public:
+  inline ExistMatchAck() : ExistMatchAck(nullptr) {}
+  explicit constexpr ExistMatchAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ExistMatchAck(const ExistMatchAck& from);
+  ExistMatchAck(ExistMatchAck&& from) noexcept
+    : ExistMatchAck() {
+    *this = ::std::move(from);
+  }
+
+  inline ExistMatchAck& operator=(const ExistMatchAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExistMatchAck& operator=(ExistMatchAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ExistMatchAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ExistMatchAck* internal_default_instance() {
+    return reinterpret_cast<const ExistMatchAck*>(
+               &_ExistMatchAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(ExistMatchAck& a, ExistMatchAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ExistMatchAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExistMatchAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ExistMatchAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ExistMatchAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const ExistMatchAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const ExistMatchAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.ExistMatchAck";
+  }
+  protected:
+  explicit ExistMatchAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.ExistMatchAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_match_2eproto;
 };
@@ -2267,6 +3244,18 @@ inline void JoinRoomReq::set_tableid(int32_t value) {
 
 // -------------------------------------------------------------------
 
+// SignupReq
+
+// -------------------------------------------------------------------
+
+// SignoutReq
+
+// -------------------------------------------------------------------
+
+// ContinueReq
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // CreateRoomAck
@@ -2698,9 +3687,45 @@ inline void StartClientAck::set_table_id(int32_t value) {
   // @@protoc_insertion_point(field_set:cproto.StartClientAck.table_id)
 }
 
+// -------------------------------------------------------------------
+
+// SignupAck
+
+// -------------------------------------------------------------------
+
+// SignoutAck
+
+// -------------------------------------------------------------------
+
+// ContinueAck
+
+// -------------------------------------------------------------------
+
+// RestAck
+
+// -------------------------------------------------------------------
+
+// ExistMatchAck
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

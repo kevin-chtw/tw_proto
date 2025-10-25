@@ -515,7 +515,6 @@ class TouneyListReq final :
 
   enum : int {
     kGameTypeFieldNumber = 1,
-    kMatchTypeFieldNumber = 2,
   };
   // string game_type = 1;
   void clear_game_type();
@@ -531,20 +530,6 @@ class TouneyListReq final :
   std::string* _internal_mutable_game_type();
   public:
 
-  // string match_type = 2;
-  void clear_match_type();
-  const std::string& match_type() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_match_type(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_match_type();
-  PROTOBUF_NODISCARD std::string* release_match_type();
-  void set_allocated_match_type(std::string* match_type);
-  private:
-  const std::string& _internal_match_type() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_match_type(const std::string& value);
-  std::string* _internal_mutable_match_type();
-  public:
-
   // @@protoc_insertion_point(class_scope:cproto.TouneyListReq)
  private:
   class _Internal;
@@ -553,7 +538,6 @@ class TouneyListReq final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr game_type_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr match_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_tourney_2eproto;
 };
@@ -840,9 +824,9 @@ class TounreyInfo final :
     kGameTypeFieldNumber = 3,
     kMatchTypeFieldNumber = 4,
     kServeridFieldNumber = 5,
+    kSignConditionFieldNumber = 7,
     kIdFieldNumber = 1,
-    kDiamondFieldNumber = 6,
-    kOnlineFieldNumber = 7,
+    kOnlineFieldNumber = 6,
   };
   // string name = 2;
   void clear_name();
@@ -900,6 +884,20 @@ class TounreyInfo final :
   std::string* _internal_mutable_serverid();
   public:
 
+  // string sign_condition = 7;
+  void clear_sign_condition();
+  const std::string& sign_condition() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sign_condition(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sign_condition();
+  PROTOBUF_NODISCARD std::string* release_sign_condition();
+  void set_allocated_sign_condition(std::string* sign_condition);
+  private:
+  const std::string& _internal_sign_condition() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sign_condition(const std::string& value);
+  std::string* _internal_mutable_sign_condition();
+  public:
+
   // int32 id = 1;
   void clear_id();
   int32_t id() const;
@@ -909,16 +907,7 @@ class TounreyInfo final :
   void _internal_set_id(int32_t value);
   public:
 
-  // int32 diamond = 6;
-  void clear_diamond();
-  int32_t diamond() const;
-  void set_diamond(int32_t value);
-  private:
-  int32_t _internal_diamond() const;
-  void _internal_set_diamond(int32_t value);
-  public:
-
-  // int32 online = 7;
+  // int32 online = 6;
   void clear_online();
   int32_t online() const;
   void set_online(int32_t value);
@@ -938,8 +927,8 @@ class TounreyInfo final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr game_type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr match_type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr serverid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sign_condition_;
   int32_t id_;
-  int32_t diamond_;
   int32_t online_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_tourney_2eproto;
@@ -1184,57 +1173,6 @@ inline void TouneyListReq::set_allocated_game_type(std::string* game_type) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:cproto.TouneyListReq.game_type)
-}
-
-// string match_type = 2;
-inline void TouneyListReq::clear_match_type() {
-  match_type_.ClearToEmpty();
-}
-inline const std::string& TouneyListReq::match_type() const {
-  // @@protoc_insertion_point(field_get:cproto.TouneyListReq.match_type)
-  return _internal_match_type();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void TouneyListReq::set_match_type(ArgT0&& arg0, ArgT... args) {
- 
- match_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.TouneyListReq.match_type)
-}
-inline std::string* TouneyListReq::mutable_match_type() {
-  std::string* _s = _internal_mutable_match_type();
-  // @@protoc_insertion_point(field_mutable:cproto.TouneyListReq.match_type)
-  return _s;
-}
-inline const std::string& TouneyListReq::_internal_match_type() const {
-  return match_type_.Get();
-}
-inline void TouneyListReq::_internal_set_match_type(const std::string& value) {
-  
-  match_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* TouneyListReq::_internal_mutable_match_type() {
-  
-  return match_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* TouneyListReq::release_match_type() {
-  // @@protoc_insertion_point(field_release:cproto.TouneyListReq.match_type)
-  return match_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void TouneyListReq::set_allocated_match_type(std::string* match_type) {
-  if (match_type != nullptr) {
-    
-  } else {
-    
-  }
-  match_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), match_type,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (match_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    match_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.TouneyListReq.match_type)
 }
 
 // -------------------------------------------------------------------
@@ -1509,27 +1447,7 @@ inline void TounreyInfo::set_allocated_serverid(std::string* serverid) {
   // @@protoc_insertion_point(field_set_allocated:cproto.TounreyInfo.serverid)
 }
 
-// int32 diamond = 6;
-inline void TounreyInfo::clear_diamond() {
-  diamond_ = 0;
-}
-inline int32_t TounreyInfo::_internal_diamond() const {
-  return diamond_;
-}
-inline int32_t TounreyInfo::diamond() const {
-  // @@protoc_insertion_point(field_get:cproto.TounreyInfo.diamond)
-  return _internal_diamond();
-}
-inline void TounreyInfo::_internal_set_diamond(int32_t value) {
-  
-  diamond_ = value;
-}
-inline void TounreyInfo::set_diamond(int32_t value) {
-  _internal_set_diamond(value);
-  // @@protoc_insertion_point(field_set:cproto.TounreyInfo.diamond)
-}
-
-// int32 online = 7;
+// int32 online = 6;
 inline void TounreyInfo::clear_online() {
   online_ = 0;
 }
@@ -1547,6 +1465,57 @@ inline void TounreyInfo::_internal_set_online(int32_t value) {
 inline void TounreyInfo::set_online(int32_t value) {
   _internal_set_online(value);
   // @@protoc_insertion_point(field_set:cproto.TounreyInfo.online)
+}
+
+// string sign_condition = 7;
+inline void TounreyInfo::clear_sign_condition() {
+  sign_condition_.ClearToEmpty();
+}
+inline const std::string& TounreyInfo::sign_condition() const {
+  // @@protoc_insertion_point(field_get:cproto.TounreyInfo.sign_condition)
+  return _internal_sign_condition();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TounreyInfo::set_sign_condition(ArgT0&& arg0, ArgT... args) {
+ 
+ sign_condition_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.TounreyInfo.sign_condition)
+}
+inline std::string* TounreyInfo::mutable_sign_condition() {
+  std::string* _s = _internal_mutable_sign_condition();
+  // @@protoc_insertion_point(field_mutable:cproto.TounreyInfo.sign_condition)
+  return _s;
+}
+inline const std::string& TounreyInfo::_internal_sign_condition() const {
+  return sign_condition_.Get();
+}
+inline void TounreyInfo::_internal_set_sign_condition(const std::string& value) {
+  
+  sign_condition_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TounreyInfo::_internal_mutable_sign_condition() {
+  
+  return sign_condition_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TounreyInfo::release_sign_condition() {
+  // @@protoc_insertion_point(field_release:cproto.TounreyInfo.sign_condition)
+  return sign_condition_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TounreyInfo::set_allocated_sign_condition(std::string* sign_condition) {
+  if (sign_condition != nullptr) {
+    
+  } else {
+    
+  }
+  sign_condition_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), sign_condition,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (sign_condition_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    sign_condition_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.TounreyInfo.sign_condition)
 }
 
 #ifdef __GNUC__
