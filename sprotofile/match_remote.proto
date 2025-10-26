@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package sproto;
+option go_package = "../sproto";
+
+message MatchReq {
+  int32 matchid = 1;
+  google.protobuf.Any req = 2;
+}
+
+message MatchAck {
+  google.protobuf.Any ack = 1;
+}
+
+message NetStateReq {
+  string uid = 1;
+  bool online = 2;
+}
+
+message GameResultReq {
+  int32 tableid = 1;
+  int32 cur_game_count = 2; // 当前游戏局数
+  repeated PlayerResult players = 3; // 玩家ID列表
+}
+
+message PlayerResult {
+  string playerid = 1; // 玩家ID
+  int64 score = 2; // 玩家得分
+}
+
+message GameOverReq {
+  int32 tableid = 1;
+  int32 cur_game_count = 2; // 当前游戏局数
+}
+
+message NetStateAck {
+  string uid = 1;
+}

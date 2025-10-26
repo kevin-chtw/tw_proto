@@ -41,6 +41,9 @@ message SignoutReq {//取消报名
 message ContinueReq {
 }
 
+message ExitMatchReq{  
+}
+
 message CreateRoomAck {
   int32 tableid = 1; // 桌号
   string desn = 2; //配置描述
@@ -77,6 +80,5 @@ message ContinueAck {
 message RestAck {  
 }
 
-message ExistMatchAck { //弹回大厅
-
+message ExitMatchAck { //弹回大厅
 }

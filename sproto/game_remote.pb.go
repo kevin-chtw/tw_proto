@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.19.3
-// source: match2game.proto
+// source: game_remote.proto
 
 package sproto
 
@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Match2GameReq struct {
+type GameReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
 	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
@@ -31,21 +31,21 @@ type Match2GameReq struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Match2GameReq) Reset() {
-	*x = Match2GameReq{}
-	mi := &file_match2game_proto_msgTypes[0]
+func (x *GameReq) Reset() {
+	*x = GameReq{}
+	mi := &file_game_remote_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Match2GameReq) String() string {
+func (x *GameReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Match2GameReq) ProtoMessage() {}
+func (*GameReq) ProtoMessage() {}
 
-func (x *Match2GameReq) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[0]
+func (x *GameReq) ProtoReflect() protoreflect.Message {
+	mi := &file_game_remote_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,33 +56,33 @@ func (x *Match2GameReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Match2GameReq.ProtoReflect.Descriptor instead.
-func (*Match2GameReq) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use GameReq.ProtoReflect.Descriptor instead.
+func (*GameReq) Descriptor() ([]byte, []int) {
+	return file_game_remote_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Match2GameReq) GetMatchid() int32 {
+func (x *GameReq) GetMatchid() int32 {
 	if x != nil {
 		return x.Matchid
 	}
 	return 0
 }
 
-func (x *Match2GameReq) GetTableid() int32 {
+func (x *GameReq) GetTableid() int32 {
 	if x != nil {
 		return x.Tableid
 	}
 	return 0
 }
 
-func (x *Match2GameReq) GetReq() *anypb.Any {
+func (x *GameReq) GetReq() *anypb.Any {
 	if x != nil {
 		return x.Req
 	}
 	return nil
 }
 
-type Match2GameAck struct {
+type GameAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
 	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
@@ -91,21 +91,21 @@ type Match2GameAck struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Match2GameAck) Reset() {
-	*x = Match2GameAck{}
-	mi := &file_match2game_proto_msgTypes[1]
+func (x *GameAck) Reset() {
+	*x = GameAck{}
+	mi := &file_game_remote_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Match2GameAck) String() string {
+func (x *GameAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Match2GameAck) ProtoMessage() {}
+func (*GameAck) ProtoMessage() {}
 
-func (x *Match2GameAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[1]
+func (x *GameAck) ProtoReflect() protoreflect.Message {
+	mi := &file_game_remote_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -116,26 +116,26 @@ func (x *Match2GameAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Match2GameAck.ProtoReflect.Descriptor instead.
-func (*Match2GameAck) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use GameAck.ProtoReflect.Descriptor instead.
+func (*GameAck) Descriptor() ([]byte, []int) {
+	return file_game_remote_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Match2GameAck) GetMatchid() int32 {
+func (x *GameAck) GetMatchid() int32 {
 	if x != nil {
 		return x.Matchid
 	}
 	return 0
 }
 
-func (x *Match2GameAck) GetTableid() int32 {
+func (x *GameAck) GetTableid() int32 {
 	if x != nil {
 		return x.Tableid
 	}
 	return 0
 }
 
-func (x *Match2GameAck) GetAck() *anypb.Any {
+func (x *GameAck) GetAck() *anypb.Any {
 	if x != nil {
 		return x.Ack
 	}
@@ -157,7 +157,7 @@ type AddTableReq struct {
 
 func (x *AddTableReq) Reset() {
 	*x = AddTableReq{}
-	mi := &file_match2game_proto_msgTypes[2]
+	mi := &file_game_remote_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -169,7 +169,7 @@ func (x *AddTableReq) String() string {
 func (*AddTableReq) ProtoMessage() {}
 
 func (x *AddTableReq) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[2]
+	mi := &file_game_remote_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -182,7 +182,7 @@ func (x *AddTableReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddTableReq.ProtoReflect.Descriptor instead.
 func (*AddTableReq) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{2}
+	return file_game_remote_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AddTableReq) GetMatchType() string {
@@ -247,7 +247,7 @@ type AddPlayerReq struct {
 
 func (x *AddPlayerReq) Reset() {
 	*x = AddPlayerReq{}
-	mi := &file_match2game_proto_msgTypes[3]
+	mi := &file_game_remote_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -259,7 +259,7 @@ func (x *AddPlayerReq) String() string {
 func (*AddPlayerReq) ProtoMessage() {}
 
 func (x *AddPlayerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[3]
+	mi := &file_game_remote_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -272,7 +272,7 @@ func (x *AddPlayerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPlayerReq.ProtoReflect.Descriptor instead.
 func (*AddPlayerReq) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{3}
+	return file_game_remote_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AddPlayerReq) GetPlayerid() string {
@@ -319,7 +319,7 @@ type CancelTableReq struct {
 
 func (x *CancelTableReq) Reset() {
 	*x = CancelTableReq{}
-	mi := &file_match2game_proto_msgTypes[4]
+	mi := &file_game_remote_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -331,7 +331,7 @@ func (x *CancelTableReq) String() string {
 func (*CancelTableReq) ProtoMessage() {}
 
 func (x *CancelTableReq) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[4]
+	mi := &file_game_remote_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -344,7 +344,7 @@ func (x *CancelTableReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelTableReq.ProtoReflect.Descriptor instead.
 func (*CancelTableReq) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{4}
+	return file_game_remote_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CancelTableReq) GetReason() int32 {
@@ -362,7 +362,7 @@ type EmptyAck struct {
 
 func (x *EmptyAck) Reset() {
 	*x = EmptyAck{}
-	mi := &file_match2game_proto_msgTypes[5]
+	mi := &file_game_remote_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -374,7 +374,7 @@ func (x *EmptyAck) String() string {
 func (*EmptyAck) ProtoMessage() {}
 
 func (x *EmptyAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[5]
+	mi := &file_game_remote_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -387,84 +387,31 @@ func (x *EmptyAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EmptyAck.ProtoReflect.Descriptor instead.
 func (*EmptyAck) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{5}
+	return file_game_remote_proto_rawDescGZIP(), []int{5}
 }
 
-type GameResultAck struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	CurGameCount  int32                  `protobuf:"varint,1,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
-	Players       []*PlayerResult        `protobuf:"bytes,2,rep,name=players,proto3" json:"players,omitempty"`                                  // 玩家ID列表
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GameResultAck) Reset() {
-	*x = GameResultAck{}
-	mi := &file_match2game_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GameResultAck) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GameResultAck) ProtoMessage() {}
-
-func (x *GameResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GameResultAck.ProtoReflect.Descriptor instead.
-func (*GameResultAck) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *GameResultAck) GetCurGameCount() int32 {
-	if x != nil {
-		return x.CurGameCount
-	}
-	return 0
-}
-
-func (x *GameResultAck) GetPlayers() []*PlayerResult {
-	if x != nil {
-		return x.Players
-	}
-	return nil
-}
-
-type PlayerResult struct {
+type ExitTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
-	Score         int64                  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`      // 玩家得分
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PlayerResult) Reset() {
-	*x = PlayerResult{}
-	mi := &file_match2game_proto_msgTypes[7]
+func (x *ExitTableReq) Reset() {
+	*x = ExitTableReq{}
+	mi := &file_game_remote_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PlayerResult) String() string {
+func (x *ExitTableReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PlayerResult) ProtoMessage() {}
+func (*ExitTableReq) ProtoMessage() {}
 
-func (x *PlayerResult) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[7]
+func (x *ExitTableReq) ProtoReflect() protoreflect.Message {
+	mi := &file_game_remote_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -475,47 +422,41 @@ func (x *PlayerResult) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PlayerResult.ProtoReflect.Descriptor instead.
-func (*PlayerResult) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{7}
+// Deprecated: Use ExitTableReq.ProtoReflect.Descriptor instead.
+func (*ExitTableReq) Descriptor() ([]byte, []int) {
+	return file_game_remote_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *PlayerResult) GetPlayerid() string {
+func (x *ExitTableReq) GetPlayerid() string {
 	if x != nil {
 		return x.Playerid
 	}
 	return ""
 }
 
-func (x *PlayerResult) GetScore() int64 {
-	if x != nil {
-		return x.Score
-	}
-	return 0
-}
-
-type GameOverAck struct {
+type ExitTableAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CurGameCount  int32                  `protobuf:"varint,1,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
+	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
+	Result        int32                  `protobuf:"varint,2,opt,name=result,proto3" json:"result,omitempty"`    // 退出结果 0-可退出，1-不可退出
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GameOverAck) Reset() {
-	*x = GameOverAck{}
-	mi := &file_match2game_proto_msgTypes[8]
+func (x *ExitTableAck) Reset() {
+	*x = ExitTableAck{}
+	mi := &file_game_remote_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GameOverAck) String() string {
+func (x *ExitTableAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GameOverAck) ProtoMessage() {}
+func (*ExitTableAck) ProtoMessage() {}
 
-func (x *GameOverAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match2game_proto_msgTypes[8]
+func (x *ExitTableAck) ProtoReflect() protoreflect.Message {
+	mi := &file_game_remote_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -526,28 +467,35 @@ func (x *GameOverAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GameOverAck.ProtoReflect.Descriptor instead.
-func (*GameOverAck) Descriptor() ([]byte, []int) {
-	return file_match2game_proto_rawDescGZIP(), []int{8}
+// Deprecated: Use ExitTableAck.ProtoReflect.Descriptor instead.
+func (*ExitTableAck) Descriptor() ([]byte, []int) {
+	return file_game_remote_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *GameOverAck) GetCurGameCount() int32 {
+func (x *ExitTableAck) GetPlayerid() string {
 	if x != nil {
-		return x.CurGameCount
+		return x.Playerid
+	}
+	return ""
+}
+
+func (x *ExitTableAck) GetResult() int32 {
+	if x != nil {
+		return x.Result
 	}
 	return 0
 }
 
-var File_match2game_proto protoreflect.FileDescriptor
+var File_game_remote_proto protoreflect.FileDescriptor
 
-const file_match2game_proto_rawDesc = "" +
+const file_game_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x10match2game.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"k\n" +
-	"\rMatch2GameReq\x12\x18\n" +
+	"\x11game_remote.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"e\n" +
+	"\aGameReq\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
-	"\x03req\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03req\"k\n" +
-	"\rMatch2GameAck\x12\x18\n" +
+	"\x03req\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03req\"e\n" +
+	"\aGameAck\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
 	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xc7\x02\n" +
@@ -576,74 +524,69 @@ const file_match2game_proto_rawDesc = "" +
 	"\x0eCancelTableReq\x12\x16\n" +
 	"\x06reason\x18\x01 \x01(\x05R\x06reason\"\n" +
 	"\n" +
-	"\bEmptyAck\"e\n" +
-	"\rGameResultAck\x12$\n" +
-	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\x12.\n" +
-	"\aplayers\x18\x02 \x03(\v2\x14.sproto.PlayerResultR\aplayers\"@\n" +
-	"\fPlayerResult\x12\x1a\n" +
-	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x14\n" +
-	"\x05score\x18\x02 \x01(\x03R\x05score\"3\n" +
-	"\vGameOverAck\x12$\n" +
-	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCountB\vZ\t../sprotob\x06proto3"
+	"\bEmptyAck\"*\n" +
+	"\fExitTableReq\x12\x1a\n" +
+	"\bplayerid\x18\x01 \x01(\tR\bplayerid\"B\n" +
+	"\fExitTableAck\x12\x1a\n" +
+	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x16\n" +
+	"\x06result\x18\x02 \x01(\x05R\x06resultB\vZ\t../sprotob\x06proto3"
 
 var (
-	file_match2game_proto_rawDescOnce sync.Once
-	file_match2game_proto_rawDescData []byte
+	file_game_remote_proto_rawDescOnce sync.Once
+	file_game_remote_proto_rawDescData []byte
 )
 
-func file_match2game_proto_rawDescGZIP() []byte {
-	file_match2game_proto_rawDescOnce.Do(func() {
-		file_match2game_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_match2game_proto_rawDesc), len(file_match2game_proto_rawDesc)))
+func file_game_remote_proto_rawDescGZIP() []byte {
+	file_game_remote_proto_rawDescOnce.Do(func() {
+		file_game_remote_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_game_remote_proto_rawDesc), len(file_game_remote_proto_rawDesc)))
 	})
-	return file_match2game_proto_rawDescData
+	return file_game_remote_proto_rawDescData
 }
 
-var file_match2game_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
-var file_match2game_proto_goTypes = []any{
-	(*Match2GameReq)(nil),  // 0: sproto.Match2GameReq
-	(*Match2GameAck)(nil),  // 1: sproto.Match2GameAck
+var file_game_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_game_remote_proto_goTypes = []any{
+	(*GameReq)(nil),        // 0: sproto.GameReq
+	(*GameAck)(nil),        // 1: sproto.GameAck
 	(*AddTableReq)(nil),    // 2: sproto.AddTableReq
 	(*AddPlayerReq)(nil),   // 3: sproto.AddPlayerReq
 	(*CancelTableReq)(nil), // 4: sproto.CancelTableReq
 	(*EmptyAck)(nil),       // 5: sproto.EmptyAck
-	(*GameResultAck)(nil),  // 6: sproto.GameResultAck
-	(*PlayerResult)(nil),   // 7: sproto.PlayerResult
-	(*GameOverAck)(nil),    // 8: sproto.GameOverAck
-	nil,                    // 9: sproto.AddTableReq.FdpropertyEntry
-	(*anypb.Any)(nil),      // 10: google.protobuf.Any
+	(*ExitTableReq)(nil),   // 6: sproto.ExitTableReq
+	(*ExitTableAck)(nil),   // 7: sproto.ExitTableAck
+	nil,                    // 8: sproto.AddTableReq.FdpropertyEntry
+	(*anypb.Any)(nil),      // 9: google.protobuf.Any
 }
-var file_match2game_proto_depIdxs = []int32{
-	10, // 0: sproto.Match2GameReq.req:type_name -> google.protobuf.Any
-	10, // 1: sproto.Match2GameAck.ack:type_name -> google.protobuf.Any
-	9,  // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
-	7,  // 3: sproto.GameResultAck.players:type_name -> sproto.PlayerResult
-	4,  // [4:4] is the sub-list for method output_type
-	4,  // [4:4] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+var file_game_remote_proto_depIdxs = []int32{
+	9, // 0: sproto.GameReq.req:type_name -> google.protobuf.Any
+	9, // 1: sproto.GameAck.ack:type_name -> google.protobuf.Any
+	8, // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_match2game_proto_init() }
-func file_match2game_proto_init() {
-	if File_match2game_proto != nil {
+func init() { file_game_remote_proto_init() }
+func file_game_remote_proto_init() {
+	if File_game_remote_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match2game_proto_rawDesc), len(file_match2game_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_remote_proto_rawDesc), len(file_game_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_match2game_proto_goTypes,
-		DependencyIndexes: file_match2game_proto_depIdxs,
-		MessageInfos:      file_match2game_proto_msgTypes,
+		GoTypes:           file_game_remote_proto_goTypes,
+		DependencyIndexes: file_game_remote_proto_depIdxs,
+		MessageInfos:      file_game_remote_proto_msgTypes,
 	}.Build()
-	File_match2game_proto = out.File
-	file_match2game_proto_goTypes = nil
-	file_match2game_proto_depIdxs = nil
+	File_game_remote_proto = out.File
+	file_game_remote_proto_goTypes = nil
+	file_game_remote_proto_depIdxs = nil
 }

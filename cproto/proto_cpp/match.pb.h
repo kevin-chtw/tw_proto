@@ -51,7 +51,7 @@ struct TableStruct_match_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[20]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[21]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -83,9 +83,12 @@ extern CreateRoomReqDefaultTypeInternal _CreateRoomReq_default_instance_;
 class CreateRoomReq_PropertiesEntry_DoNotUse;
 struct CreateRoomReq_PropertiesEntry_DoNotUseDefaultTypeInternal;
 extern CreateRoomReq_PropertiesEntry_DoNotUseDefaultTypeInternal _CreateRoomReq_PropertiesEntry_DoNotUse_default_instance_;
-class ExistMatchAck;
-struct ExistMatchAckDefaultTypeInternal;
-extern ExistMatchAckDefaultTypeInternal _ExistMatchAck_default_instance_;
+class ExitMatchAck;
+struct ExitMatchAckDefaultTypeInternal;
+extern ExitMatchAckDefaultTypeInternal _ExitMatchAck_default_instance_;
+class ExitMatchReq;
+struct ExitMatchReqDefaultTypeInternal;
+extern ExitMatchReqDefaultTypeInternal _ExitMatchReq_default_instance_;
 class JoinRoomAck;
 struct JoinRoomAckDefaultTypeInternal;
 extern JoinRoomAckDefaultTypeInternal _JoinRoomAck_default_instance_;
@@ -129,7 +132,8 @@ template<> ::cproto::CreateRoomAck* Arena::CreateMaybeMessage<::cproto::CreateRo
 template<> ::cproto::CreateRoomAck_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::CreateRoomAck_PropertiesEntry_DoNotUse>(Arena*);
 template<> ::cproto::CreateRoomReq* Arena::CreateMaybeMessage<::cproto::CreateRoomReq>(Arena*);
 template<> ::cproto::CreateRoomReq_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::CreateRoomReq_PropertiesEntry_DoNotUse>(Arena*);
-template<> ::cproto::ExistMatchAck* Arena::CreateMaybeMessage<::cproto::ExistMatchAck>(Arena*);
+template<> ::cproto::ExitMatchAck* Arena::CreateMaybeMessage<::cproto::ExitMatchAck>(Arena*);
+template<> ::cproto::ExitMatchReq* Arena::CreateMaybeMessage<::cproto::ExitMatchReq>(Arena*);
 template<> ::cproto::JoinRoomAck* Arena::CreateMaybeMessage<::cproto::JoinRoomAck>(Arena*);
 template<> ::cproto::JoinRoomAck_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::JoinRoomAck_PropertiesEntry_DoNotUse>(Arena*);
 template<> ::cproto::JoinRoomReq* Arena::CreateMaybeMessage<::cproto::JoinRoomReq>(Arena*);
@@ -1378,6 +1382,124 @@ class ContinueReq final :
 };
 // -------------------------------------------------------------------
 
+class ExitMatchReq final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.ExitMatchReq) */ {
+ public:
+  inline ExitMatchReq() : ExitMatchReq(nullptr) {}
+  explicit constexpr ExitMatchReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ExitMatchReq(const ExitMatchReq& from);
+  ExitMatchReq(ExitMatchReq&& from) noexcept
+    : ExitMatchReq() {
+    *this = ::std::move(from);
+  }
+
+  inline ExitMatchReq& operator=(const ExitMatchReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExitMatchReq& operator=(ExitMatchReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ExitMatchReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ExitMatchReq* internal_default_instance() {
+    return reinterpret_cast<const ExitMatchReq*>(
+               &_ExitMatchReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(ExitMatchReq& a, ExitMatchReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ExitMatchReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExitMatchReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ExitMatchReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ExitMatchReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const ExitMatchReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const ExitMatchReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.ExitMatchReq";
+  }
+  protected:
+  explicit ExitMatchReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.ExitMatchReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
 class CreateRoomAck_PropertiesEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<CreateRoomAck_PropertiesEntry_DoNotUse, 
     std::string, int32_t,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
@@ -1451,7 +1573,7 @@ class CreateRoomAck final :
                &_CreateRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(CreateRoomAck& a, CreateRoomAck& b) {
     a.Swap(&b);
@@ -1637,7 +1759,7 @@ class CancelRoomAck final :
                &_CancelRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(CancelRoomAck& a, CancelRoomAck& b) {
     a.Swap(&b);
@@ -1808,7 +1930,7 @@ class JoinRoomAck final :
                &_JoinRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(JoinRoomAck& a, JoinRoomAck& b) {
     a.Swap(&b);
@@ -1994,7 +2116,7 @@ class StartClientAck final :
                &_StartClientAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(StartClientAck& a, StartClientAck& b) {
     a.Swap(&b);
@@ -2198,7 +2320,7 @@ class SignupAck final :
                &_SignupAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(SignupAck& a, SignupAck& b) {
     a.Swap(&b);
@@ -2316,7 +2438,7 @@ class SignoutAck final :
                &_SignoutAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(SignoutAck& a, SignoutAck& b) {
     a.Swap(&b);
@@ -2434,7 +2556,7 @@ class ContinueAck final :
                &_ContinueAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(ContinueAck& a, ContinueAck& b) {
     a.Swap(&b);
@@ -2552,7 +2674,7 @@ class RestAck final :
                &_RestAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    19;
 
   friend void swap(RestAck& a, RestAck& b) {
     a.Swap(&b);
@@ -2623,23 +2745,23 @@ class RestAck final :
 };
 // -------------------------------------------------------------------
 
-class ExistMatchAck final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.ExistMatchAck) */ {
+class ExitMatchAck final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.ExitMatchAck) */ {
  public:
-  inline ExistMatchAck() : ExistMatchAck(nullptr) {}
-  explicit constexpr ExistMatchAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ExitMatchAck() : ExitMatchAck(nullptr) {}
+  explicit constexpr ExitMatchAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  ExistMatchAck(const ExistMatchAck& from);
-  ExistMatchAck(ExistMatchAck&& from) noexcept
-    : ExistMatchAck() {
+  ExitMatchAck(const ExitMatchAck& from);
+  ExitMatchAck(ExitMatchAck&& from) noexcept
+    : ExitMatchAck() {
     *this = ::std::move(from);
   }
 
-  inline ExistMatchAck& operator=(const ExistMatchAck& from) {
+  inline ExitMatchAck& operator=(const ExitMatchAck& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ExistMatchAck& operator=(ExistMatchAck&& from) noexcept {
+  inline ExitMatchAck& operator=(ExitMatchAck&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -2662,20 +2784,20 @@ class ExistMatchAck final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const ExistMatchAck& default_instance() {
+  static const ExitMatchAck& default_instance() {
     return *internal_default_instance();
   }
-  static inline const ExistMatchAck* internal_default_instance() {
-    return reinterpret_cast<const ExistMatchAck*>(
-               &_ExistMatchAck_default_instance_);
+  static inline const ExitMatchAck* internal_default_instance() {
+    return reinterpret_cast<const ExitMatchAck*>(
+               &_ExitMatchAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    20;
 
-  friend void swap(ExistMatchAck& a, ExistMatchAck& b) {
+  friend void swap(ExitMatchAck& a, ExitMatchAck& b) {
     a.Swap(&b);
   }
-  inline void Swap(ExistMatchAck* other) {
+  inline void Swap(ExitMatchAck* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -2688,7 +2810,7 @@ class ExistMatchAck final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(ExistMatchAck* other) {
+  void UnsafeArenaSwap(ExitMatchAck* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -2696,15 +2818,15 @@ class ExistMatchAck final :
 
   // implements Message ----------------------------------------------
 
-  ExistMatchAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ExistMatchAck>(arena);
+  ExitMatchAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ExitMatchAck>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const ExistMatchAck& from) {
+  inline void CopyFrom(const ExitMatchAck& from) {
     ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
   }
   using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const ExistMatchAck& from) {
+  void MergeFrom(const ExitMatchAck& from) {
     ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
   }
   public:
@@ -2712,10 +2834,10 @@ class ExistMatchAck final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.ExistMatchAck";
+    return "cproto.ExitMatchAck";
   }
   protected:
-  explicit ExistMatchAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ExitMatchAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   public:
@@ -2729,7 +2851,7 @@ class ExistMatchAck final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:cproto.ExistMatchAck)
+  // @@protoc_insertion_point(class_scope:cproto.ExitMatchAck)
  private:
   class _Internal;
 
@@ -3256,6 +3378,10 @@ inline void JoinRoomReq::set_tableid(int32_t value) {
 
 // -------------------------------------------------------------------
 
+// ExitMatchReq
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // CreateRoomAck
@@ -3705,11 +3831,13 @@ inline void StartClientAck::set_table_id(int32_t value) {
 
 // -------------------------------------------------------------------
 
-// ExistMatchAck
+// ExitMatchAck
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

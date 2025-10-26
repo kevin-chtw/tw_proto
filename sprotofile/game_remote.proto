@@ -5,13 +5,13 @@ import "google/protobuf/any.proto";
 package sproto;
 option go_package = "../sproto";
 
-message Match2GameReq {
+message GameReq {
   int32 matchid = 1;
   int32 tableid = 2;
   google.protobuf.Any req = 3; // 请求内容
 }
 
-message Match2GameAck {
+message GameAck {
   int32 matchid = 1;
   int32 tableid = 2;
   google.protobuf.Any ack = 3; // 响应内容
@@ -41,16 +41,11 @@ message CancelTableReq {
 
 message EmptyAck {}
 
-message GameResultAck {
-  int32 cur_game_count = 1; // 当前游戏局数
-  repeated PlayerResult players = 2; // 玩家ID列表
-}
-
-message PlayerResult {
+message ExitTableReq {
   string playerid = 1; // 玩家ID
-  int64 score = 2; // 玩家得分
 }
 
-message GameOverAck {
-  int32 cur_game_count = 1; // 当前游戏局数
+message ExitTableAck {
+  string playerid = 1; // 玩家ID
+  int32 result = 2; // 退出结果 0-可退出，1-不可退出
 }
