@@ -107,7 +107,7 @@ message MJAnimationAck {
 message MJResultAck {
   bool liuju = 1; // 流局标记
   repeated MJPlayerResult player_results = 2; // 玩家结果列表
-}   
+}
 
 message MJPlayerResult {
   int32 seat = 1; // 玩家ID
@@ -118,4 +118,9 @@ message MJPlayerResult {
 
 message CallData { 
   map<int32, int64> call_tiles = 2; // 听牌列表(牌-番数或倍数)
+}
+
+message MJHandleFinAck { //处理完成
+  int32 seat = 1; //座位号
+  string handle = 2; //操作 自定义操作类型
 }
