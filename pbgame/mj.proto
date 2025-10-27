@@ -119,8 +119,3 @@ message MJPlayerResult {
 message CallData { 
   map<int32, int64> call_tiles = 2; // 听牌列表(牌-番数或倍数)
 }
-
-message MJHandleFinAck { //处理完成
-  int32 seat = 1; //座位号
-  string handle = 2; //操作 自定义操作类型
-}

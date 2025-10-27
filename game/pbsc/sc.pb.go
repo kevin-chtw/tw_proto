@@ -258,6 +258,58 @@ func (x *SCSwapTilesAck) GetRequestid() int32 {
 	return 0
 }
 
+type SCSwapFinishAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`
+	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCSwapFinishAck) Reset() {
+	*x = SCSwapFinishAck{}
+	mi := &file_sc_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCSwapFinishAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCSwapFinishAck) ProtoMessage() {}
+
+func (x *SCSwapFinishAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCSwapFinishAck.ProtoReflect.Descriptor instead.
+func (*SCSwapFinishAck) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *SCSwapFinishAck) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *SCSwapFinishAck) GetTiles() []int32 {
+	if x != nil {
+		return x.Tiles
+	}
+	return nil
+}
+
 type SCSwapTilesResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SwapType      int32                  `protobuf:"varint,1,opt,name=swap_type,json=swapType,proto3" json:"swap_type,omitempty"` //0-逆时针，1-顺时针，2-交叉
@@ -268,7 +320,7 @@ type SCSwapTilesResultAck struct {
 
 func (x *SCSwapTilesResultAck) Reset() {
 	*x = SCSwapTilesResultAck{}
-	mi := &file_sc_proto_msgTypes[5]
+	mi := &file_sc_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -280,7 +332,7 @@ func (x *SCSwapTilesResultAck) String() string {
 func (*SCSwapTilesResultAck) ProtoMessage() {}
 
 func (x *SCSwapTilesResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[5]
+	mi := &file_sc_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -293,7 +345,7 @@ func (x *SCSwapTilesResultAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCSwapTilesResultAck.ProtoReflect.Descriptor instead.
 func (*SCSwapTilesResultAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{5}
+	return file_sc_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *SCSwapTilesResultAck) GetSwapType() int32 {
@@ -321,7 +373,7 @@ type SCSwapTiles struct {
 
 func (x *SCSwapTiles) Reset() {
 	*x = SCSwapTiles{}
-	mi := &file_sc_proto_msgTypes[6]
+	mi := &file_sc_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -333,7 +385,7 @@ func (x *SCSwapTiles) String() string {
 func (*SCSwapTiles) ProtoMessage() {}
 
 func (x *SCSwapTiles) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[6]
+	mi := &file_sc_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -346,7 +398,7 @@ func (x *SCSwapTiles) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCSwapTiles.ProtoReflect.Descriptor instead.
 func (*SCSwapTiles) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{6}
+	return file_sc_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *SCSwapTiles) GetFrom() int32 {
@@ -379,7 +431,7 @@ type SCDingQueAck struct {
 
 func (x *SCDingQueAck) Reset() {
 	*x = SCDingQueAck{}
-	mi := &file_sc_proto_msgTypes[7]
+	mi := &file_sc_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -391,7 +443,7 @@ func (x *SCDingQueAck) String() string {
 func (*SCDingQueAck) ProtoMessage() {}
 
 func (x *SCDingQueAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[7]
+	mi := &file_sc_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -404,12 +456,64 @@ func (x *SCDingQueAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCDingQueAck.ProtoReflect.Descriptor instead.
 func (*SCDingQueAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{7}
+	return file_sc_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *SCDingQueAck) GetRequestid() int32 {
 	if x != nil {
 		return x.Requestid
+	}
+	return 0
+}
+
+type SCDingQueFinishAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`
+	Color         int32                  `protobuf:"varint,2,opt,name=color,proto3" json:"color,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SCDingQueFinishAck) Reset() {
+	*x = SCDingQueFinishAck{}
+	mi := &file_sc_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SCDingQueFinishAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SCDingQueFinishAck) ProtoMessage() {}
+
+func (x *SCDingQueFinishAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sc_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SCDingQueFinishAck.ProtoReflect.Descriptor instead.
+func (*SCDingQueFinishAck) Descriptor() ([]byte, []int) {
+	return file_sc_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *SCDingQueFinishAck) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *SCDingQueFinishAck) GetColor() int32 {
+	if x != nil {
+		return x.Color
 	}
 	return 0
 }
@@ -423,7 +527,7 @@ type SCDingQueResultAck struct {
 
 func (x *SCDingQueResultAck) Reset() {
 	*x = SCDingQueResultAck{}
-	mi := &file_sc_proto_msgTypes[8]
+	mi := &file_sc_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -435,7 +539,7 @@ func (x *SCDingQueResultAck) String() string {
 func (*SCDingQueResultAck) ProtoMessage() {}
 
 func (x *SCDingQueResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[8]
+	mi := &file_sc_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -448,7 +552,7 @@ func (x *SCDingQueResultAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SCDingQueResultAck.ProtoReflect.Descriptor instead.
 func (*SCDingQueResultAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{8}
+	return file_sc_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SCDingQueResultAck) GetColors() []int32 {
@@ -474,7 +578,10 @@ const file_sc_proto_rawDesc = "" +
 	"\trequestid\x18\x01 \x01(\x05R\trequestid\x12\x14\n" +
 	"\x05color\x18\x02 \x01(\x05R\x05color\".\n" +
 	"\x0eSCSwapTilesAck\x12\x1c\n" +
-	"\trequestid\x18\x01 \x01(\x05R\trequestid\"e\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\";\n" +
+	"\x0fSCSwapFinishAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
+	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"e\n" +
 	"\x14SCSwapTilesResultAck\x12\x1b\n" +
 	"\tswap_type\x18\x01 \x01(\x05R\bswapType\x120\n" +
 	"\n" +
@@ -484,7 +591,10 @@ const file_sc_proto_rawDesc = "" +
 	"\x02to\x18\x02 \x01(\x05R\x02to\x12\x14\n" +
 	"\x05tiles\x18\x03 \x03(\x05R\x05tiles\",\n" +
 	"\fSCDingQueAck\x12\x1c\n" +
-	"\trequestid\x18\x01 \x01(\x05R\trequestid\",\n" +
+	"\trequestid\x18\x01 \x01(\x05R\trequestid\">\n" +
+	"\x12SCDingQueFinishAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
+	"\x05color\x18\x02 \x01(\x05R\x05color\",\n" +
 	"\x12SCDingQueResultAck\x12\x16\n" +
 	"\x06colors\x18\x01 \x03(\x05R\x06colorsB\aZ\x05/pbscb\x06proto3"
 
@@ -500,28 +610,30 @@ func file_sc_proto_rawDescGZIP() []byte {
 	return file_sc_proto_rawDescData
 }
 
-var file_sc_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_sc_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_sc_proto_goTypes = []any{
 	(*SCReq)(nil),                // 0: pbsc.SCReq
 	(*SCAck)(nil),                // 1: pbsc.SCAck
 	(*SCSwapTilesReq)(nil),       // 2: pbsc.SCSwapTilesReq
 	(*SCDingQueReq)(nil),         // 3: pbsc.SCDingQueReq
 	(*SCSwapTilesAck)(nil),       // 4: pbsc.SCSwapTilesAck
-	(*SCSwapTilesResultAck)(nil), // 5: pbsc.SCSwapTilesResultAck
-	(*SCSwapTiles)(nil),          // 6: pbsc.SCSwapTiles
-	(*SCDingQueAck)(nil),         // 7: pbsc.SCDingQueAck
-	(*SCDingQueResultAck)(nil),   // 8: pbsc.SCDingQueResultAck
-	(*anypb.Any)(nil),            // 9: google.protobuf.Any
+	(*SCSwapFinishAck)(nil),      // 5: pbsc.SCSwapFinishAck
+	(*SCSwapTilesResultAck)(nil), // 6: pbsc.SCSwapTilesResultAck
+	(*SCSwapTiles)(nil),          // 7: pbsc.SCSwapTiles
+	(*SCDingQueAck)(nil),         // 8: pbsc.SCDingQueAck
+	(*SCDingQueFinishAck)(nil),   // 9: pbsc.SCDingQueFinishAck
+	(*SCDingQueResultAck)(nil),   // 10: pbsc.SCDingQueResultAck
+	(*anypb.Any)(nil),            // 11: google.protobuf.Any
 }
 var file_sc_proto_depIdxs = []int32{
-	9, // 0: pbsc.SCReq.req:type_name -> google.protobuf.Any
-	9, // 1: pbsc.SCAck.ack:type_name -> google.protobuf.Any
-	6, // 2: pbsc.SCSwapTilesResultAck.swap_tiles:type_name -> pbsc.SCSwapTiles
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	11, // 0: pbsc.SCReq.req:type_name -> google.protobuf.Any
+	11, // 1: pbsc.SCAck.ack:type_name -> google.protobuf.Any
+	7,  // 2: pbsc.SCSwapTilesResultAck.swap_tiles:type_name -> pbsc.SCSwapTiles
+	3,  // [3:3] is the sub-list for method output_type
+	3,  // [3:3] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_sc_proto_init() }
@@ -535,7 +647,7 @@ func file_sc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sc_proto_rawDesc), len(file_sc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

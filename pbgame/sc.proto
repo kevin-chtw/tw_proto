@@ -26,6 +26,11 @@ message SCSwapTilesAck { // 换三张
   int32 requestid = 1;
 }
 
+message SCSwapFinishAck {
+  int32 seat = 1;
+  repeated int32 tiles = 2;
+}
+
 message SCSwapTilesResultAck { // 换三张
   int32 swap_type = 1; //0-逆时针，1-顺时针，2-交叉
   repeated SCSwapTiles swap_tiles = 2;
@@ -39,6 +44,11 @@ message SCSwapTiles {
 
 message SCDingQueAck {
   int32 requestid = 1; // 请求ID
+}
+
+message SCDingQueFinishAck {
+  int32 seat = 1;
+  int32 color = 2;
 }
 
 message SCDingQueResultAck {
