@@ -22,6 +22,18 @@ message GameAck {
 message EnterGameReq {  
 }
 
+message EnterGameAck {
+  int32 tableid = 1; // 桌号
+  int64 score_base = 2; // 分数基数
+  int32 game_count = 3; // 游戏局数
+  int32 cur_game_count = 4; // 当前游戏局数
+  int32 player_count = 5; // 玩家数量
+  string property = 6; // 游戏配置
+  string creator = 7; // 创建者
+  string desn = 8; // 游戏描述
+  map<string,int32> fdproperty = 9; // 好友房自选配置
+}
+
 message TablePlayerAck {
   string uid = 1; // 玩家ID
   string nickname = 2; // 玩家昵称

@@ -58,6 +58,37 @@ struct EnterGameReqDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EnterGameReqDefaultTypeInternal _EnterGameReq_default_instance_;
+constexpr EnterGameAck_FdpropertyEntry_DoNotUse::EnterGameAck_FdpropertyEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct EnterGameAck_FdpropertyEntry_DoNotUseDefaultTypeInternal {
+  constexpr EnterGameAck_FdpropertyEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~EnterGameAck_FdpropertyEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    EnterGameAck_FdpropertyEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EnterGameAck_FdpropertyEntry_DoNotUseDefaultTypeInternal _EnterGameAck_FdpropertyEntry_DoNotUse_default_instance_;
+constexpr EnterGameAck::EnterGameAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : fdproperty_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
+  , property_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , creator_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , desn_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , score_base_(int64_t{0})
+  , tableid_(0)
+  , game_count_(0)
+  , cur_game_count_(0)
+  , player_count_(0){}
+struct EnterGameAckDefaultTypeInternal {
+  constexpr EnterGameAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~EnterGameAckDefaultTypeInternal() {}
+  union {
+    EnterGameAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EnterGameAckDefaultTypeInternal _EnterGameAck_default_instance_;
 constexpr TablePlayerAck::TablePlayerAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : uid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
@@ -146,7 +177,7 @@ struct HisEndAckDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT HisEndAckDefaultTypeInternal _HisEndAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_game_2eproto[10];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_game_2eproto[12];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_game_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_game_2eproto = nullptr;
 
@@ -177,6 +208,31 @@ const uint32_t TableStruct_game_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck_FdpropertyEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck_FdpropertyEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck_FdpropertyEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck_FdpropertyEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, tableid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, score_base_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, game_count_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, cur_game_count_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, player_count_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, property_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, creator_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, desn_),
+  PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, fdproperty_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -234,19 +290,23 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, -1, sizeof(::cproto::GameReq)},
   { 10, -1, -1, sizeof(::cproto::GameAck)},
   { 20, -1, -1, sizeof(::cproto::EnterGameReq)},
-  { 26, -1, -1, sizeof(::cproto::TablePlayerAck)},
-  { 38, -1, -1, sizeof(::cproto::TableMsgReq)},
-  { 45, -1, -1, sizeof(::cproto::TableMsgAck)},
-  { 52, -1, -1, sizeof(::cproto::GameBeginAck)},
-  { 59, -1, -1, sizeof(::cproto::GameOverAck)},
-  { 66, -1, -1, sizeof(::cproto::HisBeginAck)},
-  { 72, -1, -1, sizeof(::cproto::HisEndAck)},
+  { 26, 34, -1, sizeof(::cproto::EnterGameAck_FdpropertyEntry_DoNotUse)},
+  { 36, -1, -1, sizeof(::cproto::EnterGameAck)},
+  { 51, -1, -1, sizeof(::cproto::TablePlayerAck)},
+  { 63, -1, -1, sizeof(::cproto::TableMsgReq)},
+  { 70, -1, -1, sizeof(::cproto::TableMsgAck)},
+  { 77, -1, -1, sizeof(::cproto::GameBeginAck)},
+  { 84, -1, -1, sizeof(::cproto::GameOverAck)},
+  { 91, -1, -1, sizeof(::cproto::HisBeginAck)},
+  { 97, -1, -1, sizeof(::cproto::HisEndAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_GameReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_GameAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_EnterGameReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_EnterGameAck_FdpropertyEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_EnterGameAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TablePlayerAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TableMsgReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TableMsgAck_default_instance_),
@@ -263,22 +323,29 @@ const char descriptor_table_protodef_game_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\001(\0132\024.google.protobuf.Any\"`\n\007GameAck\022\020\n\010"
   "serverid\030\001 \001(\t\022\017\n\007matchid\030\002 \001(\005\022\017\n\007table"
   "id\030\003 \001(\005\022!\n\003ack\030\004 \001(\0132\024.google.protobuf."
-  "Any\"\016\n\014EnterGameReq\"k\n\016TablePlayerAck\022\013\n"
-  "\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006avatar\030\003"
-  " \001(\t\022\013\n\003vip\030\004 \001(\005\022\017\n\007diamond\030\005 \001(\003\022\014\n\004se"
-  "at\030\006 \001(\005\"\032\n\013TableMsgReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013"
-  "TableMsgAck\022\013\n\003msg\030\001 \001(\014\"&\n\014GameBeginAck"
-  "\022\026\n\016cur_game_count\030\001 \001(\005\"%\n\013GameOverAck\022"
-  "\026\n\016cur_game_count\030\001 \001(\005\"\r\n\013HisBeginAck\"\013"
-  "\n\tHisEndAckB\013Z\t../cprotob\006proto3"
+  "Any\"\016\n\014EnterGameReq\"\223\002\n\014EnterGameAck\022\017\n\007"
+  "tableid\030\001 \001(\005\022\022\n\nscore_base\030\002 \001(\003\022\022\n\ngam"
+  "e_count\030\003 \001(\005\022\026\n\016cur_game_count\030\004 \001(\005\022\024\n"
+  "\014player_count\030\005 \001(\005\022\020\n\010property\030\006 \001(\t\022\017\n"
+  "\007creator\030\007 \001(\t\022\014\n\004desn\030\010 \001(\t\0228\n\nfdproper"
+  "ty\030\t \003(\0132$.cproto.EnterGameAck.Fdpropert"
+  "yEntry\0321\n\017FdpropertyEntry\022\013\n\003key\030\001 \001(\t\022\r"
+  "\n\005value\030\002 \001(\005:\0028\001\"k\n\016TablePlayerAck\022\013\n\003u"
+  "id\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006avatar\030\003 \001"
+  "(\t\022\013\n\003vip\030\004 \001(\005\022\017\n\007diamond\030\005 \001(\003\022\014\n\004seat"
+  "\030\006 \001(\005\"\032\n\013TableMsgReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013Ta"
+  "bleMsgAck\022\013\n\003msg\030\001 \001(\014\"&\n\014GameBeginAck\022\026"
+  "\n\016cur_game_count\030\001 \001(\005\"%\n\013GameOverAck\022\026\n"
+  "\016cur_game_count\030\001 \001(\005\"\r\n\013HisBeginAck\"\013\n\t"
+  "HisEndAckB\013Z\t../cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_game_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_game_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_game_2eproto = {
-  false, false, 552, descriptor_table_protodef_game_2eproto, "game.proto", 
-  &descriptor_table_game_2eproto_once, descriptor_table_game_2eproto_deps, 1, 10,
+  false, false, 830, descriptor_table_protodef_game_2eproto, "game.proto", 
+  &descriptor_table_game_2eproto_once, descriptor_table_game_2eproto_deps, 1, 12,
   schemas, file_default_instances, TableStruct_game_2eproto::offsets,
   file_level_metadata_game_2eproto, file_level_enum_descriptors_game_2eproto, file_level_service_descriptors_game_2eproto,
 };
@@ -951,6 +1018,520 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EnterGameReq::GetClassData() c
 
 // ===================================================================
 
+EnterGameAck_FdpropertyEntry_DoNotUse::EnterGameAck_FdpropertyEntry_DoNotUse() {}
+EnterGameAck_FdpropertyEntry_DoNotUse::EnterGameAck_FdpropertyEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void EnterGameAck_FdpropertyEntry_DoNotUse::MergeFrom(const EnterGameAck_FdpropertyEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata EnterGameAck_FdpropertyEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
+      file_level_metadata_game_2eproto[3]);
+}
+
+// ===================================================================
+
+class EnterGameAck::_Internal {
+ public:
+};
+
+EnterGameAck::EnterGameAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  fdproperty_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.EnterGameAck)
+}
+EnterGameAck::EnterGameAck(const EnterGameAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  fdproperty_.MergeFrom(from.fdproperty_);
+  property_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    property_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_property().empty()) {
+    property_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_property(), 
+      GetArenaForAllocation());
+  }
+  creator_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    creator_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_creator().empty()) {
+    creator_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_creator(), 
+      GetArenaForAllocation());
+  }
+  desn_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    desn_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_desn().empty()) {
+    desn_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_desn(), 
+      GetArenaForAllocation());
+  }
+  ::memcpy(&score_base_, &from.score_base_,
+    static_cast<size_t>(reinterpret_cast<char*>(&player_count_) -
+    reinterpret_cast<char*>(&score_base_)) + sizeof(player_count_));
+  // @@protoc_insertion_point(copy_constructor:cproto.EnterGameAck)
+}
+
+inline void EnterGameAck::SharedCtor() {
+property_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  property_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+creator_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  creator_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+desn_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  desn_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&score_base_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&player_count_) -
+    reinterpret_cast<char*>(&score_base_)) + sizeof(player_count_));
+}
+
+EnterGameAck::~EnterGameAck() {
+  // @@protoc_insertion_point(destructor:cproto.EnterGameAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void EnterGameAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  property_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  creator_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  desn_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void EnterGameAck::ArenaDtor(void* object) {
+  EnterGameAck* _this = reinterpret_cast< EnterGameAck* >(object);
+  (void)_this;
+  _this->fdproperty_. ~MapField();
+}
+inline void EnterGameAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
+  if (arena != nullptr) {
+    arena->OwnCustomDestructor(this, &EnterGameAck::ArenaDtor);
+  }
+}
+void EnterGameAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void EnterGameAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.EnterGameAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  fdproperty_.Clear();
+  property_.ClearToEmpty();
+  creator_.ClearToEmpty();
+  desn_.ClearToEmpty();
+  ::memset(&score_base_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&player_count_) -
+      reinterpret_cast<char*>(&score_base_)) + sizeof(player_count_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* EnterGameAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 tableid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          tableid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 score_base = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          score_base_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 game_count = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          game_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 cur_game_count = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          cur_game_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 player_count = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          player_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string property = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_property();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.EnterGameAck.property"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string creator = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_creator();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.EnterGameAck.creator"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string desn = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_desn();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.EnterGameAck.desn"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // map<string, int32> fdproperty = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&fdproperty_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<74>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* EnterGameAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.EnterGameAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 tableid = 1;
+  if (this->_internal_tableid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_tableid(), target);
+  }
+
+  // int64 score_base = 2;
+  if (this->_internal_score_base() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_score_base(), target);
+  }
+
+  // int32 game_count = 3;
+  if (this->_internal_game_count() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_game_count(), target);
+  }
+
+  // int32 cur_game_count = 4;
+  if (this->_internal_cur_game_count() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_cur_game_count(), target);
+  }
+
+  // int32 player_count = 5;
+  if (this->_internal_player_count() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_player_count(), target);
+  }
+
+  // string property = 6;
+  if (!this->_internal_property().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_property().data(), static_cast<int>(this->_internal_property().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.EnterGameAck.property");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_property(), target);
+  }
+
+  // string creator = 7;
+  if (!this->_internal_creator().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_creator().data(), static_cast<int>(this->_internal_creator().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.EnterGameAck.creator");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_creator(), target);
+  }
+
+  // string desn = 8;
+  if (!this->_internal_desn().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_desn().data(), static_cast<int>(this->_internal_desn().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.EnterGameAck.desn");
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_desn(), target);
+  }
+
+  // map<string, int32> fdproperty = 9;
+  if (!this->_internal_fdproperty().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        (void)p;
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "cproto.EnterGameAck.FdpropertyEntry.key");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_fdproperty().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_fdproperty().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::const_iterator
+          it = this->_internal_fdproperty().begin();
+          it != this->_internal_fdproperty().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = EnterGameAck_FdpropertyEntry_DoNotUse::Funcs::InternalSerialize(9, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::const_iterator
+          it = this->_internal_fdproperty().begin();
+          it != this->_internal_fdproperty().end(); ++it) {
+        target = EnterGameAck_FdpropertyEntry_DoNotUse::Funcs::InternalSerialize(9, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.EnterGameAck)
+  return target;
+}
+
+size_t EnterGameAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.EnterGameAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, int32> fdproperty = 9;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_fdproperty_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::const_iterator
+      it = this->_internal_fdproperty().begin();
+      it != this->_internal_fdproperty().end(); ++it) {
+    total_size += EnterGameAck_FdpropertyEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // string property = 6;
+  if (!this->_internal_property().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_property());
+  }
+
+  // string creator = 7;
+  if (!this->_internal_creator().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_creator());
+  }
+
+  // string desn = 8;
+  if (!this->_internal_desn().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_desn());
+  }
+
+  // int64 score_base = 2;
+  if (this->_internal_score_base() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_score_base());
+  }
+
+  // int32 tableid = 1;
+  if (this->_internal_tableid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_tableid());
+  }
+
+  // int32 game_count = 3;
+  if (this->_internal_game_count() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_game_count());
+  }
+
+  // int32 cur_game_count = 4;
+  if (this->_internal_cur_game_count() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_cur_game_count());
+  }
+
+  // int32 player_count = 5;
+  if (this->_internal_player_count() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_player_count());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData EnterGameAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    EnterGameAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EnterGameAck::GetClassData() const { return &_class_data_; }
+
+void EnterGameAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<EnterGameAck *>(to)->MergeFrom(
+      static_cast<const EnterGameAck &>(from));
+}
+
+
+void EnterGameAck::MergeFrom(const EnterGameAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.EnterGameAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  fdproperty_.MergeFrom(from.fdproperty_);
+  if (!from._internal_property().empty()) {
+    _internal_set_property(from._internal_property());
+  }
+  if (!from._internal_creator().empty()) {
+    _internal_set_creator(from._internal_creator());
+  }
+  if (!from._internal_desn().empty()) {
+    _internal_set_desn(from._internal_desn());
+  }
+  if (from._internal_score_base() != 0) {
+    _internal_set_score_base(from._internal_score_base());
+  }
+  if (from._internal_tableid() != 0) {
+    _internal_set_tableid(from._internal_tableid());
+  }
+  if (from._internal_game_count() != 0) {
+    _internal_set_game_count(from._internal_game_count());
+  }
+  if (from._internal_cur_game_count() != 0) {
+    _internal_set_cur_game_count(from._internal_cur_game_count());
+  }
+  if (from._internal_player_count() != 0) {
+    _internal_set_player_count(from._internal_player_count());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void EnterGameAck::CopyFrom(const EnterGameAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.EnterGameAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool EnterGameAck::IsInitialized() const {
+  return true;
+}
+
+void EnterGameAck::InternalSwap(EnterGameAck* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  fdproperty_.InternalSwap(&other->fdproperty_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &property_, lhs_arena,
+      &other->property_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &creator_, lhs_arena,
+      &other->creator_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &desn_, lhs_arena,
+      &other->desn_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(EnterGameAck, player_count_)
+      + sizeof(EnterGameAck::player_count_)
+      - PROTOBUF_FIELD_OFFSET(EnterGameAck, score_base_)>(
+          reinterpret_cast<char*>(&score_base_),
+          reinterpret_cast<char*>(&other->score_base_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata EnterGameAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
+      file_level_metadata_game_2eproto[4]);
+}
+
+// ===================================================================
+
 class TablePlayerAck::_Internal {
  public:
 };
@@ -1329,7 +1910,7 @@ void TablePlayerAck::InternalSwap(TablePlayerAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TablePlayerAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[3]);
+      file_level_metadata_game_2eproto[5]);
 }
 
 // ===================================================================
@@ -1527,7 +2108,7 @@ void TableMsgReq::InternalSwap(TableMsgReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TableMsgReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[4]);
+      file_level_metadata_game_2eproto[6]);
 }
 
 // ===================================================================
@@ -1725,7 +2306,7 @@ void TableMsgAck::InternalSwap(TableMsgAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TableMsgAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[5]);
+      file_level_metadata_game_2eproto[7]);
 }
 
 // ===================================================================
@@ -1903,7 +2484,7 @@ void GameBeginAck::InternalSwap(GameBeginAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameBeginAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[6]);
+      file_level_metadata_game_2eproto[8]);
 }
 
 // ===================================================================
@@ -2081,7 +2662,7 @@ void GameOverAck::InternalSwap(GameOverAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameOverAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[7]);
+      file_level_metadata_game_2eproto[9]);
 }
 
 // ===================================================================
@@ -2120,7 +2701,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*HisBeginAck::GetClassData() co
 ::PROTOBUF_NAMESPACE_ID::Metadata HisBeginAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[8]);
+      file_level_metadata_game_2eproto[10]);
 }
 
 // ===================================================================
@@ -2159,7 +2740,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*HisEndAck::GetClassData() cons
 ::PROTOBUF_NAMESPACE_ID::Metadata HisEndAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[9]);
+      file_level_metadata_game_2eproto[11]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2173,6 +2754,12 @@ template<> PROTOBUF_NOINLINE ::cproto::GameAck* Arena::CreateMaybeMessage< ::cpr
 }
 template<> PROTOBUF_NOINLINE ::cproto::EnterGameReq* Arena::CreateMaybeMessage< ::cproto::EnterGameReq >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::EnterGameReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::EnterGameAck_FdpropertyEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::EnterGameAck_FdpropertyEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::EnterGameAck_FdpropertyEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::EnterGameAck* Arena::CreateMaybeMessage< ::cproto::EnterGameAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::EnterGameAck >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::TablePlayerAck* Arena::CreateMaybeMessage< ::cproto::TablePlayerAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::TablePlayerAck >(arena);

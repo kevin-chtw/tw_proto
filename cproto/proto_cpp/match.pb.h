@@ -51,7 +51,7 @@ struct TableStruct_match_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[21]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[17]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -71,12 +71,6 @@ extern ContinueAckDefaultTypeInternal _ContinueAck_default_instance_;
 class ContinueReq;
 struct ContinueReqDefaultTypeInternal;
 extern ContinueReqDefaultTypeInternal _ContinueReq_default_instance_;
-class CreateRoomAck;
-struct CreateRoomAckDefaultTypeInternal;
-extern CreateRoomAckDefaultTypeInternal _CreateRoomAck_default_instance_;
-class CreateRoomAck_PropertiesEntry_DoNotUse;
-struct CreateRoomAck_PropertiesEntry_DoNotUseDefaultTypeInternal;
-extern CreateRoomAck_PropertiesEntry_DoNotUseDefaultTypeInternal _CreateRoomAck_PropertiesEntry_DoNotUse_default_instance_;
 class CreateRoomReq;
 struct CreateRoomReqDefaultTypeInternal;
 extern CreateRoomReqDefaultTypeInternal _CreateRoomReq_default_instance_;
@@ -89,12 +83,6 @@ extern ExitMatchAckDefaultTypeInternal _ExitMatchAck_default_instance_;
 class ExitMatchReq;
 struct ExitMatchReqDefaultTypeInternal;
 extern ExitMatchReqDefaultTypeInternal _ExitMatchReq_default_instance_;
-class JoinRoomAck;
-struct JoinRoomAckDefaultTypeInternal;
-extern JoinRoomAckDefaultTypeInternal _JoinRoomAck_default_instance_;
-class JoinRoomAck_PropertiesEntry_DoNotUse;
-struct JoinRoomAck_PropertiesEntry_DoNotUseDefaultTypeInternal;
-extern JoinRoomAck_PropertiesEntry_DoNotUseDefaultTypeInternal _JoinRoomAck_PropertiesEntry_DoNotUse_default_instance_;
 class JoinRoomReq;
 struct JoinRoomReqDefaultTypeInternal;
 extern JoinRoomReqDefaultTypeInternal _JoinRoomReq_default_instance_;
@@ -128,14 +116,10 @@ template<> ::cproto::CancelRoomAck* Arena::CreateMaybeMessage<::cproto::CancelRo
 template<> ::cproto::CancelRoomReq* Arena::CreateMaybeMessage<::cproto::CancelRoomReq>(Arena*);
 template<> ::cproto::ContinueAck* Arena::CreateMaybeMessage<::cproto::ContinueAck>(Arena*);
 template<> ::cproto::ContinueReq* Arena::CreateMaybeMessage<::cproto::ContinueReq>(Arena*);
-template<> ::cproto::CreateRoomAck* Arena::CreateMaybeMessage<::cproto::CreateRoomAck>(Arena*);
-template<> ::cproto::CreateRoomAck_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::CreateRoomAck_PropertiesEntry_DoNotUse>(Arena*);
 template<> ::cproto::CreateRoomReq* Arena::CreateMaybeMessage<::cproto::CreateRoomReq>(Arena*);
 template<> ::cproto::CreateRoomReq_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::CreateRoomReq_PropertiesEntry_DoNotUse>(Arena*);
 template<> ::cproto::ExitMatchAck* Arena::CreateMaybeMessage<::cproto::ExitMatchAck>(Arena*);
 template<> ::cproto::ExitMatchReq* Arena::CreateMaybeMessage<::cproto::ExitMatchReq>(Arena*);
-template<> ::cproto::JoinRoomAck* Arena::CreateMaybeMessage<::cproto::JoinRoomAck>(Arena*);
-template<> ::cproto::JoinRoomAck_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::JoinRoomAck_PropertiesEntry_DoNotUse>(Arena*);
 template<> ::cproto::JoinRoomReq* Arena::CreateMaybeMessage<::cproto::JoinRoomReq>(Arena*);
 template<> ::cproto::MatchAck* Arena::CreateMaybeMessage<::cproto::MatchAck>(Arena*);
 template<> ::cproto::MatchReq* Arena::CreateMaybeMessage<::cproto::MatchReq>(Arena*);
@@ -1500,217 +1484,6 @@ class ExitMatchReq final :
 };
 // -------------------------------------------------------------------
 
-class CreateRoomAck_PropertiesEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<CreateRoomAck_PropertiesEntry_DoNotUse, 
-    std::string, int32_t,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> {
-public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<CreateRoomAck_PropertiesEntry_DoNotUse, 
-    std::string, int32_t,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> SuperType;
-  CreateRoomAck_PropertiesEntry_DoNotUse();
-  explicit constexpr CreateRoomAck_PropertiesEntry_DoNotUse(
-      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit CreateRoomAck_PropertiesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const CreateRoomAck_PropertiesEntry_DoNotUse& other);
-  static const CreateRoomAck_PropertiesEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const CreateRoomAck_PropertiesEntry_DoNotUse*>(&_CreateRoomAck_PropertiesEntry_DoNotUse_default_instance_); }
-  static bool ValidateKey(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.CreateRoomAck.PropertiesEntry.key");
- }
-  static bool ValidateValue(void*) { return true; }
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-};
-
-// -------------------------------------------------------------------
-
-class CreateRoomAck final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.CreateRoomAck) */ {
- public:
-  inline CreateRoomAck() : CreateRoomAck(nullptr) {}
-  ~CreateRoomAck() override;
-  explicit constexpr CreateRoomAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  CreateRoomAck(const CreateRoomAck& from);
-  CreateRoomAck(CreateRoomAck&& from) noexcept
-    : CreateRoomAck() {
-    *this = ::std::move(from);
-  }
-
-  inline CreateRoomAck& operator=(const CreateRoomAck& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline CreateRoomAck& operator=(CreateRoomAck&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const CreateRoomAck& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const CreateRoomAck* internal_default_instance() {
-    return reinterpret_cast<const CreateRoomAck*>(
-               &_CreateRoomAck_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    11;
-
-  friend void swap(CreateRoomAck& a, CreateRoomAck& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(CreateRoomAck* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(CreateRoomAck* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  CreateRoomAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<CreateRoomAck>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const CreateRoomAck& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const CreateRoomAck& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(CreateRoomAck* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.CreateRoomAck";
-  }
-  protected:
-  explicit CreateRoomAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kPropertiesFieldNumber = 3,
-    kDesnFieldNumber = 2,
-    kTableidFieldNumber = 1,
-  };
-  // map<string, int32> properties = 3;
-  int properties_size() const;
-  private:
-  int _internal_properties_size() const;
-  public:
-  void clear_properties();
-  private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
-      _internal_properties() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
-      _internal_mutable_properties();
-  public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
-      properties() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
-      mutable_properties();
-
-  // string desn = 2;
-  void clear_desn();
-  const std::string& desn() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_desn(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_desn();
-  PROTOBUF_NODISCARD std::string* release_desn();
-  void set_allocated_desn(std::string* desn);
-  private:
-  const std::string& _internal_desn() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_desn(const std::string& value);
-  std::string* _internal_mutable_desn();
-  public:
-
-  // int32 tableid = 1;
-  void clear_tableid();
-  int32_t tableid() const;
-  void set_tableid(int32_t value);
-  private:
-  int32_t _internal_tableid() const;
-  void _internal_set_tableid(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.CreateRoomAck)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-      CreateRoomAck_PropertiesEntry_DoNotUse,
-      std::string, int32_t,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> properties_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desn_;
-  int32_t tableid_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_match_2eproto;
-};
-// -------------------------------------------------------------------
-
 class CancelRoomAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.CancelRoomAck) */ {
  public:
@@ -1759,7 +1532,7 @@ class CancelRoomAck final :
                &_CancelRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    10;
 
   friend void swap(CancelRoomAck& a, CancelRoomAck& b) {
     a.Swap(&b);
@@ -1857,217 +1630,6 @@ class CancelRoomAck final :
 };
 // -------------------------------------------------------------------
 
-class JoinRoomAck_PropertiesEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<JoinRoomAck_PropertiesEntry_DoNotUse, 
-    std::string, int32_t,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> {
-public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<JoinRoomAck_PropertiesEntry_DoNotUse, 
-    std::string, int32_t,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> SuperType;
-  JoinRoomAck_PropertiesEntry_DoNotUse();
-  explicit constexpr JoinRoomAck_PropertiesEntry_DoNotUse(
-      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit JoinRoomAck_PropertiesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const JoinRoomAck_PropertiesEntry_DoNotUse& other);
-  static const JoinRoomAck_PropertiesEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const JoinRoomAck_PropertiesEntry_DoNotUse*>(&_JoinRoomAck_PropertiesEntry_DoNotUse_default_instance_); }
-  static bool ValidateKey(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.JoinRoomAck.PropertiesEntry.key");
- }
-  static bool ValidateValue(void*) { return true; }
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-};
-
-// -------------------------------------------------------------------
-
-class JoinRoomAck final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.JoinRoomAck) */ {
- public:
-  inline JoinRoomAck() : JoinRoomAck(nullptr) {}
-  ~JoinRoomAck() override;
-  explicit constexpr JoinRoomAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  JoinRoomAck(const JoinRoomAck& from);
-  JoinRoomAck(JoinRoomAck&& from) noexcept
-    : JoinRoomAck() {
-    *this = ::std::move(from);
-  }
-
-  inline JoinRoomAck& operator=(const JoinRoomAck& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline JoinRoomAck& operator=(JoinRoomAck&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const JoinRoomAck& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const JoinRoomAck* internal_default_instance() {
-    return reinterpret_cast<const JoinRoomAck*>(
-               &_JoinRoomAck_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    14;
-
-  friend void swap(JoinRoomAck& a, JoinRoomAck& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(JoinRoomAck* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(JoinRoomAck* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  JoinRoomAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<JoinRoomAck>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const JoinRoomAck& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const JoinRoomAck& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(JoinRoomAck* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.JoinRoomAck";
-  }
-  protected:
-  explicit JoinRoomAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kPropertiesFieldNumber = 3,
-    kDesnFieldNumber = 2,
-    kTableidFieldNumber = 1,
-  };
-  // map<string, int32> properties = 3;
-  int properties_size() const;
-  private:
-  int _internal_properties_size() const;
-  public:
-  void clear_properties();
-  private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
-      _internal_properties() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
-      _internal_mutable_properties();
-  public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
-      properties() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
-      mutable_properties();
-
-  // string desn = 2;
-  void clear_desn();
-  const std::string& desn() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_desn(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_desn();
-  PROTOBUF_NODISCARD std::string* release_desn();
-  void set_allocated_desn(std::string* desn);
-  private:
-  const std::string& _internal_desn() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_desn(const std::string& value);
-  std::string* _internal_mutable_desn();
-  public:
-
-  // int32 tableid = 1;
-  void clear_tableid();
-  int32_t tableid() const;
-  void set_tableid(int32_t value);
-  private:
-  int32_t _internal_tableid() const;
-  void _internal_set_tableid(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.JoinRoomAck)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-      JoinRoomAck_PropertiesEntry_DoNotUse,
-      std::string, int32_t,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> properties_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desn_;
-  int32_t tableid_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_match_2eproto;
-};
-// -------------------------------------------------------------------
-
 class StartClientAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.StartClientAck) */ {
  public:
@@ -2116,7 +1678,7 @@ class StartClientAck final :
                &_StartClientAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    11;
 
   friend void swap(StartClientAck& a, StartClientAck& b) {
     a.Swap(&b);
@@ -2320,7 +1882,7 @@ class SignupAck final :
                &_SignupAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    12;
 
   friend void swap(SignupAck& a, SignupAck& b) {
     a.Swap(&b);
@@ -2438,7 +2000,7 @@ class SignoutAck final :
                &_SignoutAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    13;
 
   friend void swap(SignoutAck& a, SignoutAck& b) {
     a.Swap(&b);
@@ -2556,7 +2118,7 @@ class ContinueAck final :
                &_ContinueAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    14;
 
   friend void swap(ContinueAck& a, ContinueAck& b) {
     a.Swap(&b);
@@ -2674,7 +2236,7 @@ class RestAck final :
                &_RestAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    15;
 
   friend void swap(RestAck& a, RestAck& b) {
     a.Swap(&b);
@@ -2792,7 +2354,7 @@ class ExitMatchAck final :
                &_ExitMatchAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    16;
 
   friend void swap(ExitMatchAck& a, ExitMatchAck& b) {
     a.Swap(&b);
@@ -3382,112 +2944,6 @@ inline void JoinRoomReq::set_tableid(int32_t value) {
 
 // -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
-
-// CreateRoomAck
-
-// int32 tableid = 1;
-inline void CreateRoomAck::clear_tableid() {
-  tableid_ = 0;
-}
-inline int32_t CreateRoomAck::_internal_tableid() const {
-  return tableid_;
-}
-inline int32_t CreateRoomAck::tableid() const {
-  // @@protoc_insertion_point(field_get:cproto.CreateRoomAck.tableid)
-  return _internal_tableid();
-}
-inline void CreateRoomAck::_internal_set_tableid(int32_t value) {
-  
-  tableid_ = value;
-}
-inline void CreateRoomAck::set_tableid(int32_t value) {
-  _internal_set_tableid(value);
-  // @@protoc_insertion_point(field_set:cproto.CreateRoomAck.tableid)
-}
-
-// string desn = 2;
-inline void CreateRoomAck::clear_desn() {
-  desn_.ClearToEmpty();
-}
-inline const std::string& CreateRoomAck::desn() const {
-  // @@protoc_insertion_point(field_get:cproto.CreateRoomAck.desn)
-  return _internal_desn();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void CreateRoomAck::set_desn(ArgT0&& arg0, ArgT... args) {
- 
- desn_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.CreateRoomAck.desn)
-}
-inline std::string* CreateRoomAck::mutable_desn() {
-  std::string* _s = _internal_mutable_desn();
-  // @@protoc_insertion_point(field_mutable:cproto.CreateRoomAck.desn)
-  return _s;
-}
-inline const std::string& CreateRoomAck::_internal_desn() const {
-  return desn_.Get();
-}
-inline void CreateRoomAck::_internal_set_desn(const std::string& value) {
-  
-  desn_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* CreateRoomAck::_internal_mutable_desn() {
-  
-  return desn_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* CreateRoomAck::release_desn() {
-  // @@protoc_insertion_point(field_release:cproto.CreateRoomAck.desn)
-  return desn_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void CreateRoomAck::set_allocated_desn(std::string* desn) {
-  if (desn != nullptr) {
-    
-  } else {
-    
-  }
-  desn_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), desn,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (desn_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    desn_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.CreateRoomAck.desn)
-}
-
-// map<string, int32> properties = 3;
-inline int CreateRoomAck::_internal_properties_size() const {
-  return properties_.size();
-}
-inline int CreateRoomAck::properties_size() const {
-  return _internal_properties_size();
-}
-inline void CreateRoomAck::clear_properties() {
-  properties_.Clear();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
-CreateRoomAck::_internal_properties() const {
-  return properties_.GetMap();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
-CreateRoomAck::properties() const {
-  // @@protoc_insertion_point(field_map:cproto.CreateRoomAck.properties)
-  return _internal_properties();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
-CreateRoomAck::_internal_mutable_properties() {
-  return properties_.MutableMap();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
-CreateRoomAck::mutable_properties() {
-  // @@protoc_insertion_point(field_mutable_map:cproto.CreateRoomAck.properties)
-  return _internal_mutable_properties();
-}
-
-// -------------------------------------------------------------------
-
 // CancelRoomAck
 
 // int32 tableid = 1;
@@ -3508,112 +2964,6 @@ inline void CancelRoomAck::_internal_set_tableid(int32_t value) {
 inline void CancelRoomAck::set_tableid(int32_t value) {
   _internal_set_tableid(value);
   // @@protoc_insertion_point(field_set:cproto.CancelRoomAck.tableid)
-}
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// JoinRoomAck
-
-// int32 tableid = 1;
-inline void JoinRoomAck::clear_tableid() {
-  tableid_ = 0;
-}
-inline int32_t JoinRoomAck::_internal_tableid() const {
-  return tableid_;
-}
-inline int32_t JoinRoomAck::tableid() const {
-  // @@protoc_insertion_point(field_get:cproto.JoinRoomAck.tableid)
-  return _internal_tableid();
-}
-inline void JoinRoomAck::_internal_set_tableid(int32_t value) {
-  
-  tableid_ = value;
-}
-inline void JoinRoomAck::set_tableid(int32_t value) {
-  _internal_set_tableid(value);
-  // @@protoc_insertion_point(field_set:cproto.JoinRoomAck.tableid)
-}
-
-// string desn = 2;
-inline void JoinRoomAck::clear_desn() {
-  desn_.ClearToEmpty();
-}
-inline const std::string& JoinRoomAck::desn() const {
-  // @@protoc_insertion_point(field_get:cproto.JoinRoomAck.desn)
-  return _internal_desn();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void JoinRoomAck::set_desn(ArgT0&& arg0, ArgT... args) {
- 
- desn_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.JoinRoomAck.desn)
-}
-inline std::string* JoinRoomAck::mutable_desn() {
-  std::string* _s = _internal_mutable_desn();
-  // @@protoc_insertion_point(field_mutable:cproto.JoinRoomAck.desn)
-  return _s;
-}
-inline const std::string& JoinRoomAck::_internal_desn() const {
-  return desn_.Get();
-}
-inline void JoinRoomAck::_internal_set_desn(const std::string& value) {
-  
-  desn_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* JoinRoomAck::_internal_mutable_desn() {
-  
-  return desn_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* JoinRoomAck::release_desn() {
-  // @@protoc_insertion_point(field_release:cproto.JoinRoomAck.desn)
-  return desn_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void JoinRoomAck::set_allocated_desn(std::string* desn) {
-  if (desn != nullptr) {
-    
-  } else {
-    
-  }
-  desn_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), desn,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (desn_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    desn_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.JoinRoomAck.desn)
-}
-
-// map<string, int32> properties = 3;
-inline int JoinRoomAck::_internal_properties_size() const {
-  return properties_.size();
-}
-inline int JoinRoomAck::properties_size() const {
-  return _internal_properties_size();
-}
-inline void JoinRoomAck::clear_properties() {
-  properties_.Clear();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
-JoinRoomAck::_internal_properties() const {
-  return properties_.GetMap();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
-JoinRoomAck::properties() const {
-  // @@protoc_insertion_point(field_map:cproto.JoinRoomAck.properties)
-  return _internal_properties();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
-JoinRoomAck::_internal_mutable_properties() {
-  return properties_.MutableMap();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
-JoinRoomAck::mutable_properties() {
-  // @@protoc_insertion_point(field_mutable_map:cproto.JoinRoomAck.properties)
-  return _internal_mutable_properties();
 }
 
 // -------------------------------------------------------------------
@@ -3836,14 +3186,6 @@ inline void StartClientAck::set_table_id(int32_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

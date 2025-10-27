@@ -44,20 +44,8 @@ message ContinueReq {
 message ExitMatchReq{  
 }
 
-message CreateRoomAck {
-  int32 tableid = 1; // 桌号
-  string desn = 2; //配置描述
-  map<string, int32> properties = 3; // 配置信息
-}
-
 message CancelRoomAck {
   int32 tableid = 1;
-}
-
-message JoinRoomAck {
-  int32 tableid = 1; // 桌号
-  string desn = 2; //配置描述
-  map<string, int32> properties = 3; // 配置信息
 }
 
 message StartClientAck {
