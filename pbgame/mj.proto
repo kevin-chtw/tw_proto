@@ -38,6 +38,7 @@ message MJRequestAck {
   int32 seat = 1; // //座位号
   int32 request_type = 2; // 动作类型
   int32 requestid = 3; // 请求ID
+  int64 hu_multi = 4; // 胡牌倍数
 }
 
 message MJChowAck {
@@ -70,7 +71,11 @@ message MJHuAck {
 
 message MJHuData {
   int32 seat = 1; //座位号
-  repeated int32 hu_types = 2; // 胡的类型
+  int32 gen = 2; //根数
+  int64 multi = 3; //倍数
+  repeated int32 hu_types = 4; // 胡的类型
+  repeated int32 hu_modes = 5; // 胡的模式 
+  repeated int32 tiles = 6; // 胡的牌列表
 }
 
 message MJDrawAck {
@@ -92,7 +97,11 @@ message MJTingAck {
 }
 
 message MJScoreChangeAck {
-  repeated int32 scores = 1; //得分列表
+  int32 score_type = 1; //得分方式
+  repeated int64 scores = 2; //得分列表
+  int32 tile = 3; // 胡的牌或杠的牌
+  int32 pao_seat = 4; // 点炮玩家
+  repeated MJHuData hu_data = 5; // 胡的类型
 }
 
 message MJTrustAck {
@@ -116,6 +125,16 @@ message MJPlayerResult {
   repeated int32 tiles = 4; // 玩家手牌
 }
 
+message MJCallDataAck {
+  int32 seat = 1; //座位号
+  map<int32,CallData> call_data = 2; // 打出的牌-听牌列表
+}
+
 message CallData { 
-  map<int32, int64> call_tiles = 2; // 听牌列表(牌-番数或倍数)
+  map<int32, CallInfo> call_tiles = 2; // 听牌列表(牌-番数或倍数)
+}
+
+message CallInfo {
+  int64 multi = 1; //倍数
+  repeated int32 hu_types = 2; //胡牌类型
 }
