@@ -935,11 +935,11 @@ func (x *MJTingAck) GetTianTing() bool {
 
 type MJScoreChangeAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ScoreType     int32                  `protobuf:"varint,1,opt,name=score_type,json=scoreType,proto3" json:"score_type,omitempty"` //得分方式
-	Scores        []int64                `protobuf:"varint,2,rep,packed,name=scores,proto3" json:"scores,omitempty"`                 //得分列表
-	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                            // 胡的牌或杠的牌
-	PaoSeat       int32                  `protobuf:"varint,4,opt,name=pao_seat,json=paoSeat,proto3" json:"pao_seat,omitempty"`       // 点炮玩家
-	HuData        []*MJHuData            `protobuf:"bytes,5,rep,name=hu_data,json=huData,proto3" json:"hu_data,omitempty"`           // 胡的类型
+	ScoreReason   int32                  `protobuf:"varint,1,opt,name=score_reason,json=scoreReason,proto3" json:"score_reason,omitempty"` //得分原因
+	Scores        []int64                `protobuf:"varint,2,rep,packed,name=scores,proto3" json:"scores,omitempty"`                       //得分列表
+	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                  // 胡的牌或杠的牌
+	PaoSeat       int32                  `protobuf:"varint,4,opt,name=pao_seat,json=paoSeat,proto3" json:"pao_seat,omitempty"`             // 点炮玩家
+	HuData        []*MJHuData            `protobuf:"bytes,5,rep,name=hu_data,json=huData,proto3" json:"hu_data,omitempty"`                 // 胡的类型
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -974,9 +974,9 @@ func (*MJScoreChangeAck) Descriptor() ([]byte, []int) {
 	return file_mj_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *MJScoreChangeAck) GetScoreType() int32 {
+func (x *MJScoreChangeAck) GetScoreReason() int32 {
 	if x != nil {
-		return x.ScoreType
+		return x.ScoreReason
 	}
 	return 0
 }
@@ -1456,10 +1456,9 @@ const file_mj_proto_rawDesc = "" +
 	"\tMJTingAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12\x1b\n" +
-	"\ttian_ting\x18\x03 \x01(\bR\btianTing\"\xa1\x01\n" +
-	"\x10MJScoreChangeAck\x12\x1d\n" +
-	"\n" +
-	"score_type\x18\x01 \x01(\x05R\tscoreType\x12\x16\n" +
+	"\ttian_ting\x18\x03 \x01(\bR\btianTing\"\xa5\x01\n" +
+	"\x10MJScoreChangeAck\x12!\n" +
+	"\fscore_reason\x18\x01 \x01(\x05R\vscoreReason\x12\x16\n" +
 	"\x06scores\x18\x02 \x03(\x03R\x06scores\x12\x12\n" +
 	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x19\n" +
 	"\bpao_seat\x18\x04 \x01(\x05R\apaoSeat\x12'\n" +

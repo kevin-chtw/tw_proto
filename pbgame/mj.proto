@@ -97,7 +97,7 @@ message MJTingAck {
 }
 
 message MJScoreChangeAck {
-  int32 score_type = 1; //得分方式
+  int32 score_reason = 1; //得分原因
   repeated int64 scores = 2; //得分列表
   int32 tile = 3; // 胡的牌或杠的牌
   int32 pao_seat = 4; // 点炮玩家
