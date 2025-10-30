@@ -39,6 +39,7 @@ message MJRequestAck {
   int32 request_type = 2; // 动作类型
   int32 requestid = 3; // 请求ID
   int64 hu_multi = 4; // 胡牌倍数
+  repeated int32 chow_lpoints = 5; //吃听时用到，吃听最左的点数集合
 }
 
 message MJChowAck {

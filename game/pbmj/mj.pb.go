@@ -331,10 +331,11 @@ func (x *MJOpenDoorAck) GetCallData() map[int32]*CallData {
 
 type MJRequestAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                  // //座位号
-	RequestType   int32                  `protobuf:"varint,2,opt,name=request_type,json=requestType,proto3" json:"request_type,omitempty"` // 动作类型
-	Requestid     int32                  `protobuf:"varint,3,opt,name=requestid,proto3" json:"requestid,omitempty"`                        // 请求ID
-	HuMulti       int64                  `protobuf:"varint,4,opt,name=hu_multi,json=huMulti,proto3" json:"hu_multi,omitempty"`             // 胡牌倍数
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                         // //座位号
+	RequestType   int32                  `protobuf:"varint,2,opt,name=request_type,json=requestType,proto3" json:"request_type,omitempty"`        // 动作类型
+	Requestid     int32                  `protobuf:"varint,3,opt,name=requestid,proto3" json:"requestid,omitempty"`                               // 请求ID
+	HuMulti       int64                  `protobuf:"varint,4,opt,name=hu_multi,json=huMulti,proto3" json:"hu_multi,omitempty"`                    // 胡牌倍数
+	ChowLpoints   []int32                `protobuf:"varint,5,rep,packed,name=chow_lpoints,json=chowLpoints,proto3" json:"chow_lpoints,omitempty"` //吃听时用到，吃听最左的点数集合
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -395,6 +396,13 @@ func (x *MJRequestAck) GetHuMulti() int64 {
 		return x.HuMulti
 	}
 	return 0
+}
+
+func (x *MJRequestAck) GetChowLpoints() []int32 {
+	if x != nil {
+		return x.ChowLpoints
+	}
+	return nil
 }
 
 type MJChowAck struct {
@@ -1403,12 +1411,13 @@ const file_mj_proto_rawDesc = "" +
 	"\tcall_data\x18\x03 \x03(\v2!.pbmj.MJOpenDoorAck.CallDataEntryR\bcallData\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"~\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\xa1\x01\n" +
 	"\fMJRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
 	"\trequestid\x18\x03 \x01(\x05R\trequestid\x12\x19\n" +
-	"\bhu_multi\x18\x04 \x01(\x03R\ahuMulti\"\xed\x01\n" +
+	"\bhu_multi\x18\x04 \x01(\x03R\ahuMulti\x12!\n" +
+	"\fchow_lpoints\x18\x05 \x03(\x05R\vchowLpoints\"\xed\x01\n" +
 	"\tMJChowAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
