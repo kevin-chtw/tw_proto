@@ -74,9 +74,9 @@ message MJHuData {
   int32 seat = 1; //座位号
   int32 gen = 2; //根数
   int64 multi = 3; //倍数
-  repeated int32 hu_types = 4; // 胡的类型
-  repeated int32 hu_modes = 5; // 胡的模式 
-  repeated int32 tiles = 6; // 胡的牌列表
+  int32 hu_mode = 4; // 胡的模式 
+  repeated int32 hu_types = 5; // 胡的类型
+  repeated int32 tiles = 6; // 胡牌玩家手牌
 }
 
 message MJDrawAck {
