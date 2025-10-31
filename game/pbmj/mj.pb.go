@@ -682,9 +682,8 @@ type MJHuData struct {
 	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                             //座位号
 	Gen           int32                  `protobuf:"varint,2,opt,name=gen,proto3" json:"gen,omitempty"`                               //根数
 	Multi         int64                  `protobuf:"varint,3,opt,name=multi,proto3" json:"multi,omitempty"`                           //倍数
-	HuMode        int32                  `protobuf:"varint,4,opt,name=hu_mode,json=huMode,proto3" json:"hu_mode,omitempty"`           // 胡的模式
-	HuTypes       []int32                `protobuf:"varint,5,rep,packed,name=hu_types,json=huTypes,proto3" json:"hu_types,omitempty"` // 胡的类型
-	Tiles         []int32                `protobuf:"varint,6,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`                    // 胡牌玩家手牌
+	HuTypes       []int32                `protobuf:"varint,4,rep,packed,name=hu_types,json=huTypes,proto3" json:"hu_types,omitempty"` // 胡的类型
+	Tiles         []int32                `protobuf:"varint,5,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`                    // 胡牌玩家手牌
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -736,13 +735,6 @@ func (x *MJHuData) GetGen() int32 {
 func (x *MJHuData) GetMulti() int64 {
 	if x != nil {
 		return x.Multi
-	}
-	return 0
-}
-
-func (x *MJHuData) GetHuMode() int32 {
-	if x != nil {
-		return x.HuMode
 	}
 	return 0
 }
@@ -1443,14 +1435,13 @@ const file_mj_proto_rawDesc = "" +
 	"\aMJHuAck\x12\x19\n" +
 	"\bpao_seat\x18\x01 \x01(\x05R\apaoSeat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12'\n" +
-	"\ahu_data\x18\x03 \x03(\v2\x0e.pbmj.MJHuDataR\x06huData\"\x90\x01\n" +
+	"\ahu_data\x18\x03 \x03(\v2\x0e.pbmj.MJHuDataR\x06huData\"w\n" +
 	"\bMJHuData\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x10\n" +
 	"\x03gen\x18\x02 \x01(\x05R\x03gen\x12\x14\n" +
-	"\x05multi\x18\x03 \x01(\x03R\x05multi\x12\x17\n" +
-	"\ahu_mode\x18\x04 \x01(\x05R\x06huMode\x12\x19\n" +
-	"\bhu_types\x18\x05 \x03(\x05R\ahuTypes\x12\x14\n" +
-	"\x05tiles\x18\x06 \x03(\x05R\x05tiles\"\xd9\x01\n" +
+	"\x05multi\x18\x03 \x01(\x03R\x05multi\x12\x19\n" +
+	"\bhu_types\x18\x04 \x03(\x05R\ahuTypes\x12\x14\n" +
+	"\x05tiles\x18\x05 \x03(\x05R\x05tiles\"\xd9\x01\n" +
 	"\tMJDrawAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04tile\x18\x02 \x01(\x05R\x04tile\x12\x1b\n" +
