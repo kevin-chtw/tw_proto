@@ -74,7 +74,6 @@ message MJHuData {
   int32 gen = 2; //根数
   int64 multi = 3; //倍数
   repeated int32 hu_types = 4; // 胡的类型
-  repeated int32 tiles = 5; // 胡牌玩家手牌
 }
 
 message MJDrawAck {
