@@ -51,7 +51,7 @@ struct TableStruct_game_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[14]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[18]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -74,6 +74,18 @@ extern GameAckDefaultTypeInternal _GameAck_default_instance_;
 class GameBeginAck;
 struct GameBeginAckDefaultTypeInternal;
 extern GameBeginAckDefaultTypeInternal _GameBeginAck_default_instance_;
+class GameDissolveAck;
+struct GameDissolveAckDefaultTypeInternal;
+extern GameDissolveAckDefaultTypeInternal _GameDissolveAck_default_instance_;
+class GameDissolveAck_AgreedEntry_DoNotUse;
+struct GameDissolveAck_AgreedEntry_DoNotUseDefaultTypeInternal;
+extern GameDissolveAck_AgreedEntry_DoNotUseDefaultTypeInternal _GameDissolveAck_AgreedEntry_DoNotUse_default_instance_;
+class GameDissolveReq;
+struct GameDissolveReqDefaultTypeInternal;
+extern GameDissolveReqDefaultTypeInternal _GameDissolveReq_default_instance_;
+class GameDissolveResultAck;
+struct GameDissolveResultAckDefaultTypeInternal;
+extern GameDissolveResultAckDefaultTypeInternal _GameDissolveResultAck_default_instance_;
 class GameOverAck;
 struct GameOverAckDefaultTypeInternal;
 extern GameOverAckDefaultTypeInternal _GameOverAck_default_instance_;
@@ -108,6 +120,10 @@ template<> ::cproto::EnterGameAck_FdpropertyEntry_DoNotUse* Arena::CreateMaybeMe
 template<> ::cproto::EnterGameReq* Arena::CreateMaybeMessage<::cproto::EnterGameReq>(Arena*);
 template<> ::cproto::GameAck* Arena::CreateMaybeMessage<::cproto::GameAck>(Arena*);
 template<> ::cproto::GameBeginAck* Arena::CreateMaybeMessage<::cproto::GameBeginAck>(Arena*);
+template<> ::cproto::GameDissolveAck* Arena::CreateMaybeMessage<::cproto::GameDissolveAck>(Arena*);
+template<> ::cproto::GameDissolveAck_AgreedEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::GameDissolveAck_AgreedEntry_DoNotUse>(Arena*);
+template<> ::cproto::GameDissolveReq* Arena::CreateMaybeMessage<::cproto::GameDissolveReq>(Arena*);
+template<> ::cproto::GameDissolveResultAck* Arena::CreateMaybeMessage<::cproto::GameDissolveResultAck>(Arena*);
 template<> ::cproto::GameOverAck* Arena::CreateMaybeMessage<::cproto::GameOverAck>(Arena*);
 template<> ::cproto::GameReadyAck* Arena::CreateMaybeMessage<::cproto::GameReadyAck>(Arena*);
 template<> ::cproto::GameReadyReq* Arena::CreateMaybeMessage<::cproto::GameReadyReq>(Arena*);
@@ -772,6 +788,152 @@ class GameReadyReq final :
 };
 // -------------------------------------------------------------------
 
+class GameDissolveReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameDissolveReq) */ {
+ public:
+  inline GameDissolveReq() : GameDissolveReq(nullptr) {}
+  ~GameDissolveReq() override;
+  explicit constexpr GameDissolveReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GameDissolveReq(const GameDissolveReq& from);
+  GameDissolveReq(GameDissolveReq&& from) noexcept
+    : GameDissolveReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GameDissolveReq& operator=(const GameDissolveReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GameDissolveReq& operator=(GameDissolveReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GameDissolveReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GameDissolveReq* internal_default_instance() {
+    return reinterpret_cast<const GameDissolveReq*>(
+               &_GameDissolveReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(GameDissolveReq& a, GameDissolveReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GameDissolveReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GameDissolveReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GameDissolveReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GameDissolveReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GameDissolveReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GameDissolveReq& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GameDissolveReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.GameDissolveReq";
+  }
+  protected:
+  explicit GameDissolveReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAgreeFieldNumber = 1,
+  };
+  // bool agree = 1;
+  void clear_agree();
+  bool agree() const;
+  void set_agree(bool value);
+  private:
+  bool _internal_agree() const;
+  void _internal_set_agree(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.GameDissolveReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool agree_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_game_2eproto;
+};
+// -------------------------------------------------------------------
+
 class EnterGameAck_FdpropertyEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<EnterGameAck_FdpropertyEntry_DoNotUse, 
     std::string, int32_t,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
@@ -845,7 +1007,7 @@ class EnterGameAck final :
                &_EnterGameAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(EnterGameAck& a, EnterGameAck& b) {
     a.Swap(&b);
@@ -1107,7 +1269,7 @@ class TablePlayerAck final :
                &_TablePlayerAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(TablePlayerAck& a, TablePlayerAck& b) {
     a.Swap(&b);
@@ -1334,7 +1496,7 @@ class TableMsgReq final :
                &_TableMsgReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(TableMsgReq& a, TableMsgReq& b) {
     a.Swap(&b);
@@ -1485,7 +1647,7 @@ class TableMsgAck final :
                &_TableMsgAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(TableMsgAck& a, TableMsgAck& b) {
     a.Swap(&b);
@@ -1636,7 +1798,7 @@ class GameReadyAck final :
                &_GameReadyAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(GameReadyAck& a, GameReadyAck& b) {
     a.Swap(&b);
@@ -1745,6 +1907,367 @@ class GameReadyAck final :
 };
 // -------------------------------------------------------------------
 
+class GameDissolveAck_AgreedEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<GameDissolveAck_AgreedEntry_DoNotUse, 
+    int32_t, bool,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<GameDissolveAck_AgreedEntry_DoNotUse, 
+    int32_t, bool,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL> SuperType;
+  GameDissolveAck_AgreedEntry_DoNotUse();
+  explicit constexpr GameDissolveAck_AgreedEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit GameDissolveAck_AgreedEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const GameDissolveAck_AgreedEntry_DoNotUse& other);
+  static const GameDissolveAck_AgreedEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const GameDissolveAck_AgreedEntry_DoNotUse*>(&_GameDissolveAck_AgreedEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class GameDissolveAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameDissolveAck) */ {
+ public:
+  inline GameDissolveAck() : GameDissolveAck(nullptr) {}
+  ~GameDissolveAck() override;
+  explicit constexpr GameDissolveAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GameDissolveAck(const GameDissolveAck& from);
+  GameDissolveAck(GameDissolveAck&& from) noexcept
+    : GameDissolveAck() {
+    *this = ::std::move(from);
+  }
+
+  inline GameDissolveAck& operator=(const GameDissolveAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GameDissolveAck& operator=(GameDissolveAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GameDissolveAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GameDissolveAck* internal_default_instance() {
+    return reinterpret_cast<const GameDissolveAck*>(
+               &_GameDissolveAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(GameDissolveAck& a, GameDissolveAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GameDissolveAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GameDissolveAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GameDissolveAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GameDissolveAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GameDissolveAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GameDissolveAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GameDissolveAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.GameDissolveAck";
+  }
+  protected:
+  explicit GameDissolveAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAgreedFieldNumber = 4,
+    kStarttimeFieldNumber = 1,
+    kEndtimeFieldNumber = 2,
+    kSeatFieldNumber = 3,
+  };
+  // map<int32, bool> agreed = 4;
+  int agreed_size() const;
+  private:
+  int _internal_agreed_size() const;
+  public:
+  void clear_agreed();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, bool >&
+      _internal_agreed() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, bool >*
+      _internal_mutable_agreed();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, bool >&
+      agreed() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, bool >*
+      mutable_agreed();
+
+  // int64 starttime = 1;
+  void clear_starttime();
+  int64_t starttime() const;
+  void set_starttime(int64_t value);
+  private:
+  int64_t _internal_starttime() const;
+  void _internal_set_starttime(int64_t value);
+  public:
+
+  // int64 endtime = 2;
+  void clear_endtime();
+  int64_t endtime() const;
+  void set_endtime(int64_t value);
+  private:
+  int64_t _internal_endtime() const;
+  void _internal_set_endtime(int64_t value);
+  public:
+
+  // int32 seat = 3;
+  void clear_seat();
+  int32_t seat() const;
+  void set_seat(int32_t value);
+  private:
+  int32_t _internal_seat() const;
+  void _internal_set_seat(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.GameDissolveAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      GameDissolveAck_AgreedEntry_DoNotUse,
+      int32_t, bool,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL> agreed_;
+  int64_t starttime_;
+  int64_t endtime_;
+  int32_t seat_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_game_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GameDissolveResultAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameDissolveResultAck) */ {
+ public:
+  inline GameDissolveResultAck() : GameDissolveResultAck(nullptr) {}
+  ~GameDissolveResultAck() override;
+  explicit constexpr GameDissolveResultAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GameDissolveResultAck(const GameDissolveResultAck& from);
+  GameDissolveResultAck(GameDissolveResultAck&& from) noexcept
+    : GameDissolveResultAck() {
+    *this = ::std::move(from);
+  }
+
+  inline GameDissolveResultAck& operator=(const GameDissolveResultAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GameDissolveResultAck& operator=(GameDissolveResultAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GameDissolveResultAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GameDissolveResultAck* internal_default_instance() {
+    return reinterpret_cast<const GameDissolveResultAck*>(
+               &_GameDissolveResultAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(GameDissolveResultAck& a, GameDissolveResultAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GameDissolveResultAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GameDissolveResultAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GameDissolveResultAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GameDissolveResultAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GameDissolveResultAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GameDissolveResultAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GameDissolveResultAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.GameDissolveResultAck";
+  }
+  protected:
+  explicit GameDissolveResultAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDissovleFieldNumber = 1,
+  };
+  // bool dissovle = 1;
+  void clear_dissovle();
+  bool dissovle() const;
+  void set_dissovle(bool value);
+  private:
+  bool _internal_dissovle() const;
+  void _internal_set_dissovle(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.GameDissolveResultAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool dissovle_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_game_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GameBeginAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameBeginAck) */ {
  public:
@@ -1793,7 +2316,7 @@ class GameBeginAck final :
                &_GameBeginAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    14;
 
   friend void swap(GameBeginAck& a, GameBeginAck& b) {
     a.Swap(&b);
@@ -1939,7 +2462,7 @@ class GameOverAck final :
                &_GameOverAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    15;
 
   friend void swap(GameOverAck& a, GameOverAck& b) {
     a.Swap(&b);
@@ -2108,7 +2631,7 @@ class HisBeginAck final :
                &_HisBeginAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    16;
 
   friend void swap(HisBeginAck& a, HisBeginAck& b) {
     a.Swap(&b);
@@ -2226,7 +2749,7 @@ class HisEndAck final :
                &_HisEndAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    17;
 
   friend void swap(HisEndAck& a, HisEndAck& b) {
     a.Swap(&b);
@@ -2690,6 +3213,30 @@ inline void GameReadyReq::_internal_set_ready(bool value) {
 inline void GameReadyReq::set_ready(bool value) {
   _internal_set_ready(value);
   // @@protoc_insertion_point(field_set:cproto.GameReadyReq.ready)
+}
+
+// -------------------------------------------------------------------
+
+// GameDissolveReq
+
+// bool agree = 1;
+inline void GameDissolveReq::clear_agree() {
+  agree_ = false;
+}
+inline bool GameDissolveReq::_internal_agree() const {
+  return agree_;
+}
+inline bool GameDissolveReq::agree() const {
+  // @@protoc_insertion_point(field_get:cproto.GameDissolveReq.agree)
+  return _internal_agree();
+}
+inline void GameDissolveReq::_internal_set_agree(bool value) {
+  
+  agree_ = value;
+}
+inline void GameDissolveReq::set_agree(bool value) {
+  _internal_set_agree(value);
+  // @@protoc_insertion_point(field_set:cproto.GameDissolveReq.agree)
 }
 
 // -------------------------------------------------------------------
@@ -3373,6 +3920,125 @@ inline void GameReadyAck::set_ready(bool value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// GameDissolveAck
+
+// int64 starttime = 1;
+inline void GameDissolveAck::clear_starttime() {
+  starttime_ = int64_t{0};
+}
+inline int64_t GameDissolveAck::_internal_starttime() const {
+  return starttime_;
+}
+inline int64_t GameDissolveAck::starttime() const {
+  // @@protoc_insertion_point(field_get:cproto.GameDissolveAck.starttime)
+  return _internal_starttime();
+}
+inline void GameDissolveAck::_internal_set_starttime(int64_t value) {
+  
+  starttime_ = value;
+}
+inline void GameDissolveAck::set_starttime(int64_t value) {
+  _internal_set_starttime(value);
+  // @@protoc_insertion_point(field_set:cproto.GameDissolveAck.starttime)
+}
+
+// int64 endtime = 2;
+inline void GameDissolveAck::clear_endtime() {
+  endtime_ = int64_t{0};
+}
+inline int64_t GameDissolveAck::_internal_endtime() const {
+  return endtime_;
+}
+inline int64_t GameDissolveAck::endtime() const {
+  // @@protoc_insertion_point(field_get:cproto.GameDissolveAck.endtime)
+  return _internal_endtime();
+}
+inline void GameDissolveAck::_internal_set_endtime(int64_t value) {
+  
+  endtime_ = value;
+}
+inline void GameDissolveAck::set_endtime(int64_t value) {
+  _internal_set_endtime(value);
+  // @@protoc_insertion_point(field_set:cproto.GameDissolveAck.endtime)
+}
+
+// int32 seat = 3;
+inline void GameDissolveAck::clear_seat() {
+  seat_ = 0;
+}
+inline int32_t GameDissolveAck::_internal_seat() const {
+  return seat_;
+}
+inline int32_t GameDissolveAck::seat() const {
+  // @@protoc_insertion_point(field_get:cproto.GameDissolveAck.seat)
+  return _internal_seat();
+}
+inline void GameDissolveAck::_internal_set_seat(int32_t value) {
+  
+  seat_ = value;
+}
+inline void GameDissolveAck::set_seat(int32_t value) {
+  _internal_set_seat(value);
+  // @@protoc_insertion_point(field_set:cproto.GameDissolveAck.seat)
+}
+
+// map<int32, bool> agreed = 4;
+inline int GameDissolveAck::_internal_agreed_size() const {
+  return agreed_.size();
+}
+inline int GameDissolveAck::agreed_size() const {
+  return _internal_agreed_size();
+}
+inline void GameDissolveAck::clear_agreed() {
+  agreed_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, bool >&
+GameDissolveAck::_internal_agreed() const {
+  return agreed_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, bool >&
+GameDissolveAck::agreed() const {
+  // @@protoc_insertion_point(field_map:cproto.GameDissolveAck.agreed)
+  return _internal_agreed();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, bool >*
+GameDissolveAck::_internal_mutable_agreed() {
+  return agreed_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, bool >*
+GameDissolveAck::mutable_agreed() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.GameDissolveAck.agreed)
+  return _internal_mutable_agreed();
+}
+
+// -------------------------------------------------------------------
+
+// GameDissolveResultAck
+
+// bool dissovle = 1;
+inline void GameDissolveResultAck::clear_dissovle() {
+  dissovle_ = false;
+}
+inline bool GameDissolveResultAck::_internal_dissovle() const {
+  return dissovle_;
+}
+inline bool GameDissolveResultAck::dissovle() const {
+  // @@protoc_insertion_point(field_get:cproto.GameDissolveResultAck.dissovle)
+  return _internal_dissovle();
+}
+inline void GameDissolveResultAck::_internal_set_dissovle(bool value) {
+  
+  dissovle_ = value;
+}
+inline void GameDissolveResultAck::set_dissovle(bool value) {
+  _internal_set_dissovle(value);
+  // @@protoc_insertion_point(field_set:cproto.GameDissolveResultAck.dissovle)
+}
+
+// -------------------------------------------------------------------
+
 // GameBeginAck
 
 // int32 cur_game_count = 1;
@@ -3477,6 +4143,14 @@ GameOverAck::mutable_ready() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

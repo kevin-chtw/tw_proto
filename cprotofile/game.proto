@@ -26,6 +26,11 @@ message GameReadyReq {
   bool ready = 1; // 是否准备
 }
 
+//解散请求
+message GameDissolveReq {
+  bool agree = 1; //是否同意解散
+}
+
 message EnterGameAck {
   int32 tableid = 1; // 桌号
   int64 score_base = 2; // 分数基数
@@ -61,11 +66,21 @@ message GameReadyAck {
   bool ready = 2; // 是否准备
 }
 
+message GameDissolveAck {
+  int64 starttime = 1; // 解散发起时间
+  int64 endtime = 2; // 解散结束时间
+  int32 seat = 3; // 座位号
+  map<int32,bool> agreed = 4; // 是否同意解散
+}
+
+message GameDissolveResultAck{
+  bool dissovle = 1; //解散确认 
+}
+
 // 单局游戏开始
 message GameBeginAck {
   int32 cur_game_count = 1; // 当前游戏局数
 }
-
 
 // 单局游戏结束
 message GameOverAck {
