@@ -271,9 +271,8 @@ func (x *MJGameStartAck) GetProperty() string {
 
 type MJOpenDoorAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                                   //座位号
-	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`                                                                                          // 手牌列表
-	CallData      map[int32]*CallData    `protobuf:"bytes,3,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`          //座位号
+	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"` // 手牌列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -318,13 +317,6 @@ func (x *MJOpenDoorAck) GetSeat() int32 {
 func (x *MJOpenDoorAck) GetTiles() []int32 {
 	if x != nil {
 		return x.Tiles
-	}
-	return nil
-}
-
-func (x *MJOpenDoorAck) GetCallData() map[int32]*CallData {
-	if x != nil {
-		return x.CallData
 	}
 	return nil
 }
@@ -1396,14 +1388,10 @@ const file_mj_proto_rawDesc = "" +
 	"\n" +
 	"tile_count\x18\x02 \x01(\x05R\ttileCount\x12\x16\n" +
 	"\x06scores\x18\x03 \x03(\x03R\x06scores\x12\x1a\n" +
-	"\bproperty\x18\x04 \x01(\tR\bproperty\"\xc6\x01\n" +
+	"\bproperty\x18\x04 \x01(\tR\bproperty\"9\n" +
 	"\rMJOpenDoorAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
-	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\x12>\n" +
-	"\tcall_data\x18\x03 \x03(\v2!.pbmj.MJOpenDoorAck.CallDataEntryR\bcallData\x1aK\n" +
-	"\rCallDataEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\xa1\x01\n" +
+	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"\xa1\x01\n" +
 	"\fMJRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
@@ -1505,7 +1493,7 @@ func file_mj_proto_rawDescGZIP() []byte {
 	return file_mj_proto_rawDescData
 }
 
-var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
+var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_mj_proto_goTypes = []any{
 	(*MJRequestReq)(nil),     // 0: pbmj.MJRequestReq
 	(*MJTrustReq)(nil),       // 1: pbmj.MJTrustReq
@@ -1529,34 +1517,31 @@ var file_mj_proto_goTypes = []any{
 	(*MJCallDataAck)(nil),    // 19: pbmj.MJCallDataAck
 	(*CallData)(nil),         // 20: pbmj.CallData
 	(*CallInfo)(nil),         // 21: pbmj.CallInfo
-	nil,                      // 22: pbmj.MJOpenDoorAck.CallDataEntry
-	nil,                      // 23: pbmj.MJChowAck.CallDataEntry
-	nil,                      // 24: pbmj.MJPonAck.CallDataEntry
-	nil,                      // 25: pbmj.MJDrawAck.CallDataEntry
-	nil,                      // 26: pbmj.MJCallDataAck.CallDataEntry
-	nil,                      // 27: pbmj.CallData.CallTilesEntry
+	nil,                      // 22: pbmj.MJChowAck.CallDataEntry
+	nil,                      // 23: pbmj.MJPonAck.CallDataEntry
+	nil,                      // 24: pbmj.MJDrawAck.CallDataEntry
+	nil,                      // 25: pbmj.MJCallDataAck.CallDataEntry
+	nil,                      // 26: pbmj.CallData.CallTilesEntry
 }
 var file_mj_proto_depIdxs = []int32{
-	22, // 0: pbmj.MJOpenDoorAck.call_data:type_name -> pbmj.MJOpenDoorAck.CallDataEntry
-	23, // 1: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
-	24, // 2: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
-	10, // 3: pbmj.MJHuAck.hu_data:type_name -> pbmj.MJHuData
-	25, // 4: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
-	10, // 5: pbmj.MJScoreChangeAck.hu_data:type_name -> pbmj.MJHuData
-	18, // 6: pbmj.MJResultAck.player_results:type_name -> pbmj.MJPlayerResult
-	26, // 7: pbmj.MJCallDataAck.call_data:type_name -> pbmj.MJCallDataAck.CallDataEntry
-	27, // 8: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
-	20, // 9: pbmj.MJOpenDoorAck.CallDataEntry.value:type_name -> pbmj.CallData
-	20, // 10: pbmj.MJChowAck.CallDataEntry.value:type_name -> pbmj.CallData
-	20, // 11: pbmj.MJPonAck.CallDataEntry.value:type_name -> pbmj.CallData
-	20, // 12: pbmj.MJDrawAck.CallDataEntry.value:type_name -> pbmj.CallData
-	20, // 13: pbmj.MJCallDataAck.CallDataEntry.value:type_name -> pbmj.CallData
-	21, // 14: pbmj.CallData.CallTilesEntry.value:type_name -> pbmj.CallInfo
-	15, // [15:15] is the sub-list for method output_type
-	15, // [15:15] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	22, // 0: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
+	23, // 1: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
+	10, // 2: pbmj.MJHuAck.hu_data:type_name -> pbmj.MJHuData
+	24, // 3: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
+	10, // 4: pbmj.MJScoreChangeAck.hu_data:type_name -> pbmj.MJHuData
+	18, // 5: pbmj.MJResultAck.player_results:type_name -> pbmj.MJPlayerResult
+	25, // 6: pbmj.MJCallDataAck.call_data:type_name -> pbmj.MJCallDataAck.CallDataEntry
+	26, // 7: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
+	20, // 8: pbmj.MJChowAck.CallDataEntry.value:type_name -> pbmj.CallData
+	20, // 9: pbmj.MJPonAck.CallDataEntry.value:type_name -> pbmj.CallData
+	20, // 10: pbmj.MJDrawAck.CallDataEntry.value:type_name -> pbmj.CallData
+	20, // 11: pbmj.MJCallDataAck.CallDataEntry.value:type_name -> pbmj.CallData
+	21, // 12: pbmj.CallData.CallTilesEntry.value:type_name -> pbmj.CallInfo
+	13, // [13:13] is the sub-list for method output_type
+	13, // [13:13] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_mj_proto_init() }
@@ -1570,7 +1555,7 @@ func file_mj_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mj_proto_rawDesc), len(file_mj_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   28,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

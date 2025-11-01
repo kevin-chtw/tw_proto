@@ -31,7 +31,6 @@ message MJGameStartAck {
 message MJOpenDoorAck {
   int32 seat = 1; //座位号
   repeated int32 tiles = 2; // 手牌列表
-  map<int32,CallData> call_data = 3; // 打出的牌-听牌列表
 }
 
 message MJRequestAck {
