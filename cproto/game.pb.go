@@ -627,6 +627,7 @@ func (x *GameBeginAck) GetCurGameCount() int32 {
 type GameOverAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CurGameCount  int32                  `protobuf:"varint,1,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
+	Ready         []bool                 `protobuf:"varint,2,rep,packed,name=ready,proto3" json:"ready,omitempty"`                              // 玩家准备状态
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -666,6 +667,13 @@ func (x *GameOverAck) GetCurGameCount() int32 {
 		return x.CurGameCount
 	}
 	return 0
+}
+
+func (x *GameOverAck) GetReady() []bool {
+	if x != nil {
+		return x.Ready
+	}
+	return nil
 }
 
 // 历史消息开始
@@ -794,9 +802,10 @@ const file_game_proto_rawDesc = "" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05ready\x18\x02 \x01(\bR\x05ready\"4\n" +
 	"\fGameBeginAck\x12$\n" +
-	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\"3\n" +
+	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\"I\n" +
 	"\vGameOverAck\x12$\n" +
-	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\"\r\n" +
+	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\x12\x14\n" +
+	"\x05ready\x18\x02 \x03(\bR\x05ready\"\r\n" +
 	"\vHisBeginAck\"\v\n" +
 	"\tHisEndAckB\vZ\t../cprotob\x06proto3"
 

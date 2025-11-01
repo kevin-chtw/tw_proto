@@ -170,7 +170,8 @@ struct GameBeginAckDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GameBeginAckDefaultTypeInternal _GameBeginAck_default_instance_;
 constexpr GameOverAck::GameOverAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : cur_game_count_(0){}
+  : ready_()
+  , cur_game_count_(0){}
 struct GameOverAckDefaultTypeInternal {
   constexpr GameOverAckDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -315,6 +316,7 @@ const uint32_t TableStruct_game_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::GameOverAck, cur_game_count_),
+  PROTOBUF_FIELD_OFFSET(::cproto::GameOverAck, ready_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::HisBeginAck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -341,8 +343,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 85, -1, -1, sizeof(::cproto::GameReadyAck)},
   { 93, -1, -1, sizeof(::cproto::GameBeginAck)},
   { 100, -1, -1, sizeof(::cproto::GameOverAck)},
-  { 107, -1, -1, sizeof(::cproto::HisBeginAck)},
-  { 113, -1, -1, sizeof(::cproto::HisEndAck)},
+  { 108, -1, -1, sizeof(::cproto::HisBeginAck)},
+  { 114, -1, -1, sizeof(::cproto::HisEndAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -383,17 +385,17 @@ const char descriptor_table_protodef_game_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\005ready\030\007 \001(\010\"\032\n\013TableMsgReq\022\013\n\003msg\030\001 \001(\014"
   "\"\032\n\013TableMsgAck\022\013\n\003msg\030\001 \001(\014\"+\n\014GameRead"
   "yAck\022\014\n\004seat\030\001 \001(\005\022\r\n\005ready\030\002 \001(\010\"&\n\014Gam"
-  "eBeginAck\022\026\n\016cur_game_count\030\001 \001(\005\"%\n\013Gam"
-  "eOverAck\022\026\n\016cur_game_count\030\001 \001(\005\"\r\n\013HisB"
-  "eginAck\"\013\n\tHisEndAckB\013Z\t../cprotob\006proto"
-  "3"
+  "eBeginAck\022\026\n\016cur_game_count\030\001 \001(\005\"4\n\013Gam"
+  "eOverAck\022\026\n\016cur_game_count\030\001 \001(\005\022\r\n\005read"
+  "y\030\002 \003(\010\"\r\n\013HisBeginAck\"\013\n\tHisEndAckB\013Z\t."
+  "./cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_game_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_game_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_game_2eproto = {
-  false, false, 921, descriptor_table_protodef_game_2eproto, "game.proto", 
+  false, false, 936, descriptor_table_protodef_game_2eproto, "game.proto", 
   &descriptor_table_game_2eproto_once, descriptor_table_game_2eproto_deps, 1, 14,
   schemas, file_default_instances, TableStruct_game_2eproto::offsets,
   file_level_metadata_game_2eproto, file_level_enum_descriptors_game_2eproto, file_level_service_descriptors_game_2eproto,
@@ -2956,7 +2958,8 @@ class GameOverAck::_Internal {
 
 GameOverAck::GameOverAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  ready_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
@@ -2964,7 +2967,8 @@ GameOverAck::GameOverAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:cproto.GameOverAck)
 }
 GameOverAck::GameOverAck(const GameOverAck& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      ready_(from.ready_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   cur_game_count_ = from.cur_game_count_;
   // @@protoc_insertion_point(copy_constructor:cproto.GameOverAck)
@@ -3001,6 +3005,7 @@ void GameOverAck::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  ready_.Clear();
   cur_game_count_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -3015,6 +3020,17 @@ const char* GameOverAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           cur_game_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated bool ready = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedBoolParser(_internal_mutable_ready(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 16) {
+          _internal_add_ready(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -3054,6 +3070,11 @@ uint8_t* GameOverAck::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_cur_game_count(), target);
   }
 
+  // repeated bool ready = 2;
+  if (this->_internal_ready_size() > 0) {
+    target = stream->WriteFixedPacked(2, _internal_ready(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -3069,6 +3090,18 @@ size_t GameOverAck::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated bool ready = 2;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_ready_size());
+    size_t data_size = 1UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
 
   // int32 cur_game_count = 1;
   if (this->_internal_cur_game_count() != 0) {
@@ -3097,6 +3130,7 @@ void GameOverAck::MergeFrom(const GameOverAck& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  ready_.MergeFrom(from.ready_);
   if (from._internal_cur_game_count() != 0) {
     _internal_set_cur_game_count(from._internal_cur_game_count());
   }
@@ -3117,6 +3151,7 @@ bool GameOverAck::IsInitialized() const {
 void GameOverAck::InternalSwap(GameOverAck* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ready_.InternalSwap(&other->ready_);
   swap(cur_game_count_, other->cur_game_count_);
 }
 

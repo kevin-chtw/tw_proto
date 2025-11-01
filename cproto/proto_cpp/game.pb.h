@@ -2013,8 +2013,31 @@ class GameOverAck final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kReadyFieldNumber = 2,
     kCurGameCountFieldNumber = 1,
   };
+  // repeated bool ready = 2;
+  int ready_size() const;
+  private:
+  int _internal_ready_size() const;
+  public:
+  void clear_ready();
+  private:
+  bool _internal_ready(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
+      _internal_ready() const;
+  void _internal_add_ready(bool value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
+      _internal_mutable_ready();
+  public:
+  bool ready(int index) const;
+  void set_ready(int index, bool value);
+  void add_ready(bool value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
+      ready() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
+      mutable_ready();
+
   // int32 cur_game_count = 1;
   void clear_cur_game_count();
   int32_t cur_game_count() const;
@@ -2031,6 +2054,7 @@ class GameOverAck final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool > ready_;
   int32_t cur_game_count_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_game_2eproto;
@@ -3393,6 +3417,53 @@ inline void GameOverAck::_internal_set_cur_game_count(int32_t value) {
 inline void GameOverAck::set_cur_game_count(int32_t value) {
   _internal_set_cur_game_count(value);
   // @@protoc_insertion_point(field_set:cproto.GameOverAck.cur_game_count)
+}
+
+// repeated bool ready = 2;
+inline int GameOverAck::_internal_ready_size() const {
+  return ready_.size();
+}
+inline int GameOverAck::ready_size() const {
+  return _internal_ready_size();
+}
+inline void GameOverAck::clear_ready() {
+  ready_.Clear();
+}
+inline bool GameOverAck::_internal_ready(int index) const {
+  return ready_.Get(index);
+}
+inline bool GameOverAck::ready(int index) const {
+  // @@protoc_insertion_point(field_get:cproto.GameOverAck.ready)
+  return _internal_ready(index);
+}
+inline void GameOverAck::set_ready(int index, bool value) {
+  ready_.Set(index, value);
+  // @@protoc_insertion_point(field_set:cproto.GameOverAck.ready)
+}
+inline void GameOverAck::_internal_add_ready(bool value) {
+  ready_.Add(value);
+}
+inline void GameOverAck::add_ready(bool value) {
+  _internal_add_ready(value);
+  // @@protoc_insertion_point(field_add:cproto.GameOverAck.ready)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
+GameOverAck::_internal_ready() const {
+  return ready_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
+GameOverAck::ready() const {
+  // @@protoc_insertion_point(field_list:cproto.GameOverAck.ready)
+  return _internal_ready();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
+GameOverAck::_internal_mutable_ready() {
+  return &ready_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
+GameOverAck::mutable_ready() {
+  // @@protoc_insertion_point(field_mutable_list:cproto.GameOverAck.ready)
+  return _internal_mutable_ready();
 }
 
 // -------------------------------------------------------------------

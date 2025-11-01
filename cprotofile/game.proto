@@ -69,7 +69,8 @@ message GameBeginAck {
 
 // 一轮游戏结束
 message GameOverAck {
-  int32 cur_game_count = 1; // 当前游戏局数  
+  int32 cur_game_count = 1; // 当前游戏局数
+  repeated bool ready = 2; // 玩家准备状态
 }
 
 // 历史消息开始
