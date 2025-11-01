@@ -51,7 +51,7 @@ struct TableStruct_game_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[14]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -77,6 +77,12 @@ extern GameBeginAckDefaultTypeInternal _GameBeginAck_default_instance_;
 class GameOverAck;
 struct GameOverAckDefaultTypeInternal;
 extern GameOverAckDefaultTypeInternal _GameOverAck_default_instance_;
+class GameReadyAck;
+struct GameReadyAckDefaultTypeInternal;
+extern GameReadyAckDefaultTypeInternal _GameReadyAck_default_instance_;
+class GameReadyReq;
+struct GameReadyReqDefaultTypeInternal;
+extern GameReadyReqDefaultTypeInternal _GameReadyReq_default_instance_;
 class GameReq;
 struct GameReqDefaultTypeInternal;
 extern GameReqDefaultTypeInternal _GameReq_default_instance_;
@@ -103,6 +109,8 @@ template<> ::cproto::EnterGameReq* Arena::CreateMaybeMessage<::cproto::EnterGame
 template<> ::cproto::GameAck* Arena::CreateMaybeMessage<::cproto::GameAck>(Arena*);
 template<> ::cproto::GameBeginAck* Arena::CreateMaybeMessage<::cproto::GameBeginAck>(Arena*);
 template<> ::cproto::GameOverAck* Arena::CreateMaybeMessage<::cproto::GameOverAck>(Arena*);
+template<> ::cproto::GameReadyAck* Arena::CreateMaybeMessage<::cproto::GameReadyAck>(Arena*);
+template<> ::cproto::GameReadyReq* Arena::CreateMaybeMessage<::cproto::GameReadyReq>(Arena*);
 template<> ::cproto::GameReq* Arena::CreateMaybeMessage<::cproto::GameReq>(Arena*);
 template<> ::cproto::HisBeginAck* Arena::CreateMaybeMessage<::cproto::HisBeginAck>(Arena*);
 template<> ::cproto::HisEndAck* Arena::CreateMaybeMessage<::cproto::HisEndAck>(Arena*);
@@ -618,6 +626,152 @@ class EnterGameReq final :
 };
 // -------------------------------------------------------------------
 
+class GameReadyReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameReadyReq) */ {
+ public:
+  inline GameReadyReq() : GameReadyReq(nullptr) {}
+  ~GameReadyReq() override;
+  explicit constexpr GameReadyReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GameReadyReq(const GameReadyReq& from);
+  GameReadyReq(GameReadyReq&& from) noexcept
+    : GameReadyReq() {
+    *this = ::std::move(from);
+  }
+
+  inline GameReadyReq& operator=(const GameReadyReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GameReadyReq& operator=(GameReadyReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GameReadyReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GameReadyReq* internal_default_instance() {
+    return reinterpret_cast<const GameReadyReq*>(
+               &_GameReadyReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(GameReadyReq& a, GameReadyReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GameReadyReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GameReadyReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GameReadyReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GameReadyReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GameReadyReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GameReadyReq& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GameReadyReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.GameReadyReq";
+  }
+  protected:
+  explicit GameReadyReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kReadyFieldNumber = 1,
+  };
+  // bool ready = 1;
+  void clear_ready();
+  bool ready() const;
+  void set_ready(bool value);
+  private:
+  bool _internal_ready() const;
+  void _internal_set_ready(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.GameReadyReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool ready_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_game_2eproto;
+};
+// -------------------------------------------------------------------
+
 class EnterGameAck_FdpropertyEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<EnterGameAck_FdpropertyEntry_DoNotUse, 
     std::string, int32_t,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
@@ -691,7 +845,7 @@ class EnterGameAck final :
                &_EnterGameAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(EnterGameAck& a, EnterGameAck& b) {
     a.Swap(&b);
@@ -953,7 +1107,7 @@ class TablePlayerAck final :
                &_TablePlayerAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(TablePlayerAck& a, TablePlayerAck& b) {
     a.Swap(&b);
@@ -1033,6 +1187,7 @@ class TablePlayerAck final :
     kDiamondFieldNumber = 5,
     kVipFieldNumber = 4,
     kSeatFieldNumber = 6,
+    kReadyFieldNumber = 7,
   };
   // string uid = 1;
   void clear_uid();
@@ -1103,6 +1258,15 @@ class TablePlayerAck final :
   void _internal_set_seat(int32_t value);
   public:
 
+  // bool ready = 7;
+  void clear_ready();
+  bool ready() const;
+  void set_ready(bool value);
+  private:
+  bool _internal_ready() const;
+  void _internal_set_ready(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:cproto.TablePlayerAck)
  private:
   class _Internal;
@@ -1116,6 +1280,7 @@ class TablePlayerAck final :
   int64_t diamond_;
   int32_t vip_;
   int32_t seat_;
+  bool ready_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_game_2eproto;
 };
@@ -1169,7 +1334,7 @@ class TableMsgReq final :
                &_TableMsgReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(TableMsgReq& a, TableMsgReq& b) {
     a.Swap(&b);
@@ -1320,7 +1485,7 @@ class TableMsgAck final :
                &_TableMsgAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(TableMsgAck& a, TableMsgAck& b) {
     a.Swap(&b);
@@ -1423,6 +1588,163 @@ class TableMsgAck final :
 };
 // -------------------------------------------------------------------
 
+class GameReadyAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameReadyAck) */ {
+ public:
+  inline GameReadyAck() : GameReadyAck(nullptr) {}
+  ~GameReadyAck() override;
+  explicit constexpr GameReadyAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GameReadyAck(const GameReadyAck& from);
+  GameReadyAck(GameReadyAck&& from) noexcept
+    : GameReadyAck() {
+    *this = ::std::move(from);
+  }
+
+  inline GameReadyAck& operator=(const GameReadyAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GameReadyAck& operator=(GameReadyAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GameReadyAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GameReadyAck* internal_default_instance() {
+    return reinterpret_cast<const GameReadyAck*>(
+               &_GameReadyAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(GameReadyAck& a, GameReadyAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GameReadyAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GameReadyAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GameReadyAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GameReadyAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GameReadyAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GameReadyAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GameReadyAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.GameReadyAck";
+  }
+  protected:
+  explicit GameReadyAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSeatFieldNumber = 1,
+    kReadyFieldNumber = 2,
+  };
+  // int32 seat = 1;
+  void clear_seat();
+  int32_t seat() const;
+  void set_seat(int32_t value);
+  private:
+  int32_t _internal_seat() const;
+  void _internal_set_seat(int32_t value);
+  public:
+
+  // bool ready = 2;
+  void clear_ready();
+  bool ready() const;
+  void set_ready(bool value);
+  private:
+  bool _internal_ready() const;
+  void _internal_set_ready(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.GameReadyAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t seat_;
+  bool ready_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_game_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GameBeginAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameBeginAck) */ {
  public:
@@ -1471,7 +1793,7 @@ class GameBeginAck final :
                &_GameBeginAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(GameBeginAck& a, GameBeginAck& b) {
     a.Swap(&b);
@@ -1617,7 +1939,7 @@ class GameOverAck final :
                &_GameOverAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(GameOverAck& a, GameOverAck& b) {
     a.Swap(&b);
@@ -1762,7 +2084,7 @@ class HisBeginAck final :
                &_HisBeginAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(HisBeginAck& a, HisBeginAck& b) {
     a.Swap(&b);
@@ -1880,7 +2202,7 @@ class HisEndAck final :
                &_HisEndAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(HisEndAck& a, HisEndAck& b) {
     a.Swap(&b);
@@ -2321,6 +2643,30 @@ inline void GameAck::set_allocated_ack(::PROTOBUF_NAMESPACE_ID::Any* ack) {
 // -------------------------------------------------------------------
 
 // EnterGameReq
+
+// -------------------------------------------------------------------
+
+// GameReadyReq
+
+// bool ready = 1;
+inline void GameReadyReq::clear_ready() {
+  ready_ = false;
+}
+inline bool GameReadyReq::_internal_ready() const {
+  return ready_;
+}
+inline bool GameReadyReq::ready() const {
+  // @@protoc_insertion_point(field_get:cproto.GameReadyReq.ready)
+  return _internal_ready();
+}
+inline void GameReadyReq::_internal_set_ready(bool value) {
+  
+  ready_ = value;
+}
+inline void GameReadyReq::set_ready(bool value) {
+  _internal_set_ready(value);
+  // @@protoc_insertion_point(field_set:cproto.GameReadyReq.ready)
+}
 
 // -------------------------------------------------------------------
 
@@ -2827,6 +3173,26 @@ inline void TablePlayerAck::set_seat(int32_t value) {
   // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.seat)
 }
 
+// bool ready = 7;
+inline void TablePlayerAck::clear_ready() {
+  ready_ = false;
+}
+inline bool TablePlayerAck::_internal_ready() const {
+  return ready_;
+}
+inline bool TablePlayerAck::ready() const {
+  // @@protoc_insertion_point(field_get:cproto.TablePlayerAck.ready)
+  return _internal_ready();
+}
+inline void TablePlayerAck::_internal_set_ready(bool value) {
+  
+  ready_ = value;
+}
+inline void TablePlayerAck::set_ready(bool value) {
+  _internal_set_ready(value);
+  // @@protoc_insertion_point(field_set:cproto.TablePlayerAck.ready)
+}
+
 // -------------------------------------------------------------------
 
 // TableMsgReq
@@ -2939,6 +3305,50 @@ inline void TableMsgAck::set_allocated_msg(std::string* msg) {
 
 // -------------------------------------------------------------------
 
+// GameReadyAck
+
+// int32 seat = 1;
+inline void GameReadyAck::clear_seat() {
+  seat_ = 0;
+}
+inline int32_t GameReadyAck::_internal_seat() const {
+  return seat_;
+}
+inline int32_t GameReadyAck::seat() const {
+  // @@protoc_insertion_point(field_get:cproto.GameReadyAck.seat)
+  return _internal_seat();
+}
+inline void GameReadyAck::_internal_set_seat(int32_t value) {
+  
+  seat_ = value;
+}
+inline void GameReadyAck::set_seat(int32_t value) {
+  _internal_set_seat(value);
+  // @@protoc_insertion_point(field_set:cproto.GameReadyAck.seat)
+}
+
+// bool ready = 2;
+inline void GameReadyAck::clear_ready() {
+  ready_ = false;
+}
+inline bool GameReadyAck::_internal_ready() const {
+  return ready_;
+}
+inline bool GameReadyAck::ready() const {
+  // @@protoc_insertion_point(field_get:cproto.GameReadyAck.ready)
+  return _internal_ready();
+}
+inline void GameReadyAck::_internal_set_ready(bool value) {
+  
+  ready_ = value;
+}
+inline void GameReadyAck::set_ready(bool value) {
+  _internal_set_ready(value);
+  // @@protoc_insertion_point(field_set:cproto.GameReadyAck.ready)
+}
+
+// -------------------------------------------------------------------
+
 // GameBeginAck
 
 // int32 cur_game_count = 1;
@@ -2996,6 +3406,10 @@ inline void GameOverAck::set_cur_game_count(int32_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

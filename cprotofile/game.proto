@@ -22,6 +22,10 @@ message GameAck {
 message EnterGameReq {  
 }
 
+message GameReadyReq {
+  bool ready = 1; // 是否准备
+}
+
 message EnterGameAck {
   int32 tableid = 1; // 桌号
   int64 score_base = 2; // 分数基数
@@ -41,6 +45,7 @@ message TablePlayerAck {
   int32 vip = 4; // VIP等级
   int64 diamond = 5; // 钻石
   int32 seat = 6; // 座位号
+  bool ready = 7; // 是否准备
 }
 
 message TableMsgReq {  
@@ -51,14 +56,20 @@ message TableMsgAck {
   bytes msg = 1; // 消息内容
 }
 
+message GameReadyAck {
+  int32 seat = 1; // 座位号
+  bool ready = 2; // 是否准备
+}
+
 // 单局游戏开始
 message GameBeginAck {
   int32 cur_game_count = 1; // 当前游戏局数
 }
 
+
 // 一轮游戏结束
 message GameOverAck {
-  int32 cur_game_count = 1; // 当前游戏局数
+  int32 cur_game_count = 1; // 当前游戏局数  
 }
 
 // 历史消息开始
