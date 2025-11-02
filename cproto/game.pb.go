@@ -573,7 +573,7 @@ func (x *TableMsgAck) GetMsg() []byte {
 
 type GameExitAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"` //座位号
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` //玩家ID
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -608,11 +608,11 @@ func (*GameExitAck) Descriptor() ([]byte, []int) {
 	return file_game_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *GameExitAck) GetSeat() int32 {
+func (x *GameExitAck) GetUid() string {
 	if x != nil {
-		return x.Seat
+		return x.Uid
 	}
-	return 0
+	return ""
 }
 
 type GameReadyAck struct {
@@ -1000,9 +1000,9 @@ const file_game_proto_rawDesc = "" +
 	"\vTableMsgReq\x12\x10\n" +
 	"\x03msg\x18\x01 \x01(\fR\x03msg\"\x1f\n" +
 	"\vTableMsgAck\x12\x10\n" +
-	"\x03msg\x18\x01 \x01(\fR\x03msg\"!\n" +
-	"\vGameExitAck\x12\x12\n" +
-	"\x04seat\x18\x01 \x01(\x05R\x04seat\"8\n" +
+	"\x03msg\x18\x01 \x01(\fR\x03msg\"\x1f\n" +
+	"\vGameExitAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"8\n" +
 	"\fGameReadyAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05ready\x18\x02 \x01(\bR\x05ready\"\xd5\x01\n" +

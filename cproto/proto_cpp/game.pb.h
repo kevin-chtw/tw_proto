@@ -1876,15 +1876,20 @@ class GameExitAck final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSeatFieldNumber = 1,
+    kUidFieldNumber = 1,
   };
-  // int32 seat = 1;
-  void clear_seat();
-  int32_t seat() const;
-  void set_seat(int32_t value);
+  // string uid = 1;
+  void clear_uid();
+  const std::string& uid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_uid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_uid();
+  PROTOBUF_NODISCARD std::string* release_uid();
+  void set_allocated_uid(std::string* uid);
   private:
-  int32_t _internal_seat() const;
-  void _internal_set_seat(int32_t value);
+  const std::string& _internal_uid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_uid(const std::string& value);
+  std::string* _internal_mutable_uid();
   public:
 
   // @@protoc_insertion_point(class_scope:cproto.GameExitAck)
@@ -1894,7 +1899,7 @@ class GameExitAck final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int32_t seat_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr uid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_game_2eproto;
 };
@@ -4028,24 +4033,55 @@ inline void TableMsgAck::set_allocated_msg(std::string* msg) {
 
 // GameExitAck
 
-// int32 seat = 1;
-inline void GameExitAck::clear_seat() {
-  seat_ = 0;
+// string uid = 1;
+inline void GameExitAck::clear_uid() {
+  uid_.ClearToEmpty();
 }
-inline int32_t GameExitAck::_internal_seat() const {
-  return seat_;
+inline const std::string& GameExitAck::uid() const {
+  // @@protoc_insertion_point(field_get:cproto.GameExitAck.uid)
+  return _internal_uid();
 }
-inline int32_t GameExitAck::seat() const {
-  // @@protoc_insertion_point(field_get:cproto.GameExitAck.seat)
-  return _internal_seat();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GameExitAck::set_uid(ArgT0&& arg0, ArgT... args) {
+ 
+ uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.GameExitAck.uid)
 }
-inline void GameExitAck::_internal_set_seat(int32_t value) {
+inline std::string* GameExitAck::mutable_uid() {
+  std::string* _s = _internal_mutable_uid();
+  // @@protoc_insertion_point(field_mutable:cproto.GameExitAck.uid)
+  return _s;
+}
+inline const std::string& GameExitAck::_internal_uid() const {
+  return uid_.Get();
+}
+inline void GameExitAck::_internal_set_uid(const std::string& value) {
   
-  seat_ = value;
+  uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void GameExitAck::set_seat(int32_t value) {
-  _internal_set_seat(value);
-  // @@protoc_insertion_point(field_set:cproto.GameExitAck.seat)
+inline std::string* GameExitAck::_internal_mutable_uid() {
+  
+  return uid_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GameExitAck::release_uid() {
+  // @@protoc_insertion_point(field_release:cproto.GameExitAck.uid)
+  return uid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GameExitAck::set_allocated_uid(std::string* uid) {
+  if (uid != nullptr) {
+    
+  } else {
+    
+  }
+  uid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), uid,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (uid_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.GameExitAck.uid)
 }
 
 // -------------------------------------------------------------------

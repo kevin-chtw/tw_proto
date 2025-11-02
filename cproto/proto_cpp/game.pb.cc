@@ -157,7 +157,7 @@ struct TableMsgAckDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TableMsgAckDefaultTypeInternal _TableMsgAck_default_instance_;
 constexpr GameExitAck::GameExitAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : seat_(0){}
+  : uid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct GameExitAckDefaultTypeInternal {
   constexpr GameExitAckDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -369,7 +369,7 @@ const uint32_t TableStruct_game_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::GameExitAck, seat_),
+  PROTOBUF_FIELD_OFFSET(::cproto::GameExitAck, uid_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::GameReadyAck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -497,25 +497,25 @@ const char descriptor_table_protodef_game_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "kname\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\013\n\003vip\030\004 \001(\005"
   "\022\017\n\007diamond\030\005 \001(\003\022\014\n\004seat\030\006 \001(\005\022\r\n\005ready"
   "\030\007 \001(\010\"\032\n\013TableMsgReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013Ta"
-  "bleMsgAck\022\013\n\003msg\030\001 \001(\014\"\033\n\013GameExitAck\022\014\n"
-  "\004seat\030\001 \001(\005\"+\n\014GameReadyAck\022\014\n\004seat\030\001 \001("
-  "\005\022\r\n\005ready\030\002 \001(\010\"\247\001\n\017GameDissolveAck\022\021\n\t"
-  "starttime\030\001 \001(\003\022\017\n\007endtime\030\002 \001(\003\022\014\n\004seat"
-  "\030\003 \001(\005\0223\n\006agreed\030\004 \003(\0132#.cproto.GameDiss"
-  "olveAck.AgreedEntry\032-\n\013AgreedEntry\022\013\n\003ke"
-  "y\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\")\n\025GameDissol"
-  "veResultAck\022\020\n\010dissovle\030\001 \001(\010\"&\n\014GameBeg"
-  "inAck\022\026\n\016cur_game_count\030\001 \001(\005\"4\n\013GameOve"
-  "rAck\022\026\n\016cur_game_count\030\001 \001(\005\022\r\n\005ready\030\002 "
-  "\003(\010\"\r\n\013HisBeginAck\"\013\n\tHisEndAckB\013Z\t../cp"
-  "rotob\006proto3"
+  "bleMsgAck\022\013\n\003msg\030\001 \001(\014\"\032\n\013GameExitAck\022\013\n"
+  "\003uid\030\001 \001(\t\"+\n\014GameReadyAck\022\014\n\004seat\030\001 \001(\005"
+  "\022\r\n\005ready\030\002 \001(\010\"\247\001\n\017GameDissolveAck\022\021\n\ts"
+  "tarttime\030\001 \001(\003\022\017\n\007endtime\030\002 \001(\003\022\014\n\004seat\030"
+  "\003 \001(\005\0223\n\006agreed\030\004 \003(\0132#.cproto.GameDisso"
+  "lveAck.AgreedEntry\032-\n\013AgreedEntry\022\013\n\003key"
+  "\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\")\n\025GameDissolv"
+  "eResultAck\022\020\n\010dissovle\030\001 \001(\010\"&\n\014GameBegi"
+  "nAck\022\026\n\016cur_game_count\030\001 \001(\005\"4\n\013GameOver"
+  "Ack\022\026\n\016cur_game_count\030\001 \001(\005\022\r\n\005ready\030\002 \003"
+  "(\010\"\r\n\013HisBeginAck\"\013\n\tHisEndAckB\013Z\t../cpr"
+  "otob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_game_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_game_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_game_2eproto = {
-  false, false, 1212, descriptor_table_protodef_game_2eproto, "game.proto", 
+  false, false, 1211, descriptor_table_protodef_game_2eproto, "game.proto", 
   &descriptor_table_game_2eproto_once, descriptor_table_game_2eproto_deps, 1, 19,
   schemas, file_default_instances, TableStruct_game_2eproto::offsets,
   file_level_metadata_game_2eproto, file_level_enum_descriptors_game_2eproto, file_level_service_descriptors_game_2eproto,
@@ -2876,12 +2876,22 @@ GameExitAck::GameExitAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 GameExitAck::GameExitAck(const GameExitAck& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  seat_ = from.seat_;
+  uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_uid().empty()) {
+    uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_uid(), 
+      GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:cproto.GameExitAck)
 }
 
 inline void GameExitAck::SharedCtor() {
-seat_ = 0;
+uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 GameExitAck::~GameExitAck() {
@@ -2893,6 +2903,7 @@ GameExitAck::~GameExitAck() {
 
 inline void GameExitAck::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  uid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void GameExitAck::ArenaDtor(void* object) {
@@ -2911,7 +2922,7 @@ void GameExitAck::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  seat_ = 0;
+  uid_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2921,10 +2932,12 @@ const char* GameExitAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 seat = 1;
+      // string uid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          seat_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_uid();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.GameExitAck.uid"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2958,10 +2971,14 @@ uint8_t* GameExitAck::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 seat = 1;
-  if (this->_internal_seat() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_seat(), target);
+  // string uid = 1;
+  if (!this->_internal_uid().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_uid().data(), static_cast<int>(this->_internal_uid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.GameExitAck.uid");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_uid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2980,9 +2997,11 @@ size_t GameExitAck::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 seat = 1;
-  if (this->_internal_seat() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_seat());
+  // string uid = 1;
+  if (!this->_internal_uid().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -3007,8 +3026,8 @@ void GameExitAck::MergeFrom(const GameExitAck& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_seat() != 0) {
-    _internal_set_seat(from._internal_seat());
+  if (!from._internal_uid().empty()) {
+    _internal_set_uid(from._internal_uid());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -3026,8 +3045,14 @@ bool GameExitAck::IsInitialized() const {
 
 void GameExitAck::InternalSwap(GameExitAck* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(seat_, other->seat_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &uid_, lhs_arena,
+      &other->uid_, rhs_arena
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GameExitAck::GetMetadata() const {

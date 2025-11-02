@@ -62,7 +62,7 @@ message TableMsgAck {
 }
 
 message GameExitAck {
-  int32 seat = 1; //座位号
+  string uid = 1; //玩家ID
 }
 
 message GameReadyAck {
