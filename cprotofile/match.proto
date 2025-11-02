@@ -78,9 +78,17 @@ message ExitMatchAck { //弹回大厅
 message FDResultAck {
   int32 tableid = 1;
   int32 game_count = 2; // 总局数
-  int32 owner_id = 3; // 房主ID
+  string owner_id = 3; // 房主ID
   string desn = 4; //配置描述
-  repeated int64 scores = 5; // 各玩家得分
-  string match_data = 6; // 比赛数据 （json）
+  map<string,int64> scores = 5; // 各玩家得分
+  map<string,string> player_data = 6; // 比赛数据 （json）
   repeated string rounds = 7; // 各局数据 （json）
+}
+
+// 每局比赛结果上报
+message FDRoundResultAck{
+  int32 cur_game_count = 1; // 当前局数
+  map<string,int64> scores = 5; // 各玩家得分
+  map<string,string> player_data = 6; // 比赛数据 （json）
+  string round_data = 4; // 当局数据 （json）
 }

@@ -51,7 +51,7 @@ struct TableStruct_match_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[19]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[24]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -86,9 +86,24 @@ extern ExitMatchReqDefaultTypeInternal _ExitMatchReq_default_instance_;
 class FDResultAck;
 struct FDResultAckDefaultTypeInternal;
 extern FDResultAckDefaultTypeInternal _FDResultAck_default_instance_;
+class FDResultAck_PlayerDataEntry_DoNotUse;
+struct FDResultAck_PlayerDataEntry_DoNotUseDefaultTypeInternal;
+extern FDResultAck_PlayerDataEntry_DoNotUseDefaultTypeInternal _FDResultAck_PlayerDataEntry_DoNotUse_default_instance_;
+class FDResultAck_ScoresEntry_DoNotUse;
+struct FDResultAck_ScoresEntry_DoNotUseDefaultTypeInternal;
+extern FDResultAck_ScoresEntry_DoNotUseDefaultTypeInternal _FDResultAck_ScoresEntry_DoNotUse_default_instance_;
 class FDResultReq;
 struct FDResultReqDefaultTypeInternal;
 extern FDResultReqDefaultTypeInternal _FDResultReq_default_instance_;
+class FDRoundResultAck;
+struct FDRoundResultAckDefaultTypeInternal;
+extern FDRoundResultAckDefaultTypeInternal _FDRoundResultAck_default_instance_;
+class FDRoundResultAck_PlayerDataEntry_DoNotUse;
+struct FDRoundResultAck_PlayerDataEntry_DoNotUseDefaultTypeInternal;
+extern FDRoundResultAck_PlayerDataEntry_DoNotUseDefaultTypeInternal _FDRoundResultAck_PlayerDataEntry_DoNotUse_default_instance_;
+class FDRoundResultAck_ScoresEntry_DoNotUse;
+struct FDRoundResultAck_ScoresEntry_DoNotUseDefaultTypeInternal;
+extern FDRoundResultAck_ScoresEntry_DoNotUseDefaultTypeInternal _FDRoundResultAck_ScoresEntry_DoNotUse_default_instance_;
 class JoinRoomReq;
 struct JoinRoomReqDefaultTypeInternal;
 extern JoinRoomReqDefaultTypeInternal _JoinRoomReq_default_instance_;
@@ -127,7 +142,12 @@ template<> ::cproto::CreateRoomReq_PropertiesEntry_DoNotUse* Arena::CreateMaybeM
 template<> ::cproto::ExitMatchAck* Arena::CreateMaybeMessage<::cproto::ExitMatchAck>(Arena*);
 template<> ::cproto::ExitMatchReq* Arena::CreateMaybeMessage<::cproto::ExitMatchReq>(Arena*);
 template<> ::cproto::FDResultAck* Arena::CreateMaybeMessage<::cproto::FDResultAck>(Arena*);
+template<> ::cproto::FDResultAck_PlayerDataEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::FDResultAck_PlayerDataEntry_DoNotUse>(Arena*);
+template<> ::cproto::FDResultAck_ScoresEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::FDResultAck_ScoresEntry_DoNotUse>(Arena*);
 template<> ::cproto::FDResultReq* Arena::CreateMaybeMessage<::cproto::FDResultReq>(Arena*);
+template<> ::cproto::FDRoundResultAck* Arena::CreateMaybeMessage<::cproto::FDRoundResultAck>(Arena*);
+template<> ::cproto::FDRoundResultAck_PlayerDataEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::FDRoundResultAck_PlayerDataEntry_DoNotUse>(Arena*);
+template<> ::cproto::FDRoundResultAck_ScoresEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::FDRoundResultAck_ScoresEntry_DoNotUse>(Arena*);
 template<> ::cproto::JoinRoomReq* Arena::CreateMaybeMessage<::cproto::JoinRoomReq>(Arena*);
 template<> ::cproto::MatchAck* Arena::CreateMaybeMessage<::cproto::MatchAck>(Arena*);
 template<> ::cproto::MatchReq* Arena::CreateMaybeMessage<::cproto::MatchReq>(Arena*);
@@ -2551,6 +2571,58 @@ class ExitMatchAck final :
 };
 // -------------------------------------------------------------------
 
+class FDResultAck_ScoresEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<FDResultAck_ScoresEntry_DoNotUse, 
+    std::string, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<FDResultAck_ScoresEntry_DoNotUse, 
+    std::string, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  FDResultAck_ScoresEntry_DoNotUse();
+  explicit constexpr FDResultAck_ScoresEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit FDResultAck_ScoresEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const FDResultAck_ScoresEntry_DoNotUse& other);
+  static const FDResultAck_ScoresEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const FDResultAck_ScoresEntry_DoNotUse*>(&_FDResultAck_ScoresEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.FDResultAck.ScoresEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class FDResultAck_PlayerDataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<FDResultAck_PlayerDataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<FDResultAck_PlayerDataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  FDResultAck_PlayerDataEntry_DoNotUse();
+  explicit constexpr FDResultAck_PlayerDataEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit FDResultAck_PlayerDataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const FDResultAck_PlayerDataEntry_DoNotUse& other);
+  static const FDResultAck_PlayerDataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const FDResultAck_PlayerDataEntry_DoNotUse*>(&_FDResultAck_PlayerDataEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.FDResultAck.PlayerDataEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.FDResultAck.PlayerDataEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
 class FDResultAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.FDResultAck) */ {
  public:
@@ -2599,7 +2671,7 @@ class FDResultAck final :
                &_FDResultAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    20;
 
   friend void swap(FDResultAck& a, FDResultAck& b) {
     a.Swap(&b);
@@ -2670,38 +2742,51 @@ class FDResultAck final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
     kScoresFieldNumber = 5,
+    kPlayerDataFieldNumber = 6,
     kRoundsFieldNumber = 7,
+    kOwnerIdFieldNumber = 3,
     kDesnFieldNumber = 4,
-    kMatchDataFieldNumber = 6,
     kTableidFieldNumber = 1,
     kGameCountFieldNumber = 2,
-    kOwnerIdFieldNumber = 3,
   };
-  // repeated int64 scores = 5;
+  // map<string, int64> scores = 5;
   int scores_size() const;
   private:
   int _internal_scores_size() const;
   public:
   void clear_scores();
   private:
-  int64_t _internal_scores(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
       _internal_scores() const;
-  void _internal_add_scores(int64_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
       _internal_mutable_scores();
   public:
-  int64_t scores(int index) const;
-  void set_scores(int index, int64_t value);
-  void add_scores(int64_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
       scores() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
       mutable_scores();
+
+  // map<string, string> player_data = 6;
+  int player_data_size() const;
+  private:
+  int _internal_player_data_size() const;
+  public:
+  void clear_player_data();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_player_data() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_player_data();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      player_data() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_player_data();
 
   // repeated string rounds = 7;
   int rounds_size() const;
@@ -2727,6 +2812,20 @@ class FDResultAck final :
   std::string* _internal_add_rounds();
   public:
 
+  // string owner_id = 3;
+  void clear_owner_id();
+  const std::string& owner_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_owner_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_owner_id();
+  PROTOBUF_NODISCARD std::string* release_owner_id();
+  void set_allocated_owner_id(std::string* owner_id);
+  private:
+  const std::string& _internal_owner_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_owner_id(const std::string& value);
+  std::string* _internal_mutable_owner_id();
+  public:
+
   // string desn = 4;
   void clear_desn();
   const std::string& desn() const;
@@ -2739,20 +2838,6 @@ class FDResultAck final :
   const std::string& _internal_desn() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_desn(const std::string& value);
   std::string* _internal_mutable_desn();
-  public:
-
-  // string match_data = 6;
-  void clear_match_data();
-  const std::string& match_data() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_match_data(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_match_data();
-  PROTOBUF_NODISCARD std::string* release_match_data();
-  void set_allocated_match_data(std::string* match_data);
-  private:
-  const std::string& _internal_match_data() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_match_data(const std::string& value);
-  std::string* _internal_mutable_match_data();
   public:
 
   // int32 tableid = 1;
@@ -2773,15 +2858,6 @@ class FDResultAck final :
   void _internal_set_game_count(int32_t value);
   public:
 
-  // int32 owner_id = 3;
-  void clear_owner_id();
-  int32_t owner_id() const;
-  void set_owner_id(int32_t value);
-  private:
-  int32_t _internal_owner_id() const;
-  void _internal_set_owner_id(int32_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:cproto.FDResultAck)
  private:
   class _Internal;
@@ -2789,14 +2865,282 @@ class FDResultAck final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > scores_;
-  mutable std::atomic<int> _scores_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      FDResultAck_ScoresEntry_DoNotUse,
+      std::string, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> scores_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      FDResultAck_PlayerDataEntry_DoNotUse,
+      std::string, std::string,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> player_data_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> rounds_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr owner_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desn_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr match_data_;
   int32_t tableid_;
   int32_t game_count_;
-  int32_t owner_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FDRoundResultAck_ScoresEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<FDRoundResultAck_ScoresEntry_DoNotUse, 
+    std::string, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<FDRoundResultAck_ScoresEntry_DoNotUse, 
+    std::string, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  FDRoundResultAck_ScoresEntry_DoNotUse();
+  explicit constexpr FDRoundResultAck_ScoresEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit FDRoundResultAck_ScoresEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const FDRoundResultAck_ScoresEntry_DoNotUse& other);
+  static const FDRoundResultAck_ScoresEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const FDRoundResultAck_ScoresEntry_DoNotUse*>(&_FDRoundResultAck_ScoresEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.FDRoundResultAck.ScoresEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class FDRoundResultAck_PlayerDataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<FDRoundResultAck_PlayerDataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<FDRoundResultAck_PlayerDataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  FDRoundResultAck_PlayerDataEntry_DoNotUse();
+  explicit constexpr FDRoundResultAck_PlayerDataEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit FDRoundResultAck_PlayerDataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const FDRoundResultAck_PlayerDataEntry_DoNotUse& other);
+  static const FDRoundResultAck_PlayerDataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const FDRoundResultAck_PlayerDataEntry_DoNotUse*>(&_FDRoundResultAck_PlayerDataEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.FDRoundResultAck.PlayerDataEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.FDRoundResultAck.PlayerDataEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class FDRoundResultAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.FDRoundResultAck) */ {
+ public:
+  inline FDRoundResultAck() : FDRoundResultAck(nullptr) {}
+  ~FDRoundResultAck() override;
+  explicit constexpr FDRoundResultAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  FDRoundResultAck(const FDRoundResultAck& from);
+  FDRoundResultAck(FDRoundResultAck&& from) noexcept
+    : FDRoundResultAck() {
+    *this = ::std::move(from);
+  }
+
+  inline FDRoundResultAck& operator=(const FDRoundResultAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline FDRoundResultAck& operator=(FDRoundResultAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const FDRoundResultAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const FDRoundResultAck* internal_default_instance() {
+    return reinterpret_cast<const FDRoundResultAck*>(
+               &_FDRoundResultAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  friend void swap(FDRoundResultAck& a, FDRoundResultAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(FDRoundResultAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(FDRoundResultAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  FDRoundResultAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<FDRoundResultAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const FDRoundResultAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const FDRoundResultAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FDRoundResultAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.FDRoundResultAck";
+  }
+  protected:
+  explicit FDRoundResultAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kScoresFieldNumber = 5,
+    kPlayerDataFieldNumber = 6,
+    kRoundDataFieldNumber = 4,
+    kCurGameCountFieldNumber = 1,
+  };
+  // map<string, int64> scores = 5;
+  int scores_size() const;
+  private:
+  int _internal_scores_size() const;
+  public:
+  void clear_scores();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
+      _internal_scores() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
+      _internal_mutable_scores();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
+      scores() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
+      mutable_scores();
+
+  // map<string, string> player_data = 6;
+  int player_data_size() const;
+  private:
+  int _internal_player_data_size() const;
+  public:
+  void clear_player_data();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_player_data() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_player_data();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      player_data() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_player_data();
+
+  // string round_data = 4;
+  void clear_round_data();
+  const std::string& round_data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_round_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_round_data();
+  PROTOBUF_NODISCARD std::string* release_round_data();
+  void set_allocated_round_data(std::string* round_data);
+  private:
+  const std::string& _internal_round_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_round_data(const std::string& value);
+  std::string* _internal_mutable_round_data();
+  public:
+
+  // int32 cur_game_count = 1;
+  void clear_cur_game_count();
+  int32_t cur_game_count() const;
+  void set_cur_game_count(int32_t value);
+  private:
+  int32_t _internal_cur_game_count() const;
+  void _internal_set_cur_game_count(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.FDRoundResultAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      FDRoundResultAck_ScoresEntry_DoNotUse,
+      std::string, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> scores_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      FDRoundResultAck_PlayerDataEntry_DoNotUse,
+      std::string, std::string,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> player_data_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr round_data_;
+  int32_t cur_game_count_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_match_2eproto;
 };
@@ -3566,6 +3910,10 @@ inline void StartClientAck::set_table_id(int32_t value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // FDResultAck
 
 // int32 tableid = 1;
@@ -3608,24 +3956,55 @@ inline void FDResultAck::set_game_count(int32_t value) {
   // @@protoc_insertion_point(field_set:cproto.FDResultAck.game_count)
 }
 
-// int32 owner_id = 3;
+// string owner_id = 3;
 inline void FDResultAck::clear_owner_id() {
-  owner_id_ = 0;
+  owner_id_.ClearToEmpty();
 }
-inline int32_t FDResultAck::_internal_owner_id() const {
-  return owner_id_;
-}
-inline int32_t FDResultAck::owner_id() const {
+inline const std::string& FDResultAck::owner_id() const {
   // @@protoc_insertion_point(field_get:cproto.FDResultAck.owner_id)
   return _internal_owner_id();
 }
-inline void FDResultAck::_internal_set_owner_id(int32_t value) {
-  
-  owner_id_ = value;
-}
-inline void FDResultAck::set_owner_id(int32_t value) {
-  _internal_set_owner_id(value);
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void FDResultAck::set_owner_id(ArgT0&& arg0, ArgT... args) {
+ 
+ owner_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:cproto.FDResultAck.owner_id)
+}
+inline std::string* FDResultAck::mutable_owner_id() {
+  std::string* _s = _internal_mutable_owner_id();
+  // @@protoc_insertion_point(field_mutable:cproto.FDResultAck.owner_id)
+  return _s;
+}
+inline const std::string& FDResultAck::_internal_owner_id() const {
+  return owner_id_.Get();
+}
+inline void FDResultAck::_internal_set_owner_id(const std::string& value) {
+  
+  owner_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* FDResultAck::_internal_mutable_owner_id() {
+  
+  return owner_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* FDResultAck::release_owner_id() {
+  // @@protoc_insertion_point(field_release:cproto.FDResultAck.owner_id)
+  return owner_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void FDResultAck::set_allocated_owner_id(std::string* owner_id) {
+  if (owner_id != nullptr) {
+    
+  } else {
+    
+  }
+  owner_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), owner_id,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (owner_id_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    owner_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.FDResultAck.owner_id)
 }
 
 // string desn = 4;
@@ -3679,7 +4058,7 @@ inline void FDResultAck::set_allocated_desn(std::string* desn) {
   // @@protoc_insertion_point(field_set_allocated:cproto.FDResultAck.desn)
 }
 
-// repeated int64 scores = 5;
+// map<string, int64> scores = 5;
 inline int FDResultAck::_internal_scores_size() const {
   return scores_.size();
 }
@@ -3689,92 +4068,52 @@ inline int FDResultAck::scores_size() const {
 inline void FDResultAck::clear_scores() {
   scores_.Clear();
 }
-inline int64_t FDResultAck::_internal_scores(int index) const {
-  return scores_.Get(index);
-}
-inline int64_t FDResultAck::scores(int index) const {
-  // @@protoc_insertion_point(field_get:cproto.FDResultAck.scores)
-  return _internal_scores(index);
-}
-inline void FDResultAck::set_scores(int index, int64_t value) {
-  scores_.Set(index, value);
-  // @@protoc_insertion_point(field_set:cproto.FDResultAck.scores)
-}
-inline void FDResultAck::_internal_add_scores(int64_t value) {
-  scores_.Add(value);
-}
-inline void FDResultAck::add_scores(int64_t value) {
-  _internal_add_scores(value);
-  // @@protoc_insertion_point(field_add:cproto.FDResultAck.scores)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
 FDResultAck::_internal_scores() const {
-  return scores_;
+  return scores_.GetMap();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
 FDResultAck::scores() const {
-  // @@protoc_insertion_point(field_list:cproto.FDResultAck.scores)
+  // @@protoc_insertion_point(field_map:cproto.FDResultAck.scores)
   return _internal_scores();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
 FDResultAck::_internal_mutable_scores() {
-  return &scores_;
+  return scores_.MutableMap();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
 FDResultAck::mutable_scores() {
-  // @@protoc_insertion_point(field_mutable_list:cproto.FDResultAck.scores)
+  // @@protoc_insertion_point(field_mutable_map:cproto.FDResultAck.scores)
   return _internal_mutable_scores();
 }
 
-// string match_data = 6;
-inline void FDResultAck::clear_match_data() {
-  match_data_.ClearToEmpty();
+// map<string, string> player_data = 6;
+inline int FDResultAck::_internal_player_data_size() const {
+  return player_data_.size();
 }
-inline const std::string& FDResultAck::match_data() const {
-  // @@protoc_insertion_point(field_get:cproto.FDResultAck.match_data)
-  return _internal_match_data();
+inline int FDResultAck::player_data_size() const {
+  return _internal_player_data_size();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void FDResultAck::set_match_data(ArgT0&& arg0, ArgT... args) {
- 
- match_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.FDResultAck.match_data)
+inline void FDResultAck::clear_player_data() {
+  player_data_.Clear();
 }
-inline std::string* FDResultAck::mutable_match_data() {
-  std::string* _s = _internal_mutable_match_data();
-  // @@protoc_insertion_point(field_mutable:cproto.FDResultAck.match_data)
-  return _s;
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+FDResultAck::_internal_player_data() const {
+  return player_data_.GetMap();
 }
-inline const std::string& FDResultAck::_internal_match_data() const {
-  return match_data_.Get();
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+FDResultAck::player_data() const {
+  // @@protoc_insertion_point(field_map:cproto.FDResultAck.player_data)
+  return _internal_player_data();
 }
-inline void FDResultAck::_internal_set_match_data(const std::string& value) {
-  
-  match_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+FDResultAck::_internal_mutable_player_data() {
+  return player_data_.MutableMap();
 }
-inline std::string* FDResultAck::_internal_mutable_match_data() {
-  
-  return match_data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* FDResultAck::release_match_data() {
-  // @@protoc_insertion_point(field_release:cproto.FDResultAck.match_data)
-  return match_data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void FDResultAck::set_allocated_match_data(std::string* match_data) {
-  if (match_data != nullptr) {
-    
-  } else {
-    
-  }
-  match_data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), match_data,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (match_data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    match_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.FDResultAck.match_data)
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+FDResultAck::mutable_player_data() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.FDResultAck.player_data)
+  return _internal_mutable_player_data();
 }
 
 // repeated string rounds = 7;
@@ -3852,9 +4191,156 @@ FDResultAck::mutable_rounds() {
   return &rounds_;
 }
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// FDRoundResultAck
+
+// int32 cur_game_count = 1;
+inline void FDRoundResultAck::clear_cur_game_count() {
+  cur_game_count_ = 0;
+}
+inline int32_t FDRoundResultAck::_internal_cur_game_count() const {
+  return cur_game_count_;
+}
+inline int32_t FDRoundResultAck::cur_game_count() const {
+  // @@protoc_insertion_point(field_get:cproto.FDRoundResultAck.cur_game_count)
+  return _internal_cur_game_count();
+}
+inline void FDRoundResultAck::_internal_set_cur_game_count(int32_t value) {
+  
+  cur_game_count_ = value;
+}
+inline void FDRoundResultAck::set_cur_game_count(int32_t value) {
+  _internal_set_cur_game_count(value);
+  // @@protoc_insertion_point(field_set:cproto.FDRoundResultAck.cur_game_count)
+}
+
+// map<string, int64> scores = 5;
+inline int FDRoundResultAck::_internal_scores_size() const {
+  return scores_.size();
+}
+inline int FDRoundResultAck::scores_size() const {
+  return _internal_scores_size();
+}
+inline void FDRoundResultAck::clear_scores() {
+  scores_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
+FDRoundResultAck::_internal_scores() const {
+  return scores_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
+FDRoundResultAck::scores() const {
+  // @@protoc_insertion_point(field_map:cproto.FDRoundResultAck.scores)
+  return _internal_scores();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
+FDRoundResultAck::_internal_mutable_scores() {
+  return scores_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
+FDRoundResultAck::mutable_scores() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.FDRoundResultAck.scores)
+  return _internal_mutable_scores();
+}
+
+// map<string, string> player_data = 6;
+inline int FDRoundResultAck::_internal_player_data_size() const {
+  return player_data_.size();
+}
+inline int FDRoundResultAck::player_data_size() const {
+  return _internal_player_data_size();
+}
+inline void FDRoundResultAck::clear_player_data() {
+  player_data_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+FDRoundResultAck::_internal_player_data() const {
+  return player_data_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+FDRoundResultAck::player_data() const {
+  // @@protoc_insertion_point(field_map:cproto.FDRoundResultAck.player_data)
+  return _internal_player_data();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+FDRoundResultAck::_internal_mutable_player_data() {
+  return player_data_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+FDRoundResultAck::mutable_player_data() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.FDRoundResultAck.player_data)
+  return _internal_mutable_player_data();
+}
+
+// string round_data = 4;
+inline void FDRoundResultAck::clear_round_data() {
+  round_data_.ClearToEmpty();
+}
+inline const std::string& FDRoundResultAck::round_data() const {
+  // @@protoc_insertion_point(field_get:cproto.FDRoundResultAck.round_data)
+  return _internal_round_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void FDRoundResultAck::set_round_data(ArgT0&& arg0, ArgT... args) {
+ 
+ round_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.FDRoundResultAck.round_data)
+}
+inline std::string* FDRoundResultAck::mutable_round_data() {
+  std::string* _s = _internal_mutable_round_data();
+  // @@protoc_insertion_point(field_mutable:cproto.FDRoundResultAck.round_data)
+  return _s;
+}
+inline const std::string& FDRoundResultAck::_internal_round_data() const {
+  return round_data_.Get();
+}
+inline void FDRoundResultAck::_internal_set_round_data(const std::string& value) {
+  
+  round_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* FDRoundResultAck::_internal_mutable_round_data() {
+  
+  return round_data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* FDRoundResultAck::release_round_data() {
+  // @@protoc_insertion_point(field_release:cproto.FDRoundResultAck.round_data)
+  return round_data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void FDRoundResultAck::set_allocated_round_data(std::string* round_data) {
+  if (round_data != nullptr) {
+    
+  } else {
+    
+  }
+  round_data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), round_data,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (round_data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    round_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.FDRoundResultAck.round_data)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

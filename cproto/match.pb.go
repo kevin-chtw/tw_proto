@@ -782,12 +782,12 @@ func (*ExitMatchAck) Descriptor() ([]byte, []int) {
 type FDResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	GameCount     int32                  `protobuf:"varint,2,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"` // 总局数
-	OwnerId       int32                  `protobuf:"varint,3,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`       // 房主ID
-	Desn          string                 `protobuf:"bytes,4,opt,name=desn,proto3" json:"desn,omitempty"`                             //配置描述
-	Scores        []int64                `protobuf:"varint,5,rep,packed,name=scores,proto3" json:"scores,omitempty"`                 // 各玩家得分
-	MatchData     string                 `protobuf:"bytes,6,opt,name=match_data,json=matchData,proto3" json:"match_data,omitempty"`  // 比赛数据 （json）
-	Rounds        []string               `protobuf:"bytes,7,rep,name=rounds,proto3" json:"rounds,omitempty"`                         // 各局数据 （json）
+	GameCount     int32                  `protobuf:"varint,2,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                                             // 总局数
+	OwnerId       string                 `protobuf:"bytes,3,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`                                                                                    // 房主ID
+	Desn          string                 `protobuf:"bytes,4,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                                         //配置描述
+	Scores        map[string]int64       `protobuf:"bytes,5,rep,name=scores,proto3" json:"scores,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`                          // 各玩家得分
+	PlayerData    map[string]string      `protobuf:"bytes,6,rep,name=player_data,json=playerData,proto3" json:"player_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 比赛数据 （json）
+	Rounds        []string               `protobuf:"bytes,7,rep,name=rounds,proto3" json:"rounds,omitempty"`                                                                                                     // 各局数据 （json）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -836,11 +836,11 @@ func (x *FDResultAck) GetGameCount() int32 {
 	return 0
 }
 
-func (x *FDResultAck) GetOwnerId() int32 {
+func (x *FDResultAck) GetOwnerId() string {
 	if x != nil {
 		return x.OwnerId
 	}
-	return 0
+	return ""
 }
 
 func (x *FDResultAck) GetDesn() string {
@@ -850,18 +850,18 @@ func (x *FDResultAck) GetDesn() string {
 	return ""
 }
 
-func (x *FDResultAck) GetScores() []int64 {
+func (x *FDResultAck) GetScores() map[string]int64 {
 	if x != nil {
 		return x.Scores
 	}
 	return nil
 }
 
-func (x *FDResultAck) GetMatchData() string {
+func (x *FDResultAck) GetPlayerData() map[string]string {
 	if x != nil {
-		return x.MatchData
+		return x.PlayerData
 	}
-	return ""
+	return nil
 }
 
 func (x *FDResultAck) GetRounds() []string {
@@ -869,6 +869,75 @@ func (x *FDResultAck) GetRounds() []string {
 		return x.Rounds
 	}
 	return nil
+}
+
+// 每局比赛结果上报
+type FDRoundResultAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CurGameCount  int32                  `protobuf:"varint,1,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"`                                                                  // 当前局数
+	Scores        map[string]int64       `protobuf:"bytes,5,rep,name=scores,proto3" json:"scores,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`                          // 各玩家得分
+	PlayerData    map[string]string      `protobuf:"bytes,6,rep,name=player_data,json=playerData,proto3" json:"player_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 比赛数据 （json）
+	RoundData     string                 `protobuf:"bytes,4,opt,name=round_data,json=roundData,proto3" json:"round_data,omitempty"`                                                                              // 当局数据 （json）
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FDRoundResultAck) Reset() {
+	*x = FDRoundResultAck{}
+	mi := &file_match_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FDRoundResultAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FDRoundResultAck) ProtoMessage() {}
+
+func (x *FDRoundResultAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FDRoundResultAck.ProtoReflect.Descriptor instead.
+func (*FDRoundResultAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *FDRoundResultAck) GetCurGameCount() int32 {
+	if x != nil {
+		return x.CurGameCount
+	}
+	return 0
+}
+
+func (x *FDRoundResultAck) GetScores() map[string]int64 {
+	if x != nil {
+		return x.Scores
+	}
+	return nil
+}
+
+func (x *FDRoundResultAck) GetPlayerData() map[string]string {
+	if x != nil {
+		return x.PlayerData
+	}
+	return nil
+}
+
+func (x *FDRoundResultAck) GetRoundData() string {
+	if x != nil {
+		return x.RoundData
+	}
+	return ""
 }
 
 var File_match_proto protoreflect.FileDescriptor
@@ -919,17 +988,36 @@ const file_match_proto_rawDesc = "" +
 	"SignoutAck\"\r\n" +
 	"\vContinueAck\"\t\n" +
 	"\aRestAck\"\x0e\n" +
-	"\fExitMatchAck\"\xc4\x01\n" +
+	"\fExitMatchAck\"\x86\x03\n" +
 	"\vFDResultAck\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x1d\n" +
 	"\n" +
 	"game_count\x18\x02 \x01(\x05R\tgameCount\x12\x19\n" +
-	"\bowner_id\x18\x03 \x01(\x05R\aownerId\x12\x12\n" +
-	"\x04desn\x18\x04 \x01(\tR\x04desn\x12\x16\n" +
-	"\x06scores\x18\x05 \x03(\x03R\x06scores\x12\x1d\n" +
+	"\bowner_id\x18\x03 \x01(\tR\aownerId\x12\x12\n" +
+	"\x04desn\x18\x04 \x01(\tR\x04desn\x127\n" +
+	"\x06scores\x18\x05 \x03(\v2\x1f.cproto.FDResultAck.ScoresEntryR\x06scores\x12D\n" +
+	"\vplayer_data\x18\x06 \x03(\v2#.cproto.FDResultAck.PlayerDataEntryR\n" +
+	"playerData\x12\x16\n" +
+	"\x06rounds\x18\a \x03(\tR\x06rounds\x1a9\n" +
+	"\vScoresEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
+	"\x0fPlayerDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xda\x02\n" +
+	"\x10FDRoundResultAck\x12$\n" +
+	"\x0ecur_game_count\x18\x01 \x01(\x05R\fcurGameCount\x12<\n" +
+	"\x06scores\x18\x05 \x03(\v2$.cproto.FDRoundResultAck.ScoresEntryR\x06scores\x12I\n" +
+	"\vplayer_data\x18\x06 \x03(\v2(.cproto.FDRoundResultAck.PlayerDataEntryR\n" +
+	"playerData\x12\x1d\n" +
 	"\n" +
-	"match_data\x18\x06 \x01(\tR\tmatchData\x12\x16\n" +
-	"\x06rounds\x18\a \x03(\tR\x06roundsB\vZ\t../cprotob\x06proto3"
+	"round_data\x18\x04 \x01(\tR\troundData\x1a9\n" +
+	"\vScoresEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
+	"\x0fPlayerDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
 var (
 	file_match_proto_rawDescOnce sync.Once
@@ -943,38 +1031,47 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_match_proto_goTypes = []any{
-	(*MatchReq)(nil),       // 0: cproto.MatchReq
-	(*MatchAck)(nil),       // 1: cproto.MatchAck
-	(*CreateRoomReq)(nil),  // 2: cproto.CreateRoomReq
-	(*CancelRoomReq)(nil),  // 3: cproto.CancelRoomReq
-	(*JoinRoomReq)(nil),    // 4: cproto.JoinRoomReq
-	(*SignupReq)(nil),      // 5: cproto.SignupReq
-	(*SignoutReq)(nil),     // 6: cproto.SignoutReq
-	(*ContinueReq)(nil),    // 7: cproto.ContinueReq
-	(*ExitMatchReq)(nil),   // 8: cproto.ExitMatchReq
-	(*FDResultReq)(nil),    // 9: cproto.FDResultReq
-	(*CancelRoomAck)(nil),  // 10: cproto.CancelRoomAck
-	(*StartClientAck)(nil), // 11: cproto.StartClientAck
-	(*SignupAck)(nil),      // 12: cproto.SignupAck
-	(*SignoutAck)(nil),     // 13: cproto.SignoutAck
-	(*ContinueAck)(nil),    // 14: cproto.ContinueAck
-	(*RestAck)(nil),        // 15: cproto.RestAck
-	(*ExitMatchAck)(nil),   // 16: cproto.ExitMatchAck
-	(*FDResultAck)(nil),    // 17: cproto.FDResultAck
-	nil,                    // 18: cproto.CreateRoomReq.PropertiesEntry
-	(*anypb.Any)(nil),      // 19: google.protobuf.Any
+	(*MatchReq)(nil),         // 0: cproto.MatchReq
+	(*MatchAck)(nil),         // 1: cproto.MatchAck
+	(*CreateRoomReq)(nil),    // 2: cproto.CreateRoomReq
+	(*CancelRoomReq)(nil),    // 3: cproto.CancelRoomReq
+	(*JoinRoomReq)(nil),      // 4: cproto.JoinRoomReq
+	(*SignupReq)(nil),        // 5: cproto.SignupReq
+	(*SignoutReq)(nil),       // 6: cproto.SignoutReq
+	(*ContinueReq)(nil),      // 7: cproto.ContinueReq
+	(*ExitMatchReq)(nil),     // 8: cproto.ExitMatchReq
+	(*FDResultReq)(nil),      // 9: cproto.FDResultReq
+	(*CancelRoomAck)(nil),    // 10: cproto.CancelRoomAck
+	(*StartClientAck)(nil),   // 11: cproto.StartClientAck
+	(*SignupAck)(nil),        // 12: cproto.SignupAck
+	(*SignoutAck)(nil),       // 13: cproto.SignoutAck
+	(*ContinueAck)(nil),      // 14: cproto.ContinueAck
+	(*RestAck)(nil),          // 15: cproto.RestAck
+	(*ExitMatchAck)(nil),     // 16: cproto.ExitMatchAck
+	(*FDResultAck)(nil),      // 17: cproto.FDResultAck
+	(*FDRoundResultAck)(nil), // 18: cproto.FDRoundResultAck
+	nil,                      // 19: cproto.CreateRoomReq.PropertiesEntry
+	nil,                      // 20: cproto.FDResultAck.ScoresEntry
+	nil,                      // 21: cproto.FDResultAck.PlayerDataEntry
+	nil,                      // 22: cproto.FDRoundResultAck.ScoresEntry
+	nil,                      // 23: cproto.FDRoundResultAck.PlayerDataEntry
+	(*anypb.Any)(nil),        // 24: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	19, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	19, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
-	18, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
-	3,  // [3:3] is the sub-list for method output_type
-	3,  // [3:3] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	24, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	24, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	19, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
+	20, // 3: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
+	21, // 4: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
+	22, // 5: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
+	23, // 6: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
+	7,  // [7:7] is the sub-list for method output_type
+	7,  // [7:7] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
@@ -988,7 +1085,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
