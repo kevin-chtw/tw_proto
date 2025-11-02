@@ -174,7 +174,9 @@ type GameResultReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
 	CurGameCount  int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
-	Players       []*PlayerResult        `protobuf:"bytes,3,rep,name=players,proto3" json:"players,omitempty"`                                  // 玩家ID列表
+	Data          string                 `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`                                        // 游戏统计数据
+	RoundData     string                 `protobuf:"bytes,4,opt,name=round_data,json=roundData,proto3" json:"round_data,omitempty"`             // 游戏回合数据
+	Players       []*PlayerResult        `protobuf:"bytes,5,rep,name=players,proto3" json:"players,omitempty"`                                  // 玩家ID列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -221,6 +223,20 @@ func (x *GameResultReq) GetCurGameCount() int32 {
 		return x.CurGameCount
 	}
 	return 0
+}
+
+func (x *GameResultReq) GetData() string {
+	if x != nil {
+		return x.Data
+	}
+	return ""
+}
+
+func (x *GameResultReq) GetRoundData() string {
+	if x != nil {
+		return x.RoundData
+	}
+	return ""
 }
 
 func (x *GameResultReq) GetPlayers() []*PlayerResult {
@@ -390,11 +406,14 @@ const file_match_remote_proto_rawDesc = "" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"7\n" +
 	"\vNetStateReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x16\n" +
-	"\x06online\x18\x02 \x01(\bR\x06online\"\x7f\n" +
+	"\x06online\x18\x02 \x01(\bR\x06online\"\xb2\x01\n" +
 	"\rGameResultReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
-	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12.\n" +
-	"\aplayers\x18\x03 \x03(\v2\x14.sproto.PlayerResultR\aplayers\"@\n" +
+	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12\x12\n" +
+	"\x04data\x18\x03 \x01(\tR\x04data\x12\x1d\n" +
+	"\n" +
+	"round_data\x18\x04 \x01(\tR\troundData\x12.\n" +
+	"\aplayers\x18\x05 \x03(\v2\x14.sproto.PlayerResultR\aplayers\"@\n" +
 	"\fPlayerResult\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x03R\x05score\"M\n" +

@@ -571,6 +571,50 @@ func (x *TableMsgAck) GetMsg() []byte {
 	return nil
 }
 
+type GameExitAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"` //座位号
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GameExitAck) Reset() {
+	*x = GameExitAck{}
+	mi := &file_game_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GameExitAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GameExitAck) ProtoMessage() {}
+
+func (x *GameExitAck) ProtoReflect() protoreflect.Message {
+	mi := &file_game_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GameExitAck.ProtoReflect.Descriptor instead.
+func (*GameExitAck) Descriptor() ([]byte, []int) {
+	return file_game_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GameExitAck) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
 type GameReadyAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`   // 座位号
@@ -581,7 +625,7 @@ type GameReadyAck struct {
 
 func (x *GameReadyAck) Reset() {
 	*x = GameReadyAck{}
-	mi := &file_game_proto_msgTypes[9]
+	mi := &file_game_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -593,7 +637,7 @@ func (x *GameReadyAck) String() string {
 func (*GameReadyAck) ProtoMessage() {}
 
 func (x *GameReadyAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[9]
+	mi := &file_game_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -606,7 +650,7 @@ func (x *GameReadyAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameReadyAck.ProtoReflect.Descriptor instead.
 func (*GameReadyAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{9}
+	return file_game_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GameReadyAck) GetSeat() int32 {
@@ -635,7 +679,7 @@ type GameDissolveAck struct {
 
 func (x *GameDissolveAck) Reset() {
 	*x = GameDissolveAck{}
-	mi := &file_game_proto_msgTypes[10]
+	mi := &file_game_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -647,7 +691,7 @@ func (x *GameDissolveAck) String() string {
 func (*GameDissolveAck) ProtoMessage() {}
 
 func (x *GameDissolveAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[10]
+	mi := &file_game_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -660,7 +704,7 @@ func (x *GameDissolveAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameDissolveAck.ProtoReflect.Descriptor instead.
 func (*GameDissolveAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{10}
+	return file_game_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GameDissolveAck) GetStarttime() int64 {
@@ -700,7 +744,7 @@ type GameDissolveResultAck struct {
 
 func (x *GameDissolveResultAck) Reset() {
 	*x = GameDissolveResultAck{}
-	mi := &file_game_proto_msgTypes[11]
+	mi := &file_game_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -712,7 +756,7 @@ func (x *GameDissolveResultAck) String() string {
 func (*GameDissolveResultAck) ProtoMessage() {}
 
 func (x *GameDissolveResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[11]
+	mi := &file_game_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -725,7 +769,7 @@ func (x *GameDissolveResultAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameDissolveResultAck.ProtoReflect.Descriptor instead.
 func (*GameDissolveResultAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{11}
+	return file_game_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GameDissolveResultAck) GetDissovle() bool {
@@ -745,7 +789,7 @@ type GameBeginAck struct {
 
 func (x *GameBeginAck) Reset() {
 	*x = GameBeginAck{}
-	mi := &file_game_proto_msgTypes[12]
+	mi := &file_game_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -757,7 +801,7 @@ func (x *GameBeginAck) String() string {
 func (*GameBeginAck) ProtoMessage() {}
 
 func (x *GameBeginAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[12]
+	mi := &file_game_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -770,7 +814,7 @@ func (x *GameBeginAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameBeginAck.ProtoReflect.Descriptor instead.
 func (*GameBeginAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{12}
+	return file_game_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GameBeginAck) GetCurGameCount() int32 {
@@ -791,7 +835,7 @@ type GameOverAck struct {
 
 func (x *GameOverAck) Reset() {
 	*x = GameOverAck{}
-	mi := &file_game_proto_msgTypes[13]
+	mi := &file_game_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -803,7 +847,7 @@ func (x *GameOverAck) String() string {
 func (*GameOverAck) ProtoMessage() {}
 
 func (x *GameOverAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[13]
+	mi := &file_game_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -816,7 +860,7 @@ func (x *GameOverAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameOverAck.ProtoReflect.Descriptor instead.
 func (*GameOverAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{13}
+	return file_game_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GameOverAck) GetCurGameCount() int32 {
@@ -842,7 +886,7 @@ type HisBeginAck struct {
 
 func (x *HisBeginAck) Reset() {
 	*x = HisBeginAck{}
-	mi := &file_game_proto_msgTypes[14]
+	mi := &file_game_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -854,7 +898,7 @@ func (x *HisBeginAck) String() string {
 func (*HisBeginAck) ProtoMessage() {}
 
 func (x *HisBeginAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[14]
+	mi := &file_game_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -867,7 +911,7 @@ func (x *HisBeginAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HisBeginAck.ProtoReflect.Descriptor instead.
 func (*HisBeginAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{14}
+	return file_game_proto_rawDescGZIP(), []int{15}
 }
 
 // 历史消息结束
@@ -879,7 +923,7 @@ type HisEndAck struct {
 
 func (x *HisEndAck) Reset() {
 	*x = HisEndAck{}
-	mi := &file_game_proto_msgTypes[15]
+	mi := &file_game_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -891,7 +935,7 @@ func (x *HisEndAck) String() string {
 func (*HisEndAck) ProtoMessage() {}
 
 func (x *HisEndAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[15]
+	mi := &file_game_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -904,7 +948,7 @@ func (x *HisEndAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HisEndAck.ProtoReflect.Descriptor instead.
 func (*HisEndAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{15}
+	return file_game_proto_rawDescGZIP(), []int{16}
 }
 
 var File_game_proto protoreflect.FileDescriptor
@@ -956,7 +1000,9 @@ const file_game_proto_rawDesc = "" +
 	"\vTableMsgReq\x12\x10\n" +
 	"\x03msg\x18\x01 \x01(\fR\x03msg\"\x1f\n" +
 	"\vTableMsgAck\x12\x10\n" +
-	"\x03msg\x18\x01 \x01(\fR\x03msg\"8\n" +
+	"\x03msg\x18\x01 \x01(\fR\x03msg\"!\n" +
+	"\vGameExitAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\"8\n" +
 	"\fGameReadyAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05ready\x18\x02 \x01(\bR\x05ready\"\xd5\x01\n" +
@@ -990,7 +1036,7 @@ func file_game_proto_rawDescGZIP() []byte {
 	return file_game_proto_rawDescData
 }
 
-var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_game_proto_goTypes = []any{
 	(*GameReq)(nil),               // 0: cproto.GameReq
 	(*GameAck)(nil),               // 1: cproto.GameAck
@@ -1001,22 +1047,23 @@ var file_game_proto_goTypes = []any{
 	(*TablePlayerAck)(nil),        // 6: cproto.TablePlayerAck
 	(*TableMsgReq)(nil),           // 7: cproto.TableMsgReq
 	(*TableMsgAck)(nil),           // 8: cproto.TableMsgAck
-	(*GameReadyAck)(nil),          // 9: cproto.GameReadyAck
-	(*GameDissolveAck)(nil),       // 10: cproto.GameDissolveAck
-	(*GameDissolveResultAck)(nil), // 11: cproto.GameDissolveResultAck
-	(*GameBeginAck)(nil),          // 12: cproto.GameBeginAck
-	(*GameOverAck)(nil),           // 13: cproto.GameOverAck
-	(*HisBeginAck)(nil),           // 14: cproto.HisBeginAck
-	(*HisEndAck)(nil),             // 15: cproto.HisEndAck
-	nil,                           // 16: cproto.EnterGameAck.FdpropertyEntry
-	nil,                           // 17: cproto.GameDissolveAck.AgreedEntry
-	(*anypb.Any)(nil),             // 18: google.protobuf.Any
+	(*GameExitAck)(nil),           // 9: cproto.GameExitAck
+	(*GameReadyAck)(nil),          // 10: cproto.GameReadyAck
+	(*GameDissolveAck)(nil),       // 11: cproto.GameDissolveAck
+	(*GameDissolveResultAck)(nil), // 12: cproto.GameDissolveResultAck
+	(*GameBeginAck)(nil),          // 13: cproto.GameBeginAck
+	(*GameOverAck)(nil),           // 14: cproto.GameOverAck
+	(*HisBeginAck)(nil),           // 15: cproto.HisBeginAck
+	(*HisEndAck)(nil),             // 16: cproto.HisEndAck
+	nil,                           // 17: cproto.EnterGameAck.FdpropertyEntry
+	nil,                           // 18: cproto.GameDissolveAck.AgreedEntry
+	(*anypb.Any)(nil),             // 19: google.protobuf.Any
 }
 var file_game_proto_depIdxs = []int32{
-	18, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
-	18, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
-	16, // 2: cproto.EnterGameAck.fdproperty:type_name -> cproto.EnterGameAck.FdpropertyEntry
-	17, // 3: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
+	19, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
+	19, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
+	17, // 2: cproto.EnterGameAck.fdproperty:type_name -> cproto.EnterGameAck.FdpropertyEntry
+	18, // 3: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
 	4,  // [4:4] is the sub-list for method output_type
 	4,  // [4:4] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
@@ -1035,7 +1082,7 @@ func file_game_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_proto_rawDesc), len(file_game_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

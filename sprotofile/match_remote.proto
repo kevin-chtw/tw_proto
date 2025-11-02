@@ -22,7 +22,9 @@ message NetStateReq {
 message GameResultReq {
   int32 tableid = 1;
   int32 cur_game_count = 2; // 当前游戏局数
-  repeated PlayerResult players = 3; // 玩家ID列表
+  string data = 3; // 游戏统计数据
+  string round_data = 4; // 游戏回合数据
+  repeated PlayerResult players = 5; // 玩家ID列表
 }
 
 message PlayerResult {

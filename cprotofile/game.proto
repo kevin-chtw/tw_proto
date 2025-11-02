@@ -61,6 +61,10 @@ message TableMsgAck {
   bytes msg = 1; // 消息内容
 }
 
+message GameExitAck {
+  int32 seat = 1; //座位号
+}
+
 message GameReadyAck {
   int32 seat = 1; // 座位号
   bool ready = 2; // 是否准备

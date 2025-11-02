@@ -51,7 +51,7 @@ struct TableStruct_game_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[18]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[19]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -86,6 +86,9 @@ extern GameDissolveReqDefaultTypeInternal _GameDissolveReq_default_instance_;
 class GameDissolveResultAck;
 struct GameDissolveResultAckDefaultTypeInternal;
 extern GameDissolveResultAckDefaultTypeInternal _GameDissolveResultAck_default_instance_;
+class GameExitAck;
+struct GameExitAckDefaultTypeInternal;
+extern GameExitAckDefaultTypeInternal _GameExitAck_default_instance_;
 class GameOverAck;
 struct GameOverAckDefaultTypeInternal;
 extern GameOverAckDefaultTypeInternal _GameOverAck_default_instance_;
@@ -124,6 +127,7 @@ template<> ::cproto::GameDissolveAck* Arena::CreateMaybeMessage<::cproto::GameDi
 template<> ::cproto::GameDissolveAck_AgreedEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::GameDissolveAck_AgreedEntry_DoNotUse>(Arena*);
 template<> ::cproto::GameDissolveReq* Arena::CreateMaybeMessage<::cproto::GameDissolveReq>(Arena*);
 template<> ::cproto::GameDissolveResultAck* Arena::CreateMaybeMessage<::cproto::GameDissolveResultAck>(Arena*);
+template<> ::cproto::GameExitAck* Arena::CreateMaybeMessage<::cproto::GameExitAck>(Arena*);
 template<> ::cproto::GameOverAck* Arena::CreateMaybeMessage<::cproto::GameOverAck>(Arena*);
 template<> ::cproto::GameReadyAck* Arena::CreateMaybeMessage<::cproto::GameReadyAck>(Arena*);
 template<> ::cproto::GameReadyReq* Arena::CreateMaybeMessage<::cproto::GameReadyReq>(Arena*);
@@ -1750,6 +1754,152 @@ class TableMsgAck final :
 };
 // -------------------------------------------------------------------
 
+class GameExitAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameExitAck) */ {
+ public:
+  inline GameExitAck() : GameExitAck(nullptr) {}
+  ~GameExitAck() override;
+  explicit constexpr GameExitAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GameExitAck(const GameExitAck& from);
+  GameExitAck(GameExitAck&& from) noexcept
+    : GameExitAck() {
+    *this = ::std::move(from);
+  }
+
+  inline GameExitAck& operator=(const GameExitAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GameExitAck& operator=(GameExitAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GameExitAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GameExitAck* internal_default_instance() {
+    return reinterpret_cast<const GameExitAck*>(
+               &_GameExitAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(GameExitAck& a, GameExitAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GameExitAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GameExitAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GameExitAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GameExitAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GameExitAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GameExitAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GameExitAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.GameExitAck";
+  }
+  protected:
+  explicit GameExitAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSeatFieldNumber = 1,
+  };
+  // int32 seat = 1;
+  void clear_seat();
+  int32_t seat() const;
+  void set_seat(int32_t value);
+  private:
+  int32_t _internal_seat() const;
+  void _internal_set_seat(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.GameExitAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t seat_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_game_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GameReadyAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GameReadyAck) */ {
  public:
@@ -1798,7 +1948,7 @@ class GameReadyAck final :
                &_GameReadyAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(GameReadyAck& a, GameReadyAck& b) {
     a.Swap(&b);
@@ -1978,7 +2128,7 @@ class GameDissolveAck final :
                &_GameDissolveAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(GameDissolveAck& a, GameDissolveAck& b) {
     a.Swap(&b);
@@ -2170,7 +2320,7 @@ class GameDissolveResultAck final :
                &_GameDissolveResultAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(GameDissolveResultAck& a, GameDissolveResultAck& b) {
     a.Swap(&b);
@@ -2316,7 +2466,7 @@ class GameBeginAck final :
                &_GameBeginAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(GameBeginAck& a, GameBeginAck& b) {
     a.Swap(&b);
@@ -2462,7 +2612,7 @@ class GameOverAck final :
                &_GameOverAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(GameOverAck& a, GameOverAck& b) {
     a.Swap(&b);
@@ -2631,7 +2781,7 @@ class HisBeginAck final :
                &_HisBeginAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(HisBeginAck& a, HisBeginAck& b) {
     a.Swap(&b);
@@ -2749,7 +2899,7 @@ class HisEndAck final :
                &_HisEndAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(HisEndAck& a, HisEndAck& b) {
     a.Swap(&b);
@@ -3876,6 +4026,30 @@ inline void TableMsgAck::set_allocated_msg(std::string* msg) {
 
 // -------------------------------------------------------------------
 
+// GameExitAck
+
+// int32 seat = 1;
+inline void GameExitAck::clear_seat() {
+  seat_ = 0;
+}
+inline int32_t GameExitAck::_internal_seat() const {
+  return seat_;
+}
+inline int32_t GameExitAck::seat() const {
+  // @@protoc_insertion_point(field_get:cproto.GameExitAck.seat)
+  return _internal_seat();
+}
+inline void GameExitAck::_internal_set_seat(int32_t value) {
+  
+  seat_ = value;
+}
+inline void GameExitAck::set_seat(int32_t value) {
+  _internal_set_seat(value);
+  // @@protoc_insertion_point(field_set:cproto.GameExitAck.seat)
+}
+
+// -------------------------------------------------------------------
+
 // GameReadyAck
 
 // int32 seat = 1;
@@ -4143,6 +4317,8 @@ GameOverAck::mutable_ready() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
