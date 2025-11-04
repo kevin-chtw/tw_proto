@@ -38,7 +38,11 @@ message MJRequestAck {
   int32 request_type = 2; // 动作类型
   int32 requestid = 3; // 请求ID
   int64 hu_multi = 4; // 胡牌倍数
-  repeated int32 chow_lpoints = 5; //吃听时用到，吃听最左的点数集合
+  map<int32,CallDatas> chow_lpoints = 5; //吃听,碰听时用到，吃听最左的点数集合, 碰听为碰的牌
+}
+
+message CallDatas {
+  map<int32,CallData> call_data = 5; // 打出的牌-听牌列表
 }
 
 message MJChowAck {
