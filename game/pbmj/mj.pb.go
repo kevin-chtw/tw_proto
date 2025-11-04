@@ -323,11 +323,11 @@ func (x *MJOpenDoorAck) GetTiles() []int32 {
 
 type MJRequestAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                         // //座位号
-	RequestType   int32                  `protobuf:"varint,2,opt,name=request_type,json=requestType,proto3" json:"request_type,omitempty"`        // 动作类型
-	Requestid     int32                  `protobuf:"varint,3,opt,name=requestid,proto3" json:"requestid,omitempty"`                               // 请求ID
-	HuMulti       int64                  `protobuf:"varint,4,opt,name=hu_multi,json=huMulti,proto3" json:"hu_multi,omitempty"`                    // 胡牌倍数
-	ChowLpoints   []int32                `protobuf:"varint,5,rep,packed,name=chow_lpoints,json=chowLpoints,proto3" json:"chow_lpoints,omitempty"` //吃听时用到，吃听最左的点数集合
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                             // //座位号
+	RequestType   int32                  `protobuf:"varint,2,opt,name=request_type,json=requestType,proto3" json:"request_type,omitempty"`                                            // 动作类型
+	Requestid     int32                  `protobuf:"varint,3,opt,name=requestid,proto3" json:"requestid,omitempty"`                                                                   // 请求ID
+	HuMulti       int64                  `protobuf:"varint,4,opt,name=hu_multi,json=huMulti,proto3" json:"hu_multi,omitempty"`                                                        // 胡牌倍数
+	Tings         map[int32]*CallDatas   `protobuf:"bytes,5,rep,name=tings,proto3" json:"tings,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` //吃听,碰听时用到，吃听最左的点数集合, 碰听为碰的牌
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -390,9 +390,53 @@ func (x *MJRequestAck) GetHuMulti() int64 {
 	return 0
 }
 
-func (x *MJRequestAck) GetChowLpoints() []int32 {
+func (x *MJRequestAck) GetTings() map[int32]*CallDatas {
 	if x != nil {
-		return x.ChowLpoints
+		return x.Tings
+	}
+	return nil
+}
+
+type CallDatas struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CallData      map[int32]*CallData    `protobuf:"bytes,5,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CallDatas) Reset() {
+	*x = CallDatas{}
+	mi := &file_mj_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CallDatas) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CallDatas) ProtoMessage() {}
+
+func (x *CallDatas) ProtoReflect() protoreflect.Message {
+	mi := &file_mj_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CallDatas.ProtoReflect.Descriptor instead.
+func (*CallDatas) Descriptor() ([]byte, []int) {
+	return file_mj_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CallDatas) GetCallData() map[int32]*CallData {
+	if x != nil {
+		return x.CallData
 	}
 	return nil
 }
@@ -410,7 +454,7 @@ type MJChowAck struct {
 
 func (x *MJChowAck) Reset() {
 	*x = MJChowAck{}
-	mi := &file_mj_proto_msgTypes[6]
+	mi := &file_mj_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -422,7 +466,7 @@ func (x *MJChowAck) String() string {
 func (*MJChowAck) ProtoMessage() {}
 
 func (x *MJChowAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[6]
+	mi := &file_mj_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -435,7 +479,7 @@ func (x *MJChowAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJChowAck.ProtoReflect.Descriptor instead.
 func (*MJChowAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{6}
+	return file_mj_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *MJChowAck) GetSeat() int32 {
@@ -485,7 +529,7 @@ type MJPonAck struct {
 
 func (x *MJPonAck) Reset() {
 	*x = MJPonAck{}
-	mi := &file_mj_proto_msgTypes[7]
+	mi := &file_mj_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -497,7 +541,7 @@ func (x *MJPonAck) String() string {
 func (*MJPonAck) ProtoMessage() {}
 
 func (x *MJPonAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[7]
+	mi := &file_mj_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -510,7 +554,7 @@ func (x *MJPonAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJPonAck.ProtoReflect.Descriptor instead.
 func (*MJPonAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{7}
+	return file_mj_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *MJPonAck) GetSeat() int32 {
@@ -553,7 +597,7 @@ type MJKonAck struct {
 
 func (x *MJKonAck) Reset() {
 	*x = MJKonAck{}
-	mi := &file_mj_proto_msgTypes[8]
+	mi := &file_mj_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -565,7 +609,7 @@ func (x *MJKonAck) String() string {
 func (*MJKonAck) ProtoMessage() {}
 
 func (x *MJKonAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[8]
+	mi := &file_mj_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -578,7 +622,7 @@ func (x *MJKonAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJKonAck.ProtoReflect.Descriptor instead.
 func (*MJKonAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{8}
+	return file_mj_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *MJKonAck) GetSeat() int32 {
@@ -620,7 +664,7 @@ type MJHuAck struct {
 
 func (x *MJHuAck) Reset() {
 	*x = MJHuAck{}
-	mi := &file_mj_proto_msgTypes[9]
+	mi := &file_mj_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -632,7 +676,7 @@ func (x *MJHuAck) String() string {
 func (*MJHuAck) ProtoMessage() {}
 
 func (x *MJHuAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[9]
+	mi := &file_mj_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -645,7 +689,7 @@ func (x *MJHuAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJHuAck.ProtoReflect.Descriptor instead.
 func (*MJHuAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{9}
+	return file_mj_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *MJHuAck) GetPaoSeat() int32 {
@@ -681,7 +725,7 @@ type MJHuData struct {
 
 func (x *MJHuData) Reset() {
 	*x = MJHuData{}
-	mi := &file_mj_proto_msgTypes[10]
+	mi := &file_mj_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -693,7 +737,7 @@ func (x *MJHuData) String() string {
 func (*MJHuData) ProtoMessage() {}
 
 func (x *MJHuData) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[10]
+	mi := &file_mj_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -706,7 +750,7 @@ func (x *MJHuData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJHuData.ProtoReflect.Descriptor instead.
 func (*MJHuData) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{10}
+	return file_mj_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *MJHuData) GetSeat() int32 {
@@ -749,7 +793,7 @@ type MJDrawAck struct {
 
 func (x *MJDrawAck) Reset() {
 	*x = MJDrawAck{}
-	mi := &file_mj_proto_msgTypes[11]
+	mi := &file_mj_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -761,7 +805,7 @@ func (x *MJDrawAck) String() string {
 func (*MJDrawAck) ProtoMessage() {}
 
 func (x *MJDrawAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[11]
+	mi := &file_mj_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -774,7 +818,7 @@ func (x *MJDrawAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJDrawAck.ProtoReflect.Descriptor instead.
 func (*MJDrawAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{11}
+	return file_mj_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *MJDrawAck) GetSeat() int32 {
@@ -815,7 +859,7 @@ type MJDiscardAck struct {
 
 func (x *MJDiscardAck) Reset() {
 	*x = MJDiscardAck{}
-	mi := &file_mj_proto_msgTypes[12]
+	mi := &file_mj_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -827,7 +871,7 @@ func (x *MJDiscardAck) String() string {
 func (*MJDiscardAck) ProtoMessage() {}
 
 func (x *MJDiscardAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[12]
+	mi := &file_mj_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -840,7 +884,7 @@ func (x *MJDiscardAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJDiscardAck.ProtoReflect.Descriptor instead.
 func (*MJDiscardAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{12}
+	return file_mj_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *MJDiscardAck) GetSeat() int32 {
@@ -868,7 +912,7 @@ type MJTingAck struct {
 
 func (x *MJTingAck) Reset() {
 	*x = MJTingAck{}
-	mi := &file_mj_proto_msgTypes[13]
+	mi := &file_mj_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -880,7 +924,7 @@ func (x *MJTingAck) String() string {
 func (*MJTingAck) ProtoMessage() {}
 
 func (x *MJTingAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[13]
+	mi := &file_mj_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -893,7 +937,7 @@ func (x *MJTingAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJTingAck.ProtoReflect.Descriptor instead.
 func (*MJTingAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{13}
+	return file_mj_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *MJTingAck) GetSeat() int32 {
@@ -930,7 +974,7 @@ type MJScoreChangeAck struct {
 
 func (x *MJScoreChangeAck) Reset() {
 	*x = MJScoreChangeAck{}
-	mi := &file_mj_proto_msgTypes[14]
+	mi := &file_mj_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -942,7 +986,7 @@ func (x *MJScoreChangeAck) String() string {
 func (*MJScoreChangeAck) ProtoMessage() {}
 
 func (x *MJScoreChangeAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[14]
+	mi := &file_mj_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -955,7 +999,7 @@ func (x *MJScoreChangeAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJScoreChangeAck.ProtoReflect.Descriptor instead.
 func (*MJScoreChangeAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{14}
+	return file_mj_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *MJScoreChangeAck) GetScoreReason() int32 {
@@ -1003,7 +1047,7 @@ type MJTrustAck struct {
 
 func (x *MJTrustAck) Reset() {
 	*x = MJTrustAck{}
-	mi := &file_mj_proto_msgTypes[15]
+	mi := &file_mj_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1015,7 +1059,7 @@ func (x *MJTrustAck) String() string {
 func (*MJTrustAck) ProtoMessage() {}
 
 func (x *MJTrustAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[15]
+	mi := &file_mj_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1028,7 +1072,7 @@ func (x *MJTrustAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJTrustAck.ProtoReflect.Descriptor instead.
 func (*MJTrustAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{15}
+	return file_mj_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *MJTrustAck) GetSeat() int32 {
@@ -1054,7 +1098,7 @@ type MJAnimationAck struct {
 
 func (x *MJAnimationAck) Reset() {
 	*x = MJAnimationAck{}
-	mi := &file_mj_proto_msgTypes[16]
+	mi := &file_mj_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1066,7 +1110,7 @@ func (x *MJAnimationAck) String() string {
 func (*MJAnimationAck) ProtoMessage() {}
 
 func (x *MJAnimationAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[16]
+	mi := &file_mj_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1079,7 +1123,7 @@ func (x *MJAnimationAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJAnimationAck.ProtoReflect.Descriptor instead.
 func (*MJAnimationAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{16}
+	return file_mj_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *MJAnimationAck) GetRequestid() int32 {
@@ -1099,7 +1143,7 @@ type MJResultAck struct {
 
 func (x *MJResultAck) Reset() {
 	*x = MJResultAck{}
-	mi := &file_mj_proto_msgTypes[17]
+	mi := &file_mj_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1111,7 +1155,7 @@ func (x *MJResultAck) String() string {
 func (*MJResultAck) ProtoMessage() {}
 
 func (x *MJResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[17]
+	mi := &file_mj_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1124,7 +1168,7 @@ func (x *MJResultAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJResultAck.ProtoReflect.Descriptor instead.
 func (*MJResultAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{17}
+	return file_mj_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *MJResultAck) GetLiuju() bool {
@@ -1153,7 +1197,7 @@ type MJPlayerResult struct {
 
 func (x *MJPlayerResult) Reset() {
 	*x = MJPlayerResult{}
-	mi := &file_mj_proto_msgTypes[18]
+	mi := &file_mj_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1165,7 +1209,7 @@ func (x *MJPlayerResult) String() string {
 func (*MJPlayerResult) ProtoMessage() {}
 
 func (x *MJPlayerResult) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[18]
+	mi := &file_mj_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1178,7 +1222,7 @@ func (x *MJPlayerResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJPlayerResult.ProtoReflect.Descriptor instead.
 func (*MJPlayerResult) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{18}
+	return file_mj_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *MJPlayerResult) GetSeat() int32 {
@@ -1219,7 +1263,7 @@ type MJCallDataAck struct {
 
 func (x *MJCallDataAck) Reset() {
 	*x = MJCallDataAck{}
-	mi := &file_mj_proto_msgTypes[19]
+	mi := &file_mj_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1231,7 +1275,7 @@ func (x *MJCallDataAck) String() string {
 func (*MJCallDataAck) ProtoMessage() {}
 
 func (x *MJCallDataAck) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[19]
+	mi := &file_mj_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1244,7 +1288,7 @@ func (x *MJCallDataAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MJCallDataAck.ProtoReflect.Descriptor instead.
 func (*MJCallDataAck) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{19}
+	return file_mj_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *MJCallDataAck) GetSeat() int32 {
@@ -1270,7 +1314,7 @@ type CallData struct {
 
 func (x *CallData) Reset() {
 	*x = CallData{}
-	mi := &file_mj_proto_msgTypes[20]
+	mi := &file_mj_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1282,7 +1326,7 @@ func (x *CallData) String() string {
 func (*CallData) ProtoMessage() {}
 
 func (x *CallData) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[20]
+	mi := &file_mj_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1295,7 +1339,7 @@ func (x *CallData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallData.ProtoReflect.Descriptor instead.
 func (*CallData) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{20}
+	return file_mj_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CallData) GetCallTiles() map[int32]*CallInfo {
@@ -1315,7 +1359,7 @@ type CallInfo struct {
 
 func (x *CallInfo) Reset() {
 	*x = CallInfo{}
-	mi := &file_mj_proto_msgTypes[21]
+	mi := &file_mj_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1327,7 +1371,7 @@ func (x *CallInfo) String() string {
 func (*CallInfo) ProtoMessage() {}
 
 func (x *CallInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[21]
+	mi := &file_mj_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1340,7 +1384,7 @@ func (x *CallInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallInfo.ProtoReflect.Descriptor instead.
 func (*CallInfo) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{21}
+	return file_mj_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CallInfo) GetMulti() int64 {
@@ -1383,13 +1427,22 @@ const file_mj_proto_rawDesc = "" +
 	"\bproperty\x18\x04 \x01(\tR\bproperty\"9\n" +
 	"\rMJOpenDoorAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
-	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"\xa1\x01\n" +
+	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"\xfe\x01\n" +
 	"\fMJRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
 	"\trequestid\x18\x03 \x01(\x05R\trequestid\x12\x19\n" +
-	"\bhu_multi\x18\x04 \x01(\x03R\ahuMulti\x12!\n" +
-	"\fchow_lpoints\x18\x05 \x03(\x05R\vchowLpoints\"\xed\x01\n" +
+	"\bhu_multi\x18\x04 \x01(\x03R\ahuMulti\x123\n" +
+	"\x05tings\x18\x05 \x03(\v2\x1d.pbmj.MJRequestAck.TingsEntryR\x05tings\x1aI\n" +
+	"\n" +
+	"TingsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12%\n" +
+	"\x05value\x18\x02 \x01(\v2\x0f.pbmj.CallDatasR\x05value:\x028\x01\"\x94\x01\n" +
+	"\tCallDatas\x12:\n" +
+	"\tcall_data\x18\x05 \x03(\v2\x1d.pbmj.CallDatas.CallDataEntryR\bcallData\x1aK\n" +
+	"\rCallDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\xed\x01\n" +
 	"\tMJChowAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
@@ -1484,7 +1537,7 @@ func file_mj_proto_rawDescGZIP() []byte {
 	return file_mj_proto_rawDescData
 }
 
-var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_mj_proto_goTypes = []any{
 	(*MJRequestReq)(nil),     // 0: pbmj.MJRequestReq
 	(*MJTrustReq)(nil),       // 1: pbmj.MJTrustReq
@@ -1492,47 +1545,54 @@ var file_mj_proto_goTypes = []any{
 	(*MJGameStartAck)(nil),   // 3: pbmj.MJGameStartAck
 	(*MJOpenDoorAck)(nil),    // 4: pbmj.MJOpenDoorAck
 	(*MJRequestAck)(nil),     // 5: pbmj.MJRequestAck
-	(*MJChowAck)(nil),        // 6: pbmj.MJChowAck
-	(*MJPonAck)(nil),         // 7: pbmj.MJPonAck
-	(*MJKonAck)(nil),         // 8: pbmj.MJKonAck
-	(*MJHuAck)(nil),          // 9: pbmj.MJHuAck
-	(*MJHuData)(nil),         // 10: pbmj.MJHuData
-	(*MJDrawAck)(nil),        // 11: pbmj.MJDrawAck
-	(*MJDiscardAck)(nil),     // 12: pbmj.MJDiscardAck
-	(*MJTingAck)(nil),        // 13: pbmj.MJTingAck
-	(*MJScoreChangeAck)(nil), // 14: pbmj.MJScoreChangeAck
-	(*MJTrustAck)(nil),       // 15: pbmj.MJTrustAck
-	(*MJAnimationAck)(nil),   // 16: pbmj.MJAnimationAck
-	(*MJResultAck)(nil),      // 17: pbmj.MJResultAck
-	(*MJPlayerResult)(nil),   // 18: pbmj.MJPlayerResult
-	(*MJCallDataAck)(nil),    // 19: pbmj.MJCallDataAck
-	(*CallData)(nil),         // 20: pbmj.CallData
-	(*CallInfo)(nil),         // 21: pbmj.CallInfo
-	nil,                      // 22: pbmj.MJChowAck.CallDataEntry
-	nil,                      // 23: pbmj.MJPonAck.CallDataEntry
-	nil,                      // 24: pbmj.MJDrawAck.CallDataEntry
-	nil,                      // 25: pbmj.MJCallDataAck.CallDataEntry
-	nil,                      // 26: pbmj.CallData.CallTilesEntry
+	(*CallDatas)(nil),        // 6: pbmj.CallDatas
+	(*MJChowAck)(nil),        // 7: pbmj.MJChowAck
+	(*MJPonAck)(nil),         // 8: pbmj.MJPonAck
+	(*MJKonAck)(nil),         // 9: pbmj.MJKonAck
+	(*MJHuAck)(nil),          // 10: pbmj.MJHuAck
+	(*MJHuData)(nil),         // 11: pbmj.MJHuData
+	(*MJDrawAck)(nil),        // 12: pbmj.MJDrawAck
+	(*MJDiscardAck)(nil),     // 13: pbmj.MJDiscardAck
+	(*MJTingAck)(nil),        // 14: pbmj.MJTingAck
+	(*MJScoreChangeAck)(nil), // 15: pbmj.MJScoreChangeAck
+	(*MJTrustAck)(nil),       // 16: pbmj.MJTrustAck
+	(*MJAnimationAck)(nil),   // 17: pbmj.MJAnimationAck
+	(*MJResultAck)(nil),      // 18: pbmj.MJResultAck
+	(*MJPlayerResult)(nil),   // 19: pbmj.MJPlayerResult
+	(*MJCallDataAck)(nil),    // 20: pbmj.MJCallDataAck
+	(*CallData)(nil),         // 21: pbmj.CallData
+	(*CallInfo)(nil),         // 22: pbmj.CallInfo
+	nil,                      // 23: pbmj.MJRequestAck.TingsEntry
+	nil,                      // 24: pbmj.CallDatas.CallDataEntry
+	nil,                      // 25: pbmj.MJChowAck.CallDataEntry
+	nil,                      // 26: pbmj.MJPonAck.CallDataEntry
+	nil,                      // 27: pbmj.MJDrawAck.CallDataEntry
+	nil,                      // 28: pbmj.MJCallDataAck.CallDataEntry
+	nil,                      // 29: pbmj.CallData.CallTilesEntry
 }
 var file_mj_proto_depIdxs = []int32{
-	22, // 0: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
-	23, // 1: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
-	10, // 2: pbmj.MJHuAck.hu_data:type_name -> pbmj.MJHuData
-	24, // 3: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
-	10, // 4: pbmj.MJScoreChangeAck.hu_data:type_name -> pbmj.MJHuData
-	18, // 5: pbmj.MJResultAck.player_results:type_name -> pbmj.MJPlayerResult
-	25, // 6: pbmj.MJCallDataAck.call_data:type_name -> pbmj.MJCallDataAck.CallDataEntry
-	26, // 7: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
-	20, // 8: pbmj.MJChowAck.CallDataEntry.value:type_name -> pbmj.CallData
-	20, // 9: pbmj.MJPonAck.CallDataEntry.value:type_name -> pbmj.CallData
-	20, // 10: pbmj.MJDrawAck.CallDataEntry.value:type_name -> pbmj.CallData
-	20, // 11: pbmj.MJCallDataAck.CallDataEntry.value:type_name -> pbmj.CallData
-	21, // 12: pbmj.CallData.CallTilesEntry.value:type_name -> pbmj.CallInfo
-	13, // [13:13] is the sub-list for method output_type
-	13, // [13:13] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	23, // 0: pbmj.MJRequestAck.tings:type_name -> pbmj.MJRequestAck.TingsEntry
+	24, // 1: pbmj.CallDatas.call_data:type_name -> pbmj.CallDatas.CallDataEntry
+	25, // 2: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
+	26, // 3: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
+	11, // 4: pbmj.MJHuAck.hu_data:type_name -> pbmj.MJHuData
+	27, // 5: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
+	11, // 6: pbmj.MJScoreChangeAck.hu_data:type_name -> pbmj.MJHuData
+	19, // 7: pbmj.MJResultAck.player_results:type_name -> pbmj.MJPlayerResult
+	28, // 8: pbmj.MJCallDataAck.call_data:type_name -> pbmj.MJCallDataAck.CallDataEntry
+	29, // 9: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
+	6,  // 10: pbmj.MJRequestAck.TingsEntry.value:type_name -> pbmj.CallDatas
+	21, // 11: pbmj.CallDatas.CallDataEntry.value:type_name -> pbmj.CallData
+	21, // 12: pbmj.MJChowAck.CallDataEntry.value:type_name -> pbmj.CallData
+	21, // 13: pbmj.MJPonAck.CallDataEntry.value:type_name -> pbmj.CallData
+	21, // 14: pbmj.MJDrawAck.CallDataEntry.value:type_name -> pbmj.CallData
+	21, // 15: pbmj.MJCallDataAck.CallDataEntry.value:type_name -> pbmj.CallData
+	22, // 16: pbmj.CallData.CallTilesEntry.value:type_name -> pbmj.CallInfo
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_mj_proto_init() }
@@ -1546,7 +1606,7 @@ func file_mj_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mj_proto_rawDesc), len(file_mj_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   27,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
