@@ -144,10 +144,11 @@ func (x *MatchAck) GetAck() *anypb.Any {
 
 type CreateRoomReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	GameCount     int32                  `protobuf:"varint,1,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 局数
-	Desn          string                 `protobuf:"bytes,2,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        //配置描述
-	PayType       int32                  `protobuf:"varint,3,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty"`                                                                  //付费类型 // 0:队长支付，1：AA支付
-	Properties    map[string]int32       `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 配置信息
+	GameCount     int32                  `protobuf:"varint,1,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                                                 // 局数
+	Desn          string                 `protobuf:"bytes,2,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                                             //配置描述
+	PayType       int32                  `protobuf:"varint,3,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty"`                                                                                       //付费类型 // 0:队长支付，1：AA支付
+	Properties    map[string]int32       `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`                      // 配置信息
+	MatchConfig   map[string]int32       `protobuf:"bytes,5,rep,name=match_config,json=matchConfig,proto3" json:"match_config,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 比赛配置信息 如人数，自动坐下，自动准备等
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -206,6 +207,13 @@ func (x *CreateRoomReq) GetPayType() int32 {
 func (x *CreateRoomReq) GetProperties() map[string]int32 {
 	if x != nil {
 		return x.Properties
+	}
+	return nil
+}
+
+func (x *CreateRoomReq) GetMatchConfig() map[string]int32 {
+	if x != nil {
+		return x.MatchConfig
 	}
 	return nil
 }
@@ -952,7 +960,7 @@ const file_match_proto_rawDesc = "" +
 	"\bMatchAck\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12&\n" +
-	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xe3\x01\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xee\x02\n" +
 	"\rCreateRoomReq\x12\x1d\n" +
 	"\n" +
 	"game_count\x18\x01 \x01(\x05R\tgameCount\x12\x12\n" +
@@ -960,8 +968,12 @@ const file_match_proto_rawDesc = "" +
 	"\bpay_type\x18\x03 \x01(\x05R\apayType\x12E\n" +
 	"\n" +
 	"properties\x18\x04 \x03(\v2%.cproto.CreateRoomReq.PropertiesEntryR\n" +
-	"properties\x1a=\n" +
+	"properties\x12I\n" +
+	"\fmatch_config\x18\x05 \x03(\v2&.cproto.CreateRoomReq.MatchConfigEntryR\vmatchConfig\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\x1a>\n" +
+	"\x10MatchConfigEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\")\n" +
 	"\rCancelRoomReq\x12\x18\n" +
@@ -1031,7 +1043,7 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_match_proto_goTypes = []any{
 	(*MatchReq)(nil),         // 0: cproto.MatchReq
 	(*MatchAck)(nil),         // 1: cproto.MatchAck
@@ -1053,25 +1065,27 @@ var file_match_proto_goTypes = []any{
 	(*FDResultAck)(nil),      // 17: cproto.FDResultAck
 	(*FDRoundResultAck)(nil), // 18: cproto.FDRoundResultAck
 	nil,                      // 19: cproto.CreateRoomReq.PropertiesEntry
-	nil,                      // 20: cproto.FDResultAck.ScoresEntry
-	nil,                      // 21: cproto.FDResultAck.PlayerDataEntry
-	nil,                      // 22: cproto.FDRoundResultAck.ScoresEntry
-	nil,                      // 23: cproto.FDRoundResultAck.PlayerDataEntry
-	(*anypb.Any)(nil),        // 24: google.protobuf.Any
+	nil,                      // 20: cproto.CreateRoomReq.MatchConfigEntry
+	nil,                      // 21: cproto.FDResultAck.ScoresEntry
+	nil,                      // 22: cproto.FDResultAck.PlayerDataEntry
+	nil,                      // 23: cproto.FDRoundResultAck.ScoresEntry
+	nil,                      // 24: cproto.FDRoundResultAck.PlayerDataEntry
+	(*anypb.Any)(nil),        // 25: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	24, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	24, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	25, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	25, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
 	19, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
-	20, // 3: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
-	21, // 4: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
-	22, // 5: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
-	23, // 6: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
-	7,  // [7:7] is the sub-list for method output_type
-	7,  // [7:7] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	20, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
+	21, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
+	22, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
+	23, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
+	24, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
+	8,  // [8:8] is the sub-list for method output_type
+	8,  // [8:8] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
@@ -1085,7 +1099,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   24,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -51,7 +51,7 @@ struct TableStruct_match_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[24]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[25]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -74,6 +74,9 @@ extern ContinueReqDefaultTypeInternal _ContinueReq_default_instance_;
 class CreateRoomReq;
 struct CreateRoomReqDefaultTypeInternal;
 extern CreateRoomReqDefaultTypeInternal _CreateRoomReq_default_instance_;
+class CreateRoomReq_MatchConfigEntry_DoNotUse;
+struct CreateRoomReq_MatchConfigEntry_DoNotUseDefaultTypeInternal;
+extern CreateRoomReq_MatchConfigEntry_DoNotUseDefaultTypeInternal _CreateRoomReq_MatchConfigEntry_DoNotUse_default_instance_;
 class CreateRoomReq_PropertiesEntry_DoNotUse;
 struct CreateRoomReq_PropertiesEntry_DoNotUseDefaultTypeInternal;
 extern CreateRoomReq_PropertiesEntry_DoNotUseDefaultTypeInternal _CreateRoomReq_PropertiesEntry_DoNotUse_default_instance_;
@@ -138,6 +141,7 @@ template<> ::cproto::CancelRoomReq* Arena::CreateMaybeMessage<::cproto::CancelRo
 template<> ::cproto::ContinueAck* Arena::CreateMaybeMessage<::cproto::ContinueAck>(Arena*);
 template<> ::cproto::ContinueReq* Arena::CreateMaybeMessage<::cproto::ContinueReq>(Arena*);
 template<> ::cproto::CreateRoomReq* Arena::CreateMaybeMessage<::cproto::CreateRoomReq>(Arena*);
+template<> ::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse>(Arena*);
 template<> ::cproto::CreateRoomReq_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::CreateRoomReq_PropertiesEntry_DoNotUse>(Arena*);
 template<> ::cproto::ExitMatchAck* Arena::CreateMaybeMessage<::cproto::ExitMatchAck>(Arena*);
 template<> ::cproto::ExitMatchReq* Arena::CreateMaybeMessage<::cproto::ExitMatchReq>(Arena*);
@@ -551,6 +555,31 @@ public:
 
 // -------------------------------------------------------------------
 
+class CreateRoomReq_MatchConfigEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<CreateRoomReq_MatchConfigEntry_DoNotUse, 
+    std::string, int32_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<CreateRoomReq_MatchConfigEntry_DoNotUse, 
+    std::string, int32_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> SuperType;
+  CreateRoomReq_MatchConfigEntry_DoNotUse();
+  explicit constexpr CreateRoomReq_MatchConfigEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit CreateRoomReq_MatchConfigEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const CreateRoomReq_MatchConfigEntry_DoNotUse& other);
+  static const CreateRoomReq_MatchConfigEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const CreateRoomReq_MatchConfigEntry_DoNotUse*>(&_CreateRoomReq_MatchConfigEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "cproto.CreateRoomReq.MatchConfigEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
 class CreateRoomReq final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.CreateRoomReq) */ {
  public:
@@ -599,7 +628,7 @@ class CreateRoomReq final :
                &_CreateRoomReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(CreateRoomReq& a, CreateRoomReq& b) {
     a.Swap(&b);
@@ -675,6 +704,7 @@ class CreateRoomReq final :
 
   enum : int {
     kPropertiesFieldNumber = 4,
+    kMatchConfigFieldNumber = 5,
     kDesnFieldNumber = 2,
     kGameCountFieldNumber = 1,
     kPayTypeFieldNumber = 3,
@@ -695,6 +725,23 @@ class CreateRoomReq final :
       properties() const;
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
       mutable_properties();
+
+  // map<string, int32> match_config = 5;
+  int match_config_size() const;
+  private:
+  int _internal_match_config_size() const;
+  public:
+  void clear_match_config();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
+      _internal_match_config() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
+      _internal_mutable_match_config();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
+      match_config() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
+      mutable_match_config();
 
   // string desn = 2;
   void clear_desn();
@@ -740,6 +787,11 @@ class CreateRoomReq final :
       std::string, int32_t,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> properties_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      CreateRoomReq_MatchConfigEntry_DoNotUse,
+      std::string, int32_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32> match_config_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desn_;
   int32_t game_count_;
   int32_t pay_type_;
@@ -796,7 +848,7 @@ class CancelRoomReq final :
                &_CancelRoomReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(CancelRoomReq& a, CancelRoomReq& b) {
     a.Swap(&b);
@@ -942,7 +994,7 @@ class JoinRoomReq final :
                &_JoinRoomReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(JoinRoomReq& a, JoinRoomReq& b) {
     a.Swap(&b);
@@ -1087,7 +1139,7 @@ class SignupReq final :
                &_SignupReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(SignupReq& a, SignupReq& b) {
     a.Swap(&b);
@@ -1205,7 +1257,7 @@ class SignoutReq final :
                &_SignoutReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(SignoutReq& a, SignoutReq& b) {
     a.Swap(&b);
@@ -1323,7 +1375,7 @@ class ContinueReq final :
                &_ContinueReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(ContinueReq& a, ContinueReq& b) {
     a.Swap(&b);
@@ -1441,7 +1493,7 @@ class ExitMatchReq final :
                &_ExitMatchReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(ExitMatchReq& a, ExitMatchReq& b) {
     a.Swap(&b);
@@ -1559,7 +1611,7 @@ class FDResultReq final :
                &_FDResultReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(FDResultReq& a, FDResultReq& b) {
     a.Swap(&b);
@@ -1678,7 +1730,7 @@ class CancelRoomAck final :
                &_CancelRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(CancelRoomAck& a, CancelRoomAck& b) {
     a.Swap(&b);
@@ -1824,7 +1876,7 @@ class StartClientAck final :
                &_StartClientAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(StartClientAck& a, StartClientAck& b) {
     a.Swap(&b);
@@ -2028,7 +2080,7 @@ class SignupAck final :
                &_SignupAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(SignupAck& a, SignupAck& b) {
     a.Swap(&b);
@@ -2146,7 +2198,7 @@ class SignoutAck final :
                &_SignoutAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(SignoutAck& a, SignoutAck& b) {
     a.Swap(&b);
@@ -2264,7 +2316,7 @@ class ContinueAck final :
                &_ContinueAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(ContinueAck& a, ContinueAck& b) {
     a.Swap(&b);
@@ -2382,7 +2434,7 @@ class RestAck final :
                &_RestAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(RestAck& a, RestAck& b) {
     a.Swap(&b);
@@ -2500,7 +2552,7 @@ class ExitMatchAck final :
                &_ExitMatchAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(ExitMatchAck& a, ExitMatchAck& b) {
     a.Swap(&b);
@@ -2671,7 +2723,7 @@ class FDResultAck final :
                &_FDResultAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   friend void swap(FDResultAck& a, FDResultAck& b) {
     a.Swap(&b);
@@ -2985,7 +3037,7 @@ class FDRoundResultAck final :
                &_FDRoundResultAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    24;
 
   friend void swap(FDRoundResultAck& a, FDRoundResultAck& b) {
     a.Swap(&b);
@@ -3477,6 +3529,8 @@ inline void MatchAck::set_allocated_ack(::PROTOBUF_NAMESPACE_ID::Any* ack) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // CreateRoomReq
 
 // int32 game_count = 1;
@@ -3597,6 +3651,35 @@ inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
 CreateRoomReq::mutable_properties() {
   // @@protoc_insertion_point(field_mutable_map:cproto.CreateRoomReq.properties)
   return _internal_mutable_properties();
+}
+
+// map<string, int32> match_config = 5;
+inline int CreateRoomReq::_internal_match_config_size() const {
+  return match_config_.size();
+}
+inline int CreateRoomReq::match_config_size() const {
+  return _internal_match_config_size();
+}
+inline void CreateRoomReq::clear_match_config() {
+  match_config_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
+CreateRoomReq::_internal_match_config() const {
+  return match_config_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >&
+CreateRoomReq::match_config() const {
+  // @@protoc_insertion_point(field_map:cproto.CreateRoomReq.match_config)
+  return _internal_match_config();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
+CreateRoomReq::_internal_mutable_match_config() {
+  return match_config_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >*
+CreateRoomReq::mutable_match_config() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.CreateRoomReq.match_config)
+  return _internal_mutable_match_config();
 }
 
 // -------------------------------------------------------------------
@@ -4331,6 +4414,8 @@ inline void FDRoundResultAck::set_allocated_round_data(std::string* round_data) 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

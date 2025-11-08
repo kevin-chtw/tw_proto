@@ -56,9 +56,21 @@ struct CreateRoomReq_PropertiesEntry_DoNotUseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CreateRoomReq_PropertiesEntry_DoNotUseDefaultTypeInternal _CreateRoomReq_PropertiesEntry_DoNotUse_default_instance_;
+constexpr CreateRoomReq_MatchConfigEntry_DoNotUse::CreateRoomReq_MatchConfigEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct CreateRoomReq_MatchConfigEntry_DoNotUseDefaultTypeInternal {
+  constexpr CreateRoomReq_MatchConfigEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~CreateRoomReq_MatchConfigEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    CreateRoomReq_MatchConfigEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CreateRoomReq_MatchConfigEntry_DoNotUseDefaultTypeInternal _CreateRoomReq_MatchConfigEntry_DoNotUse_default_instance_;
 constexpr CreateRoomReq::CreateRoomReq(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : properties_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
+  , match_config_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
   , desn_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , game_count_(0)
   , pay_type_(0){}
@@ -311,7 +323,7 @@ struct FDRoundResultAckDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT FDRoundResultAckDefaultTypeInternal _FDRoundResultAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_match_2eproto[24];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_match_2eproto[25];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_match_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_match_2eproto = nullptr;
 
@@ -344,6 +356,16 @@ const uint32_t TableStruct_match_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq_PropertiesEntry_DoNotUse, value_),
   0,
   1,
+  PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse, value_),
+  0,
+  1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -354,6 +376,7 @@ const uint32_t TableStruct_match_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq, desn_),
   PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq, pay_type_),
   PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq, properties_),
+  PROTOBUF_FIELD_OFFSET(::cproto::CreateRoomReq, match_config_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::CancelRoomReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -514,33 +537,35 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, -1, sizeof(::cproto::MatchReq)},
   { 9, -1, -1, sizeof(::cproto::MatchAck)},
   { 18, 26, -1, sizeof(::cproto::CreateRoomReq_PropertiesEntry_DoNotUse)},
-  { 28, -1, -1, sizeof(::cproto::CreateRoomReq)},
-  { 38, -1, -1, sizeof(::cproto::CancelRoomReq)},
-  { 45, -1, -1, sizeof(::cproto::JoinRoomReq)},
-  { 52, -1, -1, sizeof(::cproto::SignupReq)},
-  { 58, -1, -1, sizeof(::cproto::SignoutReq)},
-  { 64, -1, -1, sizeof(::cproto::ContinueReq)},
-  { 70, -1, -1, sizeof(::cproto::ExitMatchReq)},
-  { 76, -1, -1, sizeof(::cproto::FDResultReq)},
-  { 82, -1, -1, sizeof(::cproto::CancelRoomAck)},
-  { 89, -1, -1, sizeof(::cproto::StartClientAck)},
-  { 100, -1, -1, sizeof(::cproto::SignupAck)},
-  { 106, -1, -1, sizeof(::cproto::SignoutAck)},
-  { 112, -1, -1, sizeof(::cproto::ContinueAck)},
-  { 118, -1, -1, sizeof(::cproto::RestAck)},
-  { 124, -1, -1, sizeof(::cproto::ExitMatchAck)},
-  { 130, 138, -1, sizeof(::cproto::FDResultAck_ScoresEntry_DoNotUse)},
-  { 140, 148, -1, sizeof(::cproto::FDResultAck_PlayerDataEntry_DoNotUse)},
-  { 150, -1, -1, sizeof(::cproto::FDResultAck)},
-  { 163, 171, -1, sizeof(::cproto::FDRoundResultAck_ScoresEntry_DoNotUse)},
-  { 173, 181, -1, sizeof(::cproto::FDRoundResultAck_PlayerDataEntry_DoNotUse)},
-  { 183, -1, -1, sizeof(::cproto::FDRoundResultAck)},
+  { 28, 36, -1, sizeof(::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse)},
+  { 38, -1, -1, sizeof(::cproto::CreateRoomReq)},
+  { 49, -1, -1, sizeof(::cproto::CancelRoomReq)},
+  { 56, -1, -1, sizeof(::cproto::JoinRoomReq)},
+  { 63, -1, -1, sizeof(::cproto::SignupReq)},
+  { 69, -1, -1, sizeof(::cproto::SignoutReq)},
+  { 75, -1, -1, sizeof(::cproto::ContinueReq)},
+  { 81, -1, -1, sizeof(::cproto::ExitMatchReq)},
+  { 87, -1, -1, sizeof(::cproto::FDResultReq)},
+  { 93, -1, -1, sizeof(::cproto::CancelRoomAck)},
+  { 100, -1, -1, sizeof(::cproto::StartClientAck)},
+  { 111, -1, -1, sizeof(::cproto::SignupAck)},
+  { 117, -1, -1, sizeof(::cproto::SignoutAck)},
+  { 123, -1, -1, sizeof(::cproto::ContinueAck)},
+  { 129, -1, -1, sizeof(::cproto::RestAck)},
+  { 135, -1, -1, sizeof(::cproto::ExitMatchAck)},
+  { 141, 149, -1, sizeof(::cproto::FDResultAck_ScoresEntry_DoNotUse)},
+  { 151, 159, -1, sizeof(::cproto::FDResultAck_PlayerDataEntry_DoNotUse)},
+  { 161, -1, -1, sizeof(::cproto::FDResultAck)},
+  { 174, 182, -1, sizeof(::cproto::FDRoundResultAck_ScoresEntry_DoNotUse)},
+  { 184, 192, -1, sizeof(::cproto::FDRoundResultAck_PlayerDataEntry_DoNotUse)},
+  { 194, -1, -1, sizeof(::cproto::FDRoundResultAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MatchReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MatchAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_CreateRoomReq_PropertiesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_CreateRoomReq_MatchConfigEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_CreateRoomReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_CancelRoomReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_JoinRoomReq_default_instance_),
@@ -570,43 +595,46 @@ const char descriptor_table_protodef_match_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "\n\007matchid\030\002 \001(\005\022!\n\003req\030\003 \001(\0132\024.google.pr"
   "otobuf.Any\"P\n\010MatchAck\022\020\n\010serverid\030\001 \001(\t"
   "\022\017\n\007matchid\030\002 \001(\005\022!\n\003ack\030\003 \001(\0132\024.google."
-  "protobuf.Any\"\261\001\n\rCreateRoomReq\022\022\n\ngame_c"
+  "protobuf.Any\"\243\002\n\rCreateRoomReq\022\022\n\ngame_c"
   "ount\030\001 \001(\005\022\014\n\004desn\030\002 \001(\t\022\020\n\010pay_type\030\003 \001"
   "(\005\0229\n\nproperties\030\004 \003(\0132%.cproto.CreateRo"
-  "omReq.PropertiesEntry\0321\n\017PropertiesEntry"
-  "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\" \n\rCanc"
-  "elRoomReq\022\017\n\007tableid\030\001 \001(\005\"\036\n\013JoinRoomRe"
-  "q\022\017\n\007tableid\030\001 \001(\005\"\013\n\tSignupReq\"\014\n\nSigno"
-  "utReq\"\r\n\013ContinueReq\"\016\n\014ExitMatchReq\"\r\n\013"
-  "FDResultReq\" \n\rCancelRoomAck\022\017\n\007tableid\030"
-  "\001 \001(\005\"n\n\016StartClientAck\022\022\n\nmatch_type\030\001 "
-  "\001(\t\022\021\n\tgame_type\030\002 \001(\t\022\021\n\tserver_id\030\003 \001("
-  "\t\022\020\n\010match_id\030\004 \001(\005\022\020\n\010table_id\030\005 \001(\005\"\013\n"
-  "\tSignupAck\"\014\n\nSignoutAck\"\r\n\013ContinueAck\""
-  "\t\n\007RestAck\"\016\n\014ExitMatchAck\"\257\002\n\013FDResultA"
-  "ck\022\017\n\007tableid\030\001 \001(\005\022\022\n\ngame_count\030\002 \001(\005\022"
-  "\020\n\010owner_id\030\003 \001(\t\022\014\n\004desn\030\004 \001(\t\022/\n\006score"
-  "s\030\005 \003(\0132\037.cproto.FDResultAck.ScoresEntry"
-  "\0228\n\013player_data\030\006 \003(\0132#.cproto.FDResultA"
-  "ck.PlayerDataEntry\022\016\n\006rounds\030\007 \003(\t\032-\n\013Sc"
-  "oresEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028"
-  "\001\0321\n\017PlayerDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val"
-  "ue\030\002 \001(\t:\0028\001\"\225\002\n\020FDRoundResultAck\022\026\n\016cur"
-  "_game_count\030\001 \001(\005\0224\n\006scores\030\005 \003(\0132$.cpro"
-  "to.FDRoundResultAck.ScoresEntry\022=\n\013playe"
-  "r_data\030\006 \003(\0132(.cproto.FDRoundResultAck.P"
-  "layerDataEntry\022\022\n\nround_data\030\004 \001(\t\032-\n\013Sc"
-  "oresEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028"
-  "\001\0321\n\017PlayerDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val"
-  "ue\030\002 \001(\t:\0028\001B\013Z\t../cprotob\006proto3"
+  "omReq.PropertiesEntry\022<\n\014match_config\030\005 "
+  "\003(\0132&.cproto.CreateRoomReq.MatchConfigEn"
+  "try\0321\n\017PropertiesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
+  "alue\030\002 \001(\005:\0028\001\0322\n\020MatchConfigEntry\022\013\n\003ke"
+  "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\" \n\rCancelRoom"
+  "Req\022\017\n\007tableid\030\001 \001(\005\"\036\n\013JoinRoomReq\022\017\n\007t"
+  "ableid\030\001 \001(\005\"\013\n\tSignupReq\"\014\n\nSignoutReq\""
+  "\r\n\013ContinueReq\"\016\n\014ExitMatchReq\"\r\n\013FDResu"
+  "ltReq\" \n\rCancelRoomAck\022\017\n\007tableid\030\001 \001(\005\""
+  "n\n\016StartClientAck\022\022\n\nmatch_type\030\001 \001(\t\022\021\n"
+  "\tgame_type\030\002 \001(\t\022\021\n\tserver_id\030\003 \001(\t\022\020\n\010m"
+  "atch_id\030\004 \001(\005\022\020\n\010table_id\030\005 \001(\005\"\013\n\tSignu"
+  "pAck\"\014\n\nSignoutAck\"\r\n\013ContinueAck\"\t\n\007Res"
+  "tAck\"\016\n\014ExitMatchAck\"\257\002\n\013FDResultAck\022\017\n\007"
+  "tableid\030\001 \001(\005\022\022\n\ngame_count\030\002 \001(\005\022\020\n\010own"
+  "er_id\030\003 \001(\t\022\014\n\004desn\030\004 \001(\t\022/\n\006scores\030\005 \003("
+  "\0132\037.cproto.FDResultAck.ScoresEntry\0228\n\013pl"
+  "ayer_data\030\006 \003(\0132#.cproto.FDResultAck.Pla"
+  "yerDataEntry\022\016\n\006rounds\030\007 \003(\t\032-\n\013ScoresEn"
+  "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\0321\n\017P"
+  "layerDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001"
+  "(\t:\0028\001\"\225\002\n\020FDRoundResultAck\022\026\n\016cur_game_"
+  "count\030\001 \001(\005\0224\n\006scores\030\005 \003(\0132$.cproto.FDR"
+  "oundResultAck.ScoresEntry\022=\n\013player_data"
+  "\030\006 \003(\0132(.cproto.FDRoundResultAck.PlayerD"
+  "ataEntry\022\022\n\nround_data\030\004 \001(\t\032-\n\013ScoresEn"
+  "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\0321\n\017P"
+  "layerDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001"
+  "(\t:\0028\001B\013Z\t../cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_match_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_match_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_match_2eproto = {
-  false, false, 1353, descriptor_table_protodef_match_2eproto, "match.proto", 
-  &descriptor_table_match_2eproto_once, descriptor_table_match_2eproto_deps, 1, 24,
+  false, false, 1467, descriptor_table_protodef_match_2eproto, "match.proto", 
+  &descriptor_table_match_2eproto_once, descriptor_table_match_2eproto_deps, 1, 25,
   schemas, file_default_instances, TableStruct_match_2eproto::offsets,
   file_level_metadata_match_2eproto, file_level_enum_descriptors_match_2eproto, file_level_service_descriptors_match_2eproto,
 };
@@ -1202,6 +1230,20 @@ void CreateRoomReq_PropertiesEntry_DoNotUse::MergeFrom(const CreateRoomReq_Prope
 
 // ===================================================================
 
+CreateRoomReq_MatchConfigEntry_DoNotUse::CreateRoomReq_MatchConfigEntry_DoNotUse() {}
+CreateRoomReq_MatchConfigEntry_DoNotUse::CreateRoomReq_MatchConfigEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void CreateRoomReq_MatchConfigEntry_DoNotUse::MergeFrom(const CreateRoomReq_MatchConfigEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata CreateRoomReq_MatchConfigEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
+      file_level_metadata_match_2eproto[3]);
+}
+
+// ===================================================================
+
 class CreateRoomReq::_Internal {
  public:
 };
@@ -1209,7 +1251,8 @@ class CreateRoomReq::_Internal {
 CreateRoomReq::CreateRoomReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  properties_(arena) {
+  properties_(arena),
+  match_config_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
@@ -1220,6 +1263,7 @@ CreateRoomReq::CreateRoomReq(const CreateRoomReq& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   properties_.MergeFrom(from.properties_);
+  match_config_.MergeFrom(from.match_config_);
   desn_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     desn_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
@@ -1261,6 +1305,7 @@ void CreateRoomReq::ArenaDtor(void* object) {
   CreateRoomReq* _this = reinterpret_cast< CreateRoomReq* >(object);
   (void)_this;
   _this->properties_. ~MapField();
+  _this->match_config_. ~MapField();
 }
 inline void CreateRoomReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
   if (arena != nullptr) {
@@ -1278,6 +1323,7 @@ void CreateRoomReq::Clear() {
   (void) cached_has_bits;
 
   properties_.Clear();
+  match_config_.Clear();
   desn_.ClearToEmpty();
   ::memset(&game_count_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&pay_type_) -
@@ -1327,6 +1373,19 @@ const char* CreateRoomReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // map<string, int32> match_config = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&match_config_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -1423,6 +1482,48 @@ uint8_t* CreateRoomReq::_InternalSerialize(
     }
   }
 
+  // map<string, int32> match_config = 5;
+  if (!this->_internal_match_config().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        (void)p;
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "cproto.CreateRoomReq.MatchConfigEntry.key");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_match_config().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_match_config().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::const_iterator
+          it = this->_internal_match_config().begin();
+          it != this->_internal_match_config().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = CreateRoomReq_MatchConfigEntry_DoNotUse::Funcs::InternalSerialize(5, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::const_iterator
+          it = this->_internal_match_config().begin();
+          it != this->_internal_match_config().end(); ++it) {
+        target = CreateRoomReq_MatchConfigEntry_DoNotUse::Funcs::InternalSerialize(5, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1446,6 +1547,15 @@ size_t CreateRoomReq::ByteSizeLong() const {
       it = this->_internal_properties().begin();
       it != this->_internal_properties().end(); ++it) {
     total_size += CreateRoomReq_PropertiesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // map<string, int32> match_config = 5;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_match_config_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, int32_t >::const_iterator
+      it = this->_internal_match_config().begin();
+      it != this->_internal_match_config().end(); ++it) {
+    total_size += CreateRoomReq_MatchConfigEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // string desn = 2;
@@ -1488,6 +1598,7 @@ void CreateRoomReq::MergeFrom(const CreateRoomReq& from) {
   (void) cached_has_bits;
 
   properties_.MergeFrom(from.properties_);
+  match_config_.MergeFrom(from.match_config_);
   if (!from._internal_desn().empty()) {
     _internal_set_desn(from._internal_desn());
   }
@@ -1517,6 +1628,7 @@ void CreateRoomReq::InternalSwap(CreateRoomReq* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   properties_.InternalSwap(&other->properties_);
+  match_config_.InternalSwap(&other->match_config_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &desn_, lhs_arena,
@@ -1533,7 +1645,7 @@ void CreateRoomReq::InternalSwap(CreateRoomReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateRoomReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[3]);
+      file_level_metadata_match_2eproto[4]);
 }
 
 // ===================================================================
@@ -1711,7 +1823,7 @@ void CancelRoomReq::InternalSwap(CancelRoomReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CancelRoomReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[4]);
+      file_level_metadata_match_2eproto[5]);
 }
 
 // ===================================================================
@@ -1889,7 +2001,7 @@ void JoinRoomReq::InternalSwap(JoinRoomReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata JoinRoomReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[5]);
+      file_level_metadata_match_2eproto[6]);
 }
 
 // ===================================================================
@@ -1928,7 +2040,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SignupReq::GetClassData() cons
 ::PROTOBUF_NAMESPACE_ID::Metadata SignupReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[6]);
+      file_level_metadata_match_2eproto[7]);
 }
 
 // ===================================================================
@@ -1967,7 +2079,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SignoutReq::GetClassData() con
 ::PROTOBUF_NAMESPACE_ID::Metadata SignoutReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[7]);
+      file_level_metadata_match_2eproto[8]);
 }
 
 // ===================================================================
@@ -2006,7 +2118,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ContinueReq::GetClassData() co
 ::PROTOBUF_NAMESPACE_ID::Metadata ContinueReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[8]);
+      file_level_metadata_match_2eproto[9]);
 }
 
 // ===================================================================
@@ -2045,7 +2157,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ExitMatchReq::GetClassData() c
 ::PROTOBUF_NAMESPACE_ID::Metadata ExitMatchReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[9]);
+      file_level_metadata_match_2eproto[10]);
 }
 
 // ===================================================================
@@ -2084,7 +2196,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*FDResultReq::GetClassData() co
 ::PROTOBUF_NAMESPACE_ID::Metadata FDResultReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[10]);
+      file_level_metadata_match_2eproto[11]);
 }
 
 // ===================================================================
@@ -2262,7 +2374,7 @@ void CancelRoomAck::InternalSwap(CancelRoomAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CancelRoomAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[11]);
+      file_level_metadata_match_2eproto[12]);
 }
 
 // ===================================================================
@@ -2623,7 +2735,7 @@ void StartClientAck::InternalSwap(StartClientAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata StartClientAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[12]);
+      file_level_metadata_match_2eproto[13]);
 }
 
 // ===================================================================
@@ -2662,7 +2774,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SignupAck::GetClassData() cons
 ::PROTOBUF_NAMESPACE_ID::Metadata SignupAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[13]);
+      file_level_metadata_match_2eproto[14]);
 }
 
 // ===================================================================
@@ -2701,7 +2813,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SignoutAck::GetClassData() con
 ::PROTOBUF_NAMESPACE_ID::Metadata SignoutAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[14]);
+      file_level_metadata_match_2eproto[15]);
 }
 
 // ===================================================================
@@ -2740,7 +2852,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ContinueAck::GetClassData() co
 ::PROTOBUF_NAMESPACE_ID::Metadata ContinueAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[15]);
+      file_level_metadata_match_2eproto[16]);
 }
 
 // ===================================================================
@@ -2779,7 +2891,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RestAck::GetClassData() const 
 ::PROTOBUF_NAMESPACE_ID::Metadata RestAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[16]);
+      file_level_metadata_match_2eproto[17]);
 }
 
 // ===================================================================
@@ -2818,7 +2930,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ExitMatchAck::GetClassData() c
 ::PROTOBUF_NAMESPACE_ID::Metadata ExitMatchAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[17]);
+      file_level_metadata_match_2eproto[18]);
 }
 
 // ===================================================================
@@ -2832,7 +2944,7 @@ void FDResultAck_ScoresEntry_DoNotUse::MergeFrom(const FDResultAck_ScoresEntry_D
 ::PROTOBUF_NAMESPACE_ID::Metadata FDResultAck_ScoresEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[18]);
+      file_level_metadata_match_2eproto[19]);
 }
 
 // ===================================================================
@@ -2846,7 +2958,7 @@ void FDResultAck_PlayerDataEntry_DoNotUse::MergeFrom(const FDResultAck_PlayerDat
 ::PROTOBUF_NAMESPACE_ID::Metadata FDResultAck_PlayerDataEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[19]);
+      file_level_metadata_match_2eproto[20]);
 }
 
 // ===================================================================
@@ -3343,7 +3455,7 @@ void FDResultAck::InternalSwap(FDResultAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FDResultAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[20]);
+      file_level_metadata_match_2eproto[21]);
 }
 
 // ===================================================================
@@ -3357,7 +3469,7 @@ void FDRoundResultAck_ScoresEntry_DoNotUse::MergeFrom(const FDRoundResultAck_Sco
 ::PROTOBUF_NAMESPACE_ID::Metadata FDRoundResultAck_ScoresEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[21]);
+      file_level_metadata_match_2eproto[22]);
 }
 
 // ===================================================================
@@ -3371,7 +3483,7 @@ void FDRoundResultAck_PlayerDataEntry_DoNotUse::MergeFrom(const FDRoundResultAck
 ::PROTOBUF_NAMESPACE_ID::Metadata FDRoundResultAck_PlayerDataEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[22]);
+      file_level_metadata_match_2eproto[23]);
 }
 
 // ===================================================================
@@ -3747,7 +3859,7 @@ void FDRoundResultAck::InternalSwap(FDRoundResultAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FDRoundResultAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_match_2eproto_getter, &descriptor_table_match_2eproto_once,
-      file_level_metadata_match_2eproto[23]);
+      file_level_metadata_match_2eproto[24]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -3761,6 +3873,9 @@ template<> PROTOBUF_NOINLINE ::cproto::MatchAck* Arena::CreateMaybeMessage< ::cp
 }
 template<> PROTOBUF_NOINLINE ::cproto::CreateRoomReq_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::CreateRoomReq_PropertiesEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::CreateRoomReq_PropertiesEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::CreateRoomReq_MatchConfigEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::CreateRoomReq* Arena::CreateMaybeMessage< ::cproto::CreateRoomReq >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::CreateRoomReq >(arena);
