@@ -6,11 +6,21 @@ package sproto;
 option go_package = "../sproto";
 
 message AccountReq {
-  google.protobuf.Any req = 1; // 请求内容
+  bool bot = 1; //是否为机器人
+  google.protobuf.Any req = 2; // 请求内容
 }
 
 message AccountAck {
-  google.protobuf.Any ack = 1; // 响应内容
+  bool bot = 1; //是否为机器人
+  google.protobuf.Any ack = 2; // 响应内容
+}
+
+message GetBotReq{
+}
+
+message GetBotAck{
+  string uid = 1; //机器人id
+  int64 expired = 2; //过期时间
 }
 
 message PlayerInfoReq {
