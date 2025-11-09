@@ -244,11 +244,10 @@ func (x *AddTableReq) GetFdproperty() map[string]int32 {
 
 type AddPlayerReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"`              // 玩家ID
-	Seat          int32                  `protobuf:"varint,2,opt,name=seat,proto3" json:"seat,omitempty"`                     // 座位号
-	IconUrl       string                 `protobuf:"bytes,3,opt,name=icon_url,json=iconUrl,proto3" json:"icon_url,omitempty"` // 玩家头像
-	Nickname      string                 `protobuf:"bytes,4,opt,name=nickname,proto3" json:"nickname,omitempty"`              // 玩家昵称
-	Score         int64                  `protobuf:"varint,5,opt,name=score,proto3" json:"score,omitempty"`                   // 玩家分数
+	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
+	Bot           bool                   `protobuf:"varint,2,opt,name=bot,proto3" json:"bot,omitempty"`          // 是否为机器人
+	Seat          int32                  `protobuf:"varint,3,opt,name=seat,proto3" json:"seat,omitempty"`        // 座位号
+	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`      // 玩家分数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -290,25 +289,18 @@ func (x *AddPlayerReq) GetPlayerid() string {
 	return ""
 }
 
+func (x *AddPlayerReq) GetBot() bool {
+	if x != nil {
+		return x.Bot
+	}
+	return false
+}
+
 func (x *AddPlayerReq) GetSeat() int32 {
 	if x != nil {
 		return x.Seat
 	}
 	return 0
-}
-
-func (x *AddPlayerReq) GetIconUrl() string {
-	if x != nil {
-		return x.IconUrl
-	}
-	return ""
-}
-
-func (x *AddPlayerReq) GetNickname() string {
-	if x != nil {
-		return x.Nickname
-	}
-	return ""
 }
 
 func (x *AddPlayerReq) GetScore() int64 {
@@ -523,13 +515,12 @@ const file_game_remote_proto_rawDesc = "" +
 	"fdproperty\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x8b\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"f\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
-	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x12\n" +
-	"\x04seat\x18\x02 \x01(\x05R\x04seat\x12\x19\n" +
-	"\bicon_url\x18\x03 \x01(\tR\aiconUrl\x12\x1a\n" +
-	"\bnickname\x18\x04 \x01(\tR\bnickname\x12\x14\n" +
-	"\x05score\x18\x05 \x01(\x03R\x05score\"(\n" +
+	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x10\n" +
+	"\x03bot\x18\x02 \x01(\bR\x03bot\x12\x12\n" +
+	"\x04seat\x18\x03 \x01(\x05R\x04seat\x12\x14\n" +
+	"\x05score\x18\x04 \x01(\x03R\x05score\"(\n" +
 	"\x0eCancelTableReq\x12\x16\n" +
 	"\x06reason\x18\x01 \x01(\x05R\x06reason\"\n" +
 	"\n" +

@@ -30,10 +30,9 @@ message AddTableReq {
 
 message AddPlayerReq {
   string playerid = 1; // 玩家ID
-  int32 seat = 2; // 座位号
-  string icon_url = 3; // 玩家头像
-  string nickname = 4; // 玩家昵称
-  int64 score = 5; // 玩家分数
+  bool bot = 2; // 是否为机器人
+  int32 seat = 3; // 座位号
+  int64 score = 4; // 玩家分数
 }
 
 message CancelTableReq {
