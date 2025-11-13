@@ -133,6 +133,11 @@ message MJCallDataAck {
   map<int32,CallData> call_data = 2; // 打出的牌-听牌列表
 }
 
+message MJTipAck {
+  int32 seat = 1;
+  int32 tip = 2; //提示
+}
+
 message CallData { 
   map<int32, CallInfo> call_tiles = 2; // 听牌列表(牌-番数或倍数)
 }

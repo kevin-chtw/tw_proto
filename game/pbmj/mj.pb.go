@@ -1313,6 +1313,58 @@ func (x *MJCallDataAck) GetCallData() map[int32]*CallData {
 	return nil
 }
 
+type MJTipAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`
+	Tip           int32                  `protobuf:"varint,2,opt,name=tip,proto3" json:"tip,omitempty"` //提示
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MJTipAck) Reset() {
+	*x = MJTipAck{}
+	mi := &file_mj_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MJTipAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MJTipAck) ProtoMessage() {}
+
+func (x *MJTipAck) ProtoReflect() protoreflect.Message {
+	mi := &file_mj_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MJTipAck.ProtoReflect.Descriptor instead.
+func (*MJTipAck) Descriptor() ([]byte, []int) {
+	return file_mj_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *MJTipAck) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *MJTipAck) GetTip() int32 {
+	if x != nil {
+		return x.Tip
+	}
+	return 0
+}
+
 type CallData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CallTiles     map[int32]*CallInfo    `protobuf:"bytes,2,rep,name=call_tiles,json=callTiles,proto3" json:"call_tiles,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 听牌列表(牌-番数或倍数)
@@ -1322,7 +1374,7 @@ type CallData struct {
 
 func (x *CallData) Reset() {
 	*x = CallData{}
-	mi := &file_mj_proto_msgTypes[21]
+	mi := &file_mj_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1334,7 +1386,7 @@ func (x *CallData) String() string {
 func (*CallData) ProtoMessage() {}
 
 func (x *CallData) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[21]
+	mi := &file_mj_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1347,7 +1399,7 @@ func (x *CallData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallData.ProtoReflect.Descriptor instead.
 func (*CallData) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{21}
+	return file_mj_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CallData) GetCallTiles() map[int32]*CallInfo {
@@ -1367,7 +1419,7 @@ type CallInfo struct {
 
 func (x *CallInfo) Reset() {
 	*x = CallInfo{}
-	mi := &file_mj_proto_msgTypes[22]
+	mi := &file_mj_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1379,7 +1431,7 @@ func (x *CallInfo) String() string {
 func (*CallInfo) ProtoMessage() {}
 
 func (x *CallInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_mj_proto_msgTypes[22]
+	mi := &file_mj_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1392,7 +1444,7 @@ func (x *CallInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallInfo.ProtoReflect.Descriptor instead.
 func (*CallInfo) Descriptor() ([]byte, []int) {
-	return file_mj_proto_rawDescGZIP(), []int{22}
+	return file_mj_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CallInfo) GetMulti() int64 {
@@ -1523,7 +1575,10 @@ const file_mj_proto_rawDesc = "" +
 	"\tcall_data\x18\x02 \x03(\v2!.pbmj.MJCallDataAck.CallDataEntryR\bcallData\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\x96\x01\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"0\n" +
+	"\bMJTipAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x10\n" +
+	"\x03tip\x18\x02 \x01(\x05R\x03tip\"\x96\x01\n" +
 	"\bCallData\x12<\n" +
 	"\n" +
 	"call_tiles\x18\x02 \x03(\v2\x1d.pbmj.CallData.CallTilesEntryR\tcallTiles\x1aL\n" +
@@ -1546,7 +1601,7 @@ func file_mj_proto_rawDescGZIP() []byte {
 	return file_mj_proto_rawDescData
 }
 
-var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_mj_proto_goTypes = []any{
 	(*MJRequestReq)(nil),     // 0: pbmj.MJRequestReq
 	(*MJTrustReq)(nil),       // 1: pbmj.MJTrustReq
@@ -1569,34 +1624,35 @@ var file_mj_proto_goTypes = []any{
 	(*MJResultAck)(nil),      // 18: pbmj.MJResultAck
 	(*MJPlayerResult)(nil),   // 19: pbmj.MJPlayerResult
 	(*MJCallDataAck)(nil),    // 20: pbmj.MJCallDataAck
-	(*CallData)(nil),         // 21: pbmj.CallData
-	(*CallInfo)(nil),         // 22: pbmj.CallInfo
-	nil,                      // 23: pbmj.MJRequestAck.TingsEntry
-	nil,                      // 24: pbmj.CallDatas.CallDataEntry
-	nil,                      // 25: pbmj.MJChowAck.CallDataEntry
-	nil,                      // 26: pbmj.MJPonAck.CallDataEntry
-	nil,                      // 27: pbmj.MJDrawAck.CallDataEntry
-	nil,                      // 28: pbmj.MJCallDataAck.CallDataEntry
-	nil,                      // 29: pbmj.CallData.CallTilesEntry
+	(*MJTipAck)(nil),         // 21: pbmj.MJTipAck
+	(*CallData)(nil),         // 22: pbmj.CallData
+	(*CallInfo)(nil),         // 23: pbmj.CallInfo
+	nil,                      // 24: pbmj.MJRequestAck.TingsEntry
+	nil,                      // 25: pbmj.CallDatas.CallDataEntry
+	nil,                      // 26: pbmj.MJChowAck.CallDataEntry
+	nil,                      // 27: pbmj.MJPonAck.CallDataEntry
+	nil,                      // 28: pbmj.MJDrawAck.CallDataEntry
+	nil,                      // 29: pbmj.MJCallDataAck.CallDataEntry
+	nil,                      // 30: pbmj.CallData.CallTilesEntry
 }
 var file_mj_proto_depIdxs = []int32{
-	23, // 0: pbmj.MJRequestAck.tings:type_name -> pbmj.MJRequestAck.TingsEntry
-	24, // 1: pbmj.CallDatas.call_data:type_name -> pbmj.CallDatas.CallDataEntry
-	25, // 2: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
-	26, // 3: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
+	24, // 0: pbmj.MJRequestAck.tings:type_name -> pbmj.MJRequestAck.TingsEntry
+	25, // 1: pbmj.CallDatas.call_data:type_name -> pbmj.CallDatas.CallDataEntry
+	26, // 2: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
+	27, // 3: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
 	11, // 4: pbmj.MJHuAck.hu_data:type_name -> pbmj.MJHuData
-	27, // 5: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
+	28, // 5: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
 	11, // 6: pbmj.MJScoreChangeAck.hu_data:type_name -> pbmj.MJHuData
 	19, // 7: pbmj.MJResultAck.player_results:type_name -> pbmj.MJPlayerResult
-	28, // 8: pbmj.MJCallDataAck.call_data:type_name -> pbmj.MJCallDataAck.CallDataEntry
-	29, // 9: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
+	29, // 8: pbmj.MJCallDataAck.call_data:type_name -> pbmj.MJCallDataAck.CallDataEntry
+	30, // 9: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
 	6,  // 10: pbmj.MJRequestAck.TingsEntry.value:type_name -> pbmj.CallDatas
-	21, // 11: pbmj.CallDatas.CallDataEntry.value:type_name -> pbmj.CallData
-	21, // 12: pbmj.MJChowAck.CallDataEntry.value:type_name -> pbmj.CallData
-	21, // 13: pbmj.MJPonAck.CallDataEntry.value:type_name -> pbmj.CallData
-	21, // 14: pbmj.MJDrawAck.CallDataEntry.value:type_name -> pbmj.CallData
-	21, // 15: pbmj.MJCallDataAck.CallDataEntry.value:type_name -> pbmj.CallData
-	22, // 16: pbmj.CallData.CallTilesEntry.value:type_name -> pbmj.CallInfo
+	22, // 11: pbmj.CallDatas.CallDataEntry.value:type_name -> pbmj.CallData
+	22, // 12: pbmj.MJChowAck.CallDataEntry.value:type_name -> pbmj.CallData
+	22, // 13: pbmj.MJPonAck.CallDataEntry.value:type_name -> pbmj.CallData
+	22, // 14: pbmj.MJDrawAck.CallDataEntry.value:type_name -> pbmj.CallData
+	22, // 15: pbmj.MJCallDataAck.CallDataEntry.value:type_name -> pbmj.CallData
+	23, // 16: pbmj.CallData.CallTilesEntry.value:type_name -> pbmj.CallInfo
 	17, // [17:17] is the sub-list for method output_type
 	17, // [17:17] is the sub-list for method input_type
 	17, // [17:17] is the sub-list for extension type_name
@@ -1615,7 +1671,7 @@ func file_mj_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mj_proto_rawDesc), len(file_mj_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   30,
+			NumMessages:   31,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
