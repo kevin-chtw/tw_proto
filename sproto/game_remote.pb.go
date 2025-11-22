@@ -393,6 +393,7 @@ func (*EmptyAck) Descriptor() ([]byte, []int) {
 type ExitTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
+	Fause         bool                   `protobuf:"varint,2,opt,name=fause,proto3" json:"fause,omitempty"`      // 是否强制退出
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -432,6 +433,13 @@ func (x *ExitTableReq) GetPlayerid() string {
 		return x.Playerid
 	}
 	return ""
+}
+
+func (x *ExitTableReq) GetFause() bool {
+	if x != nil {
+		return x.Fause
+	}
+	return false
 }
 
 type ExitTableAck struct {
@@ -524,9 +532,10 @@ const file_game_remote_proto_rawDesc = "" +
 	"\x0eCancelTableReq\x12\x16\n" +
 	"\x06reason\x18\x01 \x01(\x05R\x06reason\"\n" +
 	"\n" +
-	"\bEmptyAck\"*\n" +
+	"\bEmptyAck\"@\n" +
 	"\fExitTableReq\x12\x1a\n" +
-	"\bplayerid\x18\x01 \x01(\tR\bplayerid\"@\n" +
+	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x14\n" +
+	"\x05fause\x18\x02 \x01(\bR\x05fause\"@\n" +
 	"\fExitTableAck\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x03R\x05scoreB\vZ\t../sprotob\x06proto3"

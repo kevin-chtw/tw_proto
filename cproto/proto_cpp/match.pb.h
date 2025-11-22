@@ -51,7 +51,7 @@ struct TableStruct_match_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[25]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[26]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -134,6 +134,9 @@ extern SignupReqDefaultTypeInternal _SignupReq_default_instance_;
 class StartClientAck;
 struct StartClientAckDefaultTypeInternal;
 extern StartClientAckDefaultTypeInternal _StartClientAck_default_instance_;
+class SwitchTableReq;
+struct SwitchTableReqDefaultTypeInternal;
+extern SwitchTableReqDefaultTypeInternal _SwitchTableReq_default_instance_;
 }  // namespace cproto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::cproto::CancelRoomAck* Arena::CreateMaybeMessage<::cproto::CancelRoomAck>(Arena*);
@@ -161,6 +164,7 @@ template<> ::cproto::SignoutReq* Arena::CreateMaybeMessage<::cproto::SignoutReq>
 template<> ::cproto::SignupAck* Arena::CreateMaybeMessage<::cproto::SignupAck>(Arena*);
 template<> ::cproto::SignupReq* Arena::CreateMaybeMessage<::cproto::SignupReq>(Arena*);
 template<> ::cproto::StartClientAck* Arena::CreateMaybeMessage<::cproto::StartClientAck>(Arena*);
+template<> ::cproto::SwitchTableReq* Arena::CreateMaybeMessage<::cproto::SwitchTableReq>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace cproto {
 
@@ -1682,6 +1686,124 @@ class FDResultReq final :
 };
 // -------------------------------------------------------------------
 
+class SwitchTableReq final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.SwitchTableReq) */ {
+ public:
+  inline SwitchTableReq() : SwitchTableReq(nullptr) {}
+  explicit constexpr SwitchTableReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SwitchTableReq(const SwitchTableReq& from);
+  SwitchTableReq(SwitchTableReq&& from) noexcept
+    : SwitchTableReq() {
+    *this = ::std::move(from);
+  }
+
+  inline SwitchTableReq& operator=(const SwitchTableReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SwitchTableReq& operator=(SwitchTableReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SwitchTableReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SwitchTableReq* internal_default_instance() {
+    return reinterpret_cast<const SwitchTableReq*>(
+               &_SwitchTableReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(SwitchTableReq& a, SwitchTableReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SwitchTableReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SwitchTableReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SwitchTableReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SwitchTableReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SwitchTableReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SwitchTableReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.SwitchTableReq";
+  }
+  protected:
+  explicit SwitchTableReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.SwitchTableReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
+// -------------------------------------------------------------------
+
 class CancelRoomAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.CancelRoomAck) */ {
  public:
@@ -1730,7 +1852,7 @@ class CancelRoomAck final :
                &_CancelRoomAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(CancelRoomAck& a, CancelRoomAck& b) {
     a.Swap(&b);
@@ -1876,7 +1998,7 @@ class StartClientAck final :
                &_StartClientAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(StartClientAck& a, StartClientAck& b) {
     a.Swap(&b);
@@ -2080,7 +2202,7 @@ class SignupAck final :
                &_SignupAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(SignupAck& a, SignupAck& b) {
     a.Swap(&b);
@@ -2198,7 +2320,7 @@ class SignoutAck final :
                &_SignoutAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(SignoutAck& a, SignoutAck& b) {
     a.Swap(&b);
@@ -2316,7 +2438,7 @@ class ContinueAck final :
                &_ContinueAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(ContinueAck& a, ContinueAck& b) {
     a.Swap(&b);
@@ -2434,7 +2556,7 @@ class RestAck final :
                &_RestAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(RestAck& a, RestAck& b) {
     a.Swap(&b);
@@ -2552,7 +2674,7 @@ class ExitMatchAck final :
                &_ExitMatchAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    19;
 
   friend void swap(ExitMatchAck& a, ExitMatchAck& b) {
     a.Swap(&b);
@@ -2723,7 +2845,7 @@ class FDResultAck final :
                &_FDResultAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   friend void swap(FDResultAck& a, FDResultAck& b) {
     a.Swap(&b);
@@ -3037,7 +3159,7 @@ class FDRoundResultAck final :
                &_FDRoundResultAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    25;
 
   friend void swap(FDRoundResultAck& a, FDRoundResultAck& b) {
     a.Swap(&b);
@@ -3752,6 +3874,10 @@ inline void JoinRoomReq::set_tableid(int32_t value) {
 
 // -------------------------------------------------------------------
 
+// SwitchTableReq
+
+// -------------------------------------------------------------------
+
 // CancelRoomAck
 
 // int32 tableid = 1;
@@ -4414,6 +4540,8 @@ inline void FDRoundResultAck::set_allocated_round_data(std::string* round_data) 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

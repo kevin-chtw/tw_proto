@@ -43,6 +43,7 @@ message EmptyAck {}
 
 message ExitTableReq {
   string playerid = 1; // 玩家ID
+  bool fause = 2; // 是否强制退出
 }
 
 message ExitTableAck {
