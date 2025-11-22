@@ -48,6 +48,9 @@ message ExitMatchReq{
 message FDResultReq {
 }
 
+message SwitchTableReq {  
+}
+
 message CancelRoomAck {
   int32 tableid = 1;
 }
