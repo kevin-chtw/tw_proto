@@ -265,6 +265,7 @@ type PlayerInfoAck struct {
 	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`     // 玩家头像
 	Vip           int32                  `protobuf:"varint,4,opt,name=vip,proto3" json:"vip,omitempty"`          // VIP等级
 	Diamond       int64                  `protobuf:"varint,5,opt,name=diamond,proto3" json:"diamond,omitempty"`  // 钻石
+	Coin          int64                  `protobuf:"varint,6,opt,name=coin,proto3" json:"coin,omitempty"`        // 金币
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -330,6 +331,13 @@ func (x *PlayerInfoAck) GetVip() int32 {
 func (x *PlayerInfoAck) GetDiamond() int64 {
 	if x != nil {
 		return x.Diamond
+	}
+	return 0
+}
+
+func (x *PlayerInfoAck) GetCoin() int64 {
+	if x != nil {
+		return x.Coin
 	}
 	return 0
 }
@@ -456,13 +464,14 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\aexpired\x18\x02 \x01(\x03R\aexpired\"!\n" +
 	"\rPlayerInfoReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\x81\x01\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\x95\x01\n" +
 	"\rPlayerInfoAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
 	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x12\x10\n" +
 	"\x03vip\x18\x04 \x01(\x05R\x03vip\x12\x18\n" +
-	"\adiamond\x18\x05 \x01(\x03R\adiamond\">\n" +
+	"\adiamond\x18\x05 \x01(\x03R\adiamond\x12\x12\n" +
+	"\x04coin\x18\x06 \x01(\x03R\x04coin\">\n" +
 	"\x10ChangeDiamondReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\adiamond\x18\x02 \x01(\x03R\adiamond\">\n" +

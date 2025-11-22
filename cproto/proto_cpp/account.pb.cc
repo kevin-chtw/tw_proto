@@ -68,12 +68,27 @@ struct RegisterReqDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RegisterReqDefaultTypeInternal _RegisterReq_default_instance_;
+constexpr RegisterAwardAck::RegisterAwardAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : uid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , diamond_(int64_t{0})
+  , coin_(int64_t{0}){}
+struct RegisterAwardAckDefaultTypeInternal {
+  constexpr RegisterAwardAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~RegisterAwardAckDefaultTypeInternal() {}
+  union {
+    RegisterAwardAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RegisterAwardAckDefaultTypeInternal _RegisterAwardAck_default_instance_;
 constexpr PlayerInfoAck::PlayerInfoAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : uid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , avatar_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , diamond_(int64_t{0})
+  , coin_(int64_t{0})
   , vip_(0){}
 struct PlayerInfoAckDefaultTypeInternal {
   constexpr PlayerInfoAckDefaultTypeInternal()
@@ -85,7 +100,7 @@ struct PlayerInfoAckDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PlayerInfoAckDefaultTypeInternal _PlayerInfoAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[5];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[6];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_account_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_account_2eproto = nullptr;
 
@@ -122,6 +137,15 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cproto::RegisterReq, password_),
   PROTOBUF_FIELD_OFFSET(::cproto::RegisterReq, avatar_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::RegisterAwardAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::RegisterAwardAck, uid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::RegisterAwardAck, diamond_),
+  PROTOBUF_FIELD_OFFSET(::cproto::RegisterAwardAck, coin_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::PlayerInfoAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -132,13 +156,15 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cproto::PlayerInfoAck, avatar_),
   PROTOBUF_FIELD_OFFSET(::cproto::PlayerInfoAck, vip_),
   PROTOBUF_FIELD_OFFSET(::cproto::PlayerInfoAck, diamond_),
+  PROTOBUF_FIELD_OFFSET(::cproto::PlayerInfoAck, coin_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cproto::AccountReq)},
   { 7, -1, -1, sizeof(::cproto::AccountAck)},
   { 14, -1, -1, sizeof(::cproto::LoginReq)},
   { 22, -1, -1, sizeof(::cproto::RegisterReq)},
-  { 31, -1, -1, sizeof(::cproto::PlayerInfoAck)},
+  { 31, -1, -1, sizeof(::cproto::RegisterAwardAck)},
+  { 40, -1, -1, sizeof(::cproto::PlayerInfoAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -146,6 +172,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_AccountAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_LoginReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_RegisterReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_RegisterAwardAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_PlayerInfoAck_default_instance_),
 };
 
@@ -156,18 +183,20 @@ const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\030\001 \001(\0132\024.google.protobuf.Any\"-\n\010LoginReq"
   "\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"@\n\013R"
   "egisterReq\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030"
-  "\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\"\\\n\rPlayerInfoAck\022\013"
-  "\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006avatar\030"
-  "\003 \001(\t\022\013\n\003vip\030\004 \001(\005\022\017\n\007diamond\030\005 \001(\003B\013Z\t."
-  "./cprotob\006proto3"
+  "\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\">\n\020RegisterAwardAc"
+  "k\022\013\n\003uid\030\001 \001(\t\022\017\n\007diamond\030\002 \001(\003\022\014\n\004coin\030"
+  "\003 \001(\003\"j\n\rPlayerInfoAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010n"
+  "ickname\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\013\n\003vip\030\004 \001"
+  "(\005\022\017\n\007diamond\030\005 \001(\003\022\014\n\004coin\030\006 \001(\003B\013Z\t../"
+  "cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_account_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_account_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_account_2eproto = {
-  false, false, 376, descriptor_table_protodef_account_2eproto, "account.proto", 
-  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 5,
+  false, false, 454, descriptor_table_protodef_account_2eproto, "account.proto", 
+  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 6,
   schemas, file_default_instances, TableStruct_account_2eproto::offsets,
   file_level_metadata_account_2eproto, file_level_enum_descriptors_account_2eproto, file_level_service_descriptors_account_2eproto,
 };
@@ -1136,6 +1165,269 @@ void RegisterReq::InternalSwap(RegisterReq* other) {
 
 // ===================================================================
 
+class RegisterAwardAck::_Internal {
+ public:
+};
+
+RegisterAwardAck::RegisterAwardAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.RegisterAwardAck)
+}
+RegisterAwardAck::RegisterAwardAck(const RegisterAwardAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_uid().empty()) {
+    uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_uid(), 
+      GetArenaForAllocation());
+  }
+  ::memcpy(&diamond_, &from.diamond_,
+    static_cast<size_t>(reinterpret_cast<char*>(&coin_) -
+    reinterpret_cast<char*>(&diamond_)) + sizeof(coin_));
+  // @@protoc_insertion_point(copy_constructor:cproto.RegisterAwardAck)
+}
+
+inline void RegisterAwardAck::SharedCtor() {
+uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&diamond_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&coin_) -
+    reinterpret_cast<char*>(&diamond_)) + sizeof(coin_));
+}
+
+RegisterAwardAck::~RegisterAwardAck() {
+  // @@protoc_insertion_point(destructor:cproto.RegisterAwardAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void RegisterAwardAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  uid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void RegisterAwardAck::ArenaDtor(void* object) {
+  RegisterAwardAck* _this = reinterpret_cast< RegisterAwardAck* >(object);
+  (void)_this;
+}
+void RegisterAwardAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void RegisterAwardAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void RegisterAwardAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.RegisterAwardAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  uid_.ClearToEmpty();
+  ::memset(&diamond_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&coin_) -
+      reinterpret_cast<char*>(&diamond_)) + sizeof(coin_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RegisterAwardAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_uid();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.RegisterAwardAck.uid"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 diamond = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          diamond_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 coin = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          coin_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RegisterAwardAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.RegisterAwardAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string uid = 1;
+  if (!this->_internal_uid().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_uid().data(), static_cast<int>(this->_internal_uid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.RegisterAwardAck.uid");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_uid(), target);
+  }
+
+  // int64 diamond = 2;
+  if (this->_internal_diamond() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_diamond(), target);
+  }
+
+  // int64 coin = 3;
+  if (this->_internal_coin() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_coin(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.RegisterAwardAck)
+  return target;
+}
+
+size_t RegisterAwardAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.RegisterAwardAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string uid = 1;
+  if (!this->_internal_uid().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_uid());
+  }
+
+  // int64 diamond = 2;
+  if (this->_internal_diamond() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_diamond());
+  }
+
+  // int64 coin = 3;
+  if (this->_internal_coin() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_coin());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RegisterAwardAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    RegisterAwardAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RegisterAwardAck::GetClassData() const { return &_class_data_; }
+
+void RegisterAwardAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<RegisterAwardAck *>(to)->MergeFrom(
+      static_cast<const RegisterAwardAck &>(from));
+}
+
+
+void RegisterAwardAck::MergeFrom(const RegisterAwardAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.RegisterAwardAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_uid().empty()) {
+    _internal_set_uid(from._internal_uid());
+  }
+  if (from._internal_diamond() != 0) {
+    _internal_set_diamond(from._internal_diamond());
+  }
+  if (from._internal_coin() != 0) {
+    _internal_set_coin(from._internal_coin());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RegisterAwardAck::CopyFrom(const RegisterAwardAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.RegisterAwardAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RegisterAwardAck::IsInitialized() const {
+  return true;
+}
+
+void RegisterAwardAck::InternalSwap(RegisterAwardAck* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &uid_, lhs_arena,
+      &other->uid_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RegisterAwardAck, coin_)
+      + sizeof(RegisterAwardAck::coin_)
+      - PROTOBUF_FIELD_OFFSET(RegisterAwardAck, diamond_)>(
+          reinterpret_cast<char*>(&diamond_),
+          reinterpret_cast<char*>(&other->diamond_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RegisterAwardAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[4]);
+}
+
+// ===================================================================
+
 class PlayerInfoAck::_Internal {
  public:
 };
@@ -1292,6 +1584,14 @@ const char* PlayerInfoAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
         } else
           goto handle_unusual;
         continue;
+      // int64 coin = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          coin_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -1363,6 +1663,12 @@ uint8_t* PlayerInfoAck::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(5, this->_internal_diamond(), target);
   }
 
+  // int64 coin = 6;
+  if (this->_internal_coin() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(6, this->_internal_coin(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1405,6 +1711,11 @@ size_t PlayerInfoAck::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_diamond());
   }
 
+  // int64 coin = 6;
+  if (this->_internal_coin() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_coin());
+  }
+
   // int32 vip = 4;
   if (this->_internal_vip() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_vip());
@@ -1443,6 +1754,9 @@ void PlayerInfoAck::MergeFrom(const PlayerInfoAck& from) {
   }
   if (from._internal_diamond() != 0) {
     _internal_set_diamond(from._internal_diamond());
+  }
+  if (from._internal_coin() != 0) {
+    _internal_set_coin(from._internal_coin());
   }
   if (from._internal_vip() != 0) {
     _internal_set_vip(from._internal_vip());
@@ -1492,7 +1806,7 @@ void PlayerInfoAck::InternalSwap(PlayerInfoAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfoAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[4]);
+      file_level_metadata_account_2eproto[5]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1509,6 +1823,9 @@ template<> PROTOBUF_NOINLINE ::cproto::LoginReq* Arena::CreateMaybeMessage< ::cp
 }
 template<> PROTOBUF_NOINLINE ::cproto::RegisterReq* Arena::CreateMaybeMessage< ::cproto::RegisterReq >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::RegisterReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::RegisterAwardAck* Arena::CreateMaybeMessage< ::cproto::RegisterAwardAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::RegisterAwardAck >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::PlayerInfoAck* Arena::CreateMaybeMessage< ::cproto::PlayerInfoAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::PlayerInfoAck >(arena);

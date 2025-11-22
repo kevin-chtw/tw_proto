@@ -24,10 +24,17 @@ message RegisterReq {
   string avatar = 3; //随机生成的头像内容
 }
 
+message RegisterAwardAck {
+  string uid = 1; // 新注册玩家的ID
+  int64 diamond = 2; // 新注册玩家获得的钻石
+  int64 coin = 3; // 新注册玩家获得的金币
+}
+
 message PlayerInfoAck {
   string uid = 1; // 玩家ID
   string nickname = 2; // 玩家昵称
   string avatar = 3; // 玩家头像
   int32 vip = 4; // VIP等级
   int64 diamond = 5; // 钻石
+  int64 coin = 6; // 金币
 }

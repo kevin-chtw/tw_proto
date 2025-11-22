@@ -33,6 +33,7 @@ message PlayerInfoAck {
   string avatar = 3; // 玩家头像
   int32 vip = 4; // VIP等级
   int64 diamond = 5; // 钻石
+  int64 coin = 6; // 金币
 }
 
 message ChangeDiamondReq {
