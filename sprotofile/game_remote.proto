@@ -47,5 +47,5 @@ message ExitTableReq {
 
 message ExitTableAck {
   string playerid = 1; // 玩家ID
-  int32 result = 2; // 退出结果 0-可退出，1-不可退出
+  int64 score = 2; // 玩家分数
 }

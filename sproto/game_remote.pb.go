@@ -437,7 +437,7 @@ func (x *ExitTableReq) GetPlayerid() string {
 type ExitTableAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"` // 玩家ID
-	Result        int32                  `protobuf:"varint,2,opt,name=result,proto3" json:"result,omitempty"`    // 退出结果 0-可退出，1-不可退出
+	Score         int64                  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`      // 玩家分数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -479,9 +479,9 @@ func (x *ExitTableAck) GetPlayerid() string {
 	return ""
 }
 
-func (x *ExitTableAck) GetResult() int32 {
+func (x *ExitTableAck) GetScore() int64 {
 	if x != nil {
-		return x.Result
+		return x.Score
 	}
 	return 0
 }
@@ -526,10 +526,10 @@ const file_game_remote_proto_rawDesc = "" +
 	"\n" +
 	"\bEmptyAck\"*\n" +
 	"\fExitTableReq\x12\x1a\n" +
-	"\bplayerid\x18\x01 \x01(\tR\bplayerid\"B\n" +
+	"\bplayerid\x18\x01 \x01(\tR\bplayerid\"@\n" +
 	"\fExitTableAck\x12\x1a\n" +
-	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x16\n" +
-	"\x06result\x18\x02 \x01(\x05R\x06resultB\vZ\t../sprotob\x06proto3"
+	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x14\n" +
+	"\x05score\x18\x02 \x01(\x03R\x05scoreB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_game_remote_proto_rawDescOnce sync.Once
