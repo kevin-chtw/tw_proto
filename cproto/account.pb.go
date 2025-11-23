@@ -222,29 +222,27 @@ func (x *RegisterReq) GetAvatar() string {
 	return ""
 }
 
-type RegisterAwardAck struct {
+type AddCoinReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`          // 新注册玩家的ID
-	Diamond       int64                  `protobuf:"varint,2,opt,name=diamond,proto3" json:"diamond,omitempty"` // 新注册玩家获得的钻石
-	Coin          int64                  `protobuf:"varint,3,opt,name=coin,proto3" json:"coin,omitempty"`       // 新注册玩家获得的金币
+	Coin          int64                  `protobuf:"varint,1,opt,name=coin,proto3" json:"coin,omitempty"` // 需要增加的金币数量
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegisterAwardAck) Reset() {
-	*x = RegisterAwardAck{}
+func (x *AddCoinReq) Reset() {
+	*x = AddCoinReq{}
 	mi := &file_account_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegisterAwardAck) String() string {
+func (x *AddCoinReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegisterAwardAck) ProtoMessage() {}
+func (*AddCoinReq) ProtoMessage() {}
 
-func (x *RegisterAwardAck) ProtoReflect() protoreflect.Message {
+func (x *AddCoinReq) ProtoReflect() protoreflect.Message {
 	mi := &file_account_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -256,30 +254,68 @@ func (x *RegisterAwardAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegisterAwardAck.ProtoReflect.Descriptor instead.
-func (*RegisterAwardAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddCoinReq.ProtoReflect.Descriptor instead.
+func (*AddCoinReq) Descriptor() ([]byte, []int) {
 	return file_account_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *RegisterAwardAck) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-func (x *RegisterAwardAck) GetDiamond() int64 {
-	if x != nil {
-		return x.Diamond
-	}
-	return 0
-}
-
-func (x *RegisterAwardAck) GetCoin() int64 {
+func (x *AddCoinReq) GetCoin() int64 {
 	if x != nil {
 		return x.Coin
 	}
 	return 0
+}
+
+type RegisterAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerInfo    *PlayerInfoAck         `protobuf:"bytes,1,opt,name=player_info,json=playerInfo,proto3" json:"player_info,omitempty"` // 新注册玩家的信息
+	Award         *RegisterAward         `protobuf:"bytes,2,opt,name=award,proto3" json:"award,omitempty"`                             // 新注册玩家的奖励
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterAck) Reset() {
+	*x = RegisterAck{}
+	mi := &file_account_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterAck) ProtoMessage() {}
+
+func (x *RegisterAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterAck.ProtoReflect.Descriptor instead.
+func (*RegisterAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RegisterAck) GetPlayerInfo() *PlayerInfoAck {
+	if x != nil {
+		return x.PlayerInfo
+	}
+	return nil
+}
+
+func (x *RegisterAck) GetAward() *RegisterAward {
+	if x != nil {
+		return x.Award
+	}
+	return nil
 }
 
 type PlayerInfoAck struct {
@@ -296,7 +332,7 @@ type PlayerInfoAck struct {
 
 func (x *PlayerInfoAck) Reset() {
 	*x = PlayerInfoAck{}
-	mi := &file_account_proto_msgTypes[5]
+	mi := &file_account_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -308,7 +344,7 @@ func (x *PlayerInfoAck) String() string {
 func (*PlayerInfoAck) ProtoMessage() {}
 
 func (x *PlayerInfoAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[5]
+	mi := &file_account_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -321,7 +357,7 @@ func (x *PlayerInfoAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerInfoAck.ProtoReflect.Descriptor instead.
 func (*PlayerInfoAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{5}
+	return file_account_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PlayerInfoAck) GetUid() string {
@@ -366,6 +402,58 @@ func (x *PlayerInfoAck) GetCoin() int64 {
 	return 0
 }
 
+type RegisterAward struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Diamond       int64                  `protobuf:"varint,1,opt,name=diamond,proto3" json:"diamond,omitempty"` // 新注册玩家获得的钻石
+	Coin          int64                  `protobuf:"varint,2,opt,name=coin,proto3" json:"coin,omitempty"`       // 新注册玩家获得的金币
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterAward) Reset() {
+	*x = RegisterAward{}
+	mi := &file_account_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterAward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterAward) ProtoMessage() {}
+
+func (x *RegisterAward) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterAward.ProtoReflect.Descriptor instead.
+func (*RegisterAward) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *RegisterAward) GetDiamond() int64 {
+	if x != nil {
+		return x.Diamond
+	}
+	return 0
+}
+
+func (x *RegisterAward) GetCoin() int64 {
+	if x != nil {
+		return x.Coin
+	}
+	return 0
+}
+
 var File_account_proto protoreflect.FileDescriptor
 
 const file_account_proto_rawDesc = "" +
@@ -383,18 +471,24 @@ const file_account_proto_rawDesc = "" +
 	"\vRegisterReq\x12\x18\n" +
 	"\aaccount\x18\x01 \x01(\tR\aaccount\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x16\n" +
-	"\x06avatar\x18\x03 \x01(\tR\x06avatar\"R\n" +
-	"\x10RegisterAwardAck\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
-	"\adiamond\x18\x02 \x01(\x03R\adiamond\x12\x12\n" +
-	"\x04coin\x18\x03 \x01(\x03R\x04coin\"\x95\x01\n" +
+	"\x06avatar\x18\x03 \x01(\tR\x06avatar\" \n" +
+	"\n" +
+	"AddCoinReq\x12\x12\n" +
+	"\x04coin\x18\x01 \x01(\x03R\x04coin\"r\n" +
+	"\vRegisterAck\x126\n" +
+	"\vplayer_info\x18\x01 \x01(\v2\x15.cproto.PlayerInfoAckR\n" +
+	"playerInfo\x12+\n" +
+	"\x05award\x18\x02 \x01(\v2\x15.cproto.RegisterAwardR\x05award\"\x95\x01\n" +
 	"\rPlayerInfoAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
 	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x12\x10\n" +
 	"\x03vip\x18\x04 \x01(\x05R\x03vip\x12\x18\n" +
 	"\adiamond\x18\x05 \x01(\x03R\adiamond\x12\x12\n" +
-	"\x04coin\x18\x06 \x01(\x03R\x04coinB\vZ\t../cprotob\x06proto3"
+	"\x04coin\x18\x06 \x01(\x03R\x04coin\"=\n" +
+	"\rRegisterAward\x12\x18\n" +
+	"\adiamond\x18\x01 \x01(\x03R\adiamond\x12\x12\n" +
+	"\x04coin\x18\x02 \x01(\x03R\x04coinB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_account_proto_rawDescOnce sync.Once
@@ -408,24 +502,28 @@ func file_account_proto_rawDescGZIP() []byte {
 	return file_account_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_account_proto_goTypes = []any{
-	(*AccountReq)(nil),       // 0: cproto.AccountReq
-	(*AccountAck)(nil),       // 1: cproto.AccountAck
-	(*LoginReq)(nil),         // 2: cproto.LoginReq
-	(*RegisterReq)(nil),      // 3: cproto.RegisterReq
-	(*RegisterAwardAck)(nil), // 4: cproto.RegisterAwardAck
-	(*PlayerInfoAck)(nil),    // 5: cproto.PlayerInfoAck
-	(*anypb.Any)(nil),        // 6: google.protobuf.Any
+	(*AccountReq)(nil),    // 0: cproto.AccountReq
+	(*AccountAck)(nil),    // 1: cproto.AccountAck
+	(*LoginReq)(nil),      // 2: cproto.LoginReq
+	(*RegisterReq)(nil),   // 3: cproto.RegisterReq
+	(*AddCoinReq)(nil),    // 4: cproto.AddCoinReq
+	(*RegisterAck)(nil),   // 5: cproto.RegisterAck
+	(*PlayerInfoAck)(nil), // 6: cproto.PlayerInfoAck
+	(*RegisterAward)(nil), // 7: cproto.RegisterAward
+	(*anypb.Any)(nil),     // 8: google.protobuf.Any
 }
 var file_account_proto_depIdxs = []int32{
-	6, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
-	6, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	8, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
+	8, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
+	6, // 2: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
+	7, // 3: cproto.RegisterAck.award:type_name -> cproto.RegisterAward
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_account_proto_init() }
@@ -439,7 +537,7 @@ func file_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
