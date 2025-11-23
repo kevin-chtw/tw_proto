@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package pbhzxl;
+option go_package = "/pbhzxl";
+
+message HZXLReq {
+  google.protobuf.Any req = 1;
+}
+
+message HZXLAck {
+  google.protobuf.Any ack = 1;
+}

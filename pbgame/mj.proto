@@ -20,6 +20,16 @@ message MJAnimationReq {
   int32 requestid = 2; // 请求ID
 }
 
+message MJSwapTilesReq { // 换三张
+  int32 requestid = 1; // 请求ID
+  repeated int32 tiles = 2; //换出的牌
+}
+
+message MJDingQueReq { // 定缺
+  int32 requestid = 1; // 请求ID
+  int32 color = 2; //花色
+}
+
 message MJGameStartAck {
   int32 banker = 1; //庄家
   int32 tile_count = 2; //牌库总张数
@@ -145,4 +155,37 @@ message CallData {
 message CallInfo {
   int64 multi = 1; //倍数
   repeated int32 hu_types = 2; //胡牌类型
+}
+
+message MJSwapTilesAck { // 换三张
+  int32 requestid = 1;
+}
+
+message MJSwapFinishAck {
+  int32 seat = 1;
+  repeated int32 tiles = 2;
+}
+
+message MJSwapTilesResultAck { // 换三张
+  int32 swap_type = 1; //0-逆时针，1-顺时针，2-交叉
+  repeated MJSwapTiles swap_tiles = 2;
+}
+
+message MJSwapTiles {
+  int32 from = 1;
+  int32 to = 2;
+  repeated int32 tiles = 3;
+}
+
+message MJDingQueAck {
+  int32 requestid = 1; // 请求ID
+}
+
+message MJDingQueFinishAck {
+  int32 seat = 1;
+  int32 color = 2;
+}
+
+message MJDingQueResultAck {
+  repeated int32 colors = 1;
 }
