@@ -22,10 +22,11 @@ message AddTableReq {
   int64 score_base = 2; // 分数基数
   int32 game_count = 3; // 游戏局数
   int32 player_count = 4; // 玩家数量
-  string property = 5; // 游戏配置
-  string creator = 6; // 创建者
-  string desn = 7; // 游戏描述
-  map<string,int32> fdproperty = 8; // 好友房自选配置
+  int64 tax = 5; //扣税
+  string property = 6; // 游戏配置
+  string creator = 7; // 创建者
+  string desn = 8; // 游戏描述
+  map<string,int32> fdproperty = 9; // 好友房自选配置
 }
 
 message AddPlayerReq {
