@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.19.3
-// source: sc.proto
+// source: xl.proto
 
-package pbsc
+package pbxl
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -22,28 +22,28 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type SCReq struct {
+type XLReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Req           *anypb.Any             `protobuf:"bytes,1,opt,name=req,proto3" json:"req,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SCReq) Reset() {
-	*x = SCReq{}
-	mi := &file_sc_proto_msgTypes[0]
+func (x *XLReq) Reset() {
+	*x = XLReq{}
+	mi := &file_xl_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SCReq) String() string {
+func (x *XLReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SCReq) ProtoMessage() {}
+func (*XLReq) ProtoMessage() {}
 
-func (x *SCReq) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[0]
+func (x *XLReq) ProtoReflect() protoreflect.Message {
+	mi := &file_xl_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,40 +54,40 @@ func (x *SCReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SCReq.ProtoReflect.Descriptor instead.
-func (*SCReq) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use XLReq.ProtoReflect.Descriptor instead.
+func (*XLReq) Descriptor() ([]byte, []int) {
+	return file_xl_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *SCReq) GetReq() *anypb.Any {
+func (x *XLReq) GetReq() *anypb.Any {
 	if x != nil {
 		return x.Req
 	}
 	return nil
 }
 
-type SCAck struct {
+type XLAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Ack           *anypb.Any             `protobuf:"bytes,1,opt,name=ack,proto3" json:"ack,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SCAck) Reset() {
-	*x = SCAck{}
-	mi := &file_sc_proto_msgTypes[1]
+func (x *XLAck) Reset() {
+	*x = XLAck{}
+	mi := &file_xl_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SCAck) String() string {
+func (x *XLAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SCAck) ProtoMessage() {}
+func (*XLAck) ProtoMessage() {}
 
-func (x *SCAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sc_proto_msgTypes[1]
+func (x *XLAck) ProtoReflect() protoreflect.Message {
+	mi := &file_xl_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -98,49 +98,49 @@ func (x *SCAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SCAck.ProtoReflect.Descriptor instead.
-func (*SCAck) Descriptor() ([]byte, []int) {
-	return file_sc_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use XLAck.ProtoReflect.Descriptor instead.
+func (*XLAck) Descriptor() ([]byte, []int) {
+	return file_xl_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SCAck) GetAck() *anypb.Any {
+func (x *XLAck) GetAck() *anypb.Any {
 	if x != nil {
 		return x.Ack
 	}
 	return nil
 }
 
-var File_sc_proto protoreflect.FileDescriptor
+var File_xl_proto protoreflect.FileDescriptor
 
-const file_sc_proto_rawDesc = "" +
+const file_xl_proto_rawDesc = "" +
 	"\n" +
-	"\bsc.proto\x12\x04pbsc\x1a\x19google/protobuf/any.proto\"/\n" +
-	"\x05SCReq\x12&\n" +
+	"\bxl.proto\x12\x04pbxl\x1a\x19google/protobuf/any.proto\"/\n" +
+	"\x05XLReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"/\n" +
-	"\x05SCAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ackB\aZ\x05/pbscb\x06proto3"
+	"\x05XLAck\x12&\n" +
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ackB\aZ\x05/pbxlb\x06proto3"
 
 var (
-	file_sc_proto_rawDescOnce sync.Once
-	file_sc_proto_rawDescData []byte
+	file_xl_proto_rawDescOnce sync.Once
+	file_xl_proto_rawDescData []byte
 )
 
-func file_sc_proto_rawDescGZIP() []byte {
-	file_sc_proto_rawDescOnce.Do(func() {
-		file_sc_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_sc_proto_rawDesc), len(file_sc_proto_rawDesc)))
+func file_xl_proto_rawDescGZIP() []byte {
+	file_xl_proto_rawDescOnce.Do(func() {
+		file_xl_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_xl_proto_rawDesc), len(file_xl_proto_rawDesc)))
 	})
-	return file_sc_proto_rawDescData
+	return file_xl_proto_rawDescData
 }
 
-var file_sc_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_sc_proto_goTypes = []any{
-	(*SCReq)(nil),     // 0: pbsc.SCReq
-	(*SCAck)(nil),     // 1: pbsc.SCAck
+var file_xl_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_xl_proto_goTypes = []any{
+	(*XLReq)(nil),     // 0: pbxl.XLReq
+	(*XLAck)(nil),     // 1: pbxl.XLAck
 	(*anypb.Any)(nil), // 2: google.protobuf.Any
 }
-var file_sc_proto_depIdxs = []int32{
-	2, // 0: pbsc.SCReq.req:type_name -> google.protobuf.Any
-	2, // 1: pbsc.SCAck.ack:type_name -> google.protobuf.Any
+var file_xl_proto_depIdxs = []int32{
+	2, // 0: pbxl.XLReq.req:type_name -> google.protobuf.Any
+	2, // 1: pbxl.XLAck.ack:type_name -> google.protobuf.Any
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -148,26 +148,26 @@ var file_sc_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_sc_proto_init() }
-func file_sc_proto_init() {
-	if File_sc_proto != nil {
+func init() { file_xl_proto_init() }
+func file_xl_proto_init() {
+	if File_xl_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sc_proto_rawDesc), len(file_sc_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_xl_proto_rawDesc), len(file_xl_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_sc_proto_goTypes,
-		DependencyIndexes: file_sc_proto_depIdxs,
-		MessageInfos:      file_sc_proto_msgTypes,
+		GoTypes:           file_xl_proto_goTypes,
+		DependencyIndexes: file_xl_proto_depIdxs,
+		MessageInfos:      file_xl_proto_msgTypes,
 	}.Build()
-	File_sc_proto = out.File
-	file_sc_proto_goTypes = nil
-	file_sc_proto_depIdxs = nil
+	File_xl_proto = out.File
+	file_xl_proto_goTypes = nil
+	file_xl_proto_depIdxs = nil
 }

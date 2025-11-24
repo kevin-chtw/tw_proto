@@ -1,13 +1,13 @@
 syntax = "proto3";
 import "google/protobuf/any.proto";
 
-package pbsc;
-option go_package = "/pbsc";
+package pbxl;
+option go_package = "/pbxl";
 
-message SCReq {
+message XLReq {
   google.protobuf.Any req = 1;
 }
 
-message SCAck {
+message XLAck {
   google.protobuf.Any ack = 1;
 }
