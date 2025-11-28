@@ -113,13 +113,23 @@ struct EnterGameAckDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EnterGameAckDefaultTypeInternal _EnterGameAck_default_instance_;
+constexpr TablePlayerAck_ItemsEntry_DoNotUse::TablePlayerAck_ItemsEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct TablePlayerAck_ItemsEntry_DoNotUseDefaultTypeInternal {
+  constexpr TablePlayerAck_ItemsEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~TablePlayerAck_ItemsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    TablePlayerAck_ItemsEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TablePlayerAck_ItemsEntry_DoNotUseDefaultTypeInternal _TablePlayerAck_ItemsEntry_DoNotUse_default_instance_;
 constexpr TablePlayerAck::TablePlayerAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : uid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : items_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
+  , uid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , avatar_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , diamond_(int64_t{0})
-  , vip_(0)
   , seat_(0)
   , ready_(false){}
 struct TablePlayerAckDefaultTypeInternal {
@@ -266,7 +276,7 @@ struct HisEndAckDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT HisEndAckDefaultTypeInternal _HisEndAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_game_2eproto[19];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_game_2eproto[20];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_game_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_game_2eproto = nullptr;
 
@@ -336,6 +346,16 @@ const uint32_t TableStruct_game_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, creator_),
   PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, desn_),
   PROTOBUF_FIELD_OFFSET(::cproto::EnterGameAck, fdproperty_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck_ItemsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck_ItemsEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck_ItemsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck_ItemsEntry_DoNotUse, value_),
+  0,
+  1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -345,10 +365,9 @@ const uint32_t TableStruct_game_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, uid_),
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, nickname_),
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, avatar_),
-  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, vip_),
-  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, diamond_),
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, seat_),
   PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, ready_),
+  PROTOBUF_FIELD_OFFSET(::cproto::TablePlayerAck, items_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::TableMsgReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -441,18 +460,19 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 33, -1, -1, sizeof(::cproto::GameDissolveReq)},
   { 40, 48, -1, sizeof(::cproto::EnterGameAck_FdpropertyEntry_DoNotUse)},
   { 50, -1, -1, sizeof(::cproto::EnterGameAck)},
-  { 65, -1, -1, sizeof(::cproto::TablePlayerAck)},
-  { 78, -1, -1, sizeof(::cproto::TableMsgReq)},
-  { 85, -1, -1, sizeof(::cproto::TableMsgAck)},
-  { 92, -1, -1, sizeof(::cproto::GameExitAck)},
-  { 99, -1, -1, sizeof(::cproto::GameReadyAck)},
-  { 107, 115, -1, sizeof(::cproto::GameDissolveAck_AgreedEntry_DoNotUse)},
-  { 117, -1, -1, sizeof(::cproto::GameDissolveAck)},
-  { 127, -1, -1, sizeof(::cproto::GameDissolveResultAck)},
-  { 134, -1, -1, sizeof(::cproto::GameBeginAck)},
-  { 141, -1, -1, sizeof(::cproto::GameOverAck)},
-  { 149, -1, -1, sizeof(::cproto::HisBeginAck)},
-  { 155, -1, -1, sizeof(::cproto::HisEndAck)},
+  { 65, 73, -1, sizeof(::cproto::TablePlayerAck_ItemsEntry_DoNotUse)},
+  { 75, -1, -1, sizeof(::cproto::TablePlayerAck)},
+  { 87, -1, -1, sizeof(::cproto::TableMsgReq)},
+  { 94, -1, -1, sizeof(::cproto::TableMsgAck)},
+  { 101, -1, -1, sizeof(::cproto::GameExitAck)},
+  { 108, -1, -1, sizeof(::cproto::GameReadyAck)},
+  { 116, 124, -1, sizeof(::cproto::GameDissolveAck_AgreedEntry_DoNotUse)},
+  { 126, -1, -1, sizeof(::cproto::GameDissolveAck)},
+  { 136, -1, -1, sizeof(::cproto::GameDissolveResultAck)},
+  { 143, -1, -1, sizeof(::cproto::GameBeginAck)},
+  { 150, -1, -1, sizeof(::cproto::GameOverAck)},
+  { 158, -1, -1, sizeof(::cproto::HisBeginAck)},
+  { 164, -1, -1, sizeof(::cproto::HisEndAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -463,6 +483,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_GameDissolveReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_EnterGameAck_FdpropertyEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_EnterGameAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TablePlayerAck_ItemsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TablePlayerAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TableMsgReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TableMsgAck_default_instance_),
@@ -493,30 +514,31 @@ const char descriptor_table_protodef_game_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\014\n\004desn\030\010 \001(\t\0228\n\nfdproperty\030\t \003(\0132$.cpro"
   "to.EnterGameAck.FdpropertyEntry\0321\n\017Fdpro"
   "pertyEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\002"
-  "8\001\"z\n\016TablePlayerAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010nic"
-  "kname\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\013\n\003vip\030\004 \001(\005"
-  "\022\017\n\007diamond\030\005 \001(\003\022\014\n\004seat\030\006 \001(\005\022\r\n\005ready"
-  "\030\007 \001(\010\"\032\n\013TableMsgReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013Ta"
-  "bleMsgAck\022\013\n\003msg\030\001 \001(\014\"\032\n\013GameExitAck\022\013\n"
-  "\003uid\030\001 \001(\t\"+\n\014GameReadyAck\022\014\n\004seat\030\001 \001(\005"
-  "\022\r\n\005ready\030\002 \001(\010\"\247\001\n\017GameDissolveAck\022\021\n\ts"
-  "tarttime\030\001 \001(\003\022\017\n\007endtime\030\002 \001(\003\022\014\n\004seat\030"
-  "\003 \001(\005\0223\n\006agreed\030\004 \003(\0132#.cproto.GameDisso"
-  "lveAck.AgreedEntry\032-\n\013AgreedEntry\022\013\n\003key"
-  "\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\")\n\025GameDissolv"
-  "eResultAck\022\020\n\010dissovle\030\001 \001(\010\"&\n\014GameBegi"
-  "nAck\022\026\n\016cur_game_count\030\001 \001(\005\"4\n\013GameOver"
-  "Ack\022\026\n\016cur_game_count\030\001 \001(\005\022\r\n\005ready\030\002 \003"
-  "(\010\"\r\n\013HisBeginAck\"\013\n\tHisEndAckB\013Z\t../cpr"
-  "otob\006proto3"
+  "8\001\"\274\001\n\016TablePlayerAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010ni"
+  "ckname\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\014\n\004seat\030\004 \001"
+  "(\005\022\r\n\005ready\030\005 \001(\010\0220\n\005items\030\006 \003(\0132!.cprot"
+  "o.TablePlayerAck.ItemsEntry\032,\n\nItemsEntr"
+  "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\032\n\013Tab"
+  "leMsgReq\022\013\n\003msg\030\001 \001(\014\"\032\n\013TableMsgAck\022\013\n\003"
+  "msg\030\001 \001(\014\"\032\n\013GameExitAck\022\013\n\003uid\030\001 \001(\t\"+\n"
+  "\014GameReadyAck\022\014\n\004seat\030\001 \001(\005\022\r\n\005ready\030\002 \001"
+  "(\010\"\247\001\n\017GameDissolveAck\022\021\n\tstarttime\030\001 \001("
+  "\003\022\017\n\007endtime\030\002 \001(\003\022\014\n\004seat\030\003 \001(\005\0223\n\006agre"
+  "ed\030\004 \003(\0132#.cproto.GameDissolveAck.Agreed"
+  "Entry\032-\n\013AgreedEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005val"
+  "ue\030\002 \001(\010:\0028\001\")\n\025GameDissolveResultAck\022\020\n"
+  "\010dissovle\030\001 \001(\010\"&\n\014GameBeginAck\022\026\n\016cur_g"
+  "ame_count\030\001 \001(\005\"4\n\013GameOverAck\022\026\n\016cur_ga"
+  "me_count\030\001 \001(\005\022\r\n\005ready\030\002 \003(\010\"\r\n\013HisBegi"
+  "nAck\"\013\n\tHisEndAckB\013Z\t../cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_game_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_game_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_game_2eproto = {
-  false, false, 1211, descriptor_table_protodef_game_2eproto, "game.proto", 
-  &descriptor_table_game_2eproto_once, descriptor_table_game_2eproto_deps, 1, 19,
+  false, false, 1278, descriptor_table_protodef_game_2eproto, "game.proto", 
+  &descriptor_table_game_2eproto_once, descriptor_table_game_2eproto_deps, 1, 20,
   schemas, file_default_instances, TableStruct_game_2eproto::offsets,
   file_level_metadata_game_2eproto, file_level_enum_descriptors_game_2eproto, file_level_service_descriptors_game_2eproto,
 };
@@ -2059,13 +2081,28 @@ void EnterGameAck::InternalSwap(EnterGameAck* other) {
 
 // ===================================================================
 
+TablePlayerAck_ItemsEntry_DoNotUse::TablePlayerAck_ItemsEntry_DoNotUse() {}
+TablePlayerAck_ItemsEntry_DoNotUse::TablePlayerAck_ItemsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void TablePlayerAck_ItemsEntry_DoNotUse::MergeFrom(const TablePlayerAck_ItemsEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata TablePlayerAck_ItemsEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
+      file_level_metadata_game_2eproto[7]);
+}
+
+// ===================================================================
+
 class TablePlayerAck::_Internal {
  public:
 };
 
 TablePlayerAck::TablePlayerAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  items_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
@@ -2075,6 +2112,7 @@ TablePlayerAck::TablePlayerAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 TablePlayerAck::TablePlayerAck(const TablePlayerAck& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  items_.MergeFrom(from.items_);
   uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     uid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
@@ -2099,9 +2137,9 @@ TablePlayerAck::TablePlayerAck(const TablePlayerAck& from)
     avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_avatar(), 
       GetArenaForAllocation());
   }
-  ::memcpy(&diamond_, &from.diamond_,
+  ::memcpy(&seat_, &from.seat_,
     static_cast<size_t>(reinterpret_cast<char*>(&ready_) -
-    reinterpret_cast<char*>(&diamond_)) + sizeof(ready_));
+    reinterpret_cast<char*>(&seat_)) + sizeof(ready_));
   // @@protoc_insertion_point(copy_constructor:cproto.TablePlayerAck)
 }
 
@@ -2119,9 +2157,9 @@ avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlrea
   avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&diamond_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&seat_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&ready_) -
-    reinterpret_cast<char*>(&diamond_)) + sizeof(ready_));
+    reinterpret_cast<char*>(&seat_)) + sizeof(ready_));
 }
 
 TablePlayerAck::~TablePlayerAck() {
@@ -2141,8 +2179,12 @@ inline void TablePlayerAck::SharedDtor() {
 void TablePlayerAck::ArenaDtor(void* object) {
   TablePlayerAck* _this = reinterpret_cast< TablePlayerAck* >(object);
   (void)_this;
+  _this->items_. ~MapField();
 }
-void TablePlayerAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+inline void TablePlayerAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
+  if (arena != nullptr) {
+    arena->OwnCustomDestructor(this, &TablePlayerAck::ArenaDtor);
+  }
 }
 void TablePlayerAck::SetCachedSize(int size) const {
   _cached_size_.Set(size);
@@ -2154,12 +2196,13 @@ void TablePlayerAck::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  items_.Clear();
   uid_.ClearToEmpty();
   nickname_.ClearToEmpty();
   avatar_.ClearToEmpty();
-  ::memset(&diamond_, 0, static_cast<size_t>(
+  ::memset(&seat_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&ready_) -
-      reinterpret_cast<char*>(&diamond_)) + sizeof(ready_));
+      reinterpret_cast<char*>(&seat_)) + sizeof(ready_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2199,35 +2242,32 @@ const char* TablePlayerAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
         } else
           goto handle_unusual;
         continue;
-      // int32 vip = 4;
+      // int32 seat = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          vip_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 diamond = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          diamond_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 seat = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
           seat_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bool ready = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+      // bool ready = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           ready_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // map<int32, int64> items = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&items_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -2290,28 +2330,47 @@ uint8_t* TablePlayerAck::_InternalSerialize(
         3, this->_internal_avatar(), target);
   }
 
-  // int32 vip = 4;
-  if (this->_internal_vip() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_vip(), target);
-  }
-
-  // int64 diamond = 5;
-  if (this->_internal_diamond() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(5, this->_internal_diamond(), target);
-  }
-
-  // int32 seat = 6;
+  // int32 seat = 4;
   if (this->_internal_seat() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_seat(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_seat(), target);
   }
 
-  // bool ready = 7;
+  // bool ready = 5;
   if (this->_internal_ready() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(7, this->_internal_ready(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_ready(), target);
+  }
+
+  // map<int32, int64> items = 6;
+  if (!this->_internal_items().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
+        ConstPtr;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::SortItem< int32_t, ConstPtr > SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByFirstField<SortItem> Less;
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_items().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_items().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_items().begin();
+          it != this->_internal_items().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = TablePlayerAck_ItemsEntry_DoNotUse::Funcs::InternalSerialize(6, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_items().begin();
+          it != this->_internal_items().end(); ++it) {
+        target = TablePlayerAck_ItemsEntry_DoNotUse::Funcs::InternalSerialize(6, it->first, it->second, target, stream);
+      }
+    }
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2329,6 +2388,15 @@ size_t TablePlayerAck::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // map<int32, int64> items = 6;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_items_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+      it = this->_internal_items().begin();
+      it != this->_internal_items().end(); ++it) {
+    total_size += TablePlayerAck_ItemsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
 
   // string uid = 1;
   if (!this->_internal_uid().empty()) {
@@ -2351,22 +2419,12 @@ size_t TablePlayerAck::ByteSizeLong() const {
         this->_internal_avatar());
   }
 
-  // int64 diamond = 5;
-  if (this->_internal_diamond() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_diamond());
-  }
-
-  // int32 vip = 4;
-  if (this->_internal_vip() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_vip());
-  }
-
-  // int32 seat = 6;
+  // int32 seat = 4;
   if (this->_internal_seat() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_seat());
   }
 
-  // bool ready = 7;
+  // bool ready = 5;
   if (this->_internal_ready() != 0) {
     total_size += 1 + 1;
   }
@@ -2393,6 +2451,7 @@ void TablePlayerAck::MergeFrom(const TablePlayerAck& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  items_.MergeFrom(from.items_);
   if (!from._internal_uid().empty()) {
     _internal_set_uid(from._internal_uid());
   }
@@ -2401,12 +2460,6 @@ void TablePlayerAck::MergeFrom(const TablePlayerAck& from) {
   }
   if (!from._internal_avatar().empty()) {
     _internal_set_avatar(from._internal_avatar());
-  }
-  if (from._internal_diamond() != 0) {
-    _internal_set_diamond(from._internal_diamond());
-  }
-  if (from._internal_vip() != 0) {
-    _internal_set_vip(from._internal_vip());
   }
   if (from._internal_seat() != 0) {
     _internal_set_seat(from._internal_seat());
@@ -2433,6 +2486,7 @@ void TablePlayerAck::InternalSwap(TablePlayerAck* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  items_.InternalSwap(&other->items_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &uid_, lhs_arena,
@@ -2451,15 +2505,15 @@ void TablePlayerAck::InternalSwap(TablePlayerAck* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(TablePlayerAck, ready_)
       + sizeof(TablePlayerAck::ready_)
-      - PROTOBUF_FIELD_OFFSET(TablePlayerAck, diamond_)>(
-          reinterpret_cast<char*>(&diamond_),
-          reinterpret_cast<char*>(&other->diamond_));
+      - PROTOBUF_FIELD_OFFSET(TablePlayerAck, seat_)>(
+          reinterpret_cast<char*>(&seat_),
+          reinterpret_cast<char*>(&other->seat_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TablePlayerAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[7]);
+      file_level_metadata_game_2eproto[8]);
 }
 
 // ===================================================================
@@ -2657,7 +2711,7 @@ void TableMsgReq::InternalSwap(TableMsgReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TableMsgReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[8]);
+      file_level_metadata_game_2eproto[9]);
 }
 
 // ===================================================================
@@ -2855,7 +2909,7 @@ void TableMsgAck::InternalSwap(TableMsgAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TableMsgAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[9]);
+      file_level_metadata_game_2eproto[10]);
 }
 
 // ===================================================================
@@ -3058,7 +3112,7 @@ void GameExitAck::InternalSwap(GameExitAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameExitAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[10]);
+      file_level_metadata_game_2eproto[11]);
 }
 
 // ===================================================================
@@ -3270,7 +3324,7 @@ void GameReadyAck::InternalSwap(GameReadyAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameReadyAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[11]);
+      file_level_metadata_game_2eproto[12]);
 }
 
 // ===================================================================
@@ -3284,7 +3338,7 @@ void GameDissolveAck_AgreedEntry_DoNotUse::MergeFrom(const GameDissolveAck_Agree
 ::PROTOBUF_NAMESPACE_ID::Metadata GameDissolveAck_AgreedEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[12]);
+      file_level_metadata_game_2eproto[13]);
 }
 
 // ===================================================================
@@ -3580,7 +3634,7 @@ void GameDissolveAck::InternalSwap(GameDissolveAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameDissolveAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[13]);
+      file_level_metadata_game_2eproto[14]);
 }
 
 // ===================================================================
@@ -3758,7 +3812,7 @@ void GameDissolveResultAck::InternalSwap(GameDissolveResultAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameDissolveResultAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[14]);
+      file_level_metadata_game_2eproto[15]);
 }
 
 // ===================================================================
@@ -3936,7 +3990,7 @@ void GameBeginAck::InternalSwap(GameBeginAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameBeginAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[15]);
+      file_level_metadata_game_2eproto[16]);
 }
 
 // ===================================================================
@@ -4147,7 +4201,7 @@ void GameOverAck::InternalSwap(GameOverAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameOverAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[16]);
+      file_level_metadata_game_2eproto[17]);
 }
 
 // ===================================================================
@@ -4186,7 +4240,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*HisBeginAck::GetClassData() co
 ::PROTOBUF_NAMESPACE_ID::Metadata HisBeginAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[17]);
+      file_level_metadata_game_2eproto[18]);
 }
 
 // ===================================================================
@@ -4225,7 +4279,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*HisEndAck::GetClassData() cons
 ::PROTOBUF_NAMESPACE_ID::Metadata HisEndAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_2eproto_getter, &descriptor_table_game_2eproto_once,
-      file_level_metadata_game_2eproto[18]);
+      file_level_metadata_game_2eproto[19]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -4251,6 +4305,9 @@ template<> PROTOBUF_NOINLINE ::cproto::EnterGameAck_FdpropertyEntry_DoNotUse* Ar
 }
 template<> PROTOBUF_NOINLINE ::cproto::EnterGameAck* Arena::CreateMaybeMessage< ::cproto::EnterGameAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::EnterGameAck >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::TablePlayerAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::TablePlayerAck_ItemsEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::TablePlayerAck_ItemsEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::TablePlayerAck* Arena::CreateMaybeMessage< ::cproto::TablePlayerAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::TablePlayerAck >(arena);

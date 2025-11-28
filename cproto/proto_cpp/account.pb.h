@@ -50,7 +50,7 @@ struct TableStruct_account_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[15]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -64,15 +64,21 @@ extern AccountAckDefaultTypeInternal _AccountAck_default_instance_;
 class AccountReq;
 struct AccountReqDefaultTypeInternal;
 extern AccountReqDefaultTypeInternal _AccountReq_default_instance_;
-class AddCoinReq;
-struct AddCoinReqDefaultTypeInternal;
-extern AddCoinReqDefaultTypeInternal _AddCoinReq_default_instance_;
+class ItemsAck;
+struct ItemsAckDefaultTypeInternal;
+extern ItemsAckDefaultTypeInternal _ItemsAck_default_instance_;
+class ItemsAck_ItemsEntry_DoNotUse;
+struct ItemsAck_ItemsEntry_DoNotUseDefaultTypeInternal;
+extern ItemsAck_ItemsEntry_DoNotUseDefaultTypeInternal _ItemsAck_ItemsEntry_DoNotUse_default_instance_;
 class LoginReq;
 struct LoginReqDefaultTypeInternal;
 extern LoginReqDefaultTypeInternal _LoginReq_default_instance_;
 class PlayerInfoAck;
 struct PlayerInfoAckDefaultTypeInternal;
 extern PlayerInfoAckDefaultTypeInternal _PlayerInfoAck_default_instance_;
+class PlayerInfoAck_ItemsEntry_DoNotUse;
+struct PlayerInfoAck_ItemsEntry_DoNotUseDefaultTypeInternal;
+extern PlayerInfoAck_ItemsEntry_DoNotUseDefaultTypeInternal _PlayerInfoAck_ItemsEntry_DoNotUse_default_instance_;
 class PurchaseAck;
 struct PurchaseAckDefaultTypeInternal;
 extern PurchaseAckDefaultTypeInternal _PurchaseAck_default_instance_;
@@ -85,9 +91,9 @@ extern PurchaseReqDefaultTypeInternal _PurchaseReq_default_instance_;
 class RegisterAck;
 struct RegisterAckDefaultTypeInternal;
 extern RegisterAckDefaultTypeInternal _RegisterAck_default_instance_;
-class RegisterAward;
-struct RegisterAwardDefaultTypeInternal;
-extern RegisterAwardDefaultTypeInternal _RegisterAward_default_instance_;
+class RegisterAck_AwardEntry_DoNotUse;
+struct RegisterAck_AwardEntry_DoNotUseDefaultTypeInternal;
+extern RegisterAck_AwardEntry_DoNotUseDefaultTypeInternal _RegisterAck_AwardEntry_DoNotUse_default_instance_;
 class RegisterReq;
 struct RegisterReqDefaultTypeInternal;
 extern RegisterReqDefaultTypeInternal _RegisterReq_default_instance_;
@@ -101,14 +107,16 @@ extern ShopReqDefaultTypeInternal _ShopReq_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::cproto::AccountAck* Arena::CreateMaybeMessage<::cproto::AccountAck>(Arena*);
 template<> ::cproto::AccountReq* Arena::CreateMaybeMessage<::cproto::AccountReq>(Arena*);
-template<> ::cproto::AddCoinReq* Arena::CreateMaybeMessage<::cproto::AddCoinReq>(Arena*);
+template<> ::cproto::ItemsAck* Arena::CreateMaybeMessage<::cproto::ItemsAck>(Arena*);
+template<> ::cproto::ItemsAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::ItemsAck_ItemsEntry_DoNotUse>(Arena*);
 template<> ::cproto::LoginReq* Arena::CreateMaybeMessage<::cproto::LoginReq>(Arena*);
 template<> ::cproto::PlayerInfoAck* Arena::CreateMaybeMessage<::cproto::PlayerInfoAck>(Arena*);
+template<> ::cproto::PlayerInfoAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::PlayerInfoAck_ItemsEntry_DoNotUse>(Arena*);
 template<> ::cproto::PurchaseAck* Arena::CreateMaybeMessage<::cproto::PurchaseAck>(Arena*);
 template<> ::cproto::PurchaseAck_GoodsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::PurchaseAck_GoodsEntry_DoNotUse>(Arena*);
 template<> ::cproto::PurchaseReq* Arena::CreateMaybeMessage<::cproto::PurchaseReq>(Arena*);
 template<> ::cproto::RegisterAck* Arena::CreateMaybeMessage<::cproto::RegisterAck>(Arena*);
-template<> ::cproto::RegisterAward* Arena::CreateMaybeMessage<::cproto::RegisterAward>(Arena*);
+template<> ::cproto::RegisterAck_AwardEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::RegisterAck_AwardEntry_DoNotUse>(Arena*);
 template<> ::cproto::RegisterReq* Arena::CreateMaybeMessage<::cproto::RegisterReq>(Arena*);
 template<> ::cproto::ShopAck* Arena::CreateMaybeMessage<::cproto::ShopAck>(Arena*);
 template<> ::cproto::ShopReq* Arena::CreateMaybeMessage<::cproto::ShopReq>(Arena*);
@@ -777,152 +785,6 @@ class RegisterReq final :
 };
 // -------------------------------------------------------------------
 
-class AddCoinReq final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.AddCoinReq) */ {
- public:
-  inline AddCoinReq() : AddCoinReq(nullptr) {}
-  ~AddCoinReq() override;
-  explicit constexpr AddCoinReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  AddCoinReq(const AddCoinReq& from);
-  AddCoinReq(AddCoinReq&& from) noexcept
-    : AddCoinReq() {
-    *this = ::std::move(from);
-  }
-
-  inline AddCoinReq& operator=(const AddCoinReq& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline AddCoinReq& operator=(AddCoinReq&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const AddCoinReq& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const AddCoinReq* internal_default_instance() {
-    return reinterpret_cast<const AddCoinReq*>(
-               &_AddCoinReq_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    4;
-
-  friend void swap(AddCoinReq& a, AddCoinReq& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(AddCoinReq* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(AddCoinReq* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  AddCoinReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<AddCoinReq>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const AddCoinReq& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const AddCoinReq& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(AddCoinReq* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.AddCoinReq";
-  }
-  protected:
-  explicit AddCoinReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kCoinFieldNumber = 1,
-  };
-  // int64 coin = 1;
-  void clear_coin();
-  int64_t coin() const;
-  void set_coin(int64_t value);
-  private:
-  int64_t _internal_coin() const;
-  void _internal_set_coin(int64_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.AddCoinReq)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  int64_t coin_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_account_2eproto;
-};
-// -------------------------------------------------------------------
-
 class ShopReq final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ShopReq) */ {
  public:
@@ -971,7 +833,7 @@ class ShopReq final :
                &_ShopReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    4;
 
   friend void swap(ShopReq& a, ShopReq& b) {
     a.Swap(&b);
@@ -1117,7 +979,7 @@ class ShopAck final :
                &_ShopAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    5;
 
   friend void swap(ShopAck& a, ShopAck& b) {
     a.Swap(&b);
@@ -1279,7 +1141,7 @@ class PurchaseReq final :
                &_PurchaseReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    6;
 
   friend void swap(PurchaseReq& a, PurchaseReq& b) {
     a.Swap(&b);
@@ -1459,7 +1321,7 @@ class PurchaseAck final :
                &_PurchaseAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    8;
 
   friend void swap(PurchaseAck& a, PurchaseAck& b) {
     a.Swap(&b);
@@ -1581,6 +1443,29 @@ class PurchaseAck final :
 };
 // -------------------------------------------------------------------
 
+class RegisterAck_AwardEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<RegisterAck_AwardEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<RegisterAck_AwardEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  RegisterAck_AwardEntry_DoNotUse();
+  explicit constexpr RegisterAck_AwardEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit RegisterAck_AwardEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const RegisterAck_AwardEntry_DoNotUse& other);
+  static const RegisterAck_AwardEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const RegisterAck_AwardEntry_DoNotUse*>(&_RegisterAck_AwardEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
 class RegisterAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.RegisterAck) */ {
  public:
@@ -1700,12 +1585,30 @@ class RegisterAck final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPlayerInfoFieldNumber = 1,
     kAwardFieldNumber = 2,
+    kPlayerInfoFieldNumber = 1,
   };
+  // map<int32, int64> award = 2;
+  int award_size() const;
+  private:
+  int _internal_award_size() const;
+  public:
+  void clear_award();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_award() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_award();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      award() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_award();
+
   // .cproto.PlayerInfoAck player_info = 1;
   bool has_player_info() const;
   private:
@@ -1724,24 +1627,6 @@ class RegisterAck final :
       ::cproto::PlayerInfoAck* player_info);
   ::cproto::PlayerInfoAck* unsafe_arena_release_player_info();
 
-  // .cproto.RegisterAward award = 2;
-  bool has_award() const;
-  private:
-  bool _internal_has_award() const;
-  public:
-  void clear_award();
-  const ::cproto::RegisterAward& award() const;
-  PROTOBUF_NODISCARD ::cproto::RegisterAward* release_award();
-  ::cproto::RegisterAward* mutable_award();
-  void set_allocated_award(::cproto::RegisterAward* award);
-  private:
-  const ::cproto::RegisterAward& _internal_award() const;
-  ::cproto::RegisterAward* _internal_mutable_award();
-  public:
-  void unsafe_arena_set_allocated_award(
-      ::cproto::RegisterAward* award);
-  ::cproto::RegisterAward* unsafe_arena_release_award();
-
   // @@protoc_insertion_point(class_scope:cproto.RegisterAck)
  private:
   class _Internal;
@@ -1749,11 +1634,38 @@ class RegisterAck final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      RegisterAck_AwardEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> award_;
   ::cproto::PlayerInfoAck* player_info_;
-  ::cproto::RegisterAward* award_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_account_2eproto;
 };
+// -------------------------------------------------------------------
+
+class PlayerInfoAck_ItemsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PlayerInfoAck_ItemsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PlayerInfoAck_ItemsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  PlayerInfoAck_ItemsEntry_DoNotUse();
+  explicit constexpr PlayerInfoAck_ItemsEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PlayerInfoAck_ItemsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const PlayerInfoAck_ItemsEntry_DoNotUse& other);
+  static const PlayerInfoAck_ItemsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PlayerInfoAck_ItemsEntry_DoNotUse*>(&_PlayerInfoAck_ItemsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
 // -------------------------------------------------------------------
 
 class PlayerInfoAck final :
@@ -1804,7 +1716,7 @@ class PlayerInfoAck final :
                &_PlayerInfoAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(PlayerInfoAck& a, PlayerInfoAck& b) {
     a.Swap(&b);
@@ -1875,16 +1787,32 @@ class PlayerInfoAck final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
+    kItemsFieldNumber = 4,
     kUidFieldNumber = 1,
     kNicknameFieldNumber = 2,
     kAvatarFieldNumber = 3,
-    kDiamondFieldNumber = 5,
-    kCoinFieldNumber = 6,
-    kVipFieldNumber = 4,
   };
+  // map<int32, int64> items = 4;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+  public:
+  void clear_items();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_items() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_items();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      items() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_items();
+
   // string uid = 1;
   void clear_uid();
   const std::string& uid() const;
@@ -1927,33 +1855,6 @@ class PlayerInfoAck final :
   std::string* _internal_mutable_avatar();
   public:
 
-  // int64 diamond = 5;
-  void clear_diamond();
-  int64_t diamond() const;
-  void set_diamond(int64_t value);
-  private:
-  int64_t _internal_diamond() const;
-  void _internal_set_diamond(int64_t value);
-  public:
-
-  // int64 coin = 6;
-  void clear_coin();
-  int64_t coin() const;
-  void set_coin(int64_t value);
-  private:
-  int64_t _internal_coin() const;
-  void _internal_set_coin(int64_t value);
-  public:
-
-  // int32 vip = 4;
-  void clear_vip();
-  int32_t vip() const;
-  void set_vip(int32_t value);
-  private:
-  int32_t _internal_vip() const;
-  void _internal_set_vip(int32_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:cproto.PlayerInfoAck)
  private:
   class _Internal;
@@ -1961,35 +1862,60 @@ class PlayerInfoAck final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      PlayerInfoAck_ItemsEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> items_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr uid_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr avatar_;
-  int64_t diamond_;
-  int64_t coin_;
-  int32_t vip_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_account_2eproto;
 };
 // -------------------------------------------------------------------
 
-class RegisterAward final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.RegisterAward) */ {
- public:
-  inline RegisterAward() : RegisterAward(nullptr) {}
-  ~RegisterAward() override;
-  explicit constexpr RegisterAward(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+class ItemsAck_ItemsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ItemsAck_ItemsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ItemsAck_ItemsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  ItemsAck_ItemsEntry_DoNotUse();
+  explicit constexpr ItemsAck_ItemsEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit ItemsAck_ItemsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const ItemsAck_ItemsEntry_DoNotUse& other);
+  static const ItemsAck_ItemsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const ItemsAck_ItemsEntry_DoNotUse*>(&_ItemsAck_ItemsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
 
-  RegisterAward(const RegisterAward& from);
-  RegisterAward(RegisterAward&& from) noexcept
-    : RegisterAward() {
+// -------------------------------------------------------------------
+
+class ItemsAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ItemsAck) */ {
+ public:
+  inline ItemsAck() : ItemsAck(nullptr) {}
+  ~ItemsAck() override;
+  explicit constexpr ItemsAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ItemsAck(const ItemsAck& from);
+  ItemsAck(ItemsAck&& from) noexcept
+    : ItemsAck() {
     *this = ::std::move(from);
   }
 
-  inline RegisterAward& operator=(const RegisterAward& from) {
+  inline ItemsAck& operator=(const ItemsAck& from) {
     CopyFrom(from);
     return *this;
   }
-  inline RegisterAward& operator=(RegisterAward&& from) noexcept {
+  inline ItemsAck& operator=(ItemsAck&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -2012,20 +1938,20 @@ class RegisterAward final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const RegisterAward& default_instance() {
+  static const ItemsAck& default_instance() {
     return *internal_default_instance();
   }
-  static inline const RegisterAward* internal_default_instance() {
-    return reinterpret_cast<const RegisterAward*>(
-               &_RegisterAward_default_instance_);
+  static inline const ItemsAck* internal_default_instance() {
+    return reinterpret_cast<const ItemsAck*>(
+               &_ItemsAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    14;
 
-  friend void swap(RegisterAward& a, RegisterAward& b) {
+  friend void swap(ItemsAck& a, ItemsAck& b) {
     a.Swap(&b);
   }
-  inline void Swap(RegisterAward* other) {
+  inline void Swap(ItemsAck* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -2038,7 +1964,7 @@ class RegisterAward final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(RegisterAward* other) {
+  void UnsafeArenaSwap(ItemsAck* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -2046,13 +1972,13 @@ class RegisterAward final :
 
   // implements Message ----------------------------------------------
 
-  RegisterAward* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<RegisterAward>(arena);
+  ItemsAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ItemsAck>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const RegisterAward& from);
+  void CopyFrom(const ItemsAck& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const RegisterAward& from);
+  void MergeFrom(const ItemsAck& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -2069,15 +1995,15 @@ class RegisterAward final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(RegisterAward* other);
+  void InternalSwap(ItemsAck* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.RegisterAward";
+    return "cproto.ItemsAck";
   }
   protected:
-  explicit RegisterAward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ItemsAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -2091,39 +2017,41 @@ class RegisterAward final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDiamondFieldNumber = 1,
-    kCoinFieldNumber = 2,
+    kItemsFieldNumber = 1,
   };
-  // int64 diamond = 1;
-  void clear_diamond();
-  int64_t diamond() const;
-  void set_diamond(int64_t value);
+  // map<int32, int64> items = 1;
+  int items_size() const;
   private:
-  int64_t _internal_diamond() const;
-  void _internal_set_diamond(int64_t value);
+  int _internal_items_size() const;
   public:
-
-  // int64 coin = 2;
-  void clear_coin();
-  int64_t coin() const;
-  void set_coin(int64_t value);
+  void clear_items();
   private:
-  int64_t _internal_coin() const;
-  void _internal_set_coin(int64_t value);
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_items() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_items();
   public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      items() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_items();
 
-  // @@protoc_insertion_point(class_scope:cproto.RegisterAward)
+  // @@protoc_insertion_point(class_scope:cproto.ItemsAck)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int64_t diamond_;
-  int64_t coin_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      ItemsAck_ItemsEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> items_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_account_2eproto;
 };
@@ -2579,30 +2507,6 @@ inline void RegisterReq::set_allocated_avatar(std::string* avatar) {
 
 // -------------------------------------------------------------------
 
-// AddCoinReq
-
-// int64 coin = 1;
-inline void AddCoinReq::clear_coin() {
-  coin_ = int64_t{0};
-}
-inline int64_t AddCoinReq::_internal_coin() const {
-  return coin_;
-}
-inline int64_t AddCoinReq::coin() const {
-  // @@protoc_insertion_point(field_get:cproto.AddCoinReq.coin)
-  return _internal_coin();
-}
-inline void AddCoinReq::_internal_set_coin(int64_t value) {
-  
-  coin_ = value;
-}
-inline void AddCoinReq::set_coin(int64_t value) {
-  _internal_set_coin(value);
-  // @@protoc_insertion_point(field_set:cproto.AddCoinReq.coin)
-}
-
-// -------------------------------------------------------------------
-
 // ShopReq
 
 // int32 shop_type = 1;
@@ -2801,6 +2705,8 @@ PurchaseAck::mutable_goods() {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // RegisterAck
 
 // .cproto.PlayerInfoAck player_info = 1;
@@ -2893,95 +2799,36 @@ inline void RegisterAck::set_allocated_player_info(::cproto::PlayerInfoAck* play
   // @@protoc_insertion_point(field_set_allocated:cproto.RegisterAck.player_info)
 }
 
-// .cproto.RegisterAward award = 2;
-inline bool RegisterAck::_internal_has_award() const {
-  return this != internal_default_instance() && award_ != nullptr;
+// map<int32, int64> award = 2;
+inline int RegisterAck::_internal_award_size() const {
+  return award_.size();
 }
-inline bool RegisterAck::has_award() const {
-  return _internal_has_award();
+inline int RegisterAck::award_size() const {
+  return _internal_award_size();
 }
 inline void RegisterAck::clear_award() {
-  if (GetArenaForAllocation() == nullptr && award_ != nullptr) {
-    delete award_;
-  }
-  award_ = nullptr;
+  award_.Clear();
 }
-inline const ::cproto::RegisterAward& RegisterAck::_internal_award() const {
-  const ::cproto::RegisterAward* p = award_;
-  return p != nullptr ? *p : reinterpret_cast<const ::cproto::RegisterAward&>(
-      ::cproto::_RegisterAward_default_instance_);
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+RegisterAck::_internal_award() const {
+  return award_.GetMap();
 }
-inline const ::cproto::RegisterAward& RegisterAck::award() const {
-  // @@protoc_insertion_point(field_get:cproto.RegisterAck.award)
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+RegisterAck::award() const {
+  // @@protoc_insertion_point(field_map:cproto.RegisterAck.award)
   return _internal_award();
 }
-inline void RegisterAck::unsafe_arena_set_allocated_award(
-    ::cproto::RegisterAward* award) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(award_);
-  }
-  award_ = award;
-  if (award) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cproto.RegisterAck.award)
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+RegisterAck::_internal_mutable_award() {
+  return award_.MutableMap();
 }
-inline ::cproto::RegisterAward* RegisterAck::release_award() {
-  
-  ::cproto::RegisterAward* temp = award_;
-  award_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+RegisterAck::mutable_award() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.RegisterAck.award)
+  return _internal_mutable_award();
 }
-inline ::cproto::RegisterAward* RegisterAck::unsafe_arena_release_award() {
-  // @@protoc_insertion_point(field_release:cproto.RegisterAck.award)
-  
-  ::cproto::RegisterAward* temp = award_;
-  award_ = nullptr;
-  return temp;
-}
-inline ::cproto::RegisterAward* RegisterAck::_internal_mutable_award() {
-  
-  if (award_ == nullptr) {
-    auto* p = CreateMaybeMessage<::cproto::RegisterAward>(GetArenaForAllocation());
-    award_ = p;
-  }
-  return award_;
-}
-inline ::cproto::RegisterAward* RegisterAck::mutable_award() {
-  ::cproto::RegisterAward* _msg = _internal_mutable_award();
-  // @@protoc_insertion_point(field_mutable:cproto.RegisterAck.award)
-  return _msg;
-}
-inline void RegisterAck::set_allocated_award(::cproto::RegisterAward* award) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete award_;
-  }
-  if (award) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::cproto::RegisterAward>::GetOwningArena(award);
-    if (message_arena != submessage_arena) {
-      award = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, award, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  award_ = award;
-  // @@protoc_insertion_point(field_set_allocated:cproto.RegisterAck.award)
-}
+
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -3140,113 +2987,77 @@ inline void PlayerInfoAck::set_allocated_avatar(std::string* avatar) {
   // @@protoc_insertion_point(field_set_allocated:cproto.PlayerInfoAck.avatar)
 }
 
-// int32 vip = 4;
-inline void PlayerInfoAck::clear_vip() {
-  vip_ = 0;
+// map<int32, int64> items = 4;
+inline int PlayerInfoAck::_internal_items_size() const {
+  return items_.size();
 }
-inline int32_t PlayerInfoAck::_internal_vip() const {
-  return vip_;
+inline int PlayerInfoAck::items_size() const {
+  return _internal_items_size();
 }
-inline int32_t PlayerInfoAck::vip() const {
-  // @@protoc_insertion_point(field_get:cproto.PlayerInfoAck.vip)
-  return _internal_vip();
+inline void PlayerInfoAck::clear_items() {
+  items_.Clear();
 }
-inline void PlayerInfoAck::_internal_set_vip(int32_t value) {
-  
-  vip_ = value;
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+PlayerInfoAck::_internal_items() const {
+  return items_.GetMap();
 }
-inline void PlayerInfoAck::set_vip(int32_t value) {
-  _internal_set_vip(value);
-  // @@protoc_insertion_point(field_set:cproto.PlayerInfoAck.vip)
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+PlayerInfoAck::items() const {
+  // @@protoc_insertion_point(field_map:cproto.PlayerInfoAck.items)
+  return _internal_items();
 }
-
-// int64 diamond = 5;
-inline void PlayerInfoAck::clear_diamond() {
-  diamond_ = int64_t{0};
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+PlayerInfoAck::_internal_mutable_items() {
+  return items_.MutableMap();
 }
-inline int64_t PlayerInfoAck::_internal_diamond() const {
-  return diamond_;
-}
-inline int64_t PlayerInfoAck::diamond() const {
-  // @@protoc_insertion_point(field_get:cproto.PlayerInfoAck.diamond)
-  return _internal_diamond();
-}
-inline void PlayerInfoAck::_internal_set_diamond(int64_t value) {
-  
-  diamond_ = value;
-}
-inline void PlayerInfoAck::set_diamond(int64_t value) {
-  _internal_set_diamond(value);
-  // @@protoc_insertion_point(field_set:cproto.PlayerInfoAck.diamond)
-}
-
-// int64 coin = 6;
-inline void PlayerInfoAck::clear_coin() {
-  coin_ = int64_t{0};
-}
-inline int64_t PlayerInfoAck::_internal_coin() const {
-  return coin_;
-}
-inline int64_t PlayerInfoAck::coin() const {
-  // @@protoc_insertion_point(field_get:cproto.PlayerInfoAck.coin)
-  return _internal_coin();
-}
-inline void PlayerInfoAck::_internal_set_coin(int64_t value) {
-  
-  coin_ = value;
-}
-inline void PlayerInfoAck::set_coin(int64_t value) {
-  _internal_set_coin(value);
-  // @@protoc_insertion_point(field_set:cproto.PlayerInfoAck.coin)
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+PlayerInfoAck::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.PlayerInfoAck.items)
+  return _internal_mutable_items();
 }
 
 // -------------------------------------------------------------------
 
-// RegisterAward
+// -------------------------------------------------------------------
 
-// int64 diamond = 1;
-inline void RegisterAward::clear_diamond() {
-  diamond_ = int64_t{0};
-}
-inline int64_t RegisterAward::_internal_diamond() const {
-  return diamond_;
-}
-inline int64_t RegisterAward::diamond() const {
-  // @@protoc_insertion_point(field_get:cproto.RegisterAward.diamond)
-  return _internal_diamond();
-}
-inline void RegisterAward::_internal_set_diamond(int64_t value) {
-  
-  diamond_ = value;
-}
-inline void RegisterAward::set_diamond(int64_t value) {
-  _internal_set_diamond(value);
-  // @@protoc_insertion_point(field_set:cproto.RegisterAward.diamond)
-}
+// ItemsAck
 
-// int64 coin = 2;
-inline void RegisterAward::clear_coin() {
-  coin_ = int64_t{0};
+// map<int32, int64> items = 1;
+inline int ItemsAck::_internal_items_size() const {
+  return items_.size();
 }
-inline int64_t RegisterAward::_internal_coin() const {
-  return coin_;
+inline int ItemsAck::items_size() const {
+  return _internal_items_size();
 }
-inline int64_t RegisterAward::coin() const {
-  // @@protoc_insertion_point(field_get:cproto.RegisterAward.coin)
-  return _internal_coin();
+inline void ItemsAck::clear_items() {
+  items_.Clear();
 }
-inline void RegisterAward::_internal_set_coin(int64_t value) {
-  
-  coin_ = value;
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+ItemsAck::_internal_items() const {
+  return items_.GetMap();
 }
-inline void RegisterAward::set_coin(int64_t value) {
-  _internal_set_coin(value);
-  // @@protoc_insertion_point(field_set:cproto.RegisterAward.coin)
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+ItemsAck::items() const {
+  // @@protoc_insertion_point(field_map:cproto.ItemsAck.items)
+  return _internal_items();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+ItemsAck::_internal_mutable_items() {
+  return items_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+ItemsAck::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.ItemsAck.items)
+  return _internal_mutable_items();
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -393,13 +393,12 @@ func (x *EnterGameAck) GetFdproperty() map[string]int32 {
 
 type TablePlayerAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`           // 玩家ID
-	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"` // 玩家昵称
-	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`     // 玩家头像
-	Vip           int32                  `protobuf:"varint,4,opt,name=vip,proto3" json:"vip,omitempty"`          // VIP等级
-	Diamond       int64                  `protobuf:"varint,5,opt,name=diamond,proto3" json:"diamond,omitempty"`  // 钻石
-	Seat          int32                  `protobuf:"varint,6,opt,name=seat,proto3" json:"seat,omitempty"`        // 座位号
-	Ready         bool                   `protobuf:"varint,7,opt,name=ready,proto3" json:"ready,omitempty"`      // 是否准备
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                 // 玩家ID
+	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                       // 玩家昵称
+	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                           // 玩家头像
+	Seat          int32                  `protobuf:"varint,4,opt,name=seat,proto3" json:"seat,omitempty"`                                                                              // 座位号
+	Ready         bool                   `protobuf:"varint,5,opt,name=ready,proto3" json:"ready,omitempty"`                                                                            // 是否准备
+	Items         map[int32]int64        `protobuf:"bytes,6,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //物品数量
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -455,20 +454,6 @@ func (x *TablePlayerAck) GetAvatar() string {
 	return ""
 }
 
-func (x *TablePlayerAck) GetVip() int32 {
-	if x != nil {
-		return x.Vip
-	}
-	return 0
-}
-
-func (x *TablePlayerAck) GetDiamond() int64 {
-	if x != nil {
-		return x.Diamond
-	}
-	return 0
-}
-
 func (x *TablePlayerAck) GetSeat() int32 {
 	if x != nil {
 		return x.Seat
@@ -481,6 +466,13 @@ func (x *TablePlayerAck) GetReady() bool {
 		return x.Ready
 	}
 	return false
+}
+
+func (x *TablePlayerAck) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
 }
 
 type TableMsgReq struct {
@@ -988,15 +980,18 @@ const file_game_proto_rawDesc = "" +
 	"fdproperty\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xac\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xf3\x01\n" +
 	"\x0eTablePlayerAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
-	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x12\x10\n" +
-	"\x03vip\x18\x04 \x01(\x05R\x03vip\x12\x18\n" +
-	"\adiamond\x18\x05 \x01(\x03R\adiamond\x12\x12\n" +
-	"\x04seat\x18\x06 \x01(\x05R\x04seat\x12\x14\n" +
-	"\x05ready\x18\a \x01(\bR\x05ready\"\x1f\n" +
+	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x12\x12\n" +
+	"\x04seat\x18\x04 \x01(\x05R\x04seat\x12\x14\n" +
+	"\x05ready\x18\x05 \x01(\bR\x05ready\x127\n" +
+	"\x05items\x18\x06 \x03(\v2!.cproto.TablePlayerAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x1f\n" +
 	"\vTableMsgReq\x12\x10\n" +
 	"\x03msg\x18\x01 \x01(\fR\x03msg\"\x1f\n" +
 	"\vTableMsgAck\x12\x10\n" +
@@ -1036,7 +1031,7 @@ func file_game_proto_rawDescGZIP() []byte {
 	return file_game_proto_rawDescData
 }
 
-var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_game_proto_goTypes = []any{
 	(*GameReq)(nil),               // 0: cproto.GameReq
 	(*GameAck)(nil),               // 1: cproto.GameAck
@@ -1056,19 +1051,21 @@ var file_game_proto_goTypes = []any{
 	(*HisBeginAck)(nil),           // 15: cproto.HisBeginAck
 	(*HisEndAck)(nil),             // 16: cproto.HisEndAck
 	nil,                           // 17: cproto.EnterGameAck.FdpropertyEntry
-	nil,                           // 18: cproto.GameDissolveAck.AgreedEntry
-	(*anypb.Any)(nil),             // 19: google.protobuf.Any
+	nil,                           // 18: cproto.TablePlayerAck.ItemsEntry
+	nil,                           // 19: cproto.GameDissolveAck.AgreedEntry
+	(*anypb.Any)(nil),             // 20: google.protobuf.Any
 }
 var file_game_proto_depIdxs = []int32{
-	19, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
-	19, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
+	20, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
+	20, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
 	17, // 2: cproto.EnterGameAck.fdproperty:type_name -> cproto.EnterGameAck.FdpropertyEntry
-	18, // 3: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
-	4,  // [4:4] is the sub-list for method output_type
-	4,  // [4:4] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	18, // 3: cproto.TablePlayerAck.items:type_name -> cproto.TablePlayerAck.ItemsEntry
+	19, // 4: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_game_proto_init() }
@@ -1082,7 +1079,7 @@ func file_game_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_proto_rawDesc), len(file_game_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

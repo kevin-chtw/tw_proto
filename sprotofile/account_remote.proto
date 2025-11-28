@@ -31,27 +31,15 @@ message PlayerInfoAck {
   string uid = 1; // 玩家ID
   string nickname = 2; // 玩家昵称
   string avatar = 3; // 玩家头像
-  int32 vip = 4; // VIP等级
-  int64 diamond = 5; // 钻石
-  int64 coin = 6; // 金币
+  map<int32, int64> items = 4; //玩家物品
 }
 
-message ChangeDiamondReq {
+message ChangeItemsReq {
     string uid = 1; //用户id
-    int64 diamond = 2; //修改数量
+    map<int32, int64> items = 2; //玩家物品
 }
 
-message ChangeDiamondAck {
+message ChangeItemsAck {
     string uid = 1; //用于id
-    int64 diamond = 2; //钻石数量
-}
-
-message ChangeCoinReq {
-    string uid = 1; //用户id
-    int64 coin = 2; //修改数量
-}
-
-message ChangeCoinAck {
-    string uid = 1; //用于id
-    int64 coin = 2; //修改后的数量
+    map<int32, int64> items = 2; //玩家物品
 }

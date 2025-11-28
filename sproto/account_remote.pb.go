@@ -260,12 +260,10 @@ func (x *PlayerInfoReq) GetUid() string {
 
 type PlayerInfoAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`           // 玩家ID
-	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"` // 玩家昵称
-	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`     // 玩家头像
-	Vip           int32                  `protobuf:"varint,4,opt,name=vip,proto3" json:"vip,omitempty"`          // VIP等级
-	Diamond       int64                  `protobuf:"varint,5,opt,name=diamond,proto3" json:"diamond,omitempty"`  // 钻石
-	Coin          int64                  `protobuf:"varint,6,opt,name=coin,proto3" json:"coin,omitempty"`        // 金币
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                 // 玩家ID
+	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                       // 玩家昵称
+	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                           // 玩家头像
+	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //玩家物品
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -321,49 +319,35 @@ func (x *PlayerInfoAck) GetAvatar() string {
 	return ""
 }
 
-func (x *PlayerInfoAck) GetVip() int32 {
+func (x *PlayerInfoAck) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Vip
+		return x.Items
 	}
-	return 0
+	return nil
 }
 
-func (x *PlayerInfoAck) GetDiamond() int64 {
-	if x != nil {
-		return x.Diamond
-	}
-	return 0
-}
-
-func (x *PlayerInfoAck) GetCoin() int64 {
-	if x != nil {
-		return x.Coin
-	}
-	return 0
-}
-
-type ChangeDiamondReq struct {
+type ChangeItemsReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`          //用户id
-	Diamond       int64                  `protobuf:"varint,2,opt,name=diamond,proto3" json:"diamond,omitempty"` //修改数量
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                 //用户id
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //玩家物品
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ChangeDiamondReq) Reset() {
-	*x = ChangeDiamondReq{}
+func (x *ChangeItemsReq) Reset() {
+	*x = ChangeItemsReq{}
 	mi := &file_account_remote_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ChangeDiamondReq) String() string {
+func (x *ChangeItemsReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeDiamondReq) ProtoMessage() {}
+func (*ChangeItemsReq) ProtoMessage() {}
 
-func (x *ChangeDiamondReq) ProtoReflect() protoreflect.Message {
+func (x *ChangeItemsReq) ProtoReflect() protoreflect.Message {
 	mi := &file_account_remote_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -375,47 +359,47 @@ func (x *ChangeDiamondReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeDiamondReq.ProtoReflect.Descriptor instead.
-func (*ChangeDiamondReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use ChangeItemsReq.ProtoReflect.Descriptor instead.
+func (*ChangeItemsReq) Descriptor() ([]byte, []int) {
 	return file_account_remote_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *ChangeDiamondReq) GetUid() string {
+func (x *ChangeItemsReq) GetUid() string {
 	if x != nil {
 		return x.Uid
 	}
 	return ""
 }
 
-func (x *ChangeDiamondReq) GetDiamond() int64 {
+func (x *ChangeItemsReq) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Diamond
+		return x.Items
 	}
-	return 0
+	return nil
 }
 
-type ChangeDiamondAck struct {
+type ChangeItemsAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`          //用于id
-	Diamond       int64                  `protobuf:"varint,2,opt,name=diamond,proto3" json:"diamond,omitempty"` //钻石数量
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                 //用于id
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //玩家物品
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ChangeDiamondAck) Reset() {
-	*x = ChangeDiamondAck{}
+func (x *ChangeItemsAck) Reset() {
+	*x = ChangeItemsAck{}
 	mi := &file_account_remote_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ChangeDiamondAck) String() string {
+func (x *ChangeItemsAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeDiamondAck) ProtoMessage() {}
+func (*ChangeItemsAck) ProtoMessage() {}
 
-func (x *ChangeDiamondAck) ProtoReflect() protoreflect.Message {
+func (x *ChangeItemsAck) ProtoReflect() protoreflect.Message {
 	mi := &file_account_remote_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -427,127 +411,23 @@ func (x *ChangeDiamondAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeDiamondAck.ProtoReflect.Descriptor instead.
-func (*ChangeDiamondAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use ChangeItemsAck.ProtoReflect.Descriptor instead.
+func (*ChangeItemsAck) Descriptor() ([]byte, []int) {
 	return file_account_remote_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ChangeDiamondAck) GetUid() string {
+func (x *ChangeItemsAck) GetUid() string {
 	if x != nil {
 		return x.Uid
 	}
 	return ""
 }
 
-func (x *ChangeDiamondAck) GetDiamond() int64 {
+func (x *ChangeItemsAck) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Diamond
+		return x.Items
 	}
-	return 0
-}
-
-type ChangeCoinReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`    //用户id
-	Coin          int64                  `protobuf:"varint,2,opt,name=coin,proto3" json:"coin,omitempty"` //修改数量
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ChangeCoinReq) Reset() {
-	*x = ChangeCoinReq{}
-	mi := &file_account_remote_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ChangeCoinReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ChangeCoinReq) ProtoMessage() {}
-
-func (x *ChangeCoinReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ChangeCoinReq.ProtoReflect.Descriptor instead.
-func (*ChangeCoinReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *ChangeCoinReq) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-func (x *ChangeCoinReq) GetCoin() int64 {
-	if x != nil {
-		return x.Coin
-	}
-	return 0
-}
-
-type ChangeCoinAck struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`    //用于id
-	Coin          int64                  `protobuf:"varint,2,opt,name=coin,proto3" json:"coin,omitempty"` //修改后的数量
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ChangeCoinAck) Reset() {
-	*x = ChangeCoinAck{}
-	mi := &file_account_remote_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ChangeCoinAck) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ChangeCoinAck) ProtoMessage() {}
-
-func (x *ChangeCoinAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ChangeCoinAck.ProtoReflect.Descriptor instead.
-func (*ChangeCoinAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ChangeCoinAck) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-func (x *ChangeCoinAck) GetCoin() int64 {
-	if x != nil {
-		return x.Coin
-	}
-	return 0
+	return nil
 }
 
 var File_account_remote_proto protoreflect.FileDescriptor
@@ -568,26 +448,30 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\aexpired\x18\x02 \x01(\x03R\aexpired\"!\n" +
 	"\rPlayerInfoReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\x95\x01\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xc7\x01\n" +
 	"\rPlayerInfoAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
-	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x12\x10\n" +
-	"\x03vip\x18\x04 \x01(\x05R\x03vip\x12\x18\n" +
-	"\adiamond\x18\x05 \x01(\x03R\adiamond\x12\x12\n" +
-	"\x04coin\x18\x06 \x01(\x03R\x04coin\">\n" +
-	"\x10ChangeDiamondReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
-	"\adiamond\x18\x02 \x01(\x03R\adiamond\">\n" +
-	"\x10ChangeDiamondAck\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
-	"\adiamond\x18\x02 \x01(\x03R\adiamond\"5\n" +
-	"\rChangeCoinReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
-	"\x04coin\x18\x02 \x01(\x03R\x04coin\"5\n" +
-	"\rChangeCoinAck\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
-	"\x04coin\x18\x02 \x01(\x03R\x04coinB\vZ\t../sprotob\x06proto3"
+	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x126\n" +
+	"\x05items\x18\x04 \x03(\v2 .sproto.PlayerInfoAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x95\x01\n" +
+	"\x0eChangeItemsReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x127\n" +
+	"\x05items\x18\x02 \x03(\v2!.sproto.ChangeItemsReq.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x95\x01\n" +
+	"\x0eChangeItemsAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x127\n" +
+	"\x05items\x18\x02 \x03(\v2!.sproto.ChangeItemsAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -601,28 +485,32 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_account_remote_proto_goTypes = []any{
-	(*AccountReq)(nil),       // 0: sproto.AccountReq
-	(*AccountAck)(nil),       // 1: sproto.AccountAck
-	(*GetBotReq)(nil),        // 2: sproto.GetBotReq
-	(*GetBotAck)(nil),        // 3: sproto.GetBotAck
-	(*PlayerInfoReq)(nil),    // 4: sproto.PlayerInfoReq
-	(*PlayerInfoAck)(nil),    // 5: sproto.PlayerInfoAck
-	(*ChangeDiamondReq)(nil), // 6: sproto.ChangeDiamondReq
-	(*ChangeDiamondAck)(nil), // 7: sproto.ChangeDiamondAck
-	(*ChangeCoinReq)(nil),    // 8: sproto.ChangeCoinReq
-	(*ChangeCoinAck)(nil),    // 9: sproto.ChangeCoinAck
-	(*anypb.Any)(nil),        // 10: google.protobuf.Any
+	(*AccountReq)(nil),     // 0: sproto.AccountReq
+	(*AccountAck)(nil),     // 1: sproto.AccountAck
+	(*GetBotReq)(nil),      // 2: sproto.GetBotReq
+	(*GetBotAck)(nil),      // 3: sproto.GetBotAck
+	(*PlayerInfoReq)(nil),  // 4: sproto.PlayerInfoReq
+	(*PlayerInfoAck)(nil),  // 5: sproto.PlayerInfoAck
+	(*ChangeItemsReq)(nil), // 6: sproto.ChangeItemsReq
+	(*ChangeItemsAck)(nil), // 7: sproto.ChangeItemsAck
+	nil,                    // 8: sproto.PlayerInfoAck.ItemsEntry
+	nil,                    // 9: sproto.ChangeItemsReq.ItemsEntry
+	nil,                    // 10: sproto.ChangeItemsAck.ItemsEntry
+	(*anypb.Any)(nil),      // 11: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	10, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	10, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	2,  // [2:2] is the sub-list for method output_type
-	2,  // [2:2] is the sub-list for method input_type
-	2,  // [2:2] is the sub-list for extension type_name
-	2,  // [2:2] is the sub-list for extension extendee
-	0,  // [0:2] is the sub-list for field type_name
+	11, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	11, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	8,  // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	9,  // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	10, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_account_remote_proto_init() }
@@ -636,7 +524,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -24,10 +24,6 @@ message RegisterReq {
   string avatar = 3; //随机生成的头像内容
 }
 
-message AddCoinReq {  
-  int64 coin = 1; // 需要增加的金币数量
-}
-
 message ShopReq{
   int32 shop_type = 1; // 商店类型 0:金币商店 1:元宝商店
 }
@@ -49,19 +45,16 @@ message PurchaseAck {
 
 message RegisterAck {  
   PlayerInfoAck player_info = 1; // 新注册玩家的信息
-  RegisterAward award = 2; // 新注册玩家的奖励
+  map<int32,int64> award = 2; // 新注册玩家的奖励
 }
 
 message PlayerInfoAck {
   string uid = 1; // 玩家ID
   string nickname = 2; // 玩家昵称
   string avatar = 3; // 玩家头像
-  int32 vip = 4; // VIP等级
-  int64 diamond = 5; // 钻石
-  int64 coin = 6; // 金币
+  map<int32, int64> items = 4; //玩家物品
 }
 
-message RegisterAward {
-  int64 diamond = 1; // 新注册玩家获得的钻石
-  int64 coin = 2; // 新注册玩家获得的金币
+message ItemsAck {
+  map<int32, int64> items = 1; //玩家物品
 }
