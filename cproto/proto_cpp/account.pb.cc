@@ -80,6 +80,68 @@ struct AddCoinReqDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT AddCoinReqDefaultTypeInternal _AddCoinReq_default_instance_;
+constexpr ShopReq::ShopReq(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : shop_type_(0){}
+struct ShopReqDefaultTypeInternal {
+  constexpr ShopReqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~ShopReqDefaultTypeInternal() {}
+  union {
+    ShopReq _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ShopReqDefaultTypeInternal _ShopReq_default_instance_;
+constexpr ShopAck::ShopAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : shop_info_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , shop_type_(0){}
+struct ShopAckDefaultTypeInternal {
+  constexpr ShopAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~ShopAckDefaultTypeInternal() {}
+  union {
+    ShopAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ShopAckDefaultTypeInternal _ShopAck_default_instance_;
+constexpr PurchaseReq::PurchaseReq(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : shop_type_(0)
+  , id_(0){}
+struct PurchaseReqDefaultTypeInternal {
+  constexpr PurchaseReqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~PurchaseReqDefaultTypeInternal() {}
+  union {
+    PurchaseReq _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PurchaseReqDefaultTypeInternal _PurchaseReq_default_instance_;
+constexpr PurchaseAck_GoodsEntry_DoNotUse::PurchaseAck_GoodsEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct PurchaseAck_GoodsEntry_DoNotUseDefaultTypeInternal {
+  constexpr PurchaseAck_GoodsEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~PurchaseAck_GoodsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    PurchaseAck_GoodsEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PurchaseAck_GoodsEntry_DoNotUseDefaultTypeInternal _PurchaseAck_GoodsEntry_DoNotUse_default_instance_;
+constexpr PurchaseAck::PurchaseAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : goods_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
+  , shop_type_(0){}
+struct PurchaseAckDefaultTypeInternal {
+  constexpr PurchaseAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~PurchaseAckDefaultTypeInternal() {}
+  union {
+    PurchaseAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PurchaseAckDefaultTypeInternal _PurchaseAck_default_instance_;
 constexpr RegisterAck::RegisterAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : player_info_(nullptr)
@@ -124,7 +186,7 @@ struct RegisterAwardDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RegisterAwardDefaultTypeInternal _RegisterAward_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[8];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[13];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_account_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_account_2eproto = nullptr;
 
@@ -168,6 +230,47 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::AddCoinReq, coin_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::ShopReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::ShopReq, shop_type_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::ShopAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::ShopAck, shop_type_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ShopAck, shop_info_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseReq, shop_type_),
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseReq, id_),
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck_GoodsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck_GoodsEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck_GoodsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck_GoodsEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck, shop_type_),
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck, goods_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::RegisterAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -202,9 +305,14 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 14, -1, -1, sizeof(::cproto::LoginReq)},
   { 22, -1, -1, sizeof(::cproto::RegisterReq)},
   { 31, -1, -1, sizeof(::cproto::AddCoinReq)},
-  { 38, -1, -1, sizeof(::cproto::RegisterAck)},
-  { 46, -1, -1, sizeof(::cproto::PlayerInfoAck)},
-  { 58, -1, -1, sizeof(::cproto::RegisterAward)},
+  { 38, -1, -1, sizeof(::cproto::ShopReq)},
+  { 45, -1, -1, sizeof(::cproto::ShopAck)},
+  { 53, -1, -1, sizeof(::cproto::PurchaseReq)},
+  { 61, 69, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
+  { 71, -1, -1, sizeof(::cproto::PurchaseAck)},
+  { 79, -1, -1, sizeof(::cproto::RegisterAck)},
+  { 87, -1, -1, sizeof(::cproto::PlayerInfoAck)},
+  { 99, -1, -1, sizeof(::cproto::RegisterAward)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -213,6 +321,11 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_LoginReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_RegisterReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_AddCoinReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ShopReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ShopAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_PurchaseReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_PurchaseAck_GoodsEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_PurchaseAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_RegisterAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_PlayerInfoAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_RegisterAward_default_instance_),
@@ -226,22 +339,28 @@ const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"@\n\013R"
   "egisterReq\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030"
   "\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\"\032\n\nAddCoinReq\022\014\n\004c"
-  "oin\030\001 \001(\003\"_\n\013RegisterAck\022*\n\013player_info\030"
-  "\001 \001(\0132\025.cproto.PlayerInfoAck\022$\n\005award\030\002 "
-  "\001(\0132\025.cproto.RegisterAward\"j\n\rPlayerInfo"
-  "Ack\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006av"
-  "atar\030\003 \001(\t\022\013\n\003vip\030\004 \001(\005\022\017\n\007diamond\030\005 \001(\003"
-  "\022\014\n\004coin\030\006 \001(\003\".\n\rRegisterAward\022\017\n\007diamo"
-  "nd\030\001 \001(\003\022\014\n\004coin\030\002 \001(\003B\013Z\t../cprotob\006pro"
-  "to3"
+  "oin\030\001 \001(\003\"\034\n\007ShopReq\022\021\n\tshop_type\030\001 \001(\005\""
+  "/\n\007ShopAck\022\021\n\tshop_type\030\001 \001(\005\022\021\n\tshop_in"
+  "fo\030\002 \001(\t\",\n\013PurchaseReq\022\021\n\tshop_type\030\001 \001"
+  "(\005\022\n\n\002id\030\002 \001(\005\"}\n\013PurchaseAck\022\021\n\tshop_ty"
+  "pe\030\001 \001(\005\022-\n\005goods\030\002 \003(\0132\036.cproto.Purchas"
+  "eAck.GoodsEntry\032,\n\nGoodsEntry\022\013\n\003key\030\001 \001"
+  "(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"_\n\013RegisterAck\022*\n\013"
+  "player_info\030\001 \001(\0132\025.cproto.PlayerInfoAck"
+  "\022$\n\005award\030\002 \001(\0132\025.cproto.RegisterAward\"j"
+  "\n\rPlayerInfoAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname"
+  "\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\013\n\003vip\030\004 \001(\005\022\017\n\007d"
+  "iamond\030\005 \001(\003\022\014\n\004coin\030\006 \001(\003\".\n\rRegisterAw"
+  "ard\022\017\n\007diamond\030\001 \001(\003\022\014\n\004coin\030\002 \001(\003B\013Z\t.."
+  "/cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_account_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_account_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_account_2eproto = {
-  false, false, 563, descriptor_table_protodef_account_2eproto, "account.proto", 
-  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 8,
+  false, false, 815, descriptor_table_protodef_account_2eproto, "account.proto", 
+  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 13,
   schemas, file_default_instances, TableStruct_account_2eproto::offsets,
   file_level_metadata_account_2eproto, file_level_enum_descriptors_account_2eproto, file_level_service_descriptors_account_2eproto,
 };
@@ -1388,6 +1507,879 @@ void AddCoinReq::InternalSwap(AddCoinReq* other) {
 
 // ===================================================================
 
+class ShopReq::_Internal {
+ public:
+};
+
+ShopReq::ShopReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.ShopReq)
+}
+ShopReq::ShopReq(const ShopReq& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  shop_type_ = from.shop_type_;
+  // @@protoc_insertion_point(copy_constructor:cproto.ShopReq)
+}
+
+inline void ShopReq::SharedCtor() {
+shop_type_ = 0;
+}
+
+ShopReq::~ShopReq() {
+  // @@protoc_insertion_point(destructor:cproto.ShopReq)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void ShopReq::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void ShopReq::ArenaDtor(void* object) {
+  ShopReq* _this = reinterpret_cast< ShopReq* >(object);
+  (void)_this;
+}
+void ShopReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void ShopReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void ShopReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ShopReq)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  shop_type_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ShopReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 shop_type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          shop_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ShopReq::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ShopReq)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 shop_type = 1;
+  if (this->_internal_shop_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_shop_type(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ShopReq)
+  return target;
+}
+
+size_t ShopReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ShopReq)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 shop_type = 1;
+  if (this->_internal_shop_type() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_shop_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ShopReq::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ShopReq::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ShopReq::GetClassData() const { return &_class_data_; }
+
+void ShopReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<ShopReq *>(to)->MergeFrom(
+      static_cast<const ShopReq &>(from));
+}
+
+
+void ShopReq::MergeFrom(const ShopReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ShopReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_shop_type() != 0) {
+    _internal_set_shop_type(from._internal_shop_type());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ShopReq::CopyFrom(const ShopReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ShopReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ShopReq::IsInitialized() const {
+  return true;
+}
+
+void ShopReq::InternalSwap(ShopReq* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(shop_type_, other->shop_type_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ShopReq::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[5]);
+}
+
+// ===================================================================
+
+class ShopAck::_Internal {
+ public:
+};
+
+ShopAck::ShopAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.ShopAck)
+}
+ShopAck::ShopAck(const ShopAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  shop_info_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    shop_info_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_shop_info().empty()) {
+    shop_info_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_shop_info(), 
+      GetArenaForAllocation());
+  }
+  shop_type_ = from.shop_type_;
+  // @@protoc_insertion_point(copy_constructor:cproto.ShopAck)
+}
+
+inline void ShopAck::SharedCtor() {
+shop_info_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  shop_info_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+shop_type_ = 0;
+}
+
+ShopAck::~ShopAck() {
+  // @@protoc_insertion_point(destructor:cproto.ShopAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void ShopAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  shop_info_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void ShopAck::ArenaDtor(void* object) {
+  ShopAck* _this = reinterpret_cast< ShopAck* >(object);
+  (void)_this;
+}
+void ShopAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void ShopAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void ShopAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ShopAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  shop_info_.ClearToEmpty();
+  shop_type_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ShopAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 shop_type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          shop_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string shop_info = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_shop_info();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ShopAck.shop_info"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ShopAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ShopAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 shop_type = 1;
+  if (this->_internal_shop_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_shop_type(), target);
+  }
+
+  // string shop_info = 2;
+  if (!this->_internal_shop_info().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_shop_info().data(), static_cast<int>(this->_internal_shop_info().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.ShopAck.shop_info");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_shop_info(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ShopAck)
+  return target;
+}
+
+size_t ShopAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ShopAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string shop_info = 2;
+  if (!this->_internal_shop_info().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_shop_info());
+  }
+
+  // int32 shop_type = 1;
+  if (this->_internal_shop_type() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_shop_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ShopAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ShopAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ShopAck::GetClassData() const { return &_class_data_; }
+
+void ShopAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<ShopAck *>(to)->MergeFrom(
+      static_cast<const ShopAck &>(from));
+}
+
+
+void ShopAck::MergeFrom(const ShopAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ShopAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_shop_info().empty()) {
+    _internal_set_shop_info(from._internal_shop_info());
+  }
+  if (from._internal_shop_type() != 0) {
+    _internal_set_shop_type(from._internal_shop_type());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ShopAck::CopyFrom(const ShopAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ShopAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ShopAck::IsInitialized() const {
+  return true;
+}
+
+void ShopAck::InternalSwap(ShopAck* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &shop_info_, lhs_arena,
+      &other->shop_info_, rhs_arena
+  );
+  swap(shop_type_, other->shop_type_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ShopAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[6]);
+}
+
+// ===================================================================
+
+class PurchaseReq::_Internal {
+ public:
+};
+
+PurchaseReq::PurchaseReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.PurchaseReq)
+}
+PurchaseReq::PurchaseReq(const PurchaseReq& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&shop_type_, &from.shop_type_,
+    static_cast<size_t>(reinterpret_cast<char*>(&id_) -
+    reinterpret_cast<char*>(&shop_type_)) + sizeof(id_));
+  // @@protoc_insertion_point(copy_constructor:cproto.PurchaseReq)
+}
+
+inline void PurchaseReq::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&shop_type_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&id_) -
+    reinterpret_cast<char*>(&shop_type_)) + sizeof(id_));
+}
+
+PurchaseReq::~PurchaseReq() {
+  // @@protoc_insertion_point(destructor:cproto.PurchaseReq)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void PurchaseReq::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void PurchaseReq::ArenaDtor(void* object) {
+  PurchaseReq* _this = reinterpret_cast< PurchaseReq* >(object);
+  (void)_this;
+}
+void PurchaseReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void PurchaseReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void PurchaseReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.PurchaseReq)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&shop_type_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&id_) -
+      reinterpret_cast<char*>(&shop_type_)) + sizeof(id_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* PurchaseReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 shop_type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          shop_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* PurchaseReq::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.PurchaseReq)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 shop_type = 1;
+  if (this->_internal_shop_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_shop_type(), target);
+  }
+
+  // int32 id = 2;
+  if (this->_internal_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.PurchaseReq)
+  return target;
+}
+
+size_t PurchaseReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.PurchaseReq)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 shop_type = 1;
+  if (this->_internal_shop_type() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_shop_type());
+  }
+
+  // int32 id = 2;
+  if (this->_internal_id() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PurchaseReq::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    PurchaseReq::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PurchaseReq::GetClassData() const { return &_class_data_; }
+
+void PurchaseReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<PurchaseReq *>(to)->MergeFrom(
+      static_cast<const PurchaseReq &>(from));
+}
+
+
+void PurchaseReq::MergeFrom(const PurchaseReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.PurchaseReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_shop_type() != 0) {
+    _internal_set_shop_type(from._internal_shop_type());
+  }
+  if (from._internal_id() != 0) {
+    _internal_set_id(from._internal_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PurchaseReq::CopyFrom(const PurchaseReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.PurchaseReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PurchaseReq::IsInitialized() const {
+  return true;
+}
+
+void PurchaseReq::InternalSwap(PurchaseReq* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(PurchaseReq, id_)
+      + sizeof(PurchaseReq::id_)
+      - PROTOBUF_FIELD_OFFSET(PurchaseReq, shop_type_)>(
+          reinterpret_cast<char*>(&shop_type_),
+          reinterpret_cast<char*>(&other->shop_type_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PurchaseReq::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[7]);
+}
+
+// ===================================================================
+
+PurchaseAck_GoodsEntry_DoNotUse::PurchaseAck_GoodsEntry_DoNotUse() {}
+PurchaseAck_GoodsEntry_DoNotUse::PurchaseAck_GoodsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void PurchaseAck_GoodsEntry_DoNotUse::MergeFrom(const PurchaseAck_GoodsEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata PurchaseAck_GoodsEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[8]);
+}
+
+// ===================================================================
+
+class PurchaseAck::_Internal {
+ public:
+};
+
+PurchaseAck::PurchaseAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  goods_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.PurchaseAck)
+}
+PurchaseAck::PurchaseAck(const PurchaseAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  goods_.MergeFrom(from.goods_);
+  shop_type_ = from.shop_type_;
+  // @@protoc_insertion_point(copy_constructor:cproto.PurchaseAck)
+}
+
+inline void PurchaseAck::SharedCtor() {
+shop_type_ = 0;
+}
+
+PurchaseAck::~PurchaseAck() {
+  // @@protoc_insertion_point(destructor:cproto.PurchaseAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void PurchaseAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void PurchaseAck::ArenaDtor(void* object) {
+  PurchaseAck* _this = reinterpret_cast< PurchaseAck* >(object);
+  (void)_this;
+  _this->goods_. ~MapField();
+}
+inline void PurchaseAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
+  if (arena != nullptr) {
+    arena->OwnCustomDestructor(this, &PurchaseAck::ArenaDtor);
+  }
+}
+void PurchaseAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void PurchaseAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.PurchaseAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  goods_.Clear();
+  shop_type_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* PurchaseAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 shop_type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          shop_type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // map<int32, int64> goods = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&goods_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* PurchaseAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.PurchaseAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 shop_type = 1;
+  if (this->_internal_shop_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_shop_type(), target);
+  }
+
+  // map<int32, int64> goods = 2;
+  if (!this->_internal_goods().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
+        ConstPtr;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::SortItem< int32_t, ConstPtr > SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByFirstField<SortItem> Less;
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_goods().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_goods().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_goods().begin();
+          it != this->_internal_goods().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = PurchaseAck_GoodsEntry_DoNotUse::Funcs::InternalSerialize(2, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_goods().begin();
+          it != this->_internal_goods().end(); ++it) {
+        target = PurchaseAck_GoodsEntry_DoNotUse::Funcs::InternalSerialize(2, it->first, it->second, target, stream);
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.PurchaseAck)
+  return target;
+}
+
+size_t PurchaseAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.PurchaseAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<int32, int64> goods = 2;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_goods_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+      it = this->_internal_goods().begin();
+      it != this->_internal_goods().end(); ++it) {
+    total_size += PurchaseAck_GoodsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // int32 shop_type = 1;
+  if (this->_internal_shop_type() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_shop_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PurchaseAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    PurchaseAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PurchaseAck::GetClassData() const { return &_class_data_; }
+
+void PurchaseAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<PurchaseAck *>(to)->MergeFrom(
+      static_cast<const PurchaseAck &>(from));
+}
+
+
+void PurchaseAck::MergeFrom(const PurchaseAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.PurchaseAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  goods_.MergeFrom(from.goods_);
+  if (from._internal_shop_type() != 0) {
+    _internal_set_shop_type(from._internal_shop_type());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PurchaseAck::CopyFrom(const PurchaseAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.PurchaseAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PurchaseAck::IsInitialized() const {
+  return true;
+}
+
+void PurchaseAck::InternalSwap(PurchaseAck* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  goods_.InternalSwap(&other->goods_);
+  swap(shop_type_, other->shop_type_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PurchaseAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[9]);
+}
+
+// ===================================================================
+
 class RegisterAck::_Internal {
  public:
   static const ::cproto::PlayerInfoAck& player_info(const RegisterAck* msg);
@@ -1627,7 +2619,7 @@ void RegisterAck::InternalSwap(RegisterAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[5]);
+      file_level_metadata_account_2eproto[10]);
 }
 
 // ===================================================================
@@ -2010,7 +3002,7 @@ void PlayerInfoAck::InternalSwap(PlayerInfoAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfoAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[6]);
+      file_level_metadata_account_2eproto[11]);
 }
 
 // ===================================================================
@@ -2222,7 +3214,7 @@ void RegisterAward::InternalSwap(RegisterAward* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterAward::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[7]);
+      file_level_metadata_account_2eproto[12]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2242,6 +3234,21 @@ template<> PROTOBUF_NOINLINE ::cproto::RegisterReq* Arena::CreateMaybeMessage< :
 }
 template<> PROTOBUF_NOINLINE ::cproto::AddCoinReq* Arena::CreateMaybeMessage< ::cproto::AddCoinReq >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::AddCoinReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::ShopReq* Arena::CreateMaybeMessage< ::cproto::ShopReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ShopReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::ShopAck* Arena::CreateMaybeMessage< ::cproto::ShopAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ShopAck >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::PurchaseReq* Arena::CreateMaybeMessage< ::cproto::PurchaseReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::PurchaseReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::PurchaseAck_GoodsEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::PurchaseAck_GoodsEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::PurchaseAck_GoodsEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::PurchaseAck* Arena::CreateMaybeMessage< ::cproto::PurchaseAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::PurchaseAck >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::RegisterAck* Arena::CreateMaybeMessage< ::cproto::RegisterAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::RegisterAck >(arena);

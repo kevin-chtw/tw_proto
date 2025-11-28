@@ -28,6 +28,25 @@ message AddCoinReq {
   int64 coin = 1; // 需要增加的金币数量
 }
 
+message ShopReq{
+  int32 shop_type = 1; // 商店类型 0:金币商店 1:元宝商店
+}
+
+message ShopAck{
+  int32 shop_type = 1;
+  string shop_info = 2; // 商店数据，json格式
+}
+
+message PurchaseReq {
+  int32 shop_type = 1;
+  int32 id = 2;  //商品id
+}
+
+message PurchaseAck {
+  int32 shop_type = 1;
+  map<int32, int64> goods = 2; // 商品id和数量
+} 
+
 message RegisterAck {  
   PlayerInfoAck player_info = 1; // 新注册玩家的信息
   RegisterAward award = 2; // 新注册玩家的奖励

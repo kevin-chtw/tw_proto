@@ -30,6 +30,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/map.h>  // IWYU pragma: export
+#include <google/protobuf/map_entry.h>
+#include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/unknown_field_set.h>
 #include <google/protobuf/any.pb.h>
 // @@protoc_insertion_point(includes)
@@ -47,7 +50,7 @@ struct TableStruct_account_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -70,6 +73,15 @@ extern LoginReqDefaultTypeInternal _LoginReq_default_instance_;
 class PlayerInfoAck;
 struct PlayerInfoAckDefaultTypeInternal;
 extern PlayerInfoAckDefaultTypeInternal _PlayerInfoAck_default_instance_;
+class PurchaseAck;
+struct PurchaseAckDefaultTypeInternal;
+extern PurchaseAckDefaultTypeInternal _PurchaseAck_default_instance_;
+class PurchaseAck_GoodsEntry_DoNotUse;
+struct PurchaseAck_GoodsEntry_DoNotUseDefaultTypeInternal;
+extern PurchaseAck_GoodsEntry_DoNotUseDefaultTypeInternal _PurchaseAck_GoodsEntry_DoNotUse_default_instance_;
+class PurchaseReq;
+struct PurchaseReqDefaultTypeInternal;
+extern PurchaseReqDefaultTypeInternal _PurchaseReq_default_instance_;
 class RegisterAck;
 struct RegisterAckDefaultTypeInternal;
 extern RegisterAckDefaultTypeInternal _RegisterAck_default_instance_;
@@ -79,6 +91,12 @@ extern RegisterAwardDefaultTypeInternal _RegisterAward_default_instance_;
 class RegisterReq;
 struct RegisterReqDefaultTypeInternal;
 extern RegisterReqDefaultTypeInternal _RegisterReq_default_instance_;
+class ShopAck;
+struct ShopAckDefaultTypeInternal;
+extern ShopAckDefaultTypeInternal _ShopAck_default_instance_;
+class ShopReq;
+struct ShopReqDefaultTypeInternal;
+extern ShopReqDefaultTypeInternal _ShopReq_default_instance_;
 }  // namespace cproto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::cproto::AccountAck* Arena::CreateMaybeMessage<::cproto::AccountAck>(Arena*);
@@ -86,9 +104,14 @@ template<> ::cproto::AccountReq* Arena::CreateMaybeMessage<::cproto::AccountReq>
 template<> ::cproto::AddCoinReq* Arena::CreateMaybeMessage<::cproto::AddCoinReq>(Arena*);
 template<> ::cproto::LoginReq* Arena::CreateMaybeMessage<::cproto::LoginReq>(Arena*);
 template<> ::cproto::PlayerInfoAck* Arena::CreateMaybeMessage<::cproto::PlayerInfoAck>(Arena*);
+template<> ::cproto::PurchaseAck* Arena::CreateMaybeMessage<::cproto::PurchaseAck>(Arena*);
+template<> ::cproto::PurchaseAck_GoodsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::PurchaseAck_GoodsEntry_DoNotUse>(Arena*);
+template<> ::cproto::PurchaseReq* Arena::CreateMaybeMessage<::cproto::PurchaseReq>(Arena*);
 template<> ::cproto::RegisterAck* Arena::CreateMaybeMessage<::cproto::RegisterAck>(Arena*);
 template<> ::cproto::RegisterAward* Arena::CreateMaybeMessage<::cproto::RegisterAward>(Arena*);
 template<> ::cproto::RegisterReq* Arena::CreateMaybeMessage<::cproto::RegisterReq>(Arena*);
+template<> ::cproto::ShopAck* Arena::CreateMaybeMessage<::cproto::ShopAck>(Arena*);
+template<> ::cproto::ShopReq* Arena::CreateMaybeMessage<::cproto::ShopReq>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace cproto {
 
@@ -900,6 +923,664 @@ class AddCoinReq final :
 };
 // -------------------------------------------------------------------
 
+class ShopReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ShopReq) */ {
+ public:
+  inline ShopReq() : ShopReq(nullptr) {}
+  ~ShopReq() override;
+  explicit constexpr ShopReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ShopReq(const ShopReq& from);
+  ShopReq(ShopReq&& from) noexcept
+    : ShopReq() {
+    *this = ::std::move(from);
+  }
+
+  inline ShopReq& operator=(const ShopReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ShopReq& operator=(ShopReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ShopReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ShopReq* internal_default_instance() {
+    return reinterpret_cast<const ShopReq*>(
+               &_ShopReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(ShopReq& a, ShopReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ShopReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ShopReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ShopReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ShopReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ShopReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ShopReq& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ShopReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.ShopReq";
+  }
+  protected:
+  explicit ShopReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kShopTypeFieldNumber = 1,
+  };
+  // int32 shop_type = 1;
+  void clear_shop_type();
+  int32_t shop_type() const;
+  void set_shop_type(int32_t value);
+  private:
+  int32_t _internal_shop_type() const;
+  void _internal_set_shop_type(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.ShopReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t shop_type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ShopAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ShopAck) */ {
+ public:
+  inline ShopAck() : ShopAck(nullptr) {}
+  ~ShopAck() override;
+  explicit constexpr ShopAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ShopAck(const ShopAck& from);
+  ShopAck(ShopAck&& from) noexcept
+    : ShopAck() {
+    *this = ::std::move(from);
+  }
+
+  inline ShopAck& operator=(const ShopAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ShopAck& operator=(ShopAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ShopAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ShopAck* internal_default_instance() {
+    return reinterpret_cast<const ShopAck*>(
+               &_ShopAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(ShopAck& a, ShopAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ShopAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ShopAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ShopAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ShopAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ShopAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ShopAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ShopAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.ShopAck";
+  }
+  protected:
+  explicit ShopAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kShopInfoFieldNumber = 2,
+    kShopTypeFieldNumber = 1,
+  };
+  // string shop_info = 2;
+  void clear_shop_info();
+  const std::string& shop_info() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_shop_info(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_shop_info();
+  PROTOBUF_NODISCARD std::string* release_shop_info();
+  void set_allocated_shop_info(std::string* shop_info);
+  private:
+  const std::string& _internal_shop_info() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_shop_info(const std::string& value);
+  std::string* _internal_mutable_shop_info();
+  public:
+
+  // int32 shop_type = 1;
+  void clear_shop_type();
+  int32_t shop_type() const;
+  void set_shop_type(int32_t value);
+  private:
+  int32_t _internal_shop_type() const;
+  void _internal_set_shop_type(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.ShopAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr shop_info_;
+  int32_t shop_type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PurchaseReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.PurchaseReq) */ {
+ public:
+  inline PurchaseReq() : PurchaseReq(nullptr) {}
+  ~PurchaseReq() override;
+  explicit constexpr PurchaseReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  PurchaseReq(const PurchaseReq& from);
+  PurchaseReq(PurchaseReq&& from) noexcept
+    : PurchaseReq() {
+    *this = ::std::move(from);
+  }
+
+  inline PurchaseReq& operator=(const PurchaseReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PurchaseReq& operator=(PurchaseReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PurchaseReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PurchaseReq* internal_default_instance() {
+    return reinterpret_cast<const PurchaseReq*>(
+               &_PurchaseReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(PurchaseReq& a, PurchaseReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PurchaseReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PurchaseReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PurchaseReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<PurchaseReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const PurchaseReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const PurchaseReq& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PurchaseReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.PurchaseReq";
+  }
+  protected:
+  explicit PurchaseReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kShopTypeFieldNumber = 1,
+    kIdFieldNumber = 2,
+  };
+  // int32 shop_type = 1;
+  void clear_shop_type();
+  int32_t shop_type() const;
+  void set_shop_type(int32_t value);
+  private:
+  int32_t _internal_shop_type() const;
+  void _internal_set_shop_type(int32_t value);
+  public:
+
+  // int32 id = 2;
+  void clear_id();
+  int32_t id() const;
+  void set_id(int32_t value);
+  private:
+  int32_t _internal_id() const;
+  void _internal_set_id(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.PurchaseReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t shop_type_;
+  int32_t id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PurchaseAck_GoodsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PurchaseAck_GoodsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PurchaseAck_GoodsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  PurchaseAck_GoodsEntry_DoNotUse();
+  explicit constexpr PurchaseAck_GoodsEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PurchaseAck_GoodsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const PurchaseAck_GoodsEntry_DoNotUse& other);
+  static const PurchaseAck_GoodsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PurchaseAck_GoodsEntry_DoNotUse*>(&_PurchaseAck_GoodsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class PurchaseAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.PurchaseAck) */ {
+ public:
+  inline PurchaseAck() : PurchaseAck(nullptr) {}
+  ~PurchaseAck() override;
+  explicit constexpr PurchaseAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  PurchaseAck(const PurchaseAck& from);
+  PurchaseAck(PurchaseAck&& from) noexcept
+    : PurchaseAck() {
+    *this = ::std::move(from);
+  }
+
+  inline PurchaseAck& operator=(const PurchaseAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PurchaseAck& operator=(PurchaseAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PurchaseAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PurchaseAck* internal_default_instance() {
+    return reinterpret_cast<const PurchaseAck*>(
+               &_PurchaseAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(PurchaseAck& a, PurchaseAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PurchaseAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PurchaseAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PurchaseAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<PurchaseAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const PurchaseAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const PurchaseAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PurchaseAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.PurchaseAck";
+  }
+  protected:
+  explicit PurchaseAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kGoodsFieldNumber = 2,
+    kShopTypeFieldNumber = 1,
+  };
+  // map<int32, int64> goods = 2;
+  int goods_size() const;
+  private:
+  int _internal_goods_size() const;
+  public:
+  void clear_goods();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_goods() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_goods();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      goods() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_goods();
+
+  // int32 shop_type = 1;
+  void clear_shop_type();
+  int32_t shop_type() const;
+  void set_shop_type(int32_t value);
+  private:
+  int32_t _internal_shop_type() const;
+  void _internal_set_shop_type(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.PurchaseAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      PurchaseAck_GoodsEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> goods_;
+  int32_t shop_type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
 class RegisterAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.RegisterAck) */ {
  public:
@@ -948,7 +1629,7 @@ class RegisterAck final :
                &_RegisterAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    10;
 
   friend void swap(RegisterAck& a, RegisterAck& b) {
     a.Swap(&b);
@@ -1123,7 +1804,7 @@ class PlayerInfoAck final :
                &_PlayerInfoAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    11;
 
   friend void swap(PlayerInfoAck& a, PlayerInfoAck& b) {
     a.Swap(&b);
@@ -1339,7 +2020,7 @@ class RegisterAward final :
                &_RegisterAward_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    12;
 
   friend void swap(RegisterAward& a, RegisterAward& b) {
     a.Swap(&b);
@@ -1922,6 +2603,204 @@ inline void AddCoinReq::set_coin(int64_t value) {
 
 // -------------------------------------------------------------------
 
+// ShopReq
+
+// int32 shop_type = 1;
+inline void ShopReq::clear_shop_type() {
+  shop_type_ = 0;
+}
+inline int32_t ShopReq::_internal_shop_type() const {
+  return shop_type_;
+}
+inline int32_t ShopReq::shop_type() const {
+  // @@protoc_insertion_point(field_get:cproto.ShopReq.shop_type)
+  return _internal_shop_type();
+}
+inline void ShopReq::_internal_set_shop_type(int32_t value) {
+  
+  shop_type_ = value;
+}
+inline void ShopReq::set_shop_type(int32_t value) {
+  _internal_set_shop_type(value);
+  // @@protoc_insertion_point(field_set:cproto.ShopReq.shop_type)
+}
+
+// -------------------------------------------------------------------
+
+// ShopAck
+
+// int32 shop_type = 1;
+inline void ShopAck::clear_shop_type() {
+  shop_type_ = 0;
+}
+inline int32_t ShopAck::_internal_shop_type() const {
+  return shop_type_;
+}
+inline int32_t ShopAck::shop_type() const {
+  // @@protoc_insertion_point(field_get:cproto.ShopAck.shop_type)
+  return _internal_shop_type();
+}
+inline void ShopAck::_internal_set_shop_type(int32_t value) {
+  
+  shop_type_ = value;
+}
+inline void ShopAck::set_shop_type(int32_t value) {
+  _internal_set_shop_type(value);
+  // @@protoc_insertion_point(field_set:cproto.ShopAck.shop_type)
+}
+
+// string shop_info = 2;
+inline void ShopAck::clear_shop_info() {
+  shop_info_.ClearToEmpty();
+}
+inline const std::string& ShopAck::shop_info() const {
+  // @@protoc_insertion_point(field_get:cproto.ShopAck.shop_info)
+  return _internal_shop_info();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ShopAck::set_shop_info(ArgT0&& arg0, ArgT... args) {
+ 
+ shop_info_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.ShopAck.shop_info)
+}
+inline std::string* ShopAck::mutable_shop_info() {
+  std::string* _s = _internal_mutable_shop_info();
+  // @@protoc_insertion_point(field_mutable:cproto.ShopAck.shop_info)
+  return _s;
+}
+inline const std::string& ShopAck::_internal_shop_info() const {
+  return shop_info_.Get();
+}
+inline void ShopAck::_internal_set_shop_info(const std::string& value) {
+  
+  shop_info_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ShopAck::_internal_mutable_shop_info() {
+  
+  return shop_info_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ShopAck::release_shop_info() {
+  // @@protoc_insertion_point(field_release:cproto.ShopAck.shop_info)
+  return shop_info_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ShopAck::set_allocated_shop_info(std::string* shop_info) {
+  if (shop_info != nullptr) {
+    
+  } else {
+    
+  }
+  shop_info_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), shop_info,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (shop_info_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    shop_info_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.ShopAck.shop_info)
+}
+
+// -------------------------------------------------------------------
+
+// PurchaseReq
+
+// int32 shop_type = 1;
+inline void PurchaseReq::clear_shop_type() {
+  shop_type_ = 0;
+}
+inline int32_t PurchaseReq::_internal_shop_type() const {
+  return shop_type_;
+}
+inline int32_t PurchaseReq::shop_type() const {
+  // @@protoc_insertion_point(field_get:cproto.PurchaseReq.shop_type)
+  return _internal_shop_type();
+}
+inline void PurchaseReq::_internal_set_shop_type(int32_t value) {
+  
+  shop_type_ = value;
+}
+inline void PurchaseReq::set_shop_type(int32_t value) {
+  _internal_set_shop_type(value);
+  // @@protoc_insertion_point(field_set:cproto.PurchaseReq.shop_type)
+}
+
+// int32 id = 2;
+inline void PurchaseReq::clear_id() {
+  id_ = 0;
+}
+inline int32_t PurchaseReq::_internal_id() const {
+  return id_;
+}
+inline int32_t PurchaseReq::id() const {
+  // @@protoc_insertion_point(field_get:cproto.PurchaseReq.id)
+  return _internal_id();
+}
+inline void PurchaseReq::_internal_set_id(int32_t value) {
+  
+  id_ = value;
+}
+inline void PurchaseReq::set_id(int32_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:cproto.PurchaseReq.id)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// PurchaseAck
+
+// int32 shop_type = 1;
+inline void PurchaseAck::clear_shop_type() {
+  shop_type_ = 0;
+}
+inline int32_t PurchaseAck::_internal_shop_type() const {
+  return shop_type_;
+}
+inline int32_t PurchaseAck::shop_type() const {
+  // @@protoc_insertion_point(field_get:cproto.PurchaseAck.shop_type)
+  return _internal_shop_type();
+}
+inline void PurchaseAck::_internal_set_shop_type(int32_t value) {
+  
+  shop_type_ = value;
+}
+inline void PurchaseAck::set_shop_type(int32_t value) {
+  _internal_set_shop_type(value);
+  // @@protoc_insertion_point(field_set:cproto.PurchaseAck.shop_type)
+}
+
+// map<int32, int64> goods = 2;
+inline int PurchaseAck::_internal_goods_size() const {
+  return goods_.size();
+}
+inline int PurchaseAck::goods_size() const {
+  return _internal_goods_size();
+}
+inline void PurchaseAck::clear_goods() {
+  goods_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+PurchaseAck::_internal_goods() const {
+  return goods_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+PurchaseAck::goods() const {
+  // @@protoc_insertion_point(field_map:cproto.PurchaseAck.goods)
+  return _internal_goods();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+PurchaseAck::_internal_mutable_goods() {
+  return goods_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+PurchaseAck::mutable_goods() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.PurchaseAck.goods)
+  return _internal_mutable_goods();
+}
+
+// -------------------------------------------------------------------
+
 // RegisterAck
 
 // .cproto.PlayerInfoAck player_info = 1;
@@ -2368,6 +3247,16 @@ inline void RegisterAward::set_coin(int64_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
