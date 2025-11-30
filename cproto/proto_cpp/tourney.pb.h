@@ -824,7 +824,6 @@ class TounreyInfo final :
     kGameTypeFieldNumber = 3,
     kMatchTypeFieldNumber = 4,
     kServeridFieldNumber = 5,
-    kSignConditionFieldNumber = 7,
     kIdFieldNumber = 1,
     kOnlineFieldNumber = 6,
   };
@@ -884,20 +883,6 @@ class TounreyInfo final :
   std::string* _internal_mutable_serverid();
   public:
 
-  // string sign_condition = 7;
-  void clear_sign_condition();
-  const std::string& sign_condition() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_sign_condition(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_sign_condition();
-  PROTOBUF_NODISCARD std::string* release_sign_condition();
-  void set_allocated_sign_condition(std::string* sign_condition);
-  private:
-  const std::string& _internal_sign_condition() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sign_condition(const std::string& value);
-  std::string* _internal_mutable_sign_condition();
-  public:
-
   // int32 id = 1;
   void clear_id();
   int32_t id() const;
@@ -927,7 +912,6 @@ class TounreyInfo final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr game_type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr match_type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr serverid_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sign_condition_;
   int32_t id_;
   int32_t online_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -1465,57 +1449,6 @@ inline void TounreyInfo::_internal_set_online(int32_t value) {
 inline void TounreyInfo::set_online(int32_t value) {
   _internal_set_online(value);
   // @@protoc_insertion_point(field_set:cproto.TounreyInfo.online)
-}
-
-// string sign_condition = 7;
-inline void TounreyInfo::clear_sign_condition() {
-  sign_condition_.ClearToEmpty();
-}
-inline const std::string& TounreyInfo::sign_condition() const {
-  // @@protoc_insertion_point(field_get:cproto.TounreyInfo.sign_condition)
-  return _internal_sign_condition();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void TounreyInfo::set_sign_condition(ArgT0&& arg0, ArgT... args) {
- 
- sign_condition_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.TounreyInfo.sign_condition)
-}
-inline std::string* TounreyInfo::mutable_sign_condition() {
-  std::string* _s = _internal_mutable_sign_condition();
-  // @@protoc_insertion_point(field_mutable:cproto.TounreyInfo.sign_condition)
-  return _s;
-}
-inline const std::string& TounreyInfo::_internal_sign_condition() const {
-  return sign_condition_.Get();
-}
-inline void TounreyInfo::_internal_set_sign_condition(const std::string& value) {
-  
-  sign_condition_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* TounreyInfo::_internal_mutable_sign_condition() {
-  
-  return sign_condition_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* TounreyInfo::release_sign_condition() {
-  // @@protoc_insertion_point(field_release:cproto.TounreyInfo.sign_condition)
-  return sign_condition_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void TounreyInfo::set_allocated_sign_condition(std::string* sign_condition) {
-  if (sign_condition != nullptr) {
-    
-  } else {
-    
-  }
-  sign_condition_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), sign_condition,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (sign_condition_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    sign_condition_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.TounreyInfo.sign_condition)
 }
 
 #ifdef __GNUC__

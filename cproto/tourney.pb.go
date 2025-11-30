@@ -200,13 +200,12 @@ func (x *TouneyListAck) GetTounreys() []*TounreyInfo {
 
 type TounreyInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                           //比赛ID
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                        //比赛名称
-	GameType      string                 `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`                //游戏类型
-	MatchType     string                 `protobuf:"bytes,4,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`             //比赛类型
-	Serverid      string                 `protobuf:"bytes,5,opt,name=serverid,proto3" json:"serverid,omitempty"`                                //服务器ID
-	Online        int32                  `protobuf:"varint,6,opt,name=online,proto3" json:"online,omitempty"`                                   //在线人数
-	SignCondition string                 `protobuf:"bytes,7,opt,name=sign_condition,json=signCondition,proto3" json:"sign_condition,omitempty"` //报名条件
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                               //比赛ID
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            //比赛名称
+	GameType      string                 `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`    //游戏类型
+	MatchType     string                 `protobuf:"bytes,4,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"` //比赛类型
+	Serverid      string                 `protobuf:"bytes,5,opt,name=serverid,proto3" json:"serverid,omitempty"`                    //服务器ID
+	Online        int32                  `protobuf:"varint,6,opt,name=online,proto3" json:"online,omitempty"`                       //在线人数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -283,13 +282,6 @@ func (x *TounreyInfo) GetOnline() int32 {
 	return 0
 }
 
-func (x *TounreyInfo) GetSignCondition() string {
-	if x != nil {
-		return x.SignCondition
-	}
-	return ""
-}
-
 var File_tourney_proto protoreflect.FileDescriptor
 
 const file_tourney_proto_rawDesc = "" +
@@ -304,7 +296,7 @@ const file_tourney_proto_rawDesc = "" +
 	"\rTouneyListReq\x12\x1b\n" +
 	"\tgame_type\x18\x01 \x01(\tR\bgameType\"@\n" +
 	"\rTouneyListAck\x12/\n" +
-	"\btounreys\x18\x01 \x03(\v2\x13.cproto.TounreyInfoR\btounreys\"\xc8\x01\n" +
+	"\btounreys\x18\x01 \x03(\v2\x13.cproto.TounreyInfoR\btounreys\"\xa1\x01\n" +
 	"\vTounreyInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1b\n" +
@@ -312,8 +304,7 @@ const file_tourney_proto_rawDesc = "" +
 	"\n" +
 	"match_type\x18\x04 \x01(\tR\tmatchType\x12\x1a\n" +
 	"\bserverid\x18\x05 \x01(\tR\bserverid\x12\x16\n" +
-	"\x06online\x18\x06 \x01(\x05R\x06online\x12%\n" +
-	"\x0esign_condition\x18\a \x01(\tR\rsignConditionB\vZ\t../cprotob\x06proto3"
+	"\x06online\x18\x06 \x01(\x05R\x06onlineB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_tourney_proto_rawDescOnce sync.Once

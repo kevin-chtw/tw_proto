@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package cproto;
+option go_package = "../cproto";
+
+message SignReq {
+  google.protobuf.Any req = 1;
+}
+
+message SignAck {
+  google.protobuf.Any ack = 1;
+}
+
+message SignListReq {
+    string game_type = 1; //游戏类型
+}
+
+message MatchSignReq {
+    int32 matchid = 1; //比赛ID
+}
+
+message SignListAck {   
+    repeated MatchSignAck match_signs = 1; //比赛ID对应的报名条件
+}
+
+message MatchSignAck {
+    string game_type = 1; //游戏类型
+    int32 matchid = 2; //比赛ID
+    repeated CondGroup sign_conds = 3; //报名条件 或的关系
+    repeated CondGroup cont_conds = 4; //继续条件 或的关系
+}
+
+message CondGroup {
+    string name = 1; //条件名称
+    repeated Condtion conds = 2; //条件组 且的关系
+}
+
+message Condtion {
+    string cond_type = 1; //条件类型 gt:大于 ge:大于等于  lt：小于 le:小于等于 eq:等于 fee：费用
+    map<int32,int64> cond_vals = 2; //条件值
+}

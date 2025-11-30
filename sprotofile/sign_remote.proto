@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package sproto;
+option go_package = "../sproto";
+
+message SignReq {
+  string uid = 1;// 用户ID
+  int32 matchid = 2; //比赛ID
+  int32 cond_index = 3; //条件索引
+}
+
+message SignAck {}

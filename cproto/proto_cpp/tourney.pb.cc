@@ -71,7 +71,6 @@ constexpr TounreyInfo::TounreyInfo(
   , game_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , match_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , serverid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , sign_condition_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , id_(0)
   , online_(0){}
 struct TounreyInfoDefaultTypeInternal {
@@ -129,7 +128,6 @@ const uint32_t TableStruct_tourney_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cproto::TounreyInfo, match_type_),
   PROTOBUF_FIELD_OFFSET(::cproto::TounreyInfo, serverid_),
   PROTOBUF_FIELD_OFFSET(::cproto::TounreyInfo, online_),
-  PROTOBUF_FIELD_OFFSET(::cproto::TounreyInfo, sign_condition_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cproto::TourneyReq)},
@@ -154,17 +152,17 @@ const char descriptor_table_protodef_tourney_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\030\001 \001(\0132\024.google.protobuf.Any\"\"\n\rTouneyLi"
   "stReq\022\021\n\tgame_type\030\001 \001(\t\"6\n\rTouneyListAc"
   "k\022%\n\010tounreys\030\001 \003(\0132\023.cproto.TounreyInfo"
-  "\"\210\001\n\013TounreyInfo\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001"
-  "(\t\022\021\n\tgame_type\030\003 \001(\t\022\022\n\nmatch_type\030\004 \001("
-  "\t\022\020\n\010serverid\030\005 \001(\t\022\016\n\006online\030\006 \001(\005\022\026\n\016s"
-  "ign_condition\030\007 \001(\tB\013Z\t../cprotob\006proto3"
+  "\"p\n\013TounreyInfo\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001("
+  "\t\022\021\n\tgame_type\030\003 \001(\t\022\022\n\nmatch_type\030\004 \001(\t"
+  "\022\020\n\010serverid\030\005 \001(\t\022\016\n\006online\030\006 \001(\005B\013Z\t.."
+  "/cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_tourney_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_tourney_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_tourney_2eproto = {
-  false, false, 400, descriptor_table_protodef_tourney_2eproto, "tourney.proto", 
+  false, false, 375, descriptor_table_protodef_tourney_2eproto, "tourney.proto", 
   &descriptor_table_tourney_2eproto_once, descriptor_table_tourney_2eproto_deps, 1, 5,
   schemas, file_default_instances, TableStruct_tourney_2eproto::offsets,
   file_level_metadata_tourney_2eproto, file_level_enum_descriptors_tourney_2eproto, file_level_service_descriptors_tourney_2eproto,
@@ -1017,14 +1015,6 @@ TounreyInfo::TounreyInfo(const TounreyInfo& from)
     serverid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_serverid(), 
       GetArenaForAllocation());
   }
-  sign_condition_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    sign_condition_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_sign_condition().empty()) {
-    sign_condition_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_sign_condition(), 
-      GetArenaForAllocation());
-  }
   ::memcpy(&id_, &from.id_,
     static_cast<size_t>(reinterpret_cast<char*>(&online_) -
     reinterpret_cast<char*>(&id_)) + sizeof(online_));
@@ -1048,10 +1038,6 @@ serverid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlr
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   serverid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-sign_condition_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  sign_condition_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&id_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&online_) -
@@ -1071,7 +1057,6 @@ inline void TounreyInfo::SharedDtor() {
   game_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   match_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   serverid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  sign_condition_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void TounreyInfo::ArenaDtor(void* object) {
@@ -1094,7 +1079,6 @@ void TounreyInfo::Clear() {
   game_type_.ClearToEmpty();
   match_type_.ClearToEmpty();
   serverid_.ClearToEmpty();
-  sign_condition_.ClearToEmpty();
   ::memset(&id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&online_) -
       reinterpret_cast<char*>(&id_)) + sizeof(online_));
@@ -1159,16 +1143,6 @@ const char* TounreyInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
           online_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string sign_condition = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
-          auto str = _internal_mutable_sign_condition();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.TounreyInfo.sign_condition"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1254,16 +1228,6 @@ uint8_t* TounreyInfo::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_online(), target);
   }
 
-  // string sign_condition = 7;
-  if (!this->_internal_sign_condition().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_sign_condition().data(), static_cast<int>(this->_internal_sign_condition().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.TounreyInfo.sign_condition");
-    target = stream->WriteStringMaybeAliased(
-        7, this->_internal_sign_condition(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1306,13 +1270,6 @@ size_t TounreyInfo::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_serverid());
-  }
-
-  // string sign_condition = 7;
-  if (!this->_internal_sign_condition().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_sign_condition());
   }
 
   // int32 id = 1;
@@ -1359,9 +1316,6 @@ void TounreyInfo::MergeFrom(const TounreyInfo& from) {
   if (!from._internal_serverid().empty()) {
     _internal_set_serverid(from._internal_serverid());
   }
-  if (!from._internal_sign_condition().empty()) {
-    _internal_set_sign_condition(from._internal_sign_condition());
-  }
   if (from._internal_id() != 0) {
     _internal_set_id(from._internal_id());
   }
@@ -1406,11 +1360,6 @@ void TounreyInfo::InternalSwap(TounreyInfo* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &serverid_, lhs_arena,
       &other->serverid_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &sign_condition_, lhs_arena,
-      &other->sign_condition_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(TounreyInfo, online_)
