@@ -51,7 +51,7 @@ struct TableStruct_match_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[26]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[28]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -59,6 +59,12 @@ struct TableStruct_match_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_match_2eproto;
 namespace cproto {
+class BonusRewardAck;
+struct BonusRewardAckDefaultTypeInternal;
+extern BonusRewardAckDefaultTypeInternal _BonusRewardAck_default_instance_;
+class BonusRewardAck_BonusEntry_DoNotUse;
+struct BonusRewardAck_BonusEntry_DoNotUseDefaultTypeInternal;
+extern BonusRewardAck_BonusEntry_DoNotUseDefaultTypeInternal _BonusRewardAck_BonusEntry_DoNotUse_default_instance_;
 class CancelRoomAck;
 struct CancelRoomAckDefaultTypeInternal;
 extern CancelRoomAckDefaultTypeInternal _CancelRoomAck_default_instance_;
@@ -139,6 +145,8 @@ struct SwitchTableReqDefaultTypeInternal;
 extern SwitchTableReqDefaultTypeInternal _SwitchTableReq_default_instance_;
 }  // namespace cproto
 PROTOBUF_NAMESPACE_OPEN
+template<> ::cproto::BonusRewardAck* Arena::CreateMaybeMessage<::cproto::BonusRewardAck>(Arena*);
+template<> ::cproto::BonusRewardAck_BonusEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::BonusRewardAck_BonusEntry_DoNotUse>(Arena*);
 template<> ::cproto::CancelRoomAck* Arena::CreateMaybeMessage<::cproto::CancelRoomAck>(Arena*);
 template<> ::cproto::CancelRoomReq* Arena::CreateMaybeMessage<::cproto::CancelRoomReq>(Arena*);
 template<> ::cproto::ContinueAck* Arena::CreateMaybeMessage<::cproto::ContinueAck>(Arena*);
@@ -3318,6 +3326,215 @@ class FDRoundResultAck final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_match_2eproto;
 };
+// -------------------------------------------------------------------
+
+class BonusRewardAck_BonusEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<BonusRewardAck_BonusEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<BonusRewardAck_BonusEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  BonusRewardAck_BonusEntry_DoNotUse();
+  explicit constexpr BonusRewardAck_BonusEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit BonusRewardAck_BonusEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const BonusRewardAck_BonusEntry_DoNotUse& other);
+  static const BonusRewardAck_BonusEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const BonusRewardAck_BonusEntry_DoNotUse*>(&_BonusRewardAck_BonusEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class BonusRewardAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.BonusRewardAck) */ {
+ public:
+  inline BonusRewardAck() : BonusRewardAck(nullptr) {}
+  ~BonusRewardAck() override;
+  explicit constexpr BonusRewardAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BonusRewardAck(const BonusRewardAck& from);
+  BonusRewardAck(BonusRewardAck&& from) noexcept
+    : BonusRewardAck() {
+    *this = ::std::move(from);
+  }
+
+  inline BonusRewardAck& operator=(const BonusRewardAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BonusRewardAck& operator=(BonusRewardAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BonusRewardAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BonusRewardAck* internal_default_instance() {
+    return reinterpret_cast<const BonusRewardAck*>(
+               &_BonusRewardAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    27;
+
+  friend void swap(BonusRewardAck& a, BonusRewardAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BonusRewardAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BonusRewardAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BonusRewardAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BonusRewardAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BonusRewardAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const BonusRewardAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BonusRewardAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.BonusRewardAck";
+  }
+  protected:
+  explicit BonusRewardAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBonusFieldNumber = 3,
+    kBonusTypeFieldNumber = 1,
+    kCondFieldNumber = 2,
+  };
+  // map<int32, int64> bonus = 3;
+  int bonus_size() const;
+  private:
+  int _internal_bonus_size() const;
+  public:
+  void clear_bonus();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_bonus() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_bonus();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      bonus() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_bonus();
+
+  // string bonus_type = 1;
+  void clear_bonus_type();
+  const std::string& bonus_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_bonus_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_bonus_type();
+  PROTOBUF_NODISCARD std::string* release_bonus_type();
+  void set_allocated_bonus_type(std::string* bonus_type);
+  private:
+  const std::string& _internal_bonus_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_bonus_type(const std::string& value);
+  std::string* _internal_mutable_bonus_type();
+  public:
+
+  // int32 cond = 2;
+  void clear_cond();
+  int32_t cond() const;
+  void set_cond(int32_t value);
+  private:
+  int32_t _internal_cond() const;
+  void _internal_set_cond(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.BonusRewardAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      BonusRewardAck_BonusEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> bonus_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bonus_type_;
+  int32_t cond_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_match_2eproto;
+};
 // ===================================================================
 
 
@@ -4537,9 +4754,119 @@ inline void FDRoundResultAck::set_allocated_round_data(std::string* round_data) 
   // @@protoc_insertion_point(field_set_allocated:cproto.FDRoundResultAck.round_data)
 }
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// BonusRewardAck
+
+// string bonus_type = 1;
+inline void BonusRewardAck::clear_bonus_type() {
+  bonus_type_.ClearToEmpty();
+}
+inline const std::string& BonusRewardAck::bonus_type() const {
+  // @@protoc_insertion_point(field_get:cproto.BonusRewardAck.bonus_type)
+  return _internal_bonus_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BonusRewardAck::set_bonus_type(ArgT0&& arg0, ArgT... args) {
+ 
+ bonus_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.BonusRewardAck.bonus_type)
+}
+inline std::string* BonusRewardAck::mutable_bonus_type() {
+  std::string* _s = _internal_mutable_bonus_type();
+  // @@protoc_insertion_point(field_mutable:cproto.BonusRewardAck.bonus_type)
+  return _s;
+}
+inline const std::string& BonusRewardAck::_internal_bonus_type() const {
+  return bonus_type_.Get();
+}
+inline void BonusRewardAck::_internal_set_bonus_type(const std::string& value) {
+  
+  bonus_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* BonusRewardAck::_internal_mutable_bonus_type() {
+  
+  return bonus_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* BonusRewardAck::release_bonus_type() {
+  // @@protoc_insertion_point(field_release:cproto.BonusRewardAck.bonus_type)
+  return bonus_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void BonusRewardAck::set_allocated_bonus_type(std::string* bonus_type) {
+  if (bonus_type != nullptr) {
+    
+  } else {
+    
+  }
+  bonus_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), bonus_type,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (bonus_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    bonus_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.BonusRewardAck.bonus_type)
+}
+
+// int32 cond = 2;
+inline void BonusRewardAck::clear_cond() {
+  cond_ = 0;
+}
+inline int32_t BonusRewardAck::_internal_cond() const {
+  return cond_;
+}
+inline int32_t BonusRewardAck::cond() const {
+  // @@protoc_insertion_point(field_get:cproto.BonusRewardAck.cond)
+  return _internal_cond();
+}
+inline void BonusRewardAck::_internal_set_cond(int32_t value) {
+  
+  cond_ = value;
+}
+inline void BonusRewardAck::set_cond(int32_t value) {
+  _internal_set_cond(value);
+  // @@protoc_insertion_point(field_set:cproto.BonusRewardAck.cond)
+}
+
+// map<int32, int64> bonus = 3;
+inline int BonusRewardAck::_internal_bonus_size() const {
+  return bonus_.size();
+}
+inline int BonusRewardAck::bonus_size() const {
+  return _internal_bonus_size();
+}
+inline void BonusRewardAck::clear_bonus() {
+  bonus_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+BonusRewardAck::_internal_bonus() const {
+  return bonus_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+BonusRewardAck::bonus() const {
+  // @@protoc_insertion_point(field_map:cproto.BonusRewardAck.bonus)
+  return _internal_bonus();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+BonusRewardAck::_internal_mutable_bonus() {
+  return bonus_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+BonusRewardAck::mutable_bonus() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.BonusRewardAck.bonus)
+  return _internal_mutable_bonus();
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

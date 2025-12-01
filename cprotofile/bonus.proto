@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package cproto;
+option go_package = "../cproto";
+
+message BonusReq {
+  google.protobuf.Any req = 1;
+}
+
+message BonusAck {
+  google.protobuf.Any ack = 1;
+}
+
+message MatchBonusReq {
+    int32 matchid = 1; //比赛ID
+}
+
+message MatchBonusAck {
+    int32 matchid = 1; //比赛ID
+    string bonus_type = 2; //奖励类型 rank-排名，fixed-定副，streak-连胜
+    string desn = 3; //奖励描述
+    repeated Bonus bonus = 4; //报名条件 或的关系
+}
+
+message Bonus {
+    int32 cond = 1; //条件 排名，副数，连胜次数
+    map<int32,int64> bonus_vals = 2; //奖励值
+}

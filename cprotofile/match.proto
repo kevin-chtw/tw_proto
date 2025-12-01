@@ -96,3 +96,9 @@ message FDRoundResultAck{
   map<string,string> player_data = 6; // 比赛数据 （json）
   string round_data = 4; // 当局数据 （json）
 }
+
+message BonusRewardAck {
+  string bonus_type = 1; //奖金类型
+  int32 cond = 2; //奖金条件索引
+  map<int32,int64> bonus = 3; //奖金详情
+}

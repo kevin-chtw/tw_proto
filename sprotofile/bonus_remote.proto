@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package sproto;
+option go_package = "../sproto";
+
+message BonusReq {
+  string uid = 1;// 用户ID
+  int32 matchid = 2; //比赛ID
+  int64 win_score = 3; //赢分
+  int64 cur_score = 4; //当前分数
+}
+
+message BonusAck {
+  string bonus_type = 1; //奖金类型
+  int32 cond = 2; //奖金条件索引
+  map<int32,int64> bonus = 3; //奖金详情
+}

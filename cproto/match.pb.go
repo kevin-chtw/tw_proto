@@ -984,6 +984,66 @@ func (x *FDRoundResultAck) GetRoundData() string {
 	return ""
 }
 
+type BonusRewardAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BonusType     string                 `protobuf:"bytes,1,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                    //奖金类型
+	Cond          int32                  `protobuf:"varint,2,opt,name=cond,proto3" json:"cond,omitempty"`                                                                              //奖金条件索引
+	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //奖金详情
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusRewardAck) Reset() {
+	*x = BonusRewardAck{}
+	mi := &file_match_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusRewardAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusRewardAck) ProtoMessage() {}
+
+func (x *BonusRewardAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusRewardAck.ProtoReflect.Descriptor instead.
+func (*BonusRewardAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *BonusRewardAck) GetBonusType() string {
+	if x != nil {
+		return x.BonusType
+	}
+	return ""
+}
+
+func (x *BonusRewardAck) GetCond() int32 {
+	if x != nil {
+		return x.Cond
+	}
+	return 0
+}
+
+func (x *BonusRewardAck) GetBonus() map[int32]int64 {
+	if x != nil {
+		return x.Bonus
+	}
+	return nil
+}
+
 var File_match_proto protoreflect.FileDescriptor
 
 const file_match_proto_rawDesc = "" +
@@ -1066,7 +1126,16 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
 	"\x0fPlayerDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb6\x01\n" +
+	"\x0eBonusRewardAck\x12\x1d\n" +
+	"\n" +
+	"bonus_type\x18\x01 \x01(\tR\tbonusType\x12\x12\n" +
+	"\x04cond\x18\x02 \x01(\x05R\x04cond\x127\n" +
+	"\x05bonus\x18\x03 \x03(\v2!.cproto.BonusRewardAck.BonusEntryR\x05bonus\x1a8\n" +
+	"\n" +
+	"BonusEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
 var (
 	file_match_proto_rawDescOnce sync.Once
@@ -1080,7 +1149,7 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_match_proto_goTypes = []any{
 	(*MatchReq)(nil),         // 0: cproto.MatchReq
 	(*MatchAck)(nil),         // 1: cproto.MatchAck
@@ -1102,28 +1171,31 @@ var file_match_proto_goTypes = []any{
 	(*ExitMatchAck)(nil),     // 17: cproto.ExitMatchAck
 	(*FDResultAck)(nil),      // 18: cproto.FDResultAck
 	(*FDRoundResultAck)(nil), // 19: cproto.FDRoundResultAck
-	nil,                      // 20: cproto.CreateRoomReq.PropertiesEntry
-	nil,                      // 21: cproto.CreateRoomReq.MatchConfigEntry
-	nil,                      // 22: cproto.FDResultAck.ScoresEntry
-	nil,                      // 23: cproto.FDResultAck.PlayerDataEntry
-	nil,                      // 24: cproto.FDRoundResultAck.ScoresEntry
-	nil,                      // 25: cproto.FDRoundResultAck.PlayerDataEntry
-	(*anypb.Any)(nil),        // 26: google.protobuf.Any
+	(*BonusRewardAck)(nil),   // 20: cproto.BonusRewardAck
+	nil,                      // 21: cproto.CreateRoomReq.PropertiesEntry
+	nil,                      // 22: cproto.CreateRoomReq.MatchConfigEntry
+	nil,                      // 23: cproto.FDResultAck.ScoresEntry
+	nil,                      // 24: cproto.FDResultAck.PlayerDataEntry
+	nil,                      // 25: cproto.FDRoundResultAck.ScoresEntry
+	nil,                      // 26: cproto.FDRoundResultAck.PlayerDataEntry
+	nil,                      // 27: cproto.BonusRewardAck.BonusEntry
+	(*anypb.Any)(nil),        // 28: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	26, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	26, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
-	20, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
-	21, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
-	22, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
-	23, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
-	24, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
-	25, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
-	8,  // [8:8] is the sub-list for method output_type
-	8,  // [8:8] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	28, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	28, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	21, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
+	22, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
+	23, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
+	24, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
+	25, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
+	26, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
+	27, // 8: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
+	9,  // [9:9] is the sub-list for method output_type
+	9,  // [9:9] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
@@ -1137,7 +1209,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   26,
+			NumMessages:   28,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
