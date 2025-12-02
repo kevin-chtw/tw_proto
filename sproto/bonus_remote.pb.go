@@ -26,7 +26,7 @@ type BonusReq struct {
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                            // 用户ID
 	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`                   //比赛ID
 	WinScore      int64                  `protobuf:"varint,3,opt,name=win_score,json=winScore,proto3" json:"win_score,omitempty"` //赢分
-	CurScore      int64                  `protobuf:"varint,4,opt,name=cur_score,json=curScore,proto3" json:"cur_score,omitempty"` //当前分数
+	Rank          int32                  `protobuf:"varint,4,opt,name=rank,proto3" json:"rank,omitempty"`                         //排名
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -82,9 +82,9 @@ func (x *BonusReq) GetWinScore() int64 {
 	return 0
 }
 
-func (x *BonusReq) GetCurScore() int64 {
+func (x *BonusReq) GetRank() int32 {
 	if x != nil {
-		return x.CurScore
+		return x.Rank
 	}
 	return 0
 }
@@ -153,12 +153,12 @@ var File_bonus_remote_proto protoreflect.FileDescriptor
 
 const file_bonus_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x12bonus_remote.proto\x12\x06sproto\"p\n" +
+	"\x12bonus_remote.proto\x12\x06sproto\"g\n" +
 	"\bBonusReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1b\n" +
-	"\twin_score\x18\x03 \x01(\x03R\bwinScore\x12\x1b\n" +
-	"\tcur_score\x18\x04 \x01(\x03R\bcurScore\"\xaa\x01\n" +
+	"\twin_score\x18\x03 \x01(\x03R\bwinScore\x12\x12\n" +
+	"\x04rank\x18\x04 \x01(\x05R\x04rank\"\xaa\x01\n" +
 	"\bBonusAck\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x01 \x01(\tR\tbonusType\x12\x12\n" +
