@@ -60,6 +60,7 @@ message MJChowAck {
   int32 tile = 3; //吃的牌
   int32 left_tile = 4; //最左的牌
   map<int32,CallData> call_data = 5; // 打出的牌-听牌列表
+  bool ting = 6; // 是否吃听
 }
 
 message MJPonAck {
@@ -67,6 +68,7 @@ message MJPonAck {
   int32 from = 2;//出牌座位号
   int32 tile = 3; //碰的牌列表
   map<int32,CallData> call_data = 4; // 打出的牌-听牌列表
+  bool ting = 5; // 是否碰听
 }
 
 message MJKonAck {

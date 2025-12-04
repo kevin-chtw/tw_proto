@@ -544,6 +544,7 @@ type MJChowAck struct {
 	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                                                                                   //吃的牌
 	LeftTile      int32                  `protobuf:"varint,4,opt,name=left_tile,json=leftTile,proto3" json:"left_tile,omitempty"`                                                                           //最左的牌
 	CallData      map[int32]*CallData    `protobuf:"bytes,5,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
+	Ting          bool                   `protobuf:"varint,6,opt,name=ting,proto3" json:"ting,omitempty"`                                                                                                   // 是否吃听
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -613,12 +614,20 @@ func (x *MJChowAck) GetCallData() map[int32]*CallData {
 	return nil
 }
 
+func (x *MJChowAck) GetTing() bool {
+	if x != nil {
+		return x.Ting
+	}
+	return false
+}
+
 type MJPonAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                                   //座位号
 	From          int32                  `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                                                                                                   //出牌座位号
 	Tile          int32                  `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                                                                                   //碰的牌列表
 	CallData      map[int32]*CallData    `protobuf:"bytes,4,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
+	Ting          bool                   `protobuf:"varint,5,opt,name=ting,proto3" json:"ting,omitempty"`                                                                                                   // 是否碰听
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -679,6 +688,13 @@ func (x *MJPonAck) GetCallData() map[int32]*CallData {
 		return x.CallData
 	}
 	return nil
+}
+
+func (x *MJPonAck) GetTing() bool {
+	if x != nil {
+		return x.Ting
+	}
+	return false
 }
 
 type MJKonAck struct {
@@ -1943,21 +1959,23 @@ const file_mj_proto_rawDesc = "" +
 	"\tcall_data\x18\x05 \x03(\v2\x1d.pbmj.CallDatas.CallDataEntryR\bcallData\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\xed\x01\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\x81\x02\n" +
 	"\tMJChowAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
 	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12\x1b\n" +
 	"\tleft_tile\x18\x04 \x01(\x05R\bleftTile\x12:\n" +
-	"\tcall_data\x18\x05 \x03(\v2\x1d.pbmj.MJChowAck.CallDataEntryR\bcallData\x1aK\n" +
+	"\tcall_data\x18\x05 \x03(\v2\x1d.pbmj.MJChowAck.CallDataEntryR\bcallData\x12\x12\n" +
+	"\x04ting\x18\x06 \x01(\bR\x04ting\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\xce\x01\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"\xe2\x01\n" +
 	"\bMJPonAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
 	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
 	"\x04tile\x18\x03 \x01(\x05R\x04tile\x129\n" +
-	"\tcall_data\x18\x04 \x03(\v2\x1c.pbmj.MJPonAck.CallDataEntryR\bcallData\x1aK\n" +
+	"\tcall_data\x18\x04 \x03(\v2\x1c.pbmj.MJPonAck.CallDataEntryR\bcallData\x12\x12\n" +
+	"\x04ting\x18\x05 \x01(\bR\x04ting\x1aK\n" +
 	"\rCallDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
 	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01\"a\n" +
