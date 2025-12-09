@@ -96,7 +96,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ShopAckDefaultTypeInternal _Sho
 constexpr PurchaseReq::PurchaseReq(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : shop_type_(0)
-  , id_(0){}
+  , id_(0)
+  , to_coin_(false){}
 struct PurchaseReqDefaultTypeInternal {
   constexpr PurchaseReqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -263,6 +264,7 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::PurchaseReq, shop_type_),
   PROTOBUF_FIELD_OFFSET(::cproto::PurchaseReq, id_),
+  PROTOBUF_FIELD_OFFSET(::cproto::PurchaseReq, to_coin_),
   PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck_GoodsEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::cproto::PurchaseAck_GoodsEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -345,14 +347,14 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 31, -1, -1, sizeof(::cproto::ShopReq)},
   { 38, -1, -1, sizeof(::cproto::ShopAck)},
   { 46, -1, -1, sizeof(::cproto::PurchaseReq)},
-  { 54, 62, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
-  { 64, -1, -1, sizeof(::cproto::PurchaseAck)},
-  { 72, 80, -1, sizeof(::cproto::RegisterAck_AwardEntry_DoNotUse)},
-  { 82, -1, -1, sizeof(::cproto::RegisterAck)},
-  { 90, 98, -1, sizeof(::cproto::PlayerInfoAck_ItemsEntry_DoNotUse)},
-  { 100, -1, -1, sizeof(::cproto::PlayerInfoAck)},
-  { 110, 118, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
-  { 120, -1, -1, sizeof(::cproto::ItemsAck)},
+  { 55, 63, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
+  { 65, -1, -1, sizeof(::cproto::PurchaseAck)},
+  { 73, 81, -1, sizeof(::cproto::RegisterAck_AwardEntry_DoNotUse)},
+  { 83, -1, -1, sizeof(::cproto::RegisterAck)},
+  { 91, 99, -1, sizeof(::cproto::PlayerInfoAck_ItemsEntry_DoNotUse)},
+  { 101, -1, -1, sizeof(::cproto::PlayerInfoAck)},
+  { 111, 119, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
+  { 121, -1, -1, sizeof(::cproto::ItemsAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -382,29 +384,30 @@ const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE
   "egisterReq\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030"
   "\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\"\034\n\007ShopReq\022\021\n\tshop"
   "_type\030\001 \001(\005\"/\n\007ShopAck\022\021\n\tshop_type\030\001 \001("
-  "\005\022\021\n\tshop_info\030\002 \001(\t\",\n\013PurchaseReq\022\021\n\ts"
-  "hop_type\030\001 \001(\005\022\n\n\002id\030\002 \001(\005\"}\n\013PurchaseAc"
-  "k\022\021\n\tshop_type\030\001 \001(\005\022-\n\005goods\030\002 \003(\0132\036.cp"
-  "roto.PurchaseAck.GoodsEntry\032,\n\nGoodsEntr"
-  "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\226\001\n\013Re"
-  "gisterAck\022*\n\013player_info\030\001 \001(\0132\025.cproto."
-  "PlayerInfoAck\022-\n\005award\030\002 \003(\0132\036.cproto.Re"
-  "gisterAck.AwardEntry\032,\n\nAwardEntry\022\013\n\003ke"
-  "y\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\235\001\n\rPlayerInf"
-  "oAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006a"
-  "vatar\030\003 \001(\t\022/\n\005items\030\004 \003(\0132 .cproto.Play"
-  "erInfoAck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003ke"
-  "y\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"d\n\010ItemsAck\022*"
-  "\n\005items\030\001 \003(\0132\033.cproto.ItemsAck.ItemsEnt"
-  "ry\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002"
-  " \001(\003:\0028\001B\013Z\t../cprotob\006proto3"
+  "\005\022\021\n\tshop_info\030\002 \001(\t\"=\n\013PurchaseReq\022\021\n\ts"
+  "hop_type\030\001 \001(\005\022\n\n\002id\030\002 \001(\005\022\017\n\007to_coin\030\003 "
+  "\001(\010\"}\n\013PurchaseAck\022\021\n\tshop_type\030\001 \001(\005\022-\n"
+  "\005goods\030\002 \003(\0132\036.cproto.PurchaseAck.GoodsE"
+  "ntry\032,\n\nGoodsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value"
+  "\030\002 \001(\003:\0028\001\"\226\001\n\013RegisterAck\022*\n\013player_inf"
+  "o\030\001 \001(\0132\025.cproto.PlayerInfoAck\022-\n\005award\030"
+  "\002 \003(\0132\036.cproto.RegisterAck.AwardEntry\032,\n"
+  "\nAwardEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:"
+  "\0028\001\"\235\001\n\rPlayerInfoAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010ni"
+  "ckname\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022/\n\005items\030\004 "
+  "\003(\0132 .cproto.PlayerInfoAck.ItemsEntry\032,\n"
+  "\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:"
+  "\0028\001\"d\n\010ItemsAck\022*\n\005items\030\001 \003(\0132\033.cproto."
+  "ItemsAck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003key"
+  "\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cprotob\006"
+  "proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_account_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_account_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_account_2eproto = {
-  false, false, 949, descriptor_table_protodef_account_2eproto, "account.proto", 
+  false, false, 966, descriptor_table_protodef_account_2eproto, "account.proto", 
   &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 15,
   schemas, file_default_instances, TableStruct_account_2eproto::offsets,
   file_level_metadata_account_2eproto, file_level_enum_descriptors_account_2eproto, file_level_service_descriptors_account_2eproto,
@@ -1798,16 +1801,16 @@ PurchaseReq::PurchaseReq(const PurchaseReq& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&shop_type_, &from.shop_type_,
-    static_cast<size_t>(reinterpret_cast<char*>(&id_) -
-    reinterpret_cast<char*>(&shop_type_)) + sizeof(id_));
+    static_cast<size_t>(reinterpret_cast<char*>(&to_coin_) -
+    reinterpret_cast<char*>(&shop_type_)) + sizeof(to_coin_));
   // @@protoc_insertion_point(copy_constructor:cproto.PurchaseReq)
 }
 
 inline void PurchaseReq::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&shop_type_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&id_) -
-    reinterpret_cast<char*>(&shop_type_)) + sizeof(id_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&to_coin_) -
+    reinterpret_cast<char*>(&shop_type_)) + sizeof(to_coin_));
 }
 
 PurchaseReq::~PurchaseReq() {
@@ -1838,8 +1841,8 @@ void PurchaseReq::Clear() {
   (void) cached_has_bits;
 
   ::memset(&shop_type_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&shop_type_)) + sizeof(id_));
+      reinterpret_cast<char*>(&to_coin_) -
+      reinterpret_cast<char*>(&shop_type_)) + sizeof(to_coin_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1861,6 +1864,14 @@ const char* PurchaseReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool to_coin = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          to_coin_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1906,6 +1917,12 @@ uint8_t* PurchaseReq::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_id(), target);
   }
 
+  // bool to_coin = 3;
+  if (this->_internal_to_coin() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_to_coin(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1930,6 +1947,11 @@ size_t PurchaseReq::ByteSizeLong() const {
   // int32 id = 2;
   if (this->_internal_id() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id());
+  }
+
+  // bool to_coin = 3;
+  if (this->_internal_to_coin() != 0) {
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1960,6 +1982,9 @@ void PurchaseReq::MergeFrom(const PurchaseReq& from) {
   if (from._internal_id() != 0) {
     _internal_set_id(from._internal_id());
   }
+  if (from._internal_to_coin() != 0) {
+    _internal_set_to_coin(from._internal_to_coin());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1978,8 +2003,8 @@ void PurchaseReq::InternalSwap(PurchaseReq* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(PurchaseReq, id_)
-      + sizeof(PurchaseReq::id_)
+      PROTOBUF_FIELD_OFFSET(PurchaseReq, to_coin_)
+      + sizeof(PurchaseReq::to_coin_)
       - PROTOBUF_FIELD_OFFSET(PurchaseReq, shop_type_)>(
           reinterpret_cast<char*>(&shop_type_),
           reinterpret_cast<char*>(&other->shop_type_));

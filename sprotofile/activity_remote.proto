@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package sproto;
+option go_package = "../sproto";
+
+// 活动远程服务请求包装器（服务器间调用，无bot区分）
+message ActivityRemoteReq {
+  google.protobuf.Any req = 1; // 请求内容
+}
+
+// 活动远程服务响应包装器（服务器间调用，无bot区分）
+message ActivityRemoteAck {
+  google.protobuf.Any ack = 1; // 响应内容
+}
+
+// 发布活动事件请求（其他服务发布事件到活动服务）
+message PublishActivityEventReq {
+  int32 event_id = 1; // 事件ID
+  string uid = 2; // 用户ID
+  int64 timestamp = 3; // 时间戳
+  string data = 4; // 事件数据JSON字符串
+  string source = 5; // 事件来源服务
+  int32 version = 6; // 事件版本
+}
+
+// 发布活动事件响应
+message PublishActivityEventAck {
+  bool success = 1; // 是否成功
+  string message = 2; // 消息
+}

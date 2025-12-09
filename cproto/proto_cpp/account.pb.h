@@ -1217,6 +1217,7 @@ class PurchaseReq final :
   enum : int {
     kShopTypeFieldNumber = 1,
     kIdFieldNumber = 2,
+    kToCoinFieldNumber = 3,
   };
   // int32 shop_type = 1;
   void clear_shop_type();
@@ -1236,6 +1237,15 @@ class PurchaseReq final :
   void _internal_set_id(int32_t value);
   public:
 
+  // bool to_coin = 3;
+  void clear_to_coin();
+  bool to_coin() const;
+  void set_to_coin(bool value);
+  private:
+  bool _internal_to_coin() const;
+  void _internal_set_to_coin(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:cproto.PurchaseReq)
  private:
   class _Internal;
@@ -1245,6 +1255,7 @@ class PurchaseReq final :
   typedef void DestructorSkippable_;
   int32_t shop_type_;
   int32_t id_;
+  bool to_coin_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_account_2eproto;
 };
@@ -2646,6 +2657,26 @@ inline void PurchaseReq::_internal_set_id(int32_t value) {
 inline void PurchaseReq::set_id(int32_t value) {
   _internal_set_id(value);
   // @@protoc_insertion_point(field_set:cproto.PurchaseReq.id)
+}
+
+// bool to_coin = 3;
+inline void PurchaseReq::clear_to_coin() {
+  to_coin_ = false;
+}
+inline bool PurchaseReq::_internal_to_coin() const {
+  return to_coin_;
+}
+inline bool PurchaseReq::to_coin() const {
+  // @@protoc_insertion_point(field_get:cproto.PurchaseReq.to_coin)
+  return _internal_to_coin();
+}
+inline void PurchaseReq::_internal_set_to_coin(bool value) {
+  
+  to_coin_ = value;
+}
+inline void PurchaseReq::set_to_coin(bool value) {
+  _internal_set_to_coin(value);
+  // @@protoc_insertion_point(field_set:cproto.PurchaseReq.to_coin)
 }
 
 // -------------------------------------------------------------------

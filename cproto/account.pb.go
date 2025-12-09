@@ -321,7 +321,8 @@ func (x *ShopAck) GetShopInfo() string {
 type PurchaseReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ShopType      int32                  `protobuf:"varint,1,opt,name=shop_type,json=shopType,proto3" json:"shop_type,omitempty"`
-	Id            int32                  `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"` //商品id
+	Id            int32                  `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`                       //商品id
+	ToCoin        bool                   `protobuf:"varint,3,opt,name=to_coin,json=toCoin,proto3" json:"to_coin,omitempty"` //自动兑换成金币
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -368,6 +369,13 @@ func (x *PurchaseReq) GetId() int32 {
 		return x.Id
 	}
 	return 0
+}
+
+func (x *PurchaseReq) GetToCoin() bool {
+	if x != nil {
+		return x.ToCoin
+	}
+	return false
 }
 
 type PurchaseAck struct {
@@ -608,10 +616,11 @@ const file_account_proto_rawDesc = "" +
 	"\tshop_type\x18\x01 \x01(\x05R\bshopType\"C\n" +
 	"\aShopAck\x12\x1b\n" +
 	"\tshop_type\x18\x01 \x01(\x05R\bshopType\x12\x1b\n" +
-	"\tshop_info\x18\x02 \x01(\tR\bshopInfo\":\n" +
+	"\tshop_info\x18\x02 \x01(\tR\bshopInfo\"S\n" +
 	"\vPurchaseReq\x12\x1b\n" +
 	"\tshop_type\x18\x01 \x01(\x05R\bshopType\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x05R\x02id\"\x9a\x01\n" +
+	"\x02id\x18\x02 \x01(\x05R\x02id\x12\x17\n" +
+	"\ato_coin\x18\x03 \x01(\bR\x06toCoin\"\x9a\x01\n" +
 	"\vPurchaseAck\x12\x1b\n" +
 	"\tshop_type\x18\x01 \x01(\x05R\bshopType\x124\n" +
 	"\x05goods\x18\x02 \x03(\v2\x1e.cproto.PurchaseAck.GoodsEntryR\x05goods\x1a8\n" +
