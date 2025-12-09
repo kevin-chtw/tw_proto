@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package cproto;
+option go_package = "../cproto";
+
+// 活动通用请求包装器（客户端调用）
+message ActivityReq {
+  google.protobuf.Any req = 1;
+}
+
+// 活动通用响应包装器（客户端调用）
+message ActivityAck {
+  google.protobuf.Any ack = 1;
+}
+
+// 获取活动列表请求
+message GetActivityListReq {
+}
+
+// 获取活动列表响应
+message GetActivityListAck {
+  bool success = 1; // 是否成功
+  string message = 2; // 消息
+  repeated ActivityListItem activities = 3; // 活动列表
+}
+
+// 获取活动状态请求
+message GetActivityStatusReq {
+  int32 activity_id = 1; // 活动ID
+}
+
+// 获取活动状态响应
+message GetActivityStatusAck {
+  bool success = 1; // 是否成功
+  string message = 2; // 消息
+  ActivityState status = 3; // 活动状态
+}
+
+// 活动操作请求
+message ActivityActionReq {
+  int32 activity_id = 1; // 活动ID
+  string action = 2; // 操作类型
+  string params = 3; // 参数JSON字符串
+}
+
+// 活动操作响应
+message ActivityActionAck {
+  bool success = 1; // 是否成功
+  string message = 2; // 消息
+  repeated ActivityReward rewards = 3; // 奖励列表
+  string data = 4; // 额外数据JSON字符串
+}
+
+// 活动列表项
+message ActivityListItem {
+  int32 activity_id = 1; // 活动ID
+  string name = 2; // 活动名称
+  int32 type = 3; // 活动类型
+  string status = 4; // 用户状态
+  string description = 5; // 活动描述
+  string icon = 6; // 图标
+  int64 start_time = 7; // 开始时间
+  int64 end_time = 8; // 结束时间
+}
+
+// 活动状态
+message ActivityState {
+  int32 activity_id = 1; // 活动ID
+  string status = 2; // 状态
+  string progress = 3; // 进度数据JSON字符串
+  repeated RewardStatus rewards = 4; // 奖励状态
+  int64 create_time = 5; // 创建时间
+  int64 update_time = 6; // 更新时间
+}
+
+// 奖励状态
+message RewardStatus {
+  int32 reward_id = 1; // 奖励ID
+  string status = 2; // 领取状态
+  int64 claim_time = 3; // 领取时间
+}
+
+// 活动奖励
+message ActivityReward {
+  int32 id = 1; // 奖励ID
+  string name = 2; // 奖励名称
+  int32 type = 3; // 奖励类型（物品ID）
+  int64 amount = 4; // 奖励数量
+  int32 weight = 5; // 权重（用于抽奖）
+  int32 required = 6; // 所需积分/条件
+}
