@@ -41,155 +41,98 @@ struct ActivityAckDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActivityAckDefaultTypeInternal _ActivityAck_default_instance_;
-constexpr GetActivityListReq::GetActivityListReq(
+constexpr ActsListReq::ActsListReq(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
-struct GetActivityListReqDefaultTypeInternal {
-  constexpr GetActivityListReqDefaultTypeInternal()
+struct ActsListReqDefaultTypeInternal {
+  constexpr ActsListReqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~GetActivityListReqDefaultTypeInternal() {}
+  ~ActsListReqDefaultTypeInternal() {}
   union {
-    GetActivityListReq _instance;
+    ActsListReq _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetActivityListReqDefaultTypeInternal _GetActivityListReq_default_instance_;
-constexpr GetActivityListAck::GetActivityListAck(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActsListReqDefaultTypeInternal _ActsListReq_default_instance_;
+constexpr ActsListAck::ActsListAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : activities_()
-  , message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , success_(false){}
-struct GetActivityListAckDefaultTypeInternal {
-  constexpr GetActivityListAckDefaultTypeInternal()
+  : acts_()
+  , red_dot_(false){}
+struct ActsListAckDefaultTypeInternal {
+  constexpr ActsListAckDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~GetActivityListAckDefaultTypeInternal() {}
+  ~ActsListAckDefaultTypeInternal() {}
   union {
-    GetActivityListAck _instance;
+    ActsListAck _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetActivityListAckDefaultTypeInternal _GetActivityListAck_default_instance_;
-constexpr GetActivityStatusReq::GetActivityStatusReq(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActsListAckDefaultTypeInternal _ActsListAck_default_instance_;
+constexpr ActPanelReq::ActPanelReq(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : activity_id_(0){}
-struct GetActivityStatusReqDefaultTypeInternal {
-  constexpr GetActivityStatusReqDefaultTypeInternal()
+struct ActPanelReqDefaultTypeInternal {
+  constexpr ActPanelReqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~GetActivityStatusReqDefaultTypeInternal() {}
+  ~ActPanelReqDefaultTypeInternal() {}
   union {
-    GetActivityStatusReq _instance;
+    ActPanelReq _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetActivityStatusReqDefaultTypeInternal _GetActivityStatusReq_default_instance_;
-constexpr GetActivityStatusAck::GetActivityStatusAck(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActPanelReqDefaultTypeInternal _ActPanelReq_default_instance_;
+constexpr ActPanelAck::ActPanelAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , status_(nullptr)
-  , success_(false){}
-struct GetActivityStatusAckDefaultTypeInternal {
-  constexpr GetActivityStatusAckDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~GetActivityStatusAckDefaultTypeInternal() {}
-  union {
-    GetActivityStatusAck _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetActivityStatusAckDefaultTypeInternal _GetActivityStatusAck_default_instance_;
-constexpr ActivityActionReq::ActivityActionReq(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : action_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , params_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : json_data_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , activity_id_(0){}
-struct ActivityActionReqDefaultTypeInternal {
-  constexpr ActivityActionReqDefaultTypeInternal()
+struct ActPanelAckDefaultTypeInternal {
+  constexpr ActPanelAckDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ActivityActionReqDefaultTypeInternal() {}
+  ~ActPanelAckDefaultTypeInternal() {}
   union {
-    ActivityActionReq _instance;
+    ActPanelAck _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActivityActionReqDefaultTypeInternal _ActivityActionReq_default_instance_;
-constexpr ActivityActionAck::ActivityActionAck(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActPanelAckDefaultTypeInternal _ActPanelAck_default_instance_;
+constexpr ActRewardReq::ActRewardReq(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : rewards_()
-  , message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , data_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , success_(false){}
-struct ActivityActionAckDefaultTypeInternal {
-  constexpr ActivityActionAckDefaultTypeInternal()
+  : json_data_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , activity_id_(0){}
+struct ActRewardReqDefaultTypeInternal {
+  constexpr ActRewardReqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ActivityActionAckDefaultTypeInternal() {}
+  ~ActRewardReqDefaultTypeInternal() {}
   union {
-    ActivityActionAck _instance;
+    ActRewardReq _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActivityActionAckDefaultTypeInternal _ActivityActionAck_default_instance_;
-constexpr ActivityListItem::ActivityListItem(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActRewardReqDefaultTypeInternal _ActRewardReq_default_instance_;
+constexpr ActRewardAck::ActRewardAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : json_data_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , activity_id_(0){}
+struct ActRewardAckDefaultTypeInternal {
+  constexpr ActRewardAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~ActRewardAckDefaultTypeInternal() {}
+  union {
+    ActRewardAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActRewardAckDefaultTypeInternal _ActRewardAck_default_instance_;
+constexpr ActBrief::ActBrief(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , status_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , description_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , icon_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , activity_id_(0)
-  , type_(0)
-  , start_time_(int64_t{0})
-  , end_time_(int64_t{0}){}
-struct ActivityListItemDefaultTypeInternal {
-  constexpr ActivityListItemDefaultTypeInternal()
+  , status_(0)
+  , end_ts_(int64_t{0}){}
+struct ActBriefDefaultTypeInternal {
+  constexpr ActBriefDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ActivityListItemDefaultTypeInternal() {}
+  ~ActBriefDefaultTypeInternal() {}
   union {
-    ActivityListItem _instance;
+    ActBrief _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActivityListItemDefaultTypeInternal _ActivityListItem_default_instance_;
-constexpr ActivityState::ActivityState(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : rewards_()
-  , status_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , progress_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , create_time_(int64_t{0})
-  , update_time_(int64_t{0})
-  , activity_id_(0){}
-struct ActivityStateDefaultTypeInternal {
-  constexpr ActivityStateDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ActivityStateDefaultTypeInternal() {}
-  union {
-    ActivityState _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActivityStateDefaultTypeInternal _ActivityState_default_instance_;
-constexpr RewardStatus::RewardStatus(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : status_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , claim_time_(int64_t{0})
-  , reward_id_(0){}
-struct RewardStatusDefaultTypeInternal {
-  constexpr RewardStatusDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~RewardStatusDefaultTypeInternal() {}
-  union {
-    RewardStatus _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RewardStatusDefaultTypeInternal _RewardStatus_default_instance_;
-constexpr ActivityReward::ActivityReward(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , id_(0)
-  , type_(0)
-  , amount_(int64_t{0})
-  , weight_(0)
-  , required_(0){}
-struct ActivityRewardDefaultTypeInternal {
-  constexpr ActivityRewardDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ActivityRewardDefaultTypeInternal() {}
-  union {
-    ActivityReward _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActivityRewardDefaultTypeInternal _ActivityReward_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ActBriefDefaultTypeInternal _ActBrief_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_activity_2eproto[12];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_activity_2eproto[9];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_activity_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_activity_2eproto = nullptr;
 
@@ -209,170 +152,108 @@ const uint32_t TableStruct_activity_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::ActivityAck, ack_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityListReq, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActsListReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityListAck, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActsListAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityListAck, success_),
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityListAck, message_),
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityListAck, activities_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActsListAck, red_dot_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActsListAck, acts_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityStatusReq, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActPanelReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityStatusReq, activity_id_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActPanelReq, activity_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityStatusAck, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActPanelAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityStatusAck, success_),
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityStatusAck, message_),
-  PROTOBUF_FIELD_OFFSET(::cproto::GetActivityStatusAck, status_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActPanelAck, activity_id_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActPanelAck, json_data_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionReq, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActRewardReq, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionReq, activity_id_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionReq, action_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionReq, params_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActRewardReq, activity_id_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActRewardReq, json_data_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionAck, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActRewardAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionAck, success_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionAck, message_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionAck, rewards_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityActionAck, data_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActRewardAck, activity_id_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActRewardAck, json_data_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActBrief, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, activity_id_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, name_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, type_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, status_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, description_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, icon_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, start_time_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityListItem, end_time_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityState, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityState, activity_id_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityState, status_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityState, progress_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityState, rewards_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityState, create_time_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityState, update_time_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::RewardStatus, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::RewardStatus, reward_id_),
-  PROTOBUF_FIELD_OFFSET(::cproto::RewardStatus, status_),
-  PROTOBUF_FIELD_OFFSET(::cproto::RewardStatus, claim_time_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityReward, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityReward, id_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityReward, name_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityReward, type_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityReward, amount_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityReward, weight_),
-  PROTOBUF_FIELD_OFFSET(::cproto::ActivityReward, required_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActBrief, activity_id_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActBrief, name_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActBrief, status_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ActBrief, end_ts_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cproto::ActivityReq)},
   { 7, -1, -1, sizeof(::cproto::ActivityAck)},
-  { 14, -1, -1, sizeof(::cproto::GetActivityListReq)},
-  { 20, -1, -1, sizeof(::cproto::GetActivityListAck)},
-  { 29, -1, -1, sizeof(::cproto::GetActivityStatusReq)},
-  { 36, -1, -1, sizeof(::cproto::GetActivityStatusAck)},
-  { 45, -1, -1, sizeof(::cproto::ActivityActionReq)},
-  { 54, -1, -1, sizeof(::cproto::ActivityActionAck)},
-  { 64, -1, -1, sizeof(::cproto::ActivityListItem)},
-  { 78, -1, -1, sizeof(::cproto::ActivityState)},
-  { 90, -1, -1, sizeof(::cproto::RewardStatus)},
-  { 99, -1, -1, sizeof(::cproto::ActivityReward)},
+  { 14, -1, -1, sizeof(::cproto::ActsListReq)},
+  { 20, -1, -1, sizeof(::cproto::ActsListAck)},
+  { 28, -1, -1, sizeof(::cproto::ActPanelReq)},
+  { 35, -1, -1, sizeof(::cproto::ActPanelAck)},
+  { 43, -1, -1, sizeof(::cproto::ActRewardReq)},
+  { 51, -1, -1, sizeof(::cproto::ActRewardAck)},
+  { 59, -1, -1, sizeof(::cproto::ActBrief)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActivityReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActivityAck_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_GetActivityListReq_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_GetActivityListAck_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_GetActivityStatusReq_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_GetActivityStatusAck_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActivityActionReq_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActivityActionAck_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActivityListItem_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActivityState_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_RewardStatus_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActivityReward_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActsListReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActsListAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActPanelReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActPanelAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActRewardReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActRewardAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ActBrief_default_instance_),
 };
 
 const char descriptor_table_protodef_activity_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\016activity.proto\022\006cproto\032\031google/protobu"
   "f/any.proto\"0\n\013ActivityReq\022!\n\003req\030\001 \001(\0132"
   "\024.google.protobuf.Any\"0\n\013ActivityAck\022!\n\003"
-  "ack\030\001 \001(\0132\024.google.protobuf.Any\"\024\n\022GetAc"
-  "tivityListReq\"d\n\022GetActivityListAck\022\017\n\007s"
-  "uccess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\022,\n\nactivit"
-  "ies\030\003 \003(\0132\030.cproto.ActivityListItem\"+\n\024G"
-  "etActivityStatusReq\022\023\n\013activity_id\030\001 \001(\005"
-  "\"_\n\024GetActivityStatusAck\022\017\n\007success\030\001 \001("
-  "\010\022\017\n\007message\030\002 \001(\t\022%\n\006status\030\003 \001(\0132\025.cpr"
-  "oto.ActivityState\"H\n\021ActivityActionReq\022\023"
-  "\n\013activity_id\030\001 \001(\005\022\016\n\006action\030\002 \001(\t\022\016\n\006p"
-  "arams\030\003 \001(\t\"l\n\021ActivityActionAck\022\017\n\007succ"
-  "ess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\022\'\n\007rewards\030\003 "
-  "\003(\0132\026.cproto.ActivityReward\022\014\n\004data\030\004 \001("
-  "\t\"\234\001\n\020ActivityListItem\022\023\n\013activity_id\030\001 "
-  "\001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\005\022\016\n\006statu"
-  "s\030\004 \001(\t\022\023\n\013description\030\005 \001(\t\022\014\n\004icon\030\006 \001"
-  "(\t\022\022\n\nstart_time\030\007 \001(\003\022\020\n\010end_time\030\010 \001(\003"
-  "\"\227\001\n\rActivityState\022\023\n\013activity_id\030\001 \001(\005\022"
-  "\016\n\006status\030\002 \001(\t\022\020\n\010progress\030\003 \001(\t\022%\n\007rew"
-  "ards\030\004 \003(\0132\024.cproto.RewardStatus\022\023\n\013crea"
-  "te_time\030\005 \001(\003\022\023\n\013update_time\030\006 \001(\003\"E\n\014Re"
-  "wardStatus\022\021\n\treward_id\030\001 \001(\005\022\016\n\006status\030"
-  "\002 \001(\t\022\022\n\nclaim_time\030\003 \001(\003\"j\n\016ActivityRew"
-  "ard\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004type\030\003 "
-  "\001(\005\022\016\n\006amount\030\004 \001(\003\022\016\n\006weight\030\005 \001(\005\022\020\n\010r"
-  "equired\030\006 \001(\005B\013Z\t../cprotob\006proto3"
+  "ack\030\001 \001(\0132\024.google.protobuf.Any\"\r\n\013ActsL"
+  "istReq\">\n\013ActsListAck\022\017\n\007red_dot\030\001 \001(\010\022\036"
+  "\n\004acts\030\002 \003(\0132\020.cproto.ActBrief\"\"\n\013ActPan"
+  "elReq\022\023\n\013activity_id\030\001 \001(\005\"5\n\013ActPanelAc"
+  "k\022\023\n\013activity_id\030\001 \001(\005\022\021\n\tjson_data\030\002 \001("
+  "\t\"6\n\014ActRewardReq\022\023\n\013activity_id\030\001 \001(\005\022\021"
+  "\n\tjson_data\030\002 \001(\t\"6\n\014ActRewardAck\022\023\n\013act"
+  "ivity_id\030\001 \001(\005\022\021\n\tjson_data\030\002 \001(\t\"M\n\010Act"
+  "Brief\022\023\n\013activity_id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t"
+  "\022\016\n\006status\030\003 \001(\005\022\016\n\006end_ts\030\004 \001(\003B\013Z\t../c"
+  "protob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_activity_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_activity_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_activity_2eproto = {
-  false, false, 1114, descriptor_table_protodef_activity_2eproto, "activity.proto", 
-  &descriptor_table_activity_2eproto_once, descriptor_table_activity_2eproto_deps, 1, 12,
+  false, false, 533, descriptor_table_protodef_activity_2eproto, "activity.proto", 
+  &descriptor_table_activity_2eproto_once, descriptor_table_activity_2eproto_deps, 1, 9,
   schemas, file_default_instances, TableStruct_activity_2eproto::offsets,
   file_level_metadata_activity_2eproto, file_level_enum_descriptors_activity_2eproto, file_level_service_descriptors_activity_2eproto,
 };
@@ -788,30 +669,30 @@ void ActivityAck::InternalSwap(ActivityAck* other) {
 
 // ===================================================================
 
-class GetActivityListReq::_Internal {
+class ActsListReq::_Internal {
  public:
 };
 
-GetActivityListReq::GetActivityListReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ActsListReq::ActsListReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
-  // @@protoc_insertion_point(arena_constructor:cproto.GetActivityListReq)
+  // @@protoc_insertion_point(arena_constructor:cproto.ActsListReq)
 }
-GetActivityListReq::GetActivityListReq(const GetActivityListReq& from)
+ActsListReq::ActsListReq(const ActsListReq& from)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:cproto.GetActivityListReq)
+  // @@protoc_insertion_point(copy_constructor:cproto.ActsListReq)
 }
 
 
 
 
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetActivityListReq::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActsListReq::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
     ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetActivityListReq::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActsListReq::GetClassData() const { return &_class_data_; }
 
 
 
@@ -819,7 +700,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetActivityListReq::GetClassDa
 
 
 
-::PROTOBUF_NAMESPACE_ID::Metadata GetActivityListReq::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ActsListReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
       file_level_metadata_activity_2eproto[2]);
@@ -827,112 +708,88 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetActivityListReq::GetClassDa
 
 // ===================================================================
 
-class GetActivityListAck::_Internal {
+class ActsListAck::_Internal {
  public:
 };
 
-GetActivityListAck::GetActivityListAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ActsListAck::ActsListAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  activities_(arena) {
+  acts_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cproto.GetActivityListAck)
+  // @@protoc_insertion_point(arena_constructor:cproto.ActsListAck)
 }
-GetActivityListAck::GetActivityListAck(const GetActivityListAck& from)
+ActsListAck::ActsListAck(const ActsListAck& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      activities_(from.activities_) {
+      acts_(from.acts_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
-      GetArenaForAllocation());
-  }
-  success_ = from.success_;
-  // @@protoc_insertion_point(copy_constructor:cproto.GetActivityListAck)
+  red_dot_ = from.red_dot_;
+  // @@protoc_insertion_point(copy_constructor:cproto.ActsListAck)
 }
 
-inline void GetActivityListAck::SharedCtor() {
-message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-success_ = false;
+inline void ActsListAck::SharedCtor() {
+red_dot_ = false;
 }
 
-GetActivityListAck::~GetActivityListAck() {
-  // @@protoc_insertion_point(destructor:cproto.GetActivityListAck)
+ActsListAck::~ActsListAck() {
+  // @@protoc_insertion_point(destructor:cproto.ActsListAck)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void GetActivityListAck::SharedDtor() {
+inline void ActsListAck::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void GetActivityListAck::ArenaDtor(void* object) {
-  GetActivityListAck* _this = reinterpret_cast< GetActivityListAck* >(object);
+void ActsListAck::ArenaDtor(void* object) {
+  ActsListAck* _this = reinterpret_cast< ActsListAck* >(object);
   (void)_this;
 }
-void GetActivityListAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void ActsListAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void GetActivityListAck::SetCachedSize(int size) const {
+void ActsListAck::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void GetActivityListAck::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.GetActivityListAck)
+void ActsListAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ActsListAck)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  activities_.Clear();
-  message_.ClearToEmpty();
-  success_ = false;
+  acts_.Clear();
+  red_dot_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* GetActivityListAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ActsListAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bool success = 1;
+      // bool red_dot = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          red_dot_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // string message = 2;
+      // repeated .cproto.ActBrief acts = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_message();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.GetActivityListAck.message"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated .cproto.ActivityListItem activities = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_activities(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_acts(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -959,129 +816,102 @@ failure:
 #undef CHK_
 }
 
-uint8_t* GetActivityListAck::_InternalSerialize(
+uint8_t* ActsListAck::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.GetActivityListAck)
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActsListAck)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool success = 1;
-  if (this->_internal_success() != 0) {
+  // bool red_dot = 1;
+  if (this->_internal_red_dot() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_red_dot(), target);
   }
 
-  // string message = 2;
-  if (!this->_internal_message().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.GetActivityListAck.message");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_message(), target);
-  }
-
-  // repeated .cproto.ActivityListItem activities = 3;
+  // repeated .cproto.ActBrief acts = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_activities_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_acts_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, this->_internal_activities(i), target, stream);
+      InternalWriteMessage(2, this->_internal_acts(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.GetActivityListAck)
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActsListAck)
   return target;
 }
 
-size_t GetActivityListAck::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.GetActivityListAck)
+size_t ActsListAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ActsListAck)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .cproto.ActivityListItem activities = 3;
-  total_size += 1UL * this->_internal_activities_size();
-  for (const auto& msg : this->activities_) {
+  // repeated .cproto.ActBrief acts = 2;
+  total_size += 1UL * this->_internal_acts_size();
+  for (const auto& msg : this->acts_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // string message = 2;
-  if (!this->_internal_message().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_message());
-  }
-
-  // bool success = 1;
-  if (this->_internal_success() != 0) {
+  // bool red_dot = 1;
+  if (this->_internal_red_dot() != 0) {
     total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetActivityListAck::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActsListAck::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    GetActivityListAck::MergeImpl
+    ActsListAck::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetActivityListAck::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActsListAck::GetClassData() const { return &_class_data_; }
 
-void GetActivityListAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void ActsListAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<GetActivityListAck *>(to)->MergeFrom(
-      static_cast<const GetActivityListAck &>(from));
+  static_cast<ActsListAck *>(to)->MergeFrom(
+      static_cast<const ActsListAck &>(from));
 }
 
 
-void GetActivityListAck::MergeFrom(const GetActivityListAck& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.GetActivityListAck)
+void ActsListAck::MergeFrom(const ActsListAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActsListAck)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  activities_.MergeFrom(from.activities_);
-  if (!from._internal_message().empty()) {
-    _internal_set_message(from._internal_message());
-  }
-  if (from._internal_success() != 0) {
-    _internal_set_success(from._internal_success());
+  acts_.MergeFrom(from.acts_);
+  if (from._internal_red_dot() != 0) {
+    _internal_set_red_dot(from._internal_red_dot());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void GetActivityListAck::CopyFrom(const GetActivityListAck& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.GetActivityListAck)
+void ActsListAck::CopyFrom(const ActsListAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActsListAck)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GetActivityListAck::IsInitialized() const {
+bool ActsListAck::IsInitialized() const {
   return true;
 }
 
-void GetActivityListAck::InternalSwap(GetActivityListAck* other) {
+void ActsListAck::InternalSwap(ActsListAck* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  activities_.InternalSwap(&other->activities_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &message_, lhs_arena,
-      &other->message_, rhs_arena
-  );
-  swap(success_, other->success_);
+  acts_.InternalSwap(&other->acts_);
+  swap(red_dot_, other->red_dot_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata GetActivityListAck::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ActsListAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
       file_level_metadata_activity_2eproto[3]);
@@ -1089,53 +919,53 @@ void GetActivityListAck::InternalSwap(GetActivityListAck* other) {
 
 // ===================================================================
 
-class GetActivityStatusReq::_Internal {
+class ActPanelReq::_Internal {
  public:
 };
 
-GetActivityStatusReq::GetActivityStatusReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ActPanelReq::ActPanelReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cproto.GetActivityStatusReq)
+  // @@protoc_insertion_point(arena_constructor:cproto.ActPanelReq)
 }
-GetActivityStatusReq::GetActivityStatusReq(const GetActivityStatusReq& from)
+ActPanelReq::ActPanelReq(const ActPanelReq& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   activity_id_ = from.activity_id_;
-  // @@protoc_insertion_point(copy_constructor:cproto.GetActivityStatusReq)
+  // @@protoc_insertion_point(copy_constructor:cproto.ActPanelReq)
 }
 
-inline void GetActivityStatusReq::SharedCtor() {
+inline void ActPanelReq::SharedCtor() {
 activity_id_ = 0;
 }
 
-GetActivityStatusReq::~GetActivityStatusReq() {
-  // @@protoc_insertion_point(destructor:cproto.GetActivityStatusReq)
+ActPanelReq::~ActPanelReq() {
+  // @@protoc_insertion_point(destructor:cproto.ActPanelReq)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void GetActivityStatusReq::SharedDtor() {
+inline void ActPanelReq::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void GetActivityStatusReq::ArenaDtor(void* object) {
-  GetActivityStatusReq* _this = reinterpret_cast< GetActivityStatusReq* >(object);
+void ActPanelReq::ArenaDtor(void* object) {
+  ActPanelReq* _this = reinterpret_cast< ActPanelReq* >(object);
   (void)_this;
 }
-void GetActivityStatusReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void ActPanelReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void GetActivityStatusReq::SetCachedSize(int size) const {
+void ActPanelReq::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void GetActivityStatusReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.GetActivityStatusReq)
+void ActPanelReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ActPanelReq)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1144,7 +974,7 @@ void GetActivityStatusReq::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* GetActivityStatusReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ActPanelReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -1181,9 +1011,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* GetActivityStatusReq::_InternalSerialize(
+uint8_t* ActPanelReq::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.GetActivityStatusReq)
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActPanelReq)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1197,12 +1027,12 @@ uint8_t* GetActivityStatusReq::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.GetActivityStatusReq)
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActPanelReq)
   return target;
 }
 
-size_t GetActivityStatusReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.GetActivityStatusReq)
+size_t ActPanelReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ActPanelReq)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1217,21 +1047,21 @@ size_t GetActivityStatusReq::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetActivityStatusReq::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActPanelReq::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    GetActivityStatusReq::MergeImpl
+    ActPanelReq::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetActivityStatusReq::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActPanelReq::GetClassData() const { return &_class_data_; }
 
-void GetActivityStatusReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void ActPanelReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<GetActivityStatusReq *>(to)->MergeFrom(
-      static_cast<const GetActivityStatusReq &>(from));
+  static_cast<ActPanelReq *>(to)->MergeFrom(
+      static_cast<const ActPanelReq &>(from));
 }
 
 
-void GetActivityStatusReq::MergeFrom(const GetActivityStatusReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.GetActivityStatusReq)
+void ActPanelReq::MergeFrom(const ActPanelReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActPanelReq)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1242,24 +1072,24 @@ void GetActivityStatusReq::MergeFrom(const GetActivityStatusReq& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void GetActivityStatusReq::CopyFrom(const GetActivityStatusReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.GetActivityStatusReq)
+void ActPanelReq::CopyFrom(const ActPanelReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActPanelReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GetActivityStatusReq::IsInitialized() const {
+bool ActPanelReq::IsInitialized() const {
   return true;
 }
 
-void GetActivityStatusReq::InternalSwap(GetActivityStatusReq* other) {
+void ActPanelReq::InternalSwap(ActPanelReq* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(activity_id_, other->activity_id_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata GetActivityStatusReq::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ActPanelReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
       file_level_metadata_activity_2eproto[4]);
@@ -1267,121 +1097,95 @@ void GetActivityStatusReq::InternalSwap(GetActivityStatusReq* other) {
 
 // ===================================================================
 
-class GetActivityStatusAck::_Internal {
+class ActPanelAck::_Internal {
  public:
-  static const ::cproto::ActivityState& status(const GetActivityStatusAck* msg);
 };
 
-const ::cproto::ActivityState&
-GetActivityStatusAck::_Internal::status(const GetActivityStatusAck* msg) {
-  return *msg->status_;
-}
-GetActivityStatusAck::GetActivityStatusAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ActPanelAck::ActPanelAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cproto.GetActivityStatusAck)
+  // @@protoc_insertion_point(arena_constructor:cproto.ActPanelAck)
 }
-GetActivityStatusAck::GetActivityStatusAck(const GetActivityStatusAck& from)
+ActPanelAck::ActPanelAck(const ActPanelAck& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  json_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
+  if (!from._internal_json_data().empty()) {
+    json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_json_data(), 
       GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::cproto::ActivityState(*from.status_);
-  } else {
-    status_ = nullptr;
-  }
-  success_ = from.success_;
-  // @@protoc_insertion_point(copy_constructor:cproto.GetActivityStatusAck)
+  activity_id_ = from.activity_id_;
+  // @@protoc_insertion_point(copy_constructor:cproto.ActPanelAck)
 }
 
-inline void GetActivityStatusAck::SharedCtor() {
-message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void ActPanelAck::SharedCtor() {
+json_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&success_) -
-    reinterpret_cast<char*>(&status_)) + sizeof(success_));
+activity_id_ = 0;
 }
 
-GetActivityStatusAck::~GetActivityStatusAck() {
-  // @@protoc_insertion_point(destructor:cproto.GetActivityStatusAck)
+ActPanelAck::~ActPanelAck() {
+  // @@protoc_insertion_point(destructor:cproto.ActPanelAck)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void GetActivityStatusAck::SharedDtor() {
+inline void ActPanelAck::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+  json_data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void GetActivityStatusAck::ArenaDtor(void* object) {
-  GetActivityStatusAck* _this = reinterpret_cast< GetActivityStatusAck* >(object);
+void ActPanelAck::ArenaDtor(void* object) {
+  ActPanelAck* _this = reinterpret_cast< ActPanelAck* >(object);
   (void)_this;
 }
-void GetActivityStatusAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void ActPanelAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void GetActivityStatusAck::SetCachedSize(int size) const {
+void ActPanelAck::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void GetActivityStatusAck::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.GetActivityStatusAck)
+void ActPanelAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ActPanelAck)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  message_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
-  success_ = false;
+  json_data_.ClearToEmpty();
+  activity_id_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* GetActivityStatusAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ActPanelAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bool success = 1;
+      // int32 activity_id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          activity_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // string message = 2;
+      // string json_data = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_message();
+          auto str = _internal_mutable_json_data();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.GetActivityStatusAck.message"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // .cproto.ActivityState status = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActPanelAck.json_data"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1409,135 +1213,112 @@ failure:
 #undef CHK_
 }
 
-uint8_t* GetActivityStatusAck::_InternalSerialize(
+uint8_t* ActPanelAck::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.GetActivityStatusAck)
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActPanelAck)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool success = 1;
-  if (this->_internal_success() != 0) {
+  // int32 activity_id = 1;
+  if (this->_internal_activity_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_activity_id(), target);
   }
 
-  // string message = 2;
-  if (!this->_internal_message().empty()) {
+  // string json_data = 2;
+  if (!this->_internal_json_data().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      this->_internal_json_data().data(), static_cast<int>(this->_internal_json_data().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.GetActivityStatusAck.message");
+      "cproto.ActPanelAck.json_data");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_message(), target);
-  }
-
-  // .cproto.ActivityState status = 3;
-  if (this->_internal_has_status()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        3, _Internal::status(this), target, stream);
+        2, this->_internal_json_data(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.GetActivityStatusAck)
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActPanelAck)
   return target;
 }
 
-size_t GetActivityStatusAck::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.GetActivityStatusAck)
+size_t ActPanelAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ActPanelAck)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string message = 2;
-  if (!this->_internal_message().empty()) {
+  // string json_data = 2;
+  if (!this->_internal_json_data().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_message());
+        this->_internal_json_data());
   }
 
-  // .cproto.ActivityState status = 3;
-  if (this->_internal_has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
-
-  // bool success = 1;
-  if (this->_internal_success() != 0) {
-    total_size += 1 + 1;
+  // int32 activity_id = 1;
+  if (this->_internal_activity_id() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_activity_id());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetActivityStatusAck::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActPanelAck::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    GetActivityStatusAck::MergeImpl
+    ActPanelAck::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetActivityStatusAck::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActPanelAck::GetClassData() const { return &_class_data_; }
 
-void GetActivityStatusAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void ActPanelAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<GetActivityStatusAck *>(to)->MergeFrom(
-      static_cast<const GetActivityStatusAck &>(from));
+  static_cast<ActPanelAck *>(to)->MergeFrom(
+      static_cast<const ActPanelAck &>(from));
 }
 
 
-void GetActivityStatusAck::MergeFrom(const GetActivityStatusAck& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.GetActivityStatusAck)
+void ActPanelAck::MergeFrom(const ActPanelAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActPanelAck)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_message().empty()) {
-    _internal_set_message(from._internal_message());
+  if (!from._internal_json_data().empty()) {
+    _internal_set_json_data(from._internal_json_data());
   }
-  if (from._internal_has_status()) {
-    _internal_mutable_status()->::cproto::ActivityState::MergeFrom(from._internal_status());
-  }
-  if (from._internal_success() != 0) {
-    _internal_set_success(from._internal_success());
+  if (from._internal_activity_id() != 0) {
+    _internal_set_activity_id(from._internal_activity_id());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void GetActivityStatusAck::CopyFrom(const GetActivityStatusAck& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.GetActivityStatusAck)
+void ActPanelAck::CopyFrom(const ActPanelAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActPanelAck)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GetActivityStatusAck::IsInitialized() const {
+bool ActPanelAck::IsInitialized() const {
   return true;
 }
 
-void GetActivityStatusAck::InternalSwap(GetActivityStatusAck* other) {
+void ActPanelAck::InternalSwap(ActPanelAck* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &message_, lhs_arena,
-      &other->message_, rhs_arena
+      &json_data_, lhs_arena,
+      &other->json_data_, rhs_arena
   );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(GetActivityStatusAck, success_)
-      + sizeof(GetActivityStatusAck::success_)
-      - PROTOBUF_FIELD_OFFSET(GetActivityStatusAck, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+  swap(activity_id_, other->activity_id_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata GetActivityStatusAck::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ActPanelAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
       file_level_metadata_activity_2eproto[5]);
@@ -1545,90 +1326,76 @@ void GetActivityStatusAck::InternalSwap(GetActivityStatusAck* other) {
 
 // ===================================================================
 
-class ActivityActionReq::_Internal {
+class ActRewardReq::_Internal {
  public:
 };
 
-ActivityActionReq::ActivityActionReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ActRewardReq::ActRewardReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cproto.ActivityActionReq)
+  // @@protoc_insertion_point(arena_constructor:cproto.ActRewardReq)
 }
-ActivityActionReq::ActivityActionReq(const ActivityActionReq& from)
+ActRewardReq::ActRewardReq(const ActRewardReq& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  action_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  json_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    action_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_action().empty()) {
-    action_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_action(), 
-      GetArenaForAllocation());
-  }
-  params_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    params_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_params().empty()) {
-    params_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_params(), 
+  if (!from._internal_json_data().empty()) {
+    json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_json_data(), 
       GetArenaForAllocation());
   }
   activity_id_ = from.activity_id_;
-  // @@protoc_insertion_point(copy_constructor:cproto.ActivityActionReq)
+  // @@protoc_insertion_point(copy_constructor:cproto.ActRewardReq)
 }
 
-inline void ActivityActionReq::SharedCtor() {
-action_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void ActRewardReq::SharedCtor() {
+json_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  action_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-params_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  params_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 activity_id_ = 0;
 }
 
-ActivityActionReq::~ActivityActionReq() {
-  // @@protoc_insertion_point(destructor:cproto.ActivityActionReq)
+ActRewardReq::~ActRewardReq() {
+  // @@protoc_insertion_point(destructor:cproto.ActRewardReq)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void ActivityActionReq::SharedDtor() {
+inline void ActRewardReq::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  action_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  params_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  json_data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void ActivityActionReq::ArenaDtor(void* object) {
-  ActivityActionReq* _this = reinterpret_cast< ActivityActionReq* >(object);
+void ActRewardReq::ArenaDtor(void* object) {
+  ActRewardReq* _this = reinterpret_cast< ActRewardReq* >(object);
   (void)_this;
 }
-void ActivityActionReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void ActRewardReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void ActivityActionReq::SetCachedSize(int size) const {
+void ActRewardReq::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void ActivityActionReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.ActivityActionReq)
+void ActRewardReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ActRewardReq)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  action_.ClearToEmpty();
-  params_.ClearToEmpty();
+  json_data_.ClearToEmpty();
   activity_id_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ActivityActionReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ActRewardReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -1642,22 +1409,12 @@ const char* ActivityActionReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
         } else
           goto handle_unusual;
         continue;
-      // string action = 2;
+      // string json_data = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_action();
+          auto str = _internal_mutable_json_data();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityActionReq.action"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string params = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_params();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityActionReq.params"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActRewardReq.json_data"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1685,9 +1442,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* ActivityActionReq::_InternalSerialize(
+uint8_t* ActRewardReq::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActivityActionReq)
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActRewardReq)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1697,54 +1454,37 @@ uint8_t* ActivityActionReq::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_activity_id(), target);
   }
 
-  // string action = 2;
-  if (!this->_internal_action().empty()) {
+  // string json_data = 2;
+  if (!this->_internal_json_data().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_action().data(), static_cast<int>(this->_internal_action().length()),
+      this->_internal_json_data().data(), static_cast<int>(this->_internal_json_data().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityActionReq.action");
+      "cproto.ActRewardReq.json_data");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_action(), target);
-  }
-
-  // string params = 3;
-  if (!this->_internal_params().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_params().data(), static_cast<int>(this->_internal_params().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityActionReq.params");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_params(), target);
+        2, this->_internal_json_data(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActivityActionReq)
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActRewardReq)
   return target;
 }
 
-size_t ActivityActionReq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.ActivityActionReq)
+size_t ActRewardReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ActRewardReq)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string action = 2;
-  if (!this->_internal_action().empty()) {
+  // string json_data = 2;
+  if (!this->_internal_json_data().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_action());
-  }
-
-  // string params = 3;
-  if (!this->_internal_params().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_params());
+        this->_internal_json_data());
   }
 
   // int32 activity_id = 1;
@@ -1755,30 +1495,27 @@ size_t ActivityActionReq::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActivityActionReq::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActRewardReq::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ActivityActionReq::MergeImpl
+    ActRewardReq::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActivityActionReq::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActRewardReq::GetClassData() const { return &_class_data_; }
 
-void ActivityActionReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void ActRewardReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ActivityActionReq *>(to)->MergeFrom(
-      static_cast<const ActivityActionReq &>(from));
+  static_cast<ActRewardReq *>(to)->MergeFrom(
+      static_cast<const ActRewardReq &>(from));
 }
 
 
-void ActivityActionReq::MergeFrom(const ActivityActionReq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActivityActionReq)
+void ActRewardReq::MergeFrom(const ActRewardReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActRewardReq)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_action().empty()) {
-    _internal_set_action(from._internal_action());
-  }
-  if (!from._internal_params().empty()) {
-    _internal_set_params(from._internal_params());
+  if (!from._internal_json_data().empty()) {
+    _internal_set_json_data(from._internal_json_data());
   }
   if (from._internal_activity_id() != 0) {
     _internal_set_activity_id(from._internal_activity_id());
@@ -1786,36 +1523,31 @@ void ActivityActionReq::MergeFrom(const ActivityActionReq& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void ActivityActionReq::CopyFrom(const ActivityActionReq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActivityActionReq)
+void ActRewardReq::CopyFrom(const ActRewardReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActRewardReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ActivityActionReq::IsInitialized() const {
+bool ActRewardReq::IsInitialized() const {
   return true;
 }
 
-void ActivityActionReq::InternalSwap(ActivityActionReq* other) {
+void ActRewardReq::InternalSwap(ActRewardReq* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &action_, lhs_arena,
-      &other->action_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &params_, lhs_arena,
-      &other->params_, rhs_arena
+      &json_data_, lhs_arena,
+      &other->json_data_, rhs_arena
   );
   swap(activity_id_, other->activity_id_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ActivityActionReq::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ActRewardReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
       file_level_metadata_activity_2eproto[6]);
@@ -1823,135 +1555,95 @@ void ActivityActionReq::InternalSwap(ActivityActionReq* other) {
 
 // ===================================================================
 
-class ActivityActionAck::_Internal {
+class ActRewardAck::_Internal {
  public:
 };
 
-ActivityActionAck::ActivityActionAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ActRewardAck::ActRewardAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  rewards_(arena) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cproto.ActivityActionAck)
+  // @@protoc_insertion_point(arena_constructor:cproto.ActRewardAck)
 }
-ActivityActionAck::ActivityActionAck(const ActivityActionAck& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      rewards_(from.rewards_) {
+ActRewardAck::ActRewardAck(const ActRewardAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  json_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
+  if (!from._internal_json_data().empty()) {
+    json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_json_data(), 
       GetArenaForAllocation());
   }
-  data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_data().empty()) {
-    data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_data(), 
-      GetArenaForAllocation());
-  }
-  success_ = from.success_;
-  // @@protoc_insertion_point(copy_constructor:cproto.ActivityActionAck)
+  activity_id_ = from.activity_id_;
+  // @@protoc_insertion_point(copy_constructor:cproto.ActRewardAck)
 }
 
-inline void ActivityActionAck::SharedCtor() {
-message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void ActRewardAck::SharedCtor() {
+json_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-success_ = false;
+activity_id_ = 0;
 }
 
-ActivityActionAck::~ActivityActionAck() {
-  // @@protoc_insertion_point(destructor:cproto.ActivityActionAck)
+ActRewardAck::~ActRewardAck() {
+  // @@protoc_insertion_point(destructor:cproto.ActRewardAck)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void ActivityActionAck::SharedDtor() {
+inline void ActRewardAck::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  json_data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void ActivityActionAck::ArenaDtor(void* object) {
-  ActivityActionAck* _this = reinterpret_cast< ActivityActionAck* >(object);
+void ActRewardAck::ArenaDtor(void* object) {
+  ActRewardAck* _this = reinterpret_cast< ActRewardAck* >(object);
   (void)_this;
 }
-void ActivityActionAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void ActRewardAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void ActivityActionAck::SetCachedSize(int size) const {
+void ActRewardAck::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void ActivityActionAck::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.ActivityActionAck)
+void ActRewardAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ActRewardAck)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  rewards_.Clear();
-  message_.ClearToEmpty();
-  data_.ClearToEmpty();
-  success_ = false;
+  json_data_.ClearToEmpty();
+  activity_id_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ActivityActionAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ActRewardAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bool success = 1;
+      // int32 activity_id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          activity_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // string message = 2;
+      // string json_data = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_message();
+          auto str = _internal_mutable_json_data();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityActionAck.message"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated .cproto.ActivityReward rewards = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_rewards(), ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
-        } else
-          goto handle_unusual;
-        continue;
-      // string data = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_data();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityActionAck.data"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActRewardAck.json_data"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1979,154 +1671,112 @@ failure:
 #undef CHK_
 }
 
-uint8_t* ActivityActionAck::_InternalSerialize(
+uint8_t* ActRewardAck::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActivityActionAck)
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActRewardAck)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool success = 1;
-  if (this->_internal_success() != 0) {
+  // int32 activity_id = 1;
+  if (this->_internal_activity_id() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_activity_id(), target);
   }
 
-  // string message = 2;
-  if (!this->_internal_message().empty()) {
+  // string json_data = 2;
+  if (!this->_internal_json_data().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      this->_internal_json_data().data(), static_cast<int>(this->_internal_json_data().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityActionAck.message");
+      "cproto.ActRewardAck.json_data");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_message(), target);
-  }
-
-  // repeated .cproto.ActivityReward rewards = 3;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_rewards_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, this->_internal_rewards(i), target, stream);
-  }
-
-  // string data = 4;
-  if (!this->_internal_data().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_data().data(), static_cast<int>(this->_internal_data().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityActionAck.data");
-    target = stream->WriteStringMaybeAliased(
-        4, this->_internal_data(), target);
+        2, this->_internal_json_data(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActivityActionAck)
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActRewardAck)
   return target;
 }
 
-size_t ActivityActionAck::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.ActivityActionAck)
+size_t ActRewardAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ActRewardAck)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .cproto.ActivityReward rewards = 3;
-  total_size += 1UL * this->_internal_rewards_size();
-  for (const auto& msg : this->rewards_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
-  }
-
-  // string message = 2;
-  if (!this->_internal_message().empty()) {
+  // string json_data = 2;
+  if (!this->_internal_json_data().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_message());
+        this->_internal_json_data());
   }
 
-  // string data = 4;
-  if (!this->_internal_data().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_data());
-  }
-
-  // bool success = 1;
-  if (this->_internal_success() != 0) {
-    total_size += 1 + 1;
+  // int32 activity_id = 1;
+  if (this->_internal_activity_id() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_activity_id());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActivityActionAck::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActRewardAck::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ActivityActionAck::MergeImpl
+    ActRewardAck::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActivityActionAck::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActRewardAck::GetClassData() const { return &_class_data_; }
 
-void ActivityActionAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void ActRewardAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ActivityActionAck *>(to)->MergeFrom(
-      static_cast<const ActivityActionAck &>(from));
+  static_cast<ActRewardAck *>(to)->MergeFrom(
+      static_cast<const ActRewardAck &>(from));
 }
 
 
-void ActivityActionAck::MergeFrom(const ActivityActionAck& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActivityActionAck)
+void ActRewardAck::MergeFrom(const ActRewardAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActRewardAck)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  rewards_.MergeFrom(from.rewards_);
-  if (!from._internal_message().empty()) {
-    _internal_set_message(from._internal_message());
+  if (!from._internal_json_data().empty()) {
+    _internal_set_json_data(from._internal_json_data());
   }
-  if (!from._internal_data().empty()) {
-    _internal_set_data(from._internal_data());
-  }
-  if (from._internal_success() != 0) {
-    _internal_set_success(from._internal_success());
+  if (from._internal_activity_id() != 0) {
+    _internal_set_activity_id(from._internal_activity_id());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void ActivityActionAck::CopyFrom(const ActivityActionAck& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActivityActionAck)
+void ActRewardAck::CopyFrom(const ActRewardAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActRewardAck)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ActivityActionAck::IsInitialized() const {
+bool ActRewardAck::IsInitialized() const {
   return true;
 }
 
-void ActivityActionAck::InternalSwap(ActivityActionAck* other) {
+void ActRewardAck::InternalSwap(ActRewardAck* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  rewards_.InternalSwap(&other->rewards_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &message_, lhs_arena,
-      &other->message_, rhs_arena
+      &json_data_, lhs_arena,
+      &other->json_data_, rhs_arena
   );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &data_, lhs_arena,
-      &other->data_, rhs_arena
-  );
-  swap(success_, other->success_);
+  swap(activity_id_, other->activity_id_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ActivityActionAck::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ActRewardAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
       file_level_metadata_activity_2eproto[7]);
@@ -2134,20 +1784,20 @@ void ActivityActionAck::InternalSwap(ActivityActionAck* other) {
 
 // ===================================================================
 
-class ActivityListItem::_Internal {
+class ActBrief::_Internal {
  public:
 };
 
-ActivityListItem::ActivityListItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ActBrief::ActBrief(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cproto.ActivityListItem)
+  // @@protoc_insertion_point(arena_constructor:cproto.ActBrief)
 }
-ActivityListItem::ActivityListItem(const ActivityListItem& from)
+ActBrief::ActBrief(const ActBrief& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -2158,101 +1808,59 @@ ActivityListItem::ActivityListItem(const ActivityListItem& from)
     name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
       GetArenaForAllocation());
   }
-  status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_status().empty()) {
-    status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_status(), 
-      GetArenaForAllocation());
-  }
-  description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    description_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_description().empty()) {
-    description_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_description(), 
-      GetArenaForAllocation());
-  }
-  icon_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    icon_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_icon().empty()) {
-    icon_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_icon(), 
-      GetArenaForAllocation());
-  }
   ::memcpy(&activity_id_, &from.activity_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&end_time_) -
-    reinterpret_cast<char*>(&activity_id_)) + sizeof(end_time_));
-  // @@protoc_insertion_point(copy_constructor:cproto.ActivityListItem)
+    static_cast<size_t>(reinterpret_cast<char*>(&end_ts_) -
+    reinterpret_cast<char*>(&activity_id_)) + sizeof(end_ts_));
+  // @@protoc_insertion_point(copy_constructor:cproto.ActBrief)
 }
 
-inline void ActivityListItem::SharedCtor() {
+inline void ActBrief::SharedCtor() {
 name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  description_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-icon_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  icon_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&activity_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&end_time_) -
-    reinterpret_cast<char*>(&activity_id_)) + sizeof(end_time_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&end_ts_) -
+    reinterpret_cast<char*>(&activity_id_)) + sizeof(end_ts_));
 }
 
-ActivityListItem::~ActivityListItem() {
-  // @@protoc_insertion_point(destructor:cproto.ActivityListItem)
+ActBrief::~ActBrief() {
+  // @@protoc_insertion_point(destructor:cproto.ActBrief)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void ActivityListItem::SharedDtor() {
+inline void ActBrief::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  description_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  icon_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void ActivityListItem::ArenaDtor(void* object) {
-  ActivityListItem* _this = reinterpret_cast< ActivityListItem* >(object);
+void ActBrief::ArenaDtor(void* object) {
+  ActBrief* _this = reinterpret_cast< ActBrief* >(object);
   (void)_this;
 }
-void ActivityListItem::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void ActBrief::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void ActivityListItem::SetCachedSize(int size) const {
+void ActBrief::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void ActivityListItem::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.ActivityListItem)
+void ActBrief::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ActBrief)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   name_.ClearToEmpty();
-  status_.ClearToEmpty();
-  description_.ClearToEmpty();
-  icon_.ClearToEmpty();
   ::memset(&activity_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&end_time_) -
-      reinterpret_cast<char*>(&activity_id_)) + sizeof(end_time_));
+      reinterpret_cast<char*>(&end_ts_) -
+      reinterpret_cast<char*>(&activity_id_)) + sizeof(end_ts_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ActivityListItem::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ActBrief::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -2271,61 +1879,23 @@ const char* ActivityListItem::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityListItem.name"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActBrief.name"));
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 type = 3;
+      // int32 status = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          status_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // string status = 4;
+      // int64 end_ts = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_status();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityListItem.status"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string description = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
-          auto str = _internal_mutable_description();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityListItem.description"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string icon = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
-          auto str = _internal_mutable_icon();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityListItem.icon"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 start_time = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
-          start_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 end_time = 8;
-      case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
-          end_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          end_ts_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2353,9 +1923,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* ActivityListItem::_InternalSerialize(
+uint8_t* ActBrief::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActivityListItem)
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActBrief)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2370,69 +1940,33 @@ uint8_t* ActivityListItem::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityListItem.name");
+      "cproto.ActBrief.name");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_name(), target);
   }
 
-  // int32 type = 3;
-  if (this->_internal_type() != 0) {
+  // int32 status = 3;
+  if (this->_internal_status() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_type(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_status(), target);
   }
 
-  // string status = 4;
-  if (!this->_internal_status().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_status().data(), static_cast<int>(this->_internal_status().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityListItem.status");
-    target = stream->WriteStringMaybeAliased(
-        4, this->_internal_status(), target);
-  }
-
-  // string description = 5;
-  if (!this->_internal_description().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_description().data(), static_cast<int>(this->_internal_description().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityListItem.description");
-    target = stream->WriteStringMaybeAliased(
-        5, this->_internal_description(), target);
-  }
-
-  // string icon = 6;
-  if (!this->_internal_icon().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_icon().data(), static_cast<int>(this->_internal_icon().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityListItem.icon");
-    target = stream->WriteStringMaybeAliased(
-        6, this->_internal_icon(), target);
-  }
-
-  // int64 start_time = 7;
-  if (this->_internal_start_time() != 0) {
+  // int64 end_ts = 4;
+  if (this->_internal_end_ts() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(7, this->_internal_start_time(), target);
-  }
-
-  // int64 end_time = 8;
-  if (this->_internal_end_time() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(8, this->_internal_end_time(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_end_ts(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActivityListItem)
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActBrief)
   return target;
 }
 
-size_t ActivityListItem::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.ActivityListItem)
+size_t ActBrief::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ActBrief)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -2446,65 +1980,39 @@ size_t ActivityListItem::ByteSizeLong() const {
         this->_internal_name());
   }
 
-  // string status = 4;
-  if (!this->_internal_status().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_status());
-  }
-
-  // string description = 5;
-  if (!this->_internal_description().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_description());
-  }
-
-  // string icon = 6;
-  if (!this->_internal_icon().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_icon());
-  }
-
   // int32 activity_id = 1;
   if (this->_internal_activity_id() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_activity_id());
   }
 
-  // int32 type = 3;
-  if (this->_internal_type() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_type());
+  // int32 status = 3;
+  if (this->_internal_status() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_status());
   }
 
-  // int64 start_time = 7;
-  if (this->_internal_start_time() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_start_time());
-  }
-
-  // int64 end_time = 8;
-  if (this->_internal_end_time() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_end_time());
+  // int64 end_ts = 4;
+  if (this->_internal_end_ts() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_end_ts());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActivityListItem::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActBrief::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ActivityListItem::MergeImpl
+    ActBrief::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActivityListItem::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActBrief::GetClassData() const { return &_class_data_; }
 
-void ActivityListItem::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void ActBrief::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ActivityListItem *>(to)->MergeFrom(
-      static_cast<const ActivityListItem &>(from));
+  static_cast<ActBrief *>(to)->MergeFrom(
+      static_cast<const ActBrief &>(from));
 }
 
 
-void ActivityListItem::MergeFrom(const ActivityListItem& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActivityListItem)
+void ActBrief::MergeFrom(const ActBrief& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActBrief)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2512,42 +2020,30 @@ void ActivityListItem::MergeFrom(const ActivityListItem& from) {
   if (!from._internal_name().empty()) {
     _internal_set_name(from._internal_name());
   }
-  if (!from._internal_status().empty()) {
-    _internal_set_status(from._internal_status());
-  }
-  if (!from._internal_description().empty()) {
-    _internal_set_description(from._internal_description());
-  }
-  if (!from._internal_icon().empty()) {
-    _internal_set_icon(from._internal_icon());
-  }
   if (from._internal_activity_id() != 0) {
     _internal_set_activity_id(from._internal_activity_id());
   }
-  if (from._internal_type() != 0) {
-    _internal_set_type(from._internal_type());
+  if (from._internal_status() != 0) {
+    _internal_set_status(from._internal_status());
   }
-  if (from._internal_start_time() != 0) {
-    _internal_set_start_time(from._internal_start_time());
-  }
-  if (from._internal_end_time() != 0) {
-    _internal_set_end_time(from._internal_end_time());
+  if (from._internal_end_ts() != 0) {
+    _internal_set_end_ts(from._internal_end_ts());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void ActivityListItem::CopyFrom(const ActivityListItem& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActivityListItem)
+void ActBrief::CopyFrom(const ActBrief& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActBrief)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ActivityListItem::IsInitialized() const {
+bool ActBrief::IsInitialized() const {
   return true;
 }
 
-void ActivityListItem::InternalSwap(ActivityListItem* other) {
+void ActBrief::InternalSwap(ActBrief* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -2557,992 +2053,18 @@ void ActivityListItem::InternalSwap(ActivityListItem* other) {
       &name_, lhs_arena,
       &other->name_, rhs_arena
   );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &status_, lhs_arena,
-      &other->status_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &description_, lhs_arena,
-      &other->description_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &icon_, lhs_arena,
-      &other->icon_, rhs_arena
-  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ActivityListItem, end_time_)
-      + sizeof(ActivityListItem::end_time_)
-      - PROTOBUF_FIELD_OFFSET(ActivityListItem, activity_id_)>(
+      PROTOBUF_FIELD_OFFSET(ActBrief, end_ts_)
+      + sizeof(ActBrief::end_ts_)
+      - PROTOBUF_FIELD_OFFSET(ActBrief, activity_id_)>(
           reinterpret_cast<char*>(&activity_id_),
           reinterpret_cast<char*>(&other->activity_id_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ActivityListItem::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ActBrief::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
       file_level_metadata_activity_2eproto[8]);
-}
-
-// ===================================================================
-
-class ActivityState::_Internal {
- public:
-};
-
-ActivityState::ActivityState(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  rewards_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:cproto.ActivityState)
-}
-ActivityState::ActivityState(const ActivityState& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      rewards_(from.rewards_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_status().empty()) {
-    status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_status(), 
-      GetArenaForAllocation());
-  }
-  progress_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    progress_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_progress().empty()) {
-    progress_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_progress(), 
-      GetArenaForAllocation());
-  }
-  ::memcpy(&create_time_, &from.create_time_,
-    static_cast<size_t>(reinterpret_cast<char*>(&activity_id_) -
-    reinterpret_cast<char*>(&create_time_)) + sizeof(activity_id_));
-  // @@protoc_insertion_point(copy_constructor:cproto.ActivityState)
-}
-
-inline void ActivityState::SharedCtor() {
-status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-progress_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  progress_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&create_time_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&activity_id_) -
-    reinterpret_cast<char*>(&create_time_)) + sizeof(activity_id_));
-}
-
-ActivityState::~ActivityState() {
-  // @@protoc_insertion_point(destructor:cproto.ActivityState)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void ActivityState::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  status_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  progress_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void ActivityState::ArenaDtor(void* object) {
-  ActivityState* _this = reinterpret_cast< ActivityState* >(object);
-  (void)_this;
-}
-void ActivityState::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void ActivityState::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void ActivityState::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.ActivityState)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  rewards_.Clear();
-  status_.ClearToEmpty();
-  progress_.ClearToEmpty();
-  ::memset(&create_time_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&activity_id_) -
-      reinterpret_cast<char*>(&create_time_)) + sizeof(activity_id_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* ActivityState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // int32 activity_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          activity_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string status = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_status();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityState.status"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string progress = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_progress();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityState.progress"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated .cproto.RewardStatus rewards = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_rewards(), ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 create_time = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          create_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 update_time = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
-          update_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* ActivityState::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActivityState)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 activity_id = 1;
-  if (this->_internal_activity_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_activity_id(), target);
-  }
-
-  // string status = 2;
-  if (!this->_internal_status().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_status().data(), static_cast<int>(this->_internal_status().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityState.status");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_status(), target);
-  }
-
-  // string progress = 3;
-  if (!this->_internal_progress().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_progress().data(), static_cast<int>(this->_internal_progress().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityState.progress");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_progress(), target);
-  }
-
-  // repeated .cproto.RewardStatus rewards = 4;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_rewards_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, this->_internal_rewards(i), target, stream);
-  }
-
-  // int64 create_time = 5;
-  if (this->_internal_create_time() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(5, this->_internal_create_time(), target);
-  }
-
-  // int64 update_time = 6;
-  if (this->_internal_update_time() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(6, this->_internal_update_time(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActivityState)
-  return target;
-}
-
-size_t ActivityState::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.ActivityState)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // repeated .cproto.RewardStatus rewards = 4;
-  total_size += 1UL * this->_internal_rewards_size();
-  for (const auto& msg : this->rewards_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
-  }
-
-  // string status = 2;
-  if (!this->_internal_status().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_status());
-  }
-
-  // string progress = 3;
-  if (!this->_internal_progress().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_progress());
-  }
-
-  // int64 create_time = 5;
-  if (this->_internal_create_time() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_create_time());
-  }
-
-  // int64 update_time = 6;
-  if (this->_internal_update_time() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_update_time());
-  }
-
-  // int32 activity_id = 1;
-  if (this->_internal_activity_id() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_activity_id());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActivityState::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ActivityState::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActivityState::GetClassData() const { return &_class_data_; }
-
-void ActivityState::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ActivityState *>(to)->MergeFrom(
-      static_cast<const ActivityState &>(from));
-}
-
-
-void ActivityState::MergeFrom(const ActivityState& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActivityState)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  rewards_.MergeFrom(from.rewards_);
-  if (!from._internal_status().empty()) {
-    _internal_set_status(from._internal_status());
-  }
-  if (!from._internal_progress().empty()) {
-    _internal_set_progress(from._internal_progress());
-  }
-  if (from._internal_create_time() != 0) {
-    _internal_set_create_time(from._internal_create_time());
-  }
-  if (from._internal_update_time() != 0) {
-    _internal_set_update_time(from._internal_update_time());
-  }
-  if (from._internal_activity_id() != 0) {
-    _internal_set_activity_id(from._internal_activity_id());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void ActivityState::CopyFrom(const ActivityState& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActivityState)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ActivityState::IsInitialized() const {
-  return true;
-}
-
-void ActivityState::InternalSwap(ActivityState* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  rewards_.InternalSwap(&other->rewards_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &status_, lhs_arena,
-      &other->status_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &progress_, lhs_arena,
-      &other->progress_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ActivityState, activity_id_)
-      + sizeof(ActivityState::activity_id_)
-      - PROTOBUF_FIELD_OFFSET(ActivityState, create_time_)>(
-          reinterpret_cast<char*>(&create_time_),
-          reinterpret_cast<char*>(&other->create_time_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata ActivityState::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
-      file_level_metadata_activity_2eproto[9]);
-}
-
-// ===================================================================
-
-class RewardStatus::_Internal {
- public:
-};
-
-RewardStatus::RewardStatus(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:cproto.RewardStatus)
-}
-RewardStatus::RewardStatus(const RewardStatus& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_status().empty()) {
-    status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_status(), 
-      GetArenaForAllocation());
-  }
-  ::memcpy(&claim_time_, &from.claim_time_,
-    static_cast<size_t>(reinterpret_cast<char*>(&reward_id_) -
-    reinterpret_cast<char*>(&claim_time_)) + sizeof(reward_id_));
-  // @@protoc_insertion_point(copy_constructor:cproto.RewardStatus)
-}
-
-inline void RewardStatus::SharedCtor() {
-status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&claim_time_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&reward_id_) -
-    reinterpret_cast<char*>(&claim_time_)) + sizeof(reward_id_));
-}
-
-RewardStatus::~RewardStatus() {
-  // @@protoc_insertion_point(destructor:cproto.RewardStatus)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void RewardStatus::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  status_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void RewardStatus::ArenaDtor(void* object) {
-  RewardStatus* _this = reinterpret_cast< RewardStatus* >(object);
-  (void)_this;
-}
-void RewardStatus::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void RewardStatus::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void RewardStatus::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.RewardStatus)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  status_.ClearToEmpty();
-  ::memset(&claim_time_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&reward_id_) -
-      reinterpret_cast<char*>(&claim_time_)) + sizeof(reward_id_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* RewardStatus::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // int32 reward_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          reward_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string status = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_status();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.RewardStatus.status"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 claim_time = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          claim_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* RewardStatus::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.RewardStatus)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 reward_id = 1;
-  if (this->_internal_reward_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_reward_id(), target);
-  }
-
-  // string status = 2;
-  if (!this->_internal_status().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_status().data(), static_cast<int>(this->_internal_status().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.RewardStatus.status");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_status(), target);
-  }
-
-  // int64 claim_time = 3;
-  if (this->_internal_claim_time() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_claim_time(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.RewardStatus)
-  return target;
-}
-
-size_t RewardStatus::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.RewardStatus)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string status = 2;
-  if (!this->_internal_status().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_status());
-  }
-
-  // int64 claim_time = 3;
-  if (this->_internal_claim_time() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_claim_time());
-  }
-
-  // int32 reward_id = 1;
-  if (this->_internal_reward_id() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_reward_id());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RewardStatus::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    RewardStatus::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RewardStatus::GetClassData() const { return &_class_data_; }
-
-void RewardStatus::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<RewardStatus *>(to)->MergeFrom(
-      static_cast<const RewardStatus &>(from));
-}
-
-
-void RewardStatus::MergeFrom(const RewardStatus& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.RewardStatus)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_status().empty()) {
-    _internal_set_status(from._internal_status());
-  }
-  if (from._internal_claim_time() != 0) {
-    _internal_set_claim_time(from._internal_claim_time());
-  }
-  if (from._internal_reward_id() != 0) {
-    _internal_set_reward_id(from._internal_reward_id());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void RewardStatus::CopyFrom(const RewardStatus& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.RewardStatus)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool RewardStatus::IsInitialized() const {
-  return true;
-}
-
-void RewardStatus::InternalSwap(RewardStatus* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &status_, lhs_arena,
-      &other->status_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RewardStatus, reward_id_)
-      + sizeof(RewardStatus::reward_id_)
-      - PROTOBUF_FIELD_OFFSET(RewardStatus, claim_time_)>(
-          reinterpret_cast<char*>(&claim_time_),
-          reinterpret_cast<char*>(&other->claim_time_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata RewardStatus::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
-      file_level_metadata_activity_2eproto[10]);
-}
-
-// ===================================================================
-
-class ActivityReward::_Internal {
- public:
-};
-
-ActivityReward::ActivityReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:cproto.ActivityReward)
-}
-ActivityReward::ActivityReward(const ActivityReward& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArenaForAllocation());
-  }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&required_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(required_));
-  // @@protoc_insertion_point(copy_constructor:cproto.ActivityReward)
-}
-
-inline void ActivityReward::SharedCtor() {
-name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&required_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(required_));
-}
-
-ActivityReward::~ActivityReward() {
-  // @@protoc_insertion_point(destructor:cproto.ActivityReward)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void ActivityReward::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void ActivityReward::ArenaDtor(void* object) {
-  ActivityReward* _this = reinterpret_cast< ActivityReward* >(object);
-  (void)_this;
-}
-void ActivityReward::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void ActivityReward::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void ActivityReward::Clear() {
-// @@protoc_insertion_point(message_clear_start:cproto.ActivityReward)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  name_.ClearToEmpty();
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&required_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(required_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* ActivityReward::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // int32 id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string name = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.ActivityReward.name"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 type = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 amount = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          amount_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 weight = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          weight_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 required = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
-          required_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* ActivityReward::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cproto.ActivityReward)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 id = 1;
-  if (this->_internal_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
-  }
-
-  // string name = 2;
-  if (!this->_internal_name().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cproto.ActivityReward.name");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_name(), target);
-  }
-
-  // int32 type = 3;
-  if (this->_internal_type() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_type(), target);
-  }
-
-  // int64 amount = 4;
-  if (this->_internal_amount() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_amount(), target);
-  }
-
-  // int32 weight = 5;
-  if (this->_internal_weight() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_weight(), target);
-  }
-
-  // int32 required = 6;
-  if (this->_internal_required() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_required(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:cproto.ActivityReward)
-  return target;
-}
-
-size_t ActivityReward::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cproto.ActivityReward)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string name = 2;
-  if (!this->_internal_name().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
-  }
-
-  // int32 id = 1;
-  if (this->_internal_id() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id());
-  }
-
-  // int32 type = 3;
-  if (this->_internal_type() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_type());
-  }
-
-  // int64 amount = 4;
-  if (this->_internal_amount() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_amount());
-  }
-
-  // int32 weight = 5;
-  if (this->_internal_weight() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_weight());
-  }
-
-  // int32 required = 6;
-  if (this->_internal_required() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_required());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActivityReward::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ActivityReward::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActivityReward::GetClassData() const { return &_class_data_; }
-
-void ActivityReward::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ActivityReward *>(to)->MergeFrom(
-      static_cast<const ActivityReward &>(from));
-}
-
-
-void ActivityReward::MergeFrom(const ActivityReward& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ActivityReward)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_name().empty()) {
-    _internal_set_name(from._internal_name());
-  }
-  if (from._internal_id() != 0) {
-    _internal_set_id(from._internal_id());
-  }
-  if (from._internal_type() != 0) {
-    _internal_set_type(from._internal_type());
-  }
-  if (from._internal_amount() != 0) {
-    _internal_set_amount(from._internal_amount());
-  }
-  if (from._internal_weight() != 0) {
-    _internal_set_weight(from._internal_weight());
-  }
-  if (from._internal_required() != 0) {
-    _internal_set_required(from._internal_required());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void ActivityReward::CopyFrom(const ActivityReward& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ActivityReward)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ActivityReward::IsInitialized() const {
-  return true;
-}
-
-void ActivityReward::InternalSwap(ActivityReward* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &name_, lhs_arena,
-      &other->name_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ActivityReward, required_)
-      + sizeof(ActivityReward::required_)
-      - PROTOBUF_FIELD_OFFSET(ActivityReward, id_)>(
-          reinterpret_cast<char*>(&id_),
-          reinterpret_cast<char*>(&other->id_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata ActivityReward::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_activity_2eproto_getter, &descriptor_table_activity_2eproto_once,
-      file_level_metadata_activity_2eproto[11]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -3554,35 +2076,26 @@ template<> PROTOBUF_NOINLINE ::cproto::ActivityReq* Arena::CreateMaybeMessage< :
 template<> PROTOBUF_NOINLINE ::cproto::ActivityAck* Arena::CreateMaybeMessage< ::cproto::ActivityAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::ActivityAck >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cproto::GetActivityListReq* Arena::CreateMaybeMessage< ::cproto::GetActivityListReq >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::GetActivityListReq >(arena);
+template<> PROTOBUF_NOINLINE ::cproto::ActsListReq* Arena::CreateMaybeMessage< ::cproto::ActsListReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ActsListReq >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cproto::GetActivityListAck* Arena::CreateMaybeMessage< ::cproto::GetActivityListAck >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::GetActivityListAck >(arena);
+template<> PROTOBUF_NOINLINE ::cproto::ActsListAck* Arena::CreateMaybeMessage< ::cproto::ActsListAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ActsListAck >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cproto::GetActivityStatusReq* Arena::CreateMaybeMessage< ::cproto::GetActivityStatusReq >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::GetActivityStatusReq >(arena);
+template<> PROTOBUF_NOINLINE ::cproto::ActPanelReq* Arena::CreateMaybeMessage< ::cproto::ActPanelReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ActPanelReq >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cproto::GetActivityStatusAck* Arena::CreateMaybeMessage< ::cproto::GetActivityStatusAck >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::GetActivityStatusAck >(arena);
+template<> PROTOBUF_NOINLINE ::cproto::ActPanelAck* Arena::CreateMaybeMessage< ::cproto::ActPanelAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ActPanelAck >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cproto::ActivityActionReq* Arena::CreateMaybeMessage< ::cproto::ActivityActionReq >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::ActivityActionReq >(arena);
+template<> PROTOBUF_NOINLINE ::cproto::ActRewardReq* Arena::CreateMaybeMessage< ::cproto::ActRewardReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ActRewardReq >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cproto::ActivityActionAck* Arena::CreateMaybeMessage< ::cproto::ActivityActionAck >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::ActivityActionAck >(arena);
+template<> PROTOBUF_NOINLINE ::cproto::ActRewardAck* Arena::CreateMaybeMessage< ::cproto::ActRewardAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ActRewardAck >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cproto::ActivityListItem* Arena::CreateMaybeMessage< ::cproto::ActivityListItem >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::ActivityListItem >(arena);
-}
-template<> PROTOBUF_NOINLINE ::cproto::ActivityState* Arena::CreateMaybeMessage< ::cproto::ActivityState >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::ActivityState >(arena);
-}
-template<> PROTOBUF_NOINLINE ::cproto::RewardStatus* Arena::CreateMaybeMessage< ::cproto::RewardStatus >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::RewardStatus >(arena);
-}
-template<> PROTOBUF_NOINLINE ::cproto::ActivityReward* Arena::CreateMaybeMessage< ::cproto::ActivityReward >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cproto::ActivityReward >(arena);
+template<> PROTOBUF_NOINLINE ::cproto::ActBrief* Arena::CreateMaybeMessage< ::cproto::ActBrief >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ActBrief >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -48,7 +48,7 @@ struct TableStruct_activity_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[9]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -56,56 +56,44 @@ struct TableStruct_activity_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_activity_2eproto;
 namespace cproto {
+class ActBrief;
+struct ActBriefDefaultTypeInternal;
+extern ActBriefDefaultTypeInternal _ActBrief_default_instance_;
+class ActPanelAck;
+struct ActPanelAckDefaultTypeInternal;
+extern ActPanelAckDefaultTypeInternal _ActPanelAck_default_instance_;
+class ActPanelReq;
+struct ActPanelReqDefaultTypeInternal;
+extern ActPanelReqDefaultTypeInternal _ActPanelReq_default_instance_;
+class ActRewardAck;
+struct ActRewardAckDefaultTypeInternal;
+extern ActRewardAckDefaultTypeInternal _ActRewardAck_default_instance_;
+class ActRewardReq;
+struct ActRewardReqDefaultTypeInternal;
+extern ActRewardReqDefaultTypeInternal _ActRewardReq_default_instance_;
 class ActivityAck;
 struct ActivityAckDefaultTypeInternal;
 extern ActivityAckDefaultTypeInternal _ActivityAck_default_instance_;
-class ActivityActionAck;
-struct ActivityActionAckDefaultTypeInternal;
-extern ActivityActionAckDefaultTypeInternal _ActivityActionAck_default_instance_;
-class ActivityActionReq;
-struct ActivityActionReqDefaultTypeInternal;
-extern ActivityActionReqDefaultTypeInternal _ActivityActionReq_default_instance_;
-class ActivityListItem;
-struct ActivityListItemDefaultTypeInternal;
-extern ActivityListItemDefaultTypeInternal _ActivityListItem_default_instance_;
 class ActivityReq;
 struct ActivityReqDefaultTypeInternal;
 extern ActivityReqDefaultTypeInternal _ActivityReq_default_instance_;
-class ActivityReward;
-struct ActivityRewardDefaultTypeInternal;
-extern ActivityRewardDefaultTypeInternal _ActivityReward_default_instance_;
-class ActivityState;
-struct ActivityStateDefaultTypeInternal;
-extern ActivityStateDefaultTypeInternal _ActivityState_default_instance_;
-class GetActivityListAck;
-struct GetActivityListAckDefaultTypeInternal;
-extern GetActivityListAckDefaultTypeInternal _GetActivityListAck_default_instance_;
-class GetActivityListReq;
-struct GetActivityListReqDefaultTypeInternal;
-extern GetActivityListReqDefaultTypeInternal _GetActivityListReq_default_instance_;
-class GetActivityStatusAck;
-struct GetActivityStatusAckDefaultTypeInternal;
-extern GetActivityStatusAckDefaultTypeInternal _GetActivityStatusAck_default_instance_;
-class GetActivityStatusReq;
-struct GetActivityStatusReqDefaultTypeInternal;
-extern GetActivityStatusReqDefaultTypeInternal _GetActivityStatusReq_default_instance_;
-class RewardStatus;
-struct RewardStatusDefaultTypeInternal;
-extern RewardStatusDefaultTypeInternal _RewardStatus_default_instance_;
+class ActsListAck;
+struct ActsListAckDefaultTypeInternal;
+extern ActsListAckDefaultTypeInternal _ActsListAck_default_instance_;
+class ActsListReq;
+struct ActsListReqDefaultTypeInternal;
+extern ActsListReqDefaultTypeInternal _ActsListReq_default_instance_;
 }  // namespace cproto
 PROTOBUF_NAMESPACE_OPEN
+template<> ::cproto::ActBrief* Arena::CreateMaybeMessage<::cproto::ActBrief>(Arena*);
+template<> ::cproto::ActPanelAck* Arena::CreateMaybeMessage<::cproto::ActPanelAck>(Arena*);
+template<> ::cproto::ActPanelReq* Arena::CreateMaybeMessage<::cproto::ActPanelReq>(Arena*);
+template<> ::cproto::ActRewardAck* Arena::CreateMaybeMessage<::cproto::ActRewardAck>(Arena*);
+template<> ::cproto::ActRewardReq* Arena::CreateMaybeMessage<::cproto::ActRewardReq>(Arena*);
 template<> ::cproto::ActivityAck* Arena::CreateMaybeMessage<::cproto::ActivityAck>(Arena*);
-template<> ::cproto::ActivityActionAck* Arena::CreateMaybeMessage<::cproto::ActivityActionAck>(Arena*);
-template<> ::cproto::ActivityActionReq* Arena::CreateMaybeMessage<::cproto::ActivityActionReq>(Arena*);
-template<> ::cproto::ActivityListItem* Arena::CreateMaybeMessage<::cproto::ActivityListItem>(Arena*);
 template<> ::cproto::ActivityReq* Arena::CreateMaybeMessage<::cproto::ActivityReq>(Arena*);
-template<> ::cproto::ActivityReward* Arena::CreateMaybeMessage<::cproto::ActivityReward>(Arena*);
-template<> ::cproto::ActivityState* Arena::CreateMaybeMessage<::cproto::ActivityState>(Arena*);
-template<> ::cproto::GetActivityListAck* Arena::CreateMaybeMessage<::cproto::GetActivityListAck>(Arena*);
-template<> ::cproto::GetActivityListReq* Arena::CreateMaybeMessage<::cproto::GetActivityListReq>(Arena*);
-template<> ::cproto::GetActivityStatusAck* Arena::CreateMaybeMessage<::cproto::GetActivityStatusAck>(Arena*);
-template<> ::cproto::GetActivityStatusReq* Arena::CreateMaybeMessage<::cproto::GetActivityStatusReq>(Arena*);
-template<> ::cproto::RewardStatus* Arena::CreateMaybeMessage<::cproto::RewardStatus>(Arena*);
+template<> ::cproto::ActsListAck* Arena::CreateMaybeMessage<::cproto::ActsListAck>(Arena*);
+template<> ::cproto::ActsListReq* Arena::CreateMaybeMessage<::cproto::ActsListReq>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace cproto {
 
@@ -421,23 +409,23 @@ class ActivityAck final :
 };
 // -------------------------------------------------------------------
 
-class GetActivityListReq final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.GetActivityListReq) */ {
+class ActsListReq final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.ActsListReq) */ {
  public:
-  inline GetActivityListReq() : GetActivityListReq(nullptr) {}
-  explicit constexpr GetActivityListReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ActsListReq() : ActsListReq(nullptr) {}
+  explicit constexpr ActsListReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  GetActivityListReq(const GetActivityListReq& from);
-  GetActivityListReq(GetActivityListReq&& from) noexcept
-    : GetActivityListReq() {
+  ActsListReq(const ActsListReq& from);
+  ActsListReq(ActsListReq&& from) noexcept
+    : ActsListReq() {
     *this = ::std::move(from);
   }
 
-  inline GetActivityListReq& operator=(const GetActivityListReq& from) {
+  inline ActsListReq& operator=(const ActsListReq& from) {
     CopyFrom(from);
     return *this;
   }
-  inline GetActivityListReq& operator=(GetActivityListReq&& from) noexcept {
+  inline ActsListReq& operator=(ActsListReq&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -460,20 +448,20 @@ class GetActivityListReq final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const GetActivityListReq& default_instance() {
+  static const ActsListReq& default_instance() {
     return *internal_default_instance();
   }
-  static inline const GetActivityListReq* internal_default_instance() {
-    return reinterpret_cast<const GetActivityListReq*>(
-               &_GetActivityListReq_default_instance_);
+  static inline const ActsListReq* internal_default_instance() {
+    return reinterpret_cast<const ActsListReq*>(
+               &_ActsListReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     2;
 
-  friend void swap(GetActivityListReq& a, GetActivityListReq& b) {
+  friend void swap(ActsListReq& a, ActsListReq& b) {
     a.Swap(&b);
   }
-  inline void Swap(GetActivityListReq* other) {
+  inline void Swap(ActsListReq* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -486,7 +474,7 @@ class GetActivityListReq final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(GetActivityListReq* other) {
+  void UnsafeArenaSwap(ActsListReq* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -494,15 +482,15 @@ class GetActivityListReq final :
 
   // implements Message ----------------------------------------------
 
-  GetActivityListReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GetActivityListReq>(arena);
+  ActsListReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ActsListReq>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const GetActivityListReq& from) {
+  inline void CopyFrom(const ActsListReq& from) {
     ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
   }
   using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const GetActivityListReq& from) {
+  void MergeFrom(const ActsListReq& from) {
     ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
   }
   public:
@@ -510,10 +498,10 @@ class GetActivityListReq final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.GetActivityListReq";
+    return "cproto.ActsListReq";
   }
   protected:
-  explicit GetActivityListReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ActsListReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   public:
@@ -527,7 +515,7 @@ class GetActivityListReq final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:cproto.GetActivityListReq)
+  // @@protoc_insertion_point(class_scope:cproto.ActsListReq)
  private:
   class _Internal;
 
@@ -539,24 +527,24 @@ class GetActivityListReq final :
 };
 // -------------------------------------------------------------------
 
-class GetActivityListAck final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GetActivityListAck) */ {
+class ActsListAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActsListAck) */ {
  public:
-  inline GetActivityListAck() : GetActivityListAck(nullptr) {}
-  ~GetActivityListAck() override;
-  explicit constexpr GetActivityListAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ActsListAck() : ActsListAck(nullptr) {}
+  ~ActsListAck() override;
+  explicit constexpr ActsListAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  GetActivityListAck(const GetActivityListAck& from);
-  GetActivityListAck(GetActivityListAck&& from) noexcept
-    : GetActivityListAck() {
+  ActsListAck(const ActsListAck& from);
+  ActsListAck(ActsListAck&& from) noexcept
+    : ActsListAck() {
     *this = ::std::move(from);
   }
 
-  inline GetActivityListAck& operator=(const GetActivityListAck& from) {
+  inline ActsListAck& operator=(const ActsListAck& from) {
     CopyFrom(from);
     return *this;
   }
-  inline GetActivityListAck& operator=(GetActivityListAck&& from) noexcept {
+  inline ActsListAck& operator=(ActsListAck&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -579,20 +567,20 @@ class GetActivityListAck final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const GetActivityListAck& default_instance() {
+  static const ActsListAck& default_instance() {
     return *internal_default_instance();
   }
-  static inline const GetActivityListAck* internal_default_instance() {
-    return reinterpret_cast<const GetActivityListAck*>(
-               &_GetActivityListAck_default_instance_);
+  static inline const ActsListAck* internal_default_instance() {
+    return reinterpret_cast<const ActsListAck*>(
+               &_ActsListAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     3;
 
-  friend void swap(GetActivityListAck& a, GetActivityListAck& b) {
+  friend void swap(ActsListAck& a, ActsListAck& b) {
     a.Swap(&b);
   }
-  inline void Swap(GetActivityListAck* other) {
+  inline void Swap(ActsListAck* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -605,7 +593,7 @@ class GetActivityListAck final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(GetActivityListAck* other) {
+  void UnsafeArenaSwap(ActsListAck* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -613,13 +601,13 @@ class GetActivityListAck final :
 
   // implements Message ----------------------------------------------
 
-  GetActivityListAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GetActivityListAck>(arena);
+  ActsListAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ActsListAck>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const GetActivityListAck& from);
+  void CopyFrom(const ActsListAck& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const GetActivityListAck& from);
+  void MergeFrom(const ActsListAck& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -636,15 +624,15 @@ class GetActivityListAck final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(GetActivityListAck* other);
+  void InternalSwap(ActsListAck* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.GetActivityListAck";
+    return "cproto.ActsListAck";
   }
   protected:
-  explicit GetActivityListAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ActsListAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -661,84 +649,68 @@ class GetActivityListAck final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kActivitiesFieldNumber = 3,
-    kMessageFieldNumber = 2,
-    kSuccessFieldNumber = 1,
+    kActsFieldNumber = 2,
+    kRedDotFieldNumber = 1,
   };
-  // repeated .cproto.ActivityListItem activities = 3;
-  int activities_size() const;
+  // repeated .cproto.ActBrief acts = 2;
+  int acts_size() const;
   private:
-  int _internal_activities_size() const;
+  int _internal_acts_size() const;
   public:
-  void clear_activities();
-  ::cproto::ActivityListItem* mutable_activities(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityListItem >*
-      mutable_activities();
+  void clear_acts();
+  ::cproto::ActBrief* mutable_acts(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActBrief >*
+      mutable_acts();
   private:
-  const ::cproto::ActivityListItem& _internal_activities(int index) const;
-  ::cproto::ActivityListItem* _internal_add_activities();
+  const ::cproto::ActBrief& _internal_acts(int index) const;
+  ::cproto::ActBrief* _internal_add_acts();
   public:
-  const ::cproto::ActivityListItem& activities(int index) const;
-  ::cproto::ActivityListItem* add_activities();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityListItem >&
-      activities() const;
+  const ::cproto::ActBrief& acts(int index) const;
+  ::cproto::ActBrief* add_acts();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActBrief >&
+      acts() const;
 
-  // string message = 2;
-  void clear_message();
-  const std::string& message() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_message(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_message();
-  PROTOBUF_NODISCARD std::string* release_message();
-  void set_allocated_message(std::string* message);
+  // bool red_dot = 1;
+  void clear_red_dot();
+  bool red_dot() const;
+  void set_red_dot(bool value);
   private:
-  const std::string& _internal_message() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
-  std::string* _internal_mutable_message();
+  bool _internal_red_dot() const;
+  void _internal_set_red_dot(bool value);
   public:
 
-  // bool success = 1;
-  void clear_success();
-  bool success() const;
-  void set_success(bool value);
-  private:
-  bool _internal_success() const;
-  void _internal_set_success(bool value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.GetActivityListAck)
+  // @@protoc_insertion_point(class_scope:cproto.ActsListAck)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityListItem > activities_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-  bool success_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActBrief > acts_;
+  bool red_dot_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_activity_2eproto;
 };
 // -------------------------------------------------------------------
 
-class GetActivityStatusReq final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GetActivityStatusReq) */ {
+class ActPanelReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActPanelReq) */ {
  public:
-  inline GetActivityStatusReq() : GetActivityStatusReq(nullptr) {}
-  ~GetActivityStatusReq() override;
-  explicit constexpr GetActivityStatusReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ActPanelReq() : ActPanelReq(nullptr) {}
+  ~ActPanelReq() override;
+  explicit constexpr ActPanelReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  GetActivityStatusReq(const GetActivityStatusReq& from);
-  GetActivityStatusReq(GetActivityStatusReq&& from) noexcept
-    : GetActivityStatusReq() {
+  ActPanelReq(const ActPanelReq& from);
+  ActPanelReq(ActPanelReq&& from) noexcept
+    : ActPanelReq() {
     *this = ::std::move(from);
   }
 
-  inline GetActivityStatusReq& operator=(const GetActivityStatusReq& from) {
+  inline ActPanelReq& operator=(const ActPanelReq& from) {
     CopyFrom(from);
     return *this;
   }
-  inline GetActivityStatusReq& operator=(GetActivityStatusReq&& from) noexcept {
+  inline ActPanelReq& operator=(ActPanelReq&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -761,20 +733,20 @@ class GetActivityStatusReq final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const GetActivityStatusReq& default_instance() {
+  static const ActPanelReq& default_instance() {
     return *internal_default_instance();
   }
-  static inline const GetActivityStatusReq* internal_default_instance() {
-    return reinterpret_cast<const GetActivityStatusReq*>(
-               &_GetActivityStatusReq_default_instance_);
+  static inline const ActPanelReq* internal_default_instance() {
+    return reinterpret_cast<const ActPanelReq*>(
+               &_ActPanelReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     4;
 
-  friend void swap(GetActivityStatusReq& a, GetActivityStatusReq& b) {
+  friend void swap(ActPanelReq& a, ActPanelReq& b) {
     a.Swap(&b);
   }
-  inline void Swap(GetActivityStatusReq* other) {
+  inline void Swap(ActPanelReq* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -787,7 +759,7 @@ class GetActivityStatusReq final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(GetActivityStatusReq* other) {
+  void UnsafeArenaSwap(ActPanelReq* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -795,13 +767,13 @@ class GetActivityStatusReq final :
 
   // implements Message ----------------------------------------------
 
-  GetActivityStatusReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GetActivityStatusReq>(arena);
+  ActPanelReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ActPanelReq>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const GetActivityStatusReq& from);
+  void CopyFrom(const ActPanelReq& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const GetActivityStatusReq& from);
+  void MergeFrom(const ActPanelReq& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -818,15 +790,15 @@ class GetActivityStatusReq final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(GetActivityStatusReq* other);
+  void InternalSwap(ActPanelReq* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.GetActivityStatusReq";
+    return "cproto.ActPanelReq";
   }
   protected:
-  explicit GetActivityStatusReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ActPanelReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -854,7 +826,7 @@ class GetActivityStatusReq final :
   void _internal_set_activity_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:cproto.GetActivityStatusReq)
+  // @@protoc_insertion_point(class_scope:cproto.ActPanelReq)
  private:
   class _Internal;
 
@@ -867,24 +839,24 @@ class GetActivityStatusReq final :
 };
 // -------------------------------------------------------------------
 
-class GetActivityStatusAck final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.GetActivityStatusAck) */ {
+class ActPanelAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActPanelAck) */ {
  public:
-  inline GetActivityStatusAck() : GetActivityStatusAck(nullptr) {}
-  ~GetActivityStatusAck() override;
-  explicit constexpr GetActivityStatusAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ActPanelAck() : ActPanelAck(nullptr) {}
+  ~ActPanelAck() override;
+  explicit constexpr ActPanelAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  GetActivityStatusAck(const GetActivityStatusAck& from);
-  GetActivityStatusAck(GetActivityStatusAck&& from) noexcept
-    : GetActivityStatusAck() {
+  ActPanelAck(const ActPanelAck& from);
+  ActPanelAck(ActPanelAck&& from) noexcept
+    : ActPanelAck() {
     *this = ::std::move(from);
   }
 
-  inline GetActivityStatusAck& operator=(const GetActivityStatusAck& from) {
+  inline ActPanelAck& operator=(const ActPanelAck& from) {
     CopyFrom(from);
     return *this;
   }
-  inline GetActivityStatusAck& operator=(GetActivityStatusAck&& from) noexcept {
+  inline ActPanelAck& operator=(ActPanelAck&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -907,20 +879,20 @@ class GetActivityStatusAck final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const GetActivityStatusAck& default_instance() {
+  static const ActPanelAck& default_instance() {
     return *internal_default_instance();
   }
-  static inline const GetActivityStatusAck* internal_default_instance() {
-    return reinterpret_cast<const GetActivityStatusAck*>(
-               &_GetActivityStatusAck_default_instance_);
+  static inline const ActPanelAck* internal_default_instance() {
+    return reinterpret_cast<const ActPanelAck*>(
+               &_ActPanelAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     5;
 
-  friend void swap(GetActivityStatusAck& a, GetActivityStatusAck& b) {
+  friend void swap(ActPanelAck& a, ActPanelAck& b) {
     a.Swap(&b);
   }
-  inline void Swap(GetActivityStatusAck* other) {
+  inline void Swap(ActPanelAck* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -933,7 +905,7 @@ class GetActivityStatusAck final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(GetActivityStatusAck* other) {
+  void UnsafeArenaSwap(ActPanelAck* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -941,13 +913,13 @@ class GetActivityStatusAck final :
 
   // implements Message ----------------------------------------------
 
-  GetActivityStatusAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GetActivityStatusAck>(arena);
+  ActPanelAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ActPanelAck>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const GetActivityStatusAck& from);
+  void CopyFrom(const ActPanelAck& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const GetActivityStatusAck& from);
+  void MergeFrom(const ActPanelAck& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -964,15 +936,15 @@ class GetActivityStatusAck final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(GetActivityStatusAck* other);
+  void InternalSwap(ActPanelAck* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.GetActivityStatusAck";
+    return "cproto.ActPanelAck";
   }
   protected:
-  explicit GetActivityStatusAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ActPanelAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -989,84 +961,64 @@ class GetActivityStatusAck final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kMessageFieldNumber = 2,
-    kStatusFieldNumber = 3,
-    kSuccessFieldNumber = 1,
+    kJsonDataFieldNumber = 2,
+    kActivityIdFieldNumber = 1,
   };
-  // string message = 2;
-  void clear_message();
-  const std::string& message() const;
+  // string json_data = 2;
+  void clear_json_data();
+  const std::string& json_data() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_message(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_message();
-  PROTOBUF_NODISCARD std::string* release_message();
-  void set_allocated_message(std::string* message);
+  void set_json_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_json_data();
+  PROTOBUF_NODISCARD std::string* release_json_data();
+  void set_allocated_json_data(std::string* json_data);
   private:
-  const std::string& _internal_message() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
-  std::string* _internal_mutable_message();
+  const std::string& _internal_json_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_json_data(const std::string& value);
+  std::string* _internal_mutable_json_data();
   public:
 
-  // .cproto.ActivityState status = 3;
-  bool has_status() const;
+  // int32 activity_id = 1;
+  void clear_activity_id();
+  int32_t activity_id() const;
+  void set_activity_id(int32_t value);
   private:
-  bool _internal_has_status() const;
-  public:
-  void clear_status();
-  const ::cproto::ActivityState& status() const;
-  PROTOBUF_NODISCARD ::cproto::ActivityState* release_status();
-  ::cproto::ActivityState* mutable_status();
-  void set_allocated_status(::cproto::ActivityState* status);
-  private:
-  const ::cproto::ActivityState& _internal_status() const;
-  ::cproto::ActivityState* _internal_mutable_status();
-  public:
-  void unsafe_arena_set_allocated_status(
-      ::cproto::ActivityState* status);
-  ::cproto::ActivityState* unsafe_arena_release_status();
-
-  // bool success = 1;
-  void clear_success();
-  bool success() const;
-  void set_success(bool value);
-  private:
-  bool _internal_success() const;
-  void _internal_set_success(bool value);
+  int32_t _internal_activity_id() const;
+  void _internal_set_activity_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:cproto.GetActivityStatusAck)
+  // @@protoc_insertion_point(class_scope:cproto.ActPanelAck)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-  ::cproto::ActivityState* status_;
-  bool success_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr json_data_;
+  int32_t activity_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_activity_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ActivityActionReq final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActivityActionReq) */ {
+class ActRewardReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActRewardReq) */ {
  public:
-  inline ActivityActionReq() : ActivityActionReq(nullptr) {}
-  ~ActivityActionReq() override;
-  explicit constexpr ActivityActionReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ActRewardReq() : ActRewardReq(nullptr) {}
+  ~ActRewardReq() override;
+  explicit constexpr ActRewardReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  ActivityActionReq(const ActivityActionReq& from);
-  ActivityActionReq(ActivityActionReq&& from) noexcept
-    : ActivityActionReq() {
+  ActRewardReq(const ActRewardReq& from);
+  ActRewardReq(ActRewardReq&& from) noexcept
+    : ActRewardReq() {
     *this = ::std::move(from);
   }
 
-  inline ActivityActionReq& operator=(const ActivityActionReq& from) {
+  inline ActRewardReq& operator=(const ActRewardReq& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ActivityActionReq& operator=(ActivityActionReq&& from) noexcept {
+  inline ActRewardReq& operator=(ActRewardReq&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1089,20 +1041,20 @@ class ActivityActionReq final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const ActivityActionReq& default_instance() {
+  static const ActRewardReq& default_instance() {
     return *internal_default_instance();
   }
-  static inline const ActivityActionReq* internal_default_instance() {
-    return reinterpret_cast<const ActivityActionReq*>(
-               &_ActivityActionReq_default_instance_);
+  static inline const ActRewardReq* internal_default_instance() {
+    return reinterpret_cast<const ActRewardReq*>(
+               &_ActRewardReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     6;
 
-  friend void swap(ActivityActionReq& a, ActivityActionReq& b) {
+  friend void swap(ActRewardReq& a, ActRewardReq& b) {
     a.Swap(&b);
   }
-  inline void Swap(ActivityActionReq* other) {
+  inline void Swap(ActRewardReq* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1115,7 +1067,7 @@ class ActivityActionReq final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(ActivityActionReq* other) {
+  void UnsafeArenaSwap(ActRewardReq* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1123,13 +1075,13 @@ class ActivityActionReq final :
 
   // implements Message ----------------------------------------------
 
-  ActivityActionReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ActivityActionReq>(arena);
+  ActRewardReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ActRewardReq>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ActivityActionReq& from);
+  void CopyFrom(const ActRewardReq& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ActivityActionReq& from);
+  void MergeFrom(const ActRewardReq& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1146,15 +1098,15 @@ class ActivityActionReq final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ActivityActionReq* other);
+  void InternalSwap(ActRewardReq* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.ActivityActionReq";
+    return "cproto.ActRewardReq";
   }
   protected:
-  explicit ActivityActionReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ActRewardReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1171,36 +1123,21 @@ class ActivityActionReq final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kActionFieldNumber = 2,
-    kParamsFieldNumber = 3,
+    kJsonDataFieldNumber = 2,
     kActivityIdFieldNumber = 1,
   };
-  // string action = 2;
-  void clear_action();
-  const std::string& action() const;
+  // string json_data = 2;
+  void clear_json_data();
+  const std::string& json_data() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_action(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_action();
-  PROTOBUF_NODISCARD std::string* release_action();
-  void set_allocated_action(std::string* action);
+  void set_json_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_json_data();
+  PROTOBUF_NODISCARD std::string* release_json_data();
+  void set_allocated_json_data(std::string* json_data);
   private:
-  const std::string& _internal_action() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action(const std::string& value);
-  std::string* _internal_mutable_action();
-  public:
-
-  // string params = 3;
-  void clear_params();
-  const std::string& params() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_params(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_params();
-  PROTOBUF_NODISCARD std::string* release_params();
-  void set_allocated_params(std::string* params);
-  private:
-  const std::string& _internal_params() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_params(const std::string& value);
-  std::string* _internal_mutable_params();
+  const std::string& _internal_json_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_json_data(const std::string& value);
+  std::string* _internal_mutable_json_data();
   public:
 
   // int32 activity_id = 1;
@@ -1212,39 +1149,38 @@ class ActivityActionReq final :
   void _internal_set_activity_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:cproto.ActivityActionReq)
+  // @@protoc_insertion_point(class_scope:cproto.ActRewardReq)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr action_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr params_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr json_data_;
   int32_t activity_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_activity_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ActivityActionAck final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActivityActionAck) */ {
+class ActRewardAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActRewardAck) */ {
  public:
-  inline ActivityActionAck() : ActivityActionAck(nullptr) {}
-  ~ActivityActionAck() override;
-  explicit constexpr ActivityActionAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ActRewardAck() : ActRewardAck(nullptr) {}
+  ~ActRewardAck() override;
+  explicit constexpr ActRewardAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  ActivityActionAck(const ActivityActionAck& from);
-  ActivityActionAck(ActivityActionAck&& from) noexcept
-    : ActivityActionAck() {
+  ActRewardAck(const ActRewardAck& from);
+  ActRewardAck(ActRewardAck&& from) noexcept
+    : ActRewardAck() {
     *this = ::std::move(from);
   }
 
-  inline ActivityActionAck& operator=(const ActivityActionAck& from) {
+  inline ActRewardAck& operator=(const ActRewardAck& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ActivityActionAck& operator=(ActivityActionAck&& from) noexcept {
+  inline ActRewardAck& operator=(ActRewardAck&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1267,20 +1203,20 @@ class ActivityActionAck final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const ActivityActionAck& default_instance() {
+  static const ActRewardAck& default_instance() {
     return *internal_default_instance();
   }
-  static inline const ActivityActionAck* internal_default_instance() {
-    return reinterpret_cast<const ActivityActionAck*>(
-               &_ActivityActionAck_default_instance_);
+  static inline const ActRewardAck* internal_default_instance() {
+    return reinterpret_cast<const ActRewardAck*>(
+               &_ActRewardAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     7;
 
-  friend void swap(ActivityActionAck& a, ActivityActionAck& b) {
+  friend void swap(ActRewardAck& a, ActRewardAck& b) {
     a.Swap(&b);
   }
-  inline void Swap(ActivityActionAck* other) {
+  inline void Swap(ActRewardAck* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1293,7 +1229,7 @@ class ActivityActionAck final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(ActivityActionAck* other) {
+  void UnsafeArenaSwap(ActRewardAck* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1301,13 +1237,13 @@ class ActivityActionAck final :
 
   // implements Message ----------------------------------------------
 
-  ActivityActionAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ActivityActionAck>(arena);
+  ActRewardAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ActRewardAck>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ActivityActionAck& from);
+  void CopyFrom(const ActRewardAck& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ActivityActionAck& from);
+  void MergeFrom(const ActRewardAck& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1324,15 +1260,15 @@ class ActivityActionAck final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ActivityActionAck* other);
+  void InternalSwap(ActRewardAck* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.ActivityActionAck";
+    return "cproto.ActRewardAck";
   }
   protected:
-  explicit ActivityActionAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ActRewardAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1349,100 +1285,64 @@ class ActivityActionAck final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kRewardsFieldNumber = 3,
-    kMessageFieldNumber = 2,
-    kDataFieldNumber = 4,
-    kSuccessFieldNumber = 1,
+    kJsonDataFieldNumber = 2,
+    kActivityIdFieldNumber = 1,
   };
-  // repeated .cproto.ActivityReward rewards = 3;
-  int rewards_size() const;
-  private:
-  int _internal_rewards_size() const;
-  public:
-  void clear_rewards();
-  ::cproto::ActivityReward* mutable_rewards(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityReward >*
-      mutable_rewards();
-  private:
-  const ::cproto::ActivityReward& _internal_rewards(int index) const;
-  ::cproto::ActivityReward* _internal_add_rewards();
-  public:
-  const ::cproto::ActivityReward& rewards(int index) const;
-  ::cproto::ActivityReward* add_rewards();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityReward >&
-      rewards() const;
-
-  // string message = 2;
-  void clear_message();
-  const std::string& message() const;
+  // string json_data = 2;
+  void clear_json_data();
+  const std::string& json_data() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_message(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_message();
-  PROTOBUF_NODISCARD std::string* release_message();
-  void set_allocated_message(std::string* message);
+  void set_json_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_json_data();
+  PROTOBUF_NODISCARD std::string* release_json_data();
+  void set_allocated_json_data(std::string* json_data);
   private:
-  const std::string& _internal_message() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
-  std::string* _internal_mutable_message();
+  const std::string& _internal_json_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_json_data(const std::string& value);
+  std::string* _internal_mutable_json_data();
   public:
 
-  // string data = 4;
-  void clear_data();
-  const std::string& data() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_data(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_data();
-  PROTOBUF_NODISCARD std::string* release_data();
-  void set_allocated_data(std::string* data);
+  // int32 activity_id = 1;
+  void clear_activity_id();
+  int32_t activity_id() const;
+  void set_activity_id(int32_t value);
   private:
-  const std::string& _internal_data() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data(const std::string& value);
-  std::string* _internal_mutable_data();
+  int32_t _internal_activity_id() const;
+  void _internal_set_activity_id(int32_t value);
   public:
 
-  // bool success = 1;
-  void clear_success();
-  bool success() const;
-  void set_success(bool value);
-  private:
-  bool _internal_success() const;
-  void _internal_set_success(bool value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.ActivityActionAck)
+  // @@protoc_insertion_point(class_scope:cproto.ActRewardAck)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityReward > rewards_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
-  bool success_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr json_data_;
+  int32_t activity_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_activity_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ActivityListItem final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActivityListItem) */ {
+class ActBrief final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActBrief) */ {
  public:
-  inline ActivityListItem() : ActivityListItem(nullptr) {}
-  ~ActivityListItem() override;
-  explicit constexpr ActivityListItem(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ActBrief() : ActBrief(nullptr) {}
+  ~ActBrief() override;
+  explicit constexpr ActBrief(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  ActivityListItem(const ActivityListItem& from);
-  ActivityListItem(ActivityListItem&& from) noexcept
-    : ActivityListItem() {
+  ActBrief(const ActBrief& from);
+  ActBrief(ActBrief&& from) noexcept
+    : ActBrief() {
     *this = ::std::move(from);
   }
 
-  inline ActivityListItem& operator=(const ActivityListItem& from) {
+  inline ActBrief& operator=(const ActBrief& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ActivityListItem& operator=(ActivityListItem&& from) noexcept {
+  inline ActBrief& operator=(ActBrief&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1465,20 +1365,20 @@ class ActivityListItem final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const ActivityListItem& default_instance() {
+  static const ActBrief& default_instance() {
     return *internal_default_instance();
   }
-  static inline const ActivityListItem* internal_default_instance() {
-    return reinterpret_cast<const ActivityListItem*>(
-               &_ActivityListItem_default_instance_);
+  static inline const ActBrief* internal_default_instance() {
+    return reinterpret_cast<const ActBrief*>(
+               &_ActBrief_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     8;
 
-  friend void swap(ActivityListItem& a, ActivityListItem& b) {
+  friend void swap(ActBrief& a, ActBrief& b) {
     a.Swap(&b);
   }
-  inline void Swap(ActivityListItem* other) {
+  inline void Swap(ActBrief* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1491,7 +1391,7 @@ class ActivityListItem final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(ActivityListItem* other) {
+  void UnsafeArenaSwap(ActBrief* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1499,13 +1399,13 @@ class ActivityListItem final :
 
   // implements Message ----------------------------------------------
 
-  ActivityListItem* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ActivityListItem>(arena);
+  ActBrief* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ActBrief>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ActivityListItem& from);
+  void CopyFrom(const ActBrief& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ActivityListItem& from);
+  void MergeFrom(const ActBrief& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1522,15 +1422,15 @@ class ActivityListItem final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ActivityListItem* other);
+  void InternalSwap(ActBrief* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.ActivityListItem";
+    return "cproto.ActBrief";
   }
   protected:
-  explicit ActivityListItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ActBrief(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1548,13 +1448,9 @@ class ActivityListItem final :
 
   enum : int {
     kNameFieldNumber = 2,
-    kStatusFieldNumber = 4,
-    kDescriptionFieldNumber = 5,
-    kIconFieldNumber = 6,
     kActivityIdFieldNumber = 1,
-    kTypeFieldNumber = 3,
-    kStartTimeFieldNumber = 7,
-    kEndTimeFieldNumber = 8,
+    kStatusFieldNumber = 3,
+    kEndTsFieldNumber = 4,
   };
   // string name = 2;
   void clear_name();
@@ -1570,48 +1466,6 @@ class ActivityListItem final :
   std::string* _internal_mutable_name();
   public:
 
-  // string status = 4;
-  void clear_status();
-  const std::string& status() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_status(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_status();
-  PROTOBUF_NODISCARD std::string* release_status();
-  void set_allocated_status(std::string* status);
-  private:
-  const std::string& _internal_status() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_status(const std::string& value);
-  std::string* _internal_mutable_status();
-  public:
-
-  // string description = 5;
-  void clear_description();
-  const std::string& description() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_description(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_description();
-  PROTOBUF_NODISCARD std::string* release_description();
-  void set_allocated_description(std::string* description);
-  private:
-  const std::string& _internal_description() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_description(const std::string& value);
-  std::string* _internal_mutable_description();
-  public:
-
-  // string icon = 6;
-  void clear_icon();
-  const std::string& icon() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_icon(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_icon();
-  PROTOBUF_NODISCARD std::string* release_icon();
-  void set_allocated_icon(std::string* icon);
-  private:
-  const std::string& _internal_icon() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_icon(const std::string& value);
-  std::string* _internal_mutable_icon();
-  public:
-
   // int32 activity_id = 1;
   void clear_activity_id();
   int32_t activity_id() const;
@@ -1621,34 +1475,25 @@ class ActivityListItem final :
   void _internal_set_activity_id(int32_t value);
   public:
 
-  // int32 type = 3;
-  void clear_type();
-  int32_t type() const;
-  void set_type(int32_t value);
+  // int32 status = 3;
+  void clear_status();
+  int32_t status() const;
+  void set_status(int32_t value);
   private:
-  int32_t _internal_type() const;
-  void _internal_set_type(int32_t value);
+  int32_t _internal_status() const;
+  void _internal_set_status(int32_t value);
   public:
 
-  // int64 start_time = 7;
-  void clear_start_time();
-  int64_t start_time() const;
-  void set_start_time(int64_t value);
+  // int64 end_ts = 4;
+  void clear_end_ts();
+  int64_t end_ts() const;
+  void set_end_ts(int64_t value);
   private:
-  int64_t _internal_start_time() const;
-  void _internal_set_start_time(int64_t value);
+  int64_t _internal_end_ts() const;
+  void _internal_set_end_ts(int64_t value);
   public:
 
-  // int64 end_time = 8;
-  void clear_end_time();
-  int64_t end_time() const;
-  void set_end_time(int64_t value);
-  private:
-  int64_t _internal_end_time() const;
-  void _internal_set_end_time(int64_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.ActivityListItem)
+  // @@protoc_insertion_point(class_scope:cproto.ActBrief)
  private:
   class _Internal;
 
@@ -1656,612 +1501,9 @@ class ActivityListItem final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr description_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr icon_;
   int32_t activity_id_;
-  int32_t type_;
-  int64_t start_time_;
-  int64_t end_time_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_activity_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ActivityState final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActivityState) */ {
- public:
-  inline ActivityState() : ActivityState(nullptr) {}
-  ~ActivityState() override;
-  explicit constexpr ActivityState(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  ActivityState(const ActivityState& from);
-  ActivityState(ActivityState&& from) noexcept
-    : ActivityState() {
-    *this = ::std::move(from);
-  }
-
-  inline ActivityState& operator=(const ActivityState& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ActivityState& operator=(ActivityState&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ActivityState& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ActivityState* internal_default_instance() {
-    return reinterpret_cast<const ActivityState*>(
-               &_ActivityState_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    9;
-
-  friend void swap(ActivityState& a, ActivityState& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(ActivityState* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ActivityState* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ActivityState* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ActivityState>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ActivityState& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ActivityState& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ActivityState* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.ActivityState";
-  }
-  protected:
-  explicit ActivityState(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kRewardsFieldNumber = 4,
-    kStatusFieldNumber = 2,
-    kProgressFieldNumber = 3,
-    kCreateTimeFieldNumber = 5,
-    kUpdateTimeFieldNumber = 6,
-    kActivityIdFieldNumber = 1,
-  };
-  // repeated .cproto.RewardStatus rewards = 4;
-  int rewards_size() const;
-  private:
-  int _internal_rewards_size() const;
-  public:
-  void clear_rewards();
-  ::cproto::RewardStatus* mutable_rewards(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::RewardStatus >*
-      mutable_rewards();
-  private:
-  const ::cproto::RewardStatus& _internal_rewards(int index) const;
-  ::cproto::RewardStatus* _internal_add_rewards();
-  public:
-  const ::cproto::RewardStatus& rewards(int index) const;
-  ::cproto::RewardStatus* add_rewards();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::RewardStatus >&
-      rewards() const;
-
-  // string status = 2;
-  void clear_status();
-  const std::string& status() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_status(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_status();
-  PROTOBUF_NODISCARD std::string* release_status();
-  void set_allocated_status(std::string* status);
-  private:
-  const std::string& _internal_status() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_status(const std::string& value);
-  std::string* _internal_mutable_status();
-  public:
-
-  // string progress = 3;
-  void clear_progress();
-  const std::string& progress() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_progress(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_progress();
-  PROTOBUF_NODISCARD std::string* release_progress();
-  void set_allocated_progress(std::string* progress);
-  private:
-  const std::string& _internal_progress() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_progress(const std::string& value);
-  std::string* _internal_mutable_progress();
-  public:
-
-  // int64 create_time = 5;
-  void clear_create_time();
-  int64_t create_time() const;
-  void set_create_time(int64_t value);
-  private:
-  int64_t _internal_create_time() const;
-  void _internal_set_create_time(int64_t value);
-  public:
-
-  // int64 update_time = 6;
-  void clear_update_time();
-  int64_t update_time() const;
-  void set_update_time(int64_t value);
-  private:
-  int64_t _internal_update_time() const;
-  void _internal_set_update_time(int64_t value);
-  public:
-
-  // int32 activity_id = 1;
-  void clear_activity_id();
-  int32_t activity_id() const;
-  void set_activity_id(int32_t value);
-  private:
-  int32_t _internal_activity_id() const;
-  void _internal_set_activity_id(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.ActivityState)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::RewardStatus > rewards_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr progress_;
-  int64_t create_time_;
-  int64_t update_time_;
-  int32_t activity_id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_activity_2eproto;
-};
-// -------------------------------------------------------------------
-
-class RewardStatus final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.RewardStatus) */ {
- public:
-  inline RewardStatus() : RewardStatus(nullptr) {}
-  ~RewardStatus() override;
-  explicit constexpr RewardStatus(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  RewardStatus(const RewardStatus& from);
-  RewardStatus(RewardStatus&& from) noexcept
-    : RewardStatus() {
-    *this = ::std::move(from);
-  }
-
-  inline RewardStatus& operator=(const RewardStatus& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline RewardStatus& operator=(RewardStatus&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const RewardStatus& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const RewardStatus* internal_default_instance() {
-    return reinterpret_cast<const RewardStatus*>(
-               &_RewardStatus_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    10;
-
-  friend void swap(RewardStatus& a, RewardStatus& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(RewardStatus* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(RewardStatus* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  RewardStatus* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<RewardStatus>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const RewardStatus& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const RewardStatus& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(RewardStatus* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.RewardStatus";
-  }
-  protected:
-  explicit RewardStatus(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kStatusFieldNumber = 2,
-    kClaimTimeFieldNumber = 3,
-    kRewardIdFieldNumber = 1,
-  };
-  // string status = 2;
-  void clear_status();
-  const std::string& status() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_status(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_status();
-  PROTOBUF_NODISCARD std::string* release_status();
-  void set_allocated_status(std::string* status);
-  private:
-  const std::string& _internal_status() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_status(const std::string& value);
-  std::string* _internal_mutable_status();
-  public:
-
-  // int64 claim_time = 3;
-  void clear_claim_time();
-  int64_t claim_time() const;
-  void set_claim_time(int64_t value);
-  private:
-  int64_t _internal_claim_time() const;
-  void _internal_set_claim_time(int64_t value);
-  public:
-
-  // int32 reward_id = 1;
-  void clear_reward_id();
-  int32_t reward_id() const;
-  void set_reward_id(int32_t value);
-  private:
-  int32_t _internal_reward_id() const;
-  void _internal_set_reward_id(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.RewardStatus)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_;
-  int64_t claim_time_;
-  int32_t reward_id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_activity_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ActivityReward final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ActivityReward) */ {
- public:
-  inline ActivityReward() : ActivityReward(nullptr) {}
-  ~ActivityReward() override;
-  explicit constexpr ActivityReward(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  ActivityReward(const ActivityReward& from);
-  ActivityReward(ActivityReward&& from) noexcept
-    : ActivityReward() {
-    *this = ::std::move(from);
-  }
-
-  inline ActivityReward& operator=(const ActivityReward& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ActivityReward& operator=(ActivityReward&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ActivityReward& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ActivityReward* internal_default_instance() {
-    return reinterpret_cast<const ActivityReward*>(
-               &_ActivityReward_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    11;
-
-  friend void swap(ActivityReward& a, ActivityReward& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(ActivityReward* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ActivityReward* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ActivityReward* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ActivityReward>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ActivityReward& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ActivityReward& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ActivityReward* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cproto.ActivityReward";
-  }
-  protected:
-  explicit ActivityReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kNameFieldNumber = 2,
-    kIdFieldNumber = 1,
-    kTypeFieldNumber = 3,
-    kAmountFieldNumber = 4,
-    kWeightFieldNumber = 5,
-    kRequiredFieldNumber = 6,
-  };
-  // string name = 2;
-  void clear_name();
-  const std::string& name() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_name(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* name);
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
-  std::string* _internal_mutable_name();
-  public:
-
-  // int32 id = 1;
-  void clear_id();
-  int32_t id() const;
-  void set_id(int32_t value);
-  private:
-  int32_t _internal_id() const;
-  void _internal_set_id(int32_t value);
-  public:
-
-  // int32 type = 3;
-  void clear_type();
-  int32_t type() const;
-  void set_type(int32_t value);
-  private:
-  int32_t _internal_type() const;
-  void _internal_set_type(int32_t value);
-  public:
-
-  // int64 amount = 4;
-  void clear_amount();
-  int64_t amount() const;
-  void set_amount(int64_t value);
-  private:
-  int64_t _internal_amount() const;
-  void _internal_set_amount(int64_t value);
-  public:
-
-  // int32 weight = 5;
-  void clear_weight();
-  int32_t weight() const;
-  void set_weight(int32_t value);
-  private:
-  int32_t _internal_weight() const;
-  void _internal_set_weight(int32_t value);
-  public:
-
-  // int32 required = 6;
-  void clear_required();
-  int32_t required() const;
-  void set_required(int32_t value);
-  private:
-  int32_t _internal_required() const;
-  void _internal_set_required(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:cproto.ActivityReward)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-  int32_t id_;
-  int32_t type_;
-  int64_t amount_;
-  int32_t weight_;
-  int32_t required_;
+  int32_t status_;
+  int64_t end_ts_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_activity_2eproto;
 };
@@ -2454,1357 +1696,439 @@ inline void ActivityAck::set_allocated_ack(::PROTOBUF_NAMESPACE_ID::Any* ack) {
 
 // -------------------------------------------------------------------
 
-// GetActivityListReq
+// ActsListReq
 
 // -------------------------------------------------------------------
 
-// GetActivityListAck
+// ActsListAck
 
-// bool success = 1;
-inline void GetActivityListAck::clear_success() {
-  success_ = false;
+// bool red_dot = 1;
+inline void ActsListAck::clear_red_dot() {
+  red_dot_ = false;
 }
-inline bool GetActivityListAck::_internal_success() const {
-  return success_;
+inline bool ActsListAck::_internal_red_dot() const {
+  return red_dot_;
 }
-inline bool GetActivityListAck::success() const {
-  // @@protoc_insertion_point(field_get:cproto.GetActivityListAck.success)
-  return _internal_success();
+inline bool ActsListAck::red_dot() const {
+  // @@protoc_insertion_point(field_get:cproto.ActsListAck.red_dot)
+  return _internal_red_dot();
 }
-inline void GetActivityListAck::_internal_set_success(bool value) {
+inline void ActsListAck::_internal_set_red_dot(bool value) {
   
-  success_ = value;
+  red_dot_ = value;
 }
-inline void GetActivityListAck::set_success(bool value) {
-  _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:cproto.GetActivityListAck.success)
-}
-
-// string message = 2;
-inline void GetActivityListAck::clear_message() {
-  message_.ClearToEmpty();
-}
-inline const std::string& GetActivityListAck::message() const {
-  // @@protoc_insertion_point(field_get:cproto.GetActivityListAck.message)
-  return _internal_message();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void GetActivityListAck::set_message(ArgT0&& arg0, ArgT... args) {
- 
- message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.GetActivityListAck.message)
-}
-inline std::string* GetActivityListAck::mutable_message() {
-  std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:cproto.GetActivityListAck.message)
-  return _s;
-}
-inline const std::string& GetActivityListAck::_internal_message() const {
-  return message_.Get();
-}
-inline void GetActivityListAck::_internal_set_message(const std::string& value) {
-  
-  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* GetActivityListAck::_internal_mutable_message() {
-  
-  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* GetActivityListAck::release_message() {
-  // @@protoc_insertion_point(field_release:cproto.GetActivityListAck.message)
-  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void GetActivityListAck::set_allocated_message(std::string* message) {
-  if (message != nullptr) {
-    
-  } else {
-    
-  }
-  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.GetActivityListAck.message)
+inline void ActsListAck::set_red_dot(bool value) {
+  _internal_set_red_dot(value);
+  // @@protoc_insertion_point(field_set:cproto.ActsListAck.red_dot)
 }
 
-// repeated .cproto.ActivityListItem activities = 3;
-inline int GetActivityListAck::_internal_activities_size() const {
-  return activities_.size();
+// repeated .cproto.ActBrief acts = 2;
+inline int ActsListAck::_internal_acts_size() const {
+  return acts_.size();
 }
-inline int GetActivityListAck::activities_size() const {
-  return _internal_activities_size();
+inline int ActsListAck::acts_size() const {
+  return _internal_acts_size();
 }
-inline void GetActivityListAck::clear_activities() {
-  activities_.Clear();
+inline void ActsListAck::clear_acts() {
+  acts_.Clear();
 }
-inline ::cproto::ActivityListItem* GetActivityListAck::mutable_activities(int index) {
-  // @@protoc_insertion_point(field_mutable:cproto.GetActivityListAck.activities)
-  return activities_.Mutable(index);
+inline ::cproto::ActBrief* ActsListAck::mutable_acts(int index) {
+  // @@protoc_insertion_point(field_mutable:cproto.ActsListAck.acts)
+  return acts_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityListItem >*
-GetActivityListAck::mutable_activities() {
-  // @@protoc_insertion_point(field_mutable_list:cproto.GetActivityListAck.activities)
-  return &activities_;
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActBrief >*
+ActsListAck::mutable_acts() {
+  // @@protoc_insertion_point(field_mutable_list:cproto.ActsListAck.acts)
+  return &acts_;
 }
-inline const ::cproto::ActivityListItem& GetActivityListAck::_internal_activities(int index) const {
-  return activities_.Get(index);
+inline const ::cproto::ActBrief& ActsListAck::_internal_acts(int index) const {
+  return acts_.Get(index);
 }
-inline const ::cproto::ActivityListItem& GetActivityListAck::activities(int index) const {
-  // @@protoc_insertion_point(field_get:cproto.GetActivityListAck.activities)
-  return _internal_activities(index);
+inline const ::cproto::ActBrief& ActsListAck::acts(int index) const {
+  // @@protoc_insertion_point(field_get:cproto.ActsListAck.acts)
+  return _internal_acts(index);
 }
-inline ::cproto::ActivityListItem* GetActivityListAck::_internal_add_activities() {
-  return activities_.Add();
+inline ::cproto::ActBrief* ActsListAck::_internal_add_acts() {
+  return acts_.Add();
 }
-inline ::cproto::ActivityListItem* GetActivityListAck::add_activities() {
-  ::cproto::ActivityListItem* _add = _internal_add_activities();
-  // @@protoc_insertion_point(field_add:cproto.GetActivityListAck.activities)
+inline ::cproto::ActBrief* ActsListAck::add_acts() {
+  ::cproto::ActBrief* _add = _internal_add_acts();
+  // @@protoc_insertion_point(field_add:cproto.ActsListAck.acts)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityListItem >&
-GetActivityListAck::activities() const {
-  // @@protoc_insertion_point(field_list:cproto.GetActivityListAck.activities)
-  return activities_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActBrief >&
+ActsListAck::acts() const {
+  // @@protoc_insertion_point(field_list:cproto.ActsListAck.acts)
+  return acts_;
 }
 
 // -------------------------------------------------------------------
 
-// GetActivityStatusReq
+// ActPanelReq
 
 // int32 activity_id = 1;
-inline void GetActivityStatusReq::clear_activity_id() {
+inline void ActPanelReq::clear_activity_id() {
   activity_id_ = 0;
 }
-inline int32_t GetActivityStatusReq::_internal_activity_id() const {
+inline int32_t ActPanelReq::_internal_activity_id() const {
   return activity_id_;
 }
-inline int32_t GetActivityStatusReq::activity_id() const {
-  // @@protoc_insertion_point(field_get:cproto.GetActivityStatusReq.activity_id)
+inline int32_t ActPanelReq::activity_id() const {
+  // @@protoc_insertion_point(field_get:cproto.ActPanelReq.activity_id)
   return _internal_activity_id();
 }
-inline void GetActivityStatusReq::_internal_set_activity_id(int32_t value) {
+inline void ActPanelReq::_internal_set_activity_id(int32_t value) {
   
   activity_id_ = value;
 }
-inline void GetActivityStatusReq::set_activity_id(int32_t value) {
+inline void ActPanelReq::set_activity_id(int32_t value) {
   _internal_set_activity_id(value);
-  // @@protoc_insertion_point(field_set:cproto.GetActivityStatusReq.activity_id)
+  // @@protoc_insertion_point(field_set:cproto.ActPanelReq.activity_id)
 }
 
 // -------------------------------------------------------------------
 
-// GetActivityStatusAck
+// ActPanelAck
 
-// bool success = 1;
-inline void GetActivityStatusAck::clear_success() {
-  success_ = false;
+// int32 activity_id = 1;
+inline void ActPanelAck::clear_activity_id() {
+  activity_id_ = 0;
 }
-inline bool GetActivityStatusAck::_internal_success() const {
-  return success_;
+inline int32_t ActPanelAck::_internal_activity_id() const {
+  return activity_id_;
 }
-inline bool GetActivityStatusAck::success() const {
-  // @@protoc_insertion_point(field_get:cproto.GetActivityStatusAck.success)
-  return _internal_success();
+inline int32_t ActPanelAck::activity_id() const {
+  // @@protoc_insertion_point(field_get:cproto.ActPanelAck.activity_id)
+  return _internal_activity_id();
 }
-inline void GetActivityStatusAck::_internal_set_success(bool value) {
+inline void ActPanelAck::_internal_set_activity_id(int32_t value) {
   
-  success_ = value;
+  activity_id_ = value;
 }
-inline void GetActivityStatusAck::set_success(bool value) {
-  _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:cproto.GetActivityStatusAck.success)
+inline void ActPanelAck::set_activity_id(int32_t value) {
+  _internal_set_activity_id(value);
+  // @@protoc_insertion_point(field_set:cproto.ActPanelAck.activity_id)
 }
 
-// string message = 2;
-inline void GetActivityStatusAck::clear_message() {
-  message_.ClearToEmpty();
+// string json_data = 2;
+inline void ActPanelAck::clear_json_data() {
+  json_data_.ClearToEmpty();
 }
-inline const std::string& GetActivityStatusAck::message() const {
-  // @@protoc_insertion_point(field_get:cproto.GetActivityStatusAck.message)
-  return _internal_message();
+inline const std::string& ActPanelAck::json_data() const {
+  // @@protoc_insertion_point(field_get:cproto.ActPanelAck.json_data)
+  return _internal_json_data();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GetActivityStatusAck::set_message(ArgT0&& arg0, ArgT... args) {
+void ActPanelAck::set_json_data(ArgT0&& arg0, ArgT... args) {
  
- message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.GetActivityStatusAck.message)
+ json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.ActPanelAck.json_data)
 }
-inline std::string* GetActivityStatusAck::mutable_message() {
-  std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:cproto.GetActivityStatusAck.message)
+inline std::string* ActPanelAck::mutable_json_data() {
+  std::string* _s = _internal_mutable_json_data();
+  // @@protoc_insertion_point(field_mutable:cproto.ActPanelAck.json_data)
   return _s;
 }
-inline const std::string& GetActivityStatusAck::_internal_message() const {
-  return message_.Get();
+inline const std::string& ActPanelAck::_internal_json_data() const {
+  return json_data_.Get();
 }
-inline void GetActivityStatusAck::_internal_set_message(const std::string& value) {
+inline void ActPanelAck::_internal_set_json_data(const std::string& value) {
   
-  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* GetActivityStatusAck::_internal_mutable_message() {
+inline std::string* ActPanelAck::_internal_mutable_json_data() {
   
-  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return json_data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* GetActivityStatusAck::release_message() {
-  // @@protoc_insertion_point(field_release:cproto.GetActivityStatusAck.message)
-  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* ActPanelAck::release_json_data() {
+  // @@protoc_insertion_point(field_release:cproto.ActPanelAck.json_data)
+  return json_data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void GetActivityStatusAck::set_allocated_message(std::string* message) {
-  if (message != nullptr) {
+inline void ActPanelAck::set_allocated_json_data(std::string* json_data) {
+  if (json_data != nullptr) {
     
   } else {
     
   }
-  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+  json_data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), json_data,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (json_data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.GetActivityStatusAck.message)
+  // @@protoc_insertion_point(field_set_allocated:cproto.ActPanelAck.json_data)
 }
 
-// .cproto.ActivityState status = 3;
-inline bool GetActivityStatusAck::_internal_has_status() const {
-  return this != internal_default_instance() && status_ != nullptr;
+// -------------------------------------------------------------------
+
+// ActRewardReq
+
+// int32 activity_id = 1;
+inline void ActRewardReq::clear_activity_id() {
+  activity_id_ = 0;
 }
-inline bool GetActivityStatusAck::has_status() const {
-  return _internal_has_status();
+inline int32_t ActRewardReq::_internal_activity_id() const {
+  return activity_id_;
 }
-inline void GetActivityStatusAck::clear_status() {
-  if (GetArenaForAllocation() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+inline int32_t ActRewardReq::activity_id() const {
+  // @@protoc_insertion_point(field_get:cproto.ActRewardReq.activity_id)
+  return _internal_activity_id();
 }
-inline const ::cproto::ActivityState& GetActivityStatusAck::_internal_status() const {
-  const ::cproto::ActivityState* p = status_;
-  return p != nullptr ? *p : reinterpret_cast<const ::cproto::ActivityState&>(
-      ::cproto::_ActivityState_default_instance_);
+inline void ActRewardReq::_internal_set_activity_id(int32_t value) {
+  
+  activity_id_ = value;
 }
-inline const ::cproto::ActivityState& GetActivityStatusAck::status() const {
-  // @@protoc_insertion_point(field_get:cproto.GetActivityStatusAck.status)
-  return _internal_status();
+inline void ActRewardReq::set_activity_id(int32_t value) {
+  _internal_set_activity_id(value);
+  // @@protoc_insertion_point(field_set:cproto.ActRewardReq.activity_id)
 }
-inline void GetActivityStatusAck::unsafe_arena_set_allocated_status(
-    ::cproto::ActivityState* status) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(status_);
-  }
-  status_ = status;
-  if (status) {
+
+// string json_data = 2;
+inline void ActRewardReq::clear_json_data() {
+  json_data_.ClearToEmpty();
+}
+inline const std::string& ActRewardReq::json_data() const {
+  // @@protoc_insertion_point(field_get:cproto.ActRewardReq.json_data)
+  return _internal_json_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ActRewardReq::set_json_data(ArgT0&& arg0, ArgT... args) {
+ 
+ json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.ActRewardReq.json_data)
+}
+inline std::string* ActRewardReq::mutable_json_data() {
+  std::string* _s = _internal_mutable_json_data();
+  // @@protoc_insertion_point(field_mutable:cproto.ActRewardReq.json_data)
+  return _s;
+}
+inline const std::string& ActRewardReq::_internal_json_data() const {
+  return json_data_.Get();
+}
+inline void ActRewardReq::_internal_set_json_data(const std::string& value) {
+  
+  json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ActRewardReq::_internal_mutable_json_data() {
+  
+  return json_data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ActRewardReq::release_json_data() {
+  // @@protoc_insertion_point(field_release:cproto.ActRewardReq.json_data)
+  return json_data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ActRewardReq::set_allocated_json_data(std::string* json_data) {
+  if (json_data != nullptr) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cproto.GetActivityStatusAck.status)
-}
-inline ::cproto::ActivityState* GetActivityStatusAck::release_status() {
-  
-  ::cproto::ActivityState* temp = status_;
-  status_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  json_data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), json_data,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (json_data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.ActRewardReq.json_data)
 }
-inline ::cproto::ActivityState* GetActivityStatusAck::unsafe_arena_release_status() {
-  // @@protoc_insertion_point(field_release:cproto.GetActivityStatusAck.status)
-  
-  ::cproto::ActivityState* temp = status_;
-  status_ = nullptr;
-  return temp;
+
+// -------------------------------------------------------------------
+
+// ActRewardAck
+
+// int32 activity_id = 1;
+inline void ActRewardAck::clear_activity_id() {
+  activity_id_ = 0;
 }
-inline ::cproto::ActivityState* GetActivityStatusAck::_internal_mutable_status() {
+inline int32_t ActRewardAck::_internal_activity_id() const {
+  return activity_id_;
+}
+inline int32_t ActRewardAck::activity_id() const {
+  // @@protoc_insertion_point(field_get:cproto.ActRewardAck.activity_id)
+  return _internal_activity_id();
+}
+inline void ActRewardAck::_internal_set_activity_id(int32_t value) {
   
-  if (status_ == nullptr) {
-    auto* p = CreateMaybeMessage<::cproto::ActivityState>(GetArenaForAllocation());
-    status_ = p;
+  activity_id_ = value;
+}
+inline void ActRewardAck::set_activity_id(int32_t value) {
+  _internal_set_activity_id(value);
+  // @@protoc_insertion_point(field_set:cproto.ActRewardAck.activity_id)
+}
+
+// string json_data = 2;
+inline void ActRewardAck::clear_json_data() {
+  json_data_.ClearToEmpty();
+}
+inline const std::string& ActRewardAck::json_data() const {
+  // @@protoc_insertion_point(field_get:cproto.ActRewardAck.json_data)
+  return _internal_json_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ActRewardAck::set_json_data(ArgT0&& arg0, ArgT... args) {
+ 
+ json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.ActRewardAck.json_data)
+}
+inline std::string* ActRewardAck::mutable_json_data() {
+  std::string* _s = _internal_mutable_json_data();
+  // @@protoc_insertion_point(field_mutable:cproto.ActRewardAck.json_data)
+  return _s;
+}
+inline const std::string& ActRewardAck::_internal_json_data() const {
+  return json_data_.Get();
+}
+inline void ActRewardAck::_internal_set_json_data(const std::string& value) {
+  
+  json_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ActRewardAck::_internal_mutable_json_data() {
+  
+  return json_data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ActRewardAck::release_json_data() {
+  // @@protoc_insertion_point(field_release:cproto.ActRewardAck.json_data)
+  return json_data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ActRewardAck::set_allocated_json_data(std::string* json_data) {
+  if (json_data != nullptr) {
+    
+  } else {
+    
   }
+  json_data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), json_data,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (json_data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    json_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.ActRewardAck.json_data)
+}
+
+// -------------------------------------------------------------------
+
+// ActBrief
+
+// int32 activity_id = 1;
+inline void ActBrief::clear_activity_id() {
+  activity_id_ = 0;
+}
+inline int32_t ActBrief::_internal_activity_id() const {
+  return activity_id_;
+}
+inline int32_t ActBrief::activity_id() const {
+  // @@protoc_insertion_point(field_get:cproto.ActBrief.activity_id)
+  return _internal_activity_id();
+}
+inline void ActBrief::_internal_set_activity_id(int32_t value) {
+  
+  activity_id_ = value;
+}
+inline void ActBrief::set_activity_id(int32_t value) {
+  _internal_set_activity_id(value);
+  // @@protoc_insertion_point(field_set:cproto.ActBrief.activity_id)
+}
+
+// string name = 2;
+inline void ActBrief::clear_name() {
+  name_.ClearToEmpty();
+}
+inline const std::string& ActBrief::name() const {
+  // @@protoc_insertion_point(field_get:cproto.ActBrief.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ActBrief::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.ActBrief.name)
+}
+inline std::string* ActBrief::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:cproto.ActBrief.name)
+  return _s;
+}
+inline const std::string& ActBrief::_internal_name() const {
+  return name_.Get();
+}
+inline void ActBrief::_internal_set_name(const std::string& value) {
+  
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ActBrief::_internal_mutable_name() {
+  
+  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ActBrief::release_name() {
+  // @@protoc_insertion_point(field_release:cproto.ActBrief.name)
+  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ActBrief::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (name_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.ActBrief.name)
+}
+
+// int32 status = 3;
+inline void ActBrief::clear_status() {
+  status_ = 0;
+}
+inline int32_t ActBrief::_internal_status() const {
   return status_;
 }
-inline ::cproto::ActivityState* GetActivityStatusAck::mutable_status() {
-  ::cproto::ActivityState* _msg = _internal_mutable_status();
-  // @@protoc_insertion_point(field_mutable:cproto.GetActivityStatusAck.status)
-  return _msg;
-}
-inline void GetActivityStatusAck::set_allocated_status(::cproto::ActivityState* status) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete status_;
-  }
-  if (status) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::cproto::ActivityState>::GetOwningArena(status);
-    if (message_arena != submessage_arena) {
-      status = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, status, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  status_ = status;
-  // @@protoc_insertion_point(field_set_allocated:cproto.GetActivityStatusAck.status)
-}
-
-// -------------------------------------------------------------------
-
-// ActivityActionReq
-
-// int32 activity_id = 1;
-inline void ActivityActionReq::clear_activity_id() {
-  activity_id_ = 0;
-}
-inline int32_t ActivityActionReq::_internal_activity_id() const {
-  return activity_id_;
-}
-inline int32_t ActivityActionReq::activity_id() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityActionReq.activity_id)
-  return _internal_activity_id();
-}
-inline void ActivityActionReq::_internal_set_activity_id(int32_t value) {
-  
-  activity_id_ = value;
-}
-inline void ActivityActionReq::set_activity_id(int32_t value) {
-  _internal_set_activity_id(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityActionReq.activity_id)
-}
-
-// string action = 2;
-inline void ActivityActionReq::clear_action() {
-  action_.ClearToEmpty();
-}
-inline const std::string& ActivityActionReq::action() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityActionReq.action)
-  return _internal_action();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityActionReq::set_action(ArgT0&& arg0, ArgT... args) {
- 
- action_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityActionReq.action)
-}
-inline std::string* ActivityActionReq::mutable_action() {
-  std::string* _s = _internal_mutable_action();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityActionReq.action)
-  return _s;
-}
-inline const std::string& ActivityActionReq::_internal_action() const {
-  return action_.Get();
-}
-inline void ActivityActionReq::_internal_set_action(const std::string& value) {
-  
-  action_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityActionReq::_internal_mutable_action() {
-  
-  return action_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityActionReq::release_action() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityActionReq.action)
-  return action_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityActionReq::set_allocated_action(std::string* action) {
-  if (action != nullptr) {
-    
-  } else {
-    
-  }
-  action_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), action,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (action_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    action_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityActionReq.action)
-}
-
-// string params = 3;
-inline void ActivityActionReq::clear_params() {
-  params_.ClearToEmpty();
-}
-inline const std::string& ActivityActionReq::params() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityActionReq.params)
-  return _internal_params();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityActionReq::set_params(ArgT0&& arg0, ArgT... args) {
- 
- params_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityActionReq.params)
-}
-inline std::string* ActivityActionReq::mutable_params() {
-  std::string* _s = _internal_mutable_params();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityActionReq.params)
-  return _s;
-}
-inline const std::string& ActivityActionReq::_internal_params() const {
-  return params_.Get();
-}
-inline void ActivityActionReq::_internal_set_params(const std::string& value) {
-  
-  params_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityActionReq::_internal_mutable_params() {
-  
-  return params_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityActionReq::release_params() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityActionReq.params)
-  return params_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityActionReq::set_allocated_params(std::string* params) {
-  if (params != nullptr) {
-    
-  } else {
-    
-  }
-  params_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), params,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (params_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    params_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityActionReq.params)
-}
-
-// -------------------------------------------------------------------
-
-// ActivityActionAck
-
-// bool success = 1;
-inline void ActivityActionAck::clear_success() {
-  success_ = false;
-}
-inline bool ActivityActionAck::_internal_success() const {
-  return success_;
-}
-inline bool ActivityActionAck::success() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityActionAck.success)
-  return _internal_success();
-}
-inline void ActivityActionAck::_internal_set_success(bool value) {
-  
-  success_ = value;
-}
-inline void ActivityActionAck::set_success(bool value) {
-  _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityActionAck.success)
-}
-
-// string message = 2;
-inline void ActivityActionAck::clear_message() {
-  message_.ClearToEmpty();
-}
-inline const std::string& ActivityActionAck::message() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityActionAck.message)
-  return _internal_message();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityActionAck::set_message(ArgT0&& arg0, ArgT... args) {
- 
- message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityActionAck.message)
-}
-inline std::string* ActivityActionAck::mutable_message() {
-  std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityActionAck.message)
-  return _s;
-}
-inline const std::string& ActivityActionAck::_internal_message() const {
-  return message_.Get();
-}
-inline void ActivityActionAck::_internal_set_message(const std::string& value) {
-  
-  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityActionAck::_internal_mutable_message() {
-  
-  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityActionAck::release_message() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityActionAck.message)
-  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityActionAck::set_allocated_message(std::string* message) {
-  if (message != nullptr) {
-    
-  } else {
-    
-  }
-  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityActionAck.message)
-}
-
-// repeated .cproto.ActivityReward rewards = 3;
-inline int ActivityActionAck::_internal_rewards_size() const {
-  return rewards_.size();
-}
-inline int ActivityActionAck::rewards_size() const {
-  return _internal_rewards_size();
-}
-inline void ActivityActionAck::clear_rewards() {
-  rewards_.Clear();
-}
-inline ::cproto::ActivityReward* ActivityActionAck::mutable_rewards(int index) {
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityActionAck.rewards)
-  return rewards_.Mutable(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityReward >*
-ActivityActionAck::mutable_rewards() {
-  // @@protoc_insertion_point(field_mutable_list:cproto.ActivityActionAck.rewards)
-  return &rewards_;
-}
-inline const ::cproto::ActivityReward& ActivityActionAck::_internal_rewards(int index) const {
-  return rewards_.Get(index);
-}
-inline const ::cproto::ActivityReward& ActivityActionAck::rewards(int index) const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityActionAck.rewards)
-  return _internal_rewards(index);
-}
-inline ::cproto::ActivityReward* ActivityActionAck::_internal_add_rewards() {
-  return rewards_.Add();
-}
-inline ::cproto::ActivityReward* ActivityActionAck::add_rewards() {
-  ::cproto::ActivityReward* _add = _internal_add_rewards();
-  // @@protoc_insertion_point(field_add:cproto.ActivityActionAck.rewards)
-  return _add;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::ActivityReward >&
-ActivityActionAck::rewards() const {
-  // @@protoc_insertion_point(field_list:cproto.ActivityActionAck.rewards)
-  return rewards_;
-}
-
-// string data = 4;
-inline void ActivityActionAck::clear_data() {
-  data_.ClearToEmpty();
-}
-inline const std::string& ActivityActionAck::data() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityActionAck.data)
-  return _internal_data();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityActionAck::set_data(ArgT0&& arg0, ArgT... args) {
- 
- data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityActionAck.data)
-}
-inline std::string* ActivityActionAck::mutable_data() {
-  std::string* _s = _internal_mutable_data();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityActionAck.data)
-  return _s;
-}
-inline const std::string& ActivityActionAck::_internal_data() const {
-  return data_.Get();
-}
-inline void ActivityActionAck::_internal_set_data(const std::string& value) {
-  
-  data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityActionAck::_internal_mutable_data() {
-  
-  return data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityActionAck::release_data() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityActionAck.data)
-  return data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityActionAck::set_allocated_data(std::string* data) {
-  if (data != nullptr) {
-    
-  } else {
-    
-  }
-  data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), data,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityActionAck.data)
-}
-
-// -------------------------------------------------------------------
-
-// ActivityListItem
-
-// int32 activity_id = 1;
-inline void ActivityListItem::clear_activity_id() {
-  activity_id_ = 0;
-}
-inline int32_t ActivityListItem::_internal_activity_id() const {
-  return activity_id_;
-}
-inline int32_t ActivityListItem::activity_id() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityListItem.activity_id)
-  return _internal_activity_id();
-}
-inline void ActivityListItem::_internal_set_activity_id(int32_t value) {
-  
-  activity_id_ = value;
-}
-inline void ActivityListItem::set_activity_id(int32_t value) {
-  _internal_set_activity_id(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityListItem.activity_id)
-}
-
-// string name = 2;
-inline void ActivityListItem::clear_name() {
-  name_.ClearToEmpty();
-}
-inline const std::string& ActivityListItem::name() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityListItem.name)
-  return _internal_name();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityListItem::set_name(ArgT0&& arg0, ArgT... args) {
- 
- name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityListItem.name)
-}
-inline std::string* ActivityListItem::mutable_name() {
-  std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityListItem.name)
-  return _s;
-}
-inline const std::string& ActivityListItem::_internal_name() const {
-  return name_.Get();
-}
-inline void ActivityListItem::_internal_set_name(const std::string& value) {
-  
-  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityListItem::_internal_mutable_name() {
-  
-  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityListItem::release_name() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityListItem.name)
-  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityListItem::set_allocated_name(std::string* name) {
-  if (name != nullptr) {
-    
-  } else {
-    
-  }
-  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (name_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityListItem.name)
-}
-
-// int32 type = 3;
-inline void ActivityListItem::clear_type() {
-  type_ = 0;
-}
-inline int32_t ActivityListItem::_internal_type() const {
-  return type_;
-}
-inline int32_t ActivityListItem::type() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityListItem.type)
-  return _internal_type();
-}
-inline void ActivityListItem::_internal_set_type(int32_t value) {
-  
-  type_ = value;
-}
-inline void ActivityListItem::set_type(int32_t value) {
-  _internal_set_type(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityListItem.type)
-}
-
-// string status = 4;
-inline void ActivityListItem::clear_status() {
-  status_.ClearToEmpty();
-}
-inline const std::string& ActivityListItem::status() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityListItem.status)
+inline int32_t ActBrief::status() const {
+  // @@protoc_insertion_point(field_get:cproto.ActBrief.status)
   return _internal_status();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityListItem::set_status(ArgT0&& arg0, ArgT... args) {
- 
- status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityListItem.status)
-}
-inline std::string* ActivityListItem::mutable_status() {
-  std::string* _s = _internal_mutable_status();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityListItem.status)
-  return _s;
-}
-inline const std::string& ActivityListItem::_internal_status() const {
-  return status_.Get();
-}
-inline void ActivityListItem::_internal_set_status(const std::string& value) {
+inline void ActBrief::_internal_set_status(int32_t value) {
   
-  status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  status_ = value;
 }
-inline std::string* ActivityListItem::_internal_mutable_status() {
-  
-  return status_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityListItem::release_status() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityListItem.status)
-  return status_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityListItem::set_allocated_status(std::string* status) {
-  if (status != nullptr) {
-    
-  } else {
-    
-  }
-  status_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), status,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (status_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityListItem.status)
+inline void ActBrief::set_status(int32_t value) {
+  _internal_set_status(value);
+  // @@protoc_insertion_point(field_set:cproto.ActBrief.status)
 }
 
-// string description = 5;
-inline void ActivityListItem::clear_description() {
-  description_.ClearToEmpty();
+// int64 end_ts = 4;
+inline void ActBrief::clear_end_ts() {
+  end_ts_ = int64_t{0};
 }
-inline const std::string& ActivityListItem::description() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityListItem.description)
-  return _internal_description();
+inline int64_t ActBrief::_internal_end_ts() const {
+  return end_ts_;
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityListItem::set_description(ArgT0&& arg0, ArgT... args) {
- 
- description_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityListItem.description)
+inline int64_t ActBrief::end_ts() const {
+  // @@protoc_insertion_point(field_get:cproto.ActBrief.end_ts)
+  return _internal_end_ts();
 }
-inline std::string* ActivityListItem::mutable_description() {
-  std::string* _s = _internal_mutable_description();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityListItem.description)
-  return _s;
-}
-inline const std::string& ActivityListItem::_internal_description() const {
-  return description_.Get();
-}
-inline void ActivityListItem::_internal_set_description(const std::string& value) {
+inline void ActBrief::_internal_set_end_ts(int64_t value) {
   
-  description_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityListItem::_internal_mutable_description() {
-  
-  return description_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityListItem::release_description() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityListItem.description)
-  return description_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityListItem::set_allocated_description(std::string* description) {
-  if (description != nullptr) {
-    
-  } else {
-    
-  }
-  description_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), description,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (description_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    description_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityListItem.description)
-}
-
-// string icon = 6;
-inline void ActivityListItem::clear_icon() {
-  icon_.ClearToEmpty();
-}
-inline const std::string& ActivityListItem::icon() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityListItem.icon)
-  return _internal_icon();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityListItem::set_icon(ArgT0&& arg0, ArgT... args) {
- 
- icon_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityListItem.icon)
-}
-inline std::string* ActivityListItem::mutable_icon() {
-  std::string* _s = _internal_mutable_icon();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityListItem.icon)
-  return _s;
-}
-inline const std::string& ActivityListItem::_internal_icon() const {
-  return icon_.Get();
-}
-inline void ActivityListItem::_internal_set_icon(const std::string& value) {
-  
-  icon_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityListItem::_internal_mutable_icon() {
-  
-  return icon_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityListItem::release_icon() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityListItem.icon)
-  return icon_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityListItem::set_allocated_icon(std::string* icon) {
-  if (icon != nullptr) {
-    
-  } else {
-    
-  }
-  icon_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), icon,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (icon_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    icon_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityListItem.icon)
-}
-
-// int64 start_time = 7;
-inline void ActivityListItem::clear_start_time() {
-  start_time_ = int64_t{0};
-}
-inline int64_t ActivityListItem::_internal_start_time() const {
-  return start_time_;
-}
-inline int64_t ActivityListItem::start_time() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityListItem.start_time)
-  return _internal_start_time();
-}
-inline void ActivityListItem::_internal_set_start_time(int64_t value) {
-  
-  start_time_ = value;
-}
-inline void ActivityListItem::set_start_time(int64_t value) {
-  _internal_set_start_time(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityListItem.start_time)
-}
-
-// int64 end_time = 8;
-inline void ActivityListItem::clear_end_time() {
-  end_time_ = int64_t{0};
-}
-inline int64_t ActivityListItem::_internal_end_time() const {
-  return end_time_;
-}
-inline int64_t ActivityListItem::end_time() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityListItem.end_time)
-  return _internal_end_time();
-}
-inline void ActivityListItem::_internal_set_end_time(int64_t value) {
-  
-  end_time_ = value;
-}
-inline void ActivityListItem::set_end_time(int64_t value) {
-  _internal_set_end_time(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityListItem.end_time)
-}
-
-// -------------------------------------------------------------------
-
-// ActivityState
-
-// int32 activity_id = 1;
-inline void ActivityState::clear_activity_id() {
-  activity_id_ = 0;
-}
-inline int32_t ActivityState::_internal_activity_id() const {
-  return activity_id_;
-}
-inline int32_t ActivityState::activity_id() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityState.activity_id)
-  return _internal_activity_id();
-}
-inline void ActivityState::_internal_set_activity_id(int32_t value) {
-  
-  activity_id_ = value;
-}
-inline void ActivityState::set_activity_id(int32_t value) {
-  _internal_set_activity_id(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityState.activity_id)
-}
-
-// string status = 2;
-inline void ActivityState::clear_status() {
-  status_.ClearToEmpty();
-}
-inline const std::string& ActivityState::status() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityState.status)
-  return _internal_status();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityState::set_status(ArgT0&& arg0, ArgT... args) {
- 
- status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityState.status)
-}
-inline std::string* ActivityState::mutable_status() {
-  std::string* _s = _internal_mutable_status();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityState.status)
-  return _s;
-}
-inline const std::string& ActivityState::_internal_status() const {
-  return status_.Get();
-}
-inline void ActivityState::_internal_set_status(const std::string& value) {
-  
-  status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityState::_internal_mutable_status() {
-  
-  return status_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityState::release_status() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityState.status)
-  return status_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityState::set_allocated_status(std::string* status) {
-  if (status != nullptr) {
-    
-  } else {
-    
-  }
-  status_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), status,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (status_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityState.status)
-}
-
-// string progress = 3;
-inline void ActivityState::clear_progress() {
-  progress_.ClearToEmpty();
-}
-inline const std::string& ActivityState::progress() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityState.progress)
-  return _internal_progress();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityState::set_progress(ArgT0&& arg0, ArgT... args) {
- 
- progress_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityState.progress)
-}
-inline std::string* ActivityState::mutable_progress() {
-  std::string* _s = _internal_mutable_progress();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityState.progress)
-  return _s;
-}
-inline const std::string& ActivityState::_internal_progress() const {
-  return progress_.Get();
-}
-inline void ActivityState::_internal_set_progress(const std::string& value) {
-  
-  progress_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityState::_internal_mutable_progress() {
-  
-  return progress_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityState::release_progress() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityState.progress)
-  return progress_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityState::set_allocated_progress(std::string* progress) {
-  if (progress != nullptr) {
-    
-  } else {
-    
-  }
-  progress_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), progress,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (progress_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    progress_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityState.progress)
-}
-
-// repeated .cproto.RewardStatus rewards = 4;
-inline int ActivityState::_internal_rewards_size() const {
-  return rewards_.size();
-}
-inline int ActivityState::rewards_size() const {
-  return _internal_rewards_size();
-}
-inline void ActivityState::clear_rewards() {
-  rewards_.Clear();
-}
-inline ::cproto::RewardStatus* ActivityState::mutable_rewards(int index) {
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityState.rewards)
-  return rewards_.Mutable(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::RewardStatus >*
-ActivityState::mutable_rewards() {
-  // @@protoc_insertion_point(field_mutable_list:cproto.ActivityState.rewards)
-  return &rewards_;
-}
-inline const ::cproto::RewardStatus& ActivityState::_internal_rewards(int index) const {
-  return rewards_.Get(index);
-}
-inline const ::cproto::RewardStatus& ActivityState::rewards(int index) const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityState.rewards)
-  return _internal_rewards(index);
-}
-inline ::cproto::RewardStatus* ActivityState::_internal_add_rewards() {
-  return rewards_.Add();
-}
-inline ::cproto::RewardStatus* ActivityState::add_rewards() {
-  ::cproto::RewardStatus* _add = _internal_add_rewards();
-  // @@protoc_insertion_point(field_add:cproto.ActivityState.rewards)
-  return _add;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::RewardStatus >&
-ActivityState::rewards() const {
-  // @@protoc_insertion_point(field_list:cproto.ActivityState.rewards)
-  return rewards_;
-}
-
-// int64 create_time = 5;
-inline void ActivityState::clear_create_time() {
-  create_time_ = int64_t{0};
-}
-inline int64_t ActivityState::_internal_create_time() const {
-  return create_time_;
-}
-inline int64_t ActivityState::create_time() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityState.create_time)
-  return _internal_create_time();
-}
-inline void ActivityState::_internal_set_create_time(int64_t value) {
-  
-  create_time_ = value;
-}
-inline void ActivityState::set_create_time(int64_t value) {
-  _internal_set_create_time(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityState.create_time)
-}
-
-// int64 update_time = 6;
-inline void ActivityState::clear_update_time() {
-  update_time_ = int64_t{0};
-}
-inline int64_t ActivityState::_internal_update_time() const {
-  return update_time_;
-}
-inline int64_t ActivityState::update_time() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityState.update_time)
-  return _internal_update_time();
-}
-inline void ActivityState::_internal_set_update_time(int64_t value) {
-  
-  update_time_ = value;
-}
-inline void ActivityState::set_update_time(int64_t value) {
-  _internal_set_update_time(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityState.update_time)
-}
-
-// -------------------------------------------------------------------
-
-// RewardStatus
-
-// int32 reward_id = 1;
-inline void RewardStatus::clear_reward_id() {
-  reward_id_ = 0;
-}
-inline int32_t RewardStatus::_internal_reward_id() const {
-  return reward_id_;
-}
-inline int32_t RewardStatus::reward_id() const {
-  // @@protoc_insertion_point(field_get:cproto.RewardStatus.reward_id)
-  return _internal_reward_id();
-}
-inline void RewardStatus::_internal_set_reward_id(int32_t value) {
-  
-  reward_id_ = value;
-}
-inline void RewardStatus::set_reward_id(int32_t value) {
-  _internal_set_reward_id(value);
-  // @@protoc_insertion_point(field_set:cproto.RewardStatus.reward_id)
-}
-
-// string status = 2;
-inline void RewardStatus::clear_status() {
-  status_.ClearToEmpty();
-}
-inline const std::string& RewardStatus::status() const {
-  // @@protoc_insertion_point(field_get:cproto.RewardStatus.status)
-  return _internal_status();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void RewardStatus::set_status(ArgT0&& arg0, ArgT... args) {
- 
- status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.RewardStatus.status)
-}
-inline std::string* RewardStatus::mutable_status() {
-  std::string* _s = _internal_mutable_status();
-  // @@protoc_insertion_point(field_mutable:cproto.RewardStatus.status)
-  return _s;
-}
-inline const std::string& RewardStatus::_internal_status() const {
-  return status_.Get();
-}
-inline void RewardStatus::_internal_set_status(const std::string& value) {
-  
-  status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* RewardStatus::_internal_mutable_status() {
-  
-  return status_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* RewardStatus::release_status() {
-  // @@protoc_insertion_point(field_release:cproto.RewardStatus.status)
-  return status_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void RewardStatus::set_allocated_status(std::string* status) {
-  if (status != nullptr) {
-    
-  } else {
-    
-  }
-  status_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), status,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (status_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.RewardStatus.status)
-}
-
-// int64 claim_time = 3;
-inline void RewardStatus::clear_claim_time() {
-  claim_time_ = int64_t{0};
-}
-inline int64_t RewardStatus::_internal_claim_time() const {
-  return claim_time_;
-}
-inline int64_t RewardStatus::claim_time() const {
-  // @@protoc_insertion_point(field_get:cproto.RewardStatus.claim_time)
-  return _internal_claim_time();
-}
-inline void RewardStatus::_internal_set_claim_time(int64_t value) {
-  
-  claim_time_ = value;
-}
-inline void RewardStatus::set_claim_time(int64_t value) {
-  _internal_set_claim_time(value);
-  // @@protoc_insertion_point(field_set:cproto.RewardStatus.claim_time)
-}
-
-// -------------------------------------------------------------------
-
-// ActivityReward
-
-// int32 id = 1;
-inline void ActivityReward::clear_id() {
-  id_ = 0;
-}
-inline int32_t ActivityReward::_internal_id() const {
-  return id_;
-}
-inline int32_t ActivityReward::id() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityReward.id)
-  return _internal_id();
-}
-inline void ActivityReward::_internal_set_id(int32_t value) {
-  
-  id_ = value;
-}
-inline void ActivityReward::set_id(int32_t value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityReward.id)
-}
-
-// string name = 2;
-inline void ActivityReward::clear_name() {
-  name_.ClearToEmpty();
-}
-inline const std::string& ActivityReward::name() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityReward.name)
-  return _internal_name();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ActivityReward::set_name(ArgT0&& arg0, ArgT... args) {
- 
- name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.ActivityReward.name)
-}
-inline std::string* ActivityReward::mutable_name() {
-  std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:cproto.ActivityReward.name)
-  return _s;
-}
-inline const std::string& ActivityReward::_internal_name() const {
-  return name_.Get();
-}
-inline void ActivityReward::_internal_set_name(const std::string& value) {
-  
-  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ActivityReward::_internal_mutable_name() {
-  
-  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ActivityReward::release_name() {
-  // @@protoc_insertion_point(field_release:cproto.ActivityReward.name)
-  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ActivityReward::set_allocated_name(std::string* name) {
-  if (name != nullptr) {
-    
-  } else {
-    
-  }
-  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (name_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.ActivityReward.name)
-}
-
-// int32 type = 3;
-inline void ActivityReward::clear_type() {
-  type_ = 0;
-}
-inline int32_t ActivityReward::_internal_type() const {
-  return type_;
-}
-inline int32_t ActivityReward::type() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityReward.type)
-  return _internal_type();
-}
-inline void ActivityReward::_internal_set_type(int32_t value) {
-  
-  type_ = value;
-}
-inline void ActivityReward::set_type(int32_t value) {
-  _internal_set_type(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityReward.type)
-}
-
-// int64 amount = 4;
-inline void ActivityReward::clear_amount() {
-  amount_ = int64_t{0};
-}
-inline int64_t ActivityReward::_internal_amount() const {
-  return amount_;
-}
-inline int64_t ActivityReward::amount() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityReward.amount)
-  return _internal_amount();
-}
-inline void ActivityReward::_internal_set_amount(int64_t value) {
-  
-  amount_ = value;
-}
-inline void ActivityReward::set_amount(int64_t value) {
-  _internal_set_amount(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityReward.amount)
-}
-
-// int32 weight = 5;
-inline void ActivityReward::clear_weight() {
-  weight_ = 0;
-}
-inline int32_t ActivityReward::_internal_weight() const {
-  return weight_;
-}
-inline int32_t ActivityReward::weight() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityReward.weight)
-  return _internal_weight();
-}
-inline void ActivityReward::_internal_set_weight(int32_t value) {
-  
-  weight_ = value;
-}
-inline void ActivityReward::set_weight(int32_t value) {
-  _internal_set_weight(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityReward.weight)
-}
-
-// int32 required = 6;
-inline void ActivityReward::clear_required() {
-  required_ = 0;
-}
-inline int32_t ActivityReward::_internal_required() const {
-  return required_;
-}
-inline int32_t ActivityReward::required() const {
-  // @@protoc_insertion_point(field_get:cproto.ActivityReward.required)
-  return _internal_required();
-}
-inline void ActivityReward::_internal_set_required(int32_t value) {
-  
-  required_ = value;
-}
-inline void ActivityReward::set_required(int32_t value) {
-  _internal_set_required(value);
-  // @@protoc_insertion_point(field_set:cproto.ActivityReward.required)
+  end_ts_ = value;
+}
+inline void ActBrief::set_end_ts(int64_t value) {
+  _internal_set_end_ts(value);
+  // @@protoc_insertion_point(field_set:cproto.ActBrief.end_ts)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

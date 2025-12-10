@@ -113,26 +113,26 @@ func (x *ActivityAck) GetAck() *anypb.Any {
 }
 
 // 获取活动列表请求
-type GetActivityListReq struct {
+type ActsListReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetActivityListReq) Reset() {
-	*x = GetActivityListReq{}
+func (x *ActsListReq) Reset() {
+	*x = ActsListReq{}
 	mi := &file_activity_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetActivityListReq) String() string {
+func (x *ActsListReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetActivityListReq) ProtoMessage() {}
+func (*ActsListReq) ProtoMessage() {}
 
-func (x *GetActivityListReq) ProtoReflect() protoreflect.Message {
+func (x *ActsListReq) ProtoReflect() protoreflect.Message {
 	mi := &file_activity_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -144,35 +144,34 @@ func (x *GetActivityListReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetActivityListReq.ProtoReflect.Descriptor instead.
-func (*GetActivityListReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use ActsListReq.ProtoReflect.Descriptor instead.
+func (*ActsListReq) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{2}
 }
 
 // 获取活动列表响应
-type GetActivityListAck struct {
+type ActsListAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`      // 是否成功
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`       // 消息
-	Activities    []*ActivityListItem    `protobuf:"bytes,3,rep,name=activities,proto3" json:"activities,omitempty"` // 活动列表
+	RedDot        bool                   `protobuf:"varint,1,opt,name=red_dot,json=redDot,proto3" json:"red_dot,omitempty"` // 是否有点红
+	Acts          []*ActBrief            `protobuf:"bytes,2,rep,name=acts,proto3" json:"acts,omitempty"`                    // 活动列表
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetActivityListAck) Reset() {
-	*x = GetActivityListAck{}
+func (x *ActsListAck) Reset() {
+	*x = ActsListAck{}
 	mi := &file_activity_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetActivityListAck) String() string {
+func (x *ActsListAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetActivityListAck) ProtoMessage() {}
+func (*ActsListAck) ProtoMessage() {}
 
-func (x *GetActivityListAck) ProtoReflect() protoreflect.Message {
+func (x *ActsListAck) ProtoReflect() protoreflect.Message {
 	mi := &file_activity_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -184,54 +183,47 @@ func (x *GetActivityListAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetActivityListAck.ProtoReflect.Descriptor instead.
-func (*GetActivityListAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use ActsListAck.ProtoReflect.Descriptor instead.
+func (*ActsListAck) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetActivityListAck) GetSuccess() bool {
+func (x *ActsListAck) GetRedDot() bool {
 	if x != nil {
-		return x.Success
+		return x.RedDot
 	}
 	return false
 }
 
-func (x *GetActivityListAck) GetMessage() string {
+func (x *ActsListAck) GetActs() []*ActBrief {
 	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
-func (x *GetActivityListAck) GetActivities() []*ActivityListItem {
-	if x != nil {
-		return x.Activities
+		return x.Acts
 	}
 	return nil
 }
 
-// 获取活动状态请求
-type GetActivityStatusReq struct {
+// 获取活动详情
+type ActPanelReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetActivityStatusReq) Reset() {
-	*x = GetActivityStatusReq{}
+func (x *ActPanelReq) Reset() {
+	*x = ActPanelReq{}
 	mi := &file_activity_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetActivityStatusReq) String() string {
+func (x *ActPanelReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetActivityStatusReq) ProtoMessage() {}
+func (*ActPanelReq) ProtoMessage() {}
 
-func (x *GetActivityStatusReq) ProtoReflect() protoreflect.Message {
+func (x *ActPanelReq) ProtoReflect() protoreflect.Message {
 	mi := &file_activity_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -243,12 +235,12 @@ func (x *GetActivityStatusReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetActivityStatusReq.ProtoReflect.Descriptor instead.
-func (*GetActivityStatusReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use ActPanelReq.ProtoReflect.Descriptor instead.
+func (*ActPanelReq) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetActivityStatusReq) GetActivityId() int32 {
+func (x *ActPanelReq) GetActivityId() int32 {
 	if x != nil {
 		return x.ActivityId
 	}
@@ -256,29 +248,28 @@ func (x *GetActivityStatusReq) GetActivityId() int32 {
 }
 
 // 获取活动状态响应
-type GetActivityStatusAck struct {
+type ActPanelAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"` // 是否成功
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`  // 消息
-	Status        *ActivityState         `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`    // 活动状态
+	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
+	JsonData      string                 `protobuf:"bytes,2,opt,name=json_data,json=jsonData,proto3" json:"json_data,omitempty"` // 活动私有数据，客户端直接透传解析
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetActivityStatusAck) Reset() {
-	*x = GetActivityStatusAck{}
+func (x *ActPanelAck) Reset() {
+	*x = ActPanelAck{}
 	mi := &file_activity_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetActivityStatusAck) String() string {
+func (x *ActPanelAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetActivityStatusAck) ProtoMessage() {}
+func (*ActPanelAck) ProtoMessage() {}
 
-func (x *GetActivityStatusAck) ProtoReflect() protoreflect.Message {
+func (x *ActPanelAck) ProtoReflect() protoreflect.Message {
 	mi := &file_activity_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -290,118 +281,101 @@ func (x *GetActivityStatusAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetActivityStatusAck.ProtoReflect.Descriptor instead.
-func (*GetActivityStatusAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use ActPanelAck.ProtoReflect.Descriptor instead.
+func (*ActPanelAck) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetActivityStatusAck) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *GetActivityStatusAck) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
-func (x *GetActivityStatusAck) GetStatus() *ActivityState {
-	if x != nil {
-		return x.Status
-	}
-	return nil
-}
-
-// 活动操作请求
-type ActivityActionReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
-	Action        string                 `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`                            // 操作类型
-	Params        string                 `protobuf:"bytes,3,opt,name=params,proto3" json:"params,omitempty"`                            // 参数JSON字符串
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivityActionReq) Reset() {
-	*x = ActivityActionReq{}
-	mi := &file_activity_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivityActionReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivityActionReq) ProtoMessage() {}
-
-func (x *ActivityActionReq) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivityActionReq.ProtoReflect.Descriptor instead.
-func (*ActivityActionReq) Descriptor() ([]byte, []int) {
-	return file_activity_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *ActivityActionReq) GetActivityId() int32 {
+func (x *ActPanelAck) GetActivityId() int32 {
 	if x != nil {
 		return x.ActivityId
 	}
 	return 0
 }
 
-func (x *ActivityActionReq) GetAction() string {
+func (x *ActPanelAck) GetJsonData() string {
 	if x != nil {
-		return x.Action
+		return x.JsonData
 	}
 	return ""
 }
 
-func (x *ActivityActionReq) GetParams() string {
+// 活动操作请求
+type ActRewardReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
+	JsonData      string                 `protobuf:"bytes,2,opt,name=json_data,json=jsonData,proto3" json:"json_data,omitempty"`        // json_data 里放活动需要的参数：{"idx":5} 或 {"times":2} 等
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActRewardReq) Reset() {
+	*x = ActRewardReq{}
+	mi := &file_activity_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActRewardReq) ProtoMessage() {}
+
+func (x *ActRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[6]
 	if x != nil {
-		return x.Params
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActRewardReq.ProtoReflect.Descriptor instead.
+func (*ActRewardReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ActRewardReq) GetActivityId() int32 {
+	if x != nil {
+		return x.ActivityId
+	}
+	return 0
+}
+
+func (x *ActRewardReq) GetJsonData() string {
+	if x != nil {
+		return x.JsonData
 	}
 	return ""
 }
 
 // 活动操作响应
-type ActivityActionAck struct {
+type ActRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"` // 是否成功
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`  // 消息
-	Rewards       []*ActivityReward      `protobuf:"bytes,3,rep,name=rewards,proto3" json:"rewards,omitempty"`  // 奖励列表
-	Data          string                 `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty"`        // 额外数据JSON字符串
+	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
+	JsonData      string                 `protobuf:"bytes,2,opt,name=json_data,json=jsonData,proto3" json:"json_data,omitempty"` // 返回奖励、新余额等，客户端解析
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ActivityActionAck) Reset() {
-	*x = ActivityActionAck{}
+func (x *ActRewardAck) Reset() {
+	*x = ActRewardAck{}
 	mi := &file_activity_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ActivityActionAck) String() string {
+func (x *ActRewardAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ActivityActionAck) ProtoMessage() {}
+func (*ActRewardAck) ProtoMessage() {}
 
-func (x *ActivityActionAck) ProtoReflect() protoreflect.Message {
+func (x *ActRewardAck) ProtoReflect() protoreflect.Message {
 	mi := &file_activity_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -413,68 +387,50 @@ func (x *ActivityActionAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ActivityActionAck.ProtoReflect.Descriptor instead.
-func (*ActivityActionAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use ActRewardAck.ProtoReflect.Descriptor instead.
+func (*ActRewardAck) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ActivityActionAck) GetSuccess() bool {
+func (x *ActRewardAck) GetActivityId() int32 {
 	if x != nil {
-		return x.Success
+		return x.ActivityId
 	}
-	return false
+	return 0
 }
 
-func (x *ActivityActionAck) GetMessage() string {
+func (x *ActRewardAck) GetJsonData() string {
 	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
-func (x *ActivityActionAck) GetRewards() []*ActivityReward {
-	if x != nil {
-		return x.Rewards
-	}
-	return nil
-}
-
-func (x *ActivityActionAck) GetData() string {
-	if x != nil {
-		return x.Data
+		return x.JsonData
 	}
 	return ""
 }
 
 // 活动列表项
-type ActivityListItem struct {
+type ActBrief struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                // 活动名称
-	Type          int32                  `protobuf:"varint,3,opt,name=type,proto3" json:"type,omitempty"`                               // 活动类型
-	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`                            // 用户状态
-	Description   string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`                  // 活动描述
-	Icon          string                 `protobuf:"bytes,6,opt,name=icon,proto3" json:"icon,omitempty"`                                // 图标
-	StartTime     int64                  `protobuf:"varint,7,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`    // 开始时间
-	EndTime       int64                  `protobuf:"varint,8,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`          // 结束时间
+	Status        int32                  `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`                           // 1未激活 2进行中 3已领奖 4过期
+	EndTs         int64                  `protobuf:"varint,4,opt,name=end_ts,json=endTs,proto3" json:"end_ts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ActivityListItem) Reset() {
-	*x = ActivityListItem{}
+func (x *ActBrief) Reset() {
+	*x = ActBrief{}
 	mi := &file_activity_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ActivityListItem) String() string {
+func (x *ActBrief) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ActivityListItem) ProtoMessage() {}
+func (*ActBrief) ProtoMessage() {}
 
-func (x *ActivityListItem) ProtoReflect() protoreflect.Message {
+func (x *ActBrief) ProtoReflect() protoreflect.Message {
 	mi := &file_activity_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -486,294 +442,35 @@ func (x *ActivityListItem) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ActivityListItem.ProtoReflect.Descriptor instead.
-func (*ActivityListItem) Descriptor() ([]byte, []int) {
+// Deprecated: Use ActBrief.ProtoReflect.Descriptor instead.
+func (*ActBrief) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ActivityListItem) GetActivityId() int32 {
+func (x *ActBrief) GetActivityId() int32 {
 	if x != nil {
 		return x.ActivityId
 	}
 	return 0
 }
 
-func (x *ActivityListItem) GetName() string {
+func (x *ActBrief) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *ActivityListItem) GetType() int32 {
-	if x != nil {
-		return x.Type
-	}
-	return 0
-}
-
-func (x *ActivityListItem) GetStatus() string {
+func (x *ActBrief) GetStatus() int32 {
 	if x != nil {
 		return x.Status
 	}
-	return ""
-}
-
-func (x *ActivityListItem) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *ActivityListItem) GetIcon() string {
-	if x != nil {
-		return x.Icon
-	}
-	return ""
-}
-
-func (x *ActivityListItem) GetStartTime() int64 {
-	if x != nil {
-		return x.StartTime
-	}
 	return 0
 }
 
-func (x *ActivityListItem) GetEndTime() int64 {
+func (x *ActBrief) GetEndTs() int64 {
 	if x != nil {
-		return x.EndTime
-	}
-	return 0
-}
-
-// 活动状态
-type ActivityState struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
-	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`                            // 状态
-	Progress      string                 `protobuf:"bytes,3,opt,name=progress,proto3" json:"progress,omitempty"`                        // 进度数据JSON字符串
-	Rewards       []*RewardStatus        `protobuf:"bytes,4,rep,name=rewards,proto3" json:"rewards,omitempty"`                          // 奖励状态
-	CreateTime    int64                  `protobuf:"varint,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"` // 创建时间
-	UpdateTime    int64                  `protobuf:"varint,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"` // 更新时间
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivityState) Reset() {
-	*x = ActivityState{}
-	mi := &file_activity_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivityState) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivityState) ProtoMessage() {}
-
-func (x *ActivityState) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivityState.ProtoReflect.Descriptor instead.
-func (*ActivityState) Descriptor() ([]byte, []int) {
-	return file_activity_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ActivityState) GetActivityId() int32 {
-	if x != nil {
-		return x.ActivityId
-	}
-	return 0
-}
-
-func (x *ActivityState) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-func (x *ActivityState) GetProgress() string {
-	if x != nil {
-		return x.Progress
-	}
-	return ""
-}
-
-func (x *ActivityState) GetRewards() []*RewardStatus {
-	if x != nil {
-		return x.Rewards
-	}
-	return nil
-}
-
-func (x *ActivityState) GetCreateTime() int64 {
-	if x != nil {
-		return x.CreateTime
-	}
-	return 0
-}
-
-func (x *ActivityState) GetUpdateTime() int64 {
-	if x != nil {
-		return x.UpdateTime
-	}
-	return 0
-}
-
-// 奖励状态
-type RewardStatus struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	RewardId      int32                  `protobuf:"varint,1,opt,name=reward_id,json=rewardId,proto3" json:"reward_id,omitempty"`    // 奖励ID
-	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`                         // 领取状态
-	ClaimTime     int64                  `protobuf:"varint,3,opt,name=claim_time,json=claimTime,proto3" json:"claim_time,omitempty"` // 领取时间
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RewardStatus) Reset() {
-	*x = RewardStatus{}
-	mi := &file_activity_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RewardStatus) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RewardStatus) ProtoMessage() {}
-
-func (x *RewardStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RewardStatus.ProtoReflect.Descriptor instead.
-func (*RewardStatus) Descriptor() ([]byte, []int) {
-	return file_activity_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *RewardStatus) GetRewardId() int32 {
-	if x != nil {
-		return x.RewardId
-	}
-	return 0
-}
-
-func (x *RewardStatus) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-func (x *RewardStatus) GetClaimTime() int64 {
-	if x != nil {
-		return x.ClaimTime
-	}
-	return 0
-}
-
-// 活动奖励
-type ActivityReward struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`             // 奖励ID
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`          // 奖励名称
-	Type          int32                  `protobuf:"varint,3,opt,name=type,proto3" json:"type,omitempty"`         // 奖励类型（物品ID）
-	Amount        int64                  `protobuf:"varint,4,opt,name=amount,proto3" json:"amount,omitempty"`     // 奖励数量
-	Weight        int32                  `protobuf:"varint,5,opt,name=weight,proto3" json:"weight,omitempty"`     // 权重（用于抽奖）
-	Required      int32                  `protobuf:"varint,6,opt,name=required,proto3" json:"required,omitempty"` // 所需积分/条件
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivityReward) Reset() {
-	*x = ActivityReward{}
-	mi := &file_activity_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivityReward) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivityReward) ProtoMessage() {}
-
-func (x *ActivityReward) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivityReward.ProtoReflect.Descriptor instead.
-func (*ActivityReward) Descriptor() ([]byte, []int) {
-	return file_activity_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ActivityReward) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *ActivityReward) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *ActivityReward) GetType() int32 {
-	if x != nil {
-		return x.Type
-	}
-	return 0
-}
-
-func (x *ActivityReward) GetAmount() int64 {
-	if x != nil {
-		return x.Amount
-	}
-	return 0
-}
-
-func (x *ActivityReward) GetWeight() int32 {
-	if x != nil {
-		return x.Weight
-	}
-	return 0
-}
-
-func (x *ActivityReward) GetRequired() int32 {
-	if x != nil {
-		return x.Required
+		return x.EndTs
 	}
 	return 0
 }
@@ -786,64 +483,32 @@ const file_activity_proto_rawDesc = "" +
 	"\vActivityReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"5\n" +
 	"\vActivityAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x14\n" +
-	"\x12GetActivityListReq\"\x82\x01\n" +
-	"\x12GetActivityListAck\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x128\n" +
-	"\n" +
-	"activities\x18\x03 \x03(\v2\x18.cproto.ActivityListItemR\n" +
-	"activities\"7\n" +
-	"\x14GetActivityStatusReq\x12\x1f\n" +
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\r\n" +
+	"\vActsListReq\"L\n" +
+	"\vActsListAck\x12\x17\n" +
+	"\ared_dot\x18\x01 \x01(\bR\x06redDot\x12$\n" +
+	"\x04acts\x18\x02 \x03(\v2\x10.cproto.ActBriefR\x04acts\".\n" +
+	"\vActPanelReq\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
-	"activityId\"y\n" +
-	"\x14GetActivityStatusAck\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x12-\n" +
-	"\x06status\x18\x03 \x01(\v2\x15.cproto.ActivityStateR\x06status\"d\n" +
-	"\x11ActivityActionReq\x12\x1f\n" +
+	"activityId\"K\n" +
+	"\vActPanelAck\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
-	"activityId\x12\x16\n" +
-	"\x06action\x18\x02 \x01(\tR\x06action\x12\x16\n" +
-	"\x06params\x18\x03 \x01(\tR\x06params\"\x8d\x01\n" +
-	"\x11ActivityActionAck\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x120\n" +
-	"\arewards\x18\x03 \x03(\v2\x16.cproto.ActivityRewardR\arewards\x12\x12\n" +
-	"\x04data\x18\x04 \x01(\tR\x04data\"\xe3\x01\n" +
-	"\x10ActivityListItem\x12\x1f\n" +
+	"activityId\x12\x1b\n" +
+	"\tjson_data\x18\x02 \x01(\tR\bjsonData\"L\n" +
+	"\fActRewardReq\x12\x1f\n" +
+	"\vactivity_id\x18\x01 \x01(\x05R\n" +
+	"activityId\x12\x1b\n" +
+	"\tjson_data\x18\x02 \x01(\tR\bjsonData\"L\n" +
+	"\fActRewardAck\x12\x1f\n" +
+	"\vactivity_id\x18\x01 \x01(\x05R\n" +
+	"activityId\x12\x1b\n" +
+	"\tjson_data\x18\x02 \x01(\tR\bjsonData\"n\n" +
+	"\bActBrief\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
 	"activityId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\x05R\x04type\x12\x16\n" +
-	"\x06status\x18\x04 \x01(\tR\x06status\x12 \n" +
-	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04icon\x18\x06 \x01(\tR\x04icon\x12\x1d\n" +
-	"\n" +
-	"start_time\x18\a \x01(\x03R\tstartTime\x12\x19\n" +
-	"\bend_time\x18\b \x01(\x03R\aendTime\"\xd6\x01\n" +
-	"\rActivityState\x12\x1f\n" +
-	"\vactivity_id\x18\x01 \x01(\x05R\n" +
-	"activityId\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status\x12\x1a\n" +
-	"\bprogress\x18\x03 \x01(\tR\bprogress\x12.\n" +
-	"\arewards\x18\x04 \x03(\v2\x14.cproto.RewardStatusR\arewards\x12\x1f\n" +
-	"\vcreate_time\x18\x05 \x01(\x03R\n" +
-	"createTime\x12\x1f\n" +
-	"\vupdate_time\x18\x06 \x01(\x03R\n" +
-	"updateTime\"b\n" +
-	"\fRewardStatus\x12\x1b\n" +
-	"\treward_id\x18\x01 \x01(\x05R\brewardId\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status\x12\x1d\n" +
-	"\n" +
-	"claim_time\x18\x03 \x01(\x03R\tclaimTime\"\x94\x01\n" +
-	"\x0eActivityReward\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\x05R\x04type\x12\x16\n" +
-	"\x06amount\x18\x04 \x01(\x03R\x06amount\x12\x16\n" +
-	"\x06weight\x18\x05 \x01(\x05R\x06weight\x12\x1a\n" +
-	"\brequired\x18\x06 \x01(\x05R\brequiredB\vZ\t../cprotob\x06proto3"
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\x05R\x06status\x12\x15\n" +
+	"\x06end_ts\x18\x04 \x01(\x03R\x05endTsB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_activity_proto_rawDescOnce sync.Once
@@ -857,34 +522,28 @@ func file_activity_proto_rawDescGZIP() []byte {
 	return file_activity_proto_rawDescData
 }
 
-var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_activity_proto_goTypes = []any{
-	(*ActivityReq)(nil),          // 0: cproto.ActivityReq
-	(*ActivityAck)(nil),          // 1: cproto.ActivityAck
-	(*GetActivityListReq)(nil),   // 2: cproto.GetActivityListReq
-	(*GetActivityListAck)(nil),   // 3: cproto.GetActivityListAck
-	(*GetActivityStatusReq)(nil), // 4: cproto.GetActivityStatusReq
-	(*GetActivityStatusAck)(nil), // 5: cproto.GetActivityStatusAck
-	(*ActivityActionReq)(nil),    // 6: cproto.ActivityActionReq
-	(*ActivityActionAck)(nil),    // 7: cproto.ActivityActionAck
-	(*ActivityListItem)(nil),     // 8: cproto.ActivityListItem
-	(*ActivityState)(nil),        // 9: cproto.ActivityState
-	(*RewardStatus)(nil),         // 10: cproto.RewardStatus
-	(*ActivityReward)(nil),       // 11: cproto.ActivityReward
-	(*anypb.Any)(nil),            // 12: google.protobuf.Any
+	(*ActivityReq)(nil),  // 0: cproto.ActivityReq
+	(*ActivityAck)(nil),  // 1: cproto.ActivityAck
+	(*ActsListReq)(nil),  // 2: cproto.ActsListReq
+	(*ActsListAck)(nil),  // 3: cproto.ActsListAck
+	(*ActPanelReq)(nil),  // 4: cproto.ActPanelReq
+	(*ActPanelAck)(nil),  // 5: cproto.ActPanelAck
+	(*ActRewardReq)(nil), // 6: cproto.ActRewardReq
+	(*ActRewardAck)(nil), // 7: cproto.ActRewardAck
+	(*ActBrief)(nil),     // 8: cproto.ActBrief
+	(*anypb.Any)(nil),    // 9: google.protobuf.Any
 }
 var file_activity_proto_depIdxs = []int32{
-	12, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
-	12, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
-	8,  // 2: cproto.GetActivityListAck.activities:type_name -> cproto.ActivityListItem
-	9,  // 3: cproto.GetActivityStatusAck.status:type_name -> cproto.ActivityState
-	11, // 4: cproto.ActivityActionAck.rewards:type_name -> cproto.ActivityReward
-	10, // 5: cproto.ActivityState.rewards:type_name -> cproto.RewardStatus
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	9, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
+	9, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
+	8, // 2: cproto.ActsListAck.acts:type_name -> cproto.ActBrief
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_activity_proto_init() }
@@ -898,7 +557,7 @@ func file_activity_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_activity_proto_rawDesc), len(file_activity_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

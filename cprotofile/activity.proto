@@ -16,78 +16,42 @@ message ActivityAck {
 }
 
 // 获取活动列表请求
-message GetActivityListReq {
+message ActsListReq {  
 }
 
 // 获取活动列表响应
-message GetActivityListAck {
-  bool success = 1; // 是否成功
-  string message = 2; // 消息
-  repeated ActivityListItem activities = 3; // 活动列表
+message ActsListAck {
+  bool red_dot = 1; // 是否有点红
+  repeated ActBrief acts = 2; // 活动列表
 }
 
-// 获取活动状态请求
-message GetActivityStatusReq {
+// 获取活动详情
+message ActPanelReq {
   int32 activity_id = 1; // 活动ID
 }
 
 // 获取活动状态响应
-message GetActivityStatusAck {
-  bool success = 1; // 是否成功
-  string message = 2; // 消息
-  ActivityState status = 3; // 活动状态
+message ActPanelAck {
+  int32  activity_id = 1;
+  string json_data   = 2; // 活动私有数据，客户端直接透传解析
 }
 
 // 活动操作请求
-message ActivityActionReq {
+message ActRewardReq {
   int32 activity_id = 1; // 活动ID
-  string action = 2; // 操作类型
-  string params = 3; // 参数JSON字符串
+  string json_data   = 2; // json_data 里放活动需要的参数：{"idx":5} 或 {"times":2} 等
 }
 
 // 活动操作响应
-message ActivityActionAck {
-  bool success = 1; // 是否成功
-  string message = 2; // 消息
-  repeated ActivityReward rewards = 3; // 奖励列表
-  string data = 4; // 额外数据JSON字符串
+message ActRewardAck {
+  int32  activity_id = 1;
+  string json_data   = 2; // 返回奖励、新余额等，客户端解析
 }
 
 // 活动列表项
-message ActivityListItem {
+message ActBrief {
   int32 activity_id = 1; // 活动ID
   string name = 2; // 活动名称
-  int32 type = 3; // 活动类型
-  string status = 4; // 用户状态
-  string description = 5; // 活动描述
-  string icon = 6; // 图标
-  int64 start_time = 7; // 开始时间
-  int64 end_time = 8; // 结束时间
-}
-
-// 活动状态
-message ActivityState {
-  int32 activity_id = 1; // 活动ID
-  string status = 2; // 状态
-  string progress = 3; // 进度数据JSON字符串
-  repeated RewardStatus rewards = 4; // 奖励状态
-  int64 create_time = 5; // 创建时间
-  int64 update_time = 6; // 更新时间
-}
-
-// 奖励状态
-message RewardStatus {
-  int32 reward_id = 1; // 奖励ID
-  string status = 2; // 领取状态
-  int64 claim_time = 3; // 领取时间
-}
-
-// 活动奖励
-message ActivityReward {
-  int32 id = 1; // 奖励ID
-  string name = 2; // 奖励名称
-  int32 type = 3; // 奖励类型（物品ID）
-  int64 amount = 4; // 奖励数量
-  int32 weight = 5; // 权重（用于抽奖）
-  int32 required = 6; // 所需积分/条件
+  int32 status = 3; // 1未激活 2进行中 3已领奖 4过期
+  int64 end_ts = 4;
 }
