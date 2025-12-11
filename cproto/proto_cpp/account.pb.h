@@ -50,7 +50,7 @@ struct TableStruct_account_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[15]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[16]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -64,6 +64,9 @@ extern AccountAckDefaultTypeInternal _AccountAck_default_instance_;
 class AccountReq;
 struct AccountReqDefaultTypeInternal;
 extern AccountReqDefaultTypeInternal _AccountReq_default_instance_;
+class BindInviteCodeReq;
+struct BindInviteCodeReqDefaultTypeInternal;
+extern BindInviteCodeReqDefaultTypeInternal _BindInviteCodeReq_default_instance_;
 class ItemsAck;
 struct ItemsAckDefaultTypeInternal;
 extern ItemsAckDefaultTypeInternal _ItemsAck_default_instance_;
@@ -107,6 +110,7 @@ extern ShopReqDefaultTypeInternal _ShopReq_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::cproto::AccountAck* Arena::CreateMaybeMessage<::cproto::AccountAck>(Arena*);
 template<> ::cproto::AccountReq* Arena::CreateMaybeMessage<::cproto::AccountReq>(Arena*);
+template<> ::cproto::BindInviteCodeReq* Arena::CreateMaybeMessage<::cproto::BindInviteCodeReq>(Arena*);
 template<> ::cproto::ItemsAck* Arena::CreateMaybeMessage<::cproto::ItemsAck>(Arena*);
 template<> ::cproto::ItemsAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::ItemsAck_ItemsEntry_DoNotUse>(Arena*);
 template<> ::cproto::LoginReq* Arena::CreateMaybeMessage<::cproto::LoginReq>(Arena*);
@@ -727,6 +731,7 @@ class RegisterReq final :
     kAccountFieldNumber = 1,
     kPasswordFieldNumber = 2,
     kAvatarFieldNumber = 3,
+    kInviteCodeFieldNumber = 4,
   };
   // string account = 1;
   void clear_account();
@@ -770,6 +775,20 @@ class RegisterReq final :
   std::string* _internal_mutable_avatar();
   public:
 
+  // string invite_code = 4;
+  void clear_invite_code();
+  const std::string& invite_code() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_invite_code(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_invite_code();
+  PROTOBUF_NODISCARD std::string* release_invite_code();
+  void set_allocated_invite_code(std::string* invite_code);
+  private:
+  const std::string& _internal_invite_code() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_invite_code(const std::string& value);
+  std::string* _internal_mutable_invite_code();
+  public:
+
   // @@protoc_insertion_point(class_scope:cproto.RegisterReq)
  private:
   class _Internal;
@@ -780,6 +799,158 @@ class RegisterReq final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr account_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr password_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr avatar_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr invite_code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BindInviteCodeReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.BindInviteCodeReq) */ {
+ public:
+  inline BindInviteCodeReq() : BindInviteCodeReq(nullptr) {}
+  ~BindInviteCodeReq() override;
+  explicit constexpr BindInviteCodeReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BindInviteCodeReq(const BindInviteCodeReq& from);
+  BindInviteCodeReq(BindInviteCodeReq&& from) noexcept
+    : BindInviteCodeReq() {
+    *this = ::std::move(from);
+  }
+
+  inline BindInviteCodeReq& operator=(const BindInviteCodeReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BindInviteCodeReq& operator=(BindInviteCodeReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BindInviteCodeReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BindInviteCodeReq* internal_default_instance() {
+    return reinterpret_cast<const BindInviteCodeReq*>(
+               &_BindInviteCodeReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(BindInviteCodeReq& a, BindInviteCodeReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BindInviteCodeReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BindInviteCodeReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BindInviteCodeReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BindInviteCodeReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BindInviteCodeReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const BindInviteCodeReq& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BindInviteCodeReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.BindInviteCodeReq";
+  }
+  protected:
+  explicit BindInviteCodeReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kInviteCodeFieldNumber = 1,
+  };
+  // string invite_code = 1;
+  void clear_invite_code();
+  const std::string& invite_code() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_invite_code(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_invite_code();
+  PROTOBUF_NODISCARD std::string* release_invite_code();
+  void set_allocated_invite_code(std::string* invite_code);
+  private:
+  const std::string& _internal_invite_code() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_invite_code(const std::string& value);
+  std::string* _internal_mutable_invite_code();
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.BindInviteCodeReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr invite_code_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_account_2eproto;
 };
@@ -833,7 +1004,7 @@ class ShopReq final :
                &_ShopReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(ShopReq& a, ShopReq& b) {
     a.Swap(&b);
@@ -979,7 +1150,7 @@ class ShopAck final :
                &_ShopAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(ShopAck& a, ShopAck& b) {
     a.Swap(&b);
@@ -1141,7 +1312,7 @@ class PurchaseReq final :
                &_PurchaseReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(PurchaseReq& a, PurchaseReq& b) {
     a.Swap(&b);
@@ -1332,7 +1503,7 @@ class PurchaseAck final :
                &_PurchaseAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(PurchaseAck& a, PurchaseAck& b) {
     a.Swap(&b);
@@ -1525,7 +1696,7 @@ class RegisterAck final :
                &_RegisterAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(RegisterAck& a, RegisterAck& b) {
     a.Swap(&b);
@@ -1727,7 +1898,7 @@ class PlayerInfoAck final :
                &_PlayerInfoAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(PlayerInfoAck& a, PlayerInfoAck& b) {
     a.Swap(&b);
@@ -1957,7 +2128,7 @@ class ItemsAck final :
                &_ItemsAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(ItemsAck& a, ItemsAck& b) {
     a.Swap(&b);
@@ -2514,6 +2685,112 @@ inline void RegisterReq::set_allocated_avatar(std::string* avatar) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:cproto.RegisterReq.avatar)
+}
+
+// string invite_code = 4;
+inline void RegisterReq::clear_invite_code() {
+  invite_code_.ClearToEmpty();
+}
+inline const std::string& RegisterReq::invite_code() const {
+  // @@protoc_insertion_point(field_get:cproto.RegisterReq.invite_code)
+  return _internal_invite_code();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RegisterReq::set_invite_code(ArgT0&& arg0, ArgT... args) {
+ 
+ invite_code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.RegisterReq.invite_code)
+}
+inline std::string* RegisterReq::mutable_invite_code() {
+  std::string* _s = _internal_mutable_invite_code();
+  // @@protoc_insertion_point(field_mutable:cproto.RegisterReq.invite_code)
+  return _s;
+}
+inline const std::string& RegisterReq::_internal_invite_code() const {
+  return invite_code_.Get();
+}
+inline void RegisterReq::_internal_set_invite_code(const std::string& value) {
+  
+  invite_code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* RegisterReq::_internal_mutable_invite_code() {
+  
+  return invite_code_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* RegisterReq::release_invite_code() {
+  // @@protoc_insertion_point(field_release:cproto.RegisterReq.invite_code)
+  return invite_code_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void RegisterReq::set_allocated_invite_code(std::string* invite_code) {
+  if (invite_code != nullptr) {
+    
+  } else {
+    
+  }
+  invite_code_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), invite_code,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (invite_code_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    invite_code_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.RegisterReq.invite_code)
+}
+
+// -------------------------------------------------------------------
+
+// BindInviteCodeReq
+
+// string invite_code = 1;
+inline void BindInviteCodeReq::clear_invite_code() {
+  invite_code_.ClearToEmpty();
+}
+inline const std::string& BindInviteCodeReq::invite_code() const {
+  // @@protoc_insertion_point(field_get:cproto.BindInviteCodeReq.invite_code)
+  return _internal_invite_code();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BindInviteCodeReq::set_invite_code(ArgT0&& arg0, ArgT... args) {
+ 
+ invite_code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.BindInviteCodeReq.invite_code)
+}
+inline std::string* BindInviteCodeReq::mutable_invite_code() {
+  std::string* _s = _internal_mutable_invite_code();
+  // @@protoc_insertion_point(field_mutable:cproto.BindInviteCodeReq.invite_code)
+  return _s;
+}
+inline const std::string& BindInviteCodeReq::_internal_invite_code() const {
+  return invite_code_.Get();
+}
+inline void BindInviteCodeReq::_internal_set_invite_code(const std::string& value) {
+  
+  invite_code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* BindInviteCodeReq::_internal_mutable_invite_code() {
+  
+  return invite_code_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* BindInviteCodeReq::release_invite_code() {
+  // @@protoc_insertion_point(field_release:cproto.BindInviteCodeReq.invite_code)
+  return invite_code_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void BindInviteCodeReq::set_allocated_invite_code(std::string* invite_code) {
+  if (invite_code != nullptr) {
+    
+  } else {
+    
+  }
+  invite_code_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), invite_code,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (invite_code_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    invite_code_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.BindInviteCodeReq.invite_code)
 }
 
 // -------------------------------------------------------------------
@@ -3085,6 +3362,8 @@ ItemsAck::mutable_items() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

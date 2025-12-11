@@ -22,6 +22,11 @@ message RegisterReq {
   string account = 1; 
   string password = 2;
   string avatar = 3; //随机生成的头像内容
+  string invite_code = 4; //邀请码
+}
+
+message BindInviteCodeReq {
+  string invite_code = 1;
 }
 
 message ShopReq{

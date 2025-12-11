@@ -9,7 +9,6 @@ package sproto
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -22,124 +21,31 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// 活动远程服务请求包装器（服务器间调用，无bot区分）
-type ActivityRemoteReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Req           *anypb.Any             `protobuf:"bytes,1,opt,name=req,proto3" json:"req,omitempty"` // 请求内容
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivityRemoteReq) Reset() {
-	*x = ActivityRemoteReq{}
-	mi := &file_activity_remote_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivityRemoteReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivityRemoteReq) ProtoMessage() {}
-
-func (x *ActivityRemoteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_remote_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivityRemoteReq.ProtoReflect.Descriptor instead.
-func (*ActivityRemoteReq) Descriptor() ([]byte, []int) {
-	return file_activity_remote_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *ActivityRemoteReq) GetReq() *anypb.Any {
-	if x != nil {
-		return x.Req
-	}
-	return nil
-}
-
-// 活动远程服务响应包装器（服务器间调用，无bot区分）
-type ActivityRemoteAck struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ack           *anypb.Any             `protobuf:"bytes,1,opt,name=ack,proto3" json:"ack,omitempty"` // 响应内容
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivityRemoteAck) Reset() {
-	*x = ActivityRemoteAck{}
-	mi := &file_activity_remote_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivityRemoteAck) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivityRemoteAck) ProtoMessage() {}
-
-func (x *ActivityRemoteAck) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_remote_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivityRemoteAck.ProtoReflect.Descriptor instead.
-func (*ActivityRemoteAck) Descriptor() ([]byte, []int) {
-	return file_activity_remote_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ActivityRemoteAck) GetAck() *anypb.Any {
-	if x != nil {
-		return x.Ack
-	}
-	return nil
-}
-
 // 发布活动事件请求（其他服务发布事件到活动服务）
-type PublishActivityEventReq struct {
+type ActivityReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	EventId       int32                  `protobuf:"varint,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"` // 事件ID
 	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`                         // 用户ID
-	Timestamp     int64                  `protobuf:"varint,3,opt,name=timestamp,proto3" json:"timestamp,omitempty"`            // 时间戳
-	Data          string                 `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty"`                       // 事件数据JSON字符串
-	Source        string                 `protobuf:"bytes,5,opt,name=source,proto3" json:"source,omitempty"`                   // 事件来源服务
-	Version       int32                  `protobuf:"varint,6,opt,name=version,proto3" json:"version,omitempty"`                // 事件版本
+	Data          string                 `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`                       // 事件数据JSON字符串
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PublishActivityEventReq) Reset() {
-	*x = PublishActivityEventReq{}
-	mi := &file_activity_remote_proto_msgTypes[2]
+func (x *ActivityReq) Reset() {
+	*x = ActivityReq{}
+	mi := &file_activity_remote_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PublishActivityEventReq) String() string {
+func (x *ActivityReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PublishActivityEventReq) ProtoMessage() {}
+func (*ActivityReq) ProtoMessage() {}
 
-func (x *PublishActivityEventReq) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_remote_proto_msgTypes[2]
+func (x *ActivityReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_remote_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -150,77 +56,54 @@ func (x *PublishActivityEventReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PublishActivityEventReq.ProtoReflect.Descriptor instead.
-func (*PublishActivityEventReq) Descriptor() ([]byte, []int) {
-	return file_activity_remote_proto_rawDescGZIP(), []int{2}
+// Deprecated: Use ActivityReq.ProtoReflect.Descriptor instead.
+func (*ActivityReq) Descriptor() ([]byte, []int) {
+	return file_activity_remote_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PublishActivityEventReq) GetEventId() int32 {
+func (x *ActivityReq) GetEventId() int32 {
 	if x != nil {
 		return x.EventId
 	}
 	return 0
 }
 
-func (x *PublishActivityEventReq) GetUid() string {
+func (x *ActivityReq) GetUid() string {
 	if x != nil {
 		return x.Uid
 	}
 	return ""
 }
 
-func (x *PublishActivityEventReq) GetTimestamp() int64 {
-	if x != nil {
-		return x.Timestamp
-	}
-	return 0
-}
-
-func (x *PublishActivityEventReq) GetData() string {
+func (x *ActivityReq) GetData() string {
 	if x != nil {
 		return x.Data
 	}
 	return ""
 }
 
-func (x *PublishActivityEventReq) GetSource() string {
-	if x != nil {
-		return x.Source
-	}
-	return ""
-}
-
-func (x *PublishActivityEventReq) GetVersion() int32 {
-	if x != nil {
-		return x.Version
-	}
-	return 0
-}
-
 // 发布活动事件响应
-type PublishActivityEventAck struct {
+type ActivityAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"` // 是否成功
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`  // 消息
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PublishActivityEventAck) Reset() {
-	*x = PublishActivityEventAck{}
-	mi := &file_activity_remote_proto_msgTypes[3]
+func (x *ActivityAck) Reset() {
+	*x = ActivityAck{}
+	mi := &file_activity_remote_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PublishActivityEventAck) String() string {
+func (x *ActivityAck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PublishActivityEventAck) ProtoMessage() {}
+func (*ActivityAck) ProtoMessage() {}
 
-func (x *PublishActivityEventAck) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_remote_proto_msgTypes[3]
+func (x *ActivityAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_remote_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -231,44 +114,21 @@ func (x *PublishActivityEventAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PublishActivityEventAck.ProtoReflect.Descriptor instead.
-func (*PublishActivityEventAck) Descriptor() ([]byte, []int) {
-	return file_activity_remote_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *PublishActivityEventAck) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *PublishActivityEventAck) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
+// Deprecated: Use ActivityAck.ProtoReflect.Descriptor instead.
+func (*ActivityAck) Descriptor() ([]byte, []int) {
+	return file_activity_remote_proto_rawDescGZIP(), []int{1}
 }
 
 var File_activity_remote_proto protoreflect.FileDescriptor
 
 const file_activity_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x15activity_remote.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\";\n" +
-	"\x11ActivityRemoteReq\x12&\n" +
-	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\";\n" +
-	"\x11ActivityRemoteAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xaa\x01\n" +
-	"\x17PublishActivityEventReq\x12\x19\n" +
+	"\x15activity_remote.proto\x12\x06sproto\"N\n" +
+	"\vActivityReq\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\x05R\aeventId\x12\x10\n" +
-	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x1c\n" +
-	"\ttimestamp\x18\x03 \x01(\x03R\ttimestamp\x12\x12\n" +
-	"\x04data\x18\x04 \x01(\tR\x04data\x12\x16\n" +
-	"\x06source\x18\x05 \x01(\tR\x06source\x12\x18\n" +
-	"\aversion\x18\x06 \x01(\x05R\aversion\"M\n" +
-	"\x17PublishActivityEventAck\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessageB\vZ\t../sprotob\x06proto3"
+	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x12\n" +
+	"\x04data\x18\x03 \x01(\tR\x04data\"\r\n" +
+	"\vActivityAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_activity_remote_proto_rawDescOnce sync.Once
@@ -282,22 +142,17 @@ func file_activity_remote_proto_rawDescGZIP() []byte {
 	return file_activity_remote_proto_rawDescData
 }
 
-var file_activity_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_activity_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_activity_remote_proto_goTypes = []any{
-	(*ActivityRemoteReq)(nil),       // 0: sproto.ActivityRemoteReq
-	(*ActivityRemoteAck)(nil),       // 1: sproto.ActivityRemoteAck
-	(*PublishActivityEventReq)(nil), // 2: sproto.PublishActivityEventReq
-	(*PublishActivityEventAck)(nil), // 3: sproto.PublishActivityEventAck
-	(*anypb.Any)(nil),               // 4: google.protobuf.Any
+	(*ActivityReq)(nil), // 0: sproto.ActivityReq
+	(*ActivityAck)(nil), // 1: sproto.ActivityAck
 }
 var file_activity_remote_proto_depIdxs = []int32{
-	4, // 0: sproto.ActivityRemoteReq.req:type_name -> google.protobuf.Any
-	4, // 1: sproto.ActivityRemoteAck.ack:type_name -> google.protobuf.Any
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_activity_remote_proto_init() }
@@ -311,7 +166,7 @@ func file_activity_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_activity_remote_proto_rawDesc), len(file_activity_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
