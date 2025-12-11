@@ -23,6 +23,7 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
+#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_table_driven.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
@@ -50,7 +51,7 @@ struct TableStruct_account_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[17]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[25]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -67,6 +68,15 @@ extern AccountReqDefaultTypeInternal _AccountReq_default_instance_;
 class BindInviteCodeReq;
 struct BindInviteCodeReqDefaultTypeInternal;
 extern BindInviteCodeReqDefaultTypeInternal _BindInviteCodeReq_default_instance_;
+class BuyMemberAck;
+struct BuyMemberAckDefaultTypeInternal;
+extern BuyMemberAckDefaultTypeInternal _BuyMemberAck_default_instance_;
+class BuyMemberAck_BonusEntry_DoNotUse;
+struct BuyMemberAck_BonusEntry_DoNotUseDefaultTypeInternal;
+extern BuyMemberAck_BonusEntry_DoNotUseDefaultTypeInternal _BuyMemberAck_BonusEntry_DoNotUse_default_instance_;
+class BuyMemberReq;
+struct BuyMemberReqDefaultTypeInternal;
+extern BuyMemberReqDefaultTypeInternal _BuyMemberReq_default_instance_;
 class ItemsAck;
 struct ItemsAckDefaultTypeInternal;
 extern ItemsAckDefaultTypeInternal _ItemsAck_default_instance_;
@@ -76,6 +86,21 @@ extern ItemsAck_ItemsEntry_DoNotUseDefaultTypeInternal _ItemsAck_ItemsEntry_DoNo
 class LoginReq;
 struct LoginReqDefaultTypeInternal;
 extern LoginReqDefaultTypeInternal _LoginReq_default_instance_;
+class MemberInfoAck;
+struct MemberInfoAckDefaultTypeInternal;
+extern MemberInfoAckDefaultTypeInternal _MemberInfoAck_default_instance_;
+class MemberInfoReq;
+struct MemberInfoReqDefaultTypeInternal;
+extern MemberInfoReqDefaultTypeInternal _MemberInfoReq_default_instance_;
+class MemberTypeInfo;
+struct MemberTypeInfoDefaultTypeInternal;
+extern MemberTypeInfoDefaultTypeInternal _MemberTypeInfo_default_instance_;
+class MemberTypeInfo_DailyRewardEntry_DoNotUse;
+struct MemberTypeInfo_DailyRewardEntry_DoNotUseDefaultTypeInternal;
+extern MemberTypeInfo_DailyRewardEntry_DoNotUseDefaultTypeInternal _MemberTypeInfo_DailyRewardEntry_DoNotUse_default_instance_;
+class MemberTypeInfo_PurchaseBonusEntry_DoNotUse;
+struct MemberTypeInfo_PurchaseBonusEntry_DoNotUseDefaultTypeInternal;
+extern MemberTypeInfo_PurchaseBonusEntry_DoNotUseDefaultTypeInternal _MemberTypeInfo_PurchaseBonusEntry_DoNotUse_default_instance_;
 class PlayerInfoAck;
 struct PlayerInfoAckDefaultTypeInternal;
 extern PlayerInfoAckDefaultTypeInternal _PlayerInfoAck_default_instance_;
@@ -114,9 +139,17 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::cproto::AccountAck* Arena::CreateMaybeMessage<::cproto::AccountAck>(Arena*);
 template<> ::cproto::AccountReq* Arena::CreateMaybeMessage<::cproto::AccountReq>(Arena*);
 template<> ::cproto::BindInviteCodeReq* Arena::CreateMaybeMessage<::cproto::BindInviteCodeReq>(Arena*);
+template<> ::cproto::BuyMemberAck* Arena::CreateMaybeMessage<::cproto::BuyMemberAck>(Arena*);
+template<> ::cproto::BuyMemberAck_BonusEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::BuyMemberAck_BonusEntry_DoNotUse>(Arena*);
+template<> ::cproto::BuyMemberReq* Arena::CreateMaybeMessage<::cproto::BuyMemberReq>(Arena*);
 template<> ::cproto::ItemsAck* Arena::CreateMaybeMessage<::cproto::ItemsAck>(Arena*);
 template<> ::cproto::ItemsAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::ItemsAck_ItemsEntry_DoNotUse>(Arena*);
 template<> ::cproto::LoginReq* Arena::CreateMaybeMessage<::cproto::LoginReq>(Arena*);
+template<> ::cproto::MemberInfoAck* Arena::CreateMaybeMessage<::cproto::MemberInfoAck>(Arena*);
+template<> ::cproto::MemberInfoReq* Arena::CreateMaybeMessage<::cproto::MemberInfoReq>(Arena*);
+template<> ::cproto::MemberTypeInfo* Arena::CreateMaybeMessage<::cproto::MemberTypeInfo>(Arena*);
+template<> ::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse>(Arena*);
+template<> ::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse>(Arena*);
 template<> ::cproto::PlayerInfoAck* Arena::CreateMaybeMessage<::cproto::PlayerInfoAck>(Arena*);
 template<> ::cproto::PlayerInfoAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::PlayerInfoAck_ItemsEntry_DoNotUse>(Arena*);
 template<> ::cproto::PurchaseAck* Arena::CreateMaybeMessage<::cproto::PurchaseAck>(Arena*);
@@ -2424,6 +2457,901 @@ class ItemsAck final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_account_2eproto;
 };
+// -------------------------------------------------------------------
+
+class MemberInfoReq final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.MemberInfoReq) */ {
+ public:
+  inline MemberInfoReq() : MemberInfoReq(nullptr) {}
+  explicit constexpr MemberInfoReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MemberInfoReq(const MemberInfoReq& from);
+  MemberInfoReq(MemberInfoReq&& from) noexcept
+    : MemberInfoReq() {
+    *this = ::std::move(from);
+  }
+
+  inline MemberInfoReq& operator=(const MemberInfoReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MemberInfoReq& operator=(MemberInfoReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MemberInfoReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MemberInfoReq* internal_default_instance() {
+    return reinterpret_cast<const MemberInfoReq*>(
+               &_MemberInfoReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  friend void swap(MemberInfoReq& a, MemberInfoReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MemberInfoReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MemberInfoReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MemberInfoReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MemberInfoReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const MemberInfoReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const MemberInfoReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.MemberInfoReq";
+  }
+  protected:
+  explicit MemberInfoReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.MemberInfoReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MemberInfoAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.MemberInfoAck) */ {
+ public:
+  inline MemberInfoAck() : MemberInfoAck(nullptr) {}
+  ~MemberInfoAck() override;
+  explicit constexpr MemberInfoAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MemberInfoAck(const MemberInfoAck& from);
+  MemberInfoAck(MemberInfoAck&& from) noexcept
+    : MemberInfoAck() {
+    *this = ::std::move(from);
+  }
+
+  inline MemberInfoAck& operator=(const MemberInfoAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MemberInfoAck& operator=(MemberInfoAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MemberInfoAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MemberInfoAck* internal_default_instance() {
+    return reinterpret_cast<const MemberInfoAck*>(
+               &_MemberInfoAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(MemberInfoAck& a, MemberInfoAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MemberInfoAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MemberInfoAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MemberInfoAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MemberInfoAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MemberInfoAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const MemberInfoAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MemberInfoAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.MemberInfoAck";
+  }
+  protected:
+  explicit MemberInfoAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTypesFieldNumber = 3,
+    kExpireTimeFieldNumber = 2,
+    kTypeFieldNumber = 1,
+  };
+  // repeated .cproto.MemberTypeInfo types = 3;
+  int types_size() const;
+  private:
+  int _internal_types_size() const;
+  public:
+  void clear_types();
+  ::cproto::MemberTypeInfo* mutable_types(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::MemberTypeInfo >*
+      mutable_types();
+  private:
+  const ::cproto::MemberTypeInfo& _internal_types(int index) const;
+  ::cproto::MemberTypeInfo* _internal_add_types();
+  public:
+  const ::cproto::MemberTypeInfo& types(int index) const;
+  ::cproto::MemberTypeInfo* add_types();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::MemberTypeInfo >&
+      types() const;
+
+  // int64 expire_time = 2;
+  void clear_expire_time();
+  int64_t expire_time() const;
+  void set_expire_time(int64_t value);
+  private:
+  int64_t _internal_expire_time() const;
+  void _internal_set_expire_time(int64_t value);
+  public:
+
+  // int32 type = 1;
+  void clear_type();
+  int32_t type() const;
+  void set_type(int32_t value);
+  private:
+  int32_t _internal_type() const;
+  void _internal_set_type(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.MemberInfoAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::MemberTypeInfo > types_;
+  int64_t expire_time_;
+  int32_t type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MemberTypeInfo_PurchaseBonusEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<MemberTypeInfo_PurchaseBonusEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<MemberTypeInfo_PurchaseBonusEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  MemberTypeInfo_PurchaseBonusEntry_DoNotUse();
+  explicit constexpr MemberTypeInfo_PurchaseBonusEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit MemberTypeInfo_PurchaseBonusEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const MemberTypeInfo_PurchaseBonusEntry_DoNotUse& other);
+  static const MemberTypeInfo_PurchaseBonusEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const MemberTypeInfo_PurchaseBonusEntry_DoNotUse*>(&_MemberTypeInfo_PurchaseBonusEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class MemberTypeInfo_DailyRewardEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<MemberTypeInfo_DailyRewardEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<MemberTypeInfo_DailyRewardEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  MemberTypeInfo_DailyRewardEntry_DoNotUse();
+  explicit constexpr MemberTypeInfo_DailyRewardEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit MemberTypeInfo_DailyRewardEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const MemberTypeInfo_DailyRewardEntry_DoNotUse& other);
+  static const MemberTypeInfo_DailyRewardEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const MemberTypeInfo_DailyRewardEntry_DoNotUse*>(&_MemberTypeInfo_DailyRewardEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class MemberTypeInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.MemberTypeInfo) */ {
+ public:
+  inline MemberTypeInfo() : MemberTypeInfo(nullptr) {}
+  ~MemberTypeInfo() override;
+  explicit constexpr MemberTypeInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MemberTypeInfo(const MemberTypeInfo& from);
+  MemberTypeInfo(MemberTypeInfo&& from) noexcept
+    : MemberTypeInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline MemberTypeInfo& operator=(const MemberTypeInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MemberTypeInfo& operator=(MemberTypeInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MemberTypeInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MemberTypeInfo* internal_default_instance() {
+    return reinterpret_cast<const MemberTypeInfo*>(
+               &_MemberTypeInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  friend void swap(MemberTypeInfo& a, MemberTypeInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MemberTypeInfo* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MemberTypeInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MemberTypeInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MemberTypeInfo>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MemberTypeInfo& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const MemberTypeInfo& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MemberTypeInfo* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.MemberTypeInfo";
+  }
+  protected:
+  explicit MemberTypeInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPurchaseBonusFieldNumber = 3,
+    kDailyRewardFieldNumber = 4,
+    kTypeFieldNumber = 1,
+    kPriceFieldNumber = 2,
+  };
+  // map<int32, int64> purchase_bonus = 3;
+  int purchase_bonus_size() const;
+  private:
+  int _internal_purchase_bonus_size() const;
+  public:
+  void clear_purchase_bonus();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_purchase_bonus() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_purchase_bonus();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      purchase_bonus() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_purchase_bonus();
+
+  // map<int32, int64> daily_reward = 4;
+  int daily_reward_size() const;
+  private:
+  int _internal_daily_reward_size() const;
+  public:
+  void clear_daily_reward();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_daily_reward() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_daily_reward();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      daily_reward() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_daily_reward();
+
+  // int32 type = 1;
+  void clear_type();
+  int32_t type() const;
+  void set_type(int32_t value);
+  private:
+  int32_t _internal_type() const;
+  void _internal_set_type(int32_t value);
+  public:
+
+  // int32 price = 2;
+  void clear_price();
+  int32_t price() const;
+  void set_price(int32_t value);
+  private:
+  int32_t _internal_price() const;
+  void _internal_set_price(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.MemberTypeInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      MemberTypeInfo_PurchaseBonusEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> purchase_bonus_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      MemberTypeInfo_DailyRewardEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> daily_reward_;
+  int32_t type_;
+  int32_t price_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BuyMemberReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.BuyMemberReq) */ {
+ public:
+  inline BuyMemberReq() : BuyMemberReq(nullptr) {}
+  ~BuyMemberReq() override;
+  explicit constexpr BuyMemberReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BuyMemberReq(const BuyMemberReq& from);
+  BuyMemberReq(BuyMemberReq&& from) noexcept
+    : BuyMemberReq() {
+    *this = ::std::move(from);
+  }
+
+  inline BuyMemberReq& operator=(const BuyMemberReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BuyMemberReq& operator=(BuyMemberReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BuyMemberReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BuyMemberReq* internal_default_instance() {
+    return reinterpret_cast<const BuyMemberReq*>(
+               &_BuyMemberReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  friend void swap(BuyMemberReq& a, BuyMemberReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BuyMemberReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BuyMemberReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BuyMemberReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BuyMemberReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BuyMemberReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const BuyMemberReq& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BuyMemberReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.BuyMemberReq";
+  }
+  protected:
+  explicit BuyMemberReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTypeFieldNumber = 1,
+  };
+  // int32 type = 1;
+  void clear_type();
+  int32_t type() const;
+  void set_type(int32_t value);
+  private:
+  int32_t _internal_type() const;
+  void _internal_set_type(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.BuyMemberReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BuyMemberAck_BonusEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<BuyMemberAck_BonusEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<BuyMemberAck_BonusEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  BuyMemberAck_BonusEntry_DoNotUse();
+  explicit constexpr BuyMemberAck_BonusEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit BuyMemberAck_BonusEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const BuyMemberAck_BonusEntry_DoNotUse& other);
+  static const BuyMemberAck_BonusEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const BuyMemberAck_BonusEntry_DoNotUse*>(&_BuyMemberAck_BonusEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class BuyMemberAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.BuyMemberAck) */ {
+ public:
+  inline BuyMemberAck() : BuyMemberAck(nullptr) {}
+  ~BuyMemberAck() override;
+  explicit constexpr BuyMemberAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BuyMemberAck(const BuyMemberAck& from);
+  BuyMemberAck(BuyMemberAck&& from) noexcept
+    : BuyMemberAck() {
+    *this = ::std::move(from);
+  }
+
+  inline BuyMemberAck& operator=(const BuyMemberAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BuyMemberAck& operator=(BuyMemberAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BuyMemberAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BuyMemberAck* internal_default_instance() {
+    return reinterpret_cast<const BuyMemberAck*>(
+               &_BuyMemberAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  friend void swap(BuyMemberAck& a, BuyMemberAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BuyMemberAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BuyMemberAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BuyMemberAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BuyMemberAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BuyMemberAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const BuyMemberAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BuyMemberAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.BuyMemberAck";
+  }
+  protected:
+  explicit BuyMemberAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBonusFieldNumber = 3,
+    kExpireTimeFieldNumber = 2,
+    kTypeFieldNumber = 1,
+  };
+  // map<int32, int64> bonus = 3;
+  int bonus_size() const;
+  private:
+  int _internal_bonus_size() const;
+  public:
+  void clear_bonus();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_bonus() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_bonus();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      bonus() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_bonus();
+
+  // int64 expire_time = 2;
+  void clear_expire_time();
+  int64_t expire_time() const;
+  void set_expire_time(int64_t value);
+  private:
+  int64_t _internal_expire_time() const;
+  void _internal_set_expire_time(int64_t value);
+  public:
+
+  // int32 type = 1;
+  void clear_type();
+  int32_t type() const;
+  void set_type(int32_t value);
+  private:
+  int32_t _internal_type() const;
+  void _internal_set_type(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.BuyMemberAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      BuyMemberAck_BonusEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> bonus_;
+  int64_t expire_time_;
+  int32_t type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
 // ===================================================================
 
 
@@ -3703,9 +4631,318 @@ ItemsAck::mutable_items() {
   return _internal_mutable_items();
 }
 
+// -------------------------------------------------------------------
+
+// MemberInfoReq
+
+// -------------------------------------------------------------------
+
+// MemberInfoAck
+
+// int32 type = 1;
+inline void MemberInfoAck::clear_type() {
+  type_ = 0;
+}
+inline int32_t MemberInfoAck::_internal_type() const {
+  return type_;
+}
+inline int32_t MemberInfoAck::type() const {
+  // @@protoc_insertion_point(field_get:cproto.MemberInfoAck.type)
+  return _internal_type();
+}
+inline void MemberInfoAck::_internal_set_type(int32_t value) {
+  
+  type_ = value;
+}
+inline void MemberInfoAck::set_type(int32_t value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:cproto.MemberInfoAck.type)
+}
+
+// int64 expire_time = 2;
+inline void MemberInfoAck::clear_expire_time() {
+  expire_time_ = int64_t{0};
+}
+inline int64_t MemberInfoAck::_internal_expire_time() const {
+  return expire_time_;
+}
+inline int64_t MemberInfoAck::expire_time() const {
+  // @@protoc_insertion_point(field_get:cproto.MemberInfoAck.expire_time)
+  return _internal_expire_time();
+}
+inline void MemberInfoAck::_internal_set_expire_time(int64_t value) {
+  
+  expire_time_ = value;
+}
+inline void MemberInfoAck::set_expire_time(int64_t value) {
+  _internal_set_expire_time(value);
+  // @@protoc_insertion_point(field_set:cproto.MemberInfoAck.expire_time)
+}
+
+// repeated .cproto.MemberTypeInfo types = 3;
+inline int MemberInfoAck::_internal_types_size() const {
+  return types_.size();
+}
+inline int MemberInfoAck::types_size() const {
+  return _internal_types_size();
+}
+inline void MemberInfoAck::clear_types() {
+  types_.Clear();
+}
+inline ::cproto::MemberTypeInfo* MemberInfoAck::mutable_types(int index) {
+  // @@protoc_insertion_point(field_mutable:cproto.MemberInfoAck.types)
+  return types_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::MemberTypeInfo >*
+MemberInfoAck::mutable_types() {
+  // @@protoc_insertion_point(field_mutable_list:cproto.MemberInfoAck.types)
+  return &types_;
+}
+inline const ::cproto::MemberTypeInfo& MemberInfoAck::_internal_types(int index) const {
+  return types_.Get(index);
+}
+inline const ::cproto::MemberTypeInfo& MemberInfoAck::types(int index) const {
+  // @@protoc_insertion_point(field_get:cproto.MemberInfoAck.types)
+  return _internal_types(index);
+}
+inline ::cproto::MemberTypeInfo* MemberInfoAck::_internal_add_types() {
+  return types_.Add();
+}
+inline ::cproto::MemberTypeInfo* MemberInfoAck::add_types() {
+  ::cproto::MemberTypeInfo* _add = _internal_add_types();
+  // @@protoc_insertion_point(field_add:cproto.MemberInfoAck.types)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::MemberTypeInfo >&
+MemberInfoAck::types() const {
+  // @@protoc_insertion_point(field_list:cproto.MemberInfoAck.types)
+  return types_;
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// MemberTypeInfo
+
+// int32 type = 1;
+inline void MemberTypeInfo::clear_type() {
+  type_ = 0;
+}
+inline int32_t MemberTypeInfo::_internal_type() const {
+  return type_;
+}
+inline int32_t MemberTypeInfo::type() const {
+  // @@protoc_insertion_point(field_get:cproto.MemberTypeInfo.type)
+  return _internal_type();
+}
+inline void MemberTypeInfo::_internal_set_type(int32_t value) {
+  
+  type_ = value;
+}
+inline void MemberTypeInfo::set_type(int32_t value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:cproto.MemberTypeInfo.type)
+}
+
+// int32 price = 2;
+inline void MemberTypeInfo::clear_price() {
+  price_ = 0;
+}
+inline int32_t MemberTypeInfo::_internal_price() const {
+  return price_;
+}
+inline int32_t MemberTypeInfo::price() const {
+  // @@protoc_insertion_point(field_get:cproto.MemberTypeInfo.price)
+  return _internal_price();
+}
+inline void MemberTypeInfo::_internal_set_price(int32_t value) {
+  
+  price_ = value;
+}
+inline void MemberTypeInfo::set_price(int32_t value) {
+  _internal_set_price(value);
+  // @@protoc_insertion_point(field_set:cproto.MemberTypeInfo.price)
+}
+
+// map<int32, int64> purchase_bonus = 3;
+inline int MemberTypeInfo::_internal_purchase_bonus_size() const {
+  return purchase_bonus_.size();
+}
+inline int MemberTypeInfo::purchase_bonus_size() const {
+  return _internal_purchase_bonus_size();
+}
+inline void MemberTypeInfo::clear_purchase_bonus() {
+  purchase_bonus_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+MemberTypeInfo::_internal_purchase_bonus() const {
+  return purchase_bonus_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+MemberTypeInfo::purchase_bonus() const {
+  // @@protoc_insertion_point(field_map:cproto.MemberTypeInfo.purchase_bonus)
+  return _internal_purchase_bonus();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+MemberTypeInfo::_internal_mutable_purchase_bonus() {
+  return purchase_bonus_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+MemberTypeInfo::mutable_purchase_bonus() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.MemberTypeInfo.purchase_bonus)
+  return _internal_mutable_purchase_bonus();
+}
+
+// map<int32, int64> daily_reward = 4;
+inline int MemberTypeInfo::_internal_daily_reward_size() const {
+  return daily_reward_.size();
+}
+inline int MemberTypeInfo::daily_reward_size() const {
+  return _internal_daily_reward_size();
+}
+inline void MemberTypeInfo::clear_daily_reward() {
+  daily_reward_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+MemberTypeInfo::_internal_daily_reward() const {
+  return daily_reward_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+MemberTypeInfo::daily_reward() const {
+  // @@protoc_insertion_point(field_map:cproto.MemberTypeInfo.daily_reward)
+  return _internal_daily_reward();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+MemberTypeInfo::_internal_mutable_daily_reward() {
+  return daily_reward_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+MemberTypeInfo::mutable_daily_reward() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.MemberTypeInfo.daily_reward)
+  return _internal_mutable_daily_reward();
+}
+
+// -------------------------------------------------------------------
+
+// BuyMemberReq
+
+// int32 type = 1;
+inline void BuyMemberReq::clear_type() {
+  type_ = 0;
+}
+inline int32_t BuyMemberReq::_internal_type() const {
+  return type_;
+}
+inline int32_t BuyMemberReq::type() const {
+  // @@protoc_insertion_point(field_get:cproto.BuyMemberReq.type)
+  return _internal_type();
+}
+inline void BuyMemberReq::_internal_set_type(int32_t value) {
+  
+  type_ = value;
+}
+inline void BuyMemberReq::set_type(int32_t value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:cproto.BuyMemberReq.type)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// BuyMemberAck
+
+// int32 type = 1;
+inline void BuyMemberAck::clear_type() {
+  type_ = 0;
+}
+inline int32_t BuyMemberAck::_internal_type() const {
+  return type_;
+}
+inline int32_t BuyMemberAck::type() const {
+  // @@protoc_insertion_point(field_get:cproto.BuyMemberAck.type)
+  return _internal_type();
+}
+inline void BuyMemberAck::_internal_set_type(int32_t value) {
+  
+  type_ = value;
+}
+inline void BuyMemberAck::set_type(int32_t value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:cproto.BuyMemberAck.type)
+}
+
+// int64 expire_time = 2;
+inline void BuyMemberAck::clear_expire_time() {
+  expire_time_ = int64_t{0};
+}
+inline int64_t BuyMemberAck::_internal_expire_time() const {
+  return expire_time_;
+}
+inline int64_t BuyMemberAck::expire_time() const {
+  // @@protoc_insertion_point(field_get:cproto.BuyMemberAck.expire_time)
+  return _internal_expire_time();
+}
+inline void BuyMemberAck::_internal_set_expire_time(int64_t value) {
+  
+  expire_time_ = value;
+}
+inline void BuyMemberAck::set_expire_time(int64_t value) {
+  _internal_set_expire_time(value);
+  // @@protoc_insertion_point(field_set:cproto.BuyMemberAck.expire_time)
+}
+
+// map<int32, int64> bonus = 3;
+inline int BuyMemberAck::_internal_bonus_size() const {
+  return bonus_.size();
+}
+inline int BuyMemberAck::bonus_size() const {
+  return _internal_bonus_size();
+}
+inline void BuyMemberAck::clear_bonus() {
+  bonus_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+BuyMemberAck::_internal_bonus() const {
+  return bonus_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+BuyMemberAck::bonus() const {
+  // @@protoc_insertion_point(field_map:cproto.BuyMemberAck.bonus)
+  return _internal_bonus();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+BuyMemberAck::_internal_mutable_bonus() {
+  return bonus_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+BuyMemberAck::mutable_bonus() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.BuyMemberAck.bonus)
+  return _internal_mutable_bonus();
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

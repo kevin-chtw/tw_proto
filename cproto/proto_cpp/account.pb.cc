@@ -231,8 +231,107 @@ struct ItemsAckDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ItemsAckDefaultTypeInternal _ItemsAck_default_instance_;
+constexpr MemberInfoReq::MemberInfoReq(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct MemberInfoReqDefaultTypeInternal {
+  constexpr MemberInfoReqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MemberInfoReqDefaultTypeInternal() {}
+  union {
+    MemberInfoReq _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MemberInfoReqDefaultTypeInternal _MemberInfoReq_default_instance_;
+constexpr MemberInfoAck::MemberInfoAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : types_()
+  , expire_time_(int64_t{0})
+  , type_(0){}
+struct MemberInfoAckDefaultTypeInternal {
+  constexpr MemberInfoAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MemberInfoAckDefaultTypeInternal() {}
+  union {
+    MemberInfoAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MemberInfoAckDefaultTypeInternal _MemberInfoAck_default_instance_;
+constexpr MemberTypeInfo_PurchaseBonusEntry_DoNotUse::MemberTypeInfo_PurchaseBonusEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct MemberTypeInfo_PurchaseBonusEntry_DoNotUseDefaultTypeInternal {
+  constexpr MemberTypeInfo_PurchaseBonusEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MemberTypeInfo_PurchaseBonusEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    MemberTypeInfo_PurchaseBonusEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MemberTypeInfo_PurchaseBonusEntry_DoNotUseDefaultTypeInternal _MemberTypeInfo_PurchaseBonusEntry_DoNotUse_default_instance_;
+constexpr MemberTypeInfo_DailyRewardEntry_DoNotUse::MemberTypeInfo_DailyRewardEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct MemberTypeInfo_DailyRewardEntry_DoNotUseDefaultTypeInternal {
+  constexpr MemberTypeInfo_DailyRewardEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MemberTypeInfo_DailyRewardEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    MemberTypeInfo_DailyRewardEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MemberTypeInfo_DailyRewardEntry_DoNotUseDefaultTypeInternal _MemberTypeInfo_DailyRewardEntry_DoNotUse_default_instance_;
+constexpr MemberTypeInfo::MemberTypeInfo(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : purchase_bonus_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
+  , daily_reward_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
+  , type_(0)
+  , price_(0){}
+struct MemberTypeInfoDefaultTypeInternal {
+  constexpr MemberTypeInfoDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MemberTypeInfoDefaultTypeInternal() {}
+  union {
+    MemberTypeInfo _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MemberTypeInfoDefaultTypeInternal _MemberTypeInfo_default_instance_;
+constexpr BuyMemberReq::BuyMemberReq(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : type_(0){}
+struct BuyMemberReqDefaultTypeInternal {
+  constexpr BuyMemberReqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BuyMemberReqDefaultTypeInternal() {}
+  union {
+    BuyMemberReq _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BuyMemberReqDefaultTypeInternal _BuyMemberReq_default_instance_;
+constexpr BuyMemberAck_BonusEntry_DoNotUse::BuyMemberAck_BonusEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct BuyMemberAck_BonusEntry_DoNotUseDefaultTypeInternal {
+  constexpr BuyMemberAck_BonusEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BuyMemberAck_BonusEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    BuyMemberAck_BonusEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BuyMemberAck_BonusEntry_DoNotUseDefaultTypeInternal _BuyMemberAck_BonusEntry_DoNotUse_default_instance_;
+constexpr BuyMemberAck::BuyMemberAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : bonus_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
+  , expire_time_(int64_t{0})
+  , type_(0){}
+struct BuyMemberAckDefaultTypeInternal {
+  constexpr BuyMemberAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BuyMemberAckDefaultTypeInternal() {}
+  union {
+    BuyMemberAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BuyMemberAckDefaultTypeInternal _BuyMemberAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[17];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[25];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_account_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_account_2eproto = nullptr;
 
@@ -382,6 +481,77 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::ItemsAck, items_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberInfoReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberInfoAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberInfoAck, type_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberInfoAck, expire_time_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberInfoAck, types_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse, value_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo, type_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo, price_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo, purchase_bonus_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MemberTypeInfo, daily_reward_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberReq, type_),
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck_BonusEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck_BonusEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck_BonusEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck_BonusEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck, type_),
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck, expire_time_),
+  PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck, bonus_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cproto::AccountReq)},
@@ -401,6 +571,14 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 118, -1, -1, sizeof(::cproto::PlayerInfoAck)},
   { 128, 136, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
   { 138, -1, -1, sizeof(::cproto::ItemsAck)},
+  { 145, -1, -1, sizeof(::cproto::MemberInfoReq)},
+  { 151, -1, -1, sizeof(::cproto::MemberInfoAck)},
+  { 160, 168, -1, sizeof(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse)},
+  { 170, 178, -1, sizeof(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse)},
+  { 180, -1, -1, sizeof(::cproto::MemberTypeInfo)},
+  { 190, -1, -1, sizeof(::cproto::BuyMemberReq)},
+  { 197, 205, -1, sizeof(::cproto::BuyMemberAck_BonusEntry_DoNotUse)},
+  { 207, -1, -1, sizeof(::cproto::BuyMemberAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -421,6 +599,14 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_PlayerInfoAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ItemsAck_ItemsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ItemsAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MemberInfoReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MemberInfoAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MemberTypeInfo_PurchaseBonusEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MemberTypeInfo_DailyRewardEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MemberTypeInfo_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BuyMemberReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BuyMemberAck_BonusEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BuyMemberAck_default_instance_),
 };
 
 const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -450,16 +636,30 @@ const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE
   "ry\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002"
   " \001(\003:\0028\001\"d\n\010ItemsAck\022*\n\005items\030\001 \003(\0132\033.cp"
   "roto.ItemsAck.ItemsEntry\032,\n\nItemsEntry\022\013"
-  "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cpr"
-  "otob\006proto3"
+  "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\017\n\rMember"
+  "InfoReq\"Y\n\rMemberInfoAck\022\014\n\004type\030\001 \001(\005\022\023"
+  "\n\013expire_time\030\002 \001(\003\022%\n\005types\030\003 \003(\0132\026.cpr"
+  "oto.MemberTypeInfo\"\231\002\n\016MemberTypeInfo\022\014\n"
+  "\004type\030\001 \001(\005\022\r\n\005price\030\002 \001(\005\022A\n\016purchase_b"
+  "onus\030\003 \003(\0132).cproto.MemberTypeInfo.Purch"
+  "aseBonusEntry\022=\n\014daily_reward\030\004 \003(\0132\'.cp"
+  "roto.MemberTypeInfo.DailyRewardEntry\0324\n\022"
+  "PurchaseBonusEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value"
+  "\030\002 \001(\003:\0028\001\0322\n\020DailyRewardEntry\022\013\n\003key\030\001 "
+  "\001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\034\n\014BuyMemberReq\022\014"
+  "\n\004type\030\001 \001(\005\"\217\001\n\014BuyMemberAck\022\014\n\004type\030\001 "
+  "\001(\005\022\023\n\013expire_time\030\002 \001(\003\022.\n\005bonus\030\003 \003(\0132"
+  "\037.cproto.BuyMemberAck.BonusEntry\032,\n\nBonu"
+  "sEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013"
+  "Z\t../cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_account_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_account_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_account_2eproto = {
-  false, false, 1091, descriptor_table_protodef_account_2eproto, "account.proto", 
-  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 17,
+  false, false, 1659, descriptor_table_protodef_account_2eproto, "account.proto", 
+  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 25,
   schemas, file_default_instances, TableStruct_account_2eproto::offsets,
   file_level_metadata_account_2eproto, file_level_enum_descriptors_account_2eproto, file_level_service_descriptors_account_2eproto,
 };
@@ -3750,6 +3950,1117 @@ void ItemsAck::InternalSwap(ItemsAck* other) {
       file_level_metadata_account_2eproto[16]);
 }
 
+// ===================================================================
+
+class MemberInfoReq::_Internal {
+ public:
+};
+
+MemberInfoReq::MemberInfoReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:cproto.MemberInfoReq)
+}
+MemberInfoReq::MemberInfoReq(const MemberInfoReq& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:cproto.MemberInfoReq)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MemberInfoReq::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MemberInfoReq::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata MemberInfoReq::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[17]);
+}
+
+// ===================================================================
+
+class MemberInfoAck::_Internal {
+ public:
+};
+
+MemberInfoAck::MemberInfoAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  types_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.MemberInfoAck)
+}
+MemberInfoAck::MemberInfoAck(const MemberInfoAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      types_(from.types_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&expire_time_, &from.expire_time_,
+    static_cast<size_t>(reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&expire_time_)) + sizeof(type_));
+  // @@protoc_insertion_point(copy_constructor:cproto.MemberInfoAck)
+}
+
+inline void MemberInfoAck::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&expire_time_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&expire_time_)) + sizeof(type_));
+}
+
+MemberInfoAck::~MemberInfoAck() {
+  // @@protoc_insertion_point(destructor:cproto.MemberInfoAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void MemberInfoAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void MemberInfoAck::ArenaDtor(void* object) {
+  MemberInfoAck* _this = reinterpret_cast< MemberInfoAck* >(object);
+  (void)_this;
+}
+void MemberInfoAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void MemberInfoAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void MemberInfoAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.MemberInfoAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  types_.Clear();
+  ::memset(&expire_time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&expire_time_)) + sizeof(type_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* MemberInfoAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 expire_time = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          expire_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .cproto.MemberTypeInfo types = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_types(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* MemberInfoAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.MemberInfoAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 type = 1;
+  if (this->_internal_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_type(), target);
+  }
+
+  // int64 expire_time = 2;
+  if (this->_internal_expire_time() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_expire_time(), target);
+  }
+
+  // repeated .cproto.MemberTypeInfo types = 3;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_types_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_types(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.MemberInfoAck)
+  return target;
+}
+
+size_t MemberInfoAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.MemberInfoAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .cproto.MemberTypeInfo types = 3;
+  total_size += 1UL * this->_internal_types_size();
+  for (const auto& msg : this->types_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // int64 expire_time = 2;
+  if (this->_internal_expire_time() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_expire_time());
+  }
+
+  // int32 type = 1;
+  if (this->_internal_type() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MemberInfoAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    MemberInfoAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MemberInfoAck::GetClassData() const { return &_class_data_; }
+
+void MemberInfoAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<MemberInfoAck *>(to)->MergeFrom(
+      static_cast<const MemberInfoAck &>(from));
+}
+
+
+void MemberInfoAck::MergeFrom(const MemberInfoAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.MemberInfoAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  types_.MergeFrom(from.types_);
+  if (from._internal_expire_time() != 0) {
+    _internal_set_expire_time(from._internal_expire_time());
+  }
+  if (from._internal_type() != 0) {
+    _internal_set_type(from._internal_type());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MemberInfoAck::CopyFrom(const MemberInfoAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.MemberInfoAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MemberInfoAck::IsInitialized() const {
+  return true;
+}
+
+void MemberInfoAck::InternalSwap(MemberInfoAck* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  types_.InternalSwap(&other->types_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(MemberInfoAck, type_)
+      + sizeof(MemberInfoAck::type_)
+      - PROTOBUF_FIELD_OFFSET(MemberInfoAck, expire_time_)>(
+          reinterpret_cast<char*>(&expire_time_),
+          reinterpret_cast<char*>(&other->expire_time_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata MemberInfoAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[18]);
+}
+
+// ===================================================================
+
+MemberTypeInfo_PurchaseBonusEntry_DoNotUse::MemberTypeInfo_PurchaseBonusEntry_DoNotUse() {}
+MemberTypeInfo_PurchaseBonusEntry_DoNotUse::MemberTypeInfo_PurchaseBonusEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void MemberTypeInfo_PurchaseBonusEntry_DoNotUse::MergeFrom(const MemberTypeInfo_PurchaseBonusEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata MemberTypeInfo_PurchaseBonusEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[19]);
+}
+
+// ===================================================================
+
+MemberTypeInfo_DailyRewardEntry_DoNotUse::MemberTypeInfo_DailyRewardEntry_DoNotUse() {}
+MemberTypeInfo_DailyRewardEntry_DoNotUse::MemberTypeInfo_DailyRewardEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void MemberTypeInfo_DailyRewardEntry_DoNotUse::MergeFrom(const MemberTypeInfo_DailyRewardEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata MemberTypeInfo_DailyRewardEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[20]);
+}
+
+// ===================================================================
+
+class MemberTypeInfo::_Internal {
+ public:
+};
+
+MemberTypeInfo::MemberTypeInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  purchase_bonus_(arena),
+  daily_reward_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.MemberTypeInfo)
+}
+MemberTypeInfo::MemberTypeInfo(const MemberTypeInfo& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  purchase_bonus_.MergeFrom(from.purchase_bonus_);
+  daily_reward_.MergeFrom(from.daily_reward_);
+  ::memcpy(&type_, &from.type_,
+    static_cast<size_t>(reinterpret_cast<char*>(&price_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(price_));
+  // @@protoc_insertion_point(copy_constructor:cproto.MemberTypeInfo)
+}
+
+inline void MemberTypeInfo::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&type_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&price_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(price_));
+}
+
+MemberTypeInfo::~MemberTypeInfo() {
+  // @@protoc_insertion_point(destructor:cproto.MemberTypeInfo)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void MemberTypeInfo::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void MemberTypeInfo::ArenaDtor(void* object) {
+  MemberTypeInfo* _this = reinterpret_cast< MemberTypeInfo* >(object);
+  (void)_this;
+  _this->purchase_bonus_. ~MapField();
+  _this->daily_reward_. ~MapField();
+}
+inline void MemberTypeInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
+  if (arena != nullptr) {
+    arena->OwnCustomDestructor(this, &MemberTypeInfo::ArenaDtor);
+  }
+}
+void MemberTypeInfo::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void MemberTypeInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.MemberTypeInfo)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  purchase_bonus_.Clear();
+  daily_reward_.Clear();
+  ::memset(&type_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&price_) -
+      reinterpret_cast<char*>(&type_)) + sizeof(price_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* MemberTypeInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 price = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          price_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // map<int32, int64> purchase_bonus = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&purchase_bonus_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // map<int32, int64> daily_reward = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&daily_reward_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* MemberTypeInfo::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.MemberTypeInfo)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 type = 1;
+  if (this->_internal_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_type(), target);
+  }
+
+  // int32 price = 2;
+  if (this->_internal_price() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_price(), target);
+  }
+
+  // map<int32, int64> purchase_bonus = 3;
+  if (!this->_internal_purchase_bonus().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
+        ConstPtr;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::SortItem< int32_t, ConstPtr > SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByFirstField<SortItem> Less;
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_purchase_bonus().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_purchase_bonus().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_purchase_bonus().begin();
+          it != this->_internal_purchase_bonus().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = MemberTypeInfo_PurchaseBonusEntry_DoNotUse::Funcs::InternalSerialize(3, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_purchase_bonus().begin();
+          it != this->_internal_purchase_bonus().end(); ++it) {
+        target = MemberTypeInfo_PurchaseBonusEntry_DoNotUse::Funcs::InternalSerialize(3, it->first, it->second, target, stream);
+      }
+    }
+  }
+
+  // map<int32, int64> daily_reward = 4;
+  if (!this->_internal_daily_reward().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
+        ConstPtr;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::SortItem< int32_t, ConstPtr > SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByFirstField<SortItem> Less;
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_daily_reward().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_daily_reward().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_daily_reward().begin();
+          it != this->_internal_daily_reward().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = MemberTypeInfo_DailyRewardEntry_DoNotUse::Funcs::InternalSerialize(4, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_daily_reward().begin();
+          it != this->_internal_daily_reward().end(); ++it) {
+        target = MemberTypeInfo_DailyRewardEntry_DoNotUse::Funcs::InternalSerialize(4, it->first, it->second, target, stream);
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.MemberTypeInfo)
+  return target;
+}
+
+size_t MemberTypeInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.MemberTypeInfo)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<int32, int64> purchase_bonus = 3;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_purchase_bonus_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+      it = this->_internal_purchase_bonus().begin();
+      it != this->_internal_purchase_bonus().end(); ++it) {
+    total_size += MemberTypeInfo_PurchaseBonusEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // map<int32, int64> daily_reward = 4;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_daily_reward_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+      it = this->_internal_daily_reward().begin();
+      it != this->_internal_daily_reward().end(); ++it) {
+    total_size += MemberTypeInfo_DailyRewardEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // int32 type = 1;
+  if (this->_internal_type() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_type());
+  }
+
+  // int32 price = 2;
+  if (this->_internal_price() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_price());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MemberTypeInfo::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    MemberTypeInfo::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MemberTypeInfo::GetClassData() const { return &_class_data_; }
+
+void MemberTypeInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<MemberTypeInfo *>(to)->MergeFrom(
+      static_cast<const MemberTypeInfo &>(from));
+}
+
+
+void MemberTypeInfo::MergeFrom(const MemberTypeInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.MemberTypeInfo)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  purchase_bonus_.MergeFrom(from.purchase_bonus_);
+  daily_reward_.MergeFrom(from.daily_reward_);
+  if (from._internal_type() != 0) {
+    _internal_set_type(from._internal_type());
+  }
+  if (from._internal_price() != 0) {
+    _internal_set_price(from._internal_price());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MemberTypeInfo::CopyFrom(const MemberTypeInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.MemberTypeInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MemberTypeInfo::IsInitialized() const {
+  return true;
+}
+
+void MemberTypeInfo::InternalSwap(MemberTypeInfo* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  purchase_bonus_.InternalSwap(&other->purchase_bonus_);
+  daily_reward_.InternalSwap(&other->daily_reward_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(MemberTypeInfo, price_)
+      + sizeof(MemberTypeInfo::price_)
+      - PROTOBUF_FIELD_OFFSET(MemberTypeInfo, type_)>(
+          reinterpret_cast<char*>(&type_),
+          reinterpret_cast<char*>(&other->type_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata MemberTypeInfo::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[21]);
+}
+
+// ===================================================================
+
+class BuyMemberReq::_Internal {
+ public:
+};
+
+BuyMemberReq::BuyMemberReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.BuyMemberReq)
+}
+BuyMemberReq::BuyMemberReq(const BuyMemberReq& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  type_ = from.type_;
+  // @@protoc_insertion_point(copy_constructor:cproto.BuyMemberReq)
+}
+
+inline void BuyMemberReq::SharedCtor() {
+type_ = 0;
+}
+
+BuyMemberReq::~BuyMemberReq() {
+  // @@protoc_insertion_point(destructor:cproto.BuyMemberReq)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void BuyMemberReq::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void BuyMemberReq::ArenaDtor(void* object) {
+  BuyMemberReq* _this = reinterpret_cast< BuyMemberReq* >(object);
+  (void)_this;
+}
+void BuyMemberReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void BuyMemberReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void BuyMemberReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.BuyMemberReq)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  type_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* BuyMemberReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* BuyMemberReq::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.BuyMemberReq)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 type = 1;
+  if (this->_internal_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_type(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.BuyMemberReq)
+  return target;
+}
+
+size_t BuyMemberReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.BuyMemberReq)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 type = 1;
+  if (this->_internal_type() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BuyMemberReq::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    BuyMemberReq::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BuyMemberReq::GetClassData() const { return &_class_data_; }
+
+void BuyMemberReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<BuyMemberReq *>(to)->MergeFrom(
+      static_cast<const BuyMemberReq &>(from));
+}
+
+
+void BuyMemberReq::MergeFrom(const BuyMemberReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.BuyMemberReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_type() != 0) {
+    _internal_set_type(from._internal_type());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void BuyMemberReq::CopyFrom(const BuyMemberReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.BuyMemberReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BuyMemberReq::IsInitialized() const {
+  return true;
+}
+
+void BuyMemberReq::InternalSwap(BuyMemberReq* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(type_, other->type_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata BuyMemberReq::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[22]);
+}
+
+// ===================================================================
+
+BuyMemberAck_BonusEntry_DoNotUse::BuyMemberAck_BonusEntry_DoNotUse() {}
+BuyMemberAck_BonusEntry_DoNotUse::BuyMemberAck_BonusEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void BuyMemberAck_BonusEntry_DoNotUse::MergeFrom(const BuyMemberAck_BonusEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata BuyMemberAck_BonusEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[23]);
+}
+
+// ===================================================================
+
+class BuyMemberAck::_Internal {
+ public:
+};
+
+BuyMemberAck::BuyMemberAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  bonus_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.BuyMemberAck)
+}
+BuyMemberAck::BuyMemberAck(const BuyMemberAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  bonus_.MergeFrom(from.bonus_);
+  ::memcpy(&expire_time_, &from.expire_time_,
+    static_cast<size_t>(reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&expire_time_)) + sizeof(type_));
+  // @@protoc_insertion_point(copy_constructor:cproto.BuyMemberAck)
+}
+
+inline void BuyMemberAck::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&expire_time_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&expire_time_)) + sizeof(type_));
+}
+
+BuyMemberAck::~BuyMemberAck() {
+  // @@protoc_insertion_point(destructor:cproto.BuyMemberAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void BuyMemberAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void BuyMemberAck::ArenaDtor(void* object) {
+  BuyMemberAck* _this = reinterpret_cast< BuyMemberAck* >(object);
+  (void)_this;
+  _this->bonus_. ~MapField();
+}
+inline void BuyMemberAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
+  if (arena != nullptr) {
+    arena->OwnCustomDestructor(this, &BuyMemberAck::ArenaDtor);
+  }
+}
+void BuyMemberAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void BuyMemberAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.BuyMemberAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  bonus_.Clear();
+  ::memset(&expire_time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&expire_time_)) + sizeof(type_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* BuyMemberAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 expire_time = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          expire_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // map<int32, int64> bonus = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&bonus_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* BuyMemberAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.BuyMemberAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 type = 1;
+  if (this->_internal_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_type(), target);
+  }
+
+  // int64 expire_time = 2;
+  if (this->_internal_expire_time() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_expire_time(), target);
+  }
+
+  // map<int32, int64> bonus = 3;
+  if (!this->_internal_bonus().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
+        ConstPtr;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::SortItem< int32_t, ConstPtr > SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByFirstField<SortItem> Less;
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_bonus().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_bonus().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_bonus().begin();
+          it != this->_internal_bonus().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = BuyMemberAck_BonusEntry_DoNotUse::Funcs::InternalSerialize(3, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_bonus().begin();
+          it != this->_internal_bonus().end(); ++it) {
+        target = BuyMemberAck_BonusEntry_DoNotUse::Funcs::InternalSerialize(3, it->first, it->second, target, stream);
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.BuyMemberAck)
+  return target;
+}
+
+size_t BuyMemberAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.BuyMemberAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<int32, int64> bonus = 3;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_bonus_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+      it = this->_internal_bonus().begin();
+      it != this->_internal_bonus().end(); ++it) {
+    total_size += BuyMemberAck_BonusEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // int64 expire_time = 2;
+  if (this->_internal_expire_time() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_expire_time());
+  }
+
+  // int32 type = 1;
+  if (this->_internal_type() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BuyMemberAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    BuyMemberAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BuyMemberAck::GetClassData() const { return &_class_data_; }
+
+void BuyMemberAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<BuyMemberAck *>(to)->MergeFrom(
+      static_cast<const BuyMemberAck &>(from));
+}
+
+
+void BuyMemberAck::MergeFrom(const BuyMemberAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.BuyMemberAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  bonus_.MergeFrom(from.bonus_);
+  if (from._internal_expire_time() != 0) {
+    _internal_set_expire_time(from._internal_expire_time());
+  }
+  if (from._internal_type() != 0) {
+    _internal_set_type(from._internal_type());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void BuyMemberAck::CopyFrom(const BuyMemberAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.BuyMemberAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BuyMemberAck::IsInitialized() const {
+  return true;
+}
+
+void BuyMemberAck::InternalSwap(BuyMemberAck* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  bonus_.InternalSwap(&other->bonus_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(BuyMemberAck, type_)
+      + sizeof(BuyMemberAck::type_)
+      - PROTOBUF_FIELD_OFFSET(BuyMemberAck, expire_time_)>(
+          reinterpret_cast<char*>(&expire_time_),
+          reinterpret_cast<char*>(&other->expire_time_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata BuyMemberAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[24]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace cproto
 PROTOBUF_NAMESPACE_OPEN
@@ -3803,6 +5114,30 @@ template<> PROTOBUF_NOINLINE ::cproto::ItemsAck_ItemsEntry_DoNotUse* Arena::Crea
 }
 template<> PROTOBUF_NOINLINE ::cproto::ItemsAck* Arena::CreateMaybeMessage< ::cproto::ItemsAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::ItemsAck >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::MemberInfoReq* Arena::CreateMaybeMessage< ::cproto::MemberInfoReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::MemberInfoReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::MemberInfoAck* Arena::CreateMaybeMessage< ::cproto::MemberInfoAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::MemberInfoAck >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::MemberTypeInfo* Arena::CreateMaybeMessage< ::cproto::MemberTypeInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::MemberTypeInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::BuyMemberReq* Arena::CreateMaybeMessage< ::cproto::BuyMemberReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::BuyMemberReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::BuyMemberAck_BonusEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::BuyMemberAck_BonusEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::BuyMemberAck_BonusEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::BuyMemberAck* Arena::CreateMaybeMessage< ::cproto::BuyMemberAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::BuyMemberAck >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

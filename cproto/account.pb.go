@@ -706,6 +706,275 @@ func (x *ItemsAck) GetItems() map[int32]int64 {
 	return nil
 }
 
+// 会员相关协议
+type MemberInfoReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MemberInfoReq) Reset() {
+	*x = MemberInfoReq{}
+	mi := &file_account_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MemberInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MemberInfoReq) ProtoMessage() {}
+
+func (x *MemberInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MemberInfoReq.ProtoReflect.Descriptor instead.
+func (*MemberInfoReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{13}
+}
+
+type MemberInfoAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          int32                  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`                               // 会员类型：0-无会员，1-月卡，2-季卡，3-年卡
+	ExpireTime    int64                  `protobuf:"varint,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"` // 过期时间（时间戳，0表示无会员）
+	Types         []*MemberTypeInfo      `protobuf:"bytes,3,rep,name=types,proto3" json:"types,omitempty"`                              // 所有会员类型信息（包含价格、奖励等）
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MemberInfoAck) Reset() {
+	*x = MemberInfoAck{}
+	mi := &file_account_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MemberInfoAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MemberInfoAck) ProtoMessage() {}
+
+func (x *MemberInfoAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MemberInfoAck.ProtoReflect.Descriptor instead.
+func (*MemberInfoAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *MemberInfoAck) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *MemberInfoAck) GetExpireTime() int64 {
+	if x != nil {
+		return x.ExpireTime
+	}
+	return 0
+}
+
+func (x *MemberInfoAck) GetTypes() []*MemberTypeInfo {
+	if x != nil {
+		return x.Types
+	}
+	return nil
+}
+
+type MemberTypeInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          int32                  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`                                                                                                                   // 会员类型：1-月卡，2-季卡，3-年卡
+	Price         int32                  `protobuf:"varint,2,opt,name=price,proto3" json:"price,omitempty"`                                                                                                                 // 开通价格（元）
+	PurchaseBonus map[int32]int64        `protobuf:"bytes,3,rep,name=purchase_bonus,json=purchaseBonus,proto3" json:"purchase_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 立即奖励
+	DailyReward   map[int32]int64        `protobuf:"bytes,4,rep,name=daily_reward,json=dailyReward,proto3" json:"daily_reward,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`       // 每日奖励
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MemberTypeInfo) Reset() {
+	*x = MemberTypeInfo{}
+	mi := &file_account_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MemberTypeInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MemberTypeInfo) ProtoMessage() {}
+
+func (x *MemberTypeInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MemberTypeInfo.ProtoReflect.Descriptor instead.
+func (*MemberTypeInfo) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *MemberTypeInfo) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *MemberTypeInfo) GetPrice() int32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *MemberTypeInfo) GetPurchaseBonus() map[int32]int64 {
+	if x != nil {
+		return x.PurchaseBonus
+	}
+	return nil
+}
+
+func (x *MemberTypeInfo) GetDailyReward() map[int32]int64 {
+	if x != nil {
+		return x.DailyReward
+	}
+	return nil
+}
+
+type BuyMemberReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          int32                  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"` // 会员类型：1-月卡，2-季卡，3-年卡
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BuyMemberReq) Reset() {
+	*x = BuyMemberReq{}
+	mi := &file_account_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BuyMemberReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuyMemberReq) ProtoMessage() {}
+
+func (x *BuyMemberReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuyMemberReq.ProtoReflect.Descriptor instead.
+func (*BuyMemberReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *BuyMemberReq) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+type BuyMemberAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          int32                  `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`                                                                              // 会员类型
+	ExpireTime    int64                  `protobuf:"varint,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`                                                // 过期时间（时间戳）
+	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 购买时获得的奖励
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BuyMemberAck) Reset() {
+	*x = BuyMemberAck{}
+	mi := &file_account_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BuyMemberAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuyMemberAck) ProtoMessage() {}
+
+func (x *BuyMemberAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuyMemberAck.ProtoReflect.Descriptor instead.
+func (*BuyMemberAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *BuyMemberAck) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *BuyMemberAck) GetExpireTime() int64 {
+	if x != nil {
+		return x.ExpireTime
+	}
+	return 0
+}
+
+func (x *BuyMemberAck) GetBonus() map[int32]int64 {
+	if x != nil {
+		return x.Bonus
+	}
+	return nil
+}
+
 var File_account_proto protoreflect.FileDescriptor
 
 const file_account_proto_rawDesc = "" +
@@ -772,6 +1041,34 @@ const file_account_proto_rawDesc = "" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x0f\n" +
+	"\rMemberInfoReq\"r\n" +
+	"\rMemberInfoAck\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\x05R\x04type\x12\x1f\n" +
+	"\vexpire_time\x18\x02 \x01(\x03R\n" +
+	"expireTime\x12,\n" +
+	"\x05types\x18\x03 \x03(\v2\x16.cproto.MemberTypeInfoR\x05types\"\xda\x02\n" +
+	"\x0eMemberTypeInfo\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\x05R\x04type\x12\x14\n" +
+	"\x05price\x18\x02 \x01(\x05R\x05price\x12P\n" +
+	"\x0epurchase_bonus\x18\x03 \x03(\v2).cproto.MemberTypeInfo.PurchaseBonusEntryR\rpurchaseBonus\x12J\n" +
+	"\fdaily_reward\x18\x04 \x03(\v2'.cproto.MemberTypeInfo.DailyRewardEntryR\vdailyReward\x1a@\n" +
+	"\x12PurchaseBonusEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a>\n" +
+	"\x10DailyRewardEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\"\n" +
+	"\fBuyMemberReq\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\x05R\x04type\"\xb4\x01\n" +
+	"\fBuyMemberAck\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\x05R\x04type\x12\x1f\n" +
+	"\vexpire_time\x18\x02 \x01(\x03R\n" +
+	"expireTime\x125\n" +
+	"\x05bonus\x18\x03 \x03(\v2\x1f.cproto.BuyMemberAck.BonusEntryR\x05bonus\x1a8\n" +
+	"\n" +
+	"BonusEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
 var (
@@ -786,7 +1083,7 @@ func file_account_proto_rawDescGZIP() []byte {
 	return file_account_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_account_proto_goTypes = []any{
 	(*AccountReq)(nil),        // 0: cproto.AccountReq
 	(*AccountAck)(nil),        // 1: cproto.AccountAck
@@ -801,25 +1098,37 @@ var file_account_proto_goTypes = []any{
 	(*RegisterAck)(nil),       // 10: cproto.RegisterAck
 	(*PlayerInfoAck)(nil),     // 11: cproto.PlayerInfoAck
 	(*ItemsAck)(nil),          // 12: cproto.ItemsAck
-	nil,                       // 13: cproto.PurchaseAck.GoodsEntry
-	nil,                       // 14: cproto.RegisterAck.AwardEntry
-	nil,                       // 15: cproto.PlayerInfoAck.ItemsEntry
-	nil,                       // 16: cproto.ItemsAck.ItemsEntry
-	(*anypb.Any)(nil),         // 17: google.protobuf.Any
+	(*MemberInfoReq)(nil),     // 13: cproto.MemberInfoReq
+	(*MemberInfoAck)(nil),     // 14: cproto.MemberInfoAck
+	(*MemberTypeInfo)(nil),    // 15: cproto.MemberTypeInfo
+	(*BuyMemberReq)(nil),      // 16: cproto.BuyMemberReq
+	(*BuyMemberAck)(nil),      // 17: cproto.BuyMemberAck
+	nil,                       // 18: cproto.PurchaseAck.GoodsEntry
+	nil,                       // 19: cproto.RegisterAck.AwardEntry
+	nil,                       // 20: cproto.PlayerInfoAck.ItemsEntry
+	nil,                       // 21: cproto.ItemsAck.ItemsEntry
+	nil,                       // 22: cproto.MemberTypeInfo.PurchaseBonusEntry
+	nil,                       // 23: cproto.MemberTypeInfo.DailyRewardEntry
+	nil,                       // 24: cproto.BuyMemberAck.BonusEntry
+	(*anypb.Any)(nil),         // 25: google.protobuf.Any
 }
 var file_account_proto_depIdxs = []int32{
-	17, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
-	17, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
-	13, // 2: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
+	25, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
+	25, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
+	18, // 2: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
 	11, // 3: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
-	14, // 4: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
-	15, // 5: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
-	16, // 6: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
-	7,  // [7:7] is the sub-list for method output_type
-	7,  // [7:7] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	19, // 4: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
+	20, // 5: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
+	21, // 6: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
+	15, // 7: cproto.MemberInfoAck.types:type_name -> cproto.MemberTypeInfo
+	22, // 8: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
+	23, // 9: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
+	24, // 10: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_account_proto_init() }
@@ -833,7 +1142,7 @@ func file_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

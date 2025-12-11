@@ -70,3 +70,31 @@ message PlayerInfoAck {
 message ItemsAck {
   map<int32, int64> items = 1; //玩家物品
 }
+
+// 会员相关协议
+message MemberInfoReq {
+  // 空请求，获取当前会员信息
+}
+
+message MemberInfoAck {
+  int32 type = 1; // 会员类型：0-无会员，1-月卡，2-季卡，3-年卡
+  int64 expire_time = 2; // 过期时间（时间戳，0表示无会员）
+  repeated MemberTypeInfo types = 3; // 所有会员类型信息（包含价格、奖励等）
+}
+
+message MemberTypeInfo {
+  int32 type = 1; // 会员类型：1-月卡，2-季卡，3-年卡
+  int32 price = 2; // 开通价格（元）
+  map<int32, int64> purchase_bonus = 3; // 立即奖励
+  map<int32, int64> daily_reward = 4; // 每日奖励
+}
+
+message BuyMemberReq {
+  int32 type = 1; // 会员类型：1-月卡，2-季卡，3-年卡
+}
+
+message BuyMemberAck {
+  int32 type = 1; // 会员类型
+  int64 expire_time = 2; // 过期时间（时间戳）
+  map<int32, int64> bonus = 3; // 购买时获得的奖励
+}
