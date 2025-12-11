@@ -41,6 +41,20 @@ struct AccountAckDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT AccountAckDefaultTypeInternal _AccountAck_default_instance_;
+constexpr WxLoginReq::WxLoginReq(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : code_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , avatar_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+struct WxLoginReqDefaultTypeInternal {
+  constexpr WxLoginReqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~WxLoginReqDefaultTypeInternal() {}
+  union {
+    WxLoginReq _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT WxLoginReqDefaultTypeInternal _WxLoginReq_default_instance_;
 constexpr LoginReq::LoginReq(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : account_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
@@ -218,7 +232,7 @@ struct ItemsAckDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ItemsAckDefaultTypeInternal _ItemsAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[16];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[17];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_account_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_account_2eproto = nullptr;
 
@@ -237,6 +251,15 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::AccountAck, ack_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::WxLoginReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::WxLoginReq, code_),
+  PROTOBUF_FIELD_OFFSET(::cproto::WxLoginReq, nickname_),
+  PROTOBUF_FIELD_OFFSET(::cproto::WxLoginReq, avatar_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::LoginReq, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -363,25 +386,27 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cproto::AccountReq)},
   { 7, -1, -1, sizeof(::cproto::AccountAck)},
-  { 14, -1, -1, sizeof(::cproto::LoginReq)},
-  { 22, -1, -1, sizeof(::cproto::RegisterReq)},
-  { 32, -1, -1, sizeof(::cproto::BindInviteCodeReq)},
-  { 39, -1, -1, sizeof(::cproto::ShopReq)},
-  { 46, -1, -1, sizeof(::cproto::ShopAck)},
-  { 54, -1, -1, sizeof(::cproto::PurchaseReq)},
-  { 63, 71, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
-  { 73, -1, -1, sizeof(::cproto::PurchaseAck)},
-  { 81, 89, -1, sizeof(::cproto::RegisterAck_AwardEntry_DoNotUse)},
-  { 91, -1, -1, sizeof(::cproto::RegisterAck)},
-  { 99, 107, -1, sizeof(::cproto::PlayerInfoAck_ItemsEntry_DoNotUse)},
-  { 109, -1, -1, sizeof(::cproto::PlayerInfoAck)},
-  { 119, 127, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
-  { 129, -1, -1, sizeof(::cproto::ItemsAck)},
+  { 14, -1, -1, sizeof(::cproto::WxLoginReq)},
+  { 23, -1, -1, sizeof(::cproto::LoginReq)},
+  { 31, -1, -1, sizeof(::cproto::RegisterReq)},
+  { 41, -1, -1, sizeof(::cproto::BindInviteCodeReq)},
+  { 48, -1, -1, sizeof(::cproto::ShopReq)},
+  { 55, -1, -1, sizeof(::cproto::ShopAck)},
+  { 63, -1, -1, sizeof(::cproto::PurchaseReq)},
+  { 72, 80, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
+  { 82, -1, -1, sizeof(::cproto::PurchaseAck)},
+  { 90, 98, -1, sizeof(::cproto::RegisterAck_AwardEntry_DoNotUse)},
+  { 100, -1, -1, sizeof(::cproto::RegisterAck)},
+  { 108, 116, -1, sizeof(::cproto::PlayerInfoAck_ItemsEntry_DoNotUse)},
+  { 118, -1, -1, sizeof(::cproto::PlayerInfoAck)},
+  { 128, 136, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
+  { 138, -1, -1, sizeof(::cproto::ItemsAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_AccountReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_AccountAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_WxLoginReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_LoginReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_RegisterReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BindInviteCodeReq_default_instance_),
@@ -402,37 +427,39 @@ const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\n\raccount.proto\022\006cproto\032\031google/protobuf"
   "/any.proto\"/\n\nAccountReq\022!\n\003req\030\001 \001(\0132\024."
   "google.protobuf.Any\"/\n\nAccountAck\022!\n\003ack"
-  "\030\001 \001(\0132\024.google.protobuf.Any\"-\n\010LoginReq"
-  "\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"U\n\013R"
-  "egisterReq\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030"
-  "\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\023\n\013invite_code\030\004 \001"
-  "(\t\"(\n\021BindInviteCodeReq\022\023\n\013invite_code\030\001"
-  " \001(\t\"\034\n\007ShopReq\022\021\n\tshop_type\030\001 \001(\005\"/\n\007Sh"
-  "opAck\022\021\n\tshop_type\030\001 \001(\005\022\021\n\tshop_info\030\002 "
-  "\001(\t\"=\n\013PurchaseReq\022\021\n\tshop_type\030\001 \001(\005\022\n\n"
-  "\002id\030\002 \001(\005\022\017\n\007to_coin\030\003 \001(\010\"}\n\013PurchaseAc"
-  "k\022\021\n\tshop_type\030\001 \001(\005\022-\n\005goods\030\002 \003(\0132\036.cp"
-  "roto.PurchaseAck.GoodsEntry\032,\n\nGoodsEntr"
-  "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\226\001\n\013Re"
-  "gisterAck\022*\n\013player_info\030\001 \001(\0132\025.cproto."
-  "PlayerInfoAck\022-\n\005award\030\002 \003(\0132\036.cproto.Re"
-  "gisterAck.AwardEntry\032,\n\nAwardEntry\022\013\n\003ke"
-  "y\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\235\001\n\rPlayerInf"
-  "oAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006a"
-  "vatar\030\003 \001(\t\022/\n\005items\030\004 \003(\0132 .cproto.Play"
-  "erInfoAck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003ke"
-  "y\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"d\n\010ItemsAck\022*"
-  "\n\005items\030\001 \003(\0132\033.cproto.ItemsAck.ItemsEnt"
+  "\030\001 \001(\0132\024.google.protobuf.Any\"<\n\nWxLoginR"
+  "eq\022\014\n\004code\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006av"
+  "atar\030\003 \001(\t\"-\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022"
+  "\020\n\010password\030\002 \001(\t\"U\n\013RegisterReq\022\017\n\007acco"
+  "unt\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\016\n\006avatar\030\003 "
+  "\001(\t\022\023\n\013invite_code\030\004 \001(\t\"(\n\021BindInviteCo"
+  "deReq\022\023\n\013invite_code\030\001 \001(\t\"\034\n\007ShopReq\022\021\n"
+  "\tshop_type\030\001 \001(\005\"/\n\007ShopAck\022\021\n\tshop_type"
+  "\030\001 \001(\005\022\021\n\tshop_info\030\002 \001(\t\"=\n\013PurchaseReq"
+  "\022\021\n\tshop_type\030\001 \001(\005\022\n\n\002id\030\002 \001(\005\022\017\n\007to_co"
+  "in\030\003 \001(\010\"}\n\013PurchaseAck\022\021\n\tshop_type\030\001 \001"
+  "(\005\022-\n\005goods\030\002 \003(\0132\036.cproto.PurchaseAck.G"
+  "oodsEntry\032,\n\nGoodsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005"
+  "value\030\002 \001(\003:\0028\001\"\226\001\n\013RegisterAck\022*\n\013playe"
+  "r_info\030\001 \001(\0132\025.cproto.PlayerInfoAck\022-\n\005a"
+  "ward\030\002 \003(\0132\036.cproto.RegisterAck.AwardEnt"
+  "ry\032,\n\nAwardEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002"
+  " \001(\003:\0028\001\"\235\001\n\rPlayerInfoAck\022\013\n\003uid\030\001 \001(\t\022"
+  "\020\n\010nickname\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022/\n\005ite"
+  "ms\030\004 \003(\0132 .cproto.PlayerInfoAck.ItemsEnt"
   "ry\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002"
-  " \001(\003:\0028\001B\013Z\t../cprotob\006proto3"
+  " \001(\003:\0028\001\"d\n\010ItemsAck\022*\n\005items\030\001 \003(\0132\033.cp"
+  "roto.ItemsAck.ItemsEntry\032,\n\nItemsEntry\022\013"
+  "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cpr"
+  "otob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_account_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_account_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_account_2eproto = {
-  false, false, 1029, descriptor_table_protodef_account_2eproto, "account.proto", 
-  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 16,
+  false, false, 1091, descriptor_table_protodef_account_2eproto, "account.proto", 
+  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 17,
   schemas, file_default_instances, TableStruct_account_2eproto::offsets,
   file_level_metadata_account_2eproto, file_level_enum_descriptors_account_2eproto, file_level_service_descriptors_account_2eproto,
 };
@@ -848,6 +875,307 @@ void AccountAck::InternalSwap(AccountAck* other) {
 
 // ===================================================================
 
+class WxLoginReq::_Internal {
+ public:
+};
+
+WxLoginReq::WxLoginReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.WxLoginReq)
+}
+WxLoginReq::WxLoginReq(const WxLoginReq& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    code_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_code().empty()) {
+    code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_code(), 
+      GetArenaForAllocation());
+  }
+  nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_nickname().empty()) {
+    nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nickname(), 
+      GetArenaForAllocation());
+  }
+  avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_avatar().empty()) {
+    avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_avatar(), 
+      GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:cproto.WxLoginReq)
+}
+
+inline void WxLoginReq::SharedCtor() {
+code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  code_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+WxLoginReq::~WxLoginReq() {
+  // @@protoc_insertion_point(destructor:cproto.WxLoginReq)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void WxLoginReq::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  code_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  nickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  avatar_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void WxLoginReq::ArenaDtor(void* object) {
+  WxLoginReq* _this = reinterpret_cast< WxLoginReq* >(object);
+  (void)_this;
+}
+void WxLoginReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void WxLoginReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void WxLoginReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.WxLoginReq)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  code_.ClearToEmpty();
+  nickname_.ClearToEmpty();
+  avatar_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* WxLoginReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string code = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_code();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.WxLoginReq.code"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string nickname = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_nickname();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.WxLoginReq.nickname"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string avatar = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_avatar();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.WxLoginReq.avatar"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* WxLoginReq::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.WxLoginReq)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string code = 1;
+  if (!this->_internal_code().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_code().data(), static_cast<int>(this->_internal_code().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.WxLoginReq.code");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_code(), target);
+  }
+
+  // string nickname = 2;
+  if (!this->_internal_nickname().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_nickname().data(), static_cast<int>(this->_internal_nickname().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.WxLoginReq.nickname");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_nickname(), target);
+  }
+
+  // string avatar = 3;
+  if (!this->_internal_avatar().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.WxLoginReq.avatar");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_avatar(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.WxLoginReq)
+  return target;
+}
+
+size_t WxLoginReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.WxLoginReq)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string code = 1;
+  if (!this->_internal_code().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_code());
+  }
+
+  // string nickname = 2;
+  if (!this->_internal_nickname().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_nickname());
+  }
+
+  // string avatar = 3;
+  if (!this->_internal_avatar().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_avatar());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WxLoginReq::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    WxLoginReq::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WxLoginReq::GetClassData() const { return &_class_data_; }
+
+void WxLoginReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<WxLoginReq *>(to)->MergeFrom(
+      static_cast<const WxLoginReq &>(from));
+}
+
+
+void WxLoginReq::MergeFrom(const WxLoginReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.WxLoginReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_code().empty()) {
+    _internal_set_code(from._internal_code());
+  }
+  if (!from._internal_nickname().empty()) {
+    _internal_set_nickname(from._internal_nickname());
+  }
+  if (!from._internal_avatar().empty()) {
+    _internal_set_avatar(from._internal_avatar());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void WxLoginReq::CopyFrom(const WxLoginReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.WxLoginReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool WxLoginReq::IsInitialized() const {
+  return true;
+}
+
+void WxLoginReq::InternalSwap(WxLoginReq* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &code_, lhs_arena,
+      &other->code_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &nickname_, lhs_arena,
+      &other->nickname_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &avatar_, lhs_arena,
+      &other->avatar_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata WxLoginReq::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[2]);
+}
+
+// ===================================================================
+
 class LoginReq::_Internal {
  public:
 };
@@ -1095,7 +1423,7 @@ void LoginReq::InternalSwap(LoginReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata LoginReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[2]);
+      file_level_metadata_account_2eproto[3]);
 }
 
 // ===================================================================
@@ -1445,7 +1773,7 @@ void RegisterReq::InternalSwap(RegisterReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[3]);
+      file_level_metadata_account_2eproto[4]);
 }
 
 // ===================================================================
@@ -1648,7 +1976,7 @@ void BindInviteCodeReq::InternalSwap(BindInviteCodeReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BindInviteCodeReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[4]);
+      file_level_metadata_account_2eproto[5]);
 }
 
 // ===================================================================
@@ -1826,7 +2154,7 @@ void ShopReq::InternalSwap(ShopReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ShopReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[5]);
+      file_level_metadata_account_2eproto[6]);
 }
 
 // ===================================================================
@@ -2055,7 +2383,7 @@ void ShopAck::InternalSwap(ShopAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ShopAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[6]);
+      file_level_metadata_account_2eproto[7]);
 }
 
 // ===================================================================
@@ -2289,7 +2617,7 @@ void PurchaseReq::InternalSwap(PurchaseReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PurchaseReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[7]);
+      file_level_metadata_account_2eproto[8]);
 }
 
 // ===================================================================
@@ -2303,7 +2631,7 @@ void PurchaseAck_GoodsEntry_DoNotUse::MergeFrom(const PurchaseAck_GoodsEntry_DoN
 ::PROTOBUF_NAMESPACE_ID::Metadata PurchaseAck_GoodsEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[8]);
+      file_level_metadata_account_2eproto[9]);
 }
 
 // ===================================================================
@@ -2543,7 +2871,7 @@ void PurchaseAck::InternalSwap(PurchaseAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PurchaseAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[9]);
+      file_level_metadata_account_2eproto[10]);
 }
 
 // ===================================================================
@@ -2557,7 +2885,7 @@ void RegisterAck_AwardEntry_DoNotUse::MergeFrom(const RegisterAck_AwardEntry_DoN
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterAck_AwardEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[10]);
+      file_level_metadata_account_2eproto[11]);
 }
 
 // ===================================================================
@@ -2814,7 +3142,7 @@ void RegisterAck::InternalSwap(RegisterAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[11]);
+      file_level_metadata_account_2eproto[12]);
 }
 
 // ===================================================================
@@ -2828,7 +3156,7 @@ void PlayerInfoAck_ItemsEntry_DoNotUse::MergeFrom(const PlayerInfoAck_ItemsEntry
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfoAck_ItemsEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[12]);
+      file_level_metadata_account_2eproto[13]);
 }
 
 // ===================================================================
@@ -3191,7 +3519,7 @@ void PlayerInfoAck::InternalSwap(PlayerInfoAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfoAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[13]);
+      file_level_metadata_account_2eproto[14]);
 }
 
 // ===================================================================
@@ -3205,7 +3533,7 @@ void ItemsAck_ItemsEntry_DoNotUse::MergeFrom(const ItemsAck_ItemsEntry_DoNotUse&
 ::PROTOBUF_NAMESPACE_ID::Metadata ItemsAck_ItemsEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[14]);
+      file_level_metadata_account_2eproto[15]);
 }
 
 // ===================================================================
@@ -3419,7 +3747,7 @@ void ItemsAck::InternalSwap(ItemsAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ItemsAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[15]);
+      file_level_metadata_account_2eproto[16]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -3430,6 +3758,9 @@ template<> PROTOBUF_NOINLINE ::cproto::AccountReq* Arena::CreateMaybeMessage< ::
 }
 template<> PROTOBUF_NOINLINE ::cproto::AccountAck* Arena::CreateMaybeMessage< ::cproto::AccountAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::AccountAck >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::WxLoginReq* Arena::CreateMaybeMessage< ::cproto::WxLoginReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::WxLoginReq >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::LoginReq* Arena::CreateMaybeMessage< ::cproto::LoginReq >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::LoginReq >(arena);

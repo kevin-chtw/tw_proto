@@ -411,7 +411,7 @@ type ActBrief struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                // 活动名称
-	Status        int32                  `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`                           // 1未激活 2进行中 3已领奖 4过期
+	Status        int32                  `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`                           // 0未激活 1可领奖 2部分达成，已领奖 3全达成，已领奖
 	EndTs         int64                  `protobuf:"varint,4,opt,name=end_ts,json=endTs,proto3" json:"end_ts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
