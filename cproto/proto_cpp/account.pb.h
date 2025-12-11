@@ -51,7 +51,7 @@ struct TableStruct_account_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[25]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[27]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -131,6 +131,12 @@ extern ShopAckDefaultTypeInternal _ShopAck_default_instance_;
 class ShopReq;
 struct ShopReqDefaultTypeInternal;
 extern ShopReqDefaultTypeInternal _ShopReq_default_instance_;
+class UpdateAccountReq;
+struct UpdateAccountReqDefaultTypeInternal;
+extern UpdateAccountReqDefaultTypeInternal _UpdateAccountReq_default_instance_;
+class WxLoginAck;
+struct WxLoginAckDefaultTypeInternal;
+extern WxLoginAckDefaultTypeInternal _WxLoginAck_default_instance_;
 class WxLoginReq;
 struct WxLoginReqDefaultTypeInternal;
 extern WxLoginReqDefaultTypeInternal _WxLoginReq_default_instance_;
@@ -160,6 +166,8 @@ template<> ::cproto::RegisterAck_AwardEntry_DoNotUse* Arena::CreateMaybeMessage<
 template<> ::cproto::RegisterReq* Arena::CreateMaybeMessage<::cproto::RegisterReq>(Arena*);
 template<> ::cproto::ShopAck* Arena::CreateMaybeMessage<::cproto::ShopAck>(Arena*);
 template<> ::cproto::ShopReq* Arena::CreateMaybeMessage<::cproto::ShopReq>(Arena*);
+template<> ::cproto::UpdateAccountReq* Arena::CreateMaybeMessage<::cproto::UpdateAccountReq>(Arena*);
+template<> ::cproto::WxLoginAck* Arena::CreateMaybeMessage<::cproto::WxLoginAck>(Arena*);
 template<> ::cproto::WxLoginReq* Arena::CreateMaybeMessage<::cproto::WxLoginReq>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace cproto {
@@ -599,8 +607,6 @@ class WxLoginReq final :
 
   enum : int {
     kCodeFieldNumber = 1,
-    kNicknameFieldNumber = 2,
-    kAvatarFieldNumber = 3,
   };
   // string code = 1;
   void clear_code();
@@ -616,7 +622,316 @@ class WxLoginReq final :
   std::string* _internal_mutable_code();
   public:
 
-  // string nickname = 2;
+  // @@protoc_insertion_point(class_scope:cproto.WxLoginReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class WxLoginAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.WxLoginAck) */ {
+ public:
+  inline WxLoginAck() : WxLoginAck(nullptr) {}
+  ~WxLoginAck() override;
+  explicit constexpr WxLoginAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  WxLoginAck(const WxLoginAck& from);
+  WxLoginAck(WxLoginAck&& from) noexcept
+    : WxLoginAck() {
+    *this = ::std::move(from);
+  }
+
+  inline WxLoginAck& operator=(const WxLoginAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline WxLoginAck& operator=(WxLoginAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const WxLoginAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const WxLoginAck* internal_default_instance() {
+    return reinterpret_cast<const WxLoginAck*>(
+               &_WxLoginAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(WxLoginAck& a, WxLoginAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(WxLoginAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(WxLoginAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  WxLoginAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<WxLoginAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const WxLoginAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const WxLoginAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(WxLoginAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.WxLoginAck";
+  }
+  protected:
+  explicit WxLoginAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSessionKeyFieldNumber = 1,
+    kPlayerInfoFieldNumber = 2,
+  };
+  // string session_key = 1;
+  void clear_session_key();
+  const std::string& session_key() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_session_key(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_session_key();
+  PROTOBUF_NODISCARD std::string* release_session_key();
+  void set_allocated_session_key(std::string* session_key);
+  private:
+  const std::string& _internal_session_key() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_session_key(const std::string& value);
+  std::string* _internal_mutable_session_key();
+  public:
+
+  // .cproto.PlayerInfoAck player_info = 2;
+  bool has_player_info() const;
+  private:
+  bool _internal_has_player_info() const;
+  public:
+  void clear_player_info();
+  const ::cproto::PlayerInfoAck& player_info() const;
+  PROTOBUF_NODISCARD ::cproto::PlayerInfoAck* release_player_info();
+  ::cproto::PlayerInfoAck* mutable_player_info();
+  void set_allocated_player_info(::cproto::PlayerInfoAck* player_info);
+  private:
+  const ::cproto::PlayerInfoAck& _internal_player_info() const;
+  ::cproto::PlayerInfoAck* _internal_mutable_player_info();
+  public:
+  void unsafe_arena_set_allocated_player_info(
+      ::cproto::PlayerInfoAck* player_info);
+  ::cproto::PlayerInfoAck* unsafe_arena_release_player_info();
+
+  // @@protoc_insertion_point(class_scope:cproto.WxLoginAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_key_;
+  ::cproto::PlayerInfoAck* player_info_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UpdateAccountReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.UpdateAccountReq) */ {
+ public:
+  inline UpdateAccountReq() : UpdateAccountReq(nullptr) {}
+  ~UpdateAccountReq() override;
+  explicit constexpr UpdateAccountReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpdateAccountReq(const UpdateAccountReq& from);
+  UpdateAccountReq(UpdateAccountReq&& from) noexcept
+    : UpdateAccountReq() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateAccountReq& operator=(const UpdateAccountReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpdateAccountReq& operator=(UpdateAccountReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpdateAccountReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UpdateAccountReq* internal_default_instance() {
+    return reinterpret_cast<const UpdateAccountReq*>(
+               &_UpdateAccountReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(UpdateAccountReq& a, UpdateAccountReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpdateAccountReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpdateAccountReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpdateAccountReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpdateAccountReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UpdateAccountReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const UpdateAccountReq& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateAccountReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.UpdateAccountReq";
+  }
+  protected:
+  explicit UpdateAccountReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNicknameFieldNumber = 1,
+    kAvatarFieldNumber = 2,
+  };
+  // string nickname = 1;
   void clear_nickname();
   const std::string& nickname() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -630,7 +945,7 @@ class WxLoginReq final :
   std::string* _internal_mutable_nickname();
   public:
 
-  // string avatar = 3;
+  // string avatar = 2;
   void clear_avatar();
   const std::string& avatar() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -644,14 +959,13 @@ class WxLoginReq final :
   std::string* _internal_mutable_avatar();
   public:
 
-  // @@protoc_insertion_point(class_scope:cproto.WxLoginReq)
+  // @@protoc_insertion_point(class_scope:cproto.UpdateAccountReq)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr code_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr avatar_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -707,7 +1021,7 @@ class LoginReq final :
                &_LoginReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(LoginReq& a, LoginReq& b) {
     a.Swap(&b);
@@ -874,7 +1188,7 @@ class RegisterReq final :
                &_RegisterReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(RegisterReq& a, RegisterReq& b) {
     a.Swap(&b);
@@ -1073,7 +1387,7 @@ class BindInviteCodeReq final :
                &_BindInviteCodeReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(BindInviteCodeReq& a, BindInviteCodeReq& b) {
     a.Swap(&b);
@@ -1224,7 +1538,7 @@ class ShopReq final :
                &_ShopReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(ShopReq& a, ShopReq& b) {
     a.Swap(&b);
@@ -1370,7 +1684,7 @@ class ShopAck final :
                &_ShopAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(ShopAck& a, ShopAck& b) {
     a.Swap(&b);
@@ -1532,7 +1846,7 @@ class PurchaseReq final :
                &_PurchaseReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(PurchaseReq& a, PurchaseReq& b) {
     a.Swap(&b);
@@ -1723,7 +2037,7 @@ class PurchaseAck final :
                &_PurchaseAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(PurchaseAck& a, PurchaseAck& b) {
     a.Swap(&b);
@@ -1916,7 +2230,7 @@ class RegisterAck final :
                &_RegisterAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    14;
 
   friend void swap(RegisterAck& a, RegisterAck& b) {
     a.Swap(&b);
@@ -2118,7 +2432,7 @@ class PlayerInfoAck final :
                &_PlayerInfoAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    16;
 
   friend void swap(PlayerInfoAck& a, PlayerInfoAck& b) {
     a.Swap(&b);
@@ -2348,7 +2662,7 @@ class ItemsAck final :
                &_ItemsAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    18;
 
   friend void swap(ItemsAck& a, ItemsAck& b) {
     a.Swap(&b);
@@ -2506,7 +2820,7 @@ class MemberInfoReq final :
                &_MemberInfoReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    19;
 
   friend void swap(MemberInfoReq& a, MemberInfoReq& b) {
     a.Swap(&b);
@@ -2625,7 +2939,7 @@ class MemberInfoAck final :
                &_MemberInfoAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    20;
 
   friend void swap(MemberInfoAck& a, MemberInfoAck& b) {
     a.Swap(&b);
@@ -2848,7 +3162,7 @@ class MemberTypeInfo final :
                &_MemberTypeInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    23;
 
   friend void swap(MemberTypeInfo& a, MemberTypeInfo& b) {
     a.Swap(&b);
@@ -3052,7 +3366,7 @@ class BuyMemberReq final :
                &_BuyMemberReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    24;
 
   friend void swap(BuyMemberReq& a, BuyMemberReq& b) {
     a.Swap(&b);
@@ -3221,7 +3535,7 @@ class BuyMemberAck final :
                &_BuyMemberAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    26;
 
   friend void swap(BuyMemberAck& a, BuyMemberAck& b) {
     a.Swap(&b);
@@ -3594,42 +3908,191 @@ inline void WxLoginReq::set_allocated_code(std::string* code) {
   // @@protoc_insertion_point(field_set_allocated:cproto.WxLoginReq.code)
 }
 
-// string nickname = 2;
-inline void WxLoginReq::clear_nickname() {
+// -------------------------------------------------------------------
+
+// WxLoginAck
+
+// string session_key = 1;
+inline void WxLoginAck::clear_session_key() {
+  session_key_.ClearToEmpty();
+}
+inline const std::string& WxLoginAck::session_key() const {
+  // @@protoc_insertion_point(field_get:cproto.WxLoginAck.session_key)
+  return _internal_session_key();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WxLoginAck::set_session_key(ArgT0&& arg0, ArgT... args) {
+ 
+ session_key_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.WxLoginAck.session_key)
+}
+inline std::string* WxLoginAck::mutable_session_key() {
+  std::string* _s = _internal_mutable_session_key();
+  // @@protoc_insertion_point(field_mutable:cproto.WxLoginAck.session_key)
+  return _s;
+}
+inline const std::string& WxLoginAck::_internal_session_key() const {
+  return session_key_.Get();
+}
+inline void WxLoginAck::_internal_set_session_key(const std::string& value) {
+  
+  session_key_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* WxLoginAck::_internal_mutable_session_key() {
+  
+  return session_key_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* WxLoginAck::release_session_key() {
+  // @@protoc_insertion_point(field_release:cproto.WxLoginAck.session_key)
+  return session_key_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void WxLoginAck::set_allocated_session_key(std::string* session_key) {
+  if (session_key != nullptr) {
+    
+  } else {
+    
+  }
+  session_key_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), session_key,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (session_key_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    session_key_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.WxLoginAck.session_key)
+}
+
+// .cproto.PlayerInfoAck player_info = 2;
+inline bool WxLoginAck::_internal_has_player_info() const {
+  return this != internal_default_instance() && player_info_ != nullptr;
+}
+inline bool WxLoginAck::has_player_info() const {
+  return _internal_has_player_info();
+}
+inline void WxLoginAck::clear_player_info() {
+  if (GetArenaForAllocation() == nullptr && player_info_ != nullptr) {
+    delete player_info_;
+  }
+  player_info_ = nullptr;
+}
+inline const ::cproto::PlayerInfoAck& WxLoginAck::_internal_player_info() const {
+  const ::cproto::PlayerInfoAck* p = player_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::cproto::PlayerInfoAck&>(
+      ::cproto::_PlayerInfoAck_default_instance_);
+}
+inline const ::cproto::PlayerInfoAck& WxLoginAck::player_info() const {
+  // @@protoc_insertion_point(field_get:cproto.WxLoginAck.player_info)
+  return _internal_player_info();
+}
+inline void WxLoginAck::unsafe_arena_set_allocated_player_info(
+    ::cproto::PlayerInfoAck* player_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(player_info_);
+  }
+  player_info_ = player_info;
+  if (player_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cproto.WxLoginAck.player_info)
+}
+inline ::cproto::PlayerInfoAck* WxLoginAck::release_player_info() {
+  
+  ::cproto::PlayerInfoAck* temp = player_info_;
+  player_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::cproto::PlayerInfoAck* WxLoginAck::unsafe_arena_release_player_info() {
+  // @@protoc_insertion_point(field_release:cproto.WxLoginAck.player_info)
+  
+  ::cproto::PlayerInfoAck* temp = player_info_;
+  player_info_ = nullptr;
+  return temp;
+}
+inline ::cproto::PlayerInfoAck* WxLoginAck::_internal_mutable_player_info() {
+  
+  if (player_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::cproto::PlayerInfoAck>(GetArenaForAllocation());
+    player_info_ = p;
+  }
+  return player_info_;
+}
+inline ::cproto::PlayerInfoAck* WxLoginAck::mutable_player_info() {
+  ::cproto::PlayerInfoAck* _msg = _internal_mutable_player_info();
+  // @@protoc_insertion_point(field_mutable:cproto.WxLoginAck.player_info)
+  return _msg;
+}
+inline void WxLoginAck::set_allocated_player_info(::cproto::PlayerInfoAck* player_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete player_info_;
+  }
+  if (player_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::cproto::PlayerInfoAck>::GetOwningArena(player_info);
+    if (message_arena != submessage_arena) {
+      player_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, player_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  player_info_ = player_info;
+  // @@protoc_insertion_point(field_set_allocated:cproto.WxLoginAck.player_info)
+}
+
+// -------------------------------------------------------------------
+
+// UpdateAccountReq
+
+// string nickname = 1;
+inline void UpdateAccountReq::clear_nickname() {
   nickname_.ClearToEmpty();
 }
-inline const std::string& WxLoginReq::nickname() const {
-  // @@protoc_insertion_point(field_get:cproto.WxLoginReq.nickname)
+inline const std::string& UpdateAccountReq::nickname() const {
+  // @@protoc_insertion_point(field_get:cproto.UpdateAccountReq.nickname)
   return _internal_nickname();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void WxLoginReq::set_nickname(ArgT0&& arg0, ArgT... args) {
+void UpdateAccountReq::set_nickname(ArgT0&& arg0, ArgT... args) {
  
  nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.WxLoginReq.nickname)
+  // @@protoc_insertion_point(field_set:cproto.UpdateAccountReq.nickname)
 }
-inline std::string* WxLoginReq::mutable_nickname() {
+inline std::string* UpdateAccountReq::mutable_nickname() {
   std::string* _s = _internal_mutable_nickname();
-  // @@protoc_insertion_point(field_mutable:cproto.WxLoginReq.nickname)
+  // @@protoc_insertion_point(field_mutable:cproto.UpdateAccountReq.nickname)
   return _s;
 }
-inline const std::string& WxLoginReq::_internal_nickname() const {
+inline const std::string& UpdateAccountReq::_internal_nickname() const {
   return nickname_.Get();
 }
-inline void WxLoginReq::_internal_set_nickname(const std::string& value) {
+inline void UpdateAccountReq::_internal_set_nickname(const std::string& value) {
   
   nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* WxLoginReq::_internal_mutable_nickname() {
+inline std::string* UpdateAccountReq::_internal_mutable_nickname() {
   
   return nickname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* WxLoginReq::release_nickname() {
-  // @@protoc_insertion_point(field_release:cproto.WxLoginReq.nickname)
+inline std::string* UpdateAccountReq::release_nickname() {
+  // @@protoc_insertion_point(field_release:cproto.UpdateAccountReq.nickname)
   return nickname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void WxLoginReq::set_allocated_nickname(std::string* nickname) {
+inline void UpdateAccountReq::set_allocated_nickname(std::string* nickname) {
   if (nickname != nullptr) {
     
   } else {
@@ -3642,45 +4105,45 @@ inline void WxLoginReq::set_allocated_nickname(std::string* nickname) {
     nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.WxLoginReq.nickname)
+  // @@protoc_insertion_point(field_set_allocated:cproto.UpdateAccountReq.nickname)
 }
 
-// string avatar = 3;
-inline void WxLoginReq::clear_avatar() {
+// string avatar = 2;
+inline void UpdateAccountReq::clear_avatar() {
   avatar_.ClearToEmpty();
 }
-inline const std::string& WxLoginReq::avatar() const {
-  // @@protoc_insertion_point(field_get:cproto.WxLoginReq.avatar)
+inline const std::string& UpdateAccountReq::avatar() const {
+  // @@protoc_insertion_point(field_get:cproto.UpdateAccountReq.avatar)
   return _internal_avatar();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void WxLoginReq::set_avatar(ArgT0&& arg0, ArgT... args) {
+void UpdateAccountReq::set_avatar(ArgT0&& arg0, ArgT... args) {
  
  avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cproto.WxLoginReq.avatar)
+  // @@protoc_insertion_point(field_set:cproto.UpdateAccountReq.avatar)
 }
-inline std::string* WxLoginReq::mutable_avatar() {
+inline std::string* UpdateAccountReq::mutable_avatar() {
   std::string* _s = _internal_mutable_avatar();
-  // @@protoc_insertion_point(field_mutable:cproto.WxLoginReq.avatar)
+  // @@protoc_insertion_point(field_mutable:cproto.UpdateAccountReq.avatar)
   return _s;
 }
-inline const std::string& WxLoginReq::_internal_avatar() const {
+inline const std::string& UpdateAccountReq::_internal_avatar() const {
   return avatar_.Get();
 }
-inline void WxLoginReq::_internal_set_avatar(const std::string& value) {
+inline void UpdateAccountReq::_internal_set_avatar(const std::string& value) {
   
   avatar_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* WxLoginReq::_internal_mutable_avatar() {
+inline std::string* UpdateAccountReq::_internal_mutable_avatar() {
   
   return avatar_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* WxLoginReq::release_avatar() {
-  // @@protoc_insertion_point(field_release:cproto.WxLoginReq.avatar)
+inline std::string* UpdateAccountReq::release_avatar() {
+  // @@protoc_insertion_point(field_release:cproto.UpdateAccountReq.avatar)
   return avatar_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void WxLoginReq::set_allocated_avatar(std::string* avatar) {
+inline void UpdateAccountReq::set_allocated_avatar(std::string* avatar) {
   if (avatar != nullptr) {
     
   } else {
@@ -3693,7 +4156,7 @@ inline void WxLoginReq::set_allocated_avatar(std::string* avatar) {
     avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cproto.WxLoginReq.avatar)
+  // @@protoc_insertion_point(field_set_allocated:cproto.UpdateAccountReq.avatar)
 }
 
 // -------------------------------------------------------------------
@@ -4927,6 +5390,10 @@ BuyMemberAck::mutable_bonus() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -15,8 +15,16 @@ message AccountAck {
 
 message WxLoginReq {
   string code = 1; //微信码
-  string nickname = 2; //昵称
-  string avatar = 3; //头像
+}
+
+message WxLoginAck {
+  string session_key = 1;
+  PlayerInfoAck player_info = 2;
+}
+
+message UpdateAccountReq {
+  string nickname = 1;
+  string avatar = 2;
 }
 
 message LoginReq {

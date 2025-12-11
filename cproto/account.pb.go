@@ -112,9 +112,7 @@ func (x *AccountAck) GetAck() *anypb.Any {
 
 type WxLoginReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`         //微信码
-	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"` //昵称
-	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`     //头像
+	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"` //微信码
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -156,14 +154,104 @@ func (x *WxLoginReq) GetCode() string {
 	return ""
 }
 
-func (x *WxLoginReq) GetNickname() string {
+type WxLoginAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SessionKey    string                 `protobuf:"bytes,1,opt,name=session_key,json=sessionKey,proto3" json:"session_key,omitempty"`
+	PlayerInfo    *PlayerInfoAck         `protobuf:"bytes,2,opt,name=player_info,json=playerInfo,proto3" json:"player_info,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WxLoginAck) Reset() {
+	*x = WxLoginAck{}
+	mi := &file_account_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WxLoginAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WxLoginAck) ProtoMessage() {}
+
+func (x *WxLoginAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WxLoginAck.ProtoReflect.Descriptor instead.
+func (*WxLoginAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *WxLoginAck) GetSessionKey() string {
+	if x != nil {
+		return x.SessionKey
+	}
+	return ""
+}
+
+func (x *WxLoginAck) GetPlayerInfo() *PlayerInfoAck {
+	if x != nil {
+		return x.PlayerInfo
+	}
+	return nil
+}
+
+type UpdateAccountReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Nickname      string                 `protobuf:"bytes,1,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	Avatar        string                 `protobuf:"bytes,2,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAccountReq) Reset() {
+	*x = UpdateAccountReq{}
+	mi := &file_account_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAccountReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAccountReq) ProtoMessage() {}
+
+func (x *UpdateAccountReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAccountReq.ProtoReflect.Descriptor instead.
+func (*UpdateAccountReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateAccountReq) GetNickname() string {
 	if x != nil {
 		return x.Nickname
 	}
 	return ""
 }
 
-func (x *WxLoginReq) GetAvatar() string {
+func (x *UpdateAccountReq) GetAvatar() string {
 	if x != nil {
 		return x.Avatar
 	}
@@ -180,7 +268,7 @@ type LoginReq struct {
 
 func (x *LoginReq) Reset() {
 	*x = LoginReq{}
-	mi := &file_account_proto_msgTypes[3]
+	mi := &file_account_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -192,7 +280,7 @@ func (x *LoginReq) String() string {
 func (*LoginReq) ProtoMessage() {}
 
 func (x *LoginReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[3]
+	mi := &file_account_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +293,7 @@ func (x *LoginReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginReq.ProtoReflect.Descriptor instead.
 func (*LoginReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{3}
+	return file_account_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *LoginReq) GetAccount() string {
@@ -234,7 +322,7 @@ type RegisterReq struct {
 
 func (x *RegisterReq) Reset() {
 	*x = RegisterReq{}
-	mi := &file_account_proto_msgTypes[4]
+	mi := &file_account_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -246,7 +334,7 @@ func (x *RegisterReq) String() string {
 func (*RegisterReq) ProtoMessage() {}
 
 func (x *RegisterReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[4]
+	mi := &file_account_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -259,7 +347,7 @@ func (x *RegisterReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterReq.ProtoReflect.Descriptor instead.
 func (*RegisterReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{4}
+	return file_account_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *RegisterReq) GetAccount() string {
@@ -299,7 +387,7 @@ type BindInviteCodeReq struct {
 
 func (x *BindInviteCodeReq) Reset() {
 	*x = BindInviteCodeReq{}
-	mi := &file_account_proto_msgTypes[5]
+	mi := &file_account_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -311,7 +399,7 @@ func (x *BindInviteCodeReq) String() string {
 func (*BindInviteCodeReq) ProtoMessage() {}
 
 func (x *BindInviteCodeReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[5]
+	mi := &file_account_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -324,7 +412,7 @@ func (x *BindInviteCodeReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BindInviteCodeReq.ProtoReflect.Descriptor instead.
 func (*BindInviteCodeReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{5}
+	return file_account_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *BindInviteCodeReq) GetInviteCode() string {
@@ -343,7 +431,7 @@ type ShopReq struct {
 
 func (x *ShopReq) Reset() {
 	*x = ShopReq{}
-	mi := &file_account_proto_msgTypes[6]
+	mi := &file_account_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -355,7 +443,7 @@ func (x *ShopReq) String() string {
 func (*ShopReq) ProtoMessage() {}
 
 func (x *ShopReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[6]
+	mi := &file_account_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -368,7 +456,7 @@ func (x *ShopReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShopReq.ProtoReflect.Descriptor instead.
 func (*ShopReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{6}
+	return file_account_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ShopReq) GetShopType() int32 {
@@ -388,7 +476,7 @@ type ShopAck struct {
 
 func (x *ShopAck) Reset() {
 	*x = ShopAck{}
-	mi := &file_account_proto_msgTypes[7]
+	mi := &file_account_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -400,7 +488,7 @@ func (x *ShopAck) String() string {
 func (*ShopAck) ProtoMessage() {}
 
 func (x *ShopAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[7]
+	mi := &file_account_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -413,7 +501,7 @@ func (x *ShopAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShopAck.ProtoReflect.Descriptor instead.
 func (*ShopAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{7}
+	return file_account_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ShopAck) GetShopType() int32 {
@@ -441,7 +529,7 @@ type PurchaseReq struct {
 
 func (x *PurchaseReq) Reset() {
 	*x = PurchaseReq{}
-	mi := &file_account_proto_msgTypes[8]
+	mi := &file_account_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -453,7 +541,7 @@ func (x *PurchaseReq) String() string {
 func (*PurchaseReq) ProtoMessage() {}
 
 func (x *PurchaseReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[8]
+	mi := &file_account_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -466,7 +554,7 @@ func (x *PurchaseReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PurchaseReq.ProtoReflect.Descriptor instead.
 func (*PurchaseReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{8}
+	return file_account_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PurchaseReq) GetShopType() int32 {
@@ -500,7 +588,7 @@ type PurchaseAck struct {
 
 func (x *PurchaseAck) Reset() {
 	*x = PurchaseAck{}
-	mi := &file_account_proto_msgTypes[9]
+	mi := &file_account_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -512,7 +600,7 @@ func (x *PurchaseAck) String() string {
 func (*PurchaseAck) ProtoMessage() {}
 
 func (x *PurchaseAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[9]
+	mi := &file_account_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -525,7 +613,7 @@ func (x *PurchaseAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PurchaseAck.ProtoReflect.Descriptor instead.
 func (*PurchaseAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{9}
+	return file_account_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *PurchaseAck) GetShopType() int32 {
@@ -552,7 +640,7 @@ type RegisterAck struct {
 
 func (x *RegisterAck) Reset() {
 	*x = RegisterAck{}
-	mi := &file_account_proto_msgTypes[10]
+	mi := &file_account_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -564,7 +652,7 @@ func (x *RegisterAck) String() string {
 func (*RegisterAck) ProtoMessage() {}
 
 func (x *RegisterAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[10]
+	mi := &file_account_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -577,7 +665,7 @@ func (x *RegisterAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterAck.ProtoReflect.Descriptor instead.
 func (*RegisterAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{10}
+	return file_account_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *RegisterAck) GetPlayerInfo() *PlayerInfoAck {
@@ -606,7 +694,7 @@ type PlayerInfoAck struct {
 
 func (x *PlayerInfoAck) Reset() {
 	*x = PlayerInfoAck{}
-	mi := &file_account_proto_msgTypes[11]
+	mi := &file_account_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -618,7 +706,7 @@ func (x *PlayerInfoAck) String() string {
 func (*PlayerInfoAck) ProtoMessage() {}
 
 func (x *PlayerInfoAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[11]
+	mi := &file_account_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -631,7 +719,7 @@ func (x *PlayerInfoAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerInfoAck.ProtoReflect.Descriptor instead.
 func (*PlayerInfoAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{11}
+	return file_account_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *PlayerInfoAck) GetUid() string {
@@ -671,7 +759,7 @@ type ItemsAck struct {
 
 func (x *ItemsAck) Reset() {
 	*x = ItemsAck{}
-	mi := &file_account_proto_msgTypes[12]
+	mi := &file_account_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -683,7 +771,7 @@ func (x *ItemsAck) String() string {
 func (*ItemsAck) ProtoMessage() {}
 
 func (x *ItemsAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[12]
+	mi := &file_account_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -696,7 +784,7 @@ func (x *ItemsAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemsAck.ProtoReflect.Descriptor instead.
 func (*ItemsAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{12}
+	return file_account_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ItemsAck) GetItems() map[int32]int64 {
@@ -715,7 +803,7 @@ type MemberInfoReq struct {
 
 func (x *MemberInfoReq) Reset() {
 	*x = MemberInfoReq{}
-	mi := &file_account_proto_msgTypes[13]
+	mi := &file_account_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -727,7 +815,7 @@ func (x *MemberInfoReq) String() string {
 func (*MemberInfoReq) ProtoMessage() {}
 
 func (x *MemberInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[13]
+	mi := &file_account_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -740,7 +828,7 @@ func (x *MemberInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MemberInfoReq.ProtoReflect.Descriptor instead.
 func (*MemberInfoReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{13}
+	return file_account_proto_rawDescGZIP(), []int{15}
 }
 
 type MemberInfoAck struct {
@@ -754,7 +842,7 @@ type MemberInfoAck struct {
 
 func (x *MemberInfoAck) Reset() {
 	*x = MemberInfoAck{}
-	mi := &file_account_proto_msgTypes[14]
+	mi := &file_account_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -766,7 +854,7 @@ func (x *MemberInfoAck) String() string {
 func (*MemberInfoAck) ProtoMessage() {}
 
 func (x *MemberInfoAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[14]
+	mi := &file_account_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -779,7 +867,7 @@ func (x *MemberInfoAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MemberInfoAck.ProtoReflect.Descriptor instead.
 func (*MemberInfoAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{14}
+	return file_account_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *MemberInfoAck) GetType() int32 {
@@ -815,7 +903,7 @@ type MemberTypeInfo struct {
 
 func (x *MemberTypeInfo) Reset() {
 	*x = MemberTypeInfo{}
-	mi := &file_account_proto_msgTypes[15]
+	mi := &file_account_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -827,7 +915,7 @@ func (x *MemberTypeInfo) String() string {
 func (*MemberTypeInfo) ProtoMessage() {}
 
 func (x *MemberTypeInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[15]
+	mi := &file_account_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -840,7 +928,7 @@ func (x *MemberTypeInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MemberTypeInfo.ProtoReflect.Descriptor instead.
 func (*MemberTypeInfo) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{15}
+	return file_account_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *MemberTypeInfo) GetType() int32 {
@@ -880,7 +968,7 @@ type BuyMemberReq struct {
 
 func (x *BuyMemberReq) Reset() {
 	*x = BuyMemberReq{}
-	mi := &file_account_proto_msgTypes[16]
+	mi := &file_account_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -892,7 +980,7 @@ func (x *BuyMemberReq) String() string {
 func (*BuyMemberReq) ProtoMessage() {}
 
 func (x *BuyMemberReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[16]
+	mi := &file_account_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -905,7 +993,7 @@ func (x *BuyMemberReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BuyMemberReq.ProtoReflect.Descriptor instead.
 func (*BuyMemberReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{16}
+	return file_account_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *BuyMemberReq) GetType() int32 {
@@ -926,7 +1014,7 @@ type BuyMemberAck struct {
 
 func (x *BuyMemberAck) Reset() {
 	*x = BuyMemberAck{}
-	mi := &file_account_proto_msgTypes[17]
+	mi := &file_account_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -938,7 +1026,7 @@ func (x *BuyMemberAck) String() string {
 func (*BuyMemberAck) ProtoMessage() {}
 
 func (x *BuyMemberAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[17]
+	mi := &file_account_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -951,7 +1039,7 @@ func (x *BuyMemberAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BuyMemberAck.ProtoReflect.Descriptor instead.
 func (*BuyMemberAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{17}
+	return file_account_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *BuyMemberAck) GetType() int32 {
@@ -985,12 +1073,19 @@ const file_account_proto_rawDesc = "" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"4\n" +
 	"\n" +
 	"AccountAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"T\n" +
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\" \n" +
 	"\n" +
 	"WxLoginReq\x12\x12\n" +
-	"\x04code\x18\x01 \x01(\tR\x04code\x12\x1a\n" +
-	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
-	"\x06avatar\x18\x03 \x01(\tR\x06avatar\"@\n" +
+	"\x04code\x18\x01 \x01(\tR\x04code\"e\n" +
+	"\n" +
+	"WxLoginAck\x12\x1f\n" +
+	"\vsession_key\x18\x01 \x01(\tR\n" +
+	"sessionKey\x126\n" +
+	"\vplayer_info\x18\x02 \x01(\v2\x15.cproto.PlayerInfoAckR\n" +
+	"playerInfo\"F\n" +
+	"\x10UpdateAccountReq\x12\x1a\n" +
+	"\bnickname\x18\x01 \x01(\tR\bnickname\x12\x16\n" +
+	"\x06avatar\x18\x02 \x01(\tR\x06avatar\"@\n" +
 	"\bLoginReq\x12\x18\n" +
 	"\aaccount\x18\x01 \x01(\tR\aaccount\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"|\n" +
@@ -1083,52 +1178,55 @@ func file_account_proto_rawDescGZIP() []byte {
 	return file_account_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_account_proto_goTypes = []any{
 	(*AccountReq)(nil),        // 0: cproto.AccountReq
 	(*AccountAck)(nil),        // 1: cproto.AccountAck
 	(*WxLoginReq)(nil),        // 2: cproto.WxLoginReq
-	(*LoginReq)(nil),          // 3: cproto.LoginReq
-	(*RegisterReq)(nil),       // 4: cproto.RegisterReq
-	(*BindInviteCodeReq)(nil), // 5: cproto.BindInviteCodeReq
-	(*ShopReq)(nil),           // 6: cproto.ShopReq
-	(*ShopAck)(nil),           // 7: cproto.ShopAck
-	(*PurchaseReq)(nil),       // 8: cproto.PurchaseReq
-	(*PurchaseAck)(nil),       // 9: cproto.PurchaseAck
-	(*RegisterAck)(nil),       // 10: cproto.RegisterAck
-	(*PlayerInfoAck)(nil),     // 11: cproto.PlayerInfoAck
-	(*ItemsAck)(nil),          // 12: cproto.ItemsAck
-	(*MemberInfoReq)(nil),     // 13: cproto.MemberInfoReq
-	(*MemberInfoAck)(nil),     // 14: cproto.MemberInfoAck
-	(*MemberTypeInfo)(nil),    // 15: cproto.MemberTypeInfo
-	(*BuyMemberReq)(nil),      // 16: cproto.BuyMemberReq
-	(*BuyMemberAck)(nil),      // 17: cproto.BuyMemberAck
-	nil,                       // 18: cproto.PurchaseAck.GoodsEntry
-	nil,                       // 19: cproto.RegisterAck.AwardEntry
-	nil,                       // 20: cproto.PlayerInfoAck.ItemsEntry
-	nil,                       // 21: cproto.ItemsAck.ItemsEntry
-	nil,                       // 22: cproto.MemberTypeInfo.PurchaseBonusEntry
-	nil,                       // 23: cproto.MemberTypeInfo.DailyRewardEntry
-	nil,                       // 24: cproto.BuyMemberAck.BonusEntry
-	(*anypb.Any)(nil),         // 25: google.protobuf.Any
+	(*WxLoginAck)(nil),        // 3: cproto.WxLoginAck
+	(*UpdateAccountReq)(nil),  // 4: cproto.UpdateAccountReq
+	(*LoginReq)(nil),          // 5: cproto.LoginReq
+	(*RegisterReq)(nil),       // 6: cproto.RegisterReq
+	(*BindInviteCodeReq)(nil), // 7: cproto.BindInviteCodeReq
+	(*ShopReq)(nil),           // 8: cproto.ShopReq
+	(*ShopAck)(nil),           // 9: cproto.ShopAck
+	(*PurchaseReq)(nil),       // 10: cproto.PurchaseReq
+	(*PurchaseAck)(nil),       // 11: cproto.PurchaseAck
+	(*RegisterAck)(nil),       // 12: cproto.RegisterAck
+	(*PlayerInfoAck)(nil),     // 13: cproto.PlayerInfoAck
+	(*ItemsAck)(nil),          // 14: cproto.ItemsAck
+	(*MemberInfoReq)(nil),     // 15: cproto.MemberInfoReq
+	(*MemberInfoAck)(nil),     // 16: cproto.MemberInfoAck
+	(*MemberTypeInfo)(nil),    // 17: cproto.MemberTypeInfo
+	(*BuyMemberReq)(nil),      // 18: cproto.BuyMemberReq
+	(*BuyMemberAck)(nil),      // 19: cproto.BuyMemberAck
+	nil,                       // 20: cproto.PurchaseAck.GoodsEntry
+	nil,                       // 21: cproto.RegisterAck.AwardEntry
+	nil,                       // 22: cproto.PlayerInfoAck.ItemsEntry
+	nil,                       // 23: cproto.ItemsAck.ItemsEntry
+	nil,                       // 24: cproto.MemberTypeInfo.PurchaseBonusEntry
+	nil,                       // 25: cproto.MemberTypeInfo.DailyRewardEntry
+	nil,                       // 26: cproto.BuyMemberAck.BonusEntry
+	(*anypb.Any)(nil),         // 27: google.protobuf.Any
 }
 var file_account_proto_depIdxs = []int32{
-	25, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
-	25, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
-	18, // 2: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
-	11, // 3: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
-	19, // 4: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
-	20, // 5: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
-	21, // 6: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
-	15, // 7: cproto.MemberInfoAck.types:type_name -> cproto.MemberTypeInfo
-	22, // 8: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
-	23, // 9: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
-	24, // 10: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
-	11, // [11:11] is the sub-list for method output_type
-	11, // [11:11] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	27, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
+	27, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
+	13, // 2: cproto.WxLoginAck.player_info:type_name -> cproto.PlayerInfoAck
+	20, // 3: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
+	13, // 4: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
+	21, // 5: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
+	22, // 6: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
+	23, // 7: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
+	17, // 8: cproto.MemberInfoAck.types:type_name -> cproto.MemberTypeInfo
+	24, // 9: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
+	25, // 10: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
+	26, // 11: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_account_proto_init() }
@@ -1142,7 +1240,7 @@ func file_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
