@@ -51,7 +51,7 @@ struct TableStruct_account_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[27]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[30]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -77,6 +77,15 @@ extern BuyMemberAck_BonusEntry_DoNotUseDefaultTypeInternal _BuyMemberAck_BonusEn
 class BuyMemberReq;
 struct BuyMemberReqDefaultTypeInternal;
 extern BuyMemberReqDefaultTypeInternal _BuyMemberReq_default_instance_;
+class ExchangeAck;
+struct ExchangeAckDefaultTypeInternal;
+extern ExchangeAckDefaultTypeInternal _ExchangeAck_default_instance_;
+class ExchangeAck_ItemsEntry_DoNotUse;
+struct ExchangeAck_ItemsEntry_DoNotUseDefaultTypeInternal;
+extern ExchangeAck_ItemsEntry_DoNotUseDefaultTypeInternal _ExchangeAck_ItemsEntry_DoNotUse_default_instance_;
+class ExchangeReq;
+struct ExchangeReqDefaultTypeInternal;
+extern ExchangeReqDefaultTypeInternal _ExchangeReq_default_instance_;
 class ItemsAck;
 struct ItemsAckDefaultTypeInternal;
 extern ItemsAckDefaultTypeInternal _ItemsAck_default_instance_;
@@ -148,6 +157,9 @@ template<> ::cproto::BindInviteCodeReq* Arena::CreateMaybeMessage<::cproto::Bind
 template<> ::cproto::BuyMemberAck* Arena::CreateMaybeMessage<::cproto::BuyMemberAck>(Arena*);
 template<> ::cproto::BuyMemberAck_BonusEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::BuyMemberAck_BonusEntry_DoNotUse>(Arena*);
 template<> ::cproto::BuyMemberReq* Arena::CreateMaybeMessage<::cproto::BuyMemberReq>(Arena*);
+template<> ::cproto::ExchangeAck* Arena::CreateMaybeMessage<::cproto::ExchangeAck>(Arena*);
+template<> ::cproto::ExchangeAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::ExchangeAck_ItemsEntry_DoNotUse>(Arena*);
+template<> ::cproto::ExchangeReq* Arena::CreateMaybeMessage<::cproto::ExchangeReq>(Arena*);
 template<> ::cproto::ItemsAck* Arena::CreateMaybeMessage<::cproto::ItemsAck>(Arena*);
 template<> ::cproto::ItemsAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::ItemsAck_ItemsEntry_DoNotUse>(Arena*);
 template<> ::cproto::LoginReq* Arena::CreateMaybeMessage<::cproto::LoginReq>(Arena*);
@@ -3666,6 +3678,356 @@ class BuyMemberAck final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_account_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ExchangeReq final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ExchangeReq) */ {
+ public:
+  inline ExchangeReq() : ExchangeReq(nullptr) {}
+  ~ExchangeReq() override;
+  explicit constexpr ExchangeReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ExchangeReq(const ExchangeReq& from);
+  ExchangeReq(ExchangeReq&& from) noexcept
+    : ExchangeReq() {
+    *this = ::std::move(from);
+  }
+
+  inline ExchangeReq& operator=(const ExchangeReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExchangeReq& operator=(ExchangeReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ExchangeReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ExchangeReq* internal_default_instance() {
+    return reinterpret_cast<const ExchangeReq*>(
+               &_ExchangeReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    27;
+
+  friend void swap(ExchangeReq& a, ExchangeReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ExchangeReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExchangeReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ExchangeReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ExchangeReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ExchangeReq& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ExchangeReq& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ExchangeReq* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.ExchangeReq";
+  }
+  protected:
+  explicit ExchangeReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kFromidFieldNumber = 1,
+    kToidFieldNumber = 2,
+    kCountFieldNumber = 3,
+  };
+  // int32 fromid = 1;
+  void clear_fromid();
+  int32_t fromid() const;
+  void set_fromid(int32_t value);
+  private:
+  int32_t _internal_fromid() const;
+  void _internal_set_fromid(int32_t value);
+  public:
+
+  // int32 toid = 2;
+  void clear_toid();
+  int32_t toid() const;
+  void set_toid(int32_t value);
+  private:
+  int32_t _internal_toid() const;
+  void _internal_set_toid(int32_t value);
+  public:
+
+  // int64 count = 3;
+  void clear_count();
+  int64_t count() const;
+  void set_count(int64_t value);
+  private:
+  int64_t _internal_count() const;
+  void _internal_set_count(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cproto.ExchangeReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t fromid_;
+  int32_t toid_;
+  int64_t count_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ExchangeAck_ItemsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ExchangeAck_ItemsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ExchangeAck_ItemsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  ExchangeAck_ItemsEntry_DoNotUse();
+  explicit constexpr ExchangeAck_ItemsEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit ExchangeAck_ItemsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const ExchangeAck_ItemsEntry_DoNotUse& other);
+  static const ExchangeAck_ItemsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const ExchangeAck_ItemsEntry_DoNotUse*>(&_ExchangeAck_ItemsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class ExchangeAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ExchangeAck) */ {
+ public:
+  inline ExchangeAck() : ExchangeAck(nullptr) {}
+  ~ExchangeAck() override;
+  explicit constexpr ExchangeAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ExchangeAck(const ExchangeAck& from);
+  ExchangeAck(ExchangeAck&& from) noexcept
+    : ExchangeAck() {
+    *this = ::std::move(from);
+  }
+
+  inline ExchangeAck& operator=(const ExchangeAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExchangeAck& operator=(ExchangeAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ExchangeAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ExchangeAck* internal_default_instance() {
+    return reinterpret_cast<const ExchangeAck*>(
+               &_ExchangeAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    29;
+
+  friend void swap(ExchangeAck& a, ExchangeAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ExchangeAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExchangeAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ExchangeAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ExchangeAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ExchangeAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ExchangeAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ExchangeAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.ExchangeAck";
+  }
+  protected:
+  explicit ExchangeAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemsFieldNumber = 1,
+  };
+  // map<int32, int64> items = 1;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+  public:
+  void clear_items();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_items() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_items();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      items() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_items();
+
+  // @@protoc_insertion_point(class_scope:cproto.ExchangeAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      ExchangeAck_ItemsEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> items_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
 // ===================================================================
 
 
@@ -5387,9 +5749,114 @@ BuyMemberAck::mutable_bonus() {
   return _internal_mutable_bonus();
 }
 
+// -------------------------------------------------------------------
+
+// ExchangeReq
+
+// int32 fromid = 1;
+inline void ExchangeReq::clear_fromid() {
+  fromid_ = 0;
+}
+inline int32_t ExchangeReq::_internal_fromid() const {
+  return fromid_;
+}
+inline int32_t ExchangeReq::fromid() const {
+  // @@protoc_insertion_point(field_get:cproto.ExchangeReq.fromid)
+  return _internal_fromid();
+}
+inline void ExchangeReq::_internal_set_fromid(int32_t value) {
+  
+  fromid_ = value;
+}
+inline void ExchangeReq::set_fromid(int32_t value) {
+  _internal_set_fromid(value);
+  // @@protoc_insertion_point(field_set:cproto.ExchangeReq.fromid)
+}
+
+// int32 toid = 2;
+inline void ExchangeReq::clear_toid() {
+  toid_ = 0;
+}
+inline int32_t ExchangeReq::_internal_toid() const {
+  return toid_;
+}
+inline int32_t ExchangeReq::toid() const {
+  // @@protoc_insertion_point(field_get:cproto.ExchangeReq.toid)
+  return _internal_toid();
+}
+inline void ExchangeReq::_internal_set_toid(int32_t value) {
+  
+  toid_ = value;
+}
+inline void ExchangeReq::set_toid(int32_t value) {
+  _internal_set_toid(value);
+  // @@protoc_insertion_point(field_set:cproto.ExchangeReq.toid)
+}
+
+// int64 count = 3;
+inline void ExchangeReq::clear_count() {
+  count_ = int64_t{0};
+}
+inline int64_t ExchangeReq::_internal_count() const {
+  return count_;
+}
+inline int64_t ExchangeReq::count() const {
+  // @@protoc_insertion_point(field_get:cproto.ExchangeReq.count)
+  return _internal_count();
+}
+inline void ExchangeReq::_internal_set_count(int64_t value) {
+  
+  count_ = value;
+}
+inline void ExchangeReq::set_count(int64_t value) {
+  _internal_set_count(value);
+  // @@protoc_insertion_point(field_set:cproto.ExchangeReq.count)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// ExchangeAck
+
+// map<int32, int64> items = 1;
+inline int ExchangeAck::_internal_items_size() const {
+  return items_.size();
+}
+inline int ExchangeAck::items_size() const {
+  return _internal_items_size();
+}
+inline void ExchangeAck::clear_items() {
+  items_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+ExchangeAck::_internal_items() const {
+  return items_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+ExchangeAck::items() const {
+  // @@protoc_insertion_point(field_map:cproto.ExchangeAck.items)
+  return _internal_items();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+ExchangeAck::_internal_mutable_items() {
+  return items_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+ExchangeAck::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.ExchangeAck.items)
+  return _internal_mutable_items();
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

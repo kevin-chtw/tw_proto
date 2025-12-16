@@ -106,3 +106,13 @@ message BuyMemberAck {
   int64 expire_time = 2; // 过期时间（时间戳）
   map<int32, int64> bonus = 3; // 购买时获得的奖励
 }
+
+message ExchangeReq {
+  int32 fromid = 1; // 原物品id
+  int32 toid = 2; // 新物品id
+  int64 count = 3; // 原物品数量
+}
+
+message ExchangeAck {
+  map<int32, int64> items = 1; // 新物品id和数量
+}

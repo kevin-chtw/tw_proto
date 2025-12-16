@@ -1063,6 +1063,110 @@ func (x *BuyMemberAck) GetBonus() map[int32]int64 {
 	return nil
 }
 
+type ExchangeReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Fromid        int32                  `protobuf:"varint,1,opt,name=fromid,proto3" json:"fromid,omitempty"` // 原物品id
+	Toid          int32                  `protobuf:"varint,2,opt,name=toid,proto3" json:"toid,omitempty"`     // 新物品id
+	Count         int64                  `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`   // 原物品数量
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExchangeReq) Reset() {
+	*x = ExchangeReq{}
+	mi := &file_account_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExchangeReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExchangeReq) ProtoMessage() {}
+
+func (x *ExchangeReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExchangeReq.ProtoReflect.Descriptor instead.
+func (*ExchangeReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ExchangeReq) GetFromid() int32 {
+	if x != nil {
+		return x.Fromid
+	}
+	return 0
+}
+
+func (x *ExchangeReq) GetToid() int32 {
+	if x != nil {
+		return x.Toid
+	}
+	return 0
+}
+
+func (x *ExchangeReq) GetCount() int64 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+type ExchangeAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         map[int32]int64        `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 新物品id和数量
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExchangeAck) Reset() {
+	*x = ExchangeAck{}
+	mi := &file_account_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExchangeAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExchangeAck) ProtoMessage() {}
+
+func (x *ExchangeAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExchangeAck.ProtoReflect.Descriptor instead.
+func (*ExchangeAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ExchangeAck) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
 var File_account_proto protoreflect.FileDescriptor
 
 const file_account_proto_rawDesc = "" +
@@ -1164,6 +1268,16 @@ const file_account_proto_rawDesc = "" +
 	"\n" +
 	"BonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"O\n" +
+	"\vExchangeReq\x12\x16\n" +
+	"\x06fromid\x18\x01 \x01(\x05R\x06fromid\x12\x12\n" +
+	"\x04toid\x18\x02 \x01(\x05R\x04toid\x12\x14\n" +
+	"\x05count\x18\x03 \x01(\x03R\x05count\"}\n" +
+	"\vExchangeAck\x124\n" +
+	"\x05items\x18\x01 \x03(\v2\x1e.cproto.ExchangeAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
 var (
@@ -1178,7 +1292,7 @@ func file_account_proto_rawDescGZIP() []byte {
 	return file_account_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_account_proto_goTypes = []any{
 	(*AccountReq)(nil),        // 0: cproto.AccountReq
 	(*AccountAck)(nil),        // 1: cproto.AccountAck
@@ -1200,33 +1314,37 @@ var file_account_proto_goTypes = []any{
 	(*MemberTypeInfo)(nil),    // 17: cproto.MemberTypeInfo
 	(*BuyMemberReq)(nil),      // 18: cproto.BuyMemberReq
 	(*BuyMemberAck)(nil),      // 19: cproto.BuyMemberAck
-	nil,                       // 20: cproto.PurchaseAck.GoodsEntry
-	nil,                       // 21: cproto.RegisterAck.AwardEntry
-	nil,                       // 22: cproto.PlayerInfoAck.ItemsEntry
-	nil,                       // 23: cproto.ItemsAck.ItemsEntry
-	nil,                       // 24: cproto.MemberTypeInfo.PurchaseBonusEntry
-	nil,                       // 25: cproto.MemberTypeInfo.DailyRewardEntry
-	nil,                       // 26: cproto.BuyMemberAck.BonusEntry
-	(*anypb.Any)(nil),         // 27: google.protobuf.Any
+	(*ExchangeReq)(nil),       // 20: cproto.ExchangeReq
+	(*ExchangeAck)(nil),       // 21: cproto.ExchangeAck
+	nil,                       // 22: cproto.PurchaseAck.GoodsEntry
+	nil,                       // 23: cproto.RegisterAck.AwardEntry
+	nil,                       // 24: cproto.PlayerInfoAck.ItemsEntry
+	nil,                       // 25: cproto.ItemsAck.ItemsEntry
+	nil,                       // 26: cproto.MemberTypeInfo.PurchaseBonusEntry
+	nil,                       // 27: cproto.MemberTypeInfo.DailyRewardEntry
+	nil,                       // 28: cproto.BuyMemberAck.BonusEntry
+	nil,                       // 29: cproto.ExchangeAck.ItemsEntry
+	(*anypb.Any)(nil),         // 30: google.protobuf.Any
 }
 var file_account_proto_depIdxs = []int32{
-	27, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
-	27, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
+	30, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
+	30, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
 	13, // 2: cproto.WxLoginAck.player_info:type_name -> cproto.PlayerInfoAck
-	20, // 3: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
+	22, // 3: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
 	13, // 4: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
-	21, // 5: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
-	22, // 6: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
-	23, // 7: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
+	23, // 5: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
+	24, // 6: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
+	25, // 7: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
 	17, // 8: cproto.MemberInfoAck.types:type_name -> cproto.MemberTypeInfo
-	24, // 9: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
-	25, // 10: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
-	26, // 11: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
-	12, // [12:12] is the sub-list for method output_type
-	12, // [12:12] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	26, // 9: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
+	27, // 10: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
+	28, // 11: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
+	29, // 12: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
+	13, // [13:13] is the sub-list for method output_type
+	13, // [13:13] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_account_proto_init() }
@@ -1240,7 +1358,7 @@ func file_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   27,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

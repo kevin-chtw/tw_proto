@@ -354,8 +354,45 @@ struct BuyMemberAckDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BuyMemberAckDefaultTypeInternal _BuyMemberAck_default_instance_;
+constexpr ExchangeReq::ExchangeReq(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : fromid_(0)
+  , toid_(0)
+  , count_(int64_t{0}){}
+struct ExchangeReqDefaultTypeInternal {
+  constexpr ExchangeReqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~ExchangeReqDefaultTypeInternal() {}
+  union {
+    ExchangeReq _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExchangeReqDefaultTypeInternal _ExchangeReq_default_instance_;
+constexpr ExchangeAck_ItemsEntry_DoNotUse::ExchangeAck_ItemsEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct ExchangeAck_ItemsEntry_DoNotUseDefaultTypeInternal {
+  constexpr ExchangeAck_ItemsEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~ExchangeAck_ItemsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    ExchangeAck_ItemsEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExchangeAck_ItemsEntry_DoNotUseDefaultTypeInternal _ExchangeAck_ItemsEntry_DoNotUse_default_instance_;
+constexpr ExchangeAck::ExchangeAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : items_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}){}
+struct ExchangeAckDefaultTypeInternal {
+  constexpr ExchangeAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~ExchangeAckDefaultTypeInternal() {}
+  union {
+    ExchangeAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExchangeAckDefaultTypeInternal _ExchangeAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[27];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[30];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_account_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_account_2eproto = nullptr;
 
@@ -590,6 +627,32 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck, type_),
   PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck, expire_time_),
   PROTOBUF_FIELD_OFFSET(::cproto::BuyMemberAck, bonus_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeReq, fromid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeReq, toid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeReq, count_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeAck_ItemsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeAck_ItemsEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeAck_ItemsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeAck_ItemsEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::ExchangeAck, items_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cproto::AccountReq)},
@@ -619,6 +682,9 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 204, -1, -1, sizeof(::cproto::BuyMemberReq)},
   { 211, 219, -1, sizeof(::cproto::BuyMemberAck_BonusEntry_DoNotUse)},
   { 221, -1, -1, sizeof(::cproto::BuyMemberAck)},
+  { 230, -1, -1, sizeof(::cproto::ExchangeReq)},
+  { 239, 247, -1, sizeof(::cproto::ExchangeAck_ItemsEntry_DoNotUse)},
+  { 249, -1, -1, sizeof(::cproto::ExchangeAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -649,6 +715,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BuyMemberReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BuyMemberAck_BonusEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BuyMemberAck_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ExchangeReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ExchangeAck_ItemsEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ExchangeAck_default_instance_),
 };
 
 const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -695,15 +764,20 @@ const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE
   "emberAck\022\014\n\004type\030\001 \001(\005\022\023\n\013expire_time\030\002 "
   "\001(\003\022.\n\005bonus\030\003 \003(\0132\037.cproto.BuyMemberAck"
   ".BonusEntry\032,\n\nBonusEntry\022\013\n\003key\030\001 \001(\005\022\r"
-  "\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cprotob\006proto3"
+  "\n\005value\030\002 \001(\003:\0028\001\":\n\013ExchangeReq\022\016\n\006from"
+  "id\030\001 \001(\005\022\014\n\004toid\030\002 \001(\005\022\r\n\005count\030\003 \001(\003\"j\n"
+  "\013ExchangeAck\022-\n\005items\030\001 \003(\0132\036.cproto.Exc"
+  "hangeAck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003key"
+  "\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cprotob\006"
+  "proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_account_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_account_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_account_2eproto = {
-  false, false, 1758, descriptor_table_protodef_account_2eproto, "account.proto", 
-  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 27,
+  false, false, 1926, descriptor_table_protodef_account_2eproto, "account.proto", 
+  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 30,
   schemas, file_default_instances, TableStruct_account_2eproto::offsets,
   file_level_metadata_account_2eproto, file_level_enum_descriptors_account_2eproto, file_level_service_descriptors_account_2eproto,
 };
@@ -5505,6 +5579,468 @@ void BuyMemberAck::InternalSwap(BuyMemberAck* other) {
       file_level_metadata_account_2eproto[26]);
 }
 
+// ===================================================================
+
+class ExchangeReq::_Internal {
+ public:
+};
+
+ExchangeReq::ExchangeReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.ExchangeReq)
+}
+ExchangeReq::ExchangeReq(const ExchangeReq& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&fromid_, &from.fromid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&count_) -
+    reinterpret_cast<char*>(&fromid_)) + sizeof(count_));
+  // @@protoc_insertion_point(copy_constructor:cproto.ExchangeReq)
+}
+
+inline void ExchangeReq::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&fromid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&count_) -
+    reinterpret_cast<char*>(&fromid_)) + sizeof(count_));
+}
+
+ExchangeReq::~ExchangeReq() {
+  // @@protoc_insertion_point(destructor:cproto.ExchangeReq)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void ExchangeReq::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void ExchangeReq::ArenaDtor(void* object) {
+  ExchangeReq* _this = reinterpret_cast< ExchangeReq* >(object);
+  (void)_this;
+}
+void ExchangeReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void ExchangeReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void ExchangeReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ExchangeReq)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&fromid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&count_) -
+      reinterpret_cast<char*>(&fromid_)) + sizeof(count_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ExchangeReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 fromid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          fromid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 toid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          toid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 count = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ExchangeReq::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ExchangeReq)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 fromid = 1;
+  if (this->_internal_fromid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_fromid(), target);
+  }
+
+  // int32 toid = 2;
+  if (this->_internal_toid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_toid(), target);
+  }
+
+  // int64 count = 3;
+  if (this->_internal_count() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_count(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ExchangeReq)
+  return target;
+}
+
+size_t ExchangeReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ExchangeReq)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 fromid = 1;
+  if (this->_internal_fromid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_fromid());
+  }
+
+  // int32 toid = 2;
+  if (this->_internal_toid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_toid());
+  }
+
+  // int64 count = 3;
+  if (this->_internal_count() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_count());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ExchangeReq::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ExchangeReq::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ExchangeReq::GetClassData() const { return &_class_data_; }
+
+void ExchangeReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<ExchangeReq *>(to)->MergeFrom(
+      static_cast<const ExchangeReq &>(from));
+}
+
+
+void ExchangeReq::MergeFrom(const ExchangeReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ExchangeReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_fromid() != 0) {
+    _internal_set_fromid(from._internal_fromid());
+  }
+  if (from._internal_toid() != 0) {
+    _internal_set_toid(from._internal_toid());
+  }
+  if (from._internal_count() != 0) {
+    _internal_set_count(from._internal_count());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ExchangeReq::CopyFrom(const ExchangeReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ExchangeReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ExchangeReq::IsInitialized() const {
+  return true;
+}
+
+void ExchangeReq::InternalSwap(ExchangeReq* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ExchangeReq, count_)
+      + sizeof(ExchangeReq::count_)
+      - PROTOBUF_FIELD_OFFSET(ExchangeReq, fromid_)>(
+          reinterpret_cast<char*>(&fromid_),
+          reinterpret_cast<char*>(&other->fromid_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ExchangeReq::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[27]);
+}
+
+// ===================================================================
+
+ExchangeAck_ItemsEntry_DoNotUse::ExchangeAck_ItemsEntry_DoNotUse() {}
+ExchangeAck_ItemsEntry_DoNotUse::ExchangeAck_ItemsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void ExchangeAck_ItemsEntry_DoNotUse::MergeFrom(const ExchangeAck_ItemsEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata ExchangeAck_ItemsEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[28]);
+}
+
+// ===================================================================
+
+class ExchangeAck::_Internal {
+ public:
+};
+
+ExchangeAck::ExchangeAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  items_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.ExchangeAck)
+}
+ExchangeAck::ExchangeAck(const ExchangeAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  items_.MergeFrom(from.items_);
+  // @@protoc_insertion_point(copy_constructor:cproto.ExchangeAck)
+}
+
+inline void ExchangeAck::SharedCtor() {
+}
+
+ExchangeAck::~ExchangeAck() {
+  // @@protoc_insertion_point(destructor:cproto.ExchangeAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void ExchangeAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void ExchangeAck::ArenaDtor(void* object) {
+  ExchangeAck* _this = reinterpret_cast< ExchangeAck* >(object);
+  (void)_this;
+  _this->items_. ~MapField();
+}
+inline void ExchangeAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
+  if (arena != nullptr) {
+    arena->OwnCustomDestructor(this, &ExchangeAck::ArenaDtor);
+  }
+}
+void ExchangeAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void ExchangeAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.ExchangeAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  items_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ExchangeAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // map<int32, int64> items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&items_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ExchangeAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.ExchangeAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<int32, int64> items = 1;
+  if (!this->_internal_items().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
+        ConstPtr;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::SortItem< int32_t, ConstPtr > SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByFirstField<SortItem> Less;
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_items().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_items().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_items().begin();
+          it != this->_internal_items().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = ExchangeAck_ItemsEntry_DoNotUse::Funcs::InternalSerialize(1, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_items().begin();
+          it != this->_internal_items().end(); ++it) {
+        target = ExchangeAck_ItemsEntry_DoNotUse::Funcs::InternalSerialize(1, it->first, it->second, target, stream);
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.ExchangeAck)
+  return target;
+}
+
+size_t ExchangeAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.ExchangeAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<int32, int64> items = 1;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_items_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+      it = this->_internal_items().begin();
+      it != this->_internal_items().end(); ++it) {
+    total_size += ExchangeAck_ItemsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ExchangeAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ExchangeAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ExchangeAck::GetClassData() const { return &_class_data_; }
+
+void ExchangeAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<ExchangeAck *>(to)->MergeFrom(
+      static_cast<const ExchangeAck &>(from));
+}
+
+
+void ExchangeAck::MergeFrom(const ExchangeAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.ExchangeAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  items_.MergeFrom(from.items_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ExchangeAck::CopyFrom(const ExchangeAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.ExchangeAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ExchangeAck::IsInitialized() const {
+  return true;
+}
+
+void ExchangeAck::InternalSwap(ExchangeAck* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  items_.InternalSwap(&other->items_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ExchangeAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[29]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace cproto
 PROTOBUF_NAMESPACE_OPEN
@@ -5588,6 +6124,15 @@ template<> PROTOBUF_NOINLINE ::cproto::BuyMemberAck_BonusEntry_DoNotUse* Arena::
 }
 template<> PROTOBUF_NOINLINE ::cproto::BuyMemberAck* Arena::CreateMaybeMessage< ::cproto::BuyMemberAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::BuyMemberAck >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::ExchangeReq* Arena::CreateMaybeMessage< ::cproto::ExchangeReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ExchangeReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::ExchangeAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::ExchangeAck_ItemsEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ExchangeAck_ItemsEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::ExchangeAck* Arena::CreateMaybeMessage< ::cproto::ExchangeAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::ExchangeAck >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 
