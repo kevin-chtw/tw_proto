@@ -97,6 +97,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TounreyInfoDefaultTypeInternal 
 constexpr FDTableMatchAck::FDTableMatchAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : serverid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , game_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , tableid_(0)
   , matchid_(0){}
 struct FDTableMatchAckDefaultTypeInternal {
@@ -170,6 +171,7 @@ const uint32_t TableStruct_tourney_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchAck, tableid_),
   PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchAck, matchid_),
   PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchAck, serverid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchAck, game_type_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cproto::TourneyReq)},
@@ -201,17 +203,17 @@ const char descriptor_table_protodef_tourney_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\010tounreys\030\001 \003(\0132\023.cproto.TounreyInfo\"p\n\013"
   "TounreyInfo\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n"
   "\tgame_type\030\003 \001(\t\022\022\n\nmatch_type\030\004 \001(\t\022\020\n\010"
-  "serverid\030\005 \001(\t\022\016\n\006online\030\006 \001(\005\"E\n\017FDTabl"
+  "serverid\030\005 \001(\t\022\016\n\006online\030\006 \001(\005\"X\n\017FDTabl"
   "eMatchAck\022\017\n\007tableid\030\001 \001(\005\022\017\n\007matchid\030\002 "
-  "\001(\005\022\020\n\010serverid\030\003 \001(\tB\013Z\t../cprotob\006prot"
-  "o3"
+  "\001(\005\022\020\n\010serverid\030\003 \001(\t\022\021\n\tgame_type\030\004 \001(\t"
+  "B\013Z\t../cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_tourney_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_tourney_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_tourney_2eproto = {
-  false, false, 482, descriptor_table_protodef_tourney_2eproto, "tourney.proto", 
+  false, false, 501, descriptor_table_protodef_tourney_2eproto, "tourney.proto", 
   &descriptor_table_tourney_2eproto_once, descriptor_table_tourney_2eproto_deps, 1, 7,
   schemas, file_default_instances, TableStruct_tourney_2eproto::offsets,
   file_level_metadata_tourney_2eproto, file_level_enum_descriptors_tourney_2eproto, file_level_service_descriptors_tourney_2eproto,
@@ -1628,6 +1630,14 @@ FDTableMatchAck::FDTableMatchAck(const FDTableMatchAck& from)
     serverid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_serverid(), 
       GetArenaForAllocation());
   }
+  game_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    game_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_game_type().empty()) {
+    game_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_game_type(), 
+      GetArenaForAllocation());
+  }
   ::memcpy(&tableid_, &from.tableid_,
     static_cast<size_t>(reinterpret_cast<char*>(&matchid_) -
     reinterpret_cast<char*>(&tableid_)) + sizeof(matchid_));
@@ -1638,6 +1648,10 @@ inline void FDTableMatchAck::SharedCtor() {
 serverid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   serverid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+game_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  game_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&tableid_) - reinterpret_cast<char*>(this)),
@@ -1655,6 +1669,7 @@ FDTableMatchAck::~FDTableMatchAck() {
 inline void FDTableMatchAck::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   serverid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  game_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void FDTableMatchAck::ArenaDtor(void* object) {
@@ -1674,6 +1689,7 @@ void FDTableMatchAck::Clear() {
   (void) cached_has_bits;
 
   serverid_.ClearToEmpty();
+  game_type_.ClearToEmpty();
   ::memset(&tableid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&matchid_) -
       reinterpret_cast<char*>(&tableid_)) + sizeof(matchid_));
@@ -1708,6 +1724,16 @@ const char* FDTableMatchAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
           auto str = _internal_mutable_serverid();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.FDTableMatchAck.serverid"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string game_type = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_game_type();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.FDTableMatchAck.game_type"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1763,6 +1789,16 @@ uint8_t* FDTableMatchAck::_InternalSerialize(
         3, this->_internal_serverid(), target);
   }
 
+  // string game_type = 4;
+  if (!this->_internal_game_type().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_game_type().data(), static_cast<int>(this->_internal_game_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.FDTableMatchAck.game_type");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_game_type(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1784,6 +1820,13 @@ size_t FDTableMatchAck::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_serverid());
+  }
+
+  // string game_type = 4;
+  if (!this->_internal_game_type().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_game_type());
   }
 
   // int32 tableid = 1;
@@ -1821,6 +1864,9 @@ void FDTableMatchAck::MergeFrom(const FDTableMatchAck& from) {
   if (!from._internal_serverid().empty()) {
     _internal_set_serverid(from._internal_serverid());
   }
+  if (!from._internal_game_type().empty()) {
+    _internal_set_game_type(from._internal_game_type());
+  }
   if (from._internal_tableid() != 0) {
     _internal_set_tableid(from._internal_tableid());
   }
@@ -1850,6 +1896,11 @@ void FDTableMatchAck::InternalSwap(FDTableMatchAck* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &serverid_, lhs_arena,
       &other->serverid_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &game_type_, lhs_arena,
+      &other->game_type_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(FDTableMatchAck, matchid_)

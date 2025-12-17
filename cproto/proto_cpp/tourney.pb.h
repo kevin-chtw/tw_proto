@@ -1196,6 +1196,7 @@ class FDTableMatchAck final :
 
   enum : int {
     kServeridFieldNumber = 3,
+    kGameTypeFieldNumber = 4,
     kTableidFieldNumber = 1,
     kMatchidFieldNumber = 2,
   };
@@ -1211,6 +1212,20 @@ class FDTableMatchAck final :
   const std::string& _internal_serverid() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_serverid(const std::string& value);
   std::string* _internal_mutable_serverid();
+  public:
+
+  // string game_type = 4;
+  void clear_game_type();
+  const std::string& game_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_game_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_game_type();
+  PROTOBUF_NODISCARD std::string* release_game_type();
+  void set_allocated_game_type(std::string* game_type);
+  private:
+  const std::string& _internal_game_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_game_type(const std::string& value);
+  std::string* _internal_mutable_game_type();
   public:
 
   // int32 tableid = 1;
@@ -1239,6 +1254,7 @@ class FDTableMatchAck final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr serverid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr game_type_;
   int32_t tableid_;
   int32_t matchid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -1895,6 +1911,57 @@ inline void FDTableMatchAck::set_allocated_serverid(std::string* serverid) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:cproto.FDTableMatchAck.serverid)
+}
+
+// string game_type = 4;
+inline void FDTableMatchAck::clear_game_type() {
+  game_type_.ClearToEmpty();
+}
+inline const std::string& FDTableMatchAck::game_type() const {
+  // @@protoc_insertion_point(field_get:cproto.FDTableMatchAck.game_type)
+  return _internal_game_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void FDTableMatchAck::set_game_type(ArgT0&& arg0, ArgT... args) {
+ 
+ game_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.FDTableMatchAck.game_type)
+}
+inline std::string* FDTableMatchAck::mutable_game_type() {
+  std::string* _s = _internal_mutable_game_type();
+  // @@protoc_insertion_point(field_mutable:cproto.FDTableMatchAck.game_type)
+  return _s;
+}
+inline const std::string& FDTableMatchAck::_internal_game_type() const {
+  return game_type_.Get();
+}
+inline void FDTableMatchAck::_internal_set_game_type(const std::string& value) {
+  
+  game_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* FDTableMatchAck::_internal_mutable_game_type() {
+  
+  return game_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* FDTableMatchAck::release_game_type() {
+  // @@protoc_insertion_point(field_release:cproto.FDTableMatchAck.game_type)
+  return game_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void FDTableMatchAck::set_allocated_game_type(std::string* game_type) {
+  if (game_type != nullptr) {
+    
+  } else {
+    
+  }
+  game_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), game_type,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (game_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    game_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.FDTableMatchAck.game_type)
 }
 
 #ifdef __GNUC__
