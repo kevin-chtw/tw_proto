@@ -29,6 +29,7 @@ message TourneyInfo {
 message FDTakeTableidReq {
   int32 matchid = 1; //比赛ID
   string serverid = 2; //服务器ID
+  string game_type = 3; //游戏类型
 }
 
 message FDTakeTableidAck {

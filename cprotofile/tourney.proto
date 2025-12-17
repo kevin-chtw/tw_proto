@@ -38,4 +38,5 @@ message FDTableMatchAck {
   int32 tableid = 1;
   int32 matchid = 2;
   string serverid = 3;
+  string game_type = 4;
 }

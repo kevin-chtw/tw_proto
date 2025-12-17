@@ -240,8 +240,9 @@ func (x *TourneyInfo) GetOnline() int32 {
 
 type FDTakeTableidReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`  //比赛ID
-	Serverid      string                 `protobuf:"bytes,2,opt,name=serverid,proto3" json:"serverid,omitempty"` //服务器ID
+	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`                  //比赛ID
+	Serverid      string                 `protobuf:"bytes,2,opt,name=serverid,proto3" json:"serverid,omitempty"`                 //服务器ID
+	GameType      string                 `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"` //游戏类型
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -286,6 +287,13 @@ func (x *FDTakeTableidReq) GetMatchid() int32 {
 func (x *FDTakeTableidReq) GetServerid() string {
 	if x != nil {
 		return x.Serverid
+	}
+	return ""
+}
+
+func (x *FDTakeTableidReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
 	}
 	return ""
 }
@@ -398,10 +406,11 @@ const file_tourney_remote_proto_rawDesc = "" +
 	"\n" +
 	"match_type\x18\x04 \x01(\tR\tmatchType\x12\x1a\n" +
 	"\bserverid\x18\x05 \x01(\tR\bserverid\x12\x16\n" +
-	"\x06online\x18\x06 \x01(\x05R\x06online\"H\n" +
+	"\x06online\x18\x06 \x01(\x05R\x06online\"e\n" +
 	"\x10FDTakeTableidReq\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x1a\n" +
-	"\bserverid\x18\x02 \x01(\tR\bserverid\",\n" +
+	"\bserverid\x18\x02 \x01(\tR\bserverid\x12\x1b\n" +
+	"\tgame_type\x18\x03 \x01(\tR\bgameType\",\n" +
 	"\x10FDTakeTableidAck\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\"+\n" +
 	"\x0fFDPutTableidReq\x12\x18\n" +
