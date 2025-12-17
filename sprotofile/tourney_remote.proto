@@ -25,3 +25,16 @@ message TourneyInfo {
     string serverid = 5; //服务器ID
     int32 online = 6; //在线人数
 }
+
+message FDTakeTableidReq {
+  int32 matchid = 1; //比赛ID
+  string serverid = 2; //服务器ID
+}
+
+message FDTakeTableidAck {
+  int32 tableid = 1; //桌子ID
+}
+
+message FDPutTableidReq {
+  int32 tableid = 1; //桌子ID
+}

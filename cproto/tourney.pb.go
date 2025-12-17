@@ -154,6 +154,50 @@ func (x *TouneyListReq) GetGameType() string {
 	return ""
 }
 
+type FDTableMatchReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"` //桌号
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FDTableMatchReq) Reset() {
+	*x = FDTableMatchReq{}
+	mi := &file_tourney_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FDTableMatchReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FDTableMatchReq) ProtoMessage() {}
+
+func (x *FDTableMatchReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FDTableMatchReq.ProtoReflect.Descriptor instead.
+func (*FDTableMatchReq) Descriptor() ([]byte, []int) {
+	return file_tourney_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *FDTableMatchReq) GetTableid() int32 {
+	if x != nil {
+		return x.Tableid
+	}
+	return 0
+}
+
 type TouneyListAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Tounreys      []*TounreyInfo         `protobuf:"bytes,1,rep,name=tounreys,proto3" json:"tounreys,omitempty"`
@@ -163,7 +207,7 @@ type TouneyListAck struct {
 
 func (x *TouneyListAck) Reset() {
 	*x = TouneyListAck{}
-	mi := &file_tourney_proto_msgTypes[3]
+	mi := &file_tourney_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +219,7 @@ func (x *TouneyListAck) String() string {
 func (*TouneyListAck) ProtoMessage() {}
 
 func (x *TouneyListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_tourney_proto_msgTypes[3]
+	mi := &file_tourney_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +232,7 @@ func (x *TouneyListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TouneyListAck.ProtoReflect.Descriptor instead.
 func (*TouneyListAck) Descriptor() ([]byte, []int) {
-	return file_tourney_proto_rawDescGZIP(), []int{3}
+	return file_tourney_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *TouneyListAck) GetTounreys() []*TounreyInfo {
@@ -212,7 +256,7 @@ type TounreyInfo struct {
 
 func (x *TounreyInfo) Reset() {
 	*x = TounreyInfo{}
-	mi := &file_tourney_proto_msgTypes[4]
+	mi := &file_tourney_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -224,7 +268,7 @@ func (x *TounreyInfo) String() string {
 func (*TounreyInfo) ProtoMessage() {}
 
 func (x *TounreyInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_tourney_proto_msgTypes[4]
+	mi := &file_tourney_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -237,7 +281,7 @@ func (x *TounreyInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TounreyInfo.ProtoReflect.Descriptor instead.
 func (*TounreyInfo) Descriptor() ([]byte, []int) {
-	return file_tourney_proto_rawDescGZIP(), []int{4}
+	return file_tourney_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *TounreyInfo) GetId() int32 {
@@ -282,6 +326,66 @@ func (x *TounreyInfo) GetOnline() int32 {
 	return 0
 }
 
+type FDTableMatchAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Serverid      string                 `protobuf:"bytes,3,opt,name=serverid,proto3" json:"serverid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FDTableMatchAck) Reset() {
+	*x = FDTableMatchAck{}
+	mi := &file_tourney_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FDTableMatchAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FDTableMatchAck) ProtoMessage() {}
+
+func (x *FDTableMatchAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FDTableMatchAck.ProtoReflect.Descriptor instead.
+func (*FDTableMatchAck) Descriptor() ([]byte, []int) {
+	return file_tourney_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *FDTableMatchAck) GetTableid() int32 {
+	if x != nil {
+		return x.Tableid
+	}
+	return 0
+}
+
+func (x *FDTableMatchAck) GetMatchid() int32 {
+	if x != nil {
+		return x.Matchid
+	}
+	return 0
+}
+
+func (x *FDTableMatchAck) GetServerid() string {
+	if x != nil {
+		return x.Serverid
+	}
+	return ""
+}
+
 var File_tourney_proto protoreflect.FileDescriptor
 
 const file_tourney_proto_rawDesc = "" +
@@ -294,7 +398,9 @@ const file_tourney_proto_rawDesc = "" +
 	"TourneyAck\x12&\n" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\",\n" +
 	"\rTouneyListReq\x12\x1b\n" +
-	"\tgame_type\x18\x01 \x01(\tR\bgameType\"@\n" +
+	"\tgame_type\x18\x01 \x01(\tR\bgameType\"+\n" +
+	"\x0fFDTableMatchReq\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\"@\n" +
 	"\rTouneyListAck\x12/\n" +
 	"\btounreys\x18\x01 \x03(\v2\x13.cproto.TounreyInfoR\btounreys\"\xa1\x01\n" +
 	"\vTounreyInfo\x12\x0e\n" +
@@ -304,7 +410,11 @@ const file_tourney_proto_rawDesc = "" +
 	"\n" +
 	"match_type\x18\x04 \x01(\tR\tmatchType\x12\x1a\n" +
 	"\bserverid\x18\x05 \x01(\tR\bserverid\x12\x16\n" +
-	"\x06online\x18\x06 \x01(\x05R\x06onlineB\vZ\t../cprotob\x06proto3"
+	"\x06online\x18\x06 \x01(\x05R\x06online\"a\n" +
+	"\x0fFDTableMatchAck\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x18\n" +
+	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1a\n" +
+	"\bserverid\x18\x03 \x01(\tR\bserveridB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_tourney_proto_rawDescOnce sync.Once
@@ -318,19 +428,21 @@ func file_tourney_proto_rawDescGZIP() []byte {
 	return file_tourney_proto_rawDescData
 }
 
-var file_tourney_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_tourney_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_tourney_proto_goTypes = []any{
-	(*TourneyReq)(nil),    // 0: cproto.TourneyReq
-	(*TourneyAck)(nil),    // 1: cproto.TourneyAck
-	(*TouneyListReq)(nil), // 2: cproto.TouneyListReq
-	(*TouneyListAck)(nil), // 3: cproto.TouneyListAck
-	(*TounreyInfo)(nil),   // 4: cproto.TounreyInfo
-	(*anypb.Any)(nil),     // 5: google.protobuf.Any
+	(*TourneyReq)(nil),      // 0: cproto.TourneyReq
+	(*TourneyAck)(nil),      // 1: cproto.TourneyAck
+	(*TouneyListReq)(nil),   // 2: cproto.TouneyListReq
+	(*FDTableMatchReq)(nil), // 3: cproto.FDTableMatchReq
+	(*TouneyListAck)(nil),   // 4: cproto.TouneyListAck
+	(*TounreyInfo)(nil),     // 5: cproto.TounreyInfo
+	(*FDTableMatchAck)(nil), // 6: cproto.FDTableMatchAck
+	(*anypb.Any)(nil),       // 7: google.protobuf.Any
 }
 var file_tourney_proto_depIdxs = []int32{
-	5, // 0: cproto.TourneyReq.req:type_name -> google.protobuf.Any
-	5, // 1: cproto.TourneyAck.ack:type_name -> google.protobuf.Any
-	4, // 2: cproto.TouneyListAck.tounreys:type_name -> cproto.TounreyInfo
+	7, // 0: cproto.TourneyReq.req:type_name -> google.protobuf.Any
+	7, // 1: cproto.TourneyAck.ack:type_name -> google.protobuf.Any
+	5, // 2: cproto.TouneyListAck.tounreys:type_name -> cproto.TounreyInfo
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -349,7 +461,7 @@ func file_tourney_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tourney_proto_rawDesc), len(file_tourney_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

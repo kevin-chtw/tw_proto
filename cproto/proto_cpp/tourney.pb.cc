@@ -53,6 +53,18 @@ struct TouneyListReqDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TouneyListReqDefaultTypeInternal _TouneyListReq_default_instance_;
+constexpr FDTableMatchReq::FDTableMatchReq(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : tableid_(0){}
+struct FDTableMatchReqDefaultTypeInternal {
+  constexpr FDTableMatchReqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~FDTableMatchReqDefaultTypeInternal() {}
+  union {
+    FDTableMatchReq _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT FDTableMatchReqDefaultTypeInternal _FDTableMatchReq_default_instance_;
 constexpr TouneyListAck::TouneyListAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : tounreys_(){}
@@ -82,8 +94,22 @@ struct TounreyInfoDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TounreyInfoDefaultTypeInternal _TounreyInfo_default_instance_;
+constexpr FDTableMatchAck::FDTableMatchAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : serverid_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , tableid_(0)
+  , matchid_(0){}
+struct FDTableMatchAckDefaultTypeInternal {
+  constexpr FDTableMatchAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~FDTableMatchAckDefaultTypeInternal() {}
+  union {
+    FDTableMatchAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT FDTableMatchAckDefaultTypeInternal _FDTableMatchAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_tourney_2eproto[5];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_tourney_2eproto[7];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_tourney_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_tourney_2eproto = nullptr;
 
@@ -110,6 +136,13 @@ const uint32_t TableStruct_tourney_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::TouneyListReq, game_type_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchReq, tableid_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::TouneyListAck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -128,21 +161,34 @@ const uint32_t TableStruct_tourney_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cproto::TounreyInfo, match_type_),
   PROTOBUF_FIELD_OFFSET(::cproto::TounreyInfo, serverid_),
   PROTOBUF_FIELD_OFFSET(::cproto::TounreyInfo, online_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchAck, tableid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchAck, matchid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::FDTableMatchAck, serverid_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cproto::TourneyReq)},
   { 7, -1, -1, sizeof(::cproto::TourneyAck)},
   { 14, -1, -1, sizeof(::cproto::TouneyListReq)},
-  { 21, -1, -1, sizeof(::cproto::TouneyListAck)},
-  { 28, -1, -1, sizeof(::cproto::TounreyInfo)},
+  { 21, -1, -1, sizeof(::cproto::FDTableMatchReq)},
+  { 28, -1, -1, sizeof(::cproto::TouneyListAck)},
+  { 35, -1, -1, sizeof(::cproto::TounreyInfo)},
+  { 47, -1, -1, sizeof(::cproto::FDTableMatchAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TourneyReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TourneyAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TouneyListReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_FDTableMatchReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TouneyListAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_TounreyInfo_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_FDTableMatchAck_default_instance_),
 };
 
 const char descriptor_table_protodef_tourney_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -150,20 +196,23 @@ const char descriptor_table_protodef_tourney_2eproto[] PROTOBUF_SECTION_VARIABLE
   "/any.proto\"/\n\nTourneyReq\022!\n\003req\030\001 \001(\0132\024."
   "google.protobuf.Any\"/\n\nTourneyAck\022!\n\003ack"
   "\030\001 \001(\0132\024.google.protobuf.Any\"\"\n\rTouneyLi"
-  "stReq\022\021\n\tgame_type\030\001 \001(\t\"6\n\rTouneyListAc"
-  "k\022%\n\010tounreys\030\001 \003(\0132\023.cproto.TounreyInfo"
-  "\"p\n\013TounreyInfo\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001("
-  "\t\022\021\n\tgame_type\030\003 \001(\t\022\022\n\nmatch_type\030\004 \001(\t"
-  "\022\020\n\010serverid\030\005 \001(\t\022\016\n\006online\030\006 \001(\005B\013Z\t.."
-  "/cprotob\006proto3"
+  "stReq\022\021\n\tgame_type\030\001 \001(\t\"\"\n\017FDTableMatch"
+  "Req\022\017\n\007tableid\030\001 \001(\005\"6\n\rTouneyListAck\022%\n"
+  "\010tounreys\030\001 \003(\0132\023.cproto.TounreyInfo\"p\n\013"
+  "TounreyInfo\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n"
+  "\tgame_type\030\003 \001(\t\022\022\n\nmatch_type\030\004 \001(\t\022\020\n\010"
+  "serverid\030\005 \001(\t\022\016\n\006online\030\006 \001(\005\"E\n\017FDTabl"
+  "eMatchAck\022\017\n\007tableid\030\001 \001(\005\022\017\n\007matchid\030\002 "
+  "\001(\005\022\020\n\010serverid\030\003 \001(\tB\013Z\t../cprotob\006prot"
+  "o3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_tourney_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_tourney_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_tourney_2eproto = {
-  false, false, 375, descriptor_table_protodef_tourney_2eproto, "tourney.proto", 
-  &descriptor_table_tourney_2eproto_once, descriptor_table_tourney_2eproto_deps, 1, 5,
+  false, false, 482, descriptor_table_protodef_tourney_2eproto, "tourney.proto", 
+  &descriptor_table_tourney_2eproto_once, descriptor_table_tourney_2eproto_deps, 1, 7,
   schemas, file_default_instances, TableStruct_tourney_2eproto::offsets,
   file_level_metadata_tourney_2eproto, file_level_enum_descriptors_tourney_2eproto, file_level_service_descriptors_tourney_2eproto,
 };
@@ -782,6 +831,184 @@ void TouneyListReq::InternalSwap(TouneyListReq* other) {
 
 // ===================================================================
 
+class FDTableMatchReq::_Internal {
+ public:
+};
+
+FDTableMatchReq::FDTableMatchReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.FDTableMatchReq)
+}
+FDTableMatchReq::FDTableMatchReq(const FDTableMatchReq& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  tableid_ = from.tableid_;
+  // @@protoc_insertion_point(copy_constructor:cproto.FDTableMatchReq)
+}
+
+inline void FDTableMatchReq::SharedCtor() {
+tableid_ = 0;
+}
+
+FDTableMatchReq::~FDTableMatchReq() {
+  // @@protoc_insertion_point(destructor:cproto.FDTableMatchReq)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void FDTableMatchReq::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void FDTableMatchReq::ArenaDtor(void* object) {
+  FDTableMatchReq* _this = reinterpret_cast< FDTableMatchReq* >(object);
+  (void)_this;
+}
+void FDTableMatchReq::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void FDTableMatchReq::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void FDTableMatchReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.FDTableMatchReq)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  tableid_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* FDTableMatchReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 tableid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          tableid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* FDTableMatchReq::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.FDTableMatchReq)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 tableid = 1;
+  if (this->_internal_tableid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_tableid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.FDTableMatchReq)
+  return target;
+}
+
+size_t FDTableMatchReq::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.FDTableMatchReq)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 tableid = 1;
+  if (this->_internal_tableid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_tableid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData FDTableMatchReq::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    FDTableMatchReq::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*FDTableMatchReq::GetClassData() const { return &_class_data_; }
+
+void FDTableMatchReq::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<FDTableMatchReq *>(to)->MergeFrom(
+      static_cast<const FDTableMatchReq &>(from));
+}
+
+
+void FDTableMatchReq::MergeFrom(const FDTableMatchReq& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.FDTableMatchReq)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_tableid() != 0) {
+    _internal_set_tableid(from._internal_tableid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void FDTableMatchReq::CopyFrom(const FDTableMatchReq& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.FDTableMatchReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool FDTableMatchReq::IsInitialized() const {
+  return true;
+}
+
+void FDTableMatchReq::InternalSwap(FDTableMatchReq* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(tableid_, other->tableid_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata FDTableMatchReq::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_tourney_2eproto_getter, &descriptor_table_tourney_2eproto_once,
+      file_level_metadata_tourney_2eproto[3]);
+}
+
+// ===================================================================
+
 class TouneyListAck::_Internal {
  public:
 };
@@ -962,7 +1189,7 @@ void TouneyListAck::InternalSwap(TouneyListAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TouneyListAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_tourney_2eproto_getter, &descriptor_table_tourney_2eproto_once,
-      file_level_metadata_tourney_2eproto[3]);
+      file_level_metadata_tourney_2eproto[4]);
 }
 
 // ===================================================================
@@ -1372,7 +1599,270 @@ void TounreyInfo::InternalSwap(TounreyInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TounreyInfo::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_tourney_2eproto_getter, &descriptor_table_tourney_2eproto_once,
-      file_level_metadata_tourney_2eproto[4]);
+      file_level_metadata_tourney_2eproto[5]);
+}
+
+// ===================================================================
+
+class FDTableMatchAck::_Internal {
+ public:
+};
+
+FDTableMatchAck::FDTableMatchAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.FDTableMatchAck)
+}
+FDTableMatchAck::FDTableMatchAck(const FDTableMatchAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  serverid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    serverid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_serverid().empty()) {
+    serverid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_serverid(), 
+      GetArenaForAllocation());
+  }
+  ::memcpy(&tableid_, &from.tableid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&matchid_) -
+    reinterpret_cast<char*>(&tableid_)) + sizeof(matchid_));
+  // @@protoc_insertion_point(copy_constructor:cproto.FDTableMatchAck)
+}
+
+inline void FDTableMatchAck::SharedCtor() {
+serverid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  serverid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&tableid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&matchid_) -
+    reinterpret_cast<char*>(&tableid_)) + sizeof(matchid_));
+}
+
+FDTableMatchAck::~FDTableMatchAck() {
+  // @@protoc_insertion_point(destructor:cproto.FDTableMatchAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void FDTableMatchAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  serverid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void FDTableMatchAck::ArenaDtor(void* object) {
+  FDTableMatchAck* _this = reinterpret_cast< FDTableMatchAck* >(object);
+  (void)_this;
+}
+void FDTableMatchAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void FDTableMatchAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void FDTableMatchAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.FDTableMatchAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  serverid_.ClearToEmpty();
+  ::memset(&tableid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&matchid_) -
+      reinterpret_cast<char*>(&tableid_)) + sizeof(matchid_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* FDTableMatchAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 tableid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          tableid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 matchid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          matchid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string serverid = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_serverid();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.FDTableMatchAck.serverid"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* FDTableMatchAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.FDTableMatchAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 tableid = 1;
+  if (this->_internal_tableid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_tableid(), target);
+  }
+
+  // int32 matchid = 2;
+  if (this->_internal_matchid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_matchid(), target);
+  }
+
+  // string serverid = 3;
+  if (!this->_internal_serverid().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_serverid().data(), static_cast<int>(this->_internal_serverid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.FDTableMatchAck.serverid");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_serverid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.FDTableMatchAck)
+  return target;
+}
+
+size_t FDTableMatchAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.FDTableMatchAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string serverid = 3;
+  if (!this->_internal_serverid().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_serverid());
+  }
+
+  // int32 tableid = 1;
+  if (this->_internal_tableid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_tableid());
+  }
+
+  // int32 matchid = 2;
+  if (this->_internal_matchid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_matchid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData FDTableMatchAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    FDTableMatchAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*FDTableMatchAck::GetClassData() const { return &_class_data_; }
+
+void FDTableMatchAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<FDTableMatchAck *>(to)->MergeFrom(
+      static_cast<const FDTableMatchAck &>(from));
+}
+
+
+void FDTableMatchAck::MergeFrom(const FDTableMatchAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.FDTableMatchAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_serverid().empty()) {
+    _internal_set_serverid(from._internal_serverid());
+  }
+  if (from._internal_tableid() != 0) {
+    _internal_set_tableid(from._internal_tableid());
+  }
+  if (from._internal_matchid() != 0) {
+    _internal_set_matchid(from._internal_matchid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void FDTableMatchAck::CopyFrom(const FDTableMatchAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.FDTableMatchAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool FDTableMatchAck::IsInitialized() const {
+  return true;
+}
+
+void FDTableMatchAck::InternalSwap(FDTableMatchAck* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &serverid_, lhs_arena,
+      &other->serverid_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(FDTableMatchAck, matchid_)
+      + sizeof(FDTableMatchAck::matchid_)
+      - PROTOBUF_FIELD_OFFSET(FDTableMatchAck, tableid_)>(
+          reinterpret_cast<char*>(&tableid_),
+          reinterpret_cast<char*>(&other->tableid_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata FDTableMatchAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_tourney_2eproto_getter, &descriptor_table_tourney_2eproto_once,
+      file_level_metadata_tourney_2eproto[6]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1387,11 +1877,17 @@ template<> PROTOBUF_NOINLINE ::cproto::TourneyAck* Arena::CreateMaybeMessage< ::
 template<> PROTOBUF_NOINLINE ::cproto::TouneyListReq* Arena::CreateMaybeMessage< ::cproto::TouneyListReq >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::TouneyListReq >(arena);
 }
+template<> PROTOBUF_NOINLINE ::cproto::FDTableMatchReq* Arena::CreateMaybeMessage< ::cproto::FDTableMatchReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::FDTableMatchReq >(arena);
+}
 template<> PROTOBUF_NOINLINE ::cproto::TouneyListAck* Arena::CreateMaybeMessage< ::cproto::TouneyListAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::TouneyListAck >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::TounreyInfo* Arena::CreateMaybeMessage< ::cproto::TounreyInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::TounreyInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::FDTableMatchAck* Arena::CreateMaybeMessage< ::cproto::FDTableMatchAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::FDTableMatchAck >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

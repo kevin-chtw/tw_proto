@@ -238,6 +238,146 @@ func (x *TourneyInfo) GetOnline() int32 {
 	return 0
 }
 
+type FDTakeTableidReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`  //比赛ID
+	Serverid      string                 `protobuf:"bytes,2,opt,name=serverid,proto3" json:"serverid,omitempty"` //服务器ID
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FDTakeTableidReq) Reset() {
+	*x = FDTakeTableidReq{}
+	mi := &file_tourney_remote_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FDTakeTableidReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FDTakeTableidReq) ProtoMessage() {}
+
+func (x *FDTakeTableidReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FDTakeTableidReq.ProtoReflect.Descriptor instead.
+func (*FDTakeTableidReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *FDTakeTableidReq) GetMatchid() int32 {
+	if x != nil {
+		return x.Matchid
+	}
+	return 0
+}
+
+func (x *FDTakeTableidReq) GetServerid() string {
+	if x != nil {
+		return x.Serverid
+	}
+	return ""
+}
+
+type FDTakeTableidAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"` //桌子ID
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FDTakeTableidAck) Reset() {
+	*x = FDTakeTableidAck{}
+	mi := &file_tourney_remote_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FDTakeTableidAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FDTakeTableidAck) ProtoMessage() {}
+
+func (x *FDTakeTableidAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FDTakeTableidAck.ProtoReflect.Descriptor instead.
+func (*FDTakeTableidAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *FDTakeTableidAck) GetTableid() int32 {
+	if x != nil {
+		return x.Tableid
+	}
+	return 0
+}
+
+type FDPutTableidReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"` //桌子ID
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FDPutTableidReq) Reset() {
+	*x = FDPutTableidReq{}
+	mi := &file_tourney_remote_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FDPutTableidReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FDPutTableidReq) ProtoMessage() {}
+
+func (x *FDPutTableidReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FDPutTableidReq.ProtoReflect.Descriptor instead.
+func (*FDPutTableidReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *FDPutTableidReq) GetTableid() int32 {
+	if x != nil {
+		return x.Tableid
+	}
+	return 0
+}
+
 var File_tourney_remote_proto protoreflect.FileDescriptor
 
 const file_tourney_remote_proto_rawDesc = "" +
@@ -258,7 +398,14 @@ const file_tourney_remote_proto_rawDesc = "" +
 	"\n" +
 	"match_type\x18\x04 \x01(\tR\tmatchType\x12\x1a\n" +
 	"\bserverid\x18\x05 \x01(\tR\bserverid\x12\x16\n" +
-	"\x06online\x18\x06 \x01(\x05R\x06onlineB\vZ\t../sprotob\x06proto3"
+	"\x06online\x18\x06 \x01(\x05R\x06online\"H\n" +
+	"\x10FDTakeTableidReq\x12\x18\n" +
+	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x1a\n" +
+	"\bserverid\x18\x02 \x01(\tR\bserverid\",\n" +
+	"\x10FDTakeTableidAck\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\"+\n" +
+	"\x0fFDPutTableidReq\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableidB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_tourney_remote_proto_rawDescOnce sync.Once
@@ -272,17 +419,20 @@ func file_tourney_remote_proto_rawDescGZIP() []byte {
 	return file_tourney_remote_proto_rawDescData
 }
 
-var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_tourney_remote_proto_goTypes = []any{
 	(*TourneyReq)(nil),       // 0: sproto.TourneyReq
 	(*TourneyAck)(nil),       // 1: sproto.TourneyAck
 	(*TourneyUpdateReq)(nil), // 2: sproto.TourneyUpdateReq
 	(*TourneyInfo)(nil),      // 3: sproto.TourneyInfo
-	(*anypb.Any)(nil),        // 4: google.protobuf.Any
+	(*FDTakeTableidReq)(nil), // 4: sproto.FDTakeTableidReq
+	(*FDTakeTableidAck)(nil), // 5: sproto.FDTakeTableidAck
+	(*FDPutTableidReq)(nil),  // 6: sproto.FDPutTableidReq
+	(*anypb.Any)(nil),        // 7: google.protobuf.Any
 }
 var file_tourney_remote_proto_depIdxs = []int32{
-	4, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
-	4, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
+	7, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
+	7, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
 	3, // 2: sproto.TourneyUpdateReq.infos:type_name -> sproto.TourneyInfo
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
@@ -302,7 +452,7 @@ func file_tourney_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tourney_remote_proto_rawDesc), len(file_tourney_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
