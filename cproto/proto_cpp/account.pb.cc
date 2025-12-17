@@ -131,6 +131,40 @@ struct ShopReqDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ShopReqDefaultTypeInternal _ShopReq_default_instance_;
+constexpr BackpackReq::BackpackReq(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct BackpackReqDefaultTypeInternal {
+  constexpr BackpackReqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BackpackReqDefaultTypeInternal() {}
+  union {
+    BackpackReq _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BackpackReqDefaultTypeInternal _BackpackReq_default_instance_;
+constexpr BackpackAck_ItemsEntry_DoNotUse::BackpackAck_ItemsEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct BackpackAck_ItemsEntry_DoNotUseDefaultTypeInternal {
+  constexpr BackpackAck_ItemsEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BackpackAck_ItemsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    BackpackAck_ItemsEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BackpackAck_ItemsEntry_DoNotUseDefaultTypeInternal _BackpackAck_ItemsEntry_DoNotUse_default_instance_;
+constexpr BackpackAck::BackpackAck(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : items_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}){}
+struct BackpackAckDefaultTypeInternal {
+  constexpr BackpackAckDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BackpackAckDefaultTypeInternal() {}
+  union {
+    BackpackAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BackpackAckDefaultTypeInternal _BackpackAck_default_instance_;
 constexpr ShopAck::ShopAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : shop_info_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
@@ -392,7 +426,7 @@ struct ExchangeAckDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExchangeAckDefaultTypeInternal _ExchangeAck_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[30];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_account_2eproto[33];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_account_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_account_2eproto = nullptr;
 
@@ -466,6 +500,29 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::ShopReq, shop_type_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::BackpackReq, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::BackpackAck_ItemsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::BackpackAck_ItemsEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::BackpackAck_ItemsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::BackpackAck_ItemsEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cproto::BackpackAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::BackpackAck, items_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::ShopAck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -664,27 +721,30 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 45, -1, -1, sizeof(::cproto::RegisterReq)},
   { 55, -1, -1, sizeof(::cproto::BindInviteCodeReq)},
   { 62, -1, -1, sizeof(::cproto::ShopReq)},
-  { 69, -1, -1, sizeof(::cproto::ShopAck)},
-  { 77, -1, -1, sizeof(::cproto::PurchaseReq)},
-  { 86, 94, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
-  { 96, -1, -1, sizeof(::cproto::PurchaseAck)},
-  { 104, 112, -1, sizeof(::cproto::RegisterAck_AwardEntry_DoNotUse)},
-  { 114, -1, -1, sizeof(::cproto::RegisterAck)},
-  { 122, 130, -1, sizeof(::cproto::PlayerInfoAck_ItemsEntry_DoNotUse)},
-  { 132, -1, -1, sizeof(::cproto::PlayerInfoAck)},
-  { 142, 150, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
-  { 152, -1, -1, sizeof(::cproto::ItemsAck)},
-  { 159, -1, -1, sizeof(::cproto::MemberInfoReq)},
-  { 165, -1, -1, sizeof(::cproto::MemberInfoAck)},
-  { 174, 182, -1, sizeof(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse)},
-  { 184, 192, -1, sizeof(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse)},
-  { 194, -1, -1, sizeof(::cproto::MemberTypeInfo)},
-  { 204, -1, -1, sizeof(::cproto::BuyMemberReq)},
-  { 211, 219, -1, sizeof(::cproto::BuyMemberAck_BonusEntry_DoNotUse)},
-  { 221, -1, -1, sizeof(::cproto::BuyMemberAck)},
-  { 230, -1, -1, sizeof(::cproto::ExchangeReq)},
-  { 239, 247, -1, sizeof(::cproto::ExchangeAck_ItemsEntry_DoNotUse)},
-  { 249, -1, -1, sizeof(::cproto::ExchangeAck)},
+  { 69, -1, -1, sizeof(::cproto::BackpackReq)},
+  { 75, 83, -1, sizeof(::cproto::BackpackAck_ItemsEntry_DoNotUse)},
+  { 85, -1, -1, sizeof(::cproto::BackpackAck)},
+  { 92, -1, -1, sizeof(::cproto::ShopAck)},
+  { 100, -1, -1, sizeof(::cproto::PurchaseReq)},
+  { 109, 117, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
+  { 119, -1, -1, sizeof(::cproto::PurchaseAck)},
+  { 127, 135, -1, sizeof(::cproto::RegisterAck_AwardEntry_DoNotUse)},
+  { 137, -1, -1, sizeof(::cproto::RegisterAck)},
+  { 145, 153, -1, sizeof(::cproto::PlayerInfoAck_ItemsEntry_DoNotUse)},
+  { 155, -1, -1, sizeof(::cproto::PlayerInfoAck)},
+  { 165, 173, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
+  { 175, -1, -1, sizeof(::cproto::ItemsAck)},
+  { 182, -1, -1, sizeof(::cproto::MemberInfoReq)},
+  { 188, -1, -1, sizeof(::cproto::MemberInfoAck)},
+  { 197, 205, -1, sizeof(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse)},
+  { 207, 215, -1, sizeof(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse)},
+  { 217, -1, -1, sizeof(::cproto::MemberTypeInfo)},
+  { 227, -1, -1, sizeof(::cproto::BuyMemberReq)},
+  { 234, 242, -1, sizeof(::cproto::BuyMemberAck_BonusEntry_DoNotUse)},
+  { 244, -1, -1, sizeof(::cproto::BuyMemberAck)},
+  { 253, -1, -1, sizeof(::cproto::ExchangeReq)},
+  { 262, 270, -1, sizeof(::cproto::ExchangeAck_ItemsEntry_DoNotUse)},
+  { 272, -1, -1, sizeof(::cproto::ExchangeAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -697,6 +757,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_RegisterReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BindInviteCodeReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ShopReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BackpackReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BackpackAck_ItemsEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BackpackAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_ShopAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_PurchaseReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_PurchaseAck_GoodsEntry_DoNotUse_default_instance_),
@@ -733,51 +796,54 @@ const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE
   "RegisterReq\022\017\n\007account\030\001 \001(\t\022\020\n\010password"
   "\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\023\n\013invite_code\030\004 "
   "\001(\t\"(\n\021BindInviteCodeReq\022\023\n\013invite_code\030"
-  "\001 \001(\t\"\034\n\007ShopReq\022\021\n\tshop_type\030\001 \001(\005\"/\n\007S"
-  "hopAck\022\021\n\tshop_type\030\001 \001(\005\022\021\n\tshop_info\030\002"
-  " \001(\t\"=\n\013PurchaseReq\022\021\n\tshop_type\030\001 \001(\005\022\n"
-  "\n\002id\030\002 \001(\005\022\017\n\007to_coin\030\003 \001(\010\"}\n\013PurchaseA"
-  "ck\022\021\n\tshop_type\030\001 \001(\005\022-\n\005goods\030\002 \003(\0132\036.c"
-  "proto.PurchaseAck.GoodsEntry\032,\n\nGoodsEnt"
-  "ry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\226\001\n\013R"
-  "egisterAck\022*\n\013player_info\030\001 \001(\0132\025.cproto"
-  ".PlayerInfoAck\022-\n\005award\030\002 \003(\0132\036.cproto.R"
-  "egisterAck.AwardEntry\032,\n\nAwardEntry\022\013\n\003k"
-  "ey\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\235\001\n\rPlayerIn"
-  "foAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006"
-  "avatar\030\003 \001(\t\022/\n\005items\030\004 \003(\0132 .cproto.Pla"
-  "yerInfoAck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003k"
-  "ey\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"d\n\010ItemsAck\022"
-  "*\n\005items\030\001 \003(\0132\033.cproto.ItemsAck.ItemsEn"
-  "try\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030"
-  "\002 \001(\003:\0028\001\"\017\n\rMemberInfoReq\"Y\n\rMemberInfo"
-  "Ack\022\014\n\004type\030\001 \001(\005\022\023\n\013expire_time\030\002 \001(\003\022%"
-  "\n\005types\030\003 \003(\0132\026.cproto.MemberTypeInfo\"\231\002"
-  "\n\016MemberTypeInfo\022\014\n\004type\030\001 \001(\005\022\r\n\005price\030"
-  "\002 \001(\005\022A\n\016purchase_bonus\030\003 \003(\0132).cproto.M"
-  "emberTypeInfo.PurchaseBonusEntry\022=\n\014dail"
-  "y_reward\030\004 \003(\0132\'.cproto.MemberTypeInfo.D"
-  "ailyRewardEntry\0324\n\022PurchaseBonusEntry\022\013\n"
-  "\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\0322\n\020DailyRe"
-  "wardEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028"
-  "\001\"\034\n\014BuyMemberReq\022\014\n\004type\030\001 \001(\005\"\217\001\n\014BuyM"
-  "emberAck\022\014\n\004type\030\001 \001(\005\022\023\n\013expire_time\030\002 "
-  "\001(\003\022.\n\005bonus\030\003 \003(\0132\037.cproto.BuyMemberAck"
-  ".BonusEntry\032,\n\nBonusEntry\022\013\n\003key\030\001 \001(\005\022\r"
-  "\n\005value\030\002 \001(\003:\0028\001\":\n\013ExchangeReq\022\016\n\006from"
-  "id\030\001 \001(\005\022\014\n\004toid\030\002 \001(\005\022\r\n\005count\030\003 \001(\003\"j\n"
-  "\013ExchangeAck\022-\n\005items\030\001 \003(\0132\036.cproto.Exc"
-  "hangeAck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003key"
-  "\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cprotob\006"
-  "proto3"
+  "\001 \001(\t\"\034\n\007ShopReq\022\021\n\tshop_type\030\001 \001(\005\"\r\n\013B"
+  "ackpackReq\"j\n\013BackpackAck\022-\n\005items\030\001 \003(\013"
+  "2\036.cproto.BackpackAck.ItemsEntry\032,\n\nItem"
+  "sEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"/"
+  "\n\007ShopAck\022\021\n\tshop_type\030\001 \001(\005\022\021\n\tshop_inf"
+  "o\030\002 \001(\t\"=\n\013PurchaseReq\022\021\n\tshop_type\030\001 \001("
+  "\005\022\n\n\002id\030\002 \001(\005\022\017\n\007to_coin\030\003 \001(\010\"}\n\013Purcha"
+  "seAck\022\021\n\tshop_type\030\001 \001(\005\022-\n\005goods\030\002 \003(\0132"
+  "\036.cproto.PurchaseAck.GoodsEntry\032,\n\nGoods"
+  "Entry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\226\001"
+  "\n\013RegisterAck\022*\n\013player_info\030\001 \001(\0132\025.cpr"
+  "oto.PlayerInfoAck\022-\n\005award\030\002 \003(\0132\036.cprot"
+  "o.RegisterAck.AwardEntry\032,\n\nAwardEntry\022\013"
+  "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\235\001\n\rPlaye"
+  "rInfoAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022"
+  "\016\n\006avatar\030\003 \001(\t\022/\n\005items\030\004 \003(\0132 .cproto."
+  "PlayerInfoAck.ItemsEntry\032,\n\nItemsEntry\022\013"
+  "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"d\n\010ItemsA"
+  "ck\022*\n\005items\030\001 \003(\0132\033.cproto.ItemsAck.Item"
+  "sEntry\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005val"
+  "ue\030\002 \001(\003:\0028\001\"\017\n\rMemberInfoReq\"Y\n\rMemberI"
+  "nfoAck\022\014\n\004type\030\001 \001(\005\022\023\n\013expire_time\030\002 \001("
+  "\003\022%\n\005types\030\003 \003(\0132\026.cproto.MemberTypeInfo"
+  "\"\231\002\n\016MemberTypeInfo\022\014\n\004type\030\001 \001(\005\022\r\n\005pri"
+  "ce\030\002 \001(\005\022A\n\016purchase_bonus\030\003 \003(\0132).cprot"
+  "o.MemberTypeInfo.PurchaseBonusEntry\022=\n\014d"
+  "aily_reward\030\004 \003(\0132\'.cproto.MemberTypeInf"
+  "o.DailyRewardEntry\0324\n\022PurchaseBonusEntry"
+  "\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\0322\n\020Dail"
+  "yRewardEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003"
+  ":\0028\001\"\034\n\014BuyMemberReq\022\014\n\004type\030\001 \001(\005\"\217\001\n\014B"
+  "uyMemberAck\022\014\n\004type\030\001 \001(\005\022\023\n\013expire_time"
+  "\030\002 \001(\003\022.\n\005bonus\030\003 \003(\0132\037.cproto.BuyMember"
+  "Ack.BonusEntry\032,\n\nBonusEntry\022\013\n\003key\030\001 \001("
+  "\005\022\r\n\005value\030\002 \001(\003:\0028\001\":\n\013ExchangeReq\022\016\n\006f"
+  "romid\030\001 \001(\005\022\014\n\004toid\030\002 \001(\005\022\r\n\005count\030\003 \001(\003"
+  "\"j\n\013ExchangeAck\022-\n\005items\030\001 \003(\0132\036.cproto."
+  "ExchangeAck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003"
+  "key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cprot"
+  "ob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_account_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_account_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_account_2eproto = {
-  false, false, 1926, descriptor_table_protodef_account_2eproto, "account.proto", 
-  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 30,
+  false, false, 2049, descriptor_table_protodef_account_2eproto, "account.proto", 
+  &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 33,
   schemas, file_default_instances, TableStruct_account_2eproto::offsets,
   file_level_metadata_account_2eproto, file_level_enum_descriptors_account_2eproto, file_level_service_descriptors_account_2eproto,
 };
@@ -2877,6 +2943,273 @@ void ShopReq::InternalSwap(ShopReq* other) {
 
 // ===================================================================
 
+class BackpackReq::_Internal {
+ public:
+};
+
+BackpackReq::BackpackReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:cproto.BackpackReq)
+}
+BackpackReq::BackpackReq(const BackpackReq& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:cproto.BackpackReq)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BackpackReq::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BackpackReq::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata BackpackReq::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[9]);
+}
+
+// ===================================================================
+
+BackpackAck_ItemsEntry_DoNotUse::BackpackAck_ItemsEntry_DoNotUse() {}
+BackpackAck_ItemsEntry_DoNotUse::BackpackAck_ItemsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void BackpackAck_ItemsEntry_DoNotUse::MergeFrom(const BackpackAck_ItemsEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata BackpackAck_ItemsEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[10]);
+}
+
+// ===================================================================
+
+class BackpackAck::_Internal {
+ public:
+};
+
+BackpackAck::BackpackAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  items_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cproto.BackpackAck)
+}
+BackpackAck::BackpackAck(const BackpackAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  items_.MergeFrom(from.items_);
+  // @@protoc_insertion_point(copy_constructor:cproto.BackpackAck)
+}
+
+inline void BackpackAck::SharedCtor() {
+}
+
+BackpackAck::~BackpackAck() {
+  // @@protoc_insertion_point(destructor:cproto.BackpackAck)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void BackpackAck::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void BackpackAck::ArenaDtor(void* object) {
+  BackpackAck* _this = reinterpret_cast< BackpackAck* >(object);
+  (void)_this;
+  _this->items_. ~MapField();
+}
+inline void BackpackAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
+  if (arena != nullptr) {
+    arena->OwnCustomDestructor(this, &BackpackAck::ArenaDtor);
+  }
+}
+void BackpackAck::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void BackpackAck::Clear() {
+// @@protoc_insertion_point(message_clear_start:cproto.BackpackAck)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  items_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* BackpackAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // map<int32, int64> items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&items_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* BackpackAck::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cproto.BackpackAck)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<int32, int64> items = 1;
+  if (!this->_internal_items().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
+        ConstPtr;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::SortItem< int32_t, ConstPtr > SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByFirstField<SortItem> Less;
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_items().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_items().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_items().begin();
+          it != this->_internal_items().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = BackpackAck_ItemsEntry_DoNotUse::Funcs::InternalSerialize(1, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_items().begin();
+          it != this->_internal_items().end(); ++it) {
+        target = BackpackAck_ItemsEntry_DoNotUse::Funcs::InternalSerialize(1, it->first, it->second, target, stream);
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cproto.BackpackAck)
+  return target;
+}
+
+size_t BackpackAck::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cproto.BackpackAck)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<int32, int64> items = 1;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_items_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+      it = this->_internal_items().begin();
+      it != this->_internal_items().end(); ++it) {
+    total_size += BackpackAck_ItemsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BackpackAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    BackpackAck::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BackpackAck::GetClassData() const { return &_class_data_; }
+
+void BackpackAck::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<BackpackAck *>(to)->MergeFrom(
+      static_cast<const BackpackAck &>(from));
+}
+
+
+void BackpackAck::MergeFrom(const BackpackAck& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cproto.BackpackAck)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  items_.MergeFrom(from.items_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void BackpackAck::CopyFrom(const BackpackAck& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cproto.BackpackAck)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BackpackAck::IsInitialized() const {
+  return true;
+}
+
+void BackpackAck::InternalSwap(BackpackAck* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  items_.InternalSwap(&other->items_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata BackpackAck::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
+      file_level_metadata_account_2eproto[11]);
+}
+
+// ===================================================================
+
 class ShopAck::_Internal {
  public:
 };
@@ -3101,7 +3434,7 @@ void ShopAck::InternalSwap(ShopAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ShopAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[9]);
+      file_level_metadata_account_2eproto[12]);
 }
 
 // ===================================================================
@@ -3335,7 +3668,7 @@ void PurchaseReq::InternalSwap(PurchaseReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PurchaseReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[10]);
+      file_level_metadata_account_2eproto[13]);
 }
 
 // ===================================================================
@@ -3349,7 +3682,7 @@ void PurchaseAck_GoodsEntry_DoNotUse::MergeFrom(const PurchaseAck_GoodsEntry_DoN
 ::PROTOBUF_NAMESPACE_ID::Metadata PurchaseAck_GoodsEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[11]);
+      file_level_metadata_account_2eproto[14]);
 }
 
 // ===================================================================
@@ -3589,7 +3922,7 @@ void PurchaseAck::InternalSwap(PurchaseAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PurchaseAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[12]);
+      file_level_metadata_account_2eproto[15]);
 }
 
 // ===================================================================
@@ -3603,7 +3936,7 @@ void RegisterAck_AwardEntry_DoNotUse::MergeFrom(const RegisterAck_AwardEntry_DoN
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterAck_AwardEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[13]);
+      file_level_metadata_account_2eproto[16]);
 }
 
 // ===================================================================
@@ -3860,7 +4193,7 @@ void RegisterAck::InternalSwap(RegisterAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[14]);
+      file_level_metadata_account_2eproto[17]);
 }
 
 // ===================================================================
@@ -3874,7 +4207,7 @@ void PlayerInfoAck_ItemsEntry_DoNotUse::MergeFrom(const PlayerInfoAck_ItemsEntry
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfoAck_ItemsEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[15]);
+      file_level_metadata_account_2eproto[18]);
 }
 
 // ===================================================================
@@ -4237,7 +4570,7 @@ void PlayerInfoAck::InternalSwap(PlayerInfoAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfoAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[16]);
+      file_level_metadata_account_2eproto[19]);
 }
 
 // ===================================================================
@@ -4251,7 +4584,7 @@ void ItemsAck_ItemsEntry_DoNotUse::MergeFrom(const ItemsAck_ItemsEntry_DoNotUse&
 ::PROTOBUF_NAMESPACE_ID::Metadata ItemsAck_ItemsEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[17]);
+      file_level_metadata_account_2eproto[20]);
 }
 
 // ===================================================================
@@ -4465,7 +4798,7 @@ void ItemsAck::InternalSwap(ItemsAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ItemsAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[18]);
+      file_level_metadata_account_2eproto[21]);
 }
 
 // ===================================================================
@@ -4504,7 +4837,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MemberInfoReq::GetClassData() 
 ::PROTOBUF_NAMESPACE_ID::Metadata MemberInfoReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[19]);
+      file_level_metadata_account_2eproto[22]);
 }
 
 // ===================================================================
@@ -4749,7 +5082,7 @@ void MemberInfoAck::InternalSwap(MemberInfoAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MemberInfoAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[20]);
+      file_level_metadata_account_2eproto[23]);
 }
 
 // ===================================================================
@@ -4763,7 +5096,7 @@ void MemberTypeInfo_PurchaseBonusEntry_DoNotUse::MergeFrom(const MemberTypeInfo_
 ::PROTOBUF_NAMESPACE_ID::Metadata MemberTypeInfo_PurchaseBonusEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[21]);
+      file_level_metadata_account_2eproto[24]);
 }
 
 // ===================================================================
@@ -4777,7 +5110,7 @@ void MemberTypeInfo_DailyRewardEntry_DoNotUse::MergeFrom(const MemberTypeInfo_Da
 ::PROTOBUF_NAMESPACE_ID::Metadata MemberTypeInfo_DailyRewardEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[22]);
+      file_level_metadata_account_2eproto[25]);
 }
 
 // ===================================================================
@@ -5110,7 +5443,7 @@ void MemberTypeInfo::InternalSwap(MemberTypeInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MemberTypeInfo::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[23]);
+      file_level_metadata_account_2eproto[26]);
 }
 
 // ===================================================================
@@ -5288,7 +5621,7 @@ void BuyMemberReq::InternalSwap(BuyMemberReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BuyMemberReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[24]);
+      file_level_metadata_account_2eproto[27]);
 }
 
 // ===================================================================
@@ -5302,7 +5635,7 @@ void BuyMemberAck_BonusEntry_DoNotUse::MergeFrom(const BuyMemberAck_BonusEntry_D
 ::PROTOBUF_NAMESPACE_ID::Metadata BuyMemberAck_BonusEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[25]);
+      file_level_metadata_account_2eproto[28]);
 }
 
 // ===================================================================
@@ -5576,7 +5909,7 @@ void BuyMemberAck::InternalSwap(BuyMemberAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BuyMemberAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[26]);
+      file_level_metadata_account_2eproto[29]);
 }
 
 // ===================================================================
@@ -5810,7 +6143,7 @@ void ExchangeReq::InternalSwap(ExchangeReq* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ExchangeReq::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[27]);
+      file_level_metadata_account_2eproto[30]);
 }
 
 // ===================================================================
@@ -5824,7 +6157,7 @@ void ExchangeAck_ItemsEntry_DoNotUse::MergeFrom(const ExchangeAck_ItemsEntry_DoN
 ::PROTOBUF_NAMESPACE_ID::Metadata ExchangeAck_ItemsEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[28]);
+      file_level_metadata_account_2eproto[31]);
 }
 
 // ===================================================================
@@ -6038,7 +6371,7 @@ void ExchangeAck::InternalSwap(ExchangeAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ExchangeAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_account_2eproto_getter, &descriptor_table_account_2eproto_once,
-      file_level_metadata_account_2eproto[29]);
+      file_level_metadata_account_2eproto[32]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -6070,6 +6403,15 @@ template<> PROTOBUF_NOINLINE ::cproto::BindInviteCodeReq* Arena::CreateMaybeMess
 }
 template<> PROTOBUF_NOINLINE ::cproto::ShopReq* Arena::CreateMaybeMessage< ::cproto::ShopReq >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::ShopReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::BackpackReq* Arena::CreateMaybeMessage< ::cproto::BackpackReq >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::BackpackReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::BackpackAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::BackpackAck_ItemsEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::BackpackAck_ItemsEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::BackpackAck* Arena::CreateMaybeMessage< ::cproto::BackpackAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::BackpackAck >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::ShopAck* Arena::CreateMaybeMessage< ::cproto::ShopAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::ShopAck >(arena);

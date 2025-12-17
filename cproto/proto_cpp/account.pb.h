@@ -51,7 +51,7 @@ struct TableStruct_account_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[30]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[33]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -65,6 +65,15 @@ extern AccountAckDefaultTypeInternal _AccountAck_default_instance_;
 class AccountReq;
 struct AccountReqDefaultTypeInternal;
 extern AccountReqDefaultTypeInternal _AccountReq_default_instance_;
+class BackpackAck;
+struct BackpackAckDefaultTypeInternal;
+extern BackpackAckDefaultTypeInternal _BackpackAck_default_instance_;
+class BackpackAck_ItemsEntry_DoNotUse;
+struct BackpackAck_ItemsEntry_DoNotUseDefaultTypeInternal;
+extern BackpackAck_ItemsEntry_DoNotUseDefaultTypeInternal _BackpackAck_ItemsEntry_DoNotUse_default_instance_;
+class BackpackReq;
+struct BackpackReqDefaultTypeInternal;
+extern BackpackReqDefaultTypeInternal _BackpackReq_default_instance_;
 class BindInviteCodeReq;
 struct BindInviteCodeReqDefaultTypeInternal;
 extern BindInviteCodeReqDefaultTypeInternal _BindInviteCodeReq_default_instance_;
@@ -153,6 +162,9 @@ extern WxLoginReqDefaultTypeInternal _WxLoginReq_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::cproto::AccountAck* Arena::CreateMaybeMessage<::cproto::AccountAck>(Arena*);
 template<> ::cproto::AccountReq* Arena::CreateMaybeMessage<::cproto::AccountReq>(Arena*);
+template<> ::cproto::BackpackAck* Arena::CreateMaybeMessage<::cproto::BackpackAck>(Arena*);
+template<> ::cproto::BackpackAck_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::BackpackAck_ItemsEntry_DoNotUse>(Arena*);
+template<> ::cproto::BackpackReq* Arena::CreateMaybeMessage<::cproto::BackpackReq>(Arena*);
 template<> ::cproto::BindInviteCodeReq* Arena::CreateMaybeMessage<::cproto::BindInviteCodeReq>(Arena*);
 template<> ::cproto::BuyMemberAck* Arena::CreateMaybeMessage<::cproto::BuyMemberAck>(Arena*);
 template<> ::cproto::BuyMemberAck_BonusEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::BuyMemberAck_BonusEntry_DoNotUse>(Arena*);
@@ -1648,6 +1660,306 @@ class ShopReq final :
 };
 // -------------------------------------------------------------------
 
+class BackpackReq final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:cproto.BackpackReq) */ {
+ public:
+  inline BackpackReq() : BackpackReq(nullptr) {}
+  explicit constexpr BackpackReq(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BackpackReq(const BackpackReq& from);
+  BackpackReq(BackpackReq&& from) noexcept
+    : BackpackReq() {
+    *this = ::std::move(from);
+  }
+
+  inline BackpackReq& operator=(const BackpackReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BackpackReq& operator=(BackpackReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BackpackReq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BackpackReq* internal_default_instance() {
+    return reinterpret_cast<const BackpackReq*>(
+               &_BackpackReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(BackpackReq& a, BackpackReq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BackpackReq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BackpackReq* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BackpackReq* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BackpackReq>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const BackpackReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const BackpackReq& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.BackpackReq";
+  }
+  protected:
+  explicit BackpackReq(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:cproto.BackpackReq)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BackpackAck_ItemsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<BackpackAck_ItemsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<BackpackAck_ItemsEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  BackpackAck_ItemsEntry_DoNotUse();
+  explicit constexpr BackpackAck_ItemsEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit BackpackAck_ItemsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const BackpackAck_ItemsEntry_DoNotUse& other);
+  static const BackpackAck_ItemsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const BackpackAck_ItemsEntry_DoNotUse*>(&_BackpackAck_ItemsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class BackpackAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.BackpackAck) */ {
+ public:
+  inline BackpackAck() : BackpackAck(nullptr) {}
+  ~BackpackAck() override;
+  explicit constexpr BackpackAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BackpackAck(const BackpackAck& from);
+  BackpackAck(BackpackAck&& from) noexcept
+    : BackpackAck() {
+    *this = ::std::move(from);
+  }
+
+  inline BackpackAck& operator=(const BackpackAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BackpackAck& operator=(BackpackAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BackpackAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BackpackAck* internal_default_instance() {
+    return reinterpret_cast<const BackpackAck*>(
+               &_BackpackAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(BackpackAck& a, BackpackAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BackpackAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BackpackAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BackpackAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BackpackAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BackpackAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const BackpackAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BackpackAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cproto.BackpackAck";
+  }
+  protected:
+  explicit BackpackAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemsFieldNumber = 1,
+  };
+  // map<int32, int64> items = 1;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+  public:
+  void clear_items();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_items() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_items();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      items() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_items();
+
+  // @@protoc_insertion_point(class_scope:cproto.BackpackAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      BackpackAck_ItemsEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> items_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_account_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ShopAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.ShopAck) */ {
  public:
@@ -1696,7 +2008,7 @@ class ShopAck final :
                &_ShopAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    12;
 
   friend void swap(ShopAck& a, ShopAck& b) {
     a.Swap(&b);
@@ -1858,7 +2170,7 @@ class PurchaseReq final :
                &_PurchaseReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    13;
 
   friend void swap(PurchaseReq& a, PurchaseReq& b) {
     a.Swap(&b);
@@ -2049,7 +2361,7 @@ class PurchaseAck final :
                &_PurchaseAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    15;
 
   friend void swap(PurchaseAck& a, PurchaseAck& b) {
     a.Swap(&b);
@@ -2242,7 +2554,7 @@ class RegisterAck final :
                &_RegisterAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    17;
 
   friend void swap(RegisterAck& a, RegisterAck& b) {
     a.Swap(&b);
@@ -2444,7 +2756,7 @@ class PlayerInfoAck final :
                &_PlayerInfoAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    19;
 
   friend void swap(PlayerInfoAck& a, PlayerInfoAck& b) {
     a.Swap(&b);
@@ -2674,7 +2986,7 @@ class ItemsAck final :
                &_ItemsAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    21;
 
   friend void swap(ItemsAck& a, ItemsAck& b) {
     a.Swap(&b);
@@ -2832,7 +3144,7 @@ class MemberInfoReq final :
                &_MemberInfoReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    22;
 
   friend void swap(MemberInfoReq& a, MemberInfoReq& b) {
     a.Swap(&b);
@@ -2951,7 +3263,7 @@ class MemberInfoAck final :
                &_MemberInfoAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    23;
 
   friend void swap(MemberInfoAck& a, MemberInfoAck& b) {
     a.Swap(&b);
@@ -3174,7 +3486,7 @@ class MemberTypeInfo final :
                &_MemberTypeInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    26;
 
   friend void swap(MemberTypeInfo& a, MemberTypeInfo& b) {
     a.Swap(&b);
@@ -3378,7 +3690,7 @@ class BuyMemberReq final :
                &_BuyMemberReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    27;
 
   friend void swap(BuyMemberReq& a, BuyMemberReq& b) {
     a.Swap(&b);
@@ -3547,7 +3859,7 @@ class BuyMemberAck final :
                &_BuyMemberAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    29;
 
   friend void swap(BuyMemberAck& a, BuyMemberAck& b) {
     a.Swap(&b);
@@ -3728,7 +4040,7 @@ class ExchangeReq final :
                &_ExchangeReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    30;
 
   friend void swap(ExchangeReq& a, ExchangeReq& b) {
     a.Swap(&b);
@@ -3919,7 +4231,7 @@ class ExchangeAck final :
                &_ExchangeAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    32;
 
   friend void swap(ExchangeAck& a, ExchangeAck& b) {
     a.Swap(&b);
@@ -4916,6 +5228,45 @@ inline void ShopReq::set_shop_type(int32_t value) {
 
 // -------------------------------------------------------------------
 
+// BackpackReq
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// BackpackAck
+
+// map<int32, int64> items = 1;
+inline int BackpackAck::_internal_items_size() const {
+  return items_.size();
+}
+inline int BackpackAck::items_size() const {
+  return _internal_items_size();
+}
+inline void BackpackAck::clear_items() {
+  items_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+BackpackAck::_internal_items() const {
+  return items_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+BackpackAck::items() const {
+  // @@protoc_insertion_point(field_map:cproto.BackpackAck.items)
+  return _internal_items();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+BackpackAck::_internal_mutable_items() {
+  return items_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+BackpackAck::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.BackpackAck.items)
+  return _internal_mutable_items();
+}
+
+// -------------------------------------------------------------------
+
 // ShopAck
 
 // int32 shop_type = 1;
@@ -5851,6 +6202,12 @@ ExchangeAck::mutable_items() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -47,6 +47,13 @@ message ShopReq{
   int32 shop_type = 1; // 商店类型 0:金币商店 1:元宝商店
 }
 
+message BackpackReq {  
+}
+
+message BackpackAck {
+  map<int32, int64> items = 1; //玩家物品
+}
+
 message ShopAck{
   int32 shop_type = 1;
   string shop_info = 2; // 商店数据，json格式
