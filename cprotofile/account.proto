@@ -61,7 +61,7 @@ message ShopAck{
 }
 
 message PurchaseReq {
-  int32 shop_type = 1;
+  int32 shop_type = 1; 0:金币商店 1:元宝商店
   int32 id = 2;  //商品id
   bool to_coin = 3; //自动兑换成金币
 }
