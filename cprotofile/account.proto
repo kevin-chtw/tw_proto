@@ -15,6 +15,7 @@ message AccountAck {
 
 message WxLoginReq {
   string code = 1; //微信码
+  string invite_code = 2; //邀请码
 }
 
 message WxLoginAck {

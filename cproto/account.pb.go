@@ -112,7 +112,8 @@ func (x *AccountAck) GetAck() *anypb.Any {
 
 type WxLoginReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"` //微信码
+	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`                               //微信码
+	InviteCode    string                 `protobuf:"bytes,2,opt,name=invite_code,json=inviteCode,proto3" json:"invite_code,omitempty"` //邀请码
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -150,6 +151,13 @@ func (*WxLoginReq) Descriptor() ([]byte, []int) {
 func (x *WxLoginReq) GetCode() string {
 	if x != nil {
 		return x.Code
+	}
+	return ""
+}
+
+func (x *WxLoginReq) GetInviteCode() string {
+	if x != nil {
+		return x.InviteCode
 	}
 	return ""
 }
@@ -1257,10 +1265,12 @@ const file_account_proto_rawDesc = "" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"4\n" +
 	"\n" +
 	"AccountAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\" \n" +
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"A\n" +
 	"\n" +
 	"WxLoginReq\x12\x12\n" +
-	"\x04code\x18\x01 \x01(\tR\x04code\"e\n" +
+	"\x04code\x18\x01 \x01(\tR\x04code\x12\x1f\n" +
+	"\vinvite_code\x18\x02 \x01(\tR\n" +
+	"inviteCode\"e\n" +
 	"\n" +
 	"WxLoginAck\x12\x1f\n" +
 	"\vsession_key\x18\x01 \x01(\tR\n" +

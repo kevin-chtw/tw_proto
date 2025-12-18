@@ -43,7 +43,8 @@ struct AccountAckDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT AccountAckDefaultTypeInternal _AccountAck_default_instance_;
 constexpr WxLoginReq::WxLoginReq(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : code_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  : code_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , invite_code_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct WxLoginReqDefaultTypeInternal {
   constexpr WxLoginReqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -452,6 +453,7 @@ const uint32_t TableStruct_account_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::WxLoginReq, code_),
+  PROTOBUF_FIELD_OFFSET(::cproto::WxLoginReq, invite_code_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::WxLoginAck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -715,36 +717,36 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, -1, sizeof(::cproto::AccountReq)},
   { 7, -1, -1, sizeof(::cproto::AccountAck)},
   { 14, -1, -1, sizeof(::cproto::WxLoginReq)},
-  { 21, -1, -1, sizeof(::cproto::WxLoginAck)},
-  { 29, -1, -1, sizeof(::cproto::UpdateAccountReq)},
-  { 37, -1, -1, sizeof(::cproto::LoginReq)},
-  { 45, -1, -1, sizeof(::cproto::RegisterReq)},
-  { 55, -1, -1, sizeof(::cproto::BindInviteCodeReq)},
-  { 62, -1, -1, sizeof(::cproto::ShopReq)},
-  { 69, -1, -1, sizeof(::cproto::BackpackReq)},
-  { 75, 83, -1, sizeof(::cproto::BackpackAck_ItemsEntry_DoNotUse)},
-  { 85, -1, -1, sizeof(::cproto::BackpackAck)},
-  { 92, -1, -1, sizeof(::cproto::ShopAck)},
-  { 100, -1, -1, sizeof(::cproto::PurchaseReq)},
-  { 109, 117, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
-  { 119, -1, -1, sizeof(::cproto::PurchaseAck)},
-  { 127, 135, -1, sizeof(::cproto::RegisterAck_AwardEntry_DoNotUse)},
-  { 137, -1, -1, sizeof(::cproto::RegisterAck)},
-  { 145, 153, -1, sizeof(::cproto::PlayerInfoAck_ItemsEntry_DoNotUse)},
-  { 155, -1, -1, sizeof(::cproto::PlayerInfoAck)},
-  { 165, 173, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
-  { 175, -1, -1, sizeof(::cproto::ItemsAck)},
-  { 182, -1, -1, sizeof(::cproto::MemberInfoReq)},
-  { 188, -1, -1, sizeof(::cproto::MemberInfoAck)},
-  { 197, 205, -1, sizeof(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse)},
-  { 207, 215, -1, sizeof(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse)},
-  { 217, -1, -1, sizeof(::cproto::MemberTypeInfo)},
-  { 227, -1, -1, sizeof(::cproto::BuyMemberReq)},
-  { 234, 242, -1, sizeof(::cproto::BuyMemberAck_BonusEntry_DoNotUse)},
-  { 244, -1, -1, sizeof(::cproto::BuyMemberAck)},
-  { 253, -1, -1, sizeof(::cproto::ExchangeReq)},
-  { 262, 270, -1, sizeof(::cproto::ExchangeAck_ItemsEntry_DoNotUse)},
-  { 272, -1, -1, sizeof(::cproto::ExchangeAck)},
+  { 22, -1, -1, sizeof(::cproto::WxLoginAck)},
+  { 30, -1, -1, sizeof(::cproto::UpdateAccountReq)},
+  { 38, -1, -1, sizeof(::cproto::LoginReq)},
+  { 46, -1, -1, sizeof(::cproto::RegisterReq)},
+  { 56, -1, -1, sizeof(::cproto::BindInviteCodeReq)},
+  { 63, -1, -1, sizeof(::cproto::ShopReq)},
+  { 70, -1, -1, sizeof(::cproto::BackpackReq)},
+  { 76, 84, -1, sizeof(::cproto::BackpackAck_ItemsEntry_DoNotUse)},
+  { 86, -1, -1, sizeof(::cproto::BackpackAck)},
+  { 93, -1, -1, sizeof(::cproto::ShopAck)},
+  { 101, -1, -1, sizeof(::cproto::PurchaseReq)},
+  { 110, 118, -1, sizeof(::cproto::PurchaseAck_GoodsEntry_DoNotUse)},
+  { 120, -1, -1, sizeof(::cproto::PurchaseAck)},
+  { 128, 136, -1, sizeof(::cproto::RegisterAck_AwardEntry_DoNotUse)},
+  { 138, -1, -1, sizeof(::cproto::RegisterAck)},
+  { 146, 154, -1, sizeof(::cproto::PlayerInfoAck_ItemsEntry_DoNotUse)},
+  { 156, -1, -1, sizeof(::cproto::PlayerInfoAck)},
+  { 166, 174, -1, sizeof(::cproto::ItemsAck_ItemsEntry_DoNotUse)},
+  { 176, -1, -1, sizeof(::cproto::ItemsAck)},
+  { 183, -1, -1, sizeof(::cproto::MemberInfoReq)},
+  { 189, -1, -1, sizeof(::cproto::MemberInfoAck)},
+  { 198, 206, -1, sizeof(::cproto::MemberTypeInfo_PurchaseBonusEntry_DoNotUse)},
+  { 208, 216, -1, sizeof(::cproto::MemberTypeInfo_DailyRewardEntry_DoNotUse)},
+  { 218, -1, -1, sizeof(::cproto::MemberTypeInfo)},
+  { 228, -1, -1, sizeof(::cproto::BuyMemberReq)},
+  { 235, 243, -1, sizeof(::cproto::BuyMemberAck_BonusEntry_DoNotUse)},
+  { 245, -1, -1, sizeof(::cproto::BuyMemberAck)},
+  { 254, -1, -1, sizeof(::cproto::ExchangeReq)},
+  { 263, 271, -1, sizeof(::cproto::ExchangeAck_ItemsEntry_DoNotUse)},
+  { 273, -1, -1, sizeof(::cproto::ExchangeAck)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -787,62 +789,62 @@ const char descriptor_table_protodef_account_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\n\raccount.proto\022\006cproto\032\031google/protobuf"
   "/any.proto\"/\n\nAccountReq\022!\n\003req\030\001 \001(\0132\024."
   "google.protobuf.Any\"/\n\nAccountAck\022!\n\003ack"
-  "\030\001 \001(\0132\024.google.protobuf.Any\"\032\n\nWxLoginR"
-  "eq\022\014\n\004code\030\001 \001(\t\"M\n\nWxLoginAck\022\023\n\013sessio"
-  "n_key\030\001 \001(\t\022*\n\013player_info\030\002 \001(\0132\025.cprot"
-  "o.PlayerInfoAck\"4\n\020UpdateAccountReq\022\020\n\010n"
-  "ickname\030\001 \001(\t\022\016\n\006avatar\030\002 \001(\t\"-\n\010LoginRe"
-  "q\022\017\n\007account\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"U\n\013"
-  "RegisterReq\022\017\n\007account\030\001 \001(\t\022\020\n\010password"
-  "\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\023\n\013invite_code\030\004 "
-  "\001(\t\"(\n\021BindInviteCodeReq\022\023\n\013invite_code\030"
-  "\001 \001(\t\"\034\n\007ShopReq\022\021\n\tshop_type\030\001 \001(\005\"\r\n\013B"
-  "ackpackReq\"j\n\013BackpackAck\022-\n\005items\030\001 \003(\013"
-  "2\036.cproto.BackpackAck.ItemsEntry\032,\n\nItem"
-  "sEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"/"
-  "\n\007ShopAck\022\021\n\tshop_type\030\001 \001(\005\022\021\n\tshop_inf"
-  "o\030\002 \001(\t\"=\n\013PurchaseReq\022\021\n\tshop_type\030\001 \001("
-  "\005\022\n\n\002id\030\002 \001(\005\022\017\n\007to_coin\030\003 \001(\010\"}\n\013Purcha"
-  "seAck\022\021\n\tshop_type\030\001 \001(\005\022-\n\005goods\030\002 \003(\0132"
-  "\036.cproto.PurchaseAck.GoodsEntry\032,\n\nGoods"
-  "Entry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\226\001"
-  "\n\013RegisterAck\022*\n\013player_info\030\001 \001(\0132\025.cpr"
-  "oto.PlayerInfoAck\022-\n\005award\030\002 \003(\0132\036.cprot"
-  "o.RegisterAck.AwardEntry\032,\n\nAwardEntry\022\013"
-  "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\235\001\n\rPlaye"
-  "rInfoAck\022\013\n\003uid\030\001 \001(\t\022\020\n\010nickname\030\002 \001(\t\022"
-  "\016\n\006avatar\030\003 \001(\t\022/\n\005items\030\004 \003(\0132 .cproto."
-  "PlayerInfoAck.ItemsEntry\032,\n\nItemsEntry\022\013"
-  "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"d\n\010ItemsA"
-  "ck\022*\n\005items\030\001 \003(\0132\033.cproto.ItemsAck.Item"
-  "sEntry\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005val"
-  "ue\030\002 \001(\003:\0028\001\"\017\n\rMemberInfoReq\"Y\n\rMemberI"
-  "nfoAck\022\014\n\004type\030\001 \001(\005\022\023\n\013expire_time\030\002 \001("
-  "\003\022%\n\005types\030\003 \003(\0132\026.cproto.MemberTypeInfo"
-  "\"\231\002\n\016MemberTypeInfo\022\014\n\004type\030\001 \001(\005\022\r\n\005pri"
-  "ce\030\002 \001(\005\022A\n\016purchase_bonus\030\003 \003(\0132).cprot"
-  "o.MemberTypeInfo.PurchaseBonusEntry\022=\n\014d"
-  "aily_reward\030\004 \003(\0132\'.cproto.MemberTypeInf"
-  "o.DailyRewardEntry\0324\n\022PurchaseBonusEntry"
-  "\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\0322\n\020Dail"
-  "yRewardEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003"
-  ":\0028\001\"\034\n\014BuyMemberReq\022\014\n\004type\030\001 \001(\005\"\217\001\n\014B"
-  "uyMemberAck\022\014\n\004type\030\001 \001(\005\022\023\n\013expire_time"
-  "\030\002 \001(\003\022.\n\005bonus\030\003 \003(\0132\037.cproto.BuyMember"
-  "Ack.BonusEntry\032,\n\nBonusEntry\022\013\n\003key\030\001 \001("
-  "\005\022\r\n\005value\030\002 \001(\003:\0028\001\":\n\013ExchangeReq\022\016\n\006f"
-  "romid\030\001 \001(\005\022\014\n\004toid\030\002 \001(\005\022\r\n\005count\030\003 \001(\003"
-  "\"j\n\013ExchangeAck\022-\n\005items\030\001 \003(\0132\036.cproto."
-  "ExchangeAck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003"
-  "key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cprot"
-  "ob\006proto3"
+  "\030\001 \001(\0132\024.google.protobuf.Any\"/\n\nWxLoginR"
+  "eq\022\014\n\004code\030\001 \001(\t\022\023\n\013invite_code\030\002 \001(\t\"M\n"
+  "\nWxLoginAck\022\023\n\013session_key\030\001 \001(\t\022*\n\013play"
+  "er_info\030\002 \001(\0132\025.cproto.PlayerInfoAck\"4\n\020"
+  "UpdateAccountReq\022\020\n\010nickname\030\001 \001(\t\022\016\n\006av"
+  "atar\030\002 \001(\t\"-\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022"
+  "\020\n\010password\030\002 \001(\t\"U\n\013RegisterReq\022\017\n\007acco"
+  "unt\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\016\n\006avatar\030\003 "
+  "\001(\t\022\023\n\013invite_code\030\004 \001(\t\"(\n\021BindInviteCo"
+  "deReq\022\023\n\013invite_code\030\001 \001(\t\"\034\n\007ShopReq\022\021\n"
+  "\tshop_type\030\001 \001(\005\"\r\n\013BackpackReq\"j\n\013Backp"
+  "ackAck\022-\n\005items\030\001 \003(\0132\036.cproto.BackpackA"
+  "ck.ItemsEntry\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005"
+  "\022\r\n\005value\030\002 \001(\003:\0028\001\"/\n\007ShopAck\022\021\n\tshop_t"
+  "ype\030\001 \001(\005\022\021\n\tshop_info\030\002 \001(\t\"=\n\013Purchase"
+  "Req\022\021\n\tshop_type\030\001 \001(\005\022\n\n\002id\030\002 \001(\005\022\017\n\007to"
+  "_coin\030\003 \001(\010\"}\n\013PurchaseAck\022\021\n\tshop_type\030"
+  "\001 \001(\005\022-\n\005goods\030\002 \003(\0132\036.cproto.PurchaseAc"
+  "k.GoodsEntry\032,\n\nGoodsEntry\022\013\n\003key\030\001 \001(\005\022"
+  "\r\n\005value\030\002 \001(\003:\0028\001\"\226\001\n\013RegisterAck\022*\n\013pl"
+  "ayer_info\030\001 \001(\0132\025.cproto.PlayerInfoAck\022-"
+  "\n\005award\030\002 \003(\0132\036.cproto.RegisterAck.Award"
+  "Entry\032,\n\nAwardEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005valu"
+  "e\030\002 \001(\003:\0028\001\"\235\001\n\rPlayerInfoAck\022\013\n\003uid\030\001 \001"
+  "(\t\022\020\n\010nickname\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022/\n\005"
+  "items\030\004 \003(\0132 .cproto.PlayerInfoAck.Items"
+  "Entry\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005valu"
+  "e\030\002 \001(\003:\0028\001\"d\n\010ItemsAck\022*\n\005items\030\001 \003(\0132\033"
+  ".cproto.ItemsAck.ItemsEntry\032,\n\nItemsEntr"
+  "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\017\n\rMem"
+  "berInfoReq\"Y\n\rMemberInfoAck\022\014\n\004type\030\001 \001("
+  "\005\022\023\n\013expire_time\030\002 \001(\003\022%\n\005types\030\003 \003(\0132\026."
+  "cproto.MemberTypeInfo\"\231\002\n\016MemberTypeInfo"
+  "\022\014\n\004type\030\001 \001(\005\022\r\n\005price\030\002 \001(\005\022A\n\016purchas"
+  "e_bonus\030\003 \003(\0132).cproto.MemberTypeInfo.Pu"
+  "rchaseBonusEntry\022=\n\014daily_reward\030\004 \003(\0132\'"
+  ".cproto.MemberTypeInfo.DailyRewardEntry\032"
+  "4\n\022PurchaseBonusEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005va"
+  "lue\030\002 \001(\003:\0028\001\0322\n\020DailyRewardEntry\022\013\n\003key"
+  "\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\"\034\n\014BuyMemberRe"
+  "q\022\014\n\004type\030\001 \001(\005\"\217\001\n\014BuyMemberAck\022\014\n\004type"
+  "\030\001 \001(\005\022\023\n\013expire_time\030\002 \001(\003\022.\n\005bonus\030\003 \003"
+  "(\0132\037.cproto.BuyMemberAck.BonusEntry\032,\n\nB"
+  "onusEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028"
+  "\001\":\n\013ExchangeReq\022\016\n\006fromid\030\001 \001(\005\022\014\n\004toid"
+  "\030\002 \001(\005\022\r\n\005count\030\003 \001(\003\"j\n\013ExchangeAck\022-\n\005"
+  "items\030\001 \003(\0132\036.cproto.ExchangeAck.ItemsEn"
+  "try\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030"
+  "\002 \001(\003:\0028\001B\013Z\t../cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_account_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_account_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_account_2eproto = {
-  false, false, 2049, descriptor_table_protodef_account_2eproto, "account.proto", 
+  false, false, 2070, descriptor_table_protodef_account_2eproto, "account.proto", 
   &descriptor_table_account_2eproto_once, descriptor_table_account_2eproto_deps, 1, 33,
   schemas, file_default_instances, TableStruct_account_2eproto::offsets,
   file_level_metadata_account_2eproto, file_level_enum_descriptors_account_2eproto, file_level_service_descriptors_account_2eproto,
@@ -1283,6 +1285,14 @@ WxLoginReq::WxLoginReq(const WxLoginReq& from)
     code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_code(), 
       GetArenaForAllocation());
   }
+  invite_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    invite_code_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_invite_code().empty()) {
+    invite_code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_invite_code(), 
+      GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:cproto.WxLoginReq)
 }
 
@@ -1290,6 +1300,10 @@ inline void WxLoginReq::SharedCtor() {
 code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   code_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+invite_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  invite_code_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -1303,6 +1317,7 @@ WxLoginReq::~WxLoginReq() {
 inline void WxLoginReq::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   code_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  invite_code_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void WxLoginReq::ArenaDtor(void* object) {
@@ -1322,6 +1337,7 @@ void WxLoginReq::Clear() {
   (void) cached_has_bits;
 
   code_.ClearToEmpty();
+  invite_code_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1337,6 +1353,16 @@ const char* WxLoginReq::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           auto str = _internal_mutable_code();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.WxLoginReq.code"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string invite_code = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_invite_code();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.WxLoginReq.invite_code"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1380,6 +1406,16 @@ uint8_t* WxLoginReq::_InternalSerialize(
         1, this->_internal_code(), target);
   }
 
+  // string invite_code = 2;
+  if (!this->_internal_invite_code().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_invite_code().data(), static_cast<int>(this->_internal_invite_code().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.WxLoginReq.invite_code");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_invite_code(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1401,6 +1437,13 @@ size_t WxLoginReq::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_code());
+  }
+
+  // string invite_code = 2;
+  if (!this->_internal_invite_code().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_invite_code());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1428,6 +1471,9 @@ void WxLoginReq::MergeFrom(const WxLoginReq& from) {
   if (!from._internal_code().empty()) {
     _internal_set_code(from._internal_code());
   }
+  if (!from._internal_invite_code().empty()) {
+    _internal_set_invite_code(from._internal_invite_code());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1451,6 +1497,11 @@ void WxLoginReq::InternalSwap(WxLoginReq* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &code_, lhs_arena,
       &other->code_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &invite_code_, lhs_arena,
+      &other->invite_code_, rhs_arena
   );
 }
 

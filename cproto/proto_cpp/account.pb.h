@@ -631,6 +631,7 @@ class WxLoginReq final :
 
   enum : int {
     kCodeFieldNumber = 1,
+    kInviteCodeFieldNumber = 2,
   };
   // string code = 1;
   void clear_code();
@@ -646,6 +647,20 @@ class WxLoginReq final :
   std::string* _internal_mutable_code();
   public:
 
+  // string invite_code = 2;
+  void clear_invite_code();
+  const std::string& invite_code() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_invite_code(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_invite_code();
+  PROTOBUF_NODISCARD std::string* release_invite_code();
+  void set_allocated_invite_code(std::string* invite_code);
+  private:
+  const std::string& _internal_invite_code() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_invite_code(const std::string& value);
+  std::string* _internal_mutable_invite_code();
+  public:
+
   // @@protoc_insertion_point(class_scope:cproto.WxLoginReq)
  private:
   class _Internal;
@@ -654,6 +669,7 @@ class WxLoginReq final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr code_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr invite_code_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_account_2eproto;
 };
@@ -4580,6 +4596,57 @@ inline void WxLoginReq::set_allocated_code(std::string* code) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:cproto.WxLoginReq.code)
+}
+
+// string invite_code = 2;
+inline void WxLoginReq::clear_invite_code() {
+  invite_code_.ClearToEmpty();
+}
+inline const std::string& WxLoginReq::invite_code() const {
+  // @@protoc_insertion_point(field_get:cproto.WxLoginReq.invite_code)
+  return _internal_invite_code();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WxLoginReq::set_invite_code(ArgT0&& arg0, ArgT... args) {
+ 
+ invite_code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.WxLoginReq.invite_code)
+}
+inline std::string* WxLoginReq::mutable_invite_code() {
+  std::string* _s = _internal_mutable_invite_code();
+  // @@protoc_insertion_point(field_mutable:cproto.WxLoginReq.invite_code)
+  return _s;
+}
+inline const std::string& WxLoginReq::_internal_invite_code() const {
+  return invite_code_.Get();
+}
+inline void WxLoginReq::_internal_set_invite_code(const std::string& value) {
+  
+  invite_code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* WxLoginReq::_internal_mutable_invite_code() {
+  
+  return invite_code_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* WxLoginReq::release_invite_code() {
+  // @@protoc_insertion_point(field_release:cproto.WxLoginReq.invite_code)
+  return invite_code_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void WxLoginReq::set_allocated_invite_code(std::string* invite_code) {
+  if (invite_code != nullptr) {
+    
+  } else {
+    
+  }
+  invite_code_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), invite_code,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (invite_code_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    invite_code_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.WxLoginReq.invite_code)
 }
 
 // -------------------------------------------------------------------
