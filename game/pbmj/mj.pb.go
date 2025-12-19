@@ -1915,7 +1915,7 @@ func (x *MJDingQueResultAck) GetColors() []int32 {
 
 type MJRcmdFanAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Fan           int32                  `protobuf:"varint,1,opt,name=fan,proto3" json:"fan,omitempty"`
+	Fans          []int32                `protobuf:"varint,1,rep,packed,name=fans,proto3" json:"fans,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1950,11 +1950,11 @@ func (*MJRcmdFanAck) Descriptor() ([]byte, []int) {
 	return file_mj_proto_rawDescGZIP(), []int{33}
 }
 
-func (x *MJRcmdFanAck) GetFan() int32 {
+func (x *MJRcmdFanAck) GetFans() []int32 {
 	if x != nil {
-		return x.Fan
+		return x.Fans
 	}
-	return 0
+	return nil
 }
 
 var File_mj_proto protoreflect.FileDescriptor
@@ -2109,9 +2109,9 @@ const file_mj_proto_rawDesc = "" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05color\x18\x02 \x01(\x05R\x05color\",\n" +
 	"\x12MJDingQueResultAck\x12\x16\n" +
-	"\x06colors\x18\x01 \x03(\x05R\x06colors\" \n" +
-	"\fMJRcmdFanAck\x12\x10\n" +
-	"\x03fan\x18\x01 \x01(\x05R\x03fanB\aZ\x05/pbmjb\x06proto3"
+	"\x06colors\x18\x01 \x03(\x05R\x06colors\"\"\n" +
+	"\fMJRcmdFanAck\x12\x12\n" +
+	"\x04fans\x18\x01 \x03(\x05R\x04fansB\aZ\x05/pbmjb\x06proto3"
 
 var (
 	file_mj_proto_rawDescOnce sync.Once

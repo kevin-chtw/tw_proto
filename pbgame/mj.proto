@@ -191,5 +191,5 @@ message MJDingQueResultAck {
 }
 
 message MJRcmdFanAck { //推荐番型
-  int32 fan = 1; 
+  repeated int32 fans = 1; 
 }
