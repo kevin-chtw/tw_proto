@@ -1913,6 +1913,50 @@ func (x *MJDingQueResultAck) GetColors() []int32 {
 	return nil
 }
 
+type MJRcmdFanAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Fan           int32                  `protobuf:"varint,1,opt,name=fan,proto3" json:"fan,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MJRcmdFanAck) Reset() {
+	*x = MJRcmdFanAck{}
+	mi := &file_mj_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MJRcmdFanAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MJRcmdFanAck) ProtoMessage() {}
+
+func (x *MJRcmdFanAck) ProtoReflect() protoreflect.Message {
+	mi := &file_mj_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MJRcmdFanAck.ProtoReflect.Descriptor instead.
+func (*MJRcmdFanAck) Descriptor() ([]byte, []int) {
+	return file_mj_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *MJRcmdFanAck) GetFan() int32 {
+	if x != nil {
+		return x.Fan
+	}
+	return 0
+}
+
 var File_mj_proto protoreflect.FileDescriptor
 
 const file_mj_proto_rawDesc = "" +
@@ -2065,7 +2109,9 @@ const file_mj_proto_rawDesc = "" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05color\x18\x02 \x01(\x05R\x05color\",\n" +
 	"\x12MJDingQueResultAck\x12\x16\n" +
-	"\x06colors\x18\x01 \x03(\x05R\x06colorsB\aZ\x05/pbmjb\x06proto3"
+	"\x06colors\x18\x01 \x03(\x05R\x06colors\" \n" +
+	"\fMJRcmdFanAck\x12\x10\n" +
+	"\x03fan\x18\x01 \x01(\x05R\x03fanB\aZ\x05/pbmjb\x06proto3"
 
 var (
 	file_mj_proto_rawDescOnce sync.Once
@@ -2079,7 +2125,7 @@ func file_mj_proto_rawDescGZIP() []byte {
 	return file_mj_proto_rawDescData
 }
 
-var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 40)
+var file_mj_proto_msgTypes = make([]protoimpl.MessageInfo, 41)
 var file_mj_proto_goTypes = []any{
 	(*MJRequestReq)(nil),         // 0: pbmj.MJRequestReq
 	(*MJTrustReq)(nil),           // 1: pbmj.MJTrustReq
@@ -2114,25 +2160,26 @@ var file_mj_proto_goTypes = []any{
 	(*MJDingQueAck)(nil),         // 30: pbmj.MJDingQueAck
 	(*MJDingQueFinishAck)(nil),   // 31: pbmj.MJDingQueFinishAck
 	(*MJDingQueResultAck)(nil),   // 32: pbmj.MJDingQueResultAck
-	nil,                          // 33: pbmj.MJRequestAck.TingsEntry
-	nil,                          // 34: pbmj.CallDatas.CallDataEntry
-	nil,                          // 35: pbmj.MJChowAck.CallDataEntry
-	nil,                          // 36: pbmj.MJPonAck.CallDataEntry
-	nil,                          // 37: pbmj.MJDrawAck.CallDataEntry
-	nil,                          // 38: pbmj.MJCallDataAck.CallDataEntry
-	nil,                          // 39: pbmj.CallData.CallTilesEntry
+	(*MJRcmdFanAck)(nil),         // 33: pbmj.MJRcmdFanAck
+	nil,                          // 34: pbmj.MJRequestAck.TingsEntry
+	nil,                          // 35: pbmj.CallDatas.CallDataEntry
+	nil,                          // 36: pbmj.MJChowAck.CallDataEntry
+	nil,                          // 37: pbmj.MJPonAck.CallDataEntry
+	nil,                          // 38: pbmj.MJDrawAck.CallDataEntry
+	nil,                          // 39: pbmj.MJCallDataAck.CallDataEntry
+	nil,                          // 40: pbmj.CallData.CallTilesEntry
 }
 var file_mj_proto_depIdxs = []int32{
-	33, // 0: pbmj.MJRequestAck.tings:type_name -> pbmj.MJRequestAck.TingsEntry
-	34, // 1: pbmj.CallDatas.call_data:type_name -> pbmj.CallDatas.CallDataEntry
-	35, // 2: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
-	36, // 3: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
+	34, // 0: pbmj.MJRequestAck.tings:type_name -> pbmj.MJRequestAck.TingsEntry
+	35, // 1: pbmj.CallDatas.call_data:type_name -> pbmj.CallDatas.CallDataEntry
+	36, // 2: pbmj.MJChowAck.call_data:type_name -> pbmj.MJChowAck.CallDataEntry
+	37, // 3: pbmj.MJPonAck.call_data:type_name -> pbmj.MJPonAck.CallDataEntry
 	13, // 4: pbmj.MJHuAck.hu_data:type_name -> pbmj.MJHuData
-	37, // 5: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
+	38, // 5: pbmj.MJDrawAck.call_data:type_name -> pbmj.MJDrawAck.CallDataEntry
 	13, // 6: pbmj.MJScoreChangeAck.hu_data:type_name -> pbmj.MJHuData
 	21, // 7: pbmj.MJResultAck.player_results:type_name -> pbmj.MJPlayerResult
-	38, // 8: pbmj.MJCallDataAck.call_data:type_name -> pbmj.MJCallDataAck.CallDataEntry
-	39, // 9: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
+	39, // 8: pbmj.MJCallDataAck.call_data:type_name -> pbmj.MJCallDataAck.CallDataEntry
+	40, // 9: pbmj.CallData.call_tiles:type_name -> pbmj.CallData.CallTilesEntry
 	29, // 10: pbmj.MJSwapTilesResultAck.swap_tiles:type_name -> pbmj.MJSwapTiles
 	8,  // 11: pbmj.MJRequestAck.TingsEntry.value:type_name -> pbmj.CallDatas
 	24, // 12: pbmj.CallDatas.CallDataEntry.value:type_name -> pbmj.CallData
@@ -2159,7 +2206,7 @@ func file_mj_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mj_proto_rawDesc), len(file_mj_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   40,
+			NumMessages:   41,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

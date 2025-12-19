@@ -189,3 +189,7 @@ message MJDingQueFinishAck {
 message MJDingQueResultAck {
   repeated int32 colors = 1;
 }
+
+message MJRcmdFanAck { //推荐番型
+  int32 fan = 1; 
+}
