@@ -193,3 +193,8 @@ message MJDingQueResultAck {
 message MJRcmdFanAck { //推荐番型
   repeated int32 fans = 1; 
 }
+
+message MJBankruptAck { //破产消息
+  int32 seat = 1; //座位号
+  int64 score = 2; //破产分数
+}
