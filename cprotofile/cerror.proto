@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package cproto;
+option go_package = "../cproto";
+
+message ErrorAck {
+  int32 code = 1;
+  string message = 2;
+  string detail = 3;
+}

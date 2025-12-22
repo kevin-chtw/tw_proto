@@ -608,9 +608,9 @@ func (x *ShopAck) GetShopInfo() string {
 
 type PurchaseReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ShopType      int32                  `protobuf:"varint,1,opt,name=shop_type,json=shopType,proto3" json:"shop_type,omitempty"`
-	Id            int32                  `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`                       //商品id
-	ToCoin        bool                   `protobuf:"varint,3,opt,name=to_coin,json=toCoin,proto3" json:"to_coin,omitempty"` //自动兑换成金币
+	ShopType      int32                  `protobuf:"varint,1,opt,name=shop_type,json=shopType,proto3" json:"shop_type,omitempty"` // 0:金币商店 1:元宝商店
+	Id            int32                  `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`                             //商品id
+	ToCoin        bool                   `protobuf:"varint,3,opt,name=to_coin,json=toCoin,proto3" json:"to_coin,omitempty"`       //自动兑换成金币
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
