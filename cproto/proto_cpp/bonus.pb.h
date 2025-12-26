@@ -50,7 +50,7 @@ struct TableStruct_bonus_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[7]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -73,6 +73,9 @@ extern Bonus_BonusValsEntry_DoNotUseDefaultTypeInternal _Bonus_BonusValsEntry_Do
 class MatchBonusAck;
 struct MatchBonusAckDefaultTypeInternal;
 extern MatchBonusAckDefaultTypeInternal _MatchBonusAck_default_instance_;
+class MatchBonusAck_WinBonusEntry_DoNotUse;
+struct MatchBonusAck_WinBonusEntry_DoNotUseDefaultTypeInternal;
+extern MatchBonusAck_WinBonusEntry_DoNotUseDefaultTypeInternal _MatchBonusAck_WinBonusEntry_DoNotUse_default_instance_;
 class MatchBonusReq;
 struct MatchBonusReqDefaultTypeInternal;
 extern MatchBonusReqDefaultTypeInternal _MatchBonusReq_default_instance_;
@@ -83,6 +86,7 @@ template<> ::cproto::BonusAck* Arena::CreateMaybeMessage<::cproto::BonusAck>(Are
 template<> ::cproto::BonusReq* Arena::CreateMaybeMessage<::cproto::BonusReq>(Arena*);
 template<> ::cproto::Bonus_BonusValsEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::Bonus_BonusValsEntry_DoNotUse>(Arena*);
 template<> ::cproto::MatchBonusAck* Arena::CreateMaybeMessage<::cproto::MatchBonusAck>(Arena*);
+template<> ::cproto::MatchBonusAck_WinBonusEntry_DoNotUse* Arena::CreateMaybeMessage<::cproto::MatchBonusAck_WinBonusEntry_DoNotUse>(Arena*);
 template<> ::cproto::MatchBonusReq* Arena::CreateMaybeMessage<::cproto::MatchBonusReq>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace cproto {
@@ -545,6 +549,29 @@ class MatchBonusReq final :
 };
 // -------------------------------------------------------------------
 
+class MatchBonusAck_WinBonusEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<MatchBonusAck_WinBonusEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<MatchBonusAck_WinBonusEntry_DoNotUse, 
+    int32_t, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  MatchBonusAck_WinBonusEntry_DoNotUse();
+  explicit constexpr MatchBonusAck_WinBonusEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit MatchBonusAck_WinBonusEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const MatchBonusAck_WinBonusEntry_DoNotUse& other);
+  static const MatchBonusAck_WinBonusEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const MatchBonusAck_WinBonusEntry_DoNotUse*>(&_MatchBonusAck_WinBonusEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
 class MatchBonusAck final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cproto.MatchBonusAck) */ {
  public:
@@ -593,7 +620,7 @@ class MatchBonusAck final :
                &_MatchBonusAck_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(MatchBonusAck& a, MatchBonusAck& b) {
     a.Swap(&b);
@@ -664,15 +691,34 @@ class MatchBonusAck final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
-    kBonusFieldNumber = 4,
+    kWinBonusFieldNumber = 4,
+    kBonusFieldNumber = 5,
     kBonusTypeFieldNumber = 2,
     kDesnFieldNumber = 3,
     kMatchidFieldNumber = 1,
   };
-  // repeated .cproto.Bonus bonus = 4;
+  // map<int32, int64> win_bonus = 4;
+  int win_bonus_size() const;
+  private:
+  int _internal_win_bonus_size() const;
+  public:
+  void clear_win_bonus();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      _internal_win_bonus() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      _internal_mutable_win_bonus();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+      win_bonus() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+      mutable_win_bonus();
+
+  // repeated .cproto.Bonus bonus = 5;
   int bonus_size() const;
   private:
   int _internal_bonus_size() const;
@@ -734,6 +780,11 @@ class MatchBonusAck final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      MatchBonusAck_WinBonusEntry_DoNotUse,
+      int32_t, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> win_bonus_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::Bonus > bonus_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bonus_type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desn_;
@@ -814,7 +865,7 @@ class Bonus final :
                &_Bonus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(Bonus& a, Bonus& b) {
     a.Swap(&b);
@@ -1147,6 +1198,8 @@ inline void MatchBonusReq::set_matchid(int32_t value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // MatchBonusAck
 
 // int32 matchid = 1;
@@ -1271,7 +1324,36 @@ inline void MatchBonusAck::set_allocated_desn(std::string* desn) {
   // @@protoc_insertion_point(field_set_allocated:cproto.MatchBonusAck.desn)
 }
 
-// repeated .cproto.Bonus bonus = 4;
+// map<int32, int64> win_bonus = 4;
+inline int MatchBonusAck::_internal_win_bonus_size() const {
+  return win_bonus_.size();
+}
+inline int MatchBonusAck::win_bonus_size() const {
+  return _internal_win_bonus_size();
+}
+inline void MatchBonusAck::clear_win_bonus() {
+  win_bonus_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+MatchBonusAck::_internal_win_bonus() const {
+  return win_bonus_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >&
+MatchBonusAck::win_bonus() const {
+  // @@protoc_insertion_point(field_map:cproto.MatchBonusAck.win_bonus)
+  return _internal_win_bonus();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+MatchBonusAck::_internal_mutable_win_bonus() {
+  return win_bonus_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
+MatchBonusAck::mutable_win_bonus() {
+  // @@protoc_insertion_point(field_mutable_map:cproto.MatchBonusAck.win_bonus)
+  return _internal_mutable_win_bonus();
+}
+
+// repeated .cproto.Bonus bonus = 5;
 inline int MatchBonusAck::_internal_bonus_size() const {
   return bonus_.size();
 }
@@ -1369,6 +1451,8 @@ Bonus::mutable_bonus_vals() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

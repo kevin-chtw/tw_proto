@@ -53,9 +53,21 @@ struct MatchBonusReqDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MatchBonusReqDefaultTypeInternal _MatchBonusReq_default_instance_;
+constexpr MatchBonusAck_WinBonusEntry_DoNotUse::MatchBonusAck_WinBonusEntry_DoNotUse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct MatchBonusAck_WinBonusEntry_DoNotUseDefaultTypeInternal {
+  constexpr MatchBonusAck_WinBonusEntry_DoNotUseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MatchBonusAck_WinBonusEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    MatchBonusAck_WinBonusEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MatchBonusAck_WinBonusEntry_DoNotUseDefaultTypeInternal _MatchBonusAck_WinBonusEntry_DoNotUse_default_instance_;
 constexpr MatchBonusAck::MatchBonusAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : bonus_()
+  : win_bonus_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
+  , bonus_()
   , bonus_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , desn_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , matchid_(0){}
@@ -93,7 +105,7 @@ struct BonusDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BonusDefaultTypeInternal _Bonus_default_instance_;
 }  // namespace cproto
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_bonus_2eproto[6];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_bonus_2eproto[7];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_bonus_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_bonus_2eproto = nullptr;
 
@@ -119,6 +131,16 @@ const uint32_t TableStruct_bonus_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusReq, matchid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck_WinBonusEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck_WinBonusEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck_WinBonusEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck_WinBonusEntry_DoNotUse, value_),
+  0,
+  1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -128,6 +150,7 @@ const uint32_t TableStruct_bonus_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, matchid_),
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, bonus_type_),
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, desn_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, win_bonus_),
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, bonus_),
   PROTOBUF_FIELD_OFFSET(::cproto::Bonus_BonusValsEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::cproto::Bonus_BonusValsEntry_DoNotUse, _internal_metadata_),
@@ -152,15 +175,17 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, -1, sizeof(::cproto::BonusReq)},
   { 7, -1, -1, sizeof(::cproto::BonusAck)},
   { 14, -1, -1, sizeof(::cproto::MatchBonusReq)},
-  { 21, -1, -1, sizeof(::cproto::MatchBonusAck)},
-  { 31, 39, -1, sizeof(::cproto::Bonus_BonusValsEntry_DoNotUse)},
-  { 41, -1, -1, sizeof(::cproto::Bonus)},
+  { 21, 29, -1, sizeof(::cproto::MatchBonusAck_WinBonusEntry_DoNotUse)},
+  { 31, -1, -1, sizeof(::cproto::MatchBonusAck)},
+  { 42, 50, -1, sizeof(::cproto::Bonus_BonusValsEntry_DoNotUse)},
+  { 52, -1, -1, sizeof(::cproto::Bonus)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BonusReq_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_BonusAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MatchBonusReq_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MatchBonusAck_WinBonusEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_MatchBonusAck_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_Bonus_BonusValsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cproto::_Bonus_default_instance_),
@@ -171,21 +196,24 @@ const char descriptor_table_protodef_bonus_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "ny.proto\"-\n\010BonusReq\022!\n\003req\030\001 \001(\0132\024.goog"
   "le.protobuf.Any\"-\n\010BonusAck\022!\n\003ack\030\001 \001(\013"
   "2\024.google.protobuf.Any\" \n\rMatchBonusReq\022"
-  "\017\n\007matchid\030\001 \001(\005\"`\n\rMatchBonusAck\022\017\n\007mat"
-  "chid\030\001 \001(\005\022\022\n\nbonus_type\030\002 \001(\t\022\014\n\004desn\030\003"
-  " \001(\t\022\034\n\005bonus\030\004 \003(\0132\r.cproto.Bonus\"y\n\005Bo"
-  "nus\022\014\n\004cond\030\001 \001(\005\0220\n\nbonus_vals\030\002 \003(\0132\034."
-  "cproto.Bonus.BonusValsEntry\0320\n\016BonusVals"
-  "Entry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z"
-  "\t../cprotob\006proto3"
+  "\017\n\007matchid\030\001 \001(\005\"\311\001\n\rMatchBonusAck\022\017\n\007ma"
+  "tchid\030\001 \001(\005\022\022\n\nbonus_type\030\002 \001(\t\022\014\n\004desn\030"
+  "\003 \001(\t\0226\n\twin_bonus\030\004 \003(\0132#.cproto.MatchB"
+  "onusAck.WinBonusEntry\022\034\n\005bonus\030\005 \003(\0132\r.c"
+  "proto.Bonus\032/\n\rWinBonusEntry\022\013\n\003key\030\001 \001("
+  "\005\022\r\n\005value\030\002 \001(\003:\0028\001\"y\n\005Bonus\022\014\n\004cond\030\001 "
+  "\001(\005\0220\n\nbonus_vals\030\002 \003(\0132\034.cproto.Bonus.B"
+  "onusValsEntry\0320\n\016BonusValsEntry\022\013\n\003key\030\001"
+  " \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cprotob\006pr"
+  "oto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_bonus_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_bonus_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_bonus_2eproto = {
-  false, false, 418, descriptor_table_protodef_bonus_2eproto, "bonus.proto", 
-  &descriptor_table_bonus_2eproto_once, descriptor_table_bonus_2eproto_deps, 1, 6,
+  false, false, 524, descriptor_table_protodef_bonus_2eproto, "bonus.proto", 
+  &descriptor_table_bonus_2eproto_once, descriptor_table_bonus_2eproto_deps, 1, 7,
   schemas, file_default_instances, TableStruct_bonus_2eproto::offsets,
   file_level_metadata_bonus_2eproto, file_level_enum_descriptors_bonus_2eproto, file_level_service_descriptors_bonus_2eproto,
 };
@@ -779,6 +807,20 @@ void MatchBonusReq::InternalSwap(MatchBonusReq* other) {
 
 // ===================================================================
 
+MatchBonusAck_WinBonusEntry_DoNotUse::MatchBonusAck_WinBonusEntry_DoNotUse() {}
+MatchBonusAck_WinBonusEntry_DoNotUse::MatchBonusAck_WinBonusEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void MatchBonusAck_WinBonusEntry_DoNotUse::MergeFrom(const MatchBonusAck_WinBonusEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata MatchBonusAck_WinBonusEntry_DoNotUse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_bonus_2eproto_getter, &descriptor_table_bonus_2eproto_once,
+      file_level_metadata_bonus_2eproto[3]);
+}
+
+// ===================================================================
+
 class MatchBonusAck::_Internal {
  public:
 };
@@ -786,6 +828,7 @@ class MatchBonusAck::_Internal {
 MatchBonusAck::MatchBonusAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  win_bonus_(arena),
   bonus_(arena) {
   SharedCtor();
   if (!is_message_owned) {
@@ -797,6 +840,7 @@ MatchBonusAck::MatchBonusAck(const MatchBonusAck& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       bonus_(from.bonus_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  win_bonus_.MergeFrom(from.win_bonus_);
   bonus_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     bonus_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
@@ -845,8 +889,12 @@ inline void MatchBonusAck::SharedDtor() {
 void MatchBonusAck::ArenaDtor(void* object) {
   MatchBonusAck* _this = reinterpret_cast< MatchBonusAck* >(object);
   (void)_this;
+  _this->win_bonus_. ~MapField();
 }
-void MatchBonusAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+inline void MatchBonusAck::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena) {
+  if (arena != nullptr) {
+    arena->OwnCustomDestructor(this, &MatchBonusAck::ArenaDtor);
+  }
 }
 void MatchBonusAck::SetCachedSize(int size) const {
   _cached_size_.Set(size);
@@ -858,6 +906,7 @@ void MatchBonusAck::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  win_bonus_.Clear();
   bonus_.Clear();
   bonus_type_.ClearToEmpty();
   desn_.ClearToEmpty();
@@ -899,16 +948,29 @@ const char* MatchBonusAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
         } else
           goto handle_unusual;
         continue;
-      // repeated .cproto.Bonus bonus = 4;
+      // map<int32, int64> win_bonus = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&win_bonus_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .cproto.Bonus bonus = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_bonus(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -967,12 +1029,43 @@ uint8_t* MatchBonusAck::_InternalSerialize(
         3, this->_internal_desn(), target);
   }
 
-  // repeated .cproto.Bonus bonus = 4;
+  // map<int32, int64> win_bonus = 4;
+  if (!this->_internal_win_bonus().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
+        ConstPtr;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::SortItem< int32_t, ConstPtr > SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByFirstField<SortItem> Less;
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_win_bonus().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_win_bonus().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_win_bonus().begin();
+          it != this->_internal_win_bonus().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = MatchBonusAck_WinBonusEntry_DoNotUse::Funcs::InternalSerialize(4, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+          it = this->_internal_win_bonus().begin();
+          it != this->_internal_win_bonus().end(); ++it) {
+        target = MatchBonusAck_WinBonusEntry_DoNotUse::Funcs::InternalSerialize(4, it->first, it->second, target, stream);
+      }
+    }
+  }
+
+  // repeated .cproto.Bonus bonus = 5;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_bonus_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, this->_internal_bonus(i), target, stream);
+      InternalWriteMessage(5, this->_internal_bonus(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -991,7 +1084,16 @@ size_t MatchBonusAck::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .cproto.Bonus bonus = 4;
+  // map<int32, int64> win_bonus = 4;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_win_bonus_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
+      it = this->_internal_win_bonus().begin();
+      it != this->_internal_win_bonus().end(); ++it) {
+    total_size += MatchBonusAck_WinBonusEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // repeated .cproto.Bonus bonus = 5;
   total_size += 1UL * this->_internal_bonus_size();
   for (const auto& msg : this->bonus_) {
     total_size +=
@@ -1039,6 +1141,7 @@ void MatchBonusAck::MergeFrom(const MatchBonusAck& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  win_bonus_.MergeFrom(from.win_bonus_);
   bonus_.MergeFrom(from.bonus_);
   if (!from._internal_bonus_type().empty()) {
     _internal_set_bonus_type(from._internal_bonus_type());
@@ -1068,6 +1171,7 @@ void MatchBonusAck::InternalSwap(MatchBonusAck* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  win_bonus_.InternalSwap(&other->win_bonus_);
   bonus_.InternalSwap(&other->bonus_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
@@ -1085,7 +1189,7 @@ void MatchBonusAck::InternalSwap(MatchBonusAck* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MatchBonusAck::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_bonus_2eproto_getter, &descriptor_table_bonus_2eproto_once,
-      file_level_metadata_bonus_2eproto[3]);
+      file_level_metadata_bonus_2eproto[4]);
 }
 
 // ===================================================================
@@ -1099,7 +1203,7 @@ void Bonus_BonusValsEntry_DoNotUse::MergeFrom(const Bonus_BonusValsEntry_DoNotUs
 ::PROTOBUF_NAMESPACE_ID::Metadata Bonus_BonusValsEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_bonus_2eproto_getter, &descriptor_table_bonus_2eproto_once,
-      file_level_metadata_bonus_2eproto[4]);
+      file_level_metadata_bonus_2eproto[5]);
 }
 
 // ===================================================================
@@ -1339,7 +1443,7 @@ void Bonus::InternalSwap(Bonus* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Bonus::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_bonus_2eproto_getter, &descriptor_table_bonus_2eproto_once,
-      file_level_metadata_bonus_2eproto[5]);
+      file_level_metadata_bonus_2eproto[6]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1353,6 +1457,9 @@ template<> PROTOBUF_NOINLINE ::cproto::BonusAck* Arena::CreateMaybeMessage< ::cp
 }
 template<> PROTOBUF_NOINLINE ::cproto::MatchBonusReq* Arena::CreateMaybeMessage< ::cproto::MatchBonusReq >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::MatchBonusReq >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cproto::MatchBonusAck_WinBonusEntry_DoNotUse* Arena::CreateMaybeMessage< ::cproto::MatchBonusAck_WinBonusEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cproto::MatchBonusAck_WinBonusEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cproto::MatchBonusAck* Arena::CreateMaybeMessage< ::cproto::MatchBonusAck >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cproto::MatchBonusAck >(arena);

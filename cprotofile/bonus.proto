@@ -21,7 +21,8 @@ message MatchBonusAck {
     int32 matchid = 1; //比赛ID
     string bonus_type = 2; //奖励类型 rank-排名，fixed-定副，streak-连胜
     string desn = 3; //奖励描述
-    repeated Bonus bonus = 4; //报名条件 或的关系
+    map<int32,int64> win_bonus = 4; //报名条件 且的关系
+    repeated Bonus bonus = 5; //报名条件 或的关系
 }
 
 message Bonus {

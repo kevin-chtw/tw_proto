@@ -156,10 +156,11 @@ func (x *MatchBonusReq) GetMatchid() int32 {
 
 type MatchBonusAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`                     //比赛ID
-	BonusType     string                 `protobuf:"bytes,2,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"` //奖励类型 rank-排名，fixed-定副，streak-连胜
-	Desn          string                 `protobuf:"bytes,3,opt,name=desn,proto3" json:"desn,omitempty"`                            //奖励描述
-	Bonus         []*Bonus               `protobuf:"bytes,4,rep,name=bonus,proto3" json:"bonus,omitempty"`                          //报名条件 或的关系
+	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`                                                                                              //比赛ID
+	BonusType     string                 `protobuf:"bytes,2,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                          //奖励类型 rank-排名，fixed-定副，streak-连胜
+	Desn          string                 `protobuf:"bytes,3,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                                     //奖励描述
+	WinBonus      map[int32]int64        `protobuf:"bytes,4,rep,name=win_bonus,json=winBonus,proto3" json:"win_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //报名条件 且的关系
+	Bonus         []*Bonus               `protobuf:"bytes,5,rep,name=bonus,proto3" json:"bonus,omitempty"`                                                                                                   //报名条件 或的关系
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -213,6 +214,13 @@ func (x *MatchBonusAck) GetDesn() string {
 		return x.Desn
 	}
 	return ""
+}
+
+func (x *MatchBonusAck) GetWinBonus() map[int32]int64 {
+	if x != nil {
+		return x.WinBonus
+	}
+	return nil
 }
 
 func (x *MatchBonusAck) GetBonus() []*Bonus {
@@ -284,13 +292,17 @@ const file_bonus_proto_rawDesc = "" +
 	"\bBonusAck\x12&\n" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\")\n" +
 	"\rMatchBonusReq\x12\x18\n" +
-	"\amatchid\x18\x01 \x01(\x05R\amatchid\"\x81\x01\n" +
+	"\amatchid\x18\x01 \x01(\x05R\amatchid\"\x80\x02\n" +
 	"\rMatchBonusAck\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x02 \x01(\tR\tbonusType\x12\x12\n" +
-	"\x04desn\x18\x03 \x01(\tR\x04desn\x12#\n" +
-	"\x05bonus\x18\x04 \x03(\v2\r.cproto.BonusR\x05bonus\"\x96\x01\n" +
+	"\x04desn\x18\x03 \x01(\tR\x04desn\x12@\n" +
+	"\twin_bonus\x18\x04 \x03(\v2#.cproto.MatchBonusAck.WinBonusEntryR\bwinBonus\x12#\n" +
+	"\x05bonus\x18\x05 \x03(\v2\r.cproto.BonusR\x05bonus\x1a;\n" +
+	"\rWinBonusEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x96\x01\n" +
 	"\x05Bonus\x12\x12\n" +
 	"\x04cond\x18\x01 \x01(\x05R\x04cond\x12;\n" +
 	"\n" +
@@ -311,26 +323,28 @@ func file_bonus_proto_rawDescGZIP() []byte {
 	return file_bonus_proto_rawDescData
 }
 
-var file_bonus_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_bonus_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_bonus_proto_goTypes = []any{
 	(*BonusReq)(nil),      // 0: cproto.BonusReq
 	(*BonusAck)(nil),      // 1: cproto.BonusAck
 	(*MatchBonusReq)(nil), // 2: cproto.MatchBonusReq
 	(*MatchBonusAck)(nil), // 3: cproto.MatchBonusAck
 	(*Bonus)(nil),         // 4: cproto.Bonus
-	nil,                   // 5: cproto.Bonus.BonusValsEntry
-	(*anypb.Any)(nil),     // 6: google.protobuf.Any
+	nil,                   // 5: cproto.MatchBonusAck.WinBonusEntry
+	nil,                   // 6: cproto.Bonus.BonusValsEntry
+	(*anypb.Any)(nil),     // 7: google.protobuf.Any
 }
 var file_bonus_proto_depIdxs = []int32{
-	6, // 0: cproto.BonusReq.req:type_name -> google.protobuf.Any
-	6, // 1: cproto.BonusAck.ack:type_name -> google.protobuf.Any
-	4, // 2: cproto.MatchBonusAck.bonus:type_name -> cproto.Bonus
-	5, // 3: cproto.Bonus.bonus_vals:type_name -> cproto.Bonus.BonusValsEntry
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	7, // 0: cproto.BonusReq.req:type_name -> google.protobuf.Any
+	7, // 1: cproto.BonusAck.ack:type_name -> google.protobuf.Any
+	5, // 2: cproto.MatchBonusAck.win_bonus:type_name -> cproto.MatchBonusAck.WinBonusEntry
+	4, // 3: cproto.MatchBonusAck.bonus:type_name -> cproto.Bonus
+	6, // 4: cproto.Bonus.bonus_vals:type_name -> cproto.Bonus.BonusValsEntry
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_bonus_proto_init() }
@@ -344,7 +358,7 @@ func file_bonus_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_bonus_proto_rawDesc), len(file_bonus_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
