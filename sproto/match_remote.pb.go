@@ -173,10 +173,8 @@ func (x *NetStateReq) GetOnline() bool {
 type GameResultReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	CurGameCount  int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"`                                                                  // 当前游戏局数
-	Scores        map[string]int64       `protobuf:"bytes,3,rep,name=scores,proto3" json:"scores,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`                          //玩家分数
-	PlayerData    map[string]string      `protobuf:"bytes,4,rep,name=player_data,json=playerData,proto3" json:"player_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 游戏统计数据
-	RoundData     string                 `protobuf:"bytes,5,opt,name=round_data,json=roundData,proto3" json:"round_data,omitempty"`                                                                              // 游戏回合数据
+	CurGameCount  int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
+	RoundData     string                 `protobuf:"bytes,3,opt,name=round_data,json=roundData,proto3" json:"round_data,omitempty"`             // 游戏回合数据
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -225,23 +223,85 @@ func (x *GameResultReq) GetCurGameCount() int32 {
 	return 0
 }
 
-func (x *GameResultReq) GetScores() map[string]int64 {
-	if x != nil {
-		return x.Scores
-	}
-	return nil
-}
-
-func (x *GameResultReq) GetPlayerData() map[string]string {
-	if x != nil {
-		return x.PlayerData
-	}
-	return nil
-}
-
 func (x *GameResultReq) GetRoundData() string {
 	if x != nil {
 		return x.RoundData
+	}
+	return ""
+}
+
+type PlayerResultReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	CurGameCount  int32                  `protobuf:"varint,3,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
+	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`                                     //玩家分数
+	Stats         string                 `protobuf:"bytes,5,opt,name=stats,proto3" json:"stats,omitempty"`                                      // 游戏统计数据
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PlayerResultReq) Reset() {
+	*x = PlayerResultReq{}
+	mi := &file_match_remote_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PlayerResultReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayerResultReq) ProtoMessage() {}
+
+func (x *PlayerResultReq) ProtoReflect() protoreflect.Message {
+	mi := &file_match_remote_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayerResultReq.ProtoReflect.Descriptor instead.
+func (*PlayerResultReq) Descriptor() ([]byte, []int) {
+	return file_match_remote_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *PlayerResultReq) GetTableid() int32 {
+	if x != nil {
+		return x.Tableid
+	}
+	return 0
+}
+
+func (x *PlayerResultReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *PlayerResultReq) GetCurGameCount() int32 {
+	if x != nil {
+		return x.CurGameCount
+	}
+	return 0
+}
+
+func (x *PlayerResultReq) GetScore() int64 {
+	if x != nil {
+		return x.Score
+	}
+	return 0
+}
+
+func (x *PlayerResultReq) GetStats() string {
+	if x != nil {
+		return x.Stats
 	}
 	return ""
 }
@@ -256,7 +316,7 @@ type GameOverReq struct {
 
 func (x *GameOverReq) Reset() {
 	*x = GameOverReq{}
-	mi := &file_match_remote_proto_msgTypes[4]
+	mi := &file_match_remote_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -268,7 +328,7 @@ func (x *GameOverReq) String() string {
 func (*GameOverReq) ProtoMessage() {}
 
 func (x *GameOverReq) ProtoReflect() protoreflect.Message {
-	mi := &file_match_remote_proto_msgTypes[4]
+	mi := &file_match_remote_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -281,7 +341,7 @@ func (x *GameOverReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameOverReq.ProtoReflect.Descriptor instead.
 func (*GameOverReq) Descriptor() ([]byte, []int) {
-	return file_match_remote_proto_rawDescGZIP(), []int{4}
+	return file_match_remote_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GameOverReq) GetTableid() int32 {
@@ -307,7 +367,7 @@ type NetStateAck struct {
 
 func (x *NetStateAck) Reset() {
 	*x = NetStateAck{}
-	mi := &file_match_remote_proto_msgTypes[5]
+	mi := &file_match_remote_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -319,7 +379,7 @@ func (x *NetStateAck) String() string {
 func (*NetStateAck) ProtoMessage() {}
 
 func (x *NetStateAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_remote_proto_msgTypes[5]
+	mi := &file_match_remote_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -332,7 +392,7 @@ func (x *NetStateAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetStateAck.ProtoReflect.Descriptor instead.
 func (*NetStateAck) Descriptor() ([]byte, []int) {
-	return file_match_remote_proto_rawDescGZIP(), []int{5}
+	return file_match_remote_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *NetStateAck) GetUid() string {
@@ -354,21 +414,18 @@ const file_match_remote_proto_rawDesc = "" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"7\n" +
 	"\vNetStateReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x16\n" +
-	"\x06online\x18\x02 \x01(\bR\x06online\"\xeb\x02\n" +
+	"\x06online\x18\x02 \x01(\bR\x06online\"n\n" +
 	"\rGameResultReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
-	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x129\n" +
-	"\x06scores\x18\x03 \x03(\v2!.sproto.GameResultReq.ScoresEntryR\x06scores\x12F\n" +
-	"\vplayer_data\x18\x04 \x03(\v2%.sproto.GameResultReq.PlayerDataEntryR\n" +
-	"playerData\x12\x1d\n" +
+	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12\x1d\n" +
 	"\n" +
-	"round_data\x18\x05 \x01(\tR\troundData\x1a9\n" +
-	"\vScoresEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
-	"\x0fPlayerDataEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"M\n" +
+	"round_data\x18\x03 \x01(\tR\troundData\"\x8f\x01\n" +
+	"\x0fPlayerResultReq\x12\x18\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\tR\x03uid\x12$\n" +
+	"\x0ecur_game_count\x18\x03 \x01(\x05R\fcurGameCount\x12\x14\n" +
+	"\x05score\x18\x04 \x01(\x03R\x05score\x12\x14\n" +
+	"\x05stats\x18\x05 \x01(\tR\x05stats\"M\n" +
 	"\vGameOverReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
 	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\"\x1f\n" +
@@ -387,28 +444,25 @@ func file_match_remote_proto_rawDescGZIP() []byte {
 	return file_match_remote_proto_rawDescData
 }
 
-var file_match_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_match_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_match_remote_proto_goTypes = []any{
-	(*MatchReq)(nil),      // 0: sproto.MatchReq
-	(*MatchAck)(nil),      // 1: sproto.MatchAck
-	(*NetStateReq)(nil),   // 2: sproto.NetStateReq
-	(*GameResultReq)(nil), // 3: sproto.GameResultReq
-	(*GameOverReq)(nil),   // 4: sproto.GameOverReq
-	(*NetStateAck)(nil),   // 5: sproto.NetStateAck
-	nil,                   // 6: sproto.GameResultReq.ScoresEntry
-	nil,                   // 7: sproto.GameResultReq.PlayerDataEntry
-	(*anypb.Any)(nil),     // 8: google.protobuf.Any
+	(*MatchReq)(nil),        // 0: sproto.MatchReq
+	(*MatchAck)(nil),        // 1: sproto.MatchAck
+	(*NetStateReq)(nil),     // 2: sproto.NetStateReq
+	(*GameResultReq)(nil),   // 3: sproto.GameResultReq
+	(*PlayerResultReq)(nil), // 4: sproto.PlayerResultReq
+	(*GameOverReq)(nil),     // 5: sproto.GameOverReq
+	(*NetStateAck)(nil),     // 6: sproto.NetStateAck
+	(*anypb.Any)(nil),       // 7: google.protobuf.Any
 }
 var file_match_remote_proto_depIdxs = []int32{
-	8, // 0: sproto.MatchReq.req:type_name -> google.protobuf.Any
-	8, // 1: sproto.MatchAck.ack:type_name -> google.protobuf.Any
-	6, // 2: sproto.GameResultReq.scores:type_name -> sproto.GameResultReq.ScoresEntry
-	7, // 3: sproto.GameResultReq.player_data:type_name -> sproto.GameResultReq.PlayerDataEntry
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	7, // 0: sproto.MatchReq.req:type_name -> google.protobuf.Any
+	7, // 1: sproto.MatchAck.ack:type_name -> google.protobuf.Any
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_match_remote_proto_init() }
@@ -422,7 +476,7 @@ func file_match_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_remote_proto_rawDesc), len(file_match_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -68,6 +68,7 @@ constexpr MatchBonusAck::MatchBonusAck(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : win_bonus_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
   , bonus_()
+  , game_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , bonus_type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , desn_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , matchid_(0){}
@@ -148,6 +149,7 @@ const uint32_t TableStruct_bonus_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, matchid_),
+  PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, game_type_),
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, bonus_type_),
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, desn_),
   PROTOBUF_FIELD_OFFSET(::cproto::MatchBonusAck, win_bonus_),
@@ -177,8 +179,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 14, -1, -1, sizeof(::cproto::MatchBonusReq)},
   { 21, 29, -1, sizeof(::cproto::MatchBonusAck_WinBonusEntry_DoNotUse)},
   { 31, -1, -1, sizeof(::cproto::MatchBonusAck)},
-  { 42, 50, -1, sizeof(::cproto::Bonus_BonusValsEntry_DoNotUse)},
-  { 52, -1, -1, sizeof(::cproto::Bonus)},
+  { 43, 51, -1, sizeof(::cproto::Bonus_BonusValsEntry_DoNotUse)},
+  { 53, -1, -1, sizeof(::cproto::Bonus)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -196,23 +198,23 @@ const char descriptor_table_protodef_bonus_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   "ny.proto\"-\n\010BonusReq\022!\n\003req\030\001 \001(\0132\024.goog"
   "le.protobuf.Any\"-\n\010BonusAck\022!\n\003ack\030\001 \001(\013"
   "2\024.google.protobuf.Any\" \n\rMatchBonusReq\022"
-  "\017\n\007matchid\030\001 \001(\005\"\311\001\n\rMatchBonusAck\022\017\n\007ma"
-  "tchid\030\001 \001(\005\022\022\n\nbonus_type\030\002 \001(\t\022\014\n\004desn\030"
-  "\003 \001(\t\0226\n\twin_bonus\030\004 \003(\0132#.cproto.MatchB"
-  "onusAck.WinBonusEntry\022\034\n\005bonus\030\005 \003(\0132\r.c"
-  "proto.Bonus\032/\n\rWinBonusEntry\022\013\n\003key\030\001 \001("
-  "\005\022\r\n\005value\030\002 \001(\003:\0028\001\"y\n\005Bonus\022\014\n\004cond\030\001 "
-  "\001(\005\0220\n\nbonus_vals\030\002 \003(\0132\034.cproto.Bonus.B"
-  "onusValsEntry\0320\n\016BonusValsEntry\022\013\n\003key\030\001"
-  " \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001B\013Z\t../cprotob\006pr"
-  "oto3"
+  "\017\n\007matchid\030\001 \001(\005\"\334\001\n\rMatchBonusAck\022\017\n\007ma"
+  "tchid\030\001 \001(\005\022\021\n\tgame_type\030\002 \001(\t\022\022\n\nbonus_"
+  "type\030\003 \001(\t\022\014\n\004desn\030\004 \001(\t\0226\n\twin_bonus\030\005 "
+  "\003(\0132#.cproto.MatchBonusAck.WinBonusEntry"
+  "\022\034\n\005bonus\030\006 \003(\0132\r.cproto.Bonus\032/\n\rWinBon"
+  "usEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\0028\001\""
+  "y\n\005Bonus\022\014\n\004cond\030\001 \001(\005\0220\n\nbonus_vals\030\002 \003"
+  "(\0132\034.cproto.Bonus.BonusValsEntry\0320\n\016Bonu"
+  "sValsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\003:\002"
+  "8\001B\013Z\t../cprotob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_bonus_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_bonus_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_bonus_2eproto = {
-  false, false, 524, descriptor_table_protodef_bonus_2eproto, "bonus.proto", 
+  false, false, 543, descriptor_table_protodef_bonus_2eproto, "bonus.proto", 
   &descriptor_table_bonus_2eproto_once, descriptor_table_bonus_2eproto_deps, 1, 7,
   schemas, file_default_instances, TableStruct_bonus_2eproto::offsets,
   file_level_metadata_bonus_2eproto, file_level_enum_descriptors_bonus_2eproto, file_level_service_descriptors_bonus_2eproto,
@@ -841,6 +843,14 @@ MatchBonusAck::MatchBonusAck(const MatchBonusAck& from)
       bonus_(from.bonus_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   win_bonus_.MergeFrom(from.win_bonus_);
+  game_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    game_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_game_type().empty()) {
+    game_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_game_type(), 
+      GetArenaForAllocation());
+  }
   bonus_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     bonus_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
@@ -862,6 +872,10 @@ MatchBonusAck::MatchBonusAck(const MatchBonusAck& from)
 }
 
 inline void MatchBonusAck::SharedCtor() {
+game_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  game_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 bonus_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   bonus_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
@@ -882,6 +896,7 @@ MatchBonusAck::~MatchBonusAck() {
 
 inline void MatchBonusAck::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  game_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   bonus_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   desn_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -908,6 +923,7 @@ void MatchBonusAck::Clear() {
 
   win_bonus_.Clear();
   bonus_.Clear();
+  game_type_.ClearToEmpty();
   bonus_type_.ClearToEmpty();
   desn_.ClearToEmpty();
   matchid_ = 0;
@@ -928,9 +944,19 @@ const char* MatchBonusAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
         } else
           goto handle_unusual;
         continue;
-      // string bonus_type = 2;
+      // string game_type = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_game_type();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.MatchBonusAck.game_type"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string bonus_type = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_bonus_type();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.MatchBonusAck.bonus_type"));
@@ -938,9 +964,9 @@ const char* MatchBonusAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
         } else
           goto handle_unusual;
         continue;
-      // string desn = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // string desn = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_desn();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cproto.MatchBonusAck.desn"));
@@ -948,29 +974,29 @@ const char* MatchBonusAck::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
         } else
           goto handle_unusual;
         continue;
-      // map<int32, int64> win_bonus = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+      // map<int32, int64> win_bonus = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(&win_bonus_, ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // repeated .cproto.Bonus bonus = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+      // repeated .cproto.Bonus bonus = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_bonus(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -1009,27 +1035,37 @@ uint8_t* MatchBonusAck::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_matchid(), target);
   }
 
-  // string bonus_type = 2;
+  // string game_type = 2;
+  if (!this->_internal_game_type().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_game_type().data(), static_cast<int>(this->_internal_game_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cproto.MatchBonusAck.game_type");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_game_type(), target);
+  }
+
+  // string bonus_type = 3;
   if (!this->_internal_bonus_type().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_bonus_type().data(), static_cast<int>(this->_internal_bonus_type().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "cproto.MatchBonusAck.bonus_type");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_bonus_type(), target);
+        3, this->_internal_bonus_type(), target);
   }
 
-  // string desn = 3;
+  // string desn = 4;
   if (!this->_internal_desn().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_desn().data(), static_cast<int>(this->_internal_desn().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "cproto.MatchBonusAck.desn");
     target = stream->WriteStringMaybeAliased(
-        3, this->_internal_desn(), target);
+        4, this->_internal_desn(), target);
   }
 
-  // map<int32, int64> win_bonus = 4;
+  // map<int32, int64> win_bonus = 5;
   if (!this->_internal_win_bonus().empty()) {
     typedef ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_pointer
         ConstPtr;
@@ -1049,23 +1085,23 @@ uint8_t* MatchBonusAck::_InternalSerialize(
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
       for (size_type i = 0; i < n; i++) {
-        target = MatchBonusAck_WinBonusEntry_DoNotUse::Funcs::InternalSerialize(4, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+        target = MatchBonusAck_WinBonusEntry_DoNotUse::Funcs::InternalSerialize(5, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
       }
     } else {
       for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
           it = this->_internal_win_bonus().begin();
           it != this->_internal_win_bonus().end(); ++it) {
-        target = MatchBonusAck_WinBonusEntry_DoNotUse::Funcs::InternalSerialize(4, it->first, it->second, target, stream);
+        target = MatchBonusAck_WinBonusEntry_DoNotUse::Funcs::InternalSerialize(5, it->first, it->second, target, stream);
       }
     }
   }
 
-  // repeated .cproto.Bonus bonus = 5;
+  // repeated .cproto.Bonus bonus = 6;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_bonus_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(5, this->_internal_bonus(i), target, stream);
+      InternalWriteMessage(6, this->_internal_bonus(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1084,7 +1120,7 @@ size_t MatchBonusAck::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // map<int32, int64> win_bonus = 4;
+  // map<int32, int64> win_bonus = 5;
   total_size += 1 *
       ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_win_bonus_size());
   for (::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >::const_iterator
@@ -1093,21 +1129,28 @@ size_t MatchBonusAck::ByteSizeLong() const {
     total_size += MatchBonusAck_WinBonusEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
-  // repeated .cproto.Bonus bonus = 5;
+  // repeated .cproto.Bonus bonus = 6;
   total_size += 1UL * this->_internal_bonus_size();
   for (const auto& msg : this->bonus_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // string bonus_type = 2;
+  // string game_type = 2;
+  if (!this->_internal_game_type().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_game_type());
+  }
+
+  // string bonus_type = 3;
   if (!this->_internal_bonus_type().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_bonus_type());
   }
 
-  // string desn = 3;
+  // string desn = 4;
   if (!this->_internal_desn().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -1143,6 +1186,9 @@ void MatchBonusAck::MergeFrom(const MatchBonusAck& from) {
 
   win_bonus_.MergeFrom(from.win_bonus_);
   bonus_.MergeFrom(from.bonus_);
+  if (!from._internal_game_type().empty()) {
+    _internal_set_game_type(from._internal_game_type());
+  }
   if (!from._internal_bonus_type().empty()) {
     _internal_set_bonus_type(from._internal_bonus_type());
   }
@@ -1173,6 +1219,11 @@ void MatchBonusAck::InternalSwap(MatchBonusAck* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   win_bonus_.InternalSwap(&other->win_bonus_);
   bonus_.InternalSwap(&other->bonus_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &game_type_, lhs_arena,
+      &other->game_type_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &bonus_type_, lhs_arena,

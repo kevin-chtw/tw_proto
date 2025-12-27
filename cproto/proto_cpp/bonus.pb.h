@@ -695,13 +695,14 @@ class MatchBonusAck final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kWinBonusFieldNumber = 4,
-    kBonusFieldNumber = 5,
-    kBonusTypeFieldNumber = 2,
-    kDesnFieldNumber = 3,
+    kWinBonusFieldNumber = 5,
+    kBonusFieldNumber = 6,
+    kGameTypeFieldNumber = 2,
+    kBonusTypeFieldNumber = 3,
+    kDesnFieldNumber = 4,
     kMatchidFieldNumber = 1,
   };
-  // map<int32, int64> win_bonus = 4;
+  // map<int32, int64> win_bonus = 5;
   int win_bonus_size() const;
   private:
   int _internal_win_bonus_size() const;
@@ -718,7 +719,7 @@ class MatchBonusAck final :
   ::PROTOBUF_NAMESPACE_ID::Map< int32_t, int64_t >*
       mutable_win_bonus();
 
-  // repeated .cproto.Bonus bonus = 5;
+  // repeated .cproto.Bonus bonus = 6;
   int bonus_size() const;
   private:
   int _internal_bonus_size() const;
@@ -736,7 +737,21 @@ class MatchBonusAck final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::Bonus >&
       bonus() const;
 
-  // string bonus_type = 2;
+  // string game_type = 2;
+  void clear_game_type();
+  const std::string& game_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_game_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_game_type();
+  PROTOBUF_NODISCARD std::string* release_game_type();
+  void set_allocated_game_type(std::string* game_type);
+  private:
+  const std::string& _internal_game_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_game_type(const std::string& value);
+  std::string* _internal_mutable_game_type();
+  public:
+
+  // string bonus_type = 3;
   void clear_bonus_type();
   const std::string& bonus_type() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -750,7 +765,7 @@ class MatchBonusAck final :
   std::string* _internal_mutable_bonus_type();
   public:
 
-  // string desn = 3;
+  // string desn = 4;
   void clear_desn();
   const std::string& desn() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -786,6 +801,7 @@ class MatchBonusAck final :
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> win_bonus_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cproto::Bonus > bonus_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr game_type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bonus_type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desn_;
   int32_t matchid_;
@@ -1222,7 +1238,58 @@ inline void MatchBonusAck::set_matchid(int32_t value) {
   // @@protoc_insertion_point(field_set:cproto.MatchBonusAck.matchid)
 }
 
-// string bonus_type = 2;
+// string game_type = 2;
+inline void MatchBonusAck::clear_game_type() {
+  game_type_.ClearToEmpty();
+}
+inline const std::string& MatchBonusAck::game_type() const {
+  // @@protoc_insertion_point(field_get:cproto.MatchBonusAck.game_type)
+  return _internal_game_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MatchBonusAck::set_game_type(ArgT0&& arg0, ArgT... args) {
+ 
+ game_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cproto.MatchBonusAck.game_type)
+}
+inline std::string* MatchBonusAck::mutable_game_type() {
+  std::string* _s = _internal_mutable_game_type();
+  // @@protoc_insertion_point(field_mutable:cproto.MatchBonusAck.game_type)
+  return _s;
+}
+inline const std::string& MatchBonusAck::_internal_game_type() const {
+  return game_type_.Get();
+}
+inline void MatchBonusAck::_internal_set_game_type(const std::string& value) {
+  
+  game_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* MatchBonusAck::_internal_mutable_game_type() {
+  
+  return game_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* MatchBonusAck::release_game_type() {
+  // @@protoc_insertion_point(field_release:cproto.MatchBonusAck.game_type)
+  return game_type_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void MatchBonusAck::set_allocated_game_type(std::string* game_type) {
+  if (game_type != nullptr) {
+    
+  } else {
+    
+  }
+  game_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), game_type,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (game_type_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    game_type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cproto.MatchBonusAck.game_type)
+}
+
+// string bonus_type = 3;
 inline void MatchBonusAck::clear_bonus_type() {
   bonus_type_.ClearToEmpty();
 }
@@ -1273,7 +1340,7 @@ inline void MatchBonusAck::set_allocated_bonus_type(std::string* bonus_type) {
   // @@protoc_insertion_point(field_set_allocated:cproto.MatchBonusAck.bonus_type)
 }
 
-// string desn = 3;
+// string desn = 4;
 inline void MatchBonusAck::clear_desn() {
   desn_.ClearToEmpty();
 }
@@ -1324,7 +1391,7 @@ inline void MatchBonusAck::set_allocated_desn(std::string* desn) {
   // @@protoc_insertion_point(field_set_allocated:cproto.MatchBonusAck.desn)
 }
 
-// map<int32, int64> win_bonus = 4;
+// map<int32, int64> win_bonus = 5;
 inline int MatchBonusAck::_internal_win_bonus_size() const {
   return win_bonus_.size();
 }
@@ -1353,7 +1420,7 @@ MatchBonusAck::mutable_win_bonus() {
   return _internal_mutable_win_bonus();
 }
 
-// repeated .cproto.Bonus bonus = 5;
+// repeated .cproto.Bonus bonus = 6;
 inline int MatchBonusAck::_internal_bonus_size() const {
   return bonus_.size();
 }

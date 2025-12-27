@@ -157,10 +157,11 @@ func (x *MatchBonusReq) GetMatchid() int32 {
 type MatchBonusAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`                                                                                              //比赛ID
-	BonusType     string                 `protobuf:"bytes,2,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                          //奖励类型 rank-排名，fixed-定副，streak-连胜
-	Desn          string                 `protobuf:"bytes,3,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                                     //奖励描述
-	WinBonus      map[int32]int64        `protobuf:"bytes,4,rep,name=win_bonus,json=winBonus,proto3" json:"win_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //报名条件 且的关系
-	Bonus         []*Bonus               `protobuf:"bytes,5,rep,name=bonus,proto3" json:"bonus,omitempty"`                                                                                                   //报名条件 或的关系
+	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`                                                                             //游戏类型
+	BonusType     string                 `protobuf:"bytes,3,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                          //奖励类型 rank-排名，fixed-定副，streak-连胜
+	Desn          string                 `protobuf:"bytes,4,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                                     //奖励描述
+	WinBonus      map[int32]int64        `protobuf:"bytes,5,rep,name=win_bonus,json=winBonus,proto3" json:"win_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //胜利奖励
+	Bonus         []*Bonus               `protobuf:"bytes,6,rep,name=bonus,proto3" json:"bonus,omitempty"`                                                                                                   //奖励
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -200,6 +201,13 @@ func (x *MatchBonusAck) GetMatchid() int32 {
 		return x.Matchid
 	}
 	return 0
+}
+
+func (x *MatchBonusAck) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
 }
 
 func (x *MatchBonusAck) GetBonusType() string {
@@ -292,14 +300,15 @@ const file_bonus_proto_rawDesc = "" +
 	"\bBonusAck\x12&\n" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\")\n" +
 	"\rMatchBonusReq\x12\x18\n" +
-	"\amatchid\x18\x01 \x01(\x05R\amatchid\"\x80\x02\n" +
+	"\amatchid\x18\x01 \x01(\x05R\amatchid\"\x9d\x02\n" +
 	"\rMatchBonusAck\x12\x18\n" +
-	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x1d\n" +
+	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x1b\n" +
+	"\tgame_type\x18\x02 \x01(\tR\bgameType\x12\x1d\n" +
 	"\n" +
-	"bonus_type\x18\x02 \x01(\tR\tbonusType\x12\x12\n" +
-	"\x04desn\x18\x03 \x01(\tR\x04desn\x12@\n" +
-	"\twin_bonus\x18\x04 \x03(\v2#.cproto.MatchBonusAck.WinBonusEntryR\bwinBonus\x12#\n" +
-	"\x05bonus\x18\x05 \x03(\v2\r.cproto.BonusR\x05bonus\x1a;\n" +
+	"bonus_type\x18\x03 \x01(\tR\tbonusType\x12\x12\n" +
+	"\x04desn\x18\x04 \x01(\tR\x04desn\x12@\n" +
+	"\twin_bonus\x18\x05 \x03(\v2#.cproto.MatchBonusAck.WinBonusEntryR\bwinBonus\x12#\n" +
+	"\x05bonus\x18\x06 \x03(\v2\r.cproto.BonusR\x05bonus\x1a;\n" +
 	"\rWinBonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x96\x01\n" +
