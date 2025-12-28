@@ -40,6 +40,7 @@ message MJGameStartAck {
 message MJOpenDoorAck {
   int32 seat = 1; //座位号
   repeated int32 tiles = 2; // 手牌列表
+  int32 tile_count = 3; //剩余牌数
 }
 
 message MJRequestAck {

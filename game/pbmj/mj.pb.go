@@ -367,8 +367,9 @@ func (x *MJGameStartAck) GetProperty() string {
 
 type MJOpenDoorAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`          //座位号
-	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"` // 手牌列表
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                            //座位号
+	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`                   // 手牌列表
+	TileCount     int32                  `protobuf:"varint,3,opt,name=tile_count,json=tileCount,proto3" json:"tile_count,omitempty"` //剩余牌数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -415,6 +416,13 @@ func (x *MJOpenDoorAck) GetTiles() []int32 {
 		return x.Tiles
 	}
 	return nil
+}
+
+func (x *MJOpenDoorAck) GetTileCount() int32 {
+	if x != nil {
+		return x.TileCount
+	}
+	return 0
 }
 
 type MJRequestAck struct {
@@ -2037,10 +2045,12 @@ const file_mj_proto_rawDesc = "" +
 	"\n" +
 	"tile_count\x18\x02 \x01(\x05R\ttileCount\x12\x16\n" +
 	"\x06scores\x18\x03 \x03(\x03R\x06scores\x12\x1a\n" +
-	"\bproperty\x18\x04 \x01(\tR\bproperty\"9\n" +
+	"\bproperty\x18\x04 \x01(\tR\bproperty\"X\n" +
 	"\rMJOpenDoorAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
-	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\"\xfe\x01\n" +
+	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\x12\x1d\n" +
+	"\n" +
+	"tile_count\x18\x03 \x01(\x05R\ttileCount\"\xfe\x01\n" +
 	"\fMJRequestAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12!\n" +
 	"\frequest_type\x18\x02 \x01(\x05R\vrequestType\x12\x1c\n" +
