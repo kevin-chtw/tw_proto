@@ -205,7 +205,7 @@ func (x *ActsListAck) GetActs() []*ActBrief {
 // 获取活动详情
 type ActPanelReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
+	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` //活动ID
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }

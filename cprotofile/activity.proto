@@ -27,7 +27,7 @@ message ActsListAck {
 
 // 获取活动详情
 message ActPanelReq {
-  int32 activity_id = 1; // 活动ID
+  int32 activity_id = 1; //活动ID
 }
 
 // 获取活动状态响应

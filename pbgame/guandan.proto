@@ -1,0 +1,114 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package pbguandan;
+option go_package = "/pbguandan";
+
+// 通用请求
+message GuandanReq {
+  google.protobuf.Any req = 1;
+}
+
+// 卡牌定义
+message Card {
+  int32 suit = 1; // 花色: 0-黑桃, 1-红心, 2-方块, 3-梅花, 4-小王, 5-大王
+  int32 rank = 2; // 牌点: 2-14 (2,3,4,5,6,7,8,9,10,J,Q,K,A)
+}
+
+// 牌型定义
+enum CardType {
+  CARD_TYPE_INVALID = 0;
+  CARD_TYPE_SINGLE = 1;     // 单张
+  CARD_TYPE_PAIR = 2;       // 对子
+  CARD_TYPE_TRIPLE = 3;     // 三同张
+  CARD_TYPE_TRIPLE_PAIR = 4; // 三带对
+  CARD_TYPE_SEQUENCE = 5;   // 顺子
+  CARD_TYPE_FLUSH = 6;      // 同花顺
+  CARD_TYPE_TRIPLE_CHAIN = 7; // 二连三
+  CARD_TYPE_THREE_PAIRS = 8; // 三连对
+  CARD_TYPE_BOMB = 9;       // 炸弹
+  CARD_TYPE_KING_BOMB = 10; // 王炸
+}
+
+// 出牌请求
+message GuandanPlayReq {
+  int32 requestid = 1;     // 请求ID
+  repeated Card cards = 2; // 出牌列表
+}
+
+// 托管请求
+message GuandanTrustReq {
+  int32 seat = 1;    // 座位号
+  bool trust = 2;    // 是否托管
+}
+
+// 贡牌请求
+message GuandanContributeReq {
+  int32 requestid = 1; // 请求ID
+  Card card = 2;       // 进贡的牌
+}
+
+// 还牌请求
+message GuandanReturnReq {
+  int32 requestid = 1; // 请求ID
+  Card card = 2;       // 还牌的牌
+}
+
+// 游戏开始响应
+message GuandanGameStartAck {
+  int32 banker = 1;        // 庄家座位
+  int32 current_rank = 2;  // 当前等级 (2-14)
+  repeated int64 scores = 3; // 带入分
+  string property = 4;     // 配置串
+}
+
+// 发牌响应
+message GuandanDealAck {
+  int32 seat = 1;             // 座位号
+  repeated Card hand_cards = 2; // 手牌
+  int32 card_count = 3;       // 剩余牌数
+}
+
+// 出牌响应
+message GuandanPlayAck {
+  int32 seat = 1;             // 出牌座位
+  repeated Card cards = 2;    // 出牌
+  CardType card_type = 3;     // 牌型
+  int32 next_seat = 4;        // 下个出牌座位
+}
+
+// 过牌响应
+message GuandanPassAck {
+  int32 seat = 1;        // 过牌座位
+  int32 next_seat = 2;   // 下个出牌座位
+}
+
+// 贡牌响应
+message GuandanContributeAck {
+  int32 from_seat = 1;   // 进贡座位
+  int32 to_seat = 2;     // 接收座位
+  Card contribute_card = 3; // 进贡牌
+}
+
+// 还牌响应
+message GuandanReturnAck {
+  int32 from_seat = 1;   // 还牌座位
+  int32 to_seat = 2;     // 接收座位
+  Card return_card = 3;  // 还牌
+}
+
+// 游戏结束响应
+message GuandanGameOverAck {
+  repeated int32 upgrades = 1;  // 各玩家升级数
+  int32 winner_team = 2;        // 获胜队伍 (0-无, 1-队伍1, 2-队伍2)
+  repeated int64 final_scores = 3; // 最终分数
+}
+
+// 升级通知
+message GuandanUpgradeAck {
+  int32 team = 1;         // 升级队伍
+  int32 upgrade_points = 2; // 升级点数
+  int32 new_rank = 3;     // 新等级
+}
+
+
