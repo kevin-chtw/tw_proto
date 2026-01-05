@@ -10,16 +10,6 @@ message MJRequestReq {
   int32 tile = 4; // 牌 （吃为吃牌的最左牌id）
 }
 
-message MJTrustReq {
-  int32 seat = 1; //座位号
-  bool trust = 2; // 是否托管
-}
-
-message MJAnimationReq {
-  int32 seat = 1; //座位号
-  int32 requestid = 2; // 请求ID
-}
-
 message MJSwapTilesReq { // 换三张
   int32 requestid = 1; // 请求ID
   repeated int32 tiles = 2; //换出的牌
@@ -118,15 +108,6 @@ message MJScoreChangeAck {
   repeated MJHuData hu_data = 5; // 胡的类型
 }
 
-message MJTrustAck {
-  int32 seat = 1; // 玩家ID
-  bool trust = 2; // 是否托管
-}
-
-message MJAnimationAck {
-  int32 requestid = 1; 
-}   
-
 message MJResultAck {
   bool liuju = 1; // 流局标记
   repeated MJPlayerResult player_results = 2; // 玩家结果列表
@@ -193,9 +174,4 @@ message MJDingQueResultAck {
 
 message MJRcmdFanAck { //推荐番型
   repeated int32 fans = 1; 
-}
-
-message MJBankruptAck { //破产消息
-  int32 seat = 1; //座位号
-  int64 score = 2; //破产分数
 }
