@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package cproto;
+option go_package = "../cproto";
+
+message HeartBeatReq {
+}
+
+message HeartBeatAck {
+}

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package sproto;
+option go_package = "../sproto";
+
+// 统计事件请求
+message StatsReq {
+  int32 event_id = 1;  // 事件ID
+  string uid = 2;      // 用户ID
+  string data = 3;     // JSON格式的事件数据
+  int64 timestamp = 4; // 时间戳(毫秒)
+}
+
+// 统计事件响应
+message StatsAck {
+}
+
+// 统计查询请求
+message StatsQueryReq {
+  string metric = 1;     // 指标名称 (dau, retention, revenue等)
+  string start_date = 2; // 开始日期 YYYY-MM-DD
+  string end_date = 3;   // 结束日期 YYYY-MM-DD
+  map<string, string> filters = 4; // 过滤条件
+}
+
+// 统计查询响应
+message StatsQueryAck {
+  string metric = 1;
+  repeated StatsData data = 2;
+}
+
+// 统计数据点
+message StatsData {
+  string date = 1;        // 日期 YYYY-MM-DD
+  double value = 2;       // 数值
+  map<string, string> dimensions = 3; // 维度数据
+}
