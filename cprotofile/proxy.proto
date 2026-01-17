@@ -7,4 +7,5 @@ message HeartBeatReq {
 }
 
 message HeartBeatAck {
+    bool login = 1; //是否登陆
 }

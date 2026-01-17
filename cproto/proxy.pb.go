@@ -59,6 +59,7 @@ func (*HeartBeatReq) Descriptor() ([]byte, []int) {
 
 type HeartBeatAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Login         bool                   `protobuf:"varint,1,opt,name=login,proto3" json:"login,omitempty"` //是否登陆
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -93,13 +94,21 @@ func (*HeartBeatAck) Descriptor() ([]byte, []int) {
 	return file_proxy_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *HeartBeatAck) GetLogin() bool {
+	if x != nil {
+		return x.Login
+	}
+	return false
+}
+
 var File_proxy_proto protoreflect.FileDescriptor
 
 const file_proxy_proto_rawDesc = "" +
 	"\n" +
 	"\vproxy.proto\x12\x06cproto\"\x0e\n" +
-	"\fHeartBeatReq\"\x0e\n" +
-	"\fHeartBeatAckB\vZ\t../cprotob\x06proto3"
+	"\fHeartBeatReq\"$\n" +
+	"\fHeartBeatAck\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\bR\x05loginB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_proxy_proto_rawDescOnce sync.Once
