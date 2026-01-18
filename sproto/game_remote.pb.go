@@ -144,15 +144,16 @@ func (x *GameAck) GetAck() *anypb.Any {
 
 type AddTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`                                                             // 比赛服务类型
-	ScoreBase     int64                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                            // 分数基数
-	GameCount     int32                  `protobuf:"varint,3,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 游戏局数
-	PlayerCount   int32                  `protobuf:"varint,4,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`                                                      // 玩家数量
-	Tax           int64                  `protobuf:"varint,5,opt,name=tax,proto3" json:"tax,omitempty"`                                                                                         //扣税
-	Property      string                 `protobuf:"bytes,6,opt,name=property,proto3" json:"property,omitempty"`                                                                                // 游戏配置
-	Creator       string                 `protobuf:"bytes,7,opt,name=creator,proto3" json:"creator,omitempty"`                                                                                  // 创建者
-	Desn          string                 `protobuf:"bytes,8,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        // 游戏描述
-	Fdproperty    map[string]int32       `protobuf:"bytes,9,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
+	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`                                                              // 比赛服务类型
+	ScoreBase     int64                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                             // 分数基数
+	GameCount     int32                  `protobuf:"varint,3,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                             // 游戏局数
+	PlayerCount   int32                  `protobuf:"varint,4,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`                                                       // 玩家数量
+	Tax           int64                  `protobuf:"varint,5,opt,name=tax,proto3" json:"tax,omitempty"`                                                                                          //扣税
+	ExchangeRate  int64                  `protobuf:"varint,6,opt,name=exchange_rate,json=exchangeRate,proto3" json:"exchange_rate,omitempty"`                                                    //兑换比例
+	Property      string                 `protobuf:"bytes,7,opt,name=property,proto3" json:"property,omitempty"`                                                                                 // 游戏配置
+	Creator       string                 `protobuf:"bytes,8,opt,name=creator,proto3" json:"creator,omitempty"`                                                                                   // 创建者
+	Desn          string                 `protobuf:"bytes,9,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                         // 游戏描述
+	Fdproperty    map[string]int32       `protobuf:"bytes,10,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -218,6 +219,13 @@ func (x *AddTableReq) GetPlayerCount() int32 {
 func (x *AddTableReq) GetTax() int64 {
 	if x != nil {
 		return x.Tax
+	}
+	return 0
+}
+
+func (x *AddTableReq) GetExchangeRate() int64 {
+	if x != nil {
+		return x.ExchangeRate
 	}
 	return 0
 }
@@ -538,7 +546,7 @@ const file_game_remote_proto_rawDesc = "" +
 	"\aGameAck\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
-	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xed\x02\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x92\x03\n" +
 	"\vAddTableReq\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1d\n" +
@@ -547,12 +555,14 @@ const file_game_remote_proto_rawDesc = "" +
 	"\n" +
 	"game_count\x18\x03 \x01(\x05R\tgameCount\x12!\n" +
 	"\fplayer_count\x18\x04 \x01(\x05R\vplayerCount\x12\x10\n" +
-	"\x03tax\x18\x05 \x01(\x03R\x03tax\x12\x1a\n" +
-	"\bproperty\x18\x06 \x01(\tR\bproperty\x12\x18\n" +
-	"\acreator\x18\a \x01(\tR\acreator\x12\x12\n" +
-	"\x04desn\x18\b \x01(\tR\x04desn\x12C\n" +
+	"\x03tax\x18\x05 \x01(\x03R\x03tax\x12#\n" +
+	"\rexchange_rate\x18\x06 \x01(\x03R\fexchangeRate\x12\x1a\n" +
+	"\bproperty\x18\a \x01(\tR\bproperty\x12\x18\n" +
+	"\acreator\x18\b \x01(\tR\acreator\x12\x12\n" +
+	"\x04desn\x18\t \x01(\tR\x04desn\x12C\n" +
 	"\n" +
-	"fdproperty\x18\t \x03(\v2#.sproto.AddTableReq.FdpropertyEntryR\n" +
+	"fdproperty\x18\n" +
+	" \x03(\v2#.sproto.AddTableReq.FdpropertyEntryR\n" +
 	"fdproperty\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
