@@ -32,6 +32,7 @@ message TounreyInfo {
     string match_type = 4; //比赛类型
     string serverid = 5; //服务器ID
     int32 online = 6; //在线人数
+    int64 score_base = 7;//基数
 }
 
 message FDTableMatchAck {
