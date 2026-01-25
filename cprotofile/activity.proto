@@ -55,3 +55,9 @@ message ActBrief {
   int32 status = 3; // 0未激活 1可领奖 2部分达成，已领奖 3全达成，已领奖
   int64 end_ts = 4;
 }
+
+message PurchasePkgAck {
+  int32 activity_id = 1; // 活动ID
+  int32 pkg_id = 2; //礼包id
+   map<int32,int64> items = 3; //物品
+}

@@ -475,6 +475,66 @@ func (x *ActBrief) GetEndTs() int64 {
 	return 0
 }
 
+type PurchasePkgAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`                                                // 活动ID
+	PkgId         int32                  `protobuf:"varint,2,opt,name=pkg_id,json=pkgId,proto3" json:"pkg_id,omitempty"`                                                               //礼包id
+	Items         map[int32]int64        `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //物品
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PurchasePkgAck) Reset() {
+	*x = PurchasePkgAck{}
+	mi := &file_activity_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PurchasePkgAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PurchasePkgAck) ProtoMessage() {}
+
+func (x *PurchasePkgAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PurchasePkgAck.ProtoReflect.Descriptor instead.
+func (*PurchasePkgAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *PurchasePkgAck) GetActivityId() int32 {
+	if x != nil {
+		return x.ActivityId
+	}
+	return 0
+}
+
+func (x *PurchasePkgAck) GetPkgId() int32 {
+	if x != nil {
+		return x.PkgId
+	}
+	return 0
+}
+
+func (x *PurchasePkgAck) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
 var File_activity_proto protoreflect.FileDescriptor
 
 const file_activity_proto_rawDesc = "" +
@@ -508,7 +568,16 @@ const file_activity_proto_rawDesc = "" +
 	"activityId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\x05R\x06status\x12\x15\n" +
-	"\x06end_ts\x18\x04 \x01(\x03R\x05endTsB\vZ\t../cprotob\x06proto3"
+	"\x06end_ts\x18\x04 \x01(\x03R\x05endTs\"\xbb\x01\n" +
+	"\x0ePurchasePkgAck\x12\x1f\n" +
+	"\vactivity_id\x18\x01 \x01(\x05R\n" +
+	"activityId\x12\x15\n" +
+	"\x06pkg_id\x18\x02 \x01(\x05R\x05pkgId\x127\n" +
+	"\x05items\x18\x03 \x03(\v2!.cproto.PurchasePkgAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
 var (
 	file_activity_proto_rawDescOnce sync.Once
@@ -522,28 +591,31 @@ func file_activity_proto_rawDescGZIP() []byte {
 	return file_activity_proto_rawDescData
 }
 
-var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_activity_proto_goTypes = []any{
-	(*ActivityReq)(nil),  // 0: cproto.ActivityReq
-	(*ActivityAck)(nil),  // 1: cproto.ActivityAck
-	(*ActsListReq)(nil),  // 2: cproto.ActsListReq
-	(*ActsListAck)(nil),  // 3: cproto.ActsListAck
-	(*ActPanelReq)(nil),  // 4: cproto.ActPanelReq
-	(*ActPanelAck)(nil),  // 5: cproto.ActPanelAck
-	(*ActRewardReq)(nil), // 6: cproto.ActRewardReq
-	(*ActRewardAck)(nil), // 7: cproto.ActRewardAck
-	(*ActBrief)(nil),     // 8: cproto.ActBrief
-	(*anypb.Any)(nil),    // 9: google.protobuf.Any
+	(*ActivityReq)(nil),    // 0: cproto.ActivityReq
+	(*ActivityAck)(nil),    // 1: cproto.ActivityAck
+	(*ActsListReq)(nil),    // 2: cproto.ActsListReq
+	(*ActsListAck)(nil),    // 3: cproto.ActsListAck
+	(*ActPanelReq)(nil),    // 4: cproto.ActPanelReq
+	(*ActPanelAck)(nil),    // 5: cproto.ActPanelAck
+	(*ActRewardReq)(nil),   // 6: cproto.ActRewardReq
+	(*ActRewardAck)(nil),   // 7: cproto.ActRewardAck
+	(*ActBrief)(nil),       // 8: cproto.ActBrief
+	(*PurchasePkgAck)(nil), // 9: cproto.PurchasePkgAck
+	nil,                    // 10: cproto.PurchasePkgAck.ItemsEntry
+	(*anypb.Any)(nil),      // 11: google.protobuf.Any
 }
 var file_activity_proto_depIdxs = []int32{
-	9, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
-	9, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
-	8, // 2: cproto.ActsListAck.acts:type_name -> cproto.ActBrief
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	11, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
+	11, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
+	8,  // 2: cproto.ActsListAck.acts:type_name -> cproto.ActBrief
+	10, // 3: cproto.PurchasePkgAck.items:type_name -> cproto.PurchasePkgAck.ItemsEntry
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_activity_proto_init() }
@@ -557,7 +629,7 @@ func file_activity_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_activity_proto_rawDesc), len(file_activity_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
