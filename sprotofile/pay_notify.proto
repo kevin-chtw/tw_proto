@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package sproto;
+option go_package = "../sproto";
+
+message PayResultReq {
+  uint64 session_id = 1;
+  bool success = 2;
+}
+
+message PayResultAck {    
+}

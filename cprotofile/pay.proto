@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package cproto;
+option go_package = "../cproto";
+
+// 支付服务请求包装器（客户端调用）
+message PayReq {
+  google.protobuf.Any req = 1;
+}
+
+// 支付服务响应包装器（客户端调用）
+message PayAck {
+  google.protobuf.Any ack = 1;
+}
+
+// 创建支付订单请求
+message CreatePayOrderReq {
+  string server_type = 1;
+  string server_id = 2;
+  string session_id = 3;
+  int32 price = 4;
+  int32 pay_type = 5;      // 支付类型: 1-微信, 2-支付宝
+  int32 pay_method = 6;    // 支付方式: 1-JSAPI, 2-NATIVE, 3-H5, 4-APP
+}
+
+// 创建支付订单响应
+message CreatePayOrderAck {
+  string order_id = 1;     // 订单ID
+  string pay_params = 2;   // 支付参数(JSON格式)
+}
+
+// 查询订单请求
+message QueryOrderReq {
+  string order_id = 1;
+}
+
+// 查询订单响应
+message QueryOrderAck {
+  string order_id = 1;
+  int32 status = 2;        // 0-待支付, 1-已支付, 2-已取消, 3-已过期
+  int64 create_time = 3;
+  int64 pay_time = 4;
+  int64 total_fee = 5;
+}
+
+// 取消订单请求
+message CancelOrderReq {
+  string order_id = 1;
+}
+
+message CancelOrderAck {
+}

@@ -8,3 +8,10 @@ message ErrorAck {
   string message = 2;
   string detail = 3;
 }
+
+message NeedPayAck {
+  string server_type = 1;
+  string server_id = 2;
+  uint64 session_id = 3;
+  int32 price = 4;
+}

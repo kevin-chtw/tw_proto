@@ -81,6 +81,74 @@ func (x *ErrorAck) GetDetail() string {
 	return ""
 }
 
+type NeedPayAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerType    string                 `protobuf:"bytes,1,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"`
+	ServerId      string                 `protobuf:"bytes,2,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
+	SessionId     uint64                 `protobuf:"varint,3,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	Price         int32                  `protobuf:"varint,4,opt,name=price,proto3" json:"price,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NeedPayAck) Reset() {
+	*x = NeedPayAck{}
+	mi := &file_cerror_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NeedPayAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NeedPayAck) ProtoMessage() {}
+
+func (x *NeedPayAck) ProtoReflect() protoreflect.Message {
+	mi := &file_cerror_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NeedPayAck.ProtoReflect.Descriptor instead.
+func (*NeedPayAck) Descriptor() ([]byte, []int) {
+	return file_cerror_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *NeedPayAck) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *NeedPayAck) GetServerId() string {
+	if x != nil {
+		return x.ServerId
+	}
+	return ""
+}
+
+func (x *NeedPayAck) GetSessionId() uint64 {
+	if x != nil {
+		return x.SessionId
+	}
+	return 0
+}
+
+func (x *NeedPayAck) GetPrice() int32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
 var File_cerror_proto protoreflect.FileDescriptor
 
 const file_cerror_proto_rawDesc = "" +
@@ -89,7 +157,15 @@ const file_cerror_proto_rawDesc = "" +
 	"\bErrorAck\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\x05R\x04code\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x16\n" +
-	"\x06detail\x18\x03 \x01(\tR\x06detailB\vZ\t../cprotob\x06proto3"
+	"\x06detail\x18\x03 \x01(\tR\x06detail\"\x7f\n" +
+	"\n" +
+	"NeedPayAck\x12\x1f\n" +
+	"\vserver_type\x18\x01 \x01(\tR\n" +
+	"serverType\x12\x1b\n" +
+	"\tserver_id\x18\x02 \x01(\tR\bserverId\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x03 \x01(\x04R\tsessionId\x12\x14\n" +
+	"\x05price\x18\x04 \x01(\x05R\x05priceB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_cerror_proto_rawDescOnce sync.Once
@@ -103,9 +179,10 @@ func file_cerror_proto_rawDescGZIP() []byte {
 	return file_cerror_proto_rawDescData
 }
 
-var file_cerror_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_cerror_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_cerror_proto_goTypes = []any{
-	(*ErrorAck)(nil), // 0: cproto.ErrorAck
+	(*ErrorAck)(nil),   // 0: cproto.ErrorAck
+	(*NeedPayAck)(nil), // 1: cproto.NeedPayAck
 }
 var file_cerror_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -126,7 +203,7 @@ func file_cerror_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cerror_proto_rawDesc), len(file_cerror_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
