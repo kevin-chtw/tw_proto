@@ -251,7 +251,7 @@ func (x *ActPanelReq) GetActivityId() int32 {
 type ActPanelAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
-	JsonData      string                 `protobuf:"bytes,2,opt,name=json_data,json=jsonData,proto3" json:"json_data,omitempty"` // 活动私有数据，客户端直接透传解析
+	Ack           *anypb.Any             `protobuf:"bytes,2,opt,name=ack,proto3" json:"ack,omitempty"` // 活动私有数据，客户端直接透传解析
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -293,18 +293,18 @@ func (x *ActPanelAck) GetActivityId() int32 {
 	return 0
 }
 
-func (x *ActPanelAck) GetJsonData() string {
+func (x *ActPanelAck) GetAck() *anypb.Any {
 	if x != nil {
-		return x.JsonData
+		return x.Ack
 	}
-	return ""
+	return nil
 }
 
 // 活动操作请求
 type ActRewardReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
-	JsonData      string                 `protobuf:"bytes,2,opt,name=json_data,json=jsonData,proto3" json:"json_data,omitempty"`        // json_data 里放活动需要的参数：{"idx":5} 或 {"times":2} 等
+	Req           *anypb.Any             `protobuf:"bytes,2,opt,name=req,proto3" json:"req,omitempty"`                                  // 活动需要的参数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -346,18 +346,18 @@ func (x *ActRewardReq) GetActivityId() int32 {
 	return 0
 }
 
-func (x *ActRewardReq) GetJsonData() string {
+func (x *ActRewardReq) GetReq() *anypb.Any {
 	if x != nil {
-		return x.JsonData
+		return x.Req
 	}
-	return ""
+	return nil
 }
 
 // 活动操作响应
 type ActRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
-	JsonData      string                 `protobuf:"bytes,2,opt,name=json_data,json=jsonData,proto3" json:"json_data,omitempty"` // 返回奖励、新余额等，客户端解析
+	Ack           *anypb.Any             `protobuf:"bytes,2,opt,name=ack,proto3" json:"ack,omitempty"` // 返回奖励、新余额等
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -399,11 +399,11 @@ func (x *ActRewardAck) GetActivityId() int32 {
 	return 0
 }
 
-func (x *ActRewardAck) GetJsonData() string {
+func (x *ActRewardAck) GetAck() *anypb.Any {
 	if x != nil {
-		return x.JsonData
+		return x.Ack
 	}
-	return ""
+	return nil
 }
 
 // 活动列表项
@@ -535,6 +535,1752 @@ func (x *PurchasePkgAck) GetItems() map[int32]int64 {
 	return nil
 }
 
+// ===== 邀请活动 (invite) =====
+type InvitePanelAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	InviteCode    string                 `protobuf:"bytes,1,opt,name=invite_code,json=inviteCode,proto3" json:"invite_code,omitempty"`
+	InviteCnt     int32                  `protobuf:"varint,2,opt,name=invite_cnt,json=inviteCnt,proto3" json:"invite_cnt,omitempty"`
+	Rewards       []*InviteRewardState   `protobuf:"bytes,3,rep,name=rewards,proto3" json:"rewards,omitempty"`
+	Users         []*InviteUser          `protobuf:"bytes,4,rep,name=users,proto3" json:"users,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *InvitePanelAck) Reset() {
+	*x = InvitePanelAck{}
+	mi := &file_activity_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *InvitePanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InvitePanelAck) ProtoMessage() {}
+
+func (x *InvitePanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InvitePanelAck.ProtoReflect.Descriptor instead.
+func (*InvitePanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *InvitePanelAck) GetInviteCode() string {
+	if x != nil {
+		return x.InviteCode
+	}
+	return ""
+}
+
+func (x *InvitePanelAck) GetInviteCnt() int32 {
+	if x != nil {
+		return x.InviteCnt
+	}
+	return 0
+}
+
+func (x *InvitePanelAck) GetRewards() []*InviteRewardState {
+	if x != nil {
+		return x.Rewards
+	}
+	return nil
+}
+
+func (x *InvitePanelAck) GetUsers() []*InviteUser {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
+type InviteRewardState struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Idx           int32                  `protobuf:"varint,1,opt,name=idx,proto3" json:"idx,omitempty"`
+	Cond          int32                  `protobuf:"varint,2,opt,name=cond,proto3" json:"cond,omitempty"`
+	Finished      bool                   `protobuf:"varint,3,opt,name=finished,proto3" json:"finished,omitempty"`
+	Got           bool                   `protobuf:"varint,4,opt,name=got,proto3" json:"got,omitempty"`
+	Available     bool                   `protobuf:"varint,5,opt,name=available,proto3" json:"available,omitempty"`
+	Vals          map[int32]int64        `protobuf:"bytes,6,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *InviteRewardState) Reset() {
+	*x = InviteRewardState{}
+	mi := &file_activity_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *InviteRewardState) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InviteRewardState) ProtoMessage() {}
+
+func (x *InviteRewardState) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InviteRewardState.ProtoReflect.Descriptor instead.
+func (*InviteRewardState) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *InviteRewardState) GetIdx() int32 {
+	if x != nil {
+		return x.Idx
+	}
+	return 0
+}
+
+func (x *InviteRewardState) GetCond() int32 {
+	if x != nil {
+		return x.Cond
+	}
+	return 0
+}
+
+func (x *InviteRewardState) GetFinished() bool {
+	if x != nil {
+		return x.Finished
+	}
+	return false
+}
+
+func (x *InviteRewardState) GetGot() bool {
+	if x != nil {
+		return x.Got
+	}
+	return false
+}
+
+func (x *InviteRewardState) GetAvailable() bool {
+	if x != nil {
+		return x.Available
+	}
+	return false
+}
+
+func (x *InviteRewardState) GetVals() map[int32]int64 {
+	if x != nil {
+		return x.Vals
+	}
+	return nil
+}
+
+type InviteUser struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Avatar        string                 `protobuf:"bytes,1,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *InviteUser) Reset() {
+	*x = InviteUser{}
+	mi := &file_activity_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *InviteUser) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InviteUser) ProtoMessage() {}
+
+func (x *InviteUser) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InviteUser.ProtoReflect.Descriptor instead.
+func (*InviteUser) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *InviteUser) GetAvatar() string {
+	if x != nil {
+		return x.Avatar
+	}
+	return ""
+}
+
+func (x *InviteUser) GetNickname() string {
+	if x != nil {
+		return x.Nickname
+	}
+	return ""
+}
+
+type InviteRewardReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Idx           int32                  `protobuf:"varint,1,opt,name=idx,proto3" json:"idx,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *InviteRewardReq) Reset() {
+	*x = InviteRewardReq{}
+	mi := &file_activity_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *InviteRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InviteRewardReq) ProtoMessage() {}
+
+func (x *InviteRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InviteRewardReq.ProtoReflect.Descriptor instead.
+func (*InviteRewardReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *InviteRewardReq) GetIdx() int32 {
+	if x != nil {
+		return x.Idx
+	}
+	return 0
+}
+
+type InviteRewardAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Idx           int32                  `protobuf:"varint,1,opt,name=idx,proto3" json:"idx,omitempty"`
+	Vals          map[int32]int64        `protobuf:"bytes,2,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *InviteRewardAck) Reset() {
+	*x = InviteRewardAck{}
+	mi := &file_activity_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *InviteRewardAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InviteRewardAck) ProtoMessage() {}
+
+func (x *InviteRewardAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InviteRewardAck.ProtoReflect.Descriptor instead.
+func (*InviteRewardAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *InviteRewardAck) GetIdx() int32 {
+	if x != nil {
+		return x.Idx
+	}
+	return 0
+}
+
+func (x *InviteRewardAck) GetVals() map[int32]int64 {
+	if x != nil {
+		return x.Vals
+	}
+	return nil
+}
+
+// ===== 红包活动 (redpacket) =====
+type RedpacketPanelAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"` // 状态: 0未激活（可分享)
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RedpacketPanelAck) Reset() {
+	*x = RedpacketPanelAck{}
+	mi := &file_activity_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RedpacketPanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RedpacketPanelAck) ProtoMessage() {}
+
+func (x *RedpacketPanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RedpacketPanelAck.ProtoReflect.Descriptor instead.
+func (*RedpacketPanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *RedpacketPanelAck) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+type RedpacketRcvPanelAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SenderUid     string                 `protobuf:"bytes,1,opt,name=sender_uid,json=senderUid,proto3" json:"sender_uid,omitempty"` // 发送人UID
+	Status        int32                  `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`                       // 状态: 0未激活,1-分享领取，2-视频领取，3-已全部领取
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RedpacketRcvPanelAck) Reset() {
+	*x = RedpacketRcvPanelAck{}
+	mi := &file_activity_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RedpacketRcvPanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RedpacketRcvPanelAck) ProtoMessage() {}
+
+func (x *RedpacketRcvPanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RedpacketRcvPanelAck.ProtoReflect.Descriptor instead.
+func (*RedpacketRcvPanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *RedpacketRcvPanelAck) GetSenderUid() string {
+	if x != nil {
+		return x.SenderUid
+	}
+	return ""
+}
+
+func (x *RedpacketRcvPanelAck) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+type RedpacketReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`                        // "panel","share", "link", "video"
+	SenderUid     string                 `protobuf:"bytes,2,opt,name=sender_uid,json=senderUid,proto3" json:"sender_uid,omitempty"` // 发送人UID
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RedpacketReq) Reset() {
+	*x = RedpacketReq{}
+	mi := &file_activity_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RedpacketReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RedpacketReq) ProtoMessage() {}
+
+func (x *RedpacketReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RedpacketReq.ProtoReflect.Descriptor instead.
+func (*RedpacketReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *RedpacketReq) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *RedpacketReq) GetSenderUid() string {
+	if x != nil {
+		return x.SenderUid
+	}
+	return ""
+}
+
+type RedpacketAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SenderUid     string                 `protobuf:"bytes,1,opt,name=sender_uid,json=senderUid,proto3" json:"sender_uid,omitempty"` // 发送人UID
+	Action        string                 `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`
+	Reward        map[int32]int64        `protobuf:"bytes,3,rep,name=reward,proto3" json:"reward,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RedpacketAck) Reset() {
+	*x = RedpacketAck{}
+	mi := &file_activity_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RedpacketAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RedpacketAck) ProtoMessage() {}
+
+func (x *RedpacketAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RedpacketAck.ProtoReflect.Descriptor instead.
+func (*RedpacketAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *RedpacketAck) GetSenderUid() string {
+	if x != nil {
+		return x.SenderUid
+	}
+	return ""
+}
+
+func (x *RedpacketAck) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *RedpacketAck) GetReward() map[int32]int64 {
+	if x != nil {
+		return x.Reward
+	}
+	return nil
+}
+
+// ===== 好运签活动 (lucky) =====
+type LuckyPanelAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Count         int32                  `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"` // 今日已抽签次数: 0-3
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LuckyPanelAck) Reset() {
+	*x = LuckyPanelAck{}
+	mi := &file_activity_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LuckyPanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LuckyPanelAck) ProtoMessage() {}
+
+func (x *LuckyPanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LuckyPanelAck.ProtoReflect.Descriptor instead.
+func (*LuckyPanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *LuckyPanelAck) GetCount() int32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+type LuckyReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // "video" 看广告抽签
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LuckyReq) Reset() {
+	*x = LuckyReq{}
+	mi := &file_activity_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LuckyReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LuckyReq) ProtoMessage() {}
+
+func (x *LuckyReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LuckyReq.ProtoReflect.Descriptor instead.
+func (*LuckyReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *LuckyReq) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+type LuckyAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
+	Reward        map[int32]int64        `protobuf:"bytes,2,rep,name=reward,proto3" json:"reward,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
+	Count         int32                  `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`                                                                              // 今日已抽签次数
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LuckyAck) Reset() {
+	*x = LuckyAck{}
+	mi := &file_activity_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LuckyAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LuckyAck) ProtoMessage() {}
+
+func (x *LuckyAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LuckyAck.ProtoReflect.Descriptor instead.
+func (*LuckyAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *LuckyAck) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *LuckyAck) GetReward() map[int32]int64 {
+	if x != nil {
+		return x.Reward
+	}
+	return nil
+}
+
+func (x *LuckyAck) GetCount() int32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+// ===== 注册活动 (register) =====
+type RegisterPanelAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"` // 0未领取 1普通领取 2看广告翻倍领取
+	NormalVals    map[int32]int64        `protobuf:"bytes,2,rep,name=normal_vals,json=normalVals,proto3" json:"normal_vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	DoubleVals    map[int32]int64        `protobuf:"bytes,3,rep,name=double_vals,json=doubleVals,proto3" json:"double_vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterPanelAck) Reset() {
+	*x = RegisterPanelAck{}
+	mi := &file_activity_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterPanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterPanelAck) ProtoMessage() {}
+
+func (x *RegisterPanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterPanelAck.ProtoReflect.Descriptor instead.
+func (*RegisterPanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *RegisterPanelAck) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *RegisterPanelAck) GetNormalVals() map[int32]int64 {
+	if x != nil {
+		return x.NormalVals
+	}
+	return nil
+}
+
+func (x *RegisterPanelAck) GetDoubleVals() map[int32]int64 {
+	if x != nil {
+		return x.DoubleVals
+	}
+	return nil
+}
+
+type RegisterRewardReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // "normal" 或 "video"
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterRewardReq) Reset() {
+	*x = RegisterRewardReq{}
+	mi := &file_activity_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterRewardReq) ProtoMessage() {}
+
+func (x *RegisterRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterRewardReq.ProtoReflect.Descriptor instead.
+func (*RegisterRewardReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *RegisterRewardReq) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+type RegisterRewardAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // "normal" 或 "video"
+	Vals          map[int32]int64        `protobuf:"bytes,2,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterRewardAck) Reset() {
+	*x = RegisterRewardAck{}
+	mi := &file_activity_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterRewardAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterRewardAck) ProtoMessage() {}
+
+func (x *RegisterRewardAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterRewardAck.ProtoReflect.Descriptor instead.
+func (*RegisterRewardAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *RegisterRewardAck) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *RegisterRewardAck) GetVals() map[int32]int64 {
+	if x != nil {
+		return x.Vals
+	}
+	return nil
+}
+
+// ===== 参与活动 (engage) =====
+type EngagePanelAck struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Status        int32                   `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
+	Goal          int32                   `protobuf:"varint,2,opt,name=goal,proto3" json:"goal,omitempty"`
+	MatchRem      int32                   `protobuf:"varint,3,opt,name=match_rem,json=matchRem,proto3" json:"match_rem,omitempty"`
+	VideoRem      int32                   `protobuf:"varint,4,opt,name=video_rem,json=videoRem,proto3" json:"video_rem,omitempty"`
+	Wheel         []*EngageWheelRewardCfg `protobuf:"bytes,5,rep,name=wheel,proto3" json:"wheel,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EngagePanelAck) Reset() {
+	*x = EngagePanelAck{}
+	mi := &file_activity_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EngagePanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EngagePanelAck) ProtoMessage() {}
+
+func (x *EngagePanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EngagePanelAck.ProtoReflect.Descriptor instead.
+func (*EngagePanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *EngagePanelAck) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *EngagePanelAck) GetGoal() int32 {
+	if x != nil {
+		return x.Goal
+	}
+	return 0
+}
+
+func (x *EngagePanelAck) GetMatchRem() int32 {
+	if x != nil {
+		return x.MatchRem
+	}
+	return 0
+}
+
+func (x *EngagePanelAck) GetVideoRem() int32 {
+	if x != nil {
+		return x.VideoRem
+	}
+	return 0
+}
+
+func (x *EngagePanelAck) GetWheel() []*EngageWheelRewardCfg {
+	if x != nil {
+		return x.Wheel
+	}
+	return nil
+}
+
+type EngageWheelRewardCfg struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Vals          map[int32]int64        `protobuf:"bytes,1,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Prob          int64                  `protobuf:"varint,2,opt,name=prob,proto3" json:"prob,omitempty"` // integer weight
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EngageWheelRewardCfg) Reset() {
+	*x = EngageWheelRewardCfg{}
+	mi := &file_activity_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EngageWheelRewardCfg) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EngageWheelRewardCfg) ProtoMessage() {}
+
+func (x *EngageWheelRewardCfg) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EngageWheelRewardCfg.ProtoReflect.Descriptor instead.
+func (*EngageWheelRewardCfg) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *EngageWheelRewardCfg) GetVals() map[int32]int64 {
+	if x != nil {
+		return x.Vals
+	}
+	return nil
+}
+
+func (x *EngageWheelRewardCfg) GetProb() int64 {
+	if x != nil {
+		return x.Prob
+	}
+	return 0
+}
+
+type EngageRewardReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // "wheel" or "video"
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EngageRewardReq) Reset() {
+	*x = EngageRewardReq{}
+	mi := &file_activity_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EngageRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EngageRewardReq) ProtoMessage() {}
+
+func (x *EngageRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EngageRewardReq.ProtoReflect.Descriptor instead.
+func (*EngageRewardReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *EngageRewardReq) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+type EngageRewardAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // "wheel" or "video"
+	Vals          map[int32]int64        `protobuf:"bytes,2,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EngageRewardAck) Reset() {
+	*x = EngageRewardAck{}
+	mi := &file_activity_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EngageRewardAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EngageRewardAck) ProtoMessage() {}
+
+func (x *EngageRewardAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EngageRewardAck.ProtoReflect.Descriptor instead.
+func (*EngageRewardAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *EngageRewardAck) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *EngageRewardAck) GetVals() map[int32]int64 {
+	if x != nil {
+		return x.Vals
+	}
+	return nil
+}
+
+// ===== 破产礼包活动 (bankrupt) =====
+type BankruptPanelAck struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	HasActivePackage bool                   `protobuf:"varint,1,opt,name=has_active_package,json=hasActivePackage,proto3" json:"has_active_package,omitempty"` // 是否有有效的特惠礼包
+	RemainingSeconds int32                  `protobuf:"varint,2,opt,name=remaining_seconds,json=remainingSeconds,proto3" json:"remaining_seconds,omitempty"`   // 剩余有效秒数
+	Packages         []*BankruptPackageInfo `protobuf:"bytes,3,rep,name=packages,proto3" json:"packages,omitempty"`                                            // 礼包列表
+	PurchasedPackage int32                  `protobuf:"varint,4,opt,name=purchased_package,json=purchasedPackage,proto3" json:"purchased_package,omitempty"`   // 已购买的礼包档位（0表示未购买）
+	TriggerCount     int32                  `protobuf:"varint,5,opt,name=trigger_count,json=triggerCount,proto3" json:"trigger_count,omitempty"`               // 触发次数
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *BankruptPanelAck) Reset() {
+	*x = BankruptPanelAck{}
+	mi := &file_activity_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BankruptPanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BankruptPanelAck) ProtoMessage() {}
+
+func (x *BankruptPanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BankruptPanelAck.ProtoReflect.Descriptor instead.
+func (*BankruptPanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *BankruptPanelAck) GetHasActivePackage() bool {
+	if x != nil {
+		return x.HasActivePackage
+	}
+	return false
+}
+
+func (x *BankruptPanelAck) GetRemainingSeconds() int32 {
+	if x != nil {
+		return x.RemainingSeconds
+	}
+	return 0
+}
+
+func (x *BankruptPanelAck) GetPackages() []*BankruptPackageInfo {
+	if x != nil {
+		return x.Packages
+	}
+	return nil
+}
+
+func (x *BankruptPanelAck) GetPurchasedPackage() int32 {
+	if x != nil {
+		return x.PurchasedPackage
+	}
+	return 0
+}
+
+func (x *BankruptPanelAck) GetTriggerCount() int32 {
+	if x != nil {
+		return x.TriggerCount
+	}
+	return 0
+}
+
+type BankruptPackageInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                 // 原价（分）
+	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                 // 折扣价（分）
+	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                 // 加赠百分比
+	Vals          map[int32]int64        `protobuf:"bytes,5,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BankruptPackageInfo) Reset() {
+	*x = BankruptPackageInfo{}
+	mi := &file_activity_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BankruptPackageInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BankruptPackageInfo) ProtoMessage() {}
+
+func (x *BankruptPackageInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BankruptPackageInfo.ProtoReflect.Descriptor instead.
+func (*BankruptPackageInfo) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *BankruptPackageInfo) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *BankruptPackageInfo) GetPriceOrig() int32 {
+	if x != nil {
+		return x.PriceOrig
+	}
+	return 0
+}
+
+func (x *BankruptPackageInfo) GetPriceDisc() int32 {
+	if x != nil {
+		return x.PriceDisc
+	}
+	return 0
+}
+
+func (x *BankruptPackageInfo) GetBonusRate() int32 {
+	if x != nil {
+		return x.BonusRate
+	}
+	return 0
+}
+
+func (x *BankruptPackageInfo) GetVals() map[int32]int64 {
+	if x != nil {
+		return x.Vals
+	}
+	return nil
+}
+
+// ===== 折扣礼包活动 (discount) =====
+type DiscountPanelAck struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Packages         []*DiscountPackageInfo `protobuf:"bytes,1,rep,name=packages,proto3" json:"packages,omitempty"`                                          // 礼包列表
+	DailyPurchased   bool                   `protobuf:"varint,2,opt,name=daily_purchased,json=dailyPurchased,proto3" json:"daily_purchased,omitempty"`       // 今日是否已购买每日礼包
+	WeeklyPurchased  bool                   `protobuf:"varint,3,opt,name=weekly_purchased,json=weeklyPurchased,proto3" json:"weekly_purchased,omitempty"`    // 本周是否已购买每周礼包
+	MonthlyPurchased bool                   `protobuf:"varint,4,opt,name=monthly_purchased,json=monthlyPurchased,proto3" json:"monthly_purchased,omitempty"` // 本月是否已购买每月礼包
+	Enabled          bool                   `protobuf:"varint,5,opt,name=enabled,proto3" json:"enabled,omitempty"`                                           // 是否启用（需先购买破冰礼包）
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *DiscountPanelAck) Reset() {
+	*x = DiscountPanelAck{}
+	mi := &file_activity_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiscountPanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiscountPanelAck) ProtoMessage() {}
+
+func (x *DiscountPanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiscountPanelAck.ProtoReflect.Descriptor instead.
+func (*DiscountPanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *DiscountPanelAck) GetPackages() []*DiscountPackageInfo {
+	if x != nil {
+		return x.Packages
+	}
+	return nil
+}
+
+func (x *DiscountPanelAck) GetDailyPurchased() bool {
+	if x != nil {
+		return x.DailyPurchased
+	}
+	return false
+}
+
+func (x *DiscountPanelAck) GetWeeklyPurchased() bool {
+	if x != nil {
+		return x.WeeklyPurchased
+	}
+	return false
+}
+
+func (x *DiscountPanelAck) GetMonthlyPurchased() bool {
+	if x != nil {
+		return x.MonthlyPurchased
+	}
+	return false
+}
+
+func (x *DiscountPanelAck) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
+type DiscountPackageInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                 // 原价（分）
+	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                 // 折扣价（分）
+	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                 // 加赠百分比
+	Vals          map[int32]int64        `protobuf:"bytes,5,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
+	Purchased     bool                   `protobuf:"varint,6,opt,name=purchased,proto3" json:"purchased,omitempty"`                                                                  // 是否已购买
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiscountPackageInfo) Reset() {
+	*x = DiscountPackageInfo{}
+	mi := &file_activity_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiscountPackageInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiscountPackageInfo) ProtoMessage() {}
+
+func (x *DiscountPackageInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiscountPackageInfo.ProtoReflect.Descriptor instead.
+func (*DiscountPackageInfo) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *DiscountPackageInfo) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *DiscountPackageInfo) GetPriceOrig() int32 {
+	if x != nil {
+		return x.PriceOrig
+	}
+	return 0
+}
+
+func (x *DiscountPackageInfo) GetPriceDisc() int32 {
+	if x != nil {
+		return x.PriceDisc
+	}
+	return 0
+}
+
+func (x *DiscountPackageInfo) GetBonusRate() int32 {
+	if x != nil {
+		return x.BonusRate
+	}
+	return 0
+}
+
+func (x *DiscountPackageInfo) GetVals() map[int32]int64 {
+	if x != nil {
+		return x.Vals
+	}
+	return nil
+}
+
+func (x *DiscountPackageInfo) GetPurchased() bool {
+	if x != nil {
+		return x.Purchased
+	}
+	return false
+}
+
+// ===== 破冰礼包活动 (icebreaker) =====
+type IcebreakerPanel struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Packages      []*IcebreakerPackageInfo `protobuf:"bytes,1,rep,name=packages,proto3" json:"packages,omitempty"`    // 礼包列表
+	Purchased     bool                     `protobuf:"varint,2,opt,name=purchased,proto3" json:"purchased,omitempty"` // 是否已购买
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *IcebreakerPanel) Reset() {
+	*x = IcebreakerPanel{}
+	mi := &file_activity_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *IcebreakerPanel) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IcebreakerPanel) ProtoMessage() {}
+
+func (x *IcebreakerPanel) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IcebreakerPanel.ProtoReflect.Descriptor instead.
+func (*IcebreakerPanel) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *IcebreakerPanel) GetPackages() []*IcebreakerPackageInfo {
+	if x != nil {
+		return x.Packages
+	}
+	return nil
+}
+
+func (x *IcebreakerPanel) GetPurchased() bool {
+	if x != nil {
+		return x.Purchased
+	}
+	return false
+}
+
+type IcebreakerPackageInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                 // 原价（分）
+	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                 // 折扣价（分）
+	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                 // 加赠百分比
+	Vals          map[int32]int64        `protobuf:"bytes,5,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *IcebreakerPackageInfo) Reset() {
+	*x = IcebreakerPackageInfo{}
+	mi := &file_activity_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *IcebreakerPackageInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IcebreakerPackageInfo) ProtoMessage() {}
+
+func (x *IcebreakerPackageInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IcebreakerPackageInfo.ProtoReflect.Descriptor instead.
+func (*IcebreakerPackageInfo) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *IcebreakerPackageInfo) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *IcebreakerPackageInfo) GetPriceOrig() int32 {
+	if x != nil {
+		return x.PriceOrig
+	}
+	return 0
+}
+
+func (x *IcebreakerPackageInfo) GetPriceDisc() int32 {
+	if x != nil {
+		return x.PriceDisc
+	}
+	return 0
+}
+
+func (x *IcebreakerPackageInfo) GetBonusRate() int32 {
+	if x != nil {
+		return x.BonusRate
+	}
+	return 0
+}
+
+func (x *IcebreakerPackageInfo) GetVals() map[int32]int64 {
+	if x != nil {
+		return x.Vals
+	}
+	return nil
+}
+
+// ===== 通用购买请求/响应 (bankrupt, discount, icebreaker) =====
+type ActPurchaseReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PackageId     int32                  `protobuf:"varint,1,opt,name=package_id,json=packageId,proto3" json:"package_id,omitempty"` // 要购买的礼包ID
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActPurchaseReq) Reset() {
+	*x = ActPurchaseReq{}
+	mi := &file_activity_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActPurchaseReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActPurchaseReq) ProtoMessage() {}
+
+func (x *ActPurchaseReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActPurchaseReq.ProtoReflect.Descriptor instead.
+func (*ActPurchaseReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *ActPurchaseReq) GetPackageId() int32 {
+	if x != nil {
+		return x.PackageId
+	}
+	return 0
+}
+
+type ActPurchaseAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PackageId     int32                  `protobuf:"varint,1,opt,name=package_id,json=packageId,proto3" json:"package_id,omitempty"`
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 发放的奖励
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActPurchaseAck) Reset() {
+	*x = ActPurchaseAck{}
+	mi := &file_activity_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActPurchaseAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActPurchaseAck) ProtoMessage() {}
+
+func (x *ActPurchaseAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActPurchaseAck.ProtoReflect.Descriptor instead.
+func (*ActPurchaseAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *ActPurchaseAck) GetPackageId() int32 {
+	if x != nil {
+		return x.PackageId
+	}
+	return 0
+}
+
+func (x *ActPurchaseAck) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+// ===== 用餐时间活动 (mealtime) =====
+type MealtimePanelAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Lunch         int32                  `protobuf:"varint,1,opt,name=lunch,proto3" json:"lunch,omitempty"`   // 午间是否已领取: 0未领取 1已领取
+	Dinner        int32                  `protobuf:"varint,2,opt,name=dinner,proto3" json:"dinner,omitempty"` // 晚间是否已领取: 0未领取 1已领取
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MealtimePanelAck) Reset() {
+	*x = MealtimePanelAck{}
+	mi := &file_activity_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MealtimePanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MealtimePanelAck) ProtoMessage() {}
+
+func (x *MealtimePanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MealtimePanelAck.ProtoReflect.Descriptor instead.
+func (*MealtimePanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *MealtimePanelAck) GetLunch() int32 {
+	if x != nil {
+		return x.Lunch
+	}
+	return 0
+}
+
+func (x *MealtimePanelAck) GetDinner() int32 {
+	if x != nil {
+		return x.Dinner
+	}
+	return 0
+}
+
+type MealtimeReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // "lunch" 午间打卡, "dinner" 晚间打卡
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MealtimeReq) Reset() {
+	*x = MealtimeReq{}
+	mi := &file_activity_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MealtimeReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MealtimeReq) ProtoMessage() {}
+
+func (x *MealtimeReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MealtimeReq.ProtoReflect.Descriptor instead.
+func (*MealtimeReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *MealtimeReq) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+type MealtimeAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
+	Reward        map[int32]int64        `protobuf:"bytes,2,rep,name=reward,proto3" json:"reward,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
+	Lunch         int32                  `protobuf:"varint,3,opt,name=lunch,proto3" json:"lunch,omitempty"`                                                                              // 午间是否已领取
+	Dinner        int32                  `protobuf:"varint,4,opt,name=dinner,proto3" json:"dinner,omitempty"`                                                                            // 晚间是否已领取
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MealtimeAck) Reset() {
+	*x = MealtimeAck{}
+	mi := &file_activity_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MealtimeAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MealtimeAck) ProtoMessage() {}
+
+func (x *MealtimeAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MealtimeAck.ProtoReflect.Descriptor instead.
+func (*MealtimeAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *MealtimeAck) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *MealtimeAck) GetReward() map[int32]int64 {
+	if x != nil {
+		return x.Reward
+	}
+	return nil
+}
+
+func (x *MealtimeAck) GetLunch() int32 {
+	if x != nil {
+		return x.Lunch
+	}
+	return 0
+}
+
+func (x *MealtimeAck) GetDinner() int32 {
+	if x != nil {
+		return x.Dinner
+	}
+	return 0
+}
+
 var File_activity_proto protoreflect.FileDescriptor
 
 const file_activity_proto_rawDesc = "" +
@@ -550,19 +2296,19 @@ const file_activity_proto_rawDesc = "" +
 	"\x04acts\x18\x02 \x03(\v2\x10.cproto.ActBriefR\x04acts\".\n" +
 	"\vActPanelReq\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
-	"activityId\"K\n" +
+	"activityId\"V\n" +
 	"\vActPanelAck\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
-	"activityId\x12\x1b\n" +
-	"\tjson_data\x18\x02 \x01(\tR\bjsonData\"L\n" +
+	"activityId\x12&\n" +
+	"\x03ack\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"W\n" +
 	"\fActRewardReq\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
-	"activityId\x12\x1b\n" +
-	"\tjson_data\x18\x02 \x01(\tR\bjsonData\"L\n" +
+	"activityId\x12&\n" +
+	"\x03req\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x03req\"W\n" +
 	"\fActRewardAck\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
-	"activityId\x12\x1b\n" +
-	"\tjson_data\x18\x02 \x01(\tR\bjsonData\"n\n" +
+	"activityId\x12&\n" +
+	"\x03ack\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"n\n" +
 	"\bActBrief\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
 	"activityId\x12\x12\n" +
@@ -576,6 +2322,180 @@ const file_activity_proto_rawDesc = "" +
 	"\x05items\x18\x03 \x03(\v2!.cproto.PurchasePkgAck.ItemsEntryR\x05items\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xaf\x01\n" +
+	"\x0eInvitePanelAck\x12\x1f\n" +
+	"\vinvite_code\x18\x01 \x01(\tR\n" +
+	"inviteCode\x12\x1d\n" +
+	"\n" +
+	"invite_cnt\x18\x02 \x01(\x05R\tinviteCnt\x123\n" +
+	"\arewards\x18\x03 \x03(\v2\x19.cproto.InviteRewardStateR\arewards\x12(\n" +
+	"\x05users\x18\x04 \x03(\v2\x12.cproto.InviteUserR\x05users\"\xf7\x01\n" +
+	"\x11InviteRewardState\x12\x10\n" +
+	"\x03idx\x18\x01 \x01(\x05R\x03idx\x12\x12\n" +
+	"\x04cond\x18\x02 \x01(\x05R\x04cond\x12\x1a\n" +
+	"\bfinished\x18\x03 \x01(\bR\bfinished\x12\x10\n" +
+	"\x03got\x18\x04 \x01(\bR\x03got\x12\x1c\n" +
+	"\tavailable\x18\x05 \x01(\bR\tavailable\x127\n" +
+	"\x04vals\x18\x06 \x03(\v2#.cproto.InviteRewardState.ValsEntryR\x04vals\x1a7\n" +
+	"\tValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"@\n" +
+	"\n" +
+	"InviteUser\x12\x16\n" +
+	"\x06avatar\x18\x01 \x01(\tR\x06avatar\x12\x1a\n" +
+	"\bnickname\x18\x02 \x01(\tR\bnickname\"#\n" +
+	"\x0fInviteRewardReq\x12\x10\n" +
+	"\x03idx\x18\x01 \x01(\x05R\x03idx\"\x93\x01\n" +
+	"\x0fInviteRewardAck\x12\x10\n" +
+	"\x03idx\x18\x01 \x01(\x05R\x03idx\x125\n" +
+	"\x04vals\x18\x02 \x03(\v2!.cproto.InviteRewardAck.ValsEntryR\x04vals\x1a7\n" +
+	"\tValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"+\n" +
+	"\x11RedpacketPanelAck\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\x05R\x06status\"M\n" +
+	"\x14RedpacketRcvPanelAck\x12\x1d\n" +
+	"\n" +
+	"sender_uid\x18\x01 \x01(\tR\tsenderUid\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\x05R\x06status\"E\n" +
+	"\fRedpacketReq\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x12\x1d\n" +
+	"\n" +
+	"sender_uid\x18\x02 \x01(\tR\tsenderUid\"\xba\x01\n" +
+	"\fRedpacketAck\x12\x1d\n" +
+	"\n" +
+	"sender_uid\x18\x01 \x01(\tR\tsenderUid\x12\x16\n" +
+	"\x06action\x18\x02 \x01(\tR\x06action\x128\n" +
+	"\x06reward\x18\x03 \x03(\v2 .cproto.RedpacketAck.RewardEntryR\x06reward\x1a9\n" +
+	"\vRewardEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"%\n" +
+	"\rLuckyPanelAck\x12\x14\n" +
+	"\x05count\x18\x01 \x01(\x05R\x05count\"\"\n" +
+	"\bLuckyReq\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\xa9\x01\n" +
+	"\bLuckyAck\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x124\n" +
+	"\x06reward\x18\x02 \x03(\v2\x1c.cproto.LuckyAck.RewardEntryR\x06reward\x12\x14\n" +
+	"\x05count\x18\x03 \x01(\x05R\x05count\x1a9\n" +
+	"\vRewardEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xbe\x02\n" +
+	"\x10RegisterPanelAck\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\x05R\x06status\x12I\n" +
+	"\vnormal_vals\x18\x02 \x03(\v2(.cproto.RegisterPanelAck.NormalValsEntryR\n" +
+	"normalVals\x12I\n" +
+	"\vdouble_vals\x18\x03 \x03(\v2(.cproto.RegisterPanelAck.DoubleValsEntryR\n" +
+	"doubleVals\x1a=\n" +
+	"\x0fNormalValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
+	"\x0fDoubleValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"+\n" +
+	"\x11RegisterRewardReq\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\x9d\x01\n" +
+	"\x11RegisterRewardAck\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x127\n" +
+	"\x04vals\x18\x02 \x03(\v2#.cproto.RegisterRewardAck.ValsEntryR\x04vals\x1a7\n" +
+	"\tValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xaa\x01\n" +
+	"\x0eEngagePanelAck\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\x05R\x06status\x12\x12\n" +
+	"\x04goal\x18\x02 \x01(\x05R\x04goal\x12\x1b\n" +
+	"\tmatch_rem\x18\x03 \x01(\x05R\bmatchRem\x12\x1b\n" +
+	"\tvideo_rem\x18\x04 \x01(\x05R\bvideoRem\x122\n" +
+	"\x05wheel\x18\x05 \x03(\v2\x1c.cproto.EngageWheelRewardCfgR\x05wheel\"\x9f\x01\n" +
+	"\x14EngageWheelRewardCfg\x12:\n" +
+	"\x04vals\x18\x01 \x03(\v2&.cproto.EngageWheelRewardCfg.ValsEntryR\x04vals\x12\x12\n" +
+	"\x04prob\x18\x02 \x01(\x03R\x04prob\x1a7\n" +
+	"\tValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\")\n" +
+	"\x0fEngageRewardReq\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\x99\x01\n" +
+	"\x0fEngageRewardAck\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x125\n" +
+	"\x04vals\x18\x02 \x03(\v2!.cproto.EngageRewardAck.ValsEntryR\x04vals\x1a7\n" +
+	"\tValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xf8\x01\n" +
+	"\x10BankruptPanelAck\x12,\n" +
+	"\x12has_active_package\x18\x01 \x01(\bR\x10hasActivePackage\x12+\n" +
+	"\x11remaining_seconds\x18\x02 \x01(\x05R\x10remainingSeconds\x127\n" +
+	"\bpackages\x18\x03 \x03(\v2\x1b.cproto.BankruptPackageInfoR\bpackages\x12+\n" +
+	"\x11purchased_package\x18\x04 \x01(\x05R\x10purchasedPackage\x12#\n" +
+	"\rtrigger_count\x18\x05 \x01(\x05R\ftriggerCount\"\xf6\x01\n" +
+	"\x13BankruptPackageInfo\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
+	"\n" +
+	"price_orig\x18\x02 \x01(\x05R\tpriceOrig\x12\x1d\n" +
+	"\n" +
+	"price_disc\x18\x03 \x01(\x05R\tpriceDisc\x12\x1d\n" +
+	"\n" +
+	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x129\n" +
+	"\x04vals\x18\x05 \x03(\v2%.cproto.BankruptPackageInfo.ValsEntryR\x04vals\x1a7\n" +
+	"\tValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xe6\x01\n" +
+	"\x10DiscountPanelAck\x127\n" +
+	"\bpackages\x18\x01 \x03(\v2\x1b.cproto.DiscountPackageInfoR\bpackages\x12'\n" +
+	"\x0fdaily_purchased\x18\x02 \x01(\bR\x0edailyPurchased\x12)\n" +
+	"\x10weekly_purchased\x18\x03 \x01(\bR\x0fweeklyPurchased\x12+\n" +
+	"\x11monthly_purchased\x18\x04 \x01(\bR\x10monthlyPurchased\x12\x18\n" +
+	"\aenabled\x18\x05 \x01(\bR\aenabled\"\x94\x02\n" +
+	"\x13DiscountPackageInfo\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
+	"\n" +
+	"price_orig\x18\x02 \x01(\x05R\tpriceOrig\x12\x1d\n" +
+	"\n" +
+	"price_disc\x18\x03 \x01(\x05R\tpriceDisc\x12\x1d\n" +
+	"\n" +
+	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x129\n" +
+	"\x04vals\x18\x05 \x03(\v2%.cproto.DiscountPackageInfo.ValsEntryR\x04vals\x12\x1c\n" +
+	"\tpurchased\x18\x06 \x01(\bR\tpurchased\x1a7\n" +
+	"\tValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"j\n" +
+	"\x0fIcebreakerPanel\x129\n" +
+	"\bpackages\x18\x01 \x03(\v2\x1d.cproto.IcebreakerPackageInfoR\bpackages\x12\x1c\n" +
+	"\tpurchased\x18\x02 \x01(\bR\tpurchased\"\xfa\x01\n" +
+	"\x15IcebreakerPackageInfo\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
+	"\n" +
+	"price_orig\x18\x02 \x01(\x05R\tpriceOrig\x12\x1d\n" +
+	"\n" +
+	"price_disc\x18\x03 \x01(\x05R\tpriceDisc\x12\x1d\n" +
+	"\n" +
+	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x12;\n" +
+	"\x04vals\x18\x05 \x03(\v2'.cproto.IcebreakerPackageInfo.ValsEntryR\x04vals\x1a7\n" +
+	"\tValsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"/\n" +
+	"\x0eActPurchaseReq\x12\x1d\n" +
+	"\n" +
+	"package_id\x18\x01 \x01(\x05R\tpackageId\"\xa2\x01\n" +
+	"\x0eActPurchaseAck\x12\x1d\n" +
+	"\n" +
+	"package_id\x18\x01 \x01(\x05R\tpackageId\x127\n" +
+	"\x05items\x18\x02 \x03(\v2!.cproto.ActPurchaseAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"@\n" +
+	"\x10MealtimePanelAck\x12\x14\n" +
+	"\x05lunch\x18\x01 \x01(\x05R\x05lunch\x12\x16\n" +
+	"\x06dinner\x18\x02 \x01(\x05R\x06dinner\"%\n" +
+	"\vMealtimeReq\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\xc7\x01\n" +
+	"\vMealtimeAck\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x127\n" +
+	"\x06reward\x18\x02 \x03(\v2\x1f.cproto.MealtimeAck.RewardEntryR\x06reward\x12\x14\n" +
+	"\x05lunch\x18\x03 \x01(\x05R\x05lunch\x12\x16\n" +
+	"\x06dinner\x18\x04 \x01(\x05R\x06dinner\x1a9\n" +
+	"\vRewardEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
@@ -591,31 +2511,98 @@ func file_activity_proto_rawDescGZIP() []byte {
 	return file_activity_proto_rawDescData
 }
 
-var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
 var file_activity_proto_goTypes = []any{
-	(*ActivityReq)(nil),    // 0: cproto.ActivityReq
-	(*ActivityAck)(nil),    // 1: cproto.ActivityAck
-	(*ActsListReq)(nil),    // 2: cproto.ActsListReq
-	(*ActsListAck)(nil),    // 3: cproto.ActsListAck
-	(*ActPanelReq)(nil),    // 4: cproto.ActPanelReq
-	(*ActPanelAck)(nil),    // 5: cproto.ActPanelAck
-	(*ActRewardReq)(nil),   // 6: cproto.ActRewardReq
-	(*ActRewardAck)(nil),   // 7: cproto.ActRewardAck
-	(*ActBrief)(nil),       // 8: cproto.ActBrief
-	(*PurchasePkgAck)(nil), // 9: cproto.PurchasePkgAck
-	nil,                    // 10: cproto.PurchasePkgAck.ItemsEntry
-	(*anypb.Any)(nil),      // 11: google.protobuf.Any
+	(*ActivityReq)(nil),           // 0: cproto.ActivityReq
+	(*ActivityAck)(nil),           // 1: cproto.ActivityAck
+	(*ActsListReq)(nil),           // 2: cproto.ActsListReq
+	(*ActsListAck)(nil),           // 3: cproto.ActsListAck
+	(*ActPanelReq)(nil),           // 4: cproto.ActPanelReq
+	(*ActPanelAck)(nil),           // 5: cproto.ActPanelAck
+	(*ActRewardReq)(nil),          // 6: cproto.ActRewardReq
+	(*ActRewardAck)(nil),          // 7: cproto.ActRewardAck
+	(*ActBrief)(nil),              // 8: cproto.ActBrief
+	(*PurchasePkgAck)(nil),        // 9: cproto.PurchasePkgAck
+	(*InvitePanelAck)(nil),        // 10: cproto.InvitePanelAck
+	(*InviteRewardState)(nil),     // 11: cproto.InviteRewardState
+	(*InviteUser)(nil),            // 12: cproto.InviteUser
+	(*InviteRewardReq)(nil),       // 13: cproto.InviteRewardReq
+	(*InviteRewardAck)(nil),       // 14: cproto.InviteRewardAck
+	(*RedpacketPanelAck)(nil),     // 15: cproto.RedpacketPanelAck
+	(*RedpacketRcvPanelAck)(nil),  // 16: cproto.RedpacketRcvPanelAck
+	(*RedpacketReq)(nil),          // 17: cproto.RedpacketReq
+	(*RedpacketAck)(nil),          // 18: cproto.RedpacketAck
+	(*LuckyPanelAck)(nil),         // 19: cproto.LuckyPanelAck
+	(*LuckyReq)(nil),              // 20: cproto.LuckyReq
+	(*LuckyAck)(nil),              // 21: cproto.LuckyAck
+	(*RegisterPanelAck)(nil),      // 22: cproto.RegisterPanelAck
+	(*RegisterRewardReq)(nil),     // 23: cproto.RegisterRewardReq
+	(*RegisterRewardAck)(nil),     // 24: cproto.RegisterRewardAck
+	(*EngagePanelAck)(nil),        // 25: cproto.EngagePanelAck
+	(*EngageWheelRewardCfg)(nil),  // 26: cproto.EngageWheelRewardCfg
+	(*EngageRewardReq)(nil),       // 27: cproto.EngageRewardReq
+	(*EngageRewardAck)(nil),       // 28: cproto.EngageRewardAck
+	(*BankruptPanelAck)(nil),      // 29: cproto.BankruptPanelAck
+	(*BankruptPackageInfo)(nil),   // 30: cproto.BankruptPackageInfo
+	(*DiscountPanelAck)(nil),      // 31: cproto.DiscountPanelAck
+	(*DiscountPackageInfo)(nil),   // 32: cproto.DiscountPackageInfo
+	(*IcebreakerPanel)(nil),       // 33: cproto.IcebreakerPanel
+	(*IcebreakerPackageInfo)(nil), // 34: cproto.IcebreakerPackageInfo
+	(*ActPurchaseReq)(nil),        // 35: cproto.ActPurchaseReq
+	(*ActPurchaseAck)(nil),        // 36: cproto.ActPurchaseAck
+	(*MealtimePanelAck)(nil),      // 37: cproto.MealtimePanelAck
+	(*MealtimeReq)(nil),           // 38: cproto.MealtimeReq
+	(*MealtimeAck)(nil),           // 39: cproto.MealtimeAck
+	nil,                           // 40: cproto.PurchasePkgAck.ItemsEntry
+	nil,                           // 41: cproto.InviteRewardState.ValsEntry
+	nil,                           // 42: cproto.InviteRewardAck.ValsEntry
+	nil,                           // 43: cproto.RedpacketAck.RewardEntry
+	nil,                           // 44: cproto.LuckyAck.RewardEntry
+	nil,                           // 45: cproto.RegisterPanelAck.NormalValsEntry
+	nil,                           // 46: cproto.RegisterPanelAck.DoubleValsEntry
+	nil,                           // 47: cproto.RegisterRewardAck.ValsEntry
+	nil,                           // 48: cproto.EngageWheelRewardCfg.ValsEntry
+	nil,                           // 49: cproto.EngageRewardAck.ValsEntry
+	nil,                           // 50: cproto.BankruptPackageInfo.ValsEntry
+	nil,                           // 51: cproto.DiscountPackageInfo.ValsEntry
+	nil,                           // 52: cproto.IcebreakerPackageInfo.ValsEntry
+	nil,                           // 53: cproto.ActPurchaseAck.ItemsEntry
+	nil,                           // 54: cproto.MealtimeAck.RewardEntry
+	(*anypb.Any)(nil),             // 55: google.protobuf.Any
 }
 var file_activity_proto_depIdxs = []int32{
-	11, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
-	11, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
+	55, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
+	55, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
 	8,  // 2: cproto.ActsListAck.acts:type_name -> cproto.ActBrief
-	10, // 3: cproto.PurchasePkgAck.items:type_name -> cproto.PurchasePkgAck.ItemsEntry
-	4,  // [4:4] is the sub-list for method output_type
-	4,  // [4:4] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	55, // 3: cproto.ActPanelAck.ack:type_name -> google.protobuf.Any
+	55, // 4: cproto.ActRewardReq.req:type_name -> google.protobuf.Any
+	55, // 5: cproto.ActRewardAck.ack:type_name -> google.protobuf.Any
+	40, // 6: cproto.PurchasePkgAck.items:type_name -> cproto.PurchasePkgAck.ItemsEntry
+	11, // 7: cproto.InvitePanelAck.rewards:type_name -> cproto.InviteRewardState
+	12, // 8: cproto.InvitePanelAck.users:type_name -> cproto.InviteUser
+	41, // 9: cproto.InviteRewardState.vals:type_name -> cproto.InviteRewardState.ValsEntry
+	42, // 10: cproto.InviteRewardAck.vals:type_name -> cproto.InviteRewardAck.ValsEntry
+	43, // 11: cproto.RedpacketAck.reward:type_name -> cproto.RedpacketAck.RewardEntry
+	44, // 12: cproto.LuckyAck.reward:type_name -> cproto.LuckyAck.RewardEntry
+	45, // 13: cproto.RegisterPanelAck.normal_vals:type_name -> cproto.RegisterPanelAck.NormalValsEntry
+	46, // 14: cproto.RegisterPanelAck.double_vals:type_name -> cproto.RegisterPanelAck.DoubleValsEntry
+	47, // 15: cproto.RegisterRewardAck.vals:type_name -> cproto.RegisterRewardAck.ValsEntry
+	26, // 16: cproto.EngagePanelAck.wheel:type_name -> cproto.EngageWheelRewardCfg
+	48, // 17: cproto.EngageWheelRewardCfg.vals:type_name -> cproto.EngageWheelRewardCfg.ValsEntry
+	49, // 18: cproto.EngageRewardAck.vals:type_name -> cproto.EngageRewardAck.ValsEntry
+	30, // 19: cproto.BankruptPanelAck.packages:type_name -> cproto.BankruptPackageInfo
+	50, // 20: cproto.BankruptPackageInfo.vals:type_name -> cproto.BankruptPackageInfo.ValsEntry
+	32, // 21: cproto.DiscountPanelAck.packages:type_name -> cproto.DiscountPackageInfo
+	51, // 22: cproto.DiscountPackageInfo.vals:type_name -> cproto.DiscountPackageInfo.ValsEntry
+	34, // 23: cproto.IcebreakerPanel.packages:type_name -> cproto.IcebreakerPackageInfo
+	52, // 24: cproto.IcebreakerPackageInfo.vals:type_name -> cproto.IcebreakerPackageInfo.ValsEntry
+	53, // 25: cproto.ActPurchaseAck.items:type_name -> cproto.ActPurchaseAck.ItemsEntry
+	54, // 26: cproto.MealtimeAck.reward:type_name -> cproto.MealtimeAck.RewardEntry
+	27, // [27:27] is the sub-list for method output_type
+	27, // [27:27] is the sub-list for method input_type
+	27, // [27:27] is the sub-list for extension type_name
+	27, // [27:27] is the sub-list for extension extendee
+	0,  // [0:27] is the sub-list for field type_name
 }
 
 func init() { file_activity_proto_init() }
@@ -629,7 +2616,7 @@ func file_activity_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_activity_proto_rawDesc), len(file_activity_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   55,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

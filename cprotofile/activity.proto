@@ -16,7 +16,7 @@ message ActivityAck {
 }
 
 // 获取活动列表请求
-message ActsListReq {  
+message ActsListReq {
 }
 
 // 获取活动列表响应
@@ -32,20 +32,20 @@ message ActPanelReq {
 
 // 获取活动状态响应
 message ActPanelAck {
-  int32  activity_id = 1;
-  string json_data   = 2; // 活动私有数据，客户端直接透传解析
+  int32 activity_id = 1;
+  google.protobuf.Any ack = 2; // 活动私有数据，客户端直接透传解析
 }
 
 // 活动操作请求
 message ActRewardReq {
   int32 activity_id = 1; // 活动ID
-  string json_data   = 2; // json_data 里放活动需要的参数：{"idx":5} 或 {"times":2} 等
+  google.protobuf.Any req = 2; // 活动需要的参数
 }
 
 // 活动操作响应
 message ActRewardAck {
-  int32  activity_id = 1;
-  string json_data   = 2; // 返回奖励、新余额等，客户端解析
+  int32 activity_id = 1;
+  google.protobuf.Any ack = 2; // 返回奖励、新余额等
 }
 
 // 活动列表项
@@ -60,4 +60,186 @@ message PurchasePkgAck {
   int32 activity_id = 1; // 活动ID
   int32 pkg_id = 2; //礼包id
    map<int32,int64> items = 3; //物品
+}
+
+// ===== 邀请活动 (invite) =====
+message InvitePanelAck {
+  string invite_code = 1;
+  int32 invite_cnt = 2;
+  repeated InviteRewardState rewards = 3;
+  repeated InviteUser users = 4;
+}
+
+message InviteRewardState {
+  int32 idx = 1;
+  int32 cond = 2;
+  bool finished = 3;
+  bool got = 4;
+  bool available = 5;
+  map<int32, int64> vals = 6;
+}
+
+message InviteUser {
+  string avatar = 1;
+  string nickname = 2;
+}
+
+message InviteRewardReq {
+  int32 idx = 1;
+}
+
+message InviteRewardAck {
+  int32 idx = 1;
+  map<int32, int64> vals = 2;
+}
+
+// ===== 红包活动 (redpacket) =====
+message RedpacketPanelAck {
+  int32 status = 1; // 状态: 0未激活（可分享)
+}
+
+message RedpacketRcvPanelAck {
+  string sender_uid = 1; // 发送人UID
+  int32 status = 2;      // 状态: 0未激活,1-分享领取，2-视频领取，3-已全部领取
+}
+
+message RedpacketReq {
+  string action = 1;     // "panel","share", "link", "video"
+  string sender_uid = 2; // 发送人UID
+}
+
+message RedpacketAck {
+  string sender_uid = 1; // 发送人UID
+  string action = 2;
+  map<int32, int64> reward = 3; // 奖励物品
+}
+
+// ===== 好运签活动 (lucky) =====
+message LuckyPanelAck {
+  int32 count = 1; // 今日已抽签次数: 0-3
+}
+
+message LuckyReq {
+  string action = 1; // "video" 看广告抽签
+}
+
+message LuckyAck {
+  string action = 1;
+  map<int32, int64> reward = 2; // 奖励物品
+  int32 count = 3;              // 今日已抽签次数
+}
+
+// ===== 注册活动 (register) =====
+message RegisterPanelAck {
+  int32 status = 1;     // 0未领取 1普通领取 2看广告翻倍领取
+  map<int32, int64> normal_vals = 2;
+  map<int32, int64> double_vals = 3;
+}
+
+message RegisterRewardReq {
+  string action = 1; // "normal" 或 "video"
+}
+
+message RegisterRewardAck {
+  string action = 1; // "normal" 或 "video"
+  map<int32, int64> vals = 2;
+}
+
+// ===== 参与活动 (engage) =====
+message EngagePanelAck {
+  int32 status = 1; 
+  int32 goal = 2;
+  int32 match_rem = 3;
+  int32 video_rem = 4;
+  repeated EngageWheelRewardCfg wheel = 5;
+}
+
+message EngageWheelRewardCfg {
+  map<int32, int64> vals = 1;
+  int64 prob = 2; // integer weight
+}
+
+message EngageRewardReq {
+  string action = 1; // "wheel" or "video"
+}
+
+message EngageRewardAck {
+  string action = 1; // "wheel" or "video"
+  map<int32, int64> vals = 2;
+}
+
+// ===== 破产礼包活动 (bankrupt) =====
+message BankruptPanelAck {
+  bool has_active_package = 1; // 是否有有效的特惠礼包
+  int32 remaining_seconds = 2; // 剩余有效秒数
+  repeated BankruptPackageInfo packages = 3; // 礼包列表
+  int32 purchased_package = 4; // 已购买的礼包档位（0表示未购买）
+  int32 trigger_count = 5; // 触发次数
+}
+
+message BankruptPackageInfo {
+  int32 id = 1;
+  int32 price_orig = 2; // 原价（分）
+  int32 price_disc = 3; // 折扣价（分）
+  int32 bonus_rate = 4; // 加赠百分比
+  map<int32, int64> vals = 5; // 奖励道具
+}
+
+// ===== 折扣礼包活动 (discount) =====
+message DiscountPanelAck {
+  repeated DiscountPackageInfo packages = 1; // 礼包列表
+  bool daily_purchased = 2;   // 今日是否已购买每日礼包
+  bool weekly_purchased = 3;  // 本周是否已购买每周礼包
+  bool monthly_purchased = 4; // 本月是否已购买每月礼包
+  bool enabled = 5;           // 是否启用（需先购买破冰礼包）
+}
+
+message DiscountPackageInfo {
+  int32 id = 1;
+  int32 price_orig = 2; // 原价（分）
+  int32 price_disc = 3; // 折扣价（分）
+  int32 bonus_rate = 4; // 加赠百分比
+  map<int32, int64> vals = 5; // 奖励道具
+  bool purchased = 6; // 是否已购买
+}
+
+// ===== 破冰礼包活动 (icebreaker) =====
+message IcebreakerPanel {
+  repeated IcebreakerPackageInfo packages = 1; // 礼包列表
+  bool purchased = 2; // 是否已购买
+}
+
+message IcebreakerPackageInfo {
+  int32 id = 1;
+  int32 price_orig = 2; // 原价（分）
+  int32 price_disc = 3; // 折扣价（分）
+  int32 bonus_rate = 4; // 加赠百分比
+  map<int32, int64> vals = 5; // 奖励道具
+}
+
+// ===== 通用购买请求/响应 (bankrupt, discount, icebreaker) =====
+message ActPurchaseReq {
+  int32 package_id = 1; // 要购买的礼包ID
+}
+
+message ActPurchaseAck {
+  int32 package_id = 1;
+  map<int32, int64> items = 2; // 发放的奖励
+}
+
+// ===== 用餐时间活动 (mealtime) =====
+message MealtimePanelAck {
+  int32 lunch = 1;  // 午间是否已领取: 0未领取 1已领取
+  int32 dinner = 2; // 晚间是否已领取: 0未领取 1已领取
+}
+
+message MealtimeReq {
+  string action = 1; // "lunch" 午间打卡, "dinner" 晚间打卡
+}
+
+message MealtimeAck {
+  string action = 1;
+  map<int32, int64> reward = 2; // 奖励物品
+  int32 lunch = 3;              // 午间是否已领取
+  int32 dinner = 4;             // 晚间是否已领取
 }
