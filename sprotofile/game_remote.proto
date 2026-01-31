@@ -38,6 +38,7 @@ message AddPlayerReq {
   string nickname = 5; // 玩家昵称
   string avatar = 6; // 玩家头像
   map<int32, int64> items = 7; //玩家物品
+  int32 ctrl = 8;//控制类型 0-不控制，1-赢，2-输
 }
 
 message CancelTableReq {

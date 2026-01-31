@@ -235,8 +235,10 @@ type PlayerResultReq struct {
 	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
 	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
 	CurGameCount  int32                  `protobuf:"varint,3,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
-	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`                                     //玩家分数
-	Stats         string                 `protobuf:"bytes,5,opt,name=stats,proto3" json:"stats,omitempty"`                                      // 游戏统计数据
+	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`                                     //玩家最终分数
+	Tax           int64                  `protobuf:"varint,5,opt,name=tax,proto3" json:"tax,omitempty"`                                         //税分
+	WinScore      int64                  `protobuf:"varint,6,opt,name=win_score,json=winScore,proto3" json:"win_score,omitempty"`               //输赢分
+	Stats         string                 `protobuf:"bytes,7,opt,name=stats,proto3" json:"stats,omitempty"`                                      // 游戏统计数据
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -295,6 +297,20 @@ func (x *PlayerResultReq) GetCurGameCount() int32 {
 func (x *PlayerResultReq) GetScore() int64 {
 	if x != nil {
 		return x.Score
+	}
+	return 0
+}
+
+func (x *PlayerResultReq) GetTax() int64 {
+	if x != nil {
+		return x.Tax
+	}
+	return 0
+}
+
+func (x *PlayerResultReq) GetWinScore() int64 {
+	if x != nil {
+		return x.WinScore
 	}
 	return 0
 }
@@ -419,13 +435,15 @@ const file_match_remote_proto_rawDesc = "" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
 	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12\x1d\n" +
 	"\n" +
-	"round_data\x18\x03 \x01(\tR\troundData\"\x8f\x01\n" +
+	"round_data\x18\x03 \x01(\tR\troundData\"\xbe\x01\n" +
 	"\x0fPlayerResultReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\tR\x03uid\x12$\n" +
 	"\x0ecur_game_count\x18\x03 \x01(\x05R\fcurGameCount\x12\x14\n" +
-	"\x05score\x18\x04 \x01(\x03R\x05score\x12\x14\n" +
-	"\x05stats\x18\x05 \x01(\tR\x05stats\"M\n" +
+	"\x05score\x18\x04 \x01(\x03R\x05score\x12\x10\n" +
+	"\x03tax\x18\x05 \x01(\x03R\x03tax\x12\x1b\n" +
+	"\twin_score\x18\x06 \x01(\x03R\bwinScore\x12\x14\n" +
+	"\x05stats\x18\a \x01(\tR\x05stats\"M\n" +
 	"\vGameOverReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
 	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\"\x1f\n" +
