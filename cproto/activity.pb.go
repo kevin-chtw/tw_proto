@@ -1356,9 +1356,10 @@ type EngagePanelAck struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
 	Status        int32                   `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
 	Goal          int32                   `protobuf:"varint,2,opt,name=goal,proto3" json:"goal,omitempty"`
-	MatchRem      int32                   `protobuf:"varint,3,opt,name=match_rem,json=matchRem,proto3" json:"match_rem,omitempty"`
-	VideoRem      int32                   `protobuf:"varint,4,opt,name=video_rem,json=videoRem,proto3" json:"video_rem,omitempty"`
-	Wheel         []*EngageWheelRewardCfg `protobuf:"bytes,5,rep,name=wheel,proto3" json:"wheel,omitempty"`
+	CurCount      int32                   `protobuf:"varint,3,opt,name=cur_count,json=curCount,proto3" json:"cur_count,omitempty"` //当前局数
+	MatchRem      int32                   `protobuf:"varint,4,opt,name=match_rem,json=matchRem,proto3" json:"match_rem,omitempty"`
+	VideoRem      int32                   `protobuf:"varint,5,opt,name=video_rem,json=videoRem,proto3" json:"video_rem,omitempty"`
+	Wheel         []*EngageWheelRewardCfg `protobuf:"bytes,6,rep,name=wheel,proto3" json:"wheel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1403,6 +1404,13 @@ func (x *EngagePanelAck) GetStatus() int32 {
 func (x *EngagePanelAck) GetGoal() int32 {
 	if x != nil {
 		return x.Goal
+	}
+	return 0
+}
+
+func (x *EngagePanelAck) GetCurCount() int32 {
+	if x != nil {
+		return x.CurCount
 	}
 	return 0
 }
@@ -2401,13 +2409,14 @@ const file_activity_proto_rawDesc = "" +
 	"\x04vals\x18\x02 \x03(\v2#.cproto.RegisterRewardAck.ValsEntryR\x04vals\x1a7\n" +
 	"\tValsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xaa\x01\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xc7\x01\n" +
 	"\x0eEngagePanelAck\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\x05R\x06status\x12\x12\n" +
 	"\x04goal\x18\x02 \x01(\x05R\x04goal\x12\x1b\n" +
-	"\tmatch_rem\x18\x03 \x01(\x05R\bmatchRem\x12\x1b\n" +
-	"\tvideo_rem\x18\x04 \x01(\x05R\bvideoRem\x122\n" +
-	"\x05wheel\x18\x05 \x03(\v2\x1c.cproto.EngageWheelRewardCfgR\x05wheel\"\x9f\x01\n" +
+	"\tcur_count\x18\x03 \x01(\x05R\bcurCount\x12\x1b\n" +
+	"\tmatch_rem\x18\x04 \x01(\x05R\bmatchRem\x12\x1b\n" +
+	"\tvideo_rem\x18\x05 \x01(\x05R\bvideoRem\x122\n" +
+	"\x05wheel\x18\x06 \x03(\v2\x1c.cproto.EngageWheelRewardCfgR\x05wheel\"\x9f\x01\n" +
 	"\x14EngageWheelRewardCfg\x12:\n" +
 	"\x04vals\x18\x01 \x03(\v2&.cproto.EngageWheelRewardCfg.ValsEntryR\x04vals\x12\x12\n" +
 	"\x04prob\x18\x02 \x01(\x03R\x04prob\x1a7\n" +
