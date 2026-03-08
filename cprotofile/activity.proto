@@ -76,7 +76,7 @@ message InviteRewardState {
   bool finished = 3;
   bool got = 4;
   bool available = 5;
-  map<int32, int64> vals = 6;
+  map<int32, int64> items = 6;
 }
 
 message InviteUser {
@@ -90,7 +90,7 @@ message InviteRewardReq {
 
 message InviteRewardAck {
   int32 idx = 1;
-  map<int32, int64> vals = 2;
+  map<int32, int64> items = 2;
 }
 
 // ===== 红包活动 (redpacket) =====
@@ -111,7 +111,7 @@ message RedpacketReq {
 message RedpacketAck {
   string sender_uid = 1; // 发送人UID
   string action = 2;
-  map<int32, int64> reward = 3; // 奖励物品
+  map<int32, int64> items = 3; // 奖励物品
 }
 
 // ===== 好运签活动 (lucky) =====
@@ -125,15 +125,15 @@ message LuckyReq {
 
 message LuckyAck {
   string action = 1;
-  map<int32, int64> reward = 2; // 奖励物品
+  map<int32, int64> items = 2; // 奖励物品
   int32 count = 3;              // 今日已抽签次数
 }
 
 // ===== 注册活动 (register) =====
 message RegisterPanelAck {
   int32 status = 1;     // 0未领取 1普通领取 2看广告翻倍领取
-  map<int32, int64> normal_vals = 2;
-  map<int32, int64> double_vals = 3;
+  map<int32, int64> normal_items = 2;
+  map<int32, int64> double_items = 3;
 }
 
 message RegisterRewardReq {
@@ -142,21 +142,20 @@ message RegisterRewardReq {
 
 message RegisterRewardAck {
   string action = 1; // "normal" 或 "video"
-  map<int32, int64> vals = 2;
+  map<int32, int64> items = 2;
 }
 
 // ===== 参与活动 (engage) =====
 message EngagePanelAck {
-  int32 status = 1; 
-  int32 goal = 2;
-  int32 cur_count = 3; //当前局数
-  int32 match_rem = 4;
-  int32 video_rem = 5;
-  repeated EngageWheelRewardCfg wheel = 6;  
+  int32 goal = 1;
+  int32 cur_count = 2; //当前局数
+  int32 match_rem = 3;
+  int32 video_rem = 4;
+  repeated EngageWheelRewardCfg wheel = 5;  
 }
 
 message EngageWheelRewardCfg {
-  map<int32, int64> vals = 1;
+  map<int32, int64> items = 1;
   int64 prob = 2; // integer weight
 }
 
@@ -166,7 +165,9 @@ message EngageRewardReq {
 
 message EngageRewardAck {
   string action = 1; // "wheel" or "video"
-  map<int32, int64> vals = 2;
+  int32 match_rem = 2;
+  int32 video_rem = 3;
+  map<int32, int64> items = 4;
 }
 
 // ===== 破产礼包活动 (bankrupt) =====
@@ -183,7 +184,7 @@ message BankruptPackageInfo {
   int32 price_orig = 2; // 原价（分）
   int32 price_disc = 3; // 折扣价（分）
   int32 bonus_rate = 4; // 加赠百分比
-  map<int32, int64> vals = 5; // 奖励道具
+  map<int32, int64> items = 5; // 奖励道具
 }
 
 // ===== 折扣礼包活动 (discount) =====
@@ -200,7 +201,7 @@ message DiscountPackageInfo {
   int32 price_orig = 2; // 原价（分）
   int32 price_disc = 3; // 折扣价（分）
   int32 bonus_rate = 4; // 加赠百分比
-  map<int32, int64> vals = 5; // 奖励道具
+  map<int32, int64> items = 5; // 奖励道具
   bool purchased = 6; // 是否已购买
 }
 
@@ -215,7 +216,7 @@ message IcebreakerPackageInfo {
   int32 price_orig = 2; // 原价（分）
   int32 price_disc = 3; // 折扣价（分）
   int32 bonus_rate = 4; // 加赠百分比
-  map<int32, int64> vals = 5; // 奖励道具
+  map<int32, int64> items = 5; // 奖励道具
 }
 
 // ===== 通用购买请求/响应 (bankrupt, discount, icebreaker) =====
@@ -240,7 +241,7 @@ message MealtimeReq {
 
 message MealtimeAck {
   string action = 1;
-  map<int32, int64> reward = 2; // 奖励物品
+  map<int32, int64> items = 2; // 奖励物品
   int32 lunch = 3;              // 午间是否已领取
   int32 dinner = 4;             // 晚间是否已领取
 }

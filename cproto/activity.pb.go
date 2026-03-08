@@ -611,7 +611,7 @@ type InviteRewardState struct {
 	Finished      bool                   `protobuf:"varint,3,opt,name=finished,proto3" json:"finished,omitempty"`
 	Got           bool                   `protobuf:"varint,4,opt,name=got,proto3" json:"got,omitempty"`
 	Available     bool                   `protobuf:"varint,5,opt,name=available,proto3" json:"available,omitempty"`
-	Vals          map[int32]int64        `protobuf:"bytes,6,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Items         map[int32]int64        `protobuf:"bytes,6,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -681,9 +681,9 @@ func (x *InviteRewardState) GetAvailable() bool {
 	return false
 }
 
-func (x *InviteRewardState) GetVals() map[int32]int64 {
+func (x *InviteRewardState) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Vals
+		return x.Items
 	}
 	return nil
 }
@@ -787,7 +787,7 @@ func (x *InviteRewardReq) GetIdx() int32 {
 type InviteRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Idx           int32                  `protobuf:"varint,1,opt,name=idx,proto3" json:"idx,omitempty"`
-	Vals          map[int32]int64        `protobuf:"bytes,2,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -829,9 +829,9 @@ func (x *InviteRewardAck) GetIdx() int32 {
 	return 0
 }
 
-func (x *InviteRewardAck) GetVals() map[int32]int64 {
+func (x *InviteRewardAck) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Vals
+		return x.Items
 	}
 	return nil
 }
@@ -989,7 +989,7 @@ type RedpacketAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SenderUid     string                 `protobuf:"bytes,1,opt,name=sender_uid,json=senderUid,proto3" json:"sender_uid,omitempty"` // 发送人UID
 	Action        string                 `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`
-	Reward        map[int32]int64        `protobuf:"bytes,3,rep,name=reward,proto3" json:"reward,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
+	Items         map[int32]int64        `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1038,9 +1038,9 @@ func (x *RedpacketAck) GetAction() string {
 	return ""
 }
 
-func (x *RedpacketAck) GetReward() map[int32]int64 {
+func (x *RedpacketAck) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Reward
+		return x.Items
 	}
 	return nil
 }
@@ -1137,8 +1137,8 @@ func (x *LuckyReq) GetAction() string {
 type LuckyAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
-	Reward        map[int32]int64        `protobuf:"bytes,2,rep,name=reward,proto3" json:"reward,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
-	Count         int32                  `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`                                                                              // 今日已抽签次数
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
+	Count         int32                  `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`                                                                            // 今日已抽签次数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1180,9 +1180,9 @@ func (x *LuckyAck) GetAction() string {
 	return ""
 }
 
-func (x *LuckyAck) GetReward() map[int32]int64 {
+func (x *LuckyAck) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Reward
+		return x.Items
 	}
 	return nil
 }
@@ -1198,8 +1198,8 @@ func (x *LuckyAck) GetCount() int32 {
 type RegisterPanelAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"` // 0未领取 1普通领取 2看广告翻倍领取
-	NormalVals    map[int32]int64        `protobuf:"bytes,2,rep,name=normal_vals,json=normalVals,proto3" json:"normal_vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	DoubleVals    map[int32]int64        `protobuf:"bytes,3,rep,name=double_vals,json=doubleVals,proto3" json:"double_vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	NormalItems   map[int32]int64        `protobuf:"bytes,2,rep,name=normal_items,json=normalItems,proto3" json:"normal_items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	DoubleItems   map[int32]int64        `protobuf:"bytes,3,rep,name=double_items,json=doubleItems,proto3" json:"double_items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1241,16 +1241,16 @@ func (x *RegisterPanelAck) GetStatus() int32 {
 	return 0
 }
 
-func (x *RegisterPanelAck) GetNormalVals() map[int32]int64 {
+func (x *RegisterPanelAck) GetNormalItems() map[int32]int64 {
 	if x != nil {
-		return x.NormalVals
+		return x.NormalItems
 	}
 	return nil
 }
 
-func (x *RegisterPanelAck) GetDoubleVals() map[int32]int64 {
+func (x *RegisterPanelAck) GetDoubleItems() map[int32]int64 {
 	if x != nil {
-		return x.DoubleVals
+		return x.DoubleItems
 	}
 	return nil
 }
@@ -1302,7 +1302,7 @@ func (x *RegisterRewardReq) GetAction() string {
 type RegisterRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // "normal" 或 "video"
-	Vals          map[int32]int64        `protobuf:"bytes,2,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1344,9 +1344,9 @@ func (x *RegisterRewardAck) GetAction() string {
 	return ""
 }
 
-func (x *RegisterRewardAck) GetVals() map[int32]int64 {
+func (x *RegisterRewardAck) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Vals
+		return x.Items
 	}
 	return nil
 }
@@ -1354,12 +1354,11 @@ func (x *RegisterRewardAck) GetVals() map[int32]int64 {
 // ===== 参与活动 (engage) =====
 type EngagePanelAck struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
-	Status        int32                   `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
-	Goal          int32                   `protobuf:"varint,2,opt,name=goal,proto3" json:"goal,omitempty"`
-	CurCount      int32                   `protobuf:"varint,3,opt,name=cur_count,json=curCount,proto3" json:"cur_count,omitempty"` //当前局数
-	MatchRem      int32                   `protobuf:"varint,4,opt,name=match_rem,json=matchRem,proto3" json:"match_rem,omitempty"`
-	VideoRem      int32                   `protobuf:"varint,5,opt,name=video_rem,json=videoRem,proto3" json:"video_rem,omitempty"`
-	Wheel         []*EngageWheelRewardCfg `protobuf:"bytes,6,rep,name=wheel,proto3" json:"wheel,omitempty"`
+	Goal          int32                   `protobuf:"varint,1,opt,name=goal,proto3" json:"goal,omitempty"`
+	CurCount      int32                   `protobuf:"varint,2,opt,name=cur_count,json=curCount,proto3" json:"cur_count,omitempty"` //当前局数
+	MatchRem      int32                   `protobuf:"varint,3,opt,name=match_rem,json=matchRem,proto3" json:"match_rem,omitempty"`
+	VideoRem      int32                   `protobuf:"varint,4,opt,name=video_rem,json=videoRem,proto3" json:"video_rem,omitempty"`
+	Wheel         []*EngageWheelRewardCfg `protobuf:"bytes,5,rep,name=wheel,proto3" json:"wheel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1392,13 +1391,6 @@ func (x *EngagePanelAck) ProtoReflect() protoreflect.Message {
 // Deprecated: Use EngagePanelAck.ProtoReflect.Descriptor instead.
 func (*EngagePanelAck) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *EngagePanelAck) GetStatus() int32 {
-	if x != nil {
-		return x.Status
-	}
-	return 0
 }
 
 func (x *EngagePanelAck) GetGoal() int32 {
@@ -1438,7 +1430,7 @@ func (x *EngagePanelAck) GetWheel() []*EngageWheelRewardCfg {
 
 type EngageWheelRewardCfg struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Vals          map[int32]int64        `protobuf:"bytes,1,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Items         map[int32]int64        `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	Prob          int64                  `protobuf:"varint,2,opt,name=prob,proto3" json:"prob,omitempty"` // integer weight
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1474,9 +1466,9 @@ func (*EngageWheelRewardCfg) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{26}
 }
 
-func (x *EngageWheelRewardCfg) GetVals() map[int32]int64 {
+func (x *EngageWheelRewardCfg) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Vals
+		return x.Items
 	}
 	return nil
 }
@@ -1535,7 +1527,9 @@ func (x *EngageRewardReq) GetAction() string {
 type EngageRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // "wheel" or "video"
-	Vals          map[int32]int64        `protobuf:"bytes,2,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	MatchRem      int32                  `protobuf:"varint,2,opt,name=match_rem,json=matchRem,proto3" json:"match_rem,omitempty"`
+	VideoRem      int32                  `protobuf:"varint,3,opt,name=video_rem,json=videoRem,proto3" json:"video_rem,omitempty"`
+	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1577,9 +1571,23 @@ func (x *EngageRewardAck) GetAction() string {
 	return ""
 }
 
-func (x *EngageRewardAck) GetVals() map[int32]int64 {
+func (x *EngageRewardAck) GetMatchRem() int32 {
 	if x != nil {
-		return x.Vals
+		return x.MatchRem
+	}
+	return 0
+}
+
+func (x *EngageRewardAck) GetVideoRem() int32 {
+	if x != nil {
+		return x.VideoRem
+	}
+	return 0
+}
+
+func (x *EngageRewardAck) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
 	}
 	return nil
 }
@@ -1664,10 +1672,10 @@ func (x *BankruptPanelAck) GetTriggerCount() int32 {
 type BankruptPackageInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                 // 原价（分）
-	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                 // 折扣价（分）
-	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                 // 加赠百分比
-	Vals          map[int32]int64        `protobuf:"bytes,5,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
+	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                   // 原价（分）
+	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                   // 折扣价（分）
+	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                   // 加赠百分比
+	Items         map[int32]int64        `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1730,9 +1738,9 @@ func (x *BankruptPackageInfo) GetBonusRate() int32 {
 	return 0
 }
 
-func (x *BankruptPackageInfo) GetVals() map[int32]int64 {
+func (x *BankruptPackageInfo) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Vals
+		return x.Items
 	}
 	return nil
 }
@@ -1817,11 +1825,11 @@ func (x *DiscountPanelAck) GetEnabled() bool {
 type DiscountPackageInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                 // 原价（分）
-	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                 // 折扣价（分）
-	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                 // 加赠百分比
-	Vals          map[int32]int64        `protobuf:"bytes,5,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
-	Purchased     bool                   `protobuf:"varint,6,opt,name=purchased,proto3" json:"purchased,omitempty"`                                                                  // 是否已购买
+	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                   // 原价（分）
+	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                   // 折扣价（分）
+	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                   // 加赠百分比
+	Items         map[int32]int64        `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
+	Purchased     bool                   `protobuf:"varint,6,opt,name=purchased,proto3" json:"purchased,omitempty"`                                                                    // 是否已购买
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1884,9 +1892,9 @@ func (x *DiscountPackageInfo) GetBonusRate() int32 {
 	return 0
 }
 
-func (x *DiscountPackageInfo) GetVals() map[int32]int64 {
+func (x *DiscountPackageInfo) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Vals
+		return x.Items
 	}
 	return nil
 }
@@ -1954,10 +1962,10 @@ func (x *IcebreakerPanel) GetPurchased() bool {
 type IcebreakerPackageInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                 // 原价（分）
-	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                 // 折扣价（分）
-	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                 // 加赠百分比
-	Vals          map[int32]int64        `protobuf:"bytes,5,rep,name=vals,proto3" json:"vals,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
+	PriceOrig     int32                  `protobuf:"varint,2,opt,name=price_orig,json=priceOrig,proto3" json:"price_orig,omitempty"`                                                   // 原价（分）
+	PriceDisc     int32                  `protobuf:"varint,3,opt,name=price_disc,json=priceDisc,proto3" json:"price_disc,omitempty"`                                                   // 折扣价（分）
+	BonusRate     int32                  `protobuf:"varint,4,opt,name=bonus_rate,json=bonusRate,proto3" json:"bonus_rate,omitempty"`                                                   // 加赠百分比
+	Items         map[int32]int64        `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励道具
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2020,9 +2028,9 @@ func (x *IcebreakerPackageInfo) GetBonusRate() int32 {
 	return 0
 }
 
-func (x *IcebreakerPackageInfo) GetVals() map[int32]int64 {
+func (x *IcebreakerPackageInfo) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Vals
+		return x.Items
 	}
 	return nil
 }
@@ -2224,9 +2232,9 @@ func (x *MealtimeReq) GetAction() string {
 type MealtimeAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
-	Reward        map[int32]int64        `protobuf:"bytes,2,rep,name=reward,proto3" json:"reward,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
-	Lunch         int32                  `protobuf:"varint,3,opt,name=lunch,proto3" json:"lunch,omitempty"`                                                                              // 午间是否已领取
-	Dinner        int32                  `protobuf:"varint,4,opt,name=dinner,proto3" json:"dinner,omitempty"`                                                                            // 晚间是否已领取
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
+	Lunch         int32                  `protobuf:"varint,3,opt,name=lunch,proto3" json:"lunch,omitempty"`                                                                            // 午间是否已领取
+	Dinner        int32                  `protobuf:"varint,4,opt,name=dinner,proto3" json:"dinner,omitempty"`                                                                          // 晚间是否已领取
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2268,9 +2276,9 @@ func (x *MealtimeAck) GetAction() string {
 	return ""
 }
 
-func (x *MealtimeAck) GetReward() map[int32]int64 {
+func (x *MealtimeAck) GetItems() map[int32]int64 {
 	if x != nil {
-		return x.Reward
+		return x.Items
 	}
 	return nil
 }
@@ -2338,15 +2346,16 @@ const file_activity_proto_rawDesc = "" +
 	"\n" +
 	"invite_cnt\x18\x02 \x01(\x05R\tinviteCnt\x123\n" +
 	"\arewards\x18\x03 \x03(\v2\x19.cproto.InviteRewardStateR\arewards\x12(\n" +
-	"\x05users\x18\x04 \x03(\v2\x12.cproto.InviteUserR\x05users\"\xf7\x01\n" +
+	"\x05users\x18\x04 \x03(\v2\x12.cproto.InviteUserR\x05users\"\xfb\x01\n" +
 	"\x11InviteRewardState\x12\x10\n" +
 	"\x03idx\x18\x01 \x01(\x05R\x03idx\x12\x12\n" +
 	"\x04cond\x18\x02 \x01(\x05R\x04cond\x12\x1a\n" +
 	"\bfinished\x18\x03 \x01(\bR\bfinished\x12\x10\n" +
 	"\x03got\x18\x04 \x01(\bR\x03got\x12\x1c\n" +
-	"\tavailable\x18\x05 \x01(\bR\tavailable\x127\n" +
-	"\x04vals\x18\x06 \x03(\v2#.cproto.InviteRewardState.ValsEntryR\x04vals\x1a7\n" +
-	"\tValsEntry\x12\x10\n" +
+	"\tavailable\x18\x05 \x01(\bR\tavailable\x12:\n" +
+	"\x05items\x18\x06 \x03(\v2$.cproto.InviteRewardState.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"@\n" +
 	"\n" +
@@ -2354,11 +2363,12 @@ const file_activity_proto_rawDesc = "" +
 	"\x06avatar\x18\x01 \x01(\tR\x06avatar\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\"#\n" +
 	"\x0fInviteRewardReq\x12\x10\n" +
-	"\x03idx\x18\x01 \x01(\x05R\x03idx\"\x93\x01\n" +
+	"\x03idx\x18\x01 \x01(\x05R\x03idx\"\x97\x01\n" +
 	"\x0fInviteRewardAck\x12\x10\n" +
-	"\x03idx\x18\x01 \x01(\x05R\x03idx\x125\n" +
-	"\x04vals\x18\x02 \x03(\v2!.cproto.InviteRewardAck.ValsEntryR\x04vals\x1a7\n" +
-	"\tValsEntry\x12\x10\n" +
+	"\x03idx\x18\x01 \x01(\x05R\x03idx\x128\n" +
+	"\x05items\x18\x02 \x03(\v2\".cproto.InviteRewardAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"+\n" +
 	"\x11RedpacketPanelAck\x12\x16\n" +
@@ -2370,65 +2380,69 @@ const file_activity_proto_rawDesc = "" +
 	"\fRedpacketReq\x12\x16\n" +
 	"\x06action\x18\x01 \x01(\tR\x06action\x12\x1d\n" +
 	"\n" +
-	"sender_uid\x18\x02 \x01(\tR\tsenderUid\"\xba\x01\n" +
+	"sender_uid\x18\x02 \x01(\tR\tsenderUid\"\xb6\x01\n" +
 	"\fRedpacketAck\x12\x1d\n" +
 	"\n" +
 	"sender_uid\x18\x01 \x01(\tR\tsenderUid\x12\x16\n" +
-	"\x06action\x18\x02 \x01(\tR\x06action\x128\n" +
-	"\x06reward\x18\x03 \x03(\v2 .cproto.RedpacketAck.RewardEntryR\x06reward\x1a9\n" +
-	"\vRewardEntry\x12\x10\n" +
+	"\x06action\x18\x02 \x01(\tR\x06action\x125\n" +
+	"\x05items\x18\x03 \x03(\v2\x1f.cproto.RedpacketAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"%\n" +
 	"\rLuckyPanelAck\x12\x14\n" +
 	"\x05count\x18\x01 \x01(\x05R\x05count\"\"\n" +
 	"\bLuckyReq\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\"\xa9\x01\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\xa5\x01\n" +
 	"\bLuckyAck\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\x124\n" +
-	"\x06reward\x18\x02 \x03(\v2\x1c.cproto.LuckyAck.RewardEntryR\x06reward\x12\x14\n" +
-	"\x05count\x18\x03 \x01(\x05R\x05count\x1a9\n" +
-	"\vRewardEntry\x12\x10\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x121\n" +
+	"\x05items\x18\x02 \x03(\v2\x1b.cproto.LuckyAck.ItemsEntryR\x05items\x12\x14\n" +
+	"\x05count\x18\x03 \x01(\x05R\x05count\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xbe\x02\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xc6\x02\n" +
 	"\x10RegisterPanelAck\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\x05R\x06status\x12I\n" +
-	"\vnormal_vals\x18\x02 \x03(\v2(.cproto.RegisterPanelAck.NormalValsEntryR\n" +
-	"normalVals\x12I\n" +
-	"\vdouble_vals\x18\x03 \x03(\v2(.cproto.RegisterPanelAck.DoubleValsEntryR\n" +
-	"doubleVals\x1a=\n" +
-	"\x0fNormalValsEntry\x12\x10\n" +
+	"\x06status\x18\x01 \x01(\x05R\x06status\x12L\n" +
+	"\fnormal_items\x18\x02 \x03(\v2).cproto.RegisterPanelAck.NormalItemsEntryR\vnormalItems\x12L\n" +
+	"\fdouble_items\x18\x03 \x03(\v2).cproto.RegisterPanelAck.DoubleItemsEntryR\vdoubleItems\x1a>\n" +
+	"\x10NormalItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
-	"\x0fDoubleValsEntry\x12\x10\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a>\n" +
+	"\x10DoubleItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"+\n" +
 	"\x11RegisterRewardReq\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\"\x9d\x01\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\xa1\x01\n" +
 	"\x11RegisterRewardAck\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\x127\n" +
-	"\x04vals\x18\x02 \x03(\v2#.cproto.RegisterRewardAck.ValsEntryR\x04vals\x1a7\n" +
-	"\tValsEntry\x12\x10\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x12:\n" +
+	"\x05items\x18\x02 \x03(\v2$.cproto.RegisterRewardAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xc7\x01\n" +
-	"\x0eEngagePanelAck\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\x05R\x06status\x12\x12\n" +
-	"\x04goal\x18\x02 \x01(\x05R\x04goal\x12\x1b\n" +
-	"\tcur_count\x18\x03 \x01(\x05R\bcurCount\x12\x1b\n" +
-	"\tmatch_rem\x18\x04 \x01(\x05R\bmatchRem\x12\x1b\n" +
-	"\tvideo_rem\x18\x05 \x01(\x05R\bvideoRem\x122\n" +
-	"\x05wheel\x18\x06 \x03(\v2\x1c.cproto.EngageWheelRewardCfgR\x05wheel\"\x9f\x01\n" +
-	"\x14EngageWheelRewardCfg\x12:\n" +
-	"\x04vals\x18\x01 \x03(\v2&.cproto.EngageWheelRewardCfg.ValsEntryR\x04vals\x12\x12\n" +
-	"\x04prob\x18\x02 \x01(\x03R\x04prob\x1a7\n" +
-	"\tValsEntry\x12\x10\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xaf\x01\n" +
+	"\x0eEngagePanelAck\x12\x12\n" +
+	"\x04goal\x18\x01 \x01(\x05R\x04goal\x12\x1b\n" +
+	"\tcur_count\x18\x02 \x01(\x05R\bcurCount\x12\x1b\n" +
+	"\tmatch_rem\x18\x03 \x01(\x05R\bmatchRem\x12\x1b\n" +
+	"\tvideo_rem\x18\x04 \x01(\x05R\bvideoRem\x122\n" +
+	"\x05wheel\x18\x05 \x03(\v2\x1c.cproto.EngageWheelRewardCfgR\x05wheel\"\xa3\x01\n" +
+	"\x14EngageWheelRewardCfg\x12=\n" +
+	"\x05items\x18\x01 \x03(\v2'.cproto.EngageWheelRewardCfg.ItemsEntryR\x05items\x12\x12\n" +
+	"\x04prob\x18\x02 \x01(\x03R\x04prob\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\")\n" +
 	"\x0fEngageRewardReq\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\"\x99\x01\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\xd7\x01\n" +
 	"\x0fEngageRewardAck\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\x125\n" +
-	"\x04vals\x18\x02 \x03(\v2!.cproto.EngageRewardAck.ValsEntryR\x04vals\x1a7\n" +
-	"\tValsEntry\x12\x10\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x12\x1b\n" +
+	"\tmatch_rem\x18\x02 \x01(\x05R\bmatchRem\x12\x1b\n" +
+	"\tvideo_rem\x18\x03 \x01(\x05R\bvideoRem\x128\n" +
+	"\x05items\x18\x04 \x03(\v2\".cproto.EngageRewardAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xf8\x01\n" +
 	"\x10BankruptPanelAck\x12,\n" +
@@ -2436,7 +2450,7 @@ const file_activity_proto_rawDesc = "" +
 	"\x11remaining_seconds\x18\x02 \x01(\x05R\x10remainingSeconds\x127\n" +
 	"\bpackages\x18\x03 \x03(\v2\x1b.cproto.BankruptPackageInfoR\bpackages\x12+\n" +
 	"\x11purchased_package\x18\x04 \x01(\x05R\x10purchasedPackage\x12#\n" +
-	"\rtrigger_count\x18\x05 \x01(\x05R\ftriggerCount\"\xf6\x01\n" +
+	"\rtrigger_count\x18\x05 \x01(\x05R\ftriggerCount\"\xfa\x01\n" +
 	"\x13BankruptPackageInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
 	"\n" +
@@ -2444,9 +2458,10 @@ const file_activity_proto_rawDesc = "" +
 	"\n" +
 	"price_disc\x18\x03 \x01(\x05R\tpriceDisc\x12\x1d\n" +
 	"\n" +
-	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x129\n" +
-	"\x04vals\x18\x05 \x03(\v2%.cproto.BankruptPackageInfo.ValsEntryR\x04vals\x1a7\n" +
-	"\tValsEntry\x12\x10\n" +
+	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x12<\n" +
+	"\x05items\x18\x05 \x03(\v2&.cproto.BankruptPackageInfo.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xe6\x01\n" +
 	"\x10DiscountPanelAck\x127\n" +
@@ -2454,7 +2469,7 @@ const file_activity_proto_rawDesc = "" +
 	"\x0fdaily_purchased\x18\x02 \x01(\bR\x0edailyPurchased\x12)\n" +
 	"\x10weekly_purchased\x18\x03 \x01(\bR\x0fweeklyPurchased\x12+\n" +
 	"\x11monthly_purchased\x18\x04 \x01(\bR\x10monthlyPurchased\x12\x18\n" +
-	"\aenabled\x18\x05 \x01(\bR\aenabled\"\x94\x02\n" +
+	"\aenabled\x18\x05 \x01(\bR\aenabled\"\x98\x02\n" +
 	"\x13DiscountPackageInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
 	"\n" +
@@ -2462,15 +2477,16 @@ const file_activity_proto_rawDesc = "" +
 	"\n" +
 	"price_disc\x18\x03 \x01(\x05R\tpriceDisc\x12\x1d\n" +
 	"\n" +
-	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x129\n" +
-	"\x04vals\x18\x05 \x03(\v2%.cproto.DiscountPackageInfo.ValsEntryR\x04vals\x12\x1c\n" +
-	"\tpurchased\x18\x06 \x01(\bR\tpurchased\x1a7\n" +
-	"\tValsEntry\x12\x10\n" +
+	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x12<\n" +
+	"\x05items\x18\x05 \x03(\v2&.cproto.DiscountPackageInfo.ItemsEntryR\x05items\x12\x1c\n" +
+	"\tpurchased\x18\x06 \x01(\bR\tpurchased\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"j\n" +
 	"\x0fIcebreakerPanel\x129\n" +
 	"\bpackages\x18\x01 \x03(\v2\x1d.cproto.IcebreakerPackageInfoR\bpackages\x12\x1c\n" +
-	"\tpurchased\x18\x02 \x01(\bR\tpurchased\"\xfa\x01\n" +
+	"\tpurchased\x18\x02 \x01(\bR\tpurchased\"\xfe\x01\n" +
 	"\x15IcebreakerPackageInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
 	"\n" +
@@ -2478,9 +2494,10 @@ const file_activity_proto_rawDesc = "" +
 	"\n" +
 	"price_disc\x18\x03 \x01(\x05R\tpriceDisc\x12\x1d\n" +
 	"\n" +
-	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x12;\n" +
-	"\x04vals\x18\x05 \x03(\v2'.cproto.IcebreakerPackageInfo.ValsEntryR\x04vals\x1a7\n" +
-	"\tValsEntry\x12\x10\n" +
+	"bonus_rate\x18\x04 \x01(\x05R\tbonusRate\x12>\n" +
+	"\x05items\x18\x05 \x03(\v2(.cproto.IcebreakerPackageInfo.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"/\n" +
 	"\x0eActPurchaseReq\x12\x1d\n" +
@@ -2498,13 +2515,14 @@ const file_activity_proto_rawDesc = "" +
 	"\x05lunch\x18\x01 \x01(\x05R\x05lunch\x12\x16\n" +
 	"\x06dinner\x18\x02 \x01(\x05R\x06dinner\"%\n" +
 	"\vMealtimeReq\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\"\xc7\x01\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\xc3\x01\n" +
 	"\vMealtimeAck\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\x127\n" +
-	"\x06reward\x18\x02 \x03(\v2\x1f.cproto.MealtimeAck.RewardEntryR\x06reward\x12\x14\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x124\n" +
+	"\x05items\x18\x02 \x03(\v2\x1e.cproto.MealtimeAck.ItemsEntryR\x05items\x12\x14\n" +
 	"\x05lunch\x18\x03 \x01(\x05R\x05lunch\x12\x16\n" +
-	"\x06dinner\x18\x04 \x01(\x05R\x06dinner\x1a9\n" +
-	"\vRewardEntry\x12\x10\n" +
+	"\x06dinner\x18\x04 \x01(\x05R\x06dinner\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
@@ -2563,20 +2581,20 @@ var file_activity_proto_goTypes = []any{
 	(*MealtimeReq)(nil),           // 38: cproto.MealtimeReq
 	(*MealtimeAck)(nil),           // 39: cproto.MealtimeAck
 	nil,                           // 40: cproto.PurchasePkgAck.ItemsEntry
-	nil,                           // 41: cproto.InviteRewardState.ValsEntry
-	nil,                           // 42: cproto.InviteRewardAck.ValsEntry
-	nil,                           // 43: cproto.RedpacketAck.RewardEntry
-	nil,                           // 44: cproto.LuckyAck.RewardEntry
-	nil,                           // 45: cproto.RegisterPanelAck.NormalValsEntry
-	nil,                           // 46: cproto.RegisterPanelAck.DoubleValsEntry
-	nil,                           // 47: cproto.RegisterRewardAck.ValsEntry
-	nil,                           // 48: cproto.EngageWheelRewardCfg.ValsEntry
-	nil,                           // 49: cproto.EngageRewardAck.ValsEntry
-	nil,                           // 50: cproto.BankruptPackageInfo.ValsEntry
-	nil,                           // 51: cproto.DiscountPackageInfo.ValsEntry
-	nil,                           // 52: cproto.IcebreakerPackageInfo.ValsEntry
+	nil,                           // 41: cproto.InviteRewardState.ItemsEntry
+	nil,                           // 42: cproto.InviteRewardAck.ItemsEntry
+	nil,                           // 43: cproto.RedpacketAck.ItemsEntry
+	nil,                           // 44: cproto.LuckyAck.ItemsEntry
+	nil,                           // 45: cproto.RegisterPanelAck.NormalItemsEntry
+	nil,                           // 46: cproto.RegisterPanelAck.DoubleItemsEntry
+	nil,                           // 47: cproto.RegisterRewardAck.ItemsEntry
+	nil,                           // 48: cproto.EngageWheelRewardCfg.ItemsEntry
+	nil,                           // 49: cproto.EngageRewardAck.ItemsEntry
+	nil,                           // 50: cproto.BankruptPackageInfo.ItemsEntry
+	nil,                           // 51: cproto.DiscountPackageInfo.ItemsEntry
+	nil,                           // 52: cproto.IcebreakerPackageInfo.ItemsEntry
 	nil,                           // 53: cproto.ActPurchaseAck.ItemsEntry
-	nil,                           // 54: cproto.MealtimeAck.RewardEntry
+	nil,                           // 54: cproto.MealtimeAck.ItemsEntry
 	(*anypb.Any)(nil),             // 55: google.protobuf.Any
 }
 var file_activity_proto_depIdxs = []int32{
@@ -2589,24 +2607,24 @@ var file_activity_proto_depIdxs = []int32{
 	40, // 6: cproto.PurchasePkgAck.items:type_name -> cproto.PurchasePkgAck.ItemsEntry
 	11, // 7: cproto.InvitePanelAck.rewards:type_name -> cproto.InviteRewardState
 	12, // 8: cproto.InvitePanelAck.users:type_name -> cproto.InviteUser
-	41, // 9: cproto.InviteRewardState.vals:type_name -> cproto.InviteRewardState.ValsEntry
-	42, // 10: cproto.InviteRewardAck.vals:type_name -> cproto.InviteRewardAck.ValsEntry
-	43, // 11: cproto.RedpacketAck.reward:type_name -> cproto.RedpacketAck.RewardEntry
-	44, // 12: cproto.LuckyAck.reward:type_name -> cproto.LuckyAck.RewardEntry
-	45, // 13: cproto.RegisterPanelAck.normal_vals:type_name -> cproto.RegisterPanelAck.NormalValsEntry
-	46, // 14: cproto.RegisterPanelAck.double_vals:type_name -> cproto.RegisterPanelAck.DoubleValsEntry
-	47, // 15: cproto.RegisterRewardAck.vals:type_name -> cproto.RegisterRewardAck.ValsEntry
+	41, // 9: cproto.InviteRewardState.items:type_name -> cproto.InviteRewardState.ItemsEntry
+	42, // 10: cproto.InviteRewardAck.items:type_name -> cproto.InviteRewardAck.ItemsEntry
+	43, // 11: cproto.RedpacketAck.items:type_name -> cproto.RedpacketAck.ItemsEntry
+	44, // 12: cproto.LuckyAck.items:type_name -> cproto.LuckyAck.ItemsEntry
+	45, // 13: cproto.RegisterPanelAck.normal_items:type_name -> cproto.RegisterPanelAck.NormalItemsEntry
+	46, // 14: cproto.RegisterPanelAck.double_items:type_name -> cproto.RegisterPanelAck.DoubleItemsEntry
+	47, // 15: cproto.RegisterRewardAck.items:type_name -> cproto.RegisterRewardAck.ItemsEntry
 	26, // 16: cproto.EngagePanelAck.wheel:type_name -> cproto.EngageWheelRewardCfg
-	48, // 17: cproto.EngageWheelRewardCfg.vals:type_name -> cproto.EngageWheelRewardCfg.ValsEntry
-	49, // 18: cproto.EngageRewardAck.vals:type_name -> cproto.EngageRewardAck.ValsEntry
+	48, // 17: cproto.EngageWheelRewardCfg.items:type_name -> cproto.EngageWheelRewardCfg.ItemsEntry
+	49, // 18: cproto.EngageRewardAck.items:type_name -> cproto.EngageRewardAck.ItemsEntry
 	30, // 19: cproto.BankruptPanelAck.packages:type_name -> cproto.BankruptPackageInfo
-	50, // 20: cproto.BankruptPackageInfo.vals:type_name -> cproto.BankruptPackageInfo.ValsEntry
+	50, // 20: cproto.BankruptPackageInfo.items:type_name -> cproto.BankruptPackageInfo.ItemsEntry
 	32, // 21: cproto.DiscountPanelAck.packages:type_name -> cproto.DiscountPackageInfo
-	51, // 22: cproto.DiscountPackageInfo.vals:type_name -> cproto.DiscountPackageInfo.ValsEntry
+	51, // 22: cproto.DiscountPackageInfo.items:type_name -> cproto.DiscountPackageInfo.ItemsEntry
 	34, // 23: cproto.IcebreakerPanel.packages:type_name -> cproto.IcebreakerPackageInfo
-	52, // 24: cproto.IcebreakerPackageInfo.vals:type_name -> cproto.IcebreakerPackageInfo.ValsEntry
+	52, // 24: cproto.IcebreakerPackageInfo.items:type_name -> cproto.IcebreakerPackageInfo.ItemsEntry
 	53, // 25: cproto.ActPurchaseAck.items:type_name -> cproto.ActPurchaseAck.ItemsEntry
-	54, // 26: cproto.MealtimeAck.reward:type_name -> cproto.MealtimeAck.RewardEntry
+	54, // 26: cproto.MealtimeAck.items:type_name -> cproto.MealtimeAck.ItemsEntry
 	27, // [27:27] is the sub-list for method output_type
 	27, // [27:27] is the sub-list for method input_type
 	27, // [27:27] is the sub-list for extension type_name
