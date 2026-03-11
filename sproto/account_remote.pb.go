@@ -430,6 +430,207 @@ func (x *ChangeItemsAck) GetItems() map[int32]int64 {
 	return nil
 }
 
+// 新手保护统计
+type GetNewbieStatsReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetNewbieStatsReq) Reset() {
+	*x = GetNewbieStatsReq{}
+	mi := &file_account_remote_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetNewbieStatsReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetNewbieStatsReq) ProtoMessage() {}
+
+func (x *GetNewbieStatsReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetNewbieStatsReq.ProtoReflect.Descriptor instead.
+func (*GetNewbieStatsReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetNewbieStatsReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+type GetNewbieStatsAck struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	MatchCount     int32                  `protobuf:"varint,1,opt,name=match_count,json=matchCount,proto3" json:"match_count,omitempty"`             // lifetime总对局数
+	Pressure       int32                  `protobuf:"varint,2,opt,name=pressure,proto3" json:"pressure,omitempty"`                                   // 压力值(连输数)
+	ProtectedCount int32                  `protobuf:"varint,3,opt,name=protected_count,json=protectedCount,proto3" json:"protected_count,omitempty"` // 已消耗的新手保护局数
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetNewbieStatsAck) Reset() {
+	*x = GetNewbieStatsAck{}
+	mi := &file_account_remote_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetNewbieStatsAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetNewbieStatsAck) ProtoMessage() {}
+
+func (x *GetNewbieStatsAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetNewbieStatsAck.ProtoReflect.Descriptor instead.
+func (*GetNewbieStatsAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetNewbieStatsAck) GetMatchCount() int32 {
+	if x != nil {
+		return x.MatchCount
+	}
+	return 0
+}
+
+func (x *GetNewbieStatsAck) GetPressure() int32 {
+	if x != nil {
+		return x.Pressure
+	}
+	return 0
+}
+
+func (x *GetNewbieStatsAck) GetProtectedCount() int32 {
+	if x != nil {
+		return x.ProtectedCount
+	}
+	return 0
+}
+
+type UpdateNewbieStatsReq struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Uid             string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Win             bool                   `protobuf:"varint,2,opt,name=win,proto3" json:"win,omitempty"`                                                  // 本局是否赢
+	InProtectedRoom bool                   `protobuf:"varint,3,opt,name=in_protected_room,json=inProtectedRoom,proto3" json:"in_protected_room,omitempty"` // 是否在新手/初级场保护局内
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *UpdateNewbieStatsReq) Reset() {
+	*x = UpdateNewbieStatsReq{}
+	mi := &file_account_remote_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateNewbieStatsReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNewbieStatsReq) ProtoMessage() {}
+
+func (x *UpdateNewbieStatsReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNewbieStatsReq.ProtoReflect.Descriptor instead.
+func (*UpdateNewbieStatsReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateNewbieStatsReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *UpdateNewbieStatsReq) GetWin() bool {
+	if x != nil {
+		return x.Win
+	}
+	return false
+}
+
+func (x *UpdateNewbieStatsReq) GetInProtectedRoom() bool {
+	if x != nil {
+		return x.InProtectedRoom
+	}
+	return false
+}
+
+type UpdateNewbieStatsAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateNewbieStatsAck) Reset() {
+	*x = UpdateNewbieStatsAck{}
+	mi := &file_account_remote_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateNewbieStatsAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNewbieStatsAck) ProtoMessage() {}
+
+func (x *UpdateNewbieStatsAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNewbieStatsAck.ProtoReflect.Descriptor instead.
+func (*UpdateNewbieStatsAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{11}
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -471,7 +672,19 @@ const file_account_remote_proto_rawDesc = "" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../sprotob\x06proto3"
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"%\n" +
+	"\x11GetNewbieStatsReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"y\n" +
+	"\x11GetNewbieStatsAck\x12\x1f\n" +
+	"\vmatch_count\x18\x01 \x01(\x05R\n" +
+	"matchCount\x12\x1a\n" +
+	"\bpressure\x18\x02 \x01(\x05R\bpressure\x12'\n" +
+	"\x0fprotected_count\x18\x03 \x01(\x05R\x0eprotectedCount\"f\n" +
+	"\x14UpdateNewbieStatsReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x10\n" +
+	"\x03win\x18\x02 \x01(\bR\x03win\x12*\n" +
+	"\x11in_protected_room\x18\x03 \x01(\bR\x0finProtectedRoom\"\x16\n" +
+	"\x14UpdateNewbieStatsAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -485,27 +698,31 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_account_remote_proto_goTypes = []any{
-	(*AccountReq)(nil),     // 0: sproto.AccountReq
-	(*AccountAck)(nil),     // 1: sproto.AccountAck
-	(*GetBotReq)(nil),      // 2: sproto.GetBotReq
-	(*GetBotAck)(nil),      // 3: sproto.GetBotAck
-	(*PlayerInfoReq)(nil),  // 4: sproto.PlayerInfoReq
-	(*PlayerInfoAck)(nil),  // 5: sproto.PlayerInfoAck
-	(*ChangeItemsReq)(nil), // 6: sproto.ChangeItemsReq
-	(*ChangeItemsAck)(nil), // 7: sproto.ChangeItemsAck
-	nil,                    // 8: sproto.PlayerInfoAck.ItemsEntry
-	nil,                    // 9: sproto.ChangeItemsReq.ItemsEntry
-	nil,                    // 10: sproto.ChangeItemsAck.ItemsEntry
-	(*anypb.Any)(nil),      // 11: google.protobuf.Any
+	(*AccountReq)(nil),           // 0: sproto.AccountReq
+	(*AccountAck)(nil),           // 1: sproto.AccountAck
+	(*GetBotReq)(nil),            // 2: sproto.GetBotReq
+	(*GetBotAck)(nil),            // 3: sproto.GetBotAck
+	(*PlayerInfoReq)(nil),        // 4: sproto.PlayerInfoReq
+	(*PlayerInfoAck)(nil),        // 5: sproto.PlayerInfoAck
+	(*ChangeItemsReq)(nil),       // 6: sproto.ChangeItemsReq
+	(*ChangeItemsAck)(nil),       // 7: sproto.ChangeItemsAck
+	(*GetNewbieStatsReq)(nil),    // 8: sproto.GetNewbieStatsReq
+	(*GetNewbieStatsAck)(nil),    // 9: sproto.GetNewbieStatsAck
+	(*UpdateNewbieStatsReq)(nil), // 10: sproto.UpdateNewbieStatsReq
+	(*UpdateNewbieStatsAck)(nil), // 11: sproto.UpdateNewbieStatsAck
+	nil,                          // 12: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 13: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 14: sproto.ChangeItemsAck.ItemsEntry
+	(*anypb.Any)(nil),            // 15: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	11, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	11, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	8,  // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	9,  // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	10, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	15, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	15, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	12, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	13, // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	14, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
 	5,  // [5:5] is the sub-list for method output_type
 	5,  // [5:5] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
@@ -524,7 +741,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

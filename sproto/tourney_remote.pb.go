@@ -7,12 +7,13 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 )
 
 const (
@@ -308,7 +309,7 @@ func (x *FDTakeTableidReq) GetGameType() string {
 
 type FDTakeTableidAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"` //桌子ID
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"` //房间ID
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -352,7 +353,7 @@ func (x *FDTakeTableidAck) GetTableid() int32 {
 
 type FDPutTableidReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"` //桌子ID
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"` //房间ID
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }

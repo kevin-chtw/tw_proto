@@ -38,7 +38,8 @@ message AddPlayerReq {
   string nickname = 5; // 玩家昵称
   string avatar = 6; // 玩家头像
   map<int32, int64> items = 7; //玩家物品
-  int32 ctrl = 8;//控制类型 0-不控制，1-赢，2-输
+  int32 ctrl = 8;      // 0-不控制 1-放分(真人赢) 2-吃分(机器人赢)，新手保护期真人传1
+  int32 bot_level = 9; // 机器人等级 0-正常 1-低智能 2-弱智
 }
 
 message CancelTableReq {

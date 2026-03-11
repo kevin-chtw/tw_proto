@@ -43,3 +43,23 @@ message ChangeItemsAck {
     string uid = 1; //用于id
     map<int32, int64> items = 2; //玩家物品
 }
+
+// 新手保护统计
+message GetNewbieStatsReq {
+  string uid = 1;
+}
+
+message GetNewbieStatsAck {
+  int32 match_count = 1;      // lifetime总对局数
+  int32 pressure = 2;         // 压力值(连输数)
+  int32 protected_count = 3;  // 已消耗的新手保护局数
+}
+
+message UpdateNewbieStatsReq {
+  string uid = 1;
+  bool win = 2;              // 本局是否赢
+  bool in_protected_room = 3; // 是否在新手/初级场保护局内
+}
+
+message UpdateNewbieStatsAck {
+}

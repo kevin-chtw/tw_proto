@@ -34,9 +34,9 @@ message FDTakeTableidReq {
 }
 
 message FDTakeTableidAck {
-  int32 tableid = 1; //桌子ID
+  int32 tableid = 1; //房间ID
 }
 
 message FDPutTableidReq {
-  int32 tableid = 1; //桌子ID
+  int32 tableid = 1; //房间ID
 }
