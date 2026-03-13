@@ -9,10 +9,15 @@ message GuandanReq {
   google.protobuf.Any req = 1;
 }
 
+// 通用响应（与 GuandanReq 对应）
+message GuandanAck {
+  google.protobuf.Any ack = 1;
+}
+
 // 卡牌定义
 message Card {
-  int32 suit = 1; // 花色: 0-黑桃, 1-红心, 2-方块, 3-梅花, 4-小王, 5-大王
-  int32 rank = 2; // 牌点: 2-14 (2,3,4,5,6,7,8,9,10,J,Q,K,A)
+  int32 suit = 1; // 花色: 0-黑桃, 1-红心, 2-方块, 3-梅花, 4-王
+  int32 rank = 2; // 牌点: 0-12 (2,3,4,5,6,7,8,9,10,J,Q,K,A), 13-小王, 14-大王
 }
 
 // 牌型定义
@@ -36,12 +41,6 @@ message GuandanPlayReq {
   repeated Card cards = 2; // 出牌列表
 }
 
-// 托管请求
-message GuandanTrustReq {
-  int32 seat = 1;    // 座位号
-  bool trust = 2;    // 是否托管
-}
-
 // 贡牌请求
 message GuandanContributeReq {
   int32 requestid = 1; // 请求ID
@@ -57,7 +56,7 @@ message GuandanReturnReq {
 // 游戏开始响应
 message GuandanGameStartAck {
   int32 banker = 1;        // 庄家座位
-  int32 current_rank = 2;  // 当前等级 (2-14)
+  int32 current_rank = 2;  // 当前等级 (0-12, 0=2 12=A)
   repeated int64 scores = 3; // 带入分
   string property = 4;     // 配置串
 }
@@ -97,11 +96,18 @@ message GuandanReturnAck {
   Card return_card = 3;  // 还牌
 }
 
+// 玩家手牌（游戏结束时展示）
+message PlayerHand {
+  int32 seat = 1;
+  repeated Card cards = 2;  // 剩余手牌
+}
+
 // 游戏结束响应
 message GuandanGameOverAck {
-  repeated int32 upgrades = 1;  // 各玩家升级数
-  int32 winner_team = 2;        // 获胜队伍 (0-无, 1-队伍1, 2-队伍2)
-  repeated int64 final_scores = 3; // 最终分数
+  repeated int32 upgrades = 1;      // 各玩家升级数
+  int32 winner_team = 2;            // 获胜队伍 (0-无, 1-队伍1, 2-队伍2)
+  repeated int64 final_scores = 3;  // 最终分数
+  repeated PlayerHand hand_cards = 4; // 各玩家剩余手牌
 }
 
 // 升级通知
