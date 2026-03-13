@@ -26,46 +26,46 @@ const (
 type CardType int32
 
 const (
-	CardType_CARD_TYPE_INVALID      CardType = 0
-	CardType_CARD_TYPE_SINGLE       CardType = 1  // 单张
-	CardType_CARD_TYPE_PAIR         CardType = 2  // 对子
-	CardType_CARD_TYPE_TRIPLE       CardType = 3  // 三同张
-	CardType_CARD_TYPE_TRIPLE_PAIR  CardType = 4  // 三带对
-	CardType_CARD_TYPE_SEQUENCE     CardType = 5  // 顺子
-	CardType_CARD_TYPE_FLUSH        CardType = 6  // 同花顺
-	CardType_CARD_TYPE_TRIPLE_CHAIN CardType = 7  // 二连三
-	CardType_CARD_TYPE_THREE_PAIRS  CardType = 8  // 三连对
-	CardType_CARD_TYPE_BOMB         CardType = 9  // 炸弹
-	CardType_CARD_TYPE_KING_BOMB    CardType = 10 // 王炸
+	CardType_INVALID      CardType = 0
+	CardType_SINGLE       CardType = 1  // 单张
+	CardType_PAIR         CardType = 2  // 对子
+	CardType_TRIPLE       CardType = 3  // 三同张
+	CardType_TRIPLE_PAIR  CardType = 4  // 三带对
+	CardType_SEQUENCE     CardType = 5  // 顺子
+	CardType_FLUSH        CardType = 6  // 同花顺
+	CardType_TRIPLE_CHAIN CardType = 7  // 二连三
+	CardType_THREE_PAIRS  CardType = 8  // 三连对
+	CardType_BOMB         CardType = 9  // 炸弹
+	CardType_KING_BOMB    CardType = 10 // 王炸
 )
 
 // Enum value maps for CardType.
 var (
 	CardType_name = map[int32]string{
-		0:  "CARD_TYPE_INVALID",
-		1:  "CARD_TYPE_SINGLE",
-		2:  "CARD_TYPE_PAIR",
-		3:  "CARD_TYPE_TRIPLE",
-		4:  "CARD_TYPE_TRIPLE_PAIR",
-		5:  "CARD_TYPE_SEQUENCE",
-		6:  "CARD_TYPE_FLUSH",
-		7:  "CARD_TYPE_TRIPLE_CHAIN",
-		8:  "CARD_TYPE_THREE_PAIRS",
-		9:  "CARD_TYPE_BOMB",
-		10: "CARD_TYPE_KING_BOMB",
+		0:  "INVALID",
+		1:  "SINGLE",
+		2:  "PAIR",
+		3:  "TRIPLE",
+		4:  "TRIPLE_PAIR",
+		5:  "SEQUENCE",
+		6:  "FLUSH",
+		7:  "TRIPLE_CHAIN",
+		8:  "THREE_PAIRS",
+		9:  "BOMB",
+		10: "KING_BOMB",
 	}
 	CardType_value = map[string]int32{
-		"CARD_TYPE_INVALID":      0,
-		"CARD_TYPE_SINGLE":       1,
-		"CARD_TYPE_PAIR":         2,
-		"CARD_TYPE_TRIPLE":       3,
-		"CARD_TYPE_TRIPLE_PAIR":  4,
-		"CARD_TYPE_SEQUENCE":     5,
-		"CARD_TYPE_FLUSH":        6,
-		"CARD_TYPE_TRIPLE_CHAIN": 7,
-		"CARD_TYPE_THREE_PAIRS":  8,
-		"CARD_TYPE_BOMB":         9,
-		"CARD_TYPE_KING_BOMB":    10,
+		"INVALID":      0,
+		"SINGLE":       1,
+		"PAIR":         2,
+		"TRIPLE":       3,
+		"TRIPLE_PAIR":  4,
+		"SEQUENCE":     5,
+		"FLUSH":        6,
+		"TRIPLE_CHAIN": 7,
+		"THREE_PAIRS":  8,
+		"BOMB":         9,
+		"KING_BOMB":    10,
 	}
 )
 
@@ -189,8 +189,8 @@ func (x *GuandanAck) GetAck() *anypb.Any {
 // 卡牌定义
 type Card struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Suit          int32                  `protobuf:"varint,1,opt,name=suit,proto3" json:"suit,omitempty"` // 花色: 0-黑桃, 1-红心, 2-方块, 3-梅花, 4-小王, 5-大王
-	Rank          int32                  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"` // 牌点: 2-14 (2,3,4,5,6,7,8,9,10,J,Q,K,A)
+	Suit          int32                  `protobuf:"varint,1,opt,name=suit,proto3" json:"suit,omitempty"` // 花色: 0-黑桃, 1-红心, 2-方块, 3-梅花, 4-王
+	Rank          int32                  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"` // 牌点: 0-12 (2,3,4,5,6,7,8,9,10,J,Q,K,A), 13-小王, 14-大王
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -402,7 +402,7 @@ func (x *GuandanReturnReq) GetCard() *Card {
 type GuandanGameStartAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Banker        int32                  `protobuf:"varint,1,opt,name=banker,proto3" json:"banker,omitempty"`                              // 庄家座位
-	CurrentRank   int32                  `protobuf:"varint,2,opt,name=current_rank,json=currentRank,proto3" json:"current_rank,omitempty"` // 当前等级 (2-14)
+	CurrentRank   int32                  `protobuf:"varint,2,opt,name=current_rank,json=currentRank,proto3" json:"current_rank,omitempty"` // 当前等级 (0-12, 0=2 12=A)
 	Scores        []int64                `protobuf:"varint,3,rep,packed,name=scores,proto3" json:"scores,omitempty"`                       // 带入分
 	Property      string                 `protobuf:"bytes,4,opt,name=property,proto3" json:"property,omitempty"`                           // 配置串
 	unknownFields protoimpl.UnknownFields
@@ -587,7 +587,7 @@ func (x *GuandanPlayAck) GetCardType() CardType {
 	if x != nil {
 		return x.CardType
 	}
-	return CardType_CARD_TYPE_INVALID
+	return CardType_INVALID
 }
 
 func (x *GuandanPlayAck) GetNextSeat() int32 {
@@ -1020,19 +1020,21 @@ const file_guandan_proto_rawDesc = "" +
 	"\x11GuandanUpgradeAck\x12\x12\n" +
 	"\x04team\x18\x01 \x01(\x05R\x04team\x12%\n" +
 	"\x0eupgrade_points\x18\x02 \x01(\x05R\rupgradePoints\x12\x19\n" +
-	"\bnew_rank\x18\x03 \x01(\x05R\anewRank*\x8d\x02\n" +
-	"\bCardType\x12\x15\n" +
-	"\x11CARD_TYPE_INVALID\x10\x00\x12\x14\n" +
-	"\x10CARD_TYPE_SINGLE\x10\x01\x12\x12\n" +
-	"\x0eCARD_TYPE_PAIR\x10\x02\x12\x14\n" +
-	"\x10CARD_TYPE_TRIPLE\x10\x03\x12\x19\n" +
-	"\x15CARD_TYPE_TRIPLE_PAIR\x10\x04\x12\x16\n" +
-	"\x12CARD_TYPE_SEQUENCE\x10\x05\x12\x13\n" +
-	"\x0fCARD_TYPE_FLUSH\x10\x06\x12\x1a\n" +
-	"\x16CARD_TYPE_TRIPLE_CHAIN\x10\a\x12\x19\n" +
-	"\x15CARD_TYPE_THREE_PAIRS\x10\b\x12\x12\n" +
-	"\x0eCARD_TYPE_BOMB\x10\t\x12\x17\n" +
-	"\x13CARD_TYPE_KING_BOMB\x10\n" +
+	"\bnew_rank\x18\x03 \x01(\x05R\anewRank*\x9f\x01\n" +
+	"\bCardType\x12\v\n" +
+	"\aINVALID\x10\x00\x12\n" +
+	"\n" +
+	"\x06SINGLE\x10\x01\x12\b\n" +
+	"\x04PAIR\x10\x02\x12\n" +
+	"\n" +
+	"\x06TRIPLE\x10\x03\x12\x0f\n" +
+	"\vTRIPLE_PAIR\x10\x04\x12\f\n" +
+	"\bSEQUENCE\x10\x05\x12\t\n" +
+	"\x05FLUSH\x10\x06\x12\x10\n" +
+	"\fTRIPLE_CHAIN\x10\a\x12\x0f\n" +
+	"\vTHREE_PAIRS\x10\b\x12\b\n" +
+	"\x04BOMB\x10\t\x12\r\n" +
+	"\tKING_BOMB\x10\n" +
 	"B\fZ\n" +
 	"/pbguandanb\x06proto3"
 

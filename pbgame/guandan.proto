@@ -22,17 +22,17 @@ message Card {
 
 // 牌型定义
 enum CardType {
-  CARD_TYPE_INVALID = 0;
-  CARD_TYPE_SINGLE = 1;     // 单张
-  CARD_TYPE_PAIR = 2;       // 对子
-  CARD_TYPE_TRIPLE = 3;     // 三同张
-  CARD_TYPE_TRIPLE_PAIR = 4; // 三带对
-  CARD_TYPE_SEQUENCE = 5;   // 顺子
-  CARD_TYPE_FLUSH = 6;      // 同花顺
-  CARD_TYPE_TRIPLE_CHAIN = 7; // 二连三
-  CARD_TYPE_THREE_PAIRS = 8; // 三连对
-  CARD_TYPE_BOMB = 9;       // 炸弹
-  CARD_TYPE_KING_BOMB = 10; // 王炸
+  INVALID = 0;
+  SINGLE = 1;              // 单张
+  PAIR = 2;                // 对子
+  TRIPLE = 3;              // 三同张
+  TRIPLE_PAIR = 4;         // 三带对
+  SEQUENCE = 5;            // 顺子
+  FLUSH = 6;               // 同花顺
+  TRIPLE_CHAIN = 7;        // 二连三
+  THREE_PAIRS = 8;         // 三连对
+  BOMB = 9;                // 炸弹
+  KING_BOMB = 10;          // 王炸
 }
 
 // 出牌请求
