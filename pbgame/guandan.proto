@@ -88,10 +88,23 @@ message GuandanTurnAck {
   bool jiefeng = 3;   // 是否接风
 }
 
-// 贡牌响应
-message GuandanContributeAck {
+// 进贡关系
+message GuandanContributePair {
   int32 from_seat = 1;   // 进贡座位
   int32 to_seat = 2;     // 接收座位
+  int32 contribute_count = 3;               // 每个进贡方需要进贡的张数
+}
+
+// 进贡关系广播（不带具体牌，用于阶段开始时通知）
+message GuandanContributePairsAck {
+  repeated GuandanContributePair pairs = 1; // 本局所有进贡对
+ 
+}
+
+// 进贡响应（带具体进贡牌，用于每次进贡动作）
+message GuandanContributeAck {
+  int32 from_seat = 1;      // 进贡座位
+  int32 to_seat = 2;        // 接收座位
   Card contribute_card = 3; // 进贡牌
 }
 
