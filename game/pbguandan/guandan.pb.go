@@ -470,9 +470,8 @@ func (x *GuandanGameStartAck) GetProperty() string {
 // 发牌响应
 type GuandanDealAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                            // 座位号
-	HandCards     []*Card                `protobuf:"bytes,2,rep,name=hand_cards,json=handCards,proto3" json:"hand_cards,omitempty"`  // 手牌
-	CardCount     int32                  `protobuf:"varint,3,opt,name=card_count,json=cardCount,proto3" json:"card_count,omitempty"` // 剩余牌数
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                           // 座位号
+	HandCards     []*Card                `protobuf:"bytes,2,rep,name=hand_cards,json=handCards,proto3" json:"hand_cards,omitempty"` // 手牌
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -519,13 +518,6 @@ func (x *GuandanDealAck) GetHandCards() []*Card {
 		return x.HandCards
 	}
 	return nil
-}
-
-func (x *GuandanDealAck) GetCardCount() int32 {
-	if x != nil {
-		return x.CardCount
-	}
-	return 0
 }
 
 // 出牌响应
@@ -650,6 +642,67 @@ func (x *GuandanPassAck) GetNextSeat() int32 {
 	return 0
 }
 
+// 轮到出牌通知
+type GuandanTurnAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`       // 当前出牌座位
+	Lead          bool                   `protobuf:"varint,2,opt,name=lead,proto3" json:"lead,omitempty"`       // 是否首出(新一轮第一手)
+	Jiefeng       bool                   `protobuf:"varint,3,opt,name=jiefeng,proto3" json:"jiefeng,omitempty"` // 是否接风
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuandanTurnAck) Reset() {
+	*x = GuandanTurnAck{}
+	mi := &file_guandan_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuandanTurnAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuandanTurnAck) ProtoMessage() {}
+
+func (x *GuandanTurnAck) ProtoReflect() protoreflect.Message {
+	mi := &file_guandan_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuandanTurnAck.ProtoReflect.Descriptor instead.
+func (*GuandanTurnAck) Descriptor() ([]byte, []int) {
+	return file_guandan_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GuandanTurnAck) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *GuandanTurnAck) GetLead() bool {
+	if x != nil {
+		return x.Lead
+	}
+	return false
+}
+
+func (x *GuandanTurnAck) GetJiefeng() bool {
+	if x != nil {
+		return x.Jiefeng
+	}
+	return false
+}
+
 // 贡牌响应
 type GuandanContributeAck struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
@@ -662,7 +715,7 @@ type GuandanContributeAck struct {
 
 func (x *GuandanContributeAck) Reset() {
 	*x = GuandanContributeAck{}
-	mi := &file_guandan_proto_msgTypes[10]
+	mi := &file_guandan_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -674,7 +727,7 @@ func (x *GuandanContributeAck) String() string {
 func (*GuandanContributeAck) ProtoMessage() {}
 
 func (x *GuandanContributeAck) ProtoReflect() protoreflect.Message {
-	mi := &file_guandan_proto_msgTypes[10]
+	mi := &file_guandan_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -687,7 +740,7 @@ func (x *GuandanContributeAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuandanContributeAck.ProtoReflect.Descriptor instead.
 func (*GuandanContributeAck) Descriptor() ([]byte, []int) {
-	return file_guandan_proto_rawDescGZIP(), []int{10}
+	return file_guandan_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GuandanContributeAck) GetFromSeat() int32 {
@@ -723,7 +776,7 @@ type GuandanReturnAck struct {
 
 func (x *GuandanReturnAck) Reset() {
 	*x = GuandanReturnAck{}
-	mi := &file_guandan_proto_msgTypes[11]
+	mi := &file_guandan_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -735,7 +788,7 @@ func (x *GuandanReturnAck) String() string {
 func (*GuandanReturnAck) ProtoMessage() {}
 
 func (x *GuandanReturnAck) ProtoReflect() protoreflect.Message {
-	mi := &file_guandan_proto_msgTypes[11]
+	mi := &file_guandan_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -748,7 +801,7 @@ func (x *GuandanReturnAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuandanReturnAck.ProtoReflect.Descriptor instead.
 func (*GuandanReturnAck) Descriptor() ([]byte, []int) {
-	return file_guandan_proto_rawDescGZIP(), []int{11}
+	return file_guandan_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GuandanReturnAck) GetFromSeat() int32 {
@@ -783,7 +836,7 @@ type PlayerHand struct {
 
 func (x *PlayerHand) Reset() {
 	*x = PlayerHand{}
-	mi := &file_guandan_proto_msgTypes[12]
+	mi := &file_guandan_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -795,7 +848,7 @@ func (x *PlayerHand) String() string {
 func (*PlayerHand) ProtoMessage() {}
 
 func (x *PlayerHand) ProtoReflect() protoreflect.Message {
-	mi := &file_guandan_proto_msgTypes[12]
+	mi := &file_guandan_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -808,7 +861,7 @@ func (x *PlayerHand) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerHand.ProtoReflect.Descriptor instead.
 func (*PlayerHand) Descriptor() ([]byte, []int) {
-	return file_guandan_proto_rawDescGZIP(), []int{12}
+	return file_guandan_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *PlayerHand) GetSeat() int32 {
@@ -838,7 +891,7 @@ type GuandanGameOverAck struct {
 
 func (x *GuandanGameOverAck) Reset() {
 	*x = GuandanGameOverAck{}
-	mi := &file_guandan_proto_msgTypes[13]
+	mi := &file_guandan_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -850,7 +903,7 @@ func (x *GuandanGameOverAck) String() string {
 func (*GuandanGameOverAck) ProtoMessage() {}
 
 func (x *GuandanGameOverAck) ProtoReflect() protoreflect.Message {
-	mi := &file_guandan_proto_msgTypes[13]
+	mi := &file_guandan_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -863,7 +916,7 @@ func (x *GuandanGameOverAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuandanGameOverAck.ProtoReflect.Descriptor instead.
 func (*GuandanGameOverAck) Descriptor() ([]byte, []int) {
-	return file_guandan_proto_rawDescGZIP(), []int{13}
+	return file_guandan_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GuandanGameOverAck) GetUpgrades() []int32 {
@@ -906,7 +959,7 @@ type GuandanUpgradeAck struct {
 
 func (x *GuandanUpgradeAck) Reset() {
 	*x = GuandanUpgradeAck{}
-	mi := &file_guandan_proto_msgTypes[14]
+	mi := &file_guandan_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -918,7 +971,7 @@ func (x *GuandanUpgradeAck) String() string {
 func (*GuandanUpgradeAck) ProtoMessage() {}
 
 func (x *GuandanUpgradeAck) ProtoReflect() protoreflect.Message {
-	mi := &file_guandan_proto_msgTypes[14]
+	mi := &file_guandan_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -931,7 +984,7 @@ func (x *GuandanUpgradeAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuandanUpgradeAck.ProtoReflect.Descriptor instead.
 func (*GuandanUpgradeAck) Descriptor() ([]byte, []int) {
-	return file_guandan_proto_rawDescGZIP(), []int{14}
+	return file_guandan_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GuandanUpgradeAck) GetTeam() int32 {
@@ -982,13 +1035,11 @@ const file_guandan_proto_rawDesc = "" +
 	"\x06banker\x18\x01 \x01(\x05R\x06banker\x12!\n" +
 	"\fcurrent_rank\x18\x02 \x01(\x05R\vcurrentRank\x12\x16\n" +
 	"\x06scores\x18\x03 \x03(\x03R\x06scores\x12\x1a\n" +
-	"\bproperty\x18\x04 \x01(\tR\bproperty\"s\n" +
+	"\bproperty\x18\x04 \x01(\tR\bproperty\"T\n" +
 	"\x0eGuandanDealAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12.\n" +
 	"\n" +
-	"hand_cards\x18\x02 \x03(\v2\x0f.pbguandan.CardR\thandCards\x12\x1d\n" +
-	"\n" +
-	"card_count\x18\x03 \x01(\x05R\tcardCount\"\x9a\x01\n" +
+	"hand_cards\x18\x02 \x03(\v2\x0f.pbguandan.CardR\thandCards\"\x9a\x01\n" +
 	"\x0eGuandanPlayAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12%\n" +
 	"\x05cards\x18\x02 \x03(\v2\x0f.pbguandan.CardR\x05cards\x120\n" +
@@ -996,7 +1047,11 @@ const file_guandan_proto_rawDesc = "" +
 	"\tnext_seat\x18\x04 \x01(\x05R\bnextSeat\"A\n" +
 	"\x0eGuandanPassAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x1b\n" +
-	"\tnext_seat\x18\x02 \x01(\x05R\bnextSeat\"\x86\x01\n" +
+	"\tnext_seat\x18\x02 \x01(\x05R\bnextSeat\"R\n" +
+	"\x0eGuandanTurnAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
+	"\x04lead\x18\x02 \x01(\bR\x04lead\x12\x18\n" +
+	"\ajiefeng\x18\x03 \x01(\bR\ajiefeng\"\x86\x01\n" +
 	"\x14GuandanContributeAck\x12\x1b\n" +
 	"\tfrom_seat\x18\x01 \x01(\x05R\bfromSeat\x12\x17\n" +
 	"\ato_seat\x18\x02 \x01(\x05R\x06toSeat\x128\n" +
@@ -1051,7 +1106,7 @@ func file_guandan_proto_rawDescGZIP() []byte {
 }
 
 var file_guandan_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_guandan_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_guandan_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_guandan_proto_goTypes = []any{
 	(CardType)(0),                // 0: pbguandan.CardType
 	(*GuandanReq)(nil),           // 1: pbguandan.GuandanReq
@@ -1064,16 +1119,17 @@ var file_guandan_proto_goTypes = []any{
 	(*GuandanDealAck)(nil),       // 8: pbguandan.GuandanDealAck
 	(*GuandanPlayAck)(nil),       // 9: pbguandan.GuandanPlayAck
 	(*GuandanPassAck)(nil),       // 10: pbguandan.GuandanPassAck
-	(*GuandanContributeAck)(nil), // 11: pbguandan.GuandanContributeAck
-	(*GuandanReturnAck)(nil),     // 12: pbguandan.GuandanReturnAck
-	(*PlayerHand)(nil),           // 13: pbguandan.PlayerHand
-	(*GuandanGameOverAck)(nil),   // 14: pbguandan.GuandanGameOverAck
-	(*GuandanUpgradeAck)(nil),    // 15: pbguandan.GuandanUpgradeAck
-	(*anypb.Any)(nil),            // 16: google.protobuf.Any
+	(*GuandanTurnAck)(nil),       // 11: pbguandan.GuandanTurnAck
+	(*GuandanContributeAck)(nil), // 12: pbguandan.GuandanContributeAck
+	(*GuandanReturnAck)(nil),     // 13: pbguandan.GuandanReturnAck
+	(*PlayerHand)(nil),           // 14: pbguandan.PlayerHand
+	(*GuandanGameOverAck)(nil),   // 15: pbguandan.GuandanGameOverAck
+	(*GuandanUpgradeAck)(nil),    // 16: pbguandan.GuandanUpgradeAck
+	(*anypb.Any)(nil),            // 17: google.protobuf.Any
 }
 var file_guandan_proto_depIdxs = []int32{
-	16, // 0: pbguandan.GuandanReq.req:type_name -> google.protobuf.Any
-	16, // 1: pbguandan.GuandanAck.ack:type_name -> google.protobuf.Any
+	17, // 0: pbguandan.GuandanReq.req:type_name -> google.protobuf.Any
+	17, // 1: pbguandan.GuandanAck.ack:type_name -> google.protobuf.Any
 	3,  // 2: pbguandan.GuandanPlayReq.cards:type_name -> pbguandan.Card
 	3,  // 3: pbguandan.GuandanContributeReq.card:type_name -> pbguandan.Card
 	3,  // 4: pbguandan.GuandanReturnReq.card:type_name -> pbguandan.Card
@@ -1083,7 +1139,7 @@ var file_guandan_proto_depIdxs = []int32{
 	3,  // 8: pbguandan.GuandanContributeAck.contribute_card:type_name -> pbguandan.Card
 	3,  // 9: pbguandan.GuandanReturnAck.return_card:type_name -> pbguandan.Card
 	3,  // 10: pbguandan.PlayerHand.cards:type_name -> pbguandan.Card
-	13, // 11: pbguandan.GuandanGameOverAck.hand_cards:type_name -> pbguandan.PlayerHand
+	14, // 11: pbguandan.GuandanGameOverAck.hand_cards:type_name -> pbguandan.PlayerHand
 	12, // [12:12] is the sub-list for method output_type
 	12, // [12:12] is the sub-list for method input_type
 	12, // [12:12] is the sub-list for extension type_name
@@ -1102,7 +1158,7 @@ func file_guandan_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_guandan_proto_rawDesc), len(file_guandan_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   15,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

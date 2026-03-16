@@ -65,7 +65,6 @@ message GuandanGameStartAck {
 message GuandanDealAck {
   int32 seat = 1;             // 座位号
   repeated Card hand_cards = 2; // 手牌
-  int32 card_count = 3;       // 剩余牌数
 }
 
 // 出牌响应
@@ -80,6 +79,13 @@ message GuandanPlayAck {
 message GuandanPassAck {
   int32 seat = 1;        // 过牌座位
   int32 next_seat = 2;   // 下个出牌座位
+}
+
+// 轮到出牌通知
+message GuandanTurnAck {
+  int32 seat = 1;     // 当前出牌座位
+  bool lead = 2;      // 是否首出(新一轮第一手)
+  bool jiefeng = 3;   // 是否接风
 }
 
 // 贡牌响应
