@@ -1048,7 +1048,8 @@ func (x *RedpacketAck) GetItems() map[int32]int64 {
 // ===== 好运签活动 (lucky) =====
 type LuckyPanelAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Count         int32                  `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"` // 今日已抽签次数: 0-3
+	Count         int32                  `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`                          // 今日已抽签次数: 0-3
+	LeftCount     int32                  `protobuf:"varint,2,opt,name=left_count,json=leftCount,proto3" json:"left_count,omitempty"` // 剩余次数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1086,6 +1087,13 @@ func (*LuckyPanelAck) Descriptor() ([]byte, []int) {
 func (x *LuckyPanelAck) GetCount() int32 {
 	if x != nil {
 		return x.Count
+	}
+	return 0
+}
+
+func (x *LuckyPanelAck) GetLeftCount() int32 {
+	if x != nil {
+		return x.LeftCount
 	}
 	return 0
 }
@@ -1139,6 +1147,7 @@ type LuckyAck struct {
 	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
 	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 奖励物品
 	Count         int32                  `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`                                                                            // 今日已抽签次数
+	LeftCount     int32                  `protobuf:"varint,4,opt,name=left_count,json=leftCount,proto3" json:"left_count,omitempty"`                                                   // 剩余次数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1190,6 +1199,13 @@ func (x *LuckyAck) GetItems() map[int32]int64 {
 func (x *LuckyAck) GetCount() int32 {
 	if x != nil {
 		return x.Count
+	}
+	return 0
+}
+
+func (x *LuckyAck) GetLeftCount() int32 {
+	if x != nil {
+		return x.LeftCount
 	}
 	return 0
 }
@@ -2389,15 +2405,19 @@ const file_activity_proto_rawDesc = "" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"%\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"D\n" +
 	"\rLuckyPanelAck\x12\x14\n" +
-	"\x05count\x18\x01 \x01(\x05R\x05count\"\"\n" +
+	"\x05count\x18\x01 \x01(\x05R\x05count\x12\x1d\n" +
+	"\n" +
+	"left_count\x18\x02 \x01(\x05R\tleftCount\"\"\n" +
 	"\bLuckyReq\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\"\xa5\x01\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\"\xc4\x01\n" +
 	"\bLuckyAck\x12\x16\n" +
 	"\x06action\x18\x01 \x01(\tR\x06action\x121\n" +
 	"\x05items\x18\x02 \x03(\v2\x1b.cproto.LuckyAck.ItemsEntryR\x05items\x12\x14\n" +
-	"\x05count\x18\x03 \x01(\x05R\x05count\x1a8\n" +
+	"\x05count\x18\x03 \x01(\x05R\x05count\x12\x1d\n" +
+	"\n" +
+	"left_count\x18\x04 \x01(\x05R\tleftCount\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +

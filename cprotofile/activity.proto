@@ -117,6 +117,7 @@ message RedpacketAck {
 // ===== 好运签活动 (lucky) =====
 message LuckyPanelAck {
   int32 count = 1; // 今日已抽签次数: 0-3
+  int32 left_count = 2;// 剩余次数
 }
 
 message LuckyReq {
@@ -127,6 +128,7 @@ message LuckyAck {
   string action = 1;
   map<int32, int64> items = 2; // 奖励物品
   int32 count = 3;              // 今日已抽签次数
+  int32 left_count = 4;// 剩余次数
 }
 
 // ===== 注册活动 (register) =====
