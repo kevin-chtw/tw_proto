@@ -48,11 +48,19 @@ message ActRewardAck {
   google.protobuf.Any ack = 2; // 返回奖励、新余额等
 }
 
+// ActBrief.status 状态枚举
+enum ActStatus {
+  NotStarted = 0;   // 未激活/不可用
+  Claimable = 1;    // 可领奖; 显示红点
+  Participable = 2; // 可参与/可购买; 不显示红点（前端按活动类型区分展示）
+  FullyClaimed = 3; // 已完成，已领奖
+}
+
 // 活动列表项
 message ActBrief {
   int32 activity_id = 1; // 活动ID
   string name = 2; // 活动名称
-  int32 status = 3; // 0未激活 1可领奖 2部分达成，已领奖 3全达成，已领奖
+  ActStatus status = 3;
   int64 end_ts = 4;
 }
 

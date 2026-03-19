@@ -22,6 +22,59 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ActBrief.status 状态枚举
+type ActStatus int32
+
+const (
+	ActStatus_NotStarted   ActStatus = 0 // 未激活/不可用
+	ActStatus_Claimable    ActStatus = 1 // 可领奖; 显示红点
+	ActStatus_Participable ActStatus = 2 // 可参与/可购买; 不显示红点（前端按活动类型区分展示）
+	ActStatus_FullyClaimed ActStatus = 3 // 已完成，已领奖
+)
+
+// Enum value maps for ActStatus.
+var (
+	ActStatus_name = map[int32]string{
+		0: "NotStarted",
+		1: "Claimable",
+		2: "Participable",
+		3: "FullyClaimed",
+	}
+	ActStatus_value = map[string]int32{
+		"NotStarted":   0,
+		"Claimable":    1,
+		"Participable": 2,
+		"FullyClaimed": 3,
+	}
+)
+
+func (x ActStatus) Enum() *ActStatus {
+	p := new(ActStatus)
+	*p = x
+	return p
+}
+
+func (x ActStatus) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ActStatus) Descriptor() protoreflect.EnumDescriptor {
+	return file_activity_proto_enumTypes[0].Descriptor()
+}
+
+func (ActStatus) Type() protoreflect.EnumType {
+	return &file_activity_proto_enumTypes[0]
+}
+
+func (x ActStatus) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ActStatus.Descriptor instead.
+func (ActStatus) EnumDescriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{0}
+}
+
 // 活动通用请求包装器（客户端调用）
 type ActivityReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -411,7 +464,7 @@ type ActBrief struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 活动ID
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                // 活动名称
-	Status        int32                  `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`                           // 0未激活 1可领奖 2部分达成，已领奖 3全达成，已领奖
+	Status        ActStatus              `protobuf:"varint,3,opt,name=status,proto3,enum=cproto.ActStatus" json:"status,omitempty"`
 	EndTs         int64                  `protobuf:"varint,4,opt,name=end_ts,json=endTs,proto3" json:"end_ts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -461,11 +514,11 @@ func (x *ActBrief) GetName() string {
 	return ""
 }
 
-func (x *ActBrief) GetStatus() int32 {
+func (x *ActBrief) GetStatus() ActStatus {
 	if x != nil {
 		return x.Status
 	}
-	return 0
+	return ActStatus_NotStarted
 }
 
 func (x *ActBrief) GetEndTs() int64 {
@@ -2340,12 +2393,12 @@ const file_activity_proto_rawDesc = "" +
 	"\fActRewardAck\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
 	"activityId\x12&\n" +
-	"\x03ack\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"n\n" +
+	"\x03ack\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x81\x01\n" +
 	"\bActBrief\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
 	"activityId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\x05R\x06status\x12\x15\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12)\n" +
+	"\x06status\x18\x03 \x01(\x0e2\x11.cproto.ActStatusR\x06status\x12\x15\n" +
 	"\x06end_ts\x18\x04 \x01(\x03R\x05endTs\"\xbb\x01\n" +
 	"\x0ePurchasePkgAck\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
@@ -2544,7 +2597,13 @@ const file_activity_proto_rawDesc = "" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01*N\n" +
+	"\tActStatus\x12\x0e\n" +
+	"\n" +
+	"NotStarted\x10\x00\x12\r\n" +
+	"\tClaimable\x10\x01\x12\x10\n" +
+	"\fParticipable\x10\x02\x12\x10\n" +
+	"\fFullyClaimed\x10\x03B\vZ\t../cprotob\x06proto3"
 
 var (
 	file_activity_proto_rawDescOnce sync.Once
@@ -2558,98 +2617,101 @@ func file_activity_proto_rawDescGZIP() []byte {
 	return file_activity_proto_rawDescData
 }
 
+var file_activity_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
 var file_activity_proto_goTypes = []any{
-	(*ActivityReq)(nil),           // 0: cproto.ActivityReq
-	(*ActivityAck)(nil),           // 1: cproto.ActivityAck
-	(*ActsListReq)(nil),           // 2: cproto.ActsListReq
-	(*ActsListAck)(nil),           // 3: cproto.ActsListAck
-	(*ActPanelReq)(nil),           // 4: cproto.ActPanelReq
-	(*ActPanelAck)(nil),           // 5: cproto.ActPanelAck
-	(*ActRewardReq)(nil),          // 6: cproto.ActRewardReq
-	(*ActRewardAck)(nil),          // 7: cproto.ActRewardAck
-	(*ActBrief)(nil),              // 8: cproto.ActBrief
-	(*PurchasePkgAck)(nil),        // 9: cproto.PurchasePkgAck
-	(*InvitePanelAck)(nil),        // 10: cproto.InvitePanelAck
-	(*InviteRewardState)(nil),     // 11: cproto.InviteRewardState
-	(*InviteUser)(nil),            // 12: cproto.InviteUser
-	(*InviteRewardReq)(nil),       // 13: cproto.InviteRewardReq
-	(*InviteRewardAck)(nil),       // 14: cproto.InviteRewardAck
-	(*RedpacketPanelAck)(nil),     // 15: cproto.RedpacketPanelAck
-	(*RedpacketRcvPanelAck)(nil),  // 16: cproto.RedpacketRcvPanelAck
-	(*RedpacketReq)(nil),          // 17: cproto.RedpacketReq
-	(*RedpacketAck)(nil),          // 18: cproto.RedpacketAck
-	(*LuckyPanelAck)(nil),         // 19: cproto.LuckyPanelAck
-	(*LuckyReq)(nil),              // 20: cproto.LuckyReq
-	(*LuckyAck)(nil),              // 21: cproto.LuckyAck
-	(*RegisterPanelAck)(nil),      // 22: cproto.RegisterPanelAck
-	(*RegisterRewardReq)(nil),     // 23: cproto.RegisterRewardReq
-	(*RegisterRewardAck)(nil),     // 24: cproto.RegisterRewardAck
-	(*EngagePanelAck)(nil),        // 25: cproto.EngagePanelAck
-	(*EngageWheelRewardCfg)(nil),  // 26: cproto.EngageWheelRewardCfg
-	(*EngageRewardReq)(nil),       // 27: cproto.EngageRewardReq
-	(*EngageRewardAck)(nil),       // 28: cproto.EngageRewardAck
-	(*BankruptPanelAck)(nil),      // 29: cproto.BankruptPanelAck
-	(*BankruptPackageInfo)(nil),   // 30: cproto.BankruptPackageInfo
-	(*DiscountPanelAck)(nil),      // 31: cproto.DiscountPanelAck
-	(*DiscountPackageInfo)(nil),   // 32: cproto.DiscountPackageInfo
-	(*IcebreakerPanel)(nil),       // 33: cproto.IcebreakerPanel
-	(*IcebreakerPackageInfo)(nil), // 34: cproto.IcebreakerPackageInfo
-	(*ActPurchaseReq)(nil),        // 35: cproto.ActPurchaseReq
-	(*ActPurchaseAck)(nil),        // 36: cproto.ActPurchaseAck
-	(*MealtimePanelAck)(nil),      // 37: cproto.MealtimePanelAck
-	(*MealtimeReq)(nil),           // 38: cproto.MealtimeReq
-	(*MealtimeAck)(nil),           // 39: cproto.MealtimeAck
-	nil,                           // 40: cproto.PurchasePkgAck.ItemsEntry
-	nil,                           // 41: cproto.InviteRewardState.ItemsEntry
-	nil,                           // 42: cproto.InviteRewardAck.ItemsEntry
-	nil,                           // 43: cproto.RedpacketAck.ItemsEntry
-	nil,                           // 44: cproto.LuckyAck.ItemsEntry
-	nil,                           // 45: cproto.RegisterPanelAck.NormalItemsEntry
-	nil,                           // 46: cproto.RegisterPanelAck.DoubleItemsEntry
-	nil,                           // 47: cproto.RegisterRewardAck.ItemsEntry
-	nil,                           // 48: cproto.EngageWheelRewardCfg.ItemsEntry
-	nil,                           // 49: cproto.EngageRewardAck.ItemsEntry
-	nil,                           // 50: cproto.BankruptPackageInfo.ItemsEntry
-	nil,                           // 51: cproto.DiscountPackageInfo.ItemsEntry
-	nil,                           // 52: cproto.IcebreakerPackageInfo.ItemsEntry
-	nil,                           // 53: cproto.ActPurchaseAck.ItemsEntry
-	nil,                           // 54: cproto.MealtimeAck.ItemsEntry
-	(*anypb.Any)(nil),             // 55: google.protobuf.Any
+	(ActStatus)(0),                // 0: cproto.ActStatus
+	(*ActivityReq)(nil),           // 1: cproto.ActivityReq
+	(*ActivityAck)(nil),           // 2: cproto.ActivityAck
+	(*ActsListReq)(nil),           // 3: cproto.ActsListReq
+	(*ActsListAck)(nil),           // 4: cproto.ActsListAck
+	(*ActPanelReq)(nil),           // 5: cproto.ActPanelReq
+	(*ActPanelAck)(nil),           // 6: cproto.ActPanelAck
+	(*ActRewardReq)(nil),          // 7: cproto.ActRewardReq
+	(*ActRewardAck)(nil),          // 8: cproto.ActRewardAck
+	(*ActBrief)(nil),              // 9: cproto.ActBrief
+	(*PurchasePkgAck)(nil),        // 10: cproto.PurchasePkgAck
+	(*InvitePanelAck)(nil),        // 11: cproto.InvitePanelAck
+	(*InviteRewardState)(nil),     // 12: cproto.InviteRewardState
+	(*InviteUser)(nil),            // 13: cproto.InviteUser
+	(*InviteRewardReq)(nil),       // 14: cproto.InviteRewardReq
+	(*InviteRewardAck)(nil),       // 15: cproto.InviteRewardAck
+	(*RedpacketPanelAck)(nil),     // 16: cproto.RedpacketPanelAck
+	(*RedpacketRcvPanelAck)(nil),  // 17: cproto.RedpacketRcvPanelAck
+	(*RedpacketReq)(nil),          // 18: cproto.RedpacketReq
+	(*RedpacketAck)(nil),          // 19: cproto.RedpacketAck
+	(*LuckyPanelAck)(nil),         // 20: cproto.LuckyPanelAck
+	(*LuckyReq)(nil),              // 21: cproto.LuckyReq
+	(*LuckyAck)(nil),              // 22: cproto.LuckyAck
+	(*RegisterPanelAck)(nil),      // 23: cproto.RegisterPanelAck
+	(*RegisterRewardReq)(nil),     // 24: cproto.RegisterRewardReq
+	(*RegisterRewardAck)(nil),     // 25: cproto.RegisterRewardAck
+	(*EngagePanelAck)(nil),        // 26: cproto.EngagePanelAck
+	(*EngageWheelRewardCfg)(nil),  // 27: cproto.EngageWheelRewardCfg
+	(*EngageRewardReq)(nil),       // 28: cproto.EngageRewardReq
+	(*EngageRewardAck)(nil),       // 29: cproto.EngageRewardAck
+	(*BankruptPanelAck)(nil),      // 30: cproto.BankruptPanelAck
+	(*BankruptPackageInfo)(nil),   // 31: cproto.BankruptPackageInfo
+	(*DiscountPanelAck)(nil),      // 32: cproto.DiscountPanelAck
+	(*DiscountPackageInfo)(nil),   // 33: cproto.DiscountPackageInfo
+	(*IcebreakerPanel)(nil),       // 34: cproto.IcebreakerPanel
+	(*IcebreakerPackageInfo)(nil), // 35: cproto.IcebreakerPackageInfo
+	(*ActPurchaseReq)(nil),        // 36: cproto.ActPurchaseReq
+	(*ActPurchaseAck)(nil),        // 37: cproto.ActPurchaseAck
+	(*MealtimePanelAck)(nil),      // 38: cproto.MealtimePanelAck
+	(*MealtimeReq)(nil),           // 39: cproto.MealtimeReq
+	(*MealtimeAck)(nil),           // 40: cproto.MealtimeAck
+	nil,                           // 41: cproto.PurchasePkgAck.ItemsEntry
+	nil,                           // 42: cproto.InviteRewardState.ItemsEntry
+	nil,                           // 43: cproto.InviteRewardAck.ItemsEntry
+	nil,                           // 44: cproto.RedpacketAck.ItemsEntry
+	nil,                           // 45: cproto.LuckyAck.ItemsEntry
+	nil,                           // 46: cproto.RegisterPanelAck.NormalItemsEntry
+	nil,                           // 47: cproto.RegisterPanelAck.DoubleItemsEntry
+	nil,                           // 48: cproto.RegisterRewardAck.ItemsEntry
+	nil,                           // 49: cproto.EngageWheelRewardCfg.ItemsEntry
+	nil,                           // 50: cproto.EngageRewardAck.ItemsEntry
+	nil,                           // 51: cproto.BankruptPackageInfo.ItemsEntry
+	nil,                           // 52: cproto.DiscountPackageInfo.ItemsEntry
+	nil,                           // 53: cproto.IcebreakerPackageInfo.ItemsEntry
+	nil,                           // 54: cproto.ActPurchaseAck.ItemsEntry
+	nil,                           // 55: cproto.MealtimeAck.ItemsEntry
+	(*anypb.Any)(nil),             // 56: google.protobuf.Any
 }
 var file_activity_proto_depIdxs = []int32{
-	55, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
-	55, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
-	8,  // 2: cproto.ActsListAck.acts:type_name -> cproto.ActBrief
-	55, // 3: cproto.ActPanelAck.ack:type_name -> google.protobuf.Any
-	55, // 4: cproto.ActRewardReq.req:type_name -> google.protobuf.Any
-	55, // 5: cproto.ActRewardAck.ack:type_name -> google.protobuf.Any
-	40, // 6: cproto.PurchasePkgAck.items:type_name -> cproto.PurchasePkgAck.ItemsEntry
-	11, // 7: cproto.InvitePanelAck.rewards:type_name -> cproto.InviteRewardState
-	12, // 8: cproto.InvitePanelAck.users:type_name -> cproto.InviteUser
-	41, // 9: cproto.InviteRewardState.items:type_name -> cproto.InviteRewardState.ItemsEntry
-	42, // 10: cproto.InviteRewardAck.items:type_name -> cproto.InviteRewardAck.ItemsEntry
-	43, // 11: cproto.RedpacketAck.items:type_name -> cproto.RedpacketAck.ItemsEntry
-	44, // 12: cproto.LuckyAck.items:type_name -> cproto.LuckyAck.ItemsEntry
-	45, // 13: cproto.RegisterPanelAck.normal_items:type_name -> cproto.RegisterPanelAck.NormalItemsEntry
-	46, // 14: cproto.RegisterPanelAck.double_items:type_name -> cproto.RegisterPanelAck.DoubleItemsEntry
-	47, // 15: cproto.RegisterRewardAck.items:type_name -> cproto.RegisterRewardAck.ItemsEntry
-	26, // 16: cproto.EngagePanelAck.wheel:type_name -> cproto.EngageWheelRewardCfg
-	48, // 17: cproto.EngageWheelRewardCfg.items:type_name -> cproto.EngageWheelRewardCfg.ItemsEntry
-	49, // 18: cproto.EngageRewardAck.items:type_name -> cproto.EngageRewardAck.ItemsEntry
-	30, // 19: cproto.BankruptPanelAck.packages:type_name -> cproto.BankruptPackageInfo
-	50, // 20: cproto.BankruptPackageInfo.items:type_name -> cproto.BankruptPackageInfo.ItemsEntry
-	32, // 21: cproto.DiscountPanelAck.packages:type_name -> cproto.DiscountPackageInfo
-	51, // 22: cproto.DiscountPackageInfo.items:type_name -> cproto.DiscountPackageInfo.ItemsEntry
-	34, // 23: cproto.IcebreakerPanel.packages:type_name -> cproto.IcebreakerPackageInfo
-	52, // 24: cproto.IcebreakerPackageInfo.items:type_name -> cproto.IcebreakerPackageInfo.ItemsEntry
-	53, // 25: cproto.ActPurchaseAck.items:type_name -> cproto.ActPurchaseAck.ItemsEntry
-	54, // 26: cproto.MealtimeAck.items:type_name -> cproto.MealtimeAck.ItemsEntry
-	27, // [27:27] is the sub-list for method output_type
-	27, // [27:27] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	56, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
+	56, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
+	9,  // 2: cproto.ActsListAck.acts:type_name -> cproto.ActBrief
+	56, // 3: cproto.ActPanelAck.ack:type_name -> google.protobuf.Any
+	56, // 4: cproto.ActRewardReq.req:type_name -> google.protobuf.Any
+	56, // 5: cproto.ActRewardAck.ack:type_name -> google.protobuf.Any
+	0,  // 6: cproto.ActBrief.status:type_name -> cproto.ActStatus
+	41, // 7: cproto.PurchasePkgAck.items:type_name -> cproto.PurchasePkgAck.ItemsEntry
+	12, // 8: cproto.InvitePanelAck.rewards:type_name -> cproto.InviteRewardState
+	13, // 9: cproto.InvitePanelAck.users:type_name -> cproto.InviteUser
+	42, // 10: cproto.InviteRewardState.items:type_name -> cproto.InviteRewardState.ItemsEntry
+	43, // 11: cproto.InviteRewardAck.items:type_name -> cproto.InviteRewardAck.ItemsEntry
+	44, // 12: cproto.RedpacketAck.items:type_name -> cproto.RedpacketAck.ItemsEntry
+	45, // 13: cproto.LuckyAck.items:type_name -> cproto.LuckyAck.ItemsEntry
+	46, // 14: cproto.RegisterPanelAck.normal_items:type_name -> cproto.RegisterPanelAck.NormalItemsEntry
+	47, // 15: cproto.RegisterPanelAck.double_items:type_name -> cproto.RegisterPanelAck.DoubleItemsEntry
+	48, // 16: cproto.RegisterRewardAck.items:type_name -> cproto.RegisterRewardAck.ItemsEntry
+	27, // 17: cproto.EngagePanelAck.wheel:type_name -> cproto.EngageWheelRewardCfg
+	49, // 18: cproto.EngageWheelRewardCfg.items:type_name -> cproto.EngageWheelRewardCfg.ItemsEntry
+	50, // 19: cproto.EngageRewardAck.items:type_name -> cproto.EngageRewardAck.ItemsEntry
+	31, // 20: cproto.BankruptPanelAck.packages:type_name -> cproto.BankruptPackageInfo
+	51, // 21: cproto.BankruptPackageInfo.items:type_name -> cproto.BankruptPackageInfo.ItemsEntry
+	33, // 22: cproto.DiscountPanelAck.packages:type_name -> cproto.DiscountPackageInfo
+	52, // 23: cproto.DiscountPackageInfo.items:type_name -> cproto.DiscountPackageInfo.ItemsEntry
+	35, // 24: cproto.IcebreakerPanel.packages:type_name -> cproto.IcebreakerPackageInfo
+	53, // 25: cproto.IcebreakerPackageInfo.items:type_name -> cproto.IcebreakerPackageInfo.ItemsEntry
+	54, // 26: cproto.ActPurchaseAck.items:type_name -> cproto.ActPurchaseAck.ItemsEntry
+	55, // 27: cproto.MealtimeAck.items:type_name -> cproto.MealtimeAck.ItemsEntry
+	28, // [28:28] is the sub-list for method output_type
+	28, // [28:28] is the sub-list for method input_type
+	28, // [28:28] is the sub-list for extension type_name
+	28, // [28:28] is the sub-list for extension extendee
+	0,  // [0:28] is the sub-list for field type_name
 }
 
 func init() { file_activity_proto_init() }
@@ -2662,13 +2724,14 @@ func file_activity_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_activity_proto_rawDesc), len(file_activity_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   55,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_activity_proto_goTypes,
 		DependencyIndexes: file_activity_proto_depIdxs,
+		EnumInfos:         file_activity_proto_enumTypes,
 		MessageInfos:      file_activity_proto_msgTypes,
 	}.Build()
 	File_activity_proto = out.File
