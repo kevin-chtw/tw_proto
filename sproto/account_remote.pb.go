@@ -736,6 +736,257 @@ func (*PhysOrdShipAck) Descriptor() ([]byte, []int) {
 	return file_account_remote_proto_rawDescGZIP(), []int{13}
 }
 
+// 运营后台：查询实物兑换订单（可用于待发货列表）
+// status:
+// - 0 待发货
+// - 1 已发货
+// - 2 已完成
+// - 3 已取消
+// - -1 查询全部
+type PhysOrdAdminListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
+	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
+	Size          int32                  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdAdminListReq) Reset() {
+	*x = PhysOrdAdminListReq{}
+	mi := &file_account_remote_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdAdminListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdAdminListReq) ProtoMessage() {}
+
+func (x *PhysOrdAdminListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdAdminListReq.ProtoReflect.Descriptor instead.
+func (*PhysOrdAdminListReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *PhysOrdAdminListReq) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *PhysOrdAdminListReq) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *PhysOrdAdminListReq) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+type PhysOrdAdminRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Status        int32                  `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedTs     int64                  `protobuf:"varint,4,opt,name=created_ts,json=createdTs,proto3" json:"created_ts,omitempty"`
+	Items         map[int32]int64        `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	RecvName      string                 `protobuf:"bytes,6,opt,name=recv_name,json=recvName,proto3" json:"recv_name,omitempty"`
+	Phone         string                 `protobuf:"bytes,7,opt,name=phone,proto3" json:"phone,omitempty"`
+	Addr          string                 `protobuf:"bytes,8,opt,name=addr,proto3" json:"addr,omitempty"`
+	Remark        string                 `protobuf:"bytes,9,opt,name=remark,proto3" json:"remark,omitempty"`
+	ExprCorp      string                 `protobuf:"bytes,10,opt,name=expr_corp,json=exprCorp,proto3" json:"expr_corp,omitempty"`
+	ExprNo        string                 `protobuf:"bytes,11,opt,name=expr_no,json=exprNo,proto3" json:"expr_no,omitempty"`
+	UpTs          int64                  `protobuf:"varint,12,opt,name=up_ts,json=upTs,proto3" json:"up_ts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdAdminRow) Reset() {
+	*x = PhysOrdAdminRow{}
+	mi := &file_account_remote_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdAdminRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdAdminRow) ProtoMessage() {}
+
+func (x *PhysOrdAdminRow) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdAdminRow.ProtoReflect.Descriptor instead.
+func (*PhysOrdAdminRow) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *PhysOrdAdminRow) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *PhysOrdAdminRow) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *PhysOrdAdminRow) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *PhysOrdAdminRow) GetCreatedTs() int64 {
+	if x != nil {
+		return x.CreatedTs
+	}
+	return 0
+}
+
+func (x *PhysOrdAdminRow) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *PhysOrdAdminRow) GetRecvName() string {
+	if x != nil {
+		return x.RecvName
+	}
+	return ""
+}
+
+func (x *PhysOrdAdminRow) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *PhysOrdAdminRow) GetAddr() string {
+	if x != nil {
+		return x.Addr
+	}
+	return ""
+}
+
+func (x *PhysOrdAdminRow) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+func (x *PhysOrdAdminRow) GetExprCorp() string {
+	if x != nil {
+		return x.ExprCorp
+	}
+	return ""
+}
+
+func (x *PhysOrdAdminRow) GetExprNo() string {
+	if x != nil {
+		return x.ExprNo
+	}
+	return ""
+}
+
+func (x *PhysOrdAdminRow) GetUpTs() int64 {
+	if x != nil {
+		return x.UpTs
+	}
+	return 0
+}
+
+type PhysOrdAdminListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*PhysOrdAdminRow     `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdAdminListAck) Reset() {
+	*x = PhysOrdAdminListAck{}
+	mi := &file_account_remote_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdAdminListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdAdminListAck) ProtoMessage() {}
+
+func (x *PhysOrdAdminListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdAdminListAck.ProtoReflect.Descriptor instead.
+func (*PhysOrdAdminListAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *PhysOrdAdminListAck) GetRows() []*PhysOrdAdminRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+func (x *PhysOrdAdminListAck) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -795,7 +1046,33 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x02st\x18\x02 \x01(\x05R\x02st\x12\x1b\n" +
 	"\texpr_corp\x18\x03 \x01(\tR\bexprCorp\x12\x17\n" +
 	"\aexpr_no\x18\x04 \x01(\tR\x06exprNo\"\x10\n" +
-	"\x0ePhysOrdShipAckB\vZ\t../sprotob\x06proto3"
+	"\x0ePhysOrdShipAck\"U\n" +
+	"\x13PhysOrdAdminListReq\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\x05R\x06status\x12\x12\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x12\n" +
+	"\x04size\x18\x03 \x01(\x05R\x04size\"\x88\x03\n" +
+	"\x0fPhysOrdAdminRow\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\x05R\x06status\x12\x1d\n" +
+	"\n" +
+	"created_ts\x18\x04 \x01(\x03R\tcreatedTs\x128\n" +
+	"\x05items\x18\x05 \x03(\v2\".sproto.PhysOrdAdminRow.ItemsEntryR\x05items\x12\x1b\n" +
+	"\trecv_name\x18\x06 \x01(\tR\brecvName\x12\x14\n" +
+	"\x05phone\x18\a \x01(\tR\x05phone\x12\x12\n" +
+	"\x04addr\x18\b \x01(\tR\x04addr\x12\x16\n" +
+	"\x06remark\x18\t \x01(\tR\x06remark\x12\x1b\n" +
+	"\texpr_corp\x18\n" +
+	" \x01(\tR\bexprCorp\x12\x17\n" +
+	"\aexpr_no\x18\v \x01(\tR\x06exprNo\x12\x13\n" +
+	"\x05up_ts\x18\f \x01(\x03R\x04upTs\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"X\n" +
+	"\x13PhysOrdAdminListAck\x12+\n" +
+	"\x04rows\x18\x01 \x03(\v2\x17.sproto.PhysOrdAdminRowR\x04rows\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05totalB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -809,7 +1086,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -825,22 +1102,28 @@ var file_account_remote_proto_goTypes = []any{
 	(*UpdateNewbieStatsAck)(nil), // 11: sproto.UpdateNewbieStatsAck
 	(*PhysOrdShipReq)(nil),       // 12: sproto.PhysOrdShipReq
 	(*PhysOrdShipAck)(nil),       // 13: sproto.PhysOrdShipAck
-	nil,                          // 14: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 15: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 16: sproto.ChangeItemsAck.ItemsEntry
-	(*anypb.Any)(nil),            // 17: google.protobuf.Any
+	(*PhysOrdAdminListReq)(nil),  // 14: sproto.PhysOrdAdminListReq
+	(*PhysOrdAdminRow)(nil),      // 15: sproto.PhysOrdAdminRow
+	(*PhysOrdAdminListAck)(nil),  // 16: sproto.PhysOrdAdminListAck
+	nil,                          // 17: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 18: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 19: sproto.ChangeItemsAck.ItemsEntry
+	nil,                          // 20: sproto.PhysOrdAdminRow.ItemsEntry
+	(*anypb.Any)(nil),            // 21: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	17, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	17, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	14, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	15, // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	16, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
-	5,  // [5:5] is the sub-list for method output_type
-	5,  // [5:5] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	21, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	21, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	17, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	18, // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	19, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	20, // 5: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
+	15, // 6: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
+	7,  // [7:7] is the sub-list for method output_type
+	7,  // [7:7] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_account_remote_proto_init() }
@@ -854,7 +1137,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
