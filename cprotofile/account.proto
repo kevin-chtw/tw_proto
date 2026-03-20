@@ -124,3 +124,49 @@ message ExchangeReq {
 message ExchangeAck {
   map<int32, int64> items = 1; // 新物品id和数量
 }
+
+// 实物兑换订单 st: 0待发货 1已发货 2已完成 3已取消
+message PhysOrdBrief {
+  uint64 id = 1;
+  int32 status = 2;   // 订单状态：0待发货 1已发货 2已完成 3已取消
+  int64 created_ts = 3; // 创建时间 unix 秒
+  map<int32, int64> items = 4; // 兑换出的物品id和数量
+}
+
+message PhysOrdSubmitReq {
+  map<int32, int64> items = 1;     // 兑换出的物品id和数量
+  string recv_name = 2;
+  string phone = 3;
+  string addr = 4;                 // 收货地址（合并省市区+详细地址）
+  string remark = 5;              // 备注/留言（可选，可输入更详细信息）
+}
+
+message PhysOrdSubmitAck {
+  uint64 id = 1;
+  int32 st = 2;
+}
+
+message PhysOrdListReq {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message PhysOrdListAck {
+  repeated PhysOrdBrief rows = 1;
+  int32 total = 2;
+}
+
+message PhysOrdGetReq {
+  uint64 id = 1;
+}
+
+message PhysOrdGetAck {
+  PhysOrdBrief base = 1;
+  string recv_name = 2;
+  string phone = 3;
+  string addr = 4;
+  string remark = 5;
+  string expr_corp = 6; // 快递公司/承运商（仅已发货后有值）
+  string expr_no = 7;   // 快递单号（仅已发货后有值）
+  int64 up_ts = 8;
+}

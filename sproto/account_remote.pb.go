@@ -631,6 +631,111 @@ func (*UpdateNewbieStatsAck) Descriptor() ([]byte, []int) {
 	return file_account_remote_proto_rawDescGZIP(), []int{11}
 }
 
+// 运营发货/改状态 st: 1已发货(需expr) 2已完成 3已取消
+type PhysOrdShipReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	St            int32                  `protobuf:"varint,2,opt,name=st,proto3" json:"st,omitempty"`
+	ExprCorp      string                 `protobuf:"bytes,3,opt,name=expr_corp,json=exprCorp,proto3" json:"expr_corp,omitempty"`
+	ExprNo        string                 `protobuf:"bytes,4,opt,name=expr_no,json=exprNo,proto3" json:"expr_no,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdShipReq) Reset() {
+	*x = PhysOrdShipReq{}
+	mi := &file_account_remote_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdShipReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdShipReq) ProtoMessage() {}
+
+func (x *PhysOrdShipReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdShipReq.ProtoReflect.Descriptor instead.
+func (*PhysOrdShipReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *PhysOrdShipReq) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *PhysOrdShipReq) GetSt() int32 {
+	if x != nil {
+		return x.St
+	}
+	return 0
+}
+
+func (x *PhysOrdShipReq) GetExprCorp() string {
+	if x != nil {
+		return x.ExprCorp
+	}
+	return ""
+}
+
+func (x *PhysOrdShipReq) GetExprNo() string {
+	if x != nil {
+		return x.ExprNo
+	}
+	return ""
+}
+
+type PhysOrdShipAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdShipAck) Reset() {
+	*x = PhysOrdShipAck{}
+	mi := &file_account_remote_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdShipAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdShipAck) ProtoMessage() {}
+
+func (x *PhysOrdShipAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdShipAck.ProtoReflect.Descriptor instead.
+func (*PhysOrdShipAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{13}
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -684,7 +789,13 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x10\n" +
 	"\x03win\x18\x02 \x01(\bR\x03win\x12*\n" +
 	"\x11in_protected_room\x18\x03 \x01(\bR\x0finProtectedRoom\"\x16\n" +
-	"\x14UpdateNewbieStatsAckB\vZ\t../sprotob\x06proto3"
+	"\x14UpdateNewbieStatsAck\"f\n" +
+	"\x0ePhysOrdShipReq\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x0e\n" +
+	"\x02st\x18\x02 \x01(\x05R\x02st\x12\x1b\n" +
+	"\texpr_corp\x18\x03 \x01(\tR\bexprCorp\x12\x17\n" +
+	"\aexpr_no\x18\x04 \x01(\tR\x06exprNo\"\x10\n" +
+	"\x0ePhysOrdShipAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -698,7 +809,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -712,17 +823,19 @@ var file_account_remote_proto_goTypes = []any{
 	(*GetNewbieStatsAck)(nil),    // 9: sproto.GetNewbieStatsAck
 	(*UpdateNewbieStatsReq)(nil), // 10: sproto.UpdateNewbieStatsReq
 	(*UpdateNewbieStatsAck)(nil), // 11: sproto.UpdateNewbieStatsAck
-	nil,                          // 12: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 13: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 14: sproto.ChangeItemsAck.ItemsEntry
-	(*anypb.Any)(nil),            // 15: google.protobuf.Any
+	(*PhysOrdShipReq)(nil),       // 12: sproto.PhysOrdShipReq
+	(*PhysOrdShipAck)(nil),       // 13: sproto.PhysOrdShipAck
+	nil,                          // 14: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 15: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 16: sproto.ChangeItemsAck.ItemsEntry
+	(*anypb.Any)(nil),            // 17: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	15, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	15, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	12, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	13, // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	14, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	17, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	17, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	14, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	15, // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	16, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
 	5,  // [5:5] is the sub-list for method output_type
 	5,  // [5:5] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
@@ -741,7 +854,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   15,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

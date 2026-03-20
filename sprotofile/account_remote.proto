@@ -63,3 +63,14 @@ message UpdateNewbieStatsReq {
 
 message UpdateNewbieStatsAck {
 }
+
+// 运营发货/改状态 st: 1已发货(需expr) 2已完成 3已取消
+message PhysOrdShipReq {
+  uint64 id = 1;
+  int32 st = 2;
+  string expr_corp = 3;
+  string expr_no = 4;
+}
+
+message PhysOrdShipAck {
+}

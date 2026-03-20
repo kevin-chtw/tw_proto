@@ -1255,6 +1255,451 @@ func (x *ExchangeAck) GetItems() map[int32]int64 {
 	return nil
 }
 
+// 实物兑换订单 st: 0待发货 1已发货 2已完成 3已取消
+type PhysOrdBrief struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Status        int32                  `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`                                                                          // 订单状态：0待发货 1已发货 2已完成 3已取消
+	CreatedTs     int64                  `protobuf:"varint,3,opt,name=created_ts,json=createdTs,proto3" json:"created_ts,omitempty"`                                                   // 创建时间 unix 秒
+	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 兑换出的物品id和数量
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdBrief) Reset() {
+	*x = PhysOrdBrief{}
+	mi := &file_account_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdBrief) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdBrief) ProtoMessage() {}
+
+func (x *PhysOrdBrief) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdBrief.ProtoReflect.Descriptor instead.
+func (*PhysOrdBrief) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *PhysOrdBrief) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *PhysOrdBrief) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *PhysOrdBrief) GetCreatedTs() int64 {
+	if x != nil {
+		return x.CreatedTs
+	}
+	return 0
+}
+
+func (x *PhysOrdBrief) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+type PhysOrdSubmitReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         map[int32]int64        `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 兑换出的物品id和数量
+	RecvName      string                 `protobuf:"bytes,2,opt,name=recv_name,json=recvName,proto3" json:"recv_name,omitempty"`
+	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
+	Addr          string                 `protobuf:"bytes,4,opt,name=addr,proto3" json:"addr,omitempty"`     // 收货地址（合并省市区+详细地址）
+	Remark        string                 `protobuf:"bytes,5,opt,name=remark,proto3" json:"remark,omitempty"` // 备注/留言（可选，可输入更详细信息）
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdSubmitReq) Reset() {
+	*x = PhysOrdSubmitReq{}
+	mi := &file_account_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdSubmitReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdSubmitReq) ProtoMessage() {}
+
+func (x *PhysOrdSubmitReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdSubmitReq.ProtoReflect.Descriptor instead.
+func (*PhysOrdSubmitReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *PhysOrdSubmitReq) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *PhysOrdSubmitReq) GetRecvName() string {
+	if x != nil {
+		return x.RecvName
+	}
+	return ""
+}
+
+func (x *PhysOrdSubmitReq) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *PhysOrdSubmitReq) GetAddr() string {
+	if x != nil {
+		return x.Addr
+	}
+	return ""
+}
+
+func (x *PhysOrdSubmitReq) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+type PhysOrdSubmitAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	St            int32                  `protobuf:"varint,2,opt,name=st,proto3" json:"st,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdSubmitAck) Reset() {
+	*x = PhysOrdSubmitAck{}
+	mi := &file_account_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdSubmitAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdSubmitAck) ProtoMessage() {}
+
+func (x *PhysOrdSubmitAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdSubmitAck.ProtoReflect.Descriptor instead.
+func (*PhysOrdSubmitAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *PhysOrdSubmitAck) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *PhysOrdSubmitAck) GetSt() int32 {
+	if x != nil {
+		return x.St
+	}
+	return 0
+}
+
+type PhysOrdListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	Size          int32                  `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdListReq) Reset() {
+	*x = PhysOrdListReq{}
+	mi := &file_account_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdListReq) ProtoMessage() {}
+
+func (x *PhysOrdListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdListReq.ProtoReflect.Descriptor instead.
+func (*PhysOrdListReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *PhysOrdListReq) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *PhysOrdListReq) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+type PhysOrdListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*PhysOrdBrief        `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdListAck) Reset() {
+	*x = PhysOrdListAck{}
+	mi := &file_account_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdListAck) ProtoMessage() {}
+
+func (x *PhysOrdListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdListAck.ProtoReflect.Descriptor instead.
+func (*PhysOrdListAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *PhysOrdListAck) GetRows() []*PhysOrdBrief {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+func (x *PhysOrdListAck) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+type PhysOrdGetReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdGetReq) Reset() {
+	*x = PhysOrdGetReq{}
+	mi := &file_account_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdGetReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdGetReq) ProtoMessage() {}
+
+func (x *PhysOrdGetReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdGetReq.ProtoReflect.Descriptor instead.
+func (*PhysOrdGetReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *PhysOrdGetReq) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type PhysOrdGetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Base          *PhysOrdBrief          `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
+	RecvName      string                 `protobuf:"bytes,2,opt,name=recv_name,json=recvName,proto3" json:"recv_name,omitempty"`
+	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
+	Addr          string                 `protobuf:"bytes,4,opt,name=addr,proto3" json:"addr,omitempty"`
+	Remark        string                 `protobuf:"bytes,5,opt,name=remark,proto3" json:"remark,omitempty"`
+	ExprCorp      string                 `protobuf:"bytes,6,opt,name=expr_corp,json=exprCorp,proto3" json:"expr_corp,omitempty"` // 快递公司/承运商（仅已发货后有值）
+	ExprNo        string                 `protobuf:"bytes,7,opt,name=expr_no,json=exprNo,proto3" json:"expr_no,omitempty"`       // 快递单号（仅已发货后有值）
+	UpTs          int64                  `protobuf:"varint,8,opt,name=up_ts,json=upTs,proto3" json:"up_ts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PhysOrdGetAck) Reset() {
+	*x = PhysOrdGetAck{}
+	mi := &file_account_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PhysOrdGetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PhysOrdGetAck) ProtoMessage() {}
+
+func (x *PhysOrdGetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PhysOrdGetAck.ProtoReflect.Descriptor instead.
+func (*PhysOrdGetAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *PhysOrdGetAck) GetBase() *PhysOrdBrief {
+	if x != nil {
+		return x.Base
+	}
+	return nil
+}
+
+func (x *PhysOrdGetAck) GetRecvName() string {
+	if x != nil {
+		return x.RecvName
+	}
+	return ""
+}
+
+func (x *PhysOrdGetAck) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *PhysOrdGetAck) GetAddr() string {
+	if x != nil {
+		return x.Addr
+	}
+	return ""
+}
+
+func (x *PhysOrdGetAck) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+func (x *PhysOrdGetAck) GetExprCorp() string {
+	if x != nil {
+		return x.ExprCorp
+	}
+	return ""
+}
+
+func (x *PhysOrdGetAck) GetExprNo() string {
+	if x != nil {
+		return x.ExprNo
+	}
+	return ""
+}
+
+func (x *PhysOrdGetAck) GetUpTs() int64 {
+	if x != nil {
+		return x.UpTs
+	}
+	return 0
+}
+
 var File_account_proto protoreflect.FileDescriptor
 
 const file_account_proto_rawDesc = "" +
@@ -1375,7 +1820,47 @@ const file_account_proto_rawDesc = "" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xc6\x01\n" +
+	"\fPhysOrdBrief\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\x05R\x06status\x12\x1d\n" +
+	"\n" +
+	"created_ts\x18\x03 \x01(\x03R\tcreatedTs\x125\n" +
+	"\x05items\x18\x04 \x03(\v2\x1f.cproto.PhysOrdBrief.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xe6\x01\n" +
+	"\x10PhysOrdSubmitReq\x129\n" +
+	"\x05items\x18\x01 \x03(\v2#.cproto.PhysOrdSubmitReq.ItemsEntryR\x05items\x12\x1b\n" +
+	"\trecv_name\x18\x02 \x01(\tR\brecvName\x12\x14\n" +
+	"\x05phone\x18\x03 \x01(\tR\x05phone\x12\x12\n" +
+	"\x04addr\x18\x04 \x01(\tR\x04addr\x12\x16\n" +
+	"\x06remark\x18\x05 \x01(\tR\x06remark\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"2\n" +
+	"\x10PhysOrdSubmitAck\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x0e\n" +
+	"\x02st\x18\x02 \x01(\x05R\x02st\"8\n" +
+	"\x0ePhysOrdListReq\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x12\n" +
+	"\x04size\x18\x02 \x01(\x05R\x04size\"P\n" +
+	"\x0ePhysOrdListAck\x12(\n" +
+	"\x04rows\x18\x01 \x03(\v2\x14.cproto.PhysOrdBriefR\x04rows\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\x1f\n" +
+	"\rPhysOrdGetReq\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\"\xe3\x01\n" +
+	"\rPhysOrdGetAck\x12(\n" +
+	"\x04base\x18\x01 \x01(\v2\x14.cproto.PhysOrdBriefR\x04base\x12\x1b\n" +
+	"\trecv_name\x18\x02 \x01(\tR\brecvName\x12\x14\n" +
+	"\x05phone\x18\x03 \x01(\tR\x05phone\x12\x12\n" +
+	"\x04addr\x18\x04 \x01(\tR\x04addr\x12\x16\n" +
+	"\x06remark\x18\x05 \x01(\tR\x06remark\x12\x1b\n" +
+	"\texpr_corp\x18\x06 \x01(\tR\bexprCorp\x12\x17\n" +
+	"\aexpr_no\x18\a \x01(\tR\x06exprNo\x12\x13\n" +
+	"\x05up_ts\x18\b \x01(\x03R\x04upTsB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_account_proto_rawDescOnce sync.Once
@@ -1389,7 +1874,7 @@ func file_account_proto_rawDescGZIP() []byte {
 	return file_account_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_account_proto_goTypes = []any{
 	(*AccountReq)(nil),        // 0: cproto.AccountReq
 	(*AccountAck)(nil),        // 1: cproto.AccountAck
@@ -1415,37 +1900,50 @@ var file_account_proto_goTypes = []any{
 	(*BuyMemberAck)(nil),      // 21: cproto.BuyMemberAck
 	(*ExchangeReq)(nil),       // 22: cproto.ExchangeReq
 	(*ExchangeAck)(nil),       // 23: cproto.ExchangeAck
-	nil,                       // 24: cproto.BackpackAck.ItemsEntry
-	nil,                       // 25: cproto.PurchaseAck.GoodsEntry
-	nil,                       // 26: cproto.RegisterAck.AwardEntry
-	nil,                       // 27: cproto.PlayerInfoAck.ItemsEntry
-	nil,                       // 28: cproto.ItemsAck.ItemsEntry
-	nil,                       // 29: cproto.MemberTypeInfo.PurchaseBonusEntry
-	nil,                       // 30: cproto.MemberTypeInfo.DailyRewardEntry
-	nil,                       // 31: cproto.BuyMemberAck.BonusEntry
-	nil,                       // 32: cproto.ExchangeAck.ItemsEntry
-	(*anypb.Any)(nil),         // 33: google.protobuf.Any
+	(*PhysOrdBrief)(nil),      // 24: cproto.PhysOrdBrief
+	(*PhysOrdSubmitReq)(nil),  // 25: cproto.PhysOrdSubmitReq
+	(*PhysOrdSubmitAck)(nil),  // 26: cproto.PhysOrdSubmitAck
+	(*PhysOrdListReq)(nil),    // 27: cproto.PhysOrdListReq
+	(*PhysOrdListAck)(nil),    // 28: cproto.PhysOrdListAck
+	(*PhysOrdGetReq)(nil),     // 29: cproto.PhysOrdGetReq
+	(*PhysOrdGetAck)(nil),     // 30: cproto.PhysOrdGetAck
+	nil,                       // 31: cproto.BackpackAck.ItemsEntry
+	nil,                       // 32: cproto.PurchaseAck.GoodsEntry
+	nil,                       // 33: cproto.RegisterAck.AwardEntry
+	nil,                       // 34: cproto.PlayerInfoAck.ItemsEntry
+	nil,                       // 35: cproto.ItemsAck.ItemsEntry
+	nil,                       // 36: cproto.MemberTypeInfo.PurchaseBonusEntry
+	nil,                       // 37: cproto.MemberTypeInfo.DailyRewardEntry
+	nil,                       // 38: cproto.BuyMemberAck.BonusEntry
+	nil,                       // 39: cproto.ExchangeAck.ItemsEntry
+	nil,                       // 40: cproto.PhysOrdBrief.ItemsEntry
+	nil,                       // 41: cproto.PhysOrdSubmitReq.ItemsEntry
+	(*anypb.Any)(nil),         // 42: google.protobuf.Any
 }
 var file_account_proto_depIdxs = []int32{
-	33, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
-	33, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
+	42, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
+	42, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
 	15, // 2: cproto.WxLoginAck.player_info:type_name -> cproto.PlayerInfoAck
-	24, // 3: cproto.BackpackAck.items:type_name -> cproto.BackpackAck.ItemsEntry
-	25, // 4: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
+	31, // 3: cproto.BackpackAck.items:type_name -> cproto.BackpackAck.ItemsEntry
+	32, // 4: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
 	15, // 5: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
-	26, // 6: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
-	27, // 7: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
-	28, // 8: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
+	33, // 6: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
+	34, // 7: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
+	35, // 8: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
 	19, // 9: cproto.MemberInfoAck.types:type_name -> cproto.MemberTypeInfo
-	29, // 10: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
-	30, // 11: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
-	31, // 12: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
-	32, // 13: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
-	14, // [14:14] is the sub-list for method output_type
-	14, // [14:14] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	36, // 10: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
+	37, // 11: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
+	38, // 12: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
+	39, // 13: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
+	40, // 14: cproto.PhysOrdBrief.items:type_name -> cproto.PhysOrdBrief.ItemsEntry
+	41, // 15: cproto.PhysOrdSubmitReq.items:type_name -> cproto.PhysOrdSubmitReq.ItemsEntry
+	24, // 16: cproto.PhysOrdListAck.rows:type_name -> cproto.PhysOrdBrief
+	24, // 17: cproto.PhysOrdGetAck.base:type_name -> cproto.PhysOrdBrief
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_account_proto_init() }
@@ -1459,7 +1957,7 @@ func file_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   33,
+			NumMessages:   42,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
