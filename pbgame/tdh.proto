@@ -1,0 +1,31 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package pbtdh;
+option go_package = "/pbtdh";
+
+message TDHReq {
+  google.protobuf.Any req = 1;
+}
+
+message TDHAck {
+  google.protobuf.Any ack = 1;
+}
+
+message TDHBumaAck {
+  int32 seat = 1; //座位号
+  int32 draw_tile = 2; //补到的牌
+}
+
+message TDHMacntAck {
+  int32 seat = 1; //座位号
+  int32 ma_cnt = 2; //加马数
+  int32 cur_ma_cnt = 3; //当前马数
+}
+
+// TDHPaomaAck 胡牌后跑马通知：仅当本胡非一炮多响时下发；马数已计入后续分数结算。
+message TDHPaomaAck {
+  int32 ma_cnt = 1; // 计入结算的跑马数（与番相乘的基数）
+  repeated int32 tiles = 2; // 翻开的牌；张数=min(10+本局加马数,18)；一炮多响不下发本消息
+  int32 seat = 3; // 胡牌座位，马数记在该玩家
+}

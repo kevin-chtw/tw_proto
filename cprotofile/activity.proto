@@ -255,3 +255,50 @@ message MealtimeAck {
   int32 lunch = 3;              // 午间是否已领取
   int32 dinner = 4;             // 晚间是否已领取
 }
+
+// ===== 七日签到活动 (sevensign) =====
+message SevenSignDayAck {
+  int32 day = 1; // 1-7, 周一到周日
+  map<int32, int64> reward_items = 2;
+
+  // claimed_mask / claimable_mask bit 定义：
+  // bit0=base(基础签到)
+  // bit1=video_extra(看广告额外领取)
+  // bit2=recharge_extra(当日充值额外领取)
+  uint32 claimed_mask = 3;
+
+  // 当且仅当 claimable_mask 含 base bit 时有意义：
+  // 0=base(当天领取) 1=backfill(补签领取)
+  int32 base_action = 5;
+}
+
+message SevenSignPanelAck {
+  int32 today_weekday = 1; // 1-7, 周一到周日
+  int32 signed_days = 2;  // 已完成签到天数（以 base_claimed 计数）
+
+  repeated SevenSignDayAck days = 3;
+
+  // milestone_claimed_mask 记录累计奖励已领取档位：
+  // bit0=累计签到2天, bit1=3天, bit2=5天, bit3=6天
+  uint32 milestone_claimed_mask = 4;
+}
+
+message SevenSignRewardReq {
+  // action:
+  // "base"      今日签到（基础奖励）
+  // "video"     看广告：用于“补签基础奖励(天<今日)”或“看广告额外奖励(天已基础领取)”
+  // "recharge"  领取因当日充值产生的额外奖励
+  // "milestone" 累计签到大奖：由前端手动触发领取
+  string action = 1;
+
+  // day: 1-7（用于 base/video/recharge/milestone）
+  int32 day = 2; 
+}
+
+message SevenSignRewardAck {
+  string action = 1;
+  int32 day = 2;
+  map<int32, int64> items = 4;
+
+  int32 signed_days = 5;
+}

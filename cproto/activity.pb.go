@@ -2366,6 +2366,277 @@ func (x *MealtimeAck) GetDinner() int32 {
 	return 0
 }
 
+// ===== 七日签到活动 (sevensign) =====
+type SevenSignDayAck struct {
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	Day         int32                  `protobuf:"varint,1,opt,name=day,proto3" json:"day,omitempty"` // 1-7, 周一到周日
+	RewardItems map[int32]int64        `protobuf:"bytes,2,rep,name=reward_items,json=rewardItems,proto3" json:"reward_items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	// claimed_mask / claimable_mask bit 定义：
+	// bit0=base(基础签到)
+	// bit1=video_extra(看广告额外领取)
+	// bit2=recharge_extra(当日充值额外领取)
+	ClaimedMask uint32 `protobuf:"varint,3,opt,name=claimed_mask,json=claimedMask,proto3" json:"claimed_mask,omitempty"`
+	// 当且仅当 claimable_mask 含 base bit 时有意义：
+	// 0=base(当天领取) 1=backfill(补签领取)
+	BaseAction    int32 `protobuf:"varint,5,opt,name=base_action,json=baseAction,proto3" json:"base_action,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SevenSignDayAck) Reset() {
+	*x = SevenSignDayAck{}
+	mi := &file_activity_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SevenSignDayAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SevenSignDayAck) ProtoMessage() {}
+
+func (x *SevenSignDayAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SevenSignDayAck.ProtoReflect.Descriptor instead.
+func (*SevenSignDayAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *SevenSignDayAck) GetDay() int32 {
+	if x != nil {
+		return x.Day
+	}
+	return 0
+}
+
+func (x *SevenSignDayAck) GetRewardItems() map[int32]int64 {
+	if x != nil {
+		return x.RewardItems
+	}
+	return nil
+}
+
+func (x *SevenSignDayAck) GetClaimedMask() uint32 {
+	if x != nil {
+		return x.ClaimedMask
+	}
+	return 0
+}
+
+func (x *SevenSignDayAck) GetBaseAction() int32 {
+	if x != nil {
+		return x.BaseAction
+	}
+	return 0
+}
+
+type SevenSignPanelAck struct {
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	TodayWeekday int32                  `protobuf:"varint,1,opt,name=today_weekday,json=todayWeekday,proto3" json:"today_weekday,omitempty"` // 1-7, 周一到周日
+	SignedDays   int32                  `protobuf:"varint,2,opt,name=signed_days,json=signedDays,proto3" json:"signed_days,omitempty"`       // 已完成签到天数（以 base_claimed 计数）
+	Days         []*SevenSignDayAck     `protobuf:"bytes,3,rep,name=days,proto3" json:"days,omitempty"`
+	// milestone_claimed_mask 记录累计奖励已领取档位：
+	// bit0=累计签到2天, bit1=3天, bit2=5天, bit3=6天
+	MilestoneClaimedMask uint32 `protobuf:"varint,4,opt,name=milestone_claimed_mask,json=milestoneClaimedMask,proto3" json:"milestone_claimed_mask,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *SevenSignPanelAck) Reset() {
+	*x = SevenSignPanelAck{}
+	mi := &file_activity_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SevenSignPanelAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SevenSignPanelAck) ProtoMessage() {}
+
+func (x *SevenSignPanelAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SevenSignPanelAck.ProtoReflect.Descriptor instead.
+func (*SevenSignPanelAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *SevenSignPanelAck) GetTodayWeekday() int32 {
+	if x != nil {
+		return x.TodayWeekday
+	}
+	return 0
+}
+
+func (x *SevenSignPanelAck) GetSignedDays() int32 {
+	if x != nil {
+		return x.SignedDays
+	}
+	return 0
+}
+
+func (x *SevenSignPanelAck) GetDays() []*SevenSignDayAck {
+	if x != nil {
+		return x.Days
+	}
+	return nil
+}
+
+func (x *SevenSignPanelAck) GetMilestoneClaimedMask() uint32 {
+	if x != nil {
+		return x.MilestoneClaimedMask
+	}
+	return 0
+}
+
+type SevenSignRewardReq struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// action:
+	// "base"      今日签到（基础奖励）
+	// "video"     看广告：用于“补签基础奖励(天<今日)”或“看广告额外奖励(天已基础领取)”
+	// "recharge"  领取因当日充值产生的额外奖励
+	// "milestone" 累计签到大奖：由前端手动触发领取
+	Action string `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
+	// day: 1-7（用于 base/video/recharge/milestone）
+	Day           int32 `protobuf:"varint,2,opt,name=day,proto3" json:"day,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SevenSignRewardReq) Reset() {
+	*x = SevenSignRewardReq{}
+	mi := &file_activity_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SevenSignRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SevenSignRewardReq) ProtoMessage() {}
+
+func (x *SevenSignRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SevenSignRewardReq.ProtoReflect.Descriptor instead.
+func (*SevenSignRewardReq) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *SevenSignRewardReq) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *SevenSignRewardReq) GetDay() int32 {
+	if x != nil {
+		return x.Day
+	}
+	return 0
+}
+
+type SevenSignRewardAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
+	Day           int32                  `protobuf:"varint,2,opt,name=day,proto3" json:"day,omitempty"`
+	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	SignedDays    int32                  `protobuf:"varint,5,opt,name=signed_days,json=signedDays,proto3" json:"signed_days,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SevenSignRewardAck) Reset() {
+	*x = SevenSignRewardAck{}
+	mi := &file_activity_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SevenSignRewardAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SevenSignRewardAck) ProtoMessage() {}
+
+func (x *SevenSignRewardAck) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SevenSignRewardAck.ProtoReflect.Descriptor instead.
+func (*SevenSignRewardAck) Descriptor() ([]byte, []int) {
+	return file_activity_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *SevenSignRewardAck) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *SevenSignRewardAck) GetDay() int32 {
+	if x != nil {
+		return x.Day
+	}
+	return 0
+}
+
+func (x *SevenSignRewardAck) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *SevenSignRewardAck) GetSignedDays() int32 {
+	if x != nil {
+		return x.SignedDays
+	}
+	return 0
+}
+
 var File_activity_proto protoreflect.FileDescriptor
 
 const file_activity_proto_rawDesc = "" +
@@ -2597,6 +2868,34 @@ const file_activity_proto_rawDesc = "" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xf4\x01\n" +
+	"\x0fSevenSignDayAck\x12\x10\n" +
+	"\x03day\x18\x01 \x01(\x05R\x03day\x12K\n" +
+	"\freward_items\x18\x02 \x03(\v2(.cproto.SevenSignDayAck.RewardItemsEntryR\vrewardItems\x12!\n" +
+	"\fclaimed_mask\x18\x03 \x01(\rR\vclaimedMask\x12\x1f\n" +
+	"\vbase_action\x18\x05 \x01(\x05R\n" +
+	"baseAction\x1a>\n" +
+	"\x10RewardItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xbc\x01\n" +
+	"\x11SevenSignPanelAck\x12#\n" +
+	"\rtoday_weekday\x18\x01 \x01(\x05R\ftodayWeekday\x12\x1f\n" +
+	"\vsigned_days\x18\x02 \x01(\x05R\n" +
+	"signedDays\x12+\n" +
+	"\x04days\x18\x03 \x03(\v2\x17.cproto.SevenSignDayAckR\x04days\x124\n" +
+	"\x16milestone_claimed_mask\x18\x04 \x01(\rR\x14milestoneClaimedMask\">\n" +
+	"\x12SevenSignRewardReq\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x12\x10\n" +
+	"\x03day\x18\x02 \x01(\x05R\x03day\"\xd6\x01\n" +
+	"\x12SevenSignRewardAck\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x12\x10\n" +
+	"\x03day\x18\x02 \x01(\x05R\x03day\x12;\n" +
+	"\x05items\x18\x04 \x03(\v2%.cproto.SevenSignRewardAck.ItemsEntryR\x05items\x12\x1f\n" +
+	"\vsigned_days\x18\x05 \x01(\x05R\n" +
+	"signedDays\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01*N\n" +
 	"\tActStatus\x12\x0e\n" +
 	"\n" +
@@ -2618,7 +2917,7 @@ func file_activity_proto_rawDescGZIP() []byte {
 }
 
 var file_activity_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
+var file_activity_proto_msgTypes = make([]protoimpl.MessageInfo, 61)
 var file_activity_proto_goTypes = []any{
 	(ActStatus)(0),                // 0: cproto.ActStatus
 	(*ActivityReq)(nil),           // 1: cproto.ActivityReq
@@ -2661,57 +2960,66 @@ var file_activity_proto_goTypes = []any{
 	(*MealtimePanelAck)(nil),      // 38: cproto.MealtimePanelAck
 	(*MealtimeReq)(nil),           // 39: cproto.MealtimeReq
 	(*MealtimeAck)(nil),           // 40: cproto.MealtimeAck
-	nil,                           // 41: cproto.PurchasePkgAck.ItemsEntry
-	nil,                           // 42: cproto.InviteRewardState.ItemsEntry
-	nil,                           // 43: cproto.InviteRewardAck.ItemsEntry
-	nil,                           // 44: cproto.RedpacketAck.ItemsEntry
-	nil,                           // 45: cproto.LuckyAck.ItemsEntry
-	nil,                           // 46: cproto.RegisterPanelAck.NormalItemsEntry
-	nil,                           // 47: cproto.RegisterPanelAck.DoubleItemsEntry
-	nil,                           // 48: cproto.RegisterRewardAck.ItemsEntry
-	nil,                           // 49: cproto.EngageWheelRewardCfg.ItemsEntry
-	nil,                           // 50: cproto.EngageRewardAck.ItemsEntry
-	nil,                           // 51: cproto.BankruptPackageInfo.ItemsEntry
-	nil,                           // 52: cproto.DiscountPackageInfo.ItemsEntry
-	nil,                           // 53: cproto.IcebreakerPackageInfo.ItemsEntry
-	nil,                           // 54: cproto.ActPurchaseAck.ItemsEntry
-	nil,                           // 55: cproto.MealtimeAck.ItemsEntry
-	(*anypb.Any)(nil),             // 56: google.protobuf.Any
+	(*SevenSignDayAck)(nil),       // 41: cproto.SevenSignDayAck
+	(*SevenSignPanelAck)(nil),     // 42: cproto.SevenSignPanelAck
+	(*SevenSignRewardReq)(nil),    // 43: cproto.SevenSignRewardReq
+	(*SevenSignRewardAck)(nil),    // 44: cproto.SevenSignRewardAck
+	nil,                           // 45: cproto.PurchasePkgAck.ItemsEntry
+	nil,                           // 46: cproto.InviteRewardState.ItemsEntry
+	nil,                           // 47: cproto.InviteRewardAck.ItemsEntry
+	nil,                           // 48: cproto.RedpacketAck.ItemsEntry
+	nil,                           // 49: cproto.LuckyAck.ItemsEntry
+	nil,                           // 50: cproto.RegisterPanelAck.NormalItemsEntry
+	nil,                           // 51: cproto.RegisterPanelAck.DoubleItemsEntry
+	nil,                           // 52: cproto.RegisterRewardAck.ItemsEntry
+	nil,                           // 53: cproto.EngageWheelRewardCfg.ItemsEntry
+	nil,                           // 54: cproto.EngageRewardAck.ItemsEntry
+	nil,                           // 55: cproto.BankruptPackageInfo.ItemsEntry
+	nil,                           // 56: cproto.DiscountPackageInfo.ItemsEntry
+	nil,                           // 57: cproto.IcebreakerPackageInfo.ItemsEntry
+	nil,                           // 58: cproto.ActPurchaseAck.ItemsEntry
+	nil,                           // 59: cproto.MealtimeAck.ItemsEntry
+	nil,                           // 60: cproto.SevenSignDayAck.RewardItemsEntry
+	nil,                           // 61: cproto.SevenSignRewardAck.ItemsEntry
+	(*anypb.Any)(nil),             // 62: google.protobuf.Any
 }
 var file_activity_proto_depIdxs = []int32{
-	56, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
-	56, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
+	62, // 0: cproto.ActivityReq.req:type_name -> google.protobuf.Any
+	62, // 1: cproto.ActivityAck.ack:type_name -> google.protobuf.Any
 	9,  // 2: cproto.ActsListAck.acts:type_name -> cproto.ActBrief
-	56, // 3: cproto.ActPanelAck.ack:type_name -> google.protobuf.Any
-	56, // 4: cproto.ActRewardReq.req:type_name -> google.protobuf.Any
-	56, // 5: cproto.ActRewardAck.ack:type_name -> google.protobuf.Any
+	62, // 3: cproto.ActPanelAck.ack:type_name -> google.protobuf.Any
+	62, // 4: cproto.ActRewardReq.req:type_name -> google.protobuf.Any
+	62, // 5: cproto.ActRewardAck.ack:type_name -> google.protobuf.Any
 	0,  // 6: cproto.ActBrief.status:type_name -> cproto.ActStatus
-	41, // 7: cproto.PurchasePkgAck.items:type_name -> cproto.PurchasePkgAck.ItemsEntry
+	45, // 7: cproto.PurchasePkgAck.items:type_name -> cproto.PurchasePkgAck.ItemsEntry
 	12, // 8: cproto.InvitePanelAck.rewards:type_name -> cproto.InviteRewardState
 	13, // 9: cproto.InvitePanelAck.users:type_name -> cproto.InviteUser
-	42, // 10: cproto.InviteRewardState.items:type_name -> cproto.InviteRewardState.ItemsEntry
-	43, // 11: cproto.InviteRewardAck.items:type_name -> cproto.InviteRewardAck.ItemsEntry
-	44, // 12: cproto.RedpacketAck.items:type_name -> cproto.RedpacketAck.ItemsEntry
-	45, // 13: cproto.LuckyAck.items:type_name -> cproto.LuckyAck.ItemsEntry
-	46, // 14: cproto.RegisterPanelAck.normal_items:type_name -> cproto.RegisterPanelAck.NormalItemsEntry
-	47, // 15: cproto.RegisterPanelAck.double_items:type_name -> cproto.RegisterPanelAck.DoubleItemsEntry
-	48, // 16: cproto.RegisterRewardAck.items:type_name -> cproto.RegisterRewardAck.ItemsEntry
+	46, // 10: cproto.InviteRewardState.items:type_name -> cproto.InviteRewardState.ItemsEntry
+	47, // 11: cproto.InviteRewardAck.items:type_name -> cproto.InviteRewardAck.ItemsEntry
+	48, // 12: cproto.RedpacketAck.items:type_name -> cproto.RedpacketAck.ItemsEntry
+	49, // 13: cproto.LuckyAck.items:type_name -> cproto.LuckyAck.ItemsEntry
+	50, // 14: cproto.RegisterPanelAck.normal_items:type_name -> cproto.RegisterPanelAck.NormalItemsEntry
+	51, // 15: cproto.RegisterPanelAck.double_items:type_name -> cproto.RegisterPanelAck.DoubleItemsEntry
+	52, // 16: cproto.RegisterRewardAck.items:type_name -> cproto.RegisterRewardAck.ItemsEntry
 	27, // 17: cproto.EngagePanelAck.wheel:type_name -> cproto.EngageWheelRewardCfg
-	49, // 18: cproto.EngageWheelRewardCfg.items:type_name -> cproto.EngageWheelRewardCfg.ItemsEntry
-	50, // 19: cproto.EngageRewardAck.items:type_name -> cproto.EngageRewardAck.ItemsEntry
+	53, // 18: cproto.EngageWheelRewardCfg.items:type_name -> cproto.EngageWheelRewardCfg.ItemsEntry
+	54, // 19: cproto.EngageRewardAck.items:type_name -> cproto.EngageRewardAck.ItemsEntry
 	31, // 20: cproto.BankruptPanelAck.packages:type_name -> cproto.BankruptPackageInfo
-	51, // 21: cproto.BankruptPackageInfo.items:type_name -> cproto.BankruptPackageInfo.ItemsEntry
+	55, // 21: cproto.BankruptPackageInfo.items:type_name -> cproto.BankruptPackageInfo.ItemsEntry
 	33, // 22: cproto.DiscountPanelAck.packages:type_name -> cproto.DiscountPackageInfo
-	52, // 23: cproto.DiscountPackageInfo.items:type_name -> cproto.DiscountPackageInfo.ItemsEntry
+	56, // 23: cproto.DiscountPackageInfo.items:type_name -> cproto.DiscountPackageInfo.ItemsEntry
 	35, // 24: cproto.IcebreakerPanel.packages:type_name -> cproto.IcebreakerPackageInfo
-	53, // 25: cproto.IcebreakerPackageInfo.items:type_name -> cproto.IcebreakerPackageInfo.ItemsEntry
-	54, // 26: cproto.ActPurchaseAck.items:type_name -> cproto.ActPurchaseAck.ItemsEntry
-	55, // 27: cproto.MealtimeAck.items:type_name -> cproto.MealtimeAck.ItemsEntry
-	28, // [28:28] is the sub-list for method output_type
-	28, // [28:28] is the sub-list for method input_type
-	28, // [28:28] is the sub-list for extension type_name
-	28, // [28:28] is the sub-list for extension extendee
-	0,  // [0:28] is the sub-list for field type_name
+	57, // 25: cproto.IcebreakerPackageInfo.items:type_name -> cproto.IcebreakerPackageInfo.ItemsEntry
+	58, // 26: cproto.ActPurchaseAck.items:type_name -> cproto.ActPurchaseAck.ItemsEntry
+	59, // 27: cproto.MealtimeAck.items:type_name -> cproto.MealtimeAck.ItemsEntry
+	60, // 28: cproto.SevenSignDayAck.reward_items:type_name -> cproto.SevenSignDayAck.RewardItemsEntry
+	41, // 29: cproto.SevenSignPanelAck.days:type_name -> cproto.SevenSignDayAck
+	61, // 30: cproto.SevenSignRewardAck.items:type_name -> cproto.SevenSignRewardAck.ItemsEntry
+	31, // [31:31] is the sub-list for method output_type
+	31, // [31:31] is the sub-list for method input_type
+	31, // [31:31] is the sub-list for extension type_name
+	31, // [31:31] is the sub-list for extension extendee
+	0,  // [0:31] is the sub-list for field type_name
 }
 
 func init() { file_activity_proto_init() }
@@ -2725,7 +3033,7 @@ func file_activity_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_activity_proto_rawDesc), len(file_activity_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   55,
+			NumMessages:   61,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
