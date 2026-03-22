@@ -2367,36 +2367,31 @@ func (x *MealtimeAck) GetDinner() int32 {
 }
 
 // ===== 七日签到活动 (sevensign) =====
-type SevenSignDayAck struct {
-	state       protoimpl.MessageState `protogen:"open.v1"`
-	Day         int32                  `protobuf:"varint,1,opt,name=day,proto3" json:"day,omitempty"` // 1-7, 周一到周日
-	RewardItems map[int32]int64        `protobuf:"bytes,2,rep,name=reward_items,json=rewardItems,proto3" json:"reward_items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	// claimed_mask / claimable_mask bit 定义：
-	// bit0=base(基础签到)
-	// bit1=video_extra(看广告额外领取)
-	// bit2=recharge_extra(当日充值额外领取)
-	ClaimedMask uint32 `protobuf:"varint,3,opt,name=claimed_mask,json=claimedMask,proto3" json:"claimed_mask,omitempty"`
-	// 当且仅当 claimable_mask 含 base bit 时有意义：
-	// 0=base(当天领取) 1=backfill(补签领取)
-	BaseAction    int32 `protobuf:"varint,5,opt,name=base_action,json=baseAction,proto3" json:"base_action,omitempty"`
+type SignDay struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Day           int32                  `protobuf:"varint,1,opt,name=day,proto3" json:"day,omitempty"` // 1-7, 周一到周日
+	RewardItems   map[int32]int64        `protobuf:"bytes,2,rep,name=reward_items,json=rewardItems,proto3" json:"reward_items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Base          bool                   `protobuf:"varint,3,opt,name=base,proto3" json:"base,omitempty"`         // true=已领基础 false=未领
+	Video         bool                   `protobuf:"varint,4,opt,name=video,proto3" json:"video,omitempty"`       // true=已领视频额外 false=未领
+	Recharge      int32                  `protobuf:"varint,5,opt,name=recharge,proto3" json:"recharge,omitempty"` // 0=不可领 1=可领 2=已领
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SevenSignDayAck) Reset() {
-	*x = SevenSignDayAck{}
+func (x *SignDay) Reset() {
+	*x = SignDay{}
 	mi := &file_activity_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SevenSignDayAck) String() string {
+func (x *SignDay) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SevenSignDayAck) ProtoMessage() {}
+func (*SignDay) ProtoMessage() {}
 
-func (x *SevenSignDayAck) ProtoReflect() protoreflect.Message {
+func (x *SignDay) ProtoReflect() protoreflect.Message {
 	mi := &file_activity_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2408,49 +2403,54 @@ func (x *SevenSignDayAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SevenSignDayAck.ProtoReflect.Descriptor instead.
-func (*SevenSignDayAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use SignDay.ProtoReflect.Descriptor instead.
+func (*SignDay) Descriptor() ([]byte, []int) {
 	return file_activity_proto_rawDescGZIP(), []int{40}
 }
 
-func (x *SevenSignDayAck) GetDay() int32 {
+func (x *SignDay) GetDay() int32 {
 	if x != nil {
 		return x.Day
 	}
 	return 0
 }
 
-func (x *SevenSignDayAck) GetRewardItems() map[int32]int64 {
+func (x *SignDay) GetRewardItems() map[int32]int64 {
 	if x != nil {
 		return x.RewardItems
 	}
 	return nil
 }
 
-func (x *SevenSignDayAck) GetClaimedMask() uint32 {
+func (x *SignDay) GetBase() bool {
 	if x != nil {
-		return x.ClaimedMask
+		return x.Base
 	}
-	return 0
+	return false
 }
 
-func (x *SevenSignDayAck) GetBaseAction() int32 {
+func (x *SignDay) GetVideo() bool {
 	if x != nil {
-		return x.BaseAction
+		return x.Video
+	}
+	return false
+}
+
+func (x *SignDay) GetRecharge() int32 {
+	if x != nil {
+		return x.Recharge
 	}
 	return 0
 }
 
 type SevenSignPanelAck struct {
-	state        protoimpl.MessageState `protogen:"open.v1"`
-	TodayWeekday int32                  `protobuf:"varint,1,opt,name=today_weekday,json=todayWeekday,proto3" json:"today_weekday,omitempty"` // 1-7, 周一到周日
-	SignedDays   int32                  `protobuf:"varint,2,opt,name=signed_days,json=signedDays,proto3" json:"signed_days,omitempty"`       // 已完成签到天数（以 base_claimed 计数）
-	Days         []*SevenSignDayAck     `protobuf:"bytes,3,rep,name=days,proto3" json:"days,omitempty"`
-	// milestone_claimed_mask 记录累计奖励已领取档位：
-	// bit0=累计签到2天, bit1=3天, bit2=5天, bit3=6天
-	MilestoneClaimedMask uint32 `protobuf:"varint,4,opt,name=milestone_claimed_mask,json=milestoneClaimedMask,proto3" json:"milestone_claimed_mask,omitempty"`
-	unknownFields        protoimpl.UnknownFields
-	sizeCache            protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TodayWeekday  int32                  `protobuf:"varint,1,opt,name=today_weekday,json=todayWeekday,proto3" json:"today_weekday,omitempty"` // 1-7, 周一到周日
+	Days          []*SignDay             `protobuf:"bytes,2,rep,name=days,proto3" json:"days,omitempty"`
+	SignedDays    int32                  `protobuf:"varint,3,opt,name=signed_days,json=signedDays,proto3" json:"signed_days,omitempty"`          // 已完成签到天数（以 base_claimed 计数）
+	MilestoneMask uint32                 `protobuf:"varint,4,opt,name=milestone_mask,json=milestoneMask,proto3" json:"milestone_mask,omitempty"` // 累计奖励已领取档位：bit0=2天 bit1=3天 bit2=5天 bit3=6天
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SevenSignPanelAck) Reset() {
@@ -2490,6 +2490,13 @@ func (x *SevenSignPanelAck) GetTodayWeekday() int32 {
 	return 0
 }
 
+func (x *SevenSignPanelAck) GetDays() []*SignDay {
+	if x != nil {
+		return x.Days
+	}
+	return nil
+}
+
 func (x *SevenSignPanelAck) GetSignedDays() int32 {
 	if x != nil {
 		return x.SignedDays
@@ -2497,16 +2504,9 @@ func (x *SevenSignPanelAck) GetSignedDays() int32 {
 	return 0
 }
 
-func (x *SevenSignPanelAck) GetDays() []*SevenSignDayAck {
+func (x *SevenSignPanelAck) GetMilestoneMask() uint32 {
 	if x != nil {
-		return x.Days
-	}
-	return nil
-}
-
-func (x *SevenSignPanelAck) GetMilestoneClaimedMask() uint32 {
-	if x != nil {
-		return x.MilestoneClaimedMask
+		return x.MilestoneMask
 	}
 	return 0
 }
@@ -2519,7 +2519,7 @@ type SevenSignRewardReq struct {
 	// "recharge"  领取因当日充值产生的额外奖励
 	// "milestone" 累计签到大奖：由前端手动触发领取
 	Action string `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
-	// day: 1-7（用于 base/video/recharge/milestone）
+	// day: 1-7（用于 base/video/recharge)
 	Day           int32 `protobuf:"varint,2,opt,name=day,proto3" json:"day,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -2572,9 +2572,8 @@ func (x *SevenSignRewardReq) GetDay() int32 {
 type SevenSignRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
-	Day           int32                  `protobuf:"varint,2,opt,name=day,proto3" json:"day,omitempty"`
-	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	SignedDays    int32                  `protobuf:"varint,5,opt,name=signed_days,json=signedDays,proto3" json:"signed_days,omitempty"`
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 领取到的奖励
+	Panel         *SevenSignPanelAck     `protobuf:"bytes,3,opt,name=panel,proto3" json:"panel,omitempty"`                                                                             // 面板数据（领奖后用于刷新 UI）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2616,13 +2615,6 @@ func (x *SevenSignRewardAck) GetAction() string {
 	return ""
 }
 
-func (x *SevenSignRewardAck) GetDay() int32 {
-	if x != nil {
-		return x.Day
-	}
-	return 0
-}
-
 func (x *SevenSignRewardAck) GetItems() map[int32]int64 {
 	if x != nil {
 		return x.Items
@@ -2630,11 +2622,11 @@ func (x *SevenSignRewardAck) GetItems() map[int32]int64 {
 	return nil
 }
 
-func (x *SevenSignRewardAck) GetSignedDays() int32 {
+func (x *SevenSignRewardAck) GetPanel() *SevenSignPanelAck {
 	if x != nil {
-		return x.SignedDays
+		return x.Panel
 	}
-	return 0
+	return nil
 }
 
 var File_activity_proto protoreflect.FileDescriptor
@@ -2868,31 +2860,29 @@ const file_activity_proto_rawDesc = "" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xf4\x01\n" +
-	"\x0fSevenSignDayAck\x12\x10\n" +
-	"\x03day\x18\x01 \x01(\x05R\x03day\x12K\n" +
-	"\freward_items\x18\x02 \x03(\v2(.cproto.SevenSignDayAck.RewardItemsEntryR\vrewardItems\x12!\n" +
-	"\fclaimed_mask\x18\x03 \x01(\rR\vclaimedMask\x12\x1f\n" +
-	"\vbase_action\x18\x05 \x01(\x05R\n" +
-	"baseAction\x1a>\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xe6\x01\n" +
+	"\aSignDay\x12\x10\n" +
+	"\x03day\x18\x01 \x01(\x05R\x03day\x12C\n" +
+	"\freward_items\x18\x02 \x03(\v2 .cproto.SignDay.RewardItemsEntryR\vrewardItems\x12\x12\n" +
+	"\x04base\x18\x03 \x01(\bR\x04base\x12\x14\n" +
+	"\x05video\x18\x04 \x01(\bR\x05video\x12\x1a\n" +
+	"\brecharge\x18\x05 \x01(\x05R\brecharge\x1a>\n" +
 	"\x10RewardItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xbc\x01\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xa5\x01\n" +
 	"\x11SevenSignPanelAck\x12#\n" +
-	"\rtoday_weekday\x18\x01 \x01(\x05R\ftodayWeekday\x12\x1f\n" +
-	"\vsigned_days\x18\x02 \x01(\x05R\n" +
-	"signedDays\x12+\n" +
-	"\x04days\x18\x03 \x03(\v2\x17.cproto.SevenSignDayAckR\x04days\x124\n" +
-	"\x16milestone_claimed_mask\x18\x04 \x01(\rR\x14milestoneClaimedMask\">\n" +
+	"\rtoday_weekday\x18\x01 \x01(\x05R\ftodayWeekday\x12#\n" +
+	"\x04days\x18\x02 \x03(\v2\x0f.cproto.SignDayR\x04days\x12\x1f\n" +
+	"\vsigned_days\x18\x03 \x01(\x05R\n" +
+	"signedDays\x12%\n" +
+	"\x0emilestone_mask\x18\x04 \x01(\rR\rmilestoneMask\">\n" +
 	"\x12SevenSignRewardReq\x12\x16\n" +
 	"\x06action\x18\x01 \x01(\tR\x06action\x12\x10\n" +
-	"\x03day\x18\x02 \x01(\x05R\x03day\"\xd6\x01\n" +
+	"\x03day\x18\x02 \x01(\x05R\x03day\"\xd4\x01\n" +
 	"\x12SevenSignRewardAck\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\x12\x10\n" +
-	"\x03day\x18\x02 \x01(\x05R\x03day\x12;\n" +
-	"\x05items\x18\x04 \x03(\v2%.cproto.SevenSignRewardAck.ItemsEntryR\x05items\x12\x1f\n" +
-	"\vsigned_days\x18\x05 \x01(\x05R\n" +
-	"signedDays\x1a8\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x12;\n" +
+	"\x05items\x18\x02 \x03(\v2%.cproto.SevenSignRewardAck.ItemsEntryR\x05items\x12/\n" +
+	"\x05panel\x18\x03 \x01(\v2\x19.cproto.SevenSignPanelAckR\x05panel\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
@@ -2960,7 +2950,7 @@ var file_activity_proto_goTypes = []any{
 	(*MealtimePanelAck)(nil),      // 38: cproto.MealtimePanelAck
 	(*MealtimeReq)(nil),           // 39: cproto.MealtimeReq
 	(*MealtimeAck)(nil),           // 40: cproto.MealtimeAck
-	(*SevenSignDayAck)(nil),       // 41: cproto.SevenSignDayAck
+	(*SignDay)(nil),               // 41: cproto.SignDay
 	(*SevenSignPanelAck)(nil),     // 42: cproto.SevenSignPanelAck
 	(*SevenSignRewardReq)(nil),    // 43: cproto.SevenSignRewardReq
 	(*SevenSignRewardAck)(nil),    // 44: cproto.SevenSignRewardAck
@@ -2979,7 +2969,7 @@ var file_activity_proto_goTypes = []any{
 	nil,                           // 57: cproto.IcebreakerPackageInfo.ItemsEntry
 	nil,                           // 58: cproto.ActPurchaseAck.ItemsEntry
 	nil,                           // 59: cproto.MealtimeAck.ItemsEntry
-	nil,                           // 60: cproto.SevenSignDayAck.RewardItemsEntry
+	nil,                           // 60: cproto.SignDay.RewardItemsEntry
 	nil,                           // 61: cproto.SevenSignRewardAck.ItemsEntry
 	(*anypb.Any)(nil),             // 62: google.protobuf.Any
 }
@@ -3012,14 +3002,15 @@ var file_activity_proto_depIdxs = []int32{
 	57, // 25: cproto.IcebreakerPackageInfo.items:type_name -> cproto.IcebreakerPackageInfo.ItemsEntry
 	58, // 26: cproto.ActPurchaseAck.items:type_name -> cproto.ActPurchaseAck.ItemsEntry
 	59, // 27: cproto.MealtimeAck.items:type_name -> cproto.MealtimeAck.ItemsEntry
-	60, // 28: cproto.SevenSignDayAck.reward_items:type_name -> cproto.SevenSignDayAck.RewardItemsEntry
-	41, // 29: cproto.SevenSignPanelAck.days:type_name -> cproto.SevenSignDayAck
+	60, // 28: cproto.SignDay.reward_items:type_name -> cproto.SignDay.RewardItemsEntry
+	41, // 29: cproto.SevenSignPanelAck.days:type_name -> cproto.SignDay
 	61, // 30: cproto.SevenSignRewardAck.items:type_name -> cproto.SevenSignRewardAck.ItemsEntry
-	31, // [31:31] is the sub-list for method output_type
-	31, // [31:31] is the sub-list for method input_type
-	31, // [31:31] is the sub-list for extension type_name
-	31, // [31:31] is the sub-list for extension extendee
-	0,  // [0:31] is the sub-list for field type_name
+	42, // 31: cproto.SevenSignRewardAck.panel:type_name -> cproto.SevenSignPanelAck
+	32, // [32:32] is the sub-list for method output_type
+	32, // [32:32] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_activity_proto_init() }
