@@ -91,9 +91,11 @@ func (x *BonusReq) GetRank() int32 {
 
 type BonusAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	BonusType     string                 `protobuf:"bytes,1,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                    //奖金类型
-	Cond          int32                  `protobuf:"varint,2,opt,name=cond,proto3" json:"cond,omitempty"`                                                                              //奖金条件索引
-	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //奖金详情
+	BonusType     string                 `protobuf:"bytes,1,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                             //奖金类型
+	Cond          int32                  `protobuf:"varint,2,opt,name=cond,proto3" json:"cond,omitempty"`                                                                                                       //奖金条件索引
+	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`                          //奖金详情
+	NextCond      int32                  `protobuf:"varint,4,opt,name=next_cond,json=nextCond,proto3" json:"next_cond,omitempty"`                                                                               //下一奖励条件
+	NextBonus     map[int32]int64        `protobuf:"bytes,5,rep,name=next_bonus,json=nextBonus,proto3" json:"next_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //下一级奖金详情
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -149,6 +151,20 @@ func (x *BonusAck) GetBonus() map[int32]int64 {
 	return nil
 }
 
+func (x *BonusAck) GetNextCond() int32 {
+	if x != nil {
+		return x.NextCond
+	}
+	return 0
+}
+
+func (x *BonusAck) GetNextBonus() map[int32]int64 {
+	if x != nil {
+		return x.NextBonus
+	}
+	return nil
+}
+
 var File_bonus_remote_proto protoreflect.FileDescriptor
 
 const file_bonus_remote_proto_rawDesc = "" +
@@ -158,14 +174,20 @@ const file_bonus_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1b\n" +
 	"\twin_score\x18\x03 \x01(\x03R\bwinScore\x12\x12\n" +
-	"\x04rank\x18\x04 \x01(\x05R\x04rank\"\xaa\x01\n" +
+	"\x04rank\x18\x04 \x01(\x05R\x04rank\"\xc5\x02\n" +
 	"\bBonusAck\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x01 \x01(\tR\tbonusType\x12\x12\n" +
 	"\x04cond\x18\x02 \x01(\x05R\x04cond\x121\n" +
-	"\x05bonus\x18\x03 \x03(\v2\x1b.sproto.BonusAck.BonusEntryR\x05bonus\x1a8\n" +
+	"\x05bonus\x18\x03 \x03(\v2\x1b.sproto.BonusAck.BonusEntryR\x05bonus\x12\x1b\n" +
+	"\tnext_cond\x18\x04 \x01(\x05R\bnextCond\x12>\n" +
+	"\n" +
+	"next_bonus\x18\x05 \x03(\v2\x1f.sproto.BonusAck.NextBonusEntryR\tnextBonus\x1a8\n" +
 	"\n" +
 	"BonusEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a<\n" +
+	"\x0eNextBonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../sprotob\x06proto3"
 
@@ -181,19 +203,21 @@ func file_bonus_remote_proto_rawDescGZIP() []byte {
 	return file_bonus_remote_proto_rawDescData
 }
 
-var file_bonus_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_bonus_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_bonus_remote_proto_goTypes = []any{
 	(*BonusReq)(nil), // 0: sproto.BonusReq
 	(*BonusAck)(nil), // 1: sproto.BonusAck
 	nil,              // 2: sproto.BonusAck.BonusEntry
+	nil,              // 3: sproto.BonusAck.NextBonusEntry
 }
 var file_bonus_remote_proto_depIdxs = []int32{
 	2, // 0: sproto.BonusAck.bonus:type_name -> sproto.BonusAck.BonusEntry
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	3, // 1: sproto.BonusAck.next_bonus:type_name -> sproto.BonusAck.NextBonusEntry
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_bonus_remote_proto_init() }
@@ -207,7 +231,7 @@ func file_bonus_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_bonus_remote_proto_rawDesc), len(file_bonus_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -1038,9 +1038,11 @@ func (x *StageResultAck) GetRank() int32 {
 
 type BonusRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	BonusType     string                 `protobuf:"bytes,1,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                    //奖金类型
-	Cond          int32                  `protobuf:"varint,2,opt,name=cond,proto3" json:"cond,omitempty"`                                                                              //奖金条件索引
-	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //奖金详情
+	BonusType     string                 `protobuf:"bytes,1,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                             //奖金类型
+	Cond          int32                  `protobuf:"varint,2,opt,name=cond,proto3" json:"cond,omitempty"`                                                                                                       //奖金条件索引
+	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`                          //奖金详情
+	NextCond      int32                  `protobuf:"varint,4,opt,name=next_cond,json=nextCond,proto3" json:"next_cond,omitempty"`                                                                               //下一奖励条件
+	NextBonus     map[int32]int64        `protobuf:"bytes,5,rep,name=next_bonus,json=nextBonus,proto3" json:"next_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //下一级奖金详情
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1092,6 +1094,20 @@ func (x *BonusRewardAck) GetCond() int32 {
 func (x *BonusRewardAck) GetBonus() map[int32]int64 {
 	if x != nil {
 		return x.Bonus
+	}
+	return nil
+}
+
+func (x *BonusRewardAck) GetNextCond() int32 {
+	if x != nil {
+		return x.NextCond
+	}
+	return 0
+}
+
+func (x *BonusRewardAck) GetNextBonus() map[int32]int64 {
+	if x != nil {
+		return x.NextBonus
 	}
 	return nil
 }
@@ -1181,14 +1197,20 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"<\n" +
 	"\x0eStageResultAck\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\x05R\x06result\x12\x12\n" +
-	"\x04rank\x18\x02 \x01(\x05R\x04rank\"\xb6\x01\n" +
+	"\x04rank\x18\x02 \x01(\x05R\x04rank\"\xd7\x02\n" +
 	"\x0eBonusRewardAck\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x01 \x01(\tR\tbonusType\x12\x12\n" +
 	"\x04cond\x18\x02 \x01(\x05R\x04cond\x127\n" +
-	"\x05bonus\x18\x03 \x03(\v2!.cproto.BonusRewardAck.BonusEntryR\x05bonus\x1a8\n" +
+	"\x05bonus\x18\x03 \x03(\v2!.cproto.BonusRewardAck.BonusEntryR\x05bonus\x12\x1b\n" +
+	"\tnext_cond\x18\x04 \x01(\x05R\bnextCond\x12D\n" +
+	"\n" +
+	"next_bonus\x18\x05 \x03(\v2%.cproto.BonusRewardAck.NextBonusEntryR\tnextBonus\x1a8\n" +
 	"\n" +
 	"BonusEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a<\n" +
+	"\x0eNextBonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
 
@@ -1204,7 +1226,7 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_match_proto_goTypes = []any{
 	(*MatchReq)(nil),         // 0: cproto.MatchReq
 	(*MatchAck)(nil),         // 1: cproto.MatchAck
@@ -1235,11 +1257,12 @@ var file_match_proto_goTypes = []any{
 	nil,                      // 26: cproto.FDRoundResultAck.ScoresEntry
 	nil,                      // 27: cproto.FDRoundResultAck.PlayerDataEntry
 	nil,                      // 28: cproto.BonusRewardAck.BonusEntry
-	(*anypb.Any)(nil),        // 29: google.protobuf.Any
+	nil,                      // 29: cproto.BonusRewardAck.NextBonusEntry
+	(*anypb.Any)(nil),        // 30: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	29, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	29, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	30, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	30, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
 	22, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
 	23, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
 	24, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
@@ -1247,11 +1270,12 @@ var file_match_proto_depIdxs = []int32{
 	26, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
 	27, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
 	28, // 8: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
-	9,  // [9:9] is the sub-list for method output_type
-	9,  // [9:9] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	29, // 9: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
@@ -1265,7 +1289,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   29,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
