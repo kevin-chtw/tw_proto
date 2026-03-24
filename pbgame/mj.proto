@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package pbmj;
-option go_package = "/pbmj";
+option go_package = "github.com/kevin-chtw/tw_proto/game/pbmj;pbmj";
 
 message MJRequestReq {
   int32 seat = 1; //座位号

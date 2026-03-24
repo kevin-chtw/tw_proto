@@ -1,8 +1,9 @@
 syntax = "proto3";
 import "google/protobuf/any.proto";
+import "mj.proto";
 
 package pbtdh;
-option go_package = "/pbtdh";
+option go_package = "github.com/kevin-chtw/tw_proto/game/pbtdh;pbtdh";
 
 message TDHReq {
   google.protobuf.Any req = 1;
@@ -28,4 +29,12 @@ message TDHPaomaAck {
   int32 ma_cnt = 1; // 计入结算的跑马数（与番相乘的基数）
   repeated int32 tiles = 2; // 翻开的牌；张数=min(10+本局加马数,18)；一炮多响不下发本消息
   int32 seat = 3; // 胡牌座位，马数记在该玩家
+}
+
+message TDHPonAck {
+  int32 seat = 1; //座位号
+  int32 from = 2;//出牌座位号
+  int32 tile = 3; //碰的牌列表
+  map<int32,pbmj.CallData> call_data = 4; // 打出的牌-听牌列表
+  bool jiama = 5; // 是否加马
 }

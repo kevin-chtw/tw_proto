@@ -1908,7 +1908,7 @@ const file_mj_proto_rawDesc = "" +
 	"\x12MJDingQueResultAck\x12\x16\n" +
 	"\x06colors\x18\x01 \x03(\x05R\x06colors\"\"\n" +
 	"\fMJRcmdFanAck\x12\x12\n" +
-	"\x04fans\x18\x01 \x03(\x05R\x04fansB\aZ\x05/pbmjb\x06proto3"
+	"\x04fans\x18\x01 \x03(\x05R\x04fansB/Z-github.com/kevin-chtw/tw_proto/game/pbmj;pbmjb\x06proto3"
 
 var (
 	file_mj_proto_rawDescOnce sync.Once

@@ -2,7 +2,7 @@ syntax = "proto3";
 import "google/protobuf/any.proto";
 
 package pbhzxl;
-option go_package = "/pbhzxl";
+option go_package = "github.com/kevin-chtw/tw_proto/game/pbhzxl;pbhzxl";
 
 message HZXLReq {
   google.protobuf.Any req = 1;

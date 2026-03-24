@@ -10,8 +10,8 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-REM Generate Go files
-protoc -I=. --go_out=../game/ *.proto
+REM Generate Go files (use module mode for stable import paths)
+protoc -I=. --go_out=.. --go_opt=module=github.com/kevin-chtw/tw_proto *.proto
 
 if %errorlevel% equ 0 (
     echo Go protobuf files generated successfully.

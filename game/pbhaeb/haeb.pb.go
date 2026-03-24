@@ -167,7 +167,7 @@ const file_haeb_proto_rawDesc = "" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\" \n" +
 	"\n" +
 	"HaebBaoAck\x12\x12\n" +
-	"\x04tile\x18\x01 \x01(\x05R\x04tileB\tZ\a/pbhaebb\x06proto3"
+	"\x04tile\x18\x01 \x01(\x05R\x04tileB3Z1github.com/kevin-chtw/tw_proto/game/pbhaeb;pbhaebb\x06proto3"
 
 var (
 	file_haeb_proto_rawDescOnce sync.Once

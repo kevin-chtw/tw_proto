@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package pbbase;
-option go_package = "/pbbase";
+option go_package = "github.com/kevin-chtw/tw_proto/game/pbbase;pbbase";
 
 message TrustReq {
   int32 seat = 1; //座位号

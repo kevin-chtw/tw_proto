@@ -2,7 +2,7 @@ syntax = "proto3";
 import "google/protobuf/any.proto";
 
 package pbguandan;
-option go_package = "/pbguandan";
+option go_package = "github.com/kevin-chtw/tw_proto/game/pbguandan;pbguandan";
 
 // 通用请求
 message GuandanReq {

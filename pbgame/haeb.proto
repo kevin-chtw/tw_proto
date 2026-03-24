@@ -2,7 +2,7 @@ syntax = "proto3";
 import "google/protobuf/any.proto";
 
 package pbhaeb;
-option go_package = "/pbhaeb";
+option go_package = "github.com/kevin-chtw/tw_proto/game/pbhaeb;pbhaeb";
 
 message HAEBReq {
   google.protobuf.Any req = 1;

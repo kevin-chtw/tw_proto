@@ -2,7 +2,7 @@ syntax = "proto3";
 import "google/protobuf/any.proto";
 
 package pbxl;
-option go_package = "/pbxl";
+option go_package = "github.com/kevin-chtw/tw_proto/game/pbxl;pbxl";
 
 message XLReq {
   google.protobuf.Any req = 1;

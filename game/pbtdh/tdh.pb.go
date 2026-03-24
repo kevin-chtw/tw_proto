@@ -7,6 +7,7 @@
 package pbtdh
 
 import (
+	pbmj "github.com/kevin-chtw/tw_proto/game/pbmj"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	anypb "google.golang.org/protobuf/types/known/anypb"
@@ -226,7 +227,7 @@ func (x *TDHMacntAck) GetCurMaCnt() int32 {
 type TDHPaomaAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MaCnt         int32                  `protobuf:"varint,1,opt,name=ma_cnt,json=maCnt,proto3" json:"ma_cnt,omitempty"` // 计入结算的跑马数（与番相乘的基数）
-	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`       // 翻开的牌（自摸）；张数=min(10+本局加马数,18)；点炮/抢杠可为空
+	Tiles         []int32                `protobuf:"varint,2,rep,packed,name=tiles,proto3" json:"tiles,omitempty"`       // 翻开的牌；张数=min(10+本局加马数,18)；一炮多响不下发本消息
 	Seat          int32                  `protobuf:"varint,3,opt,name=seat,proto3" json:"seat,omitempty"`                // 胡牌座位，马数记在该玩家
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -283,11 +284,87 @@ func (x *TDHPaomaAck) GetSeat() int32 {
 	return 0
 }
 
+type TDHPonAck struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Seat          int32                    `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                                   //座位号
+	From          int32                    `protobuf:"varint,2,opt,name=from,proto3" json:"from,omitempty"`                                                                                                   //出牌座位号
+	Tile          int32                    `protobuf:"varint,3,opt,name=tile,proto3" json:"tile,omitempty"`                                                                                                   //碰的牌列表
+	CallData      map[int32]*pbmj.CallData `protobuf:"bytes,4,rep,name=call_data,json=callData,proto3" json:"call_data,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 打出的牌-听牌列表
+	Jiama         bool                     `protobuf:"varint,5,opt,name=jiama,proto3" json:"jiama,omitempty"`                                                                                                 // 是否加马
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TDHPonAck) Reset() {
+	*x = TDHPonAck{}
+	mi := &file_tdh_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TDHPonAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TDHPonAck) ProtoMessage() {}
+
+func (x *TDHPonAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tdh_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TDHPonAck.ProtoReflect.Descriptor instead.
+func (*TDHPonAck) Descriptor() ([]byte, []int) {
+	return file_tdh_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *TDHPonAck) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *TDHPonAck) GetFrom() int32 {
+	if x != nil {
+		return x.From
+	}
+	return 0
+}
+
+func (x *TDHPonAck) GetTile() int32 {
+	if x != nil {
+		return x.Tile
+	}
+	return 0
+}
+
+func (x *TDHPonAck) GetCallData() map[int32]*pbmj.CallData {
+	if x != nil {
+		return x.CallData
+	}
+	return nil
+}
+
+func (x *TDHPonAck) GetJiama() bool {
+	if x != nil {
+		return x.Jiama
+	}
+	return false
+}
+
 var File_tdh_proto protoreflect.FileDescriptor
 
 const file_tdh_proto_rawDesc = "" +
 	"\n" +
-	"\ttdh.proto\x12\x05pbtdh\x1a\x19google/protobuf/any.proto\"0\n" +
+	"\ttdh.proto\x12\x05pbtdh\x1a\x19google/protobuf/any.proto\x1a\bmj.proto\"0\n" +
 	"\x06TDHReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"0\n" +
 	"\x06TDHAck\x12&\n" +
@@ -304,7 +381,16 @@ const file_tdh_proto_rawDesc = "" +
 	"\vTDHPaomaAck\x12\x15\n" +
 	"\x06ma_cnt\x18\x01 \x01(\x05R\x05maCnt\x12\x14\n" +
 	"\x05tiles\x18\x02 \x03(\x05R\x05tiles\x12\x12\n" +
-	"\x04seat\x18\x03 \x01(\x05R\x04seatB\bZ\x06/pbtdhb\x06proto3"
+	"\x04seat\x18\x03 \x01(\x05R\x04seat\"\xe7\x01\n" +
+	"\tTDHPonAck\x12\x12\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\x05R\x04from\x12\x12\n" +
+	"\x04tile\x18\x03 \x01(\x05R\x04tile\x12;\n" +
+	"\tcall_data\x18\x04 \x03(\v2\x1e.pbtdh.TDHPonAck.CallDataEntryR\bcallData\x12\x14\n" +
+	"\x05jiama\x18\x05 \x01(\bR\x05jiama\x1aK\n" +
+	"\rCallDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12$\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.pbmj.CallDataR\x05value:\x028\x01B1Z/github.com/kevin-chtw/tw_proto/game/pbtdh;pbtdhb\x06proto3"
 
 var (
 	file_tdh_proto_rawDescOnce sync.Once
@@ -318,23 +404,28 @@ func file_tdh_proto_rawDescGZIP() []byte {
 	return file_tdh_proto_rawDescData
 }
 
-var file_tdh_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_tdh_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_tdh_proto_goTypes = []any{
-	(*TDHReq)(nil),      // 0: pbtdh.TDHReq
-	(*TDHAck)(nil),      // 1: pbtdh.TDHAck
-	(*TDHBumaAck)(nil),  // 2: pbtdh.TDHBumaAck
-	(*TDHMacntAck)(nil), // 3: pbtdh.TDHMacntAck
-	(*TDHPaomaAck)(nil), // 4: pbtdh.TDHPaomaAck
-	(*anypb.Any)(nil),   // 5: google.protobuf.Any
+	(*TDHReq)(nil),        // 0: pbtdh.TDHReq
+	(*TDHAck)(nil),        // 1: pbtdh.TDHAck
+	(*TDHBumaAck)(nil),    // 2: pbtdh.TDHBumaAck
+	(*TDHMacntAck)(nil),   // 3: pbtdh.TDHMacntAck
+	(*TDHPaomaAck)(nil),   // 4: pbtdh.TDHPaomaAck
+	(*TDHPonAck)(nil),     // 5: pbtdh.TDHPonAck
+	nil,                   // 6: pbtdh.TDHPonAck.CallDataEntry
+	(*anypb.Any)(nil),     // 7: google.protobuf.Any
+	(*pbmj.CallData)(nil), // 8: pbmj.CallData
 }
 var file_tdh_proto_depIdxs = []int32{
-	5, // 0: pbtdh.TDHReq.req:type_name -> google.protobuf.Any
-	5, // 1: pbtdh.TDHAck.ack:type_name -> google.protobuf.Any
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	7, // 0: pbtdh.TDHReq.req:type_name -> google.protobuf.Any
+	7, // 1: pbtdh.TDHAck.ack:type_name -> google.protobuf.Any
+	6, // 2: pbtdh.TDHPonAck.call_data:type_name -> pbtdh.TDHPonAck.CallDataEntry
+	8, // 3: pbtdh.TDHPonAck.CallDataEntry.value:type_name -> pbmj.CallData
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_tdh_proto_init() }
@@ -348,7 +439,7 @@ func file_tdh_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tdh_proto_rawDesc), len(file_tdh_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

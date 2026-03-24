@@ -119,7 +119,7 @@ const file_hzxl_proto_rawDesc = "" +
 	"\aHZXLReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"1\n" +
 	"\aHZXLAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ackB\tZ\a/pbhzxlb\x06proto3"
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ackB3Z1github.com/kevin-chtw/tw_proto/game/pbhzxl;pbhzxlb\x06proto3"
 
 var (
 	file_hzxl_proto_rawDescOnce sync.Once

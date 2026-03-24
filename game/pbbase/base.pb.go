@@ -292,7 +292,7 @@ const file_base_proto_rawDesc = "" +
 	"\trequestid\x18\x01 \x01(\x05R\trequestid\"7\n" +
 	"\vBankruptAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
-	"\x05score\x18\x02 \x01(\x03R\x05scoreB\tZ\a/pbbaseb\x06proto3"
+	"\x05score\x18\x02 \x01(\x03R\x05scoreB3Z1github.com/kevin-chtw/tw_proto/game/pbbase;pbbaseb\x06proto3"
 
 var (
 	file_base_proto_rawDescOnce sync.Once

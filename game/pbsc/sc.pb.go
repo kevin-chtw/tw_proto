@@ -118,7 +118,7 @@ const file_sc_proto_rawDesc = "" +
 	"\x05SCReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"/\n" +
 	"\x05SCAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ackB\aZ\x05/pbscb\x06proto3"
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ackB/Z-github.com/kevin-chtw/tw_proto/game/pbsc;pbscb\x06proto3"
 
 var (
 	file_sc_proto_rawDescOnce sync.Once

@@ -1202,8 +1202,7 @@ const file_guandan_proto_rawDesc = "" +
 	"\vTHREE_PAIRS\x10\b\x12\b\n" +
 	"\x04BOMB\x10\t\x12\r\n" +
 	"\tKING_BOMB\x10\n" +
-	"B\fZ\n" +
-	"/pbguandanb\x06proto3"
+	"B9Z7github.com/kevin-chtw/tw_proto/game/pbguandan;pbguandanb\x06proto3"
 
 var (
 	file_guandan_proto_rawDescOnce sync.Once
