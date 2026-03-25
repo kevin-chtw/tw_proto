@@ -279,7 +279,7 @@ message SevenSignRewardReq {
   // "recharge"  领取因当日充值产生的额外奖励
   // "milestone" 累计签到大奖：由前端手动触发领取
   string action = 1;
-  // day: 1-7（用于 base/video/recharge)
+  // day: 1-7（用于 base/video/recharge）
   int32 day = 2; 
 }
 
@@ -287,4 +287,13 @@ message SevenSignRewardAck {
   string action = 1;
   map<int32, int64> items = 2; // 领取到的奖励
   SevenSignPanelAck panel = 3; // 面板数据（领奖后用于刷新 UI）
+}
+
+// ===== 存金鑵活动 (piggybank) =====
+message PiggyBankPanelAck {
+  int32 current_package = 1; // 当前档位: 1=6元, 2=18元
+  int64 progress = 2; // 当前档位进度
+  int64 target = 3; // 当前档位目标
+  int32 price = 4; // 当前档位价格（分）
+  bool can_purchase = 5; // 当前档位是否可购买
 }
