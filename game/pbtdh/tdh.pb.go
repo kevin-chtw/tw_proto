@@ -113,8 +113,7 @@ func (x *TDHAck) GetAck() *anypb.Any {
 
 type TDHBumaAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"`                         //座位号
-	DrawTile      int32                  `protobuf:"varint,2,opt,name=draw_tile,json=drawTile,proto3" json:"draw_tile,omitempty"` //补到的牌
+	Seat          int32                  `protobuf:"varint,1,opt,name=seat,proto3" json:"seat,omitempty"` //座位号
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -152,13 +151,6 @@ func (*TDHBumaAck) Descriptor() ([]byte, []int) {
 func (x *TDHBumaAck) GetSeat() int32 {
 	if x != nil {
 		return x.Seat
-	}
-	return 0
-}
-
-func (x *TDHBumaAck) GetDrawTile() int32 {
-	if x != nil {
-		return x.DrawTile
 	}
 	return 0
 }
@@ -368,11 +360,10 @@ const file_tdh_proto_rawDesc = "" +
 	"\x06TDHReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"0\n" +
 	"\x06TDHAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"=\n" +
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\" \n" +
 	"\n" +
 	"TDHBumaAck\x12\x12\n" +
-	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x1b\n" +
-	"\tdraw_tile\x18\x02 \x01(\x05R\bdrawTile\"V\n" +
+	"\x04seat\x18\x01 \x01(\x05R\x04seat\"V\n" +
 	"\vTDHMacntAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x15\n" +
 	"\x06ma_cnt\x18\x02 \x01(\x05R\x05maCnt\x12\x1c\n" +

@@ -15,7 +15,6 @@ message TDHAck {
 
 message TDHBumaAck {
   int32 seat = 1; //座位号
-  int32 draw_tile = 2; //补到的牌
 }
 
 message TDHMacntAck {
