@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package sproto;
+option go_package = "../sproto";
+
+// MatchCfg service (admin.remote.matchcfg_*) messages.
+
+message MatchCfgVersionReq {
+  string server_type = 1; // island/fdtable/schedule/wheel, empty means all
+}
+
+message MatchCfgVersionAck {
+  uint64 version = 1; // max(version) within scope
+}
+
+message MatchCfgRow {
+  string server_type = 1;
+  int32 match_id = 2;
+  string name = 3;
+  string content = 4; // YAML
+  uint64 version = 5;
+  string game_type = 6;
+  string placement_ips = 7; // JSON array string, e.g. ["10.0.1.3","10.0.1.4"]
+}
+
+message MatchCfgListReq {
+  string server_type = 1; // required
+}
+
+message MatchCfgListAck {
+  repeated MatchCfgRow rows = 1;
+}
+
+message MatchCfgGetReq {
+  string server_type = 1;
+  int32 match_id = 2;
+}
+
+message MatchCfgGetAck {
+  MatchCfgRow row = 1;
+}
+
