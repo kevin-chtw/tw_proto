@@ -3,8 +3,9 @@ syntax = "proto3";
 package sproto;
 option go_package = "../sproto";
 
-// MatchCfg service (admin.remote.matchcfg_*) messages.
+// Admin remotes (matchcfg/signcfg) messages.
 
+// MatchCfg service (admin.matchcfg.*) messages.
 message MatchCfgVersionReq {
   string server_type = 1; // island/fdtable/schedule/wheel, empty means all
 }
@@ -38,5 +39,36 @@ message MatchCfgGetReq {
 
 message MatchCfgGetAck {
   MatchCfgRow row = 1;
+}
+
+// SignCfg service (admin.signcfg.*) messages.
+message SignCfgVersionReq {
+  uint64 dummy = 1;
+}
+
+message SignCfgVersionAck {
+  uint64 version = 1; // max(version) within sign_cfg scope
+}
+
+message SignCfgRow {
+  int32 match_id = 1;
+  string content = 2; // YAML
+  uint64 version = 3;
+}
+
+message SignCfgListReq {
+  uint64 dummy = 1;
+}
+
+message SignCfgListAck {
+  repeated SignCfgRow rows = 1;
+}
+
+message SignCfgGetReq {
+  int32 match_id = 1;
+}
+
+message SignCfgGetAck {
+  SignCfgRow row = 1;
 }
 
