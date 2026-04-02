@@ -1700,6 +1700,300 @@ func (x *PhysOrdGetAck) GetUpTs() int64 {
 	return 0
 }
 
+// 虚拟兑换订单（话费/京东卡）st: 0待处理 2已完成 3已取消
+// - 兑换提交后由运营人员手动发奖（如充值/发放卡密），然后将订单置为已完成。
+type VirtOrdBrief struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Status        int32                  `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`                                                                          // 0待处理 2已完成 3已取消
+	CreatedTs     int64                  `protobuf:"varint,3,opt,name=created_ts,json=createdTs,proto3" json:"created_ts,omitempty"`                                                   // 创建时间 unix 秒
+	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 扣减物品快照（可由 itemID 推断话费/京东卡）
+	Phone         string                 `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`                                                                             // 充值手机号
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdBrief) Reset() {
+	*x = VirtOrdBrief{}
+	mi := &file_account_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdBrief) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdBrief) ProtoMessage() {}
+
+func (x *VirtOrdBrief) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdBrief.ProtoReflect.Descriptor instead.
+func (*VirtOrdBrief) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *VirtOrdBrief) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *VirtOrdBrief) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *VirtOrdBrief) GetCreatedTs() int64 {
+	if x != nil {
+		return x.CreatedTs
+	}
+	return 0
+}
+
+func (x *VirtOrdBrief) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *VirtOrdBrief) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+type VirtOrdSubmitReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         map[int32]int64        `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 扣减物品（道具）及数量（通过 itemID 推断话费/京东卡）
+	Phone         string                 `protobuf:"bytes,2,opt,name=phone,proto3" json:"phone,omitempty"`                                                                             // 充值手机号（运营发奖依据）
+	Remark        string                 `protobuf:"bytes,3,opt,name=remark,proto3" json:"remark,omitempty"`                                                                           // 备注（可选）
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdSubmitReq) Reset() {
+	*x = VirtOrdSubmitReq{}
+	mi := &file_account_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdSubmitReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdSubmitReq) ProtoMessage() {}
+
+func (x *VirtOrdSubmitReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdSubmitReq.ProtoReflect.Descriptor instead.
+func (*VirtOrdSubmitReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *VirtOrdSubmitReq) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *VirtOrdSubmitReq) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *VirtOrdSubmitReq) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+type VirtOrdSubmitAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	St            int32                  `protobuf:"varint,2,opt,name=st,proto3" json:"st,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdSubmitAck) Reset() {
+	*x = VirtOrdSubmitAck{}
+	mi := &file_account_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdSubmitAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdSubmitAck) ProtoMessage() {}
+
+func (x *VirtOrdSubmitAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdSubmitAck.ProtoReflect.Descriptor instead.
+func (*VirtOrdSubmitAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *VirtOrdSubmitAck) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *VirtOrdSubmitAck) GetSt() int32 {
+	if x != nil {
+		return x.St
+	}
+	return 0
+}
+
+type VirtOrdListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	Size          int32                  `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdListReq) Reset() {
+	*x = VirtOrdListReq{}
+	mi := &file_account_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdListReq) ProtoMessage() {}
+
+func (x *VirtOrdListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdListReq.ProtoReflect.Descriptor instead.
+func (*VirtOrdListReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *VirtOrdListReq) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *VirtOrdListReq) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+type VirtOrdListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*VirtOrdBrief        `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdListAck) Reset() {
+	*x = VirtOrdListAck{}
+	mi := &file_account_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdListAck) ProtoMessage() {}
+
+func (x *VirtOrdListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdListAck.ProtoReflect.Descriptor instead.
+func (*VirtOrdListAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *VirtOrdListAck) GetRows() []*VirtOrdBrief {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+func (x *VirtOrdListAck) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
 var File_account_proto protoreflect.FileDescriptor
 
 const file_account_proto_rawDesc = "" +
@@ -1860,7 +2154,35 @@ const file_account_proto_rawDesc = "" +
 	"\x06remark\x18\x05 \x01(\tR\x06remark\x12\x1b\n" +
 	"\texpr_corp\x18\x06 \x01(\tR\bexprCorp\x12\x17\n" +
 	"\aexpr_no\x18\a \x01(\tR\x06exprNo\x12\x13\n" +
-	"\x05up_ts\x18\b \x01(\x03R\x04upTsB\vZ\t../cprotob\x06proto3"
+	"\x05up_ts\x18\b \x01(\x03R\x04upTs\"\xdc\x01\n" +
+	"\fVirtOrdBrief\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\x05R\x06status\x12\x1d\n" +
+	"\n" +
+	"created_ts\x18\x03 \x01(\x03R\tcreatedTs\x125\n" +
+	"\x05items\x18\x04 \x03(\v2\x1f.cproto.VirtOrdBrief.ItemsEntryR\x05items\x12\x14\n" +
+	"\x05phone\x18\x05 \x01(\tR\x05phone\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xb5\x01\n" +
+	"\x10VirtOrdSubmitReq\x129\n" +
+	"\x05items\x18\x01 \x03(\v2#.cproto.VirtOrdSubmitReq.ItemsEntryR\x05items\x12\x14\n" +
+	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x16\n" +
+	"\x06remark\x18\x03 \x01(\tR\x06remark\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"2\n" +
+	"\x10VirtOrdSubmitAck\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x0e\n" +
+	"\x02st\x18\x02 \x01(\x05R\x02st\"8\n" +
+	"\x0eVirtOrdListReq\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x12\n" +
+	"\x04size\x18\x02 \x01(\x05R\x04size\"P\n" +
+	"\x0eVirtOrdListAck\x12(\n" +
+	"\x04rows\x18\x01 \x03(\v2\x14.cproto.VirtOrdBriefR\x04rows\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05totalB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_account_proto_rawDescOnce sync.Once
@@ -1874,7 +2196,7 @@ func file_account_proto_rawDescGZIP() []byte {
 	return file_account_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
+var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 49)
 var file_account_proto_goTypes = []any{
 	(*AccountReq)(nil),        // 0: cproto.AccountReq
 	(*AccountAck)(nil),        // 1: cproto.AccountAck
@@ -1907,43 +2229,53 @@ var file_account_proto_goTypes = []any{
 	(*PhysOrdListAck)(nil),    // 28: cproto.PhysOrdListAck
 	(*PhysOrdGetReq)(nil),     // 29: cproto.PhysOrdGetReq
 	(*PhysOrdGetAck)(nil),     // 30: cproto.PhysOrdGetAck
-	nil,                       // 31: cproto.BackpackAck.ItemsEntry
-	nil,                       // 32: cproto.PurchaseAck.GoodsEntry
-	nil,                       // 33: cproto.RegisterAck.AwardEntry
-	nil,                       // 34: cproto.PlayerInfoAck.ItemsEntry
-	nil,                       // 35: cproto.ItemsAck.ItemsEntry
-	nil,                       // 36: cproto.MemberTypeInfo.PurchaseBonusEntry
-	nil,                       // 37: cproto.MemberTypeInfo.DailyRewardEntry
-	nil,                       // 38: cproto.BuyMemberAck.BonusEntry
-	nil,                       // 39: cproto.ExchangeAck.ItemsEntry
-	nil,                       // 40: cproto.PhysOrdBrief.ItemsEntry
-	nil,                       // 41: cproto.PhysOrdSubmitReq.ItemsEntry
-	(*anypb.Any)(nil),         // 42: google.protobuf.Any
+	(*VirtOrdBrief)(nil),      // 31: cproto.VirtOrdBrief
+	(*VirtOrdSubmitReq)(nil),  // 32: cproto.VirtOrdSubmitReq
+	(*VirtOrdSubmitAck)(nil),  // 33: cproto.VirtOrdSubmitAck
+	(*VirtOrdListReq)(nil),    // 34: cproto.VirtOrdListReq
+	(*VirtOrdListAck)(nil),    // 35: cproto.VirtOrdListAck
+	nil,                       // 36: cproto.BackpackAck.ItemsEntry
+	nil,                       // 37: cproto.PurchaseAck.GoodsEntry
+	nil,                       // 38: cproto.RegisterAck.AwardEntry
+	nil,                       // 39: cproto.PlayerInfoAck.ItemsEntry
+	nil,                       // 40: cproto.ItemsAck.ItemsEntry
+	nil,                       // 41: cproto.MemberTypeInfo.PurchaseBonusEntry
+	nil,                       // 42: cproto.MemberTypeInfo.DailyRewardEntry
+	nil,                       // 43: cproto.BuyMemberAck.BonusEntry
+	nil,                       // 44: cproto.ExchangeAck.ItemsEntry
+	nil,                       // 45: cproto.PhysOrdBrief.ItemsEntry
+	nil,                       // 46: cproto.PhysOrdSubmitReq.ItemsEntry
+	nil,                       // 47: cproto.VirtOrdBrief.ItemsEntry
+	nil,                       // 48: cproto.VirtOrdSubmitReq.ItemsEntry
+	(*anypb.Any)(nil),         // 49: google.protobuf.Any
 }
 var file_account_proto_depIdxs = []int32{
-	42, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
-	42, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
+	49, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
+	49, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
 	15, // 2: cproto.WxLoginAck.player_info:type_name -> cproto.PlayerInfoAck
-	31, // 3: cproto.BackpackAck.items:type_name -> cproto.BackpackAck.ItemsEntry
-	32, // 4: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
+	36, // 3: cproto.BackpackAck.items:type_name -> cproto.BackpackAck.ItemsEntry
+	37, // 4: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
 	15, // 5: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
-	33, // 6: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
-	34, // 7: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
-	35, // 8: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
+	38, // 6: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
+	39, // 7: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
+	40, // 8: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
 	19, // 9: cproto.MemberInfoAck.types:type_name -> cproto.MemberTypeInfo
-	36, // 10: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
-	37, // 11: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
-	38, // 12: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
-	39, // 13: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
-	40, // 14: cproto.PhysOrdBrief.items:type_name -> cproto.PhysOrdBrief.ItemsEntry
-	41, // 15: cproto.PhysOrdSubmitReq.items:type_name -> cproto.PhysOrdSubmitReq.ItemsEntry
+	41, // 10: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
+	42, // 11: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
+	43, // 12: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
+	44, // 13: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
+	45, // 14: cproto.PhysOrdBrief.items:type_name -> cproto.PhysOrdBrief.ItemsEntry
+	46, // 15: cproto.PhysOrdSubmitReq.items:type_name -> cproto.PhysOrdSubmitReq.ItemsEntry
 	24, // 16: cproto.PhysOrdListAck.rows:type_name -> cproto.PhysOrdBrief
 	24, // 17: cproto.PhysOrdGetAck.base:type_name -> cproto.PhysOrdBrief
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	47, // 18: cproto.VirtOrdBrief.items:type_name -> cproto.VirtOrdBrief.ItemsEntry
+	48, // 19: cproto.VirtOrdSubmitReq.items:type_name -> cproto.VirtOrdSubmitReq.ItemsEntry
+	31, // 20: cproto.VirtOrdListAck.rows:type_name -> cproto.VirtOrdBrief
+	21, // [21:21] is the sub-list for method output_type
+	21, // [21:21] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_account_proto_init() }
@@ -1957,7 +2289,7 @@ func file_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   42,
+			NumMessages:   49,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

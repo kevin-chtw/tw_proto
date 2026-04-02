@@ -2519,7 +2519,7 @@ type SevenSignRewardReq struct {
 	// "recharge"  领取因当日充值产生的额外奖励
 	// "milestone" 累计签到大奖：由前端手动触发领取
 	Action string `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
-	// day: 1-7（用于 base/video/recharge)
+	// day: 1-7（用于 base/video/recharge）
 	Day           int32 `protobuf:"varint,2,opt,name=day,proto3" json:"day,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -2629,7 +2629,7 @@ func (x *SevenSignRewardAck) GetPanel() *SevenSignPanelAck {
 	return nil
 }
 
-// ===== 存鑫鑵活动 (piggybank) =====
+// ===== 存金鑵活动 (piggybank) =====
 type PiggyBankPanelAck struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	CurrentPackage int32                  `protobuf:"varint,1,opt,name=current_package,json=currentPackage,proto3" json:"current_package,omitempty"` // 当前档位: 1=6元, 2=18元

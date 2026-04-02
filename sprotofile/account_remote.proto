@@ -107,3 +107,40 @@ message PhysOrdAdminListAck {
   repeated PhysOrdAdminRow rows = 1;
   int32 total = 2;
 }
+
+// 运营后台：查询虚拟兑换订单（话费/京东卡）
+// status:
+// - 0 待处理
+// - 2 已完成
+// - 3 已取消
+// - -1 查询全部
+message VirtOrdAdminListReq {
+  int32 status = 1;
+  int32 page = 2;
+  int32 size = 3;
+}
+
+message VirtOrdAdminRow {
+  uint64 id = 1;
+  string uid = 2;
+  int32 status = 3;
+  int64 created_ts = 4;
+  map<int32, int64> items = 5;
+  string phone = 6;
+  string remark = 7;
+  int64 up_ts = 8;
+}
+
+message VirtOrdAdminListAck {
+  repeated VirtOrdAdminRow rows = 1;
+  int32 total = 2;
+}
+
+// 运营改状态（内部 RPC）：待处理 -> 已完成/已取消
+message VirtOrdMarkReq {
+  uint64 id = 1;
+  int32 st = 2; // 2已完成 3已取消
+}
+
+message VirtOrdMarkAck {
+}

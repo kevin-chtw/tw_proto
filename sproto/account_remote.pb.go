@@ -987,6 +987,313 @@ func (x *PhysOrdAdminListAck) GetTotal() int32 {
 	return 0
 }
 
+// 运营后台：查询虚拟兑换订单（话费/京东卡）
+// status:
+// - 0 待处理
+// - 2 已完成
+// - 3 已取消
+// - -1 查询全部
+type VirtOrdAdminListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
+	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
+	Size          int32                  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdAdminListReq) Reset() {
+	*x = VirtOrdAdminListReq{}
+	mi := &file_account_remote_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdAdminListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdAdminListReq) ProtoMessage() {}
+
+func (x *VirtOrdAdminListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdAdminListReq.ProtoReflect.Descriptor instead.
+func (*VirtOrdAdminListReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *VirtOrdAdminListReq) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *VirtOrdAdminListReq) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *VirtOrdAdminListReq) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+type VirtOrdAdminRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Status        int32                  `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedTs     int64                  `protobuf:"varint,4,opt,name=created_ts,json=createdTs,proto3" json:"created_ts,omitempty"`
+	Items         map[int32]int64        `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Phone         string                 `protobuf:"bytes,6,opt,name=phone,proto3" json:"phone,omitempty"`
+	Remark        string                 `protobuf:"bytes,7,opt,name=remark,proto3" json:"remark,omitempty"`
+	UpTs          int64                  `protobuf:"varint,8,opt,name=up_ts,json=upTs,proto3" json:"up_ts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdAdminRow) Reset() {
+	*x = VirtOrdAdminRow{}
+	mi := &file_account_remote_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdAdminRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdAdminRow) ProtoMessage() {}
+
+func (x *VirtOrdAdminRow) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdAdminRow.ProtoReflect.Descriptor instead.
+func (*VirtOrdAdminRow) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *VirtOrdAdminRow) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *VirtOrdAdminRow) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *VirtOrdAdminRow) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *VirtOrdAdminRow) GetCreatedTs() int64 {
+	if x != nil {
+		return x.CreatedTs
+	}
+	return 0
+}
+
+func (x *VirtOrdAdminRow) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *VirtOrdAdminRow) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *VirtOrdAdminRow) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+func (x *VirtOrdAdminRow) GetUpTs() int64 {
+	if x != nil {
+		return x.UpTs
+	}
+	return 0
+}
+
+type VirtOrdAdminListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*VirtOrdAdminRow     `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdAdminListAck) Reset() {
+	*x = VirtOrdAdminListAck{}
+	mi := &file_account_remote_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdAdminListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdAdminListAck) ProtoMessage() {}
+
+func (x *VirtOrdAdminListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdAdminListAck.ProtoReflect.Descriptor instead.
+func (*VirtOrdAdminListAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *VirtOrdAdminListAck) GetRows() []*VirtOrdAdminRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+func (x *VirtOrdAdminListAck) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+// 运营改状态（内部 RPC）：待处理 -> 已完成/已取消
+type VirtOrdMarkReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	St            int32                  `protobuf:"varint,2,opt,name=st,proto3" json:"st,omitempty"` // 2已完成 3已取消
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdMarkReq) Reset() {
+	*x = VirtOrdMarkReq{}
+	mi := &file_account_remote_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdMarkReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdMarkReq) ProtoMessage() {}
+
+func (x *VirtOrdMarkReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdMarkReq.ProtoReflect.Descriptor instead.
+func (*VirtOrdMarkReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *VirtOrdMarkReq) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *VirtOrdMarkReq) GetSt() int32 {
+	if x != nil {
+		return x.St
+	}
+	return 0
+}
+
+type VirtOrdMarkAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VirtOrdMarkAck) Reset() {
+	*x = VirtOrdMarkAck{}
+	mi := &file_account_remote_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VirtOrdMarkAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VirtOrdMarkAck) ProtoMessage() {}
+
+func (x *VirtOrdMarkAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VirtOrdMarkAck.ProtoReflect.Descriptor instead.
+func (*VirtOrdMarkAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{21}
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -1072,7 +1379,32 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"X\n" +
 	"\x13PhysOrdAdminListAck\x12+\n" +
 	"\x04rows\x18\x01 \x03(\v2\x17.sproto.PhysOrdAdminRowR\x04rows\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05totalB\vZ\t../sprotob\x06proto3"
+	"\x05total\x18\x02 \x01(\x05R\x05total\"U\n" +
+	"\x13VirtOrdAdminListReq\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\x05R\x06status\x12\x12\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x12\n" +
+	"\x04size\x18\x03 \x01(\x05R\x04size\"\xa1\x02\n" +
+	"\x0fVirtOrdAdminRow\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\x05R\x06status\x12\x1d\n" +
+	"\n" +
+	"created_ts\x18\x04 \x01(\x03R\tcreatedTs\x128\n" +
+	"\x05items\x18\x05 \x03(\v2\".sproto.VirtOrdAdminRow.ItemsEntryR\x05items\x12\x14\n" +
+	"\x05phone\x18\x06 \x01(\tR\x05phone\x12\x16\n" +
+	"\x06remark\x18\a \x01(\tR\x06remark\x12\x13\n" +
+	"\x05up_ts\x18\b \x01(\x03R\x04upTs\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"X\n" +
+	"\x13VirtOrdAdminListAck\x12+\n" +
+	"\x04rows\x18\x01 \x03(\v2\x17.sproto.VirtOrdAdminRowR\x04rows\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"0\n" +
+	"\x0eVirtOrdMarkReq\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x0e\n" +
+	"\x02st\x18\x02 \x01(\x05R\x02st\"\x10\n" +
+	"\x0eVirtOrdMarkAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -1086,7 +1418,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -1105,25 +1437,33 @@ var file_account_remote_proto_goTypes = []any{
 	(*PhysOrdAdminListReq)(nil),  // 14: sproto.PhysOrdAdminListReq
 	(*PhysOrdAdminRow)(nil),      // 15: sproto.PhysOrdAdminRow
 	(*PhysOrdAdminListAck)(nil),  // 16: sproto.PhysOrdAdminListAck
-	nil,                          // 17: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 18: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 19: sproto.ChangeItemsAck.ItemsEntry
-	nil,                          // 20: sproto.PhysOrdAdminRow.ItemsEntry
-	(*anypb.Any)(nil),            // 21: google.protobuf.Any
+	(*VirtOrdAdminListReq)(nil),  // 17: sproto.VirtOrdAdminListReq
+	(*VirtOrdAdminRow)(nil),      // 18: sproto.VirtOrdAdminRow
+	(*VirtOrdAdminListAck)(nil),  // 19: sproto.VirtOrdAdminListAck
+	(*VirtOrdMarkReq)(nil),       // 20: sproto.VirtOrdMarkReq
+	(*VirtOrdMarkAck)(nil),       // 21: sproto.VirtOrdMarkAck
+	nil,                          // 22: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 23: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 24: sproto.ChangeItemsAck.ItemsEntry
+	nil,                          // 25: sproto.PhysOrdAdminRow.ItemsEntry
+	nil,                          // 26: sproto.VirtOrdAdminRow.ItemsEntry
+	(*anypb.Any)(nil),            // 27: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	21, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	21, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	17, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	18, // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	19, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
-	20, // 5: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
+	27, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	27, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	22, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	23, // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	24, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	25, // 5: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
 	15, // 6: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
-	7,  // [7:7] is the sub-list for method output_type
-	7,  // [7:7] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	26, // 7: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
+	18, // 8: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
+	9,  // [9:9] is the sub-list for method output_type
+	9,  // [9:9] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_account_remote_proto_init() }
@@ -1137,7 +1477,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   21,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -170,3 +170,34 @@ message PhysOrdGetAck {
   string expr_no = 7;   // 快递单号（仅已发货后有值）
   int64 up_ts = 8;
 }
+
+// 虚拟兑换订单（话费/京东卡）st: 0待处理 2已完成 3已取消
+// - 兑换提交后由运营人员手动发奖（如充值/发放卡密），然后将订单置为已完成。
+message VirtOrdBrief {
+  uint64 id = 1;
+  int32 status = 2;       // 0待处理 2已完成 3已取消
+  int64 created_ts = 3;   // 创建时间 unix 秒
+  map<int32, int64> items = 4; // 扣减物品快照（可由 itemID 推断话费/京东卡）
+  string phone = 5;       // 充值手机号
+}
+
+message VirtOrdSubmitReq {
+  map<int32, int64> items = 1;  // 扣减物品（道具）及数量（通过 itemID 推断话费/京东卡）
+  string phone = 2;             // 充值手机号（运营发奖依据）
+  string remark = 3;            // 备注（可选）
+}
+
+message VirtOrdSubmitAck {
+  uint64 id = 1;
+  int32 st = 2;
+}
+
+message VirtOrdListReq {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message VirtOrdListAck {
+  repeated VirtOrdBrief rows = 1;
+  int32 total = 2;
+}
