@@ -3,7 +3,7 @@ syntax = "proto3";
 package sproto;
 option go_package = "../sproto";
 
-// Admin remotes (matchcfg/signcfg) messages.
+// Admin remotes (matchcfg/signcfg/bonuscfg) messages.
 
 // MatchCfg service (admin.matchcfg.*) messages.
 message MatchCfgVersionReq {
@@ -70,5 +70,37 @@ message SignCfgGetReq {
 
 message SignCfgGetAck {
   SignCfgRow row = 1;
+}
+
+// BonusCfg service (admin.bonuscfg.*) — 数据存 match_cfg.server_type = bonus
+message BonusCfgVersionReq {
+  uint64 dummy = 1;
+}
+
+message BonusCfgVersionAck {
+  uint64 version = 1;
+}
+
+message BonusCfgRow {
+  int32 match_id = 1;
+  string name = 2;
+  string content = 3; // YAML
+  uint64 version = 4;
+}
+
+message BonusCfgListReq {
+  uint64 dummy = 1;
+}
+
+message BonusCfgListAck {
+  repeated BonusCfgRow rows = 1;
+}
+
+message BonusCfgGetReq {
+  int32 match_id = 1;
+}
+
+message BonusCfgGetAck {
+  BonusCfgRow row = 1;
 }
 
