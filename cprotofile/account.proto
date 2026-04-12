@@ -115,6 +115,18 @@ message BuyMemberAck {
   map<int32, int64> bonus = 3; // 购买时获得的奖励
 }
 
+message ExchangeRateReq {
+  int32 fromid = 1; // 原物品id
+  int32 toid = 2; // 新物品id
+}
+
+message ExchangeRateAck{
+  int32 fromid = 1; // 原物品id
+  int32 toid = 2; // 新物品id
+  int32 base = 3; //基础兑换值
+  int32 bonus = 4; // 加成值,计算时向下整成 result= n *base*(1+ bonus / 100)
+}
+
 message ExchangeReq {
   int32 fromid = 1; // 原物品id
   int32 toid = 2; // 新物品id
