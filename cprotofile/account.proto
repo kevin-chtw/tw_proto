@@ -124,7 +124,7 @@ message ExchangeRateAck{
   int32 fromid = 1; // 原物品id
   int32 toid = 2; // 新物品id
   int32 base = 3; //基础兑换值
-  int32 bonus = 4; // 加成值,计算时向下整成 result= n *base*(100+ bonus)/100
+  int32 bonus = 4; // 加成值,计算时向下取整 result= n *base*(100+ bonus)/100
 }
 
 message ExchangeReq {
