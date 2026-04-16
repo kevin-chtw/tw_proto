@@ -154,6 +154,7 @@ type AddTableReq struct {
 	Creator       string                 `protobuf:"bytes,8,opt,name=creator,proto3" json:"creator,omitempty"`                                                                                   // 创建者
 	Desn          string                 `protobuf:"bytes,9,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                         // 游戏描述
 	Fdproperty    map[string]int32       `protobuf:"bytes,10,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
+	EmoteConf     []byte                 `protobuf:"bytes,11,opt,name=emote_conf,json=emoteConf,proto3" json:"emote_conf,omitempty"`                                                             // 表情配置(JSON快照，按match下发)
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -254,6 +255,13 @@ func (x *AddTableReq) GetDesn() string {
 func (x *AddTableReq) GetFdproperty() map[string]int32 {
 	if x != nil {
 		return x.Fdproperty
+	}
+	return nil
+}
+
+func (x *AddTableReq) GetEmoteConf() []byte {
+	if x != nil {
+		return x.EmoteConf
 	}
 	return nil
 }
@@ -562,7 +570,7 @@ const file_game_remote_proto_rawDesc = "" +
 	"\aGameAck\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
-	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x92\x03\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xb1\x03\n" +
 	"\vAddTableReq\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1d\n" +
@@ -579,7 +587,9 @@ const file_game_remote_proto_rawDesc = "" +
 	"\n" +
 	"fdproperty\x18\n" +
 	" \x03(\v2#.sproto.AddTableReq.FdpropertyEntryR\n" +
-	"fdproperty\x1a=\n" +
+	"fdproperty\x12\x1d\n" +
+	"\n" +
+	"emote_conf\x18\v \x01(\fR\temoteConf\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xbc\x02\n" +

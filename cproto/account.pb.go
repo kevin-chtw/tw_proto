@@ -1208,7 +1208,7 @@ type ExchangeRateAck struct {
 	Fromid        int32                  `protobuf:"varint,1,opt,name=fromid,proto3" json:"fromid,omitempty"` // 原物品id
 	Toid          int32                  `protobuf:"varint,2,opt,name=toid,proto3" json:"toid,omitempty"`     // 新物品id
 	Base          int32                  `protobuf:"varint,3,opt,name=base,proto3" json:"base,omitempty"`     //基础兑换值
-	Bonus         int32                  `protobuf:"varint,4,opt,name=bonus,proto3" json:"bonus,omitempty"`   // 加成值,计算时向下整成 result= n *base*(1+ bonus / 100)
+	Bonus         int32                  `protobuf:"varint,4,opt,name=bonus,proto3" json:"bonus,omitempty"`   // 加成值,计算时向下取整 result= n *base*(100+ bonus)/100
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }

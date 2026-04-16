@@ -31,6 +31,12 @@ message GameDissolveReq {
   bool agree = 1; //是否同意解散
 }
 
+// 表情发送请求：to_seat = -1 表示发给自己；否则表示发给其他玩家（seat 仅用于客户端表现层）
+message EmoteSendReq {
+  int32 emote_id = 1; // 表情ID
+  int32 to_seat = 2; // 目标座位(-1=self)
+}
+
 message EnterGameAck {
   int32 tableid = 1; // 桌号
   int64 score_base = 2; // 分数基数
@@ -41,6 +47,14 @@ message EnterGameAck {
   string creator = 7; // 创建者
   string desn = 8; // 游戏描述
   map<string,int32> fdproperty = 9; // 好友房自选配置
+  bytes emote_conf = 10; // 表情配置(JSON快照，按match下发)
+}
+
+// 表情广播：不写入历史消息，断线重连不补发
+message EmoteAck {
+  int32 emote_id = 1;   // 表情ID
+  int32 from_seat = 2;  // 发送方座位
+  int32 to_seat = 3;    // 目标座位(-1=self)
 }
 
 message TablePlayerAck {
