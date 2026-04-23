@@ -40,14 +40,15 @@ message EmoteSendReq {
 message EnterGameAck {
   int32 tableid = 1; // 桌号
   int64 score_base = 2; // 分数基数
-  int32 game_count = 3; // 游戏局数
-  int32 cur_game_count = 4; // 当前游戏局数
-  int32 player_count = 5; // 玩家数量
-  string property = 6; // 游戏配置
-  string creator = 7; // 创建者
-  string desn = 8; // 游戏描述
-  map<string,int32> fdproperty = 9; // 好友房自选配置
-  bytes emote_conf = 10; // 表情配置(JSON快照，按match下发)
+  int64 tax = 3; // 服务费
+  int32 game_count = 4; // 游戏局数  
+  int32 cur_game_count = 5; // 当前游戏局数
+  int32 player_count = 6; // 玩家数量
+  string property = 7; // 游戏配置
+  string creator = 8; // 创建者
+  string desn = 9; // 游戏描述
+  map<string,int32> fdproperty = 10; // 好友房自选配置
+  bytes emote_conf = 11; // 表情配置(JSON快照，按match下发)
 }
 
 // 表情广播：不写入历史消息，断线重连不补发

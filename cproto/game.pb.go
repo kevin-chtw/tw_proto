@@ -338,16 +338,17 @@ func (x *EmoteSendReq) GetToSeat() int32 {
 
 type EnterGameAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`                                                                                 // 桌号
-	ScoreBase     int64                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                            // 分数基数
-	GameCount     int32                  `protobuf:"varint,3,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 游戏局数
-	CurGameCount  int32                  `protobuf:"varint,4,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"`                                                 // 当前游戏局数
-	PlayerCount   int32                  `protobuf:"varint,5,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`                                                      // 玩家数量
-	Property      string                 `protobuf:"bytes,6,opt,name=property,proto3" json:"property,omitempty"`                                                                                // 游戏配置
-	Creator       string                 `protobuf:"bytes,7,opt,name=creator,proto3" json:"creator,omitempty"`                                                                                  // 创建者
-	Desn          string                 `protobuf:"bytes,8,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        // 游戏描述
-	Fdproperty    map[string]int32       `protobuf:"bytes,9,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
-	EmoteConf     []byte                 `protobuf:"bytes,10,opt,name=emote_conf,json=emoteConf,proto3" json:"emote_conf,omitempty"`                                                            // 表情配置(JSON快照，按match下发)
+	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`                                                                                  // 桌号
+	ScoreBase     int64                  `protobuf:"varint,2,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                             // 分数基数
+	Tax           int64                  `protobuf:"varint,3,opt,name=tax,proto3" json:"tax,omitempty"`                                                                                          // 服务费
+	GameCount     int32                  `protobuf:"varint,4,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                             // 游戏局数
+	CurGameCount  int32                  `protobuf:"varint,5,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"`                                                  // 当前游戏局数
+	PlayerCount   int32                  `protobuf:"varint,6,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`                                                       // 玩家数量
+	Property      string                 `protobuf:"bytes,7,opt,name=property,proto3" json:"property,omitempty"`                                                                                 // 游戏配置
+	Creator       string                 `protobuf:"bytes,8,opt,name=creator,proto3" json:"creator,omitempty"`                                                                                   // 创建者
+	Desn          string                 `protobuf:"bytes,9,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                         // 游戏描述
+	Fdproperty    map[string]int32       `protobuf:"bytes,10,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
+	EmoteConf     []byte                 `protobuf:"bytes,11,opt,name=emote_conf,json=emoteConf,proto3" json:"emote_conf,omitempty"`                                                             // 表情配置(JSON快照，按match下发)
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -392,6 +393,13 @@ func (x *EnterGameAck) GetTableid() int32 {
 func (x *EnterGameAck) GetScoreBase() int64 {
 	if x != nil {
 		return x.ScoreBase
+	}
+	return 0
+}
+
+func (x *EnterGameAck) GetTax() int64 {
+	if x != nil {
+		return x.Tax
 	}
 	return 0
 }
@@ -1088,24 +1096,25 @@ const file_game_proto_rawDesc = "" +
 	"\x05agree\x18\x01 \x01(\bR\x05agree\"B\n" +
 	"\fEmoteSendReq\x12\x19\n" +
 	"\bemote_id\x18\x01 \x01(\x05R\aemoteId\x12\x17\n" +
-	"\ato_seat\x18\x02 \x01(\x05R\x06toSeat\"\x9d\x03\n" +
+	"\ato_seat\x18\x02 \x01(\x05R\x06toSeat\"\xaf\x03\n" +
 	"\fEnterGameAck\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x1d\n" +
 	"\n" +
-	"score_base\x18\x02 \x01(\x03R\tscoreBase\x12\x1d\n" +
+	"score_base\x18\x02 \x01(\x03R\tscoreBase\x12\x10\n" +
+	"\x03tax\x18\x03 \x01(\x03R\x03tax\x12\x1d\n" +
 	"\n" +
-	"game_count\x18\x03 \x01(\x05R\tgameCount\x12$\n" +
-	"\x0ecur_game_count\x18\x04 \x01(\x05R\fcurGameCount\x12!\n" +
-	"\fplayer_count\x18\x05 \x01(\x05R\vplayerCount\x12\x1a\n" +
-	"\bproperty\x18\x06 \x01(\tR\bproperty\x12\x18\n" +
-	"\acreator\x18\a \x01(\tR\acreator\x12\x12\n" +
-	"\x04desn\x18\b \x01(\tR\x04desn\x12D\n" +
+	"game_count\x18\x04 \x01(\x05R\tgameCount\x12$\n" +
+	"\x0ecur_game_count\x18\x05 \x01(\x05R\fcurGameCount\x12!\n" +
+	"\fplayer_count\x18\x06 \x01(\x05R\vplayerCount\x12\x1a\n" +
+	"\bproperty\x18\a \x01(\tR\bproperty\x12\x18\n" +
+	"\acreator\x18\b \x01(\tR\acreator\x12\x12\n" +
+	"\x04desn\x18\t \x01(\tR\x04desn\x12D\n" +
 	"\n" +
-	"fdproperty\x18\t \x03(\v2$.cproto.EnterGameAck.FdpropertyEntryR\n" +
+	"fdproperty\x18\n" +
+	" \x03(\v2$.cproto.EnterGameAck.FdpropertyEntryR\n" +
 	"fdproperty\x12\x1d\n" +
 	"\n" +
-	"emote_conf\x18\n" +
-	" \x01(\fR\temoteConf\x1a=\n" +
+	"emote_conf\x18\v \x01(\fR\temoteConf\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"[\n" +
