@@ -573,7 +573,7 @@ type StartClientAck struct {
 	ServerId      string                 `protobuf:"bytes,3,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`     //游戏服务Id
 	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`       //比赛ID
 	TableId       int32                  `protobuf:"varint,5,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`       //桌号
-	BaseScore     int64                  `protobuf:"varint,6,opt,name=base_score,json=baseScore,proto3" json:"base_score,omitempty"` //基数
+	ScoreBase     int64                  `protobuf:"varint,6,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"` //基数
 	Tax           int64                  `protobuf:"varint,7,opt,name=tax,proto3" json:"tax,omitempty"`                              // 服务费
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -644,9 +644,9 @@ func (x *StartClientAck) GetTableId() int32 {
 	return 0
 }
 
-func (x *StartClientAck) GetBaseScore() int64 {
+func (x *StartClientAck) GetScoreBase() int64 {
 	if x != nil {
-		return x.BaseScore
+		return x.ScoreBase
 	}
 	return 0
 }
@@ -1177,7 +1177,7 @@ const file_match_proto_rawDesc = "" +
 	"\bmatch_id\x18\x04 \x01(\x05R\amatchId\x12\x19\n" +
 	"\btable_id\x18\x05 \x01(\x05R\atableId\x12\x1d\n" +
 	"\n" +
-	"base_score\x18\x06 \x01(\x03R\tbaseScore\x12\x10\n" +
+	"score_base\x18\x06 \x01(\x03R\tscoreBase\x12\x10\n" +
 	"\x03tax\x18\a \x01(\x03R\x03tax\"\v\n" +
 	"\tSignupAck\"\f\n" +
 	"\n" +
