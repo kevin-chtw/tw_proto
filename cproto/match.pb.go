@@ -568,11 +568,13 @@ func (x *CancelRoomAck) GetTableid() int32 {
 
 type StartClientAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"` //比赛类型
-	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`    //游戏类型
-	ServerId      string                 `protobuf:"bytes,3,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`    //游戏服务Id
-	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`      //比赛ID
-	TableId       int32                  `protobuf:"varint,5,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`      //桌号
+	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`  //比赛类型
+	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`     //游戏类型
+	ServerId      string                 `protobuf:"bytes,3,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`     //游戏服务Id
+	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`       //比赛ID
+	TableId       int32                  `protobuf:"varint,5,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`       //桌号
+	BaseScore     int64                  `protobuf:"varint,6,opt,name=base_score,json=baseScore,proto3" json:"base_score,omitempty"` //基数
+	Tax           int64                  `protobuf:"varint,7,opt,name=tax,proto3" json:"tax,omitempty"`                              // 服务费
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -638,6 +640,20 @@ func (x *StartClientAck) GetMatchId() int32 {
 func (x *StartClientAck) GetTableId() int32 {
 	if x != nil {
 		return x.TableId
+	}
+	return 0
+}
+
+func (x *StartClientAck) GetBaseScore() int64 {
+	if x != nil {
+		return x.BaseScore
+	}
+	return 0
+}
+
+func (x *StartClientAck) GetTax() int64 {
+	if x != nil {
+		return x.Tax
 	}
 	return 0
 }
@@ -1152,14 +1168,17 @@ const file_match_proto_rawDesc = "" +
 	"\vFDResultReq\"\x10\n" +
 	"\x0eSwitchTableReq\")\n" +
 	"\rCancelRoomAck\x12\x18\n" +
-	"\atableid\x18\x01 \x01(\x05R\atableid\"\x9f\x01\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\"\xd0\x01\n" +
 	"\x0eStartClientAck\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1b\n" +
 	"\tgame_type\x18\x02 \x01(\tR\bgameType\x12\x1b\n" +
 	"\tserver_id\x18\x03 \x01(\tR\bserverId\x12\x19\n" +
 	"\bmatch_id\x18\x04 \x01(\x05R\amatchId\x12\x19\n" +
-	"\btable_id\x18\x05 \x01(\x05R\atableId\"\v\n" +
+	"\btable_id\x18\x05 \x01(\x05R\atableId\x12\x1d\n" +
+	"\n" +
+	"base_score\x18\x06 \x01(\x03R\tbaseScore\x12\x10\n" +
+	"\x03tax\x18\a \x01(\x03R\x03tax\"\v\n" +
 	"\tSignupAck\"\f\n" +
 	"\n" +
 	"SignoutAck\"\r\n" +
