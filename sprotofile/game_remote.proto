@@ -41,6 +41,7 @@ message AddPlayerReq {
   int64 score_base = 10; //玩家档位基数
   int64 tax = 11; //玩家桌费
   int64 exchange_rate = 12; //兑换比例
+  int32 matchid = 13; //玩家的matchid
 }
 
 message CancelTableReq {

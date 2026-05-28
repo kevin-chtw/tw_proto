@@ -256,6 +256,7 @@ type AddPlayerReq struct {
 	ScoreBase     int64                  `protobuf:"varint,10,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                  //玩家档位基数
 	Tax           int64                  `protobuf:"varint,11,opt,name=tax,proto3" json:"tax,omitempty"`                                                                               //玩家桌费
 	ExchangeRate  int64                  `protobuf:"varint,12,opt,name=exchange_rate,json=exchangeRate,proto3" json:"exchange_rate,omitempty"`                                         //兑换比例
+	Matchid       int32                  `protobuf:"varint,13,opt,name=matchid,proto3" json:"matchid,omitempty"`                                                                       //玩家的matchid
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -370,6 +371,13 @@ func (x *AddPlayerReq) GetTax() int64 {
 func (x *AddPlayerReq) GetExchangeRate() int64 {
 	if x != nil {
 		return x.ExchangeRate
+	}
+	return 0
+}
+
+func (x *AddPlayerReq) GetMatchid() int32 {
+	if x != nil {
+		return x.Matchid
 	}
 	return 0
 }
@@ -587,7 +595,7 @@ const file_game_remote_proto_rawDesc = "" +
 	"emote_conf\x18\b \x01(\fR\temoteConf\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x92\x03\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xac\x03\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x10\n" +
 	"\x03bot\x18\x02 \x01(\bR\x03bot\x12\x12\n" +
@@ -602,7 +610,8 @@ const file_game_remote_proto_rawDesc = "" +
 	"score_base\x18\n" +
 	" \x01(\x03R\tscoreBase\x12\x10\n" +
 	"\x03tax\x18\v \x01(\x03R\x03tax\x12#\n" +
-	"\rexchange_rate\x18\f \x01(\x03R\fexchangeRate\x1a8\n" +
+	"\rexchange_rate\x18\f \x01(\x03R\fexchangeRate\x12\x18\n" +
+	"\amatchid\x18\r \x01(\x05R\amatchid\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
