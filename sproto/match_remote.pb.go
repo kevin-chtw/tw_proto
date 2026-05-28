@@ -173,8 +173,8 @@ func (x *NetStateReq) GetOnline() bool {
 type GameResultReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	CurGameCount  int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
-	RoundData     string                 `protobuf:"bytes,3,opt,name=round_data,json=roundData,proto3" json:"round_data,omitempty"`             // 游戏回合数据
+	CurGameCount  int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"`                                                               // 当前游戏局数
+	RoundData     map[string]string      `protobuf:"bytes,3,rep,name=round_data,json=roundData,proto3" json:"round_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 游戏回合数据
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -223,11 +223,11 @@ func (x *GameResultReq) GetCurGameCount() int32 {
 	return 0
 }
 
-func (x *GameResultReq) GetRoundData() string {
+func (x *GameResultReq) GetRoundData() map[string]string {
 	if x != nil {
 		return x.RoundData
 	}
-	return ""
+	return nil
 }
 
 type PlayerResultReq struct {
@@ -430,12 +430,15 @@ const file_match_remote_proto_rawDesc = "" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"7\n" +
 	"\vNetStateReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x16\n" +
-	"\x06online\x18\x02 \x01(\bR\x06online\"n\n" +
+	"\x06online\x18\x02 \x01(\bR\x06online\"\xd2\x01\n" +
 	"\rGameResultReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
-	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12\x1d\n" +
+	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12C\n" +
 	"\n" +
-	"round_data\x18\x03 \x01(\tR\troundData\"\xbe\x01\n" +
+	"round_data\x18\x03 \x03(\v2$.sproto.GameResultReq.RoundDataEntryR\troundData\x1a<\n" +
+	"\x0eRoundDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xbe\x01\n" +
 	"\x0fPlayerResultReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\tR\x03uid\x12$\n" +
@@ -462,7 +465,7 @@ func file_match_remote_proto_rawDescGZIP() []byte {
 	return file_match_remote_proto_rawDescData
 }
 
-var file_match_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_match_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_match_remote_proto_goTypes = []any{
 	(*MatchReq)(nil),        // 0: sproto.MatchReq
 	(*MatchAck)(nil),        // 1: sproto.MatchAck
@@ -471,16 +474,18 @@ var file_match_remote_proto_goTypes = []any{
 	(*PlayerResultReq)(nil), // 4: sproto.PlayerResultReq
 	(*GameOverReq)(nil),     // 5: sproto.GameOverReq
 	(*NetStateAck)(nil),     // 6: sproto.NetStateAck
-	(*anypb.Any)(nil),       // 7: google.protobuf.Any
+	nil,                     // 7: sproto.GameResultReq.RoundDataEntry
+	(*anypb.Any)(nil),       // 8: google.protobuf.Any
 }
 var file_match_remote_proto_depIdxs = []int32{
-	7, // 0: sproto.MatchReq.req:type_name -> google.protobuf.Any
-	7, // 1: sproto.MatchAck.ack:type_name -> google.protobuf.Any
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	8, // 0: sproto.MatchReq.req:type_name -> google.protobuf.Any
+	8, // 1: sproto.MatchAck.ack:type_name -> google.protobuf.Any
+	7, // 2: sproto.GameResultReq.round_data:type_name -> sproto.GameResultReq.RoundDataEntry
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_match_remote_proto_init() }
@@ -494,7 +499,7 @@ func file_match_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_remote_proto_rawDesc), len(file_match_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
