@@ -2114,30 +2114,27 @@ func (x *VirtOrdListAck) GetTotal() int32 {
 	return 0
 }
 
-type VipUpgradeAck struct {
+type VipRewardReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	VipExp        int64                  `protobuf:"varint,1,opt,name=vip_exp,json=vipExp,proto3" json:"vip_exp,omitempty"`                                                                // 当前VIP经验
-	OldLevel      int32                  `protobuf:"varint,2,opt,name=old_level,json=oldLevel,proto3" json:"old_level,omitempty"`                                                          // 升级前VIP等级
-	NewLevel      int32                  `protobuf:"varint,3,opt,name=new_level,json=newLevel,proto3" json:"new_level,omitempty"`                                                          // 升级后VIP等级
-	Rewards       map[int32]int64        `protobuf:"bytes,4,rep,name=rewards,proto3" json:"rewards,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 本次VIP升级奖励汇总
+	VipLevel      int64                  `protobuf:"varint,1,opt,name=vip_level,json=vipLevel,proto3" json:"vip_level,omitempty"` // 领取等级
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VipUpgradeAck) Reset() {
-	*x = VipUpgradeAck{}
+func (x *VipRewardReq) Reset() {
+	*x = VipRewardReq{}
 	mi := &file_account_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *VipUpgradeAck) String() string {
+func (x *VipRewardReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*VipUpgradeAck) ProtoMessage() {}
+func (*VipRewardReq) ProtoMessage() {}
 
-func (x *VipUpgradeAck) ProtoReflect() protoreflect.Message {
+func (x *VipRewardReq) ProtoReflect() protoreflect.Message {
 	mi := &file_account_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2149,33 +2146,64 @@ func (x *VipUpgradeAck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use VipUpgradeAck.ProtoReflect.Descriptor instead.
-func (*VipUpgradeAck) Descriptor() ([]byte, []int) {
+// Deprecated: Use VipRewardReq.ProtoReflect.Descriptor instead.
+func (*VipRewardReq) Descriptor() ([]byte, []int) {
 	return file_account_proto_rawDescGZIP(), []int{38}
 }
 
-func (x *VipUpgradeAck) GetVipExp() int64 {
+func (x *VipRewardReq) GetVipLevel() int64 {
 	if x != nil {
-		return x.VipExp
+		return x.VipLevel
 	}
 	return 0
 }
 
-func (x *VipUpgradeAck) GetOldLevel() int32 {
+type VipRewardAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	VipLevel      int64                  `protobuf:"varint,1,opt,name=vip_level,json=vipLevel,proto3" json:"vip_level,omitempty"`                                                          // 领取等级
+	Rewards       map[int32]int64        `protobuf:"bytes,2,rep,name=rewards,proto3" json:"rewards,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 领奖奖励
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VipRewardAck) Reset() {
+	*x = VipRewardAck{}
+	mi := &file_account_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VipRewardAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VipRewardAck) ProtoMessage() {}
+
+func (x *VipRewardAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[39]
 	if x != nil {
-		return x.OldLevel
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VipRewardAck.ProtoReflect.Descriptor instead.
+func (*VipRewardAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *VipRewardAck) GetVipLevel() int64 {
+	if x != nil {
+		return x.VipLevel
 	}
 	return 0
 }
 
-func (x *VipUpgradeAck) GetNewLevel() int32 {
-	if x != nil {
-		return x.NewLevel
-	}
-	return 0
-}
-
-func (x *VipUpgradeAck) GetRewards() map[int32]int64 {
+func (x *VipRewardAck) GetRewards() map[int32]int64 {
 	if x != nil {
 		return x.Rewards
 	}
@@ -2378,12 +2406,12 @@ const file_account_proto_rawDesc = "" +
 	"\x04size\x18\x02 \x01(\x05R\x04size\"P\n" +
 	"\x0eVirtOrdListAck\x12(\n" +
 	"\x04rows\x18\x01 \x03(\v2\x14.cproto.VirtOrdBriefR\x04rows\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"\xdc\x01\n" +
-	"\rVipUpgradeAck\x12\x17\n" +
-	"\avip_exp\x18\x01 \x01(\x03R\x06vipExp\x12\x1b\n" +
-	"\told_level\x18\x02 \x01(\x05R\boldLevel\x12\x1b\n" +
-	"\tnew_level\x18\x03 \x01(\x05R\bnewLevel\x12<\n" +
-	"\arewards\x18\x04 \x03(\v2\".cproto.VipUpgradeAck.RewardsEntryR\arewards\x1a:\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"+\n" +
+	"\fVipRewardReq\x12\x1b\n" +
+	"\tvip_level\x18\x01 \x01(\x03R\bvipLevel\"\xa4\x01\n" +
+	"\fVipRewardAck\x12\x1b\n" +
+	"\tvip_level\x18\x01 \x01(\x03R\bvipLevel\x12;\n" +
+	"\arewards\x18\x02 \x03(\v2!.cproto.VipRewardAck.RewardsEntryR\arewards\x1a:\n" +
 	"\fRewardsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
@@ -2400,7 +2428,7 @@ func file_account_proto_rawDescGZIP() []byte {
 	return file_account_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 53)
+var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 54)
 var file_account_proto_goTypes = []any{
 	(*AccountReq)(nil),        // 0: cproto.AccountReq
 	(*AccountAck)(nil),        // 1: cproto.AccountAck
@@ -2440,46 +2468,47 @@ var file_account_proto_goTypes = []any{
 	(*VirtOrdSubmitAck)(nil),  // 35: cproto.VirtOrdSubmitAck
 	(*VirtOrdListReq)(nil),    // 36: cproto.VirtOrdListReq
 	(*VirtOrdListAck)(nil),    // 37: cproto.VirtOrdListAck
-	(*VipUpgradeAck)(nil),     // 38: cproto.VipUpgradeAck
-	nil,                       // 39: cproto.BackpackAck.ItemsEntry
-	nil,                       // 40: cproto.PurchaseAck.GoodsEntry
-	nil,                       // 41: cproto.RegisterAck.AwardEntry
-	nil,                       // 42: cproto.PlayerInfoAck.ItemsEntry
-	nil,                       // 43: cproto.ItemsAck.ItemsEntry
-	nil,                       // 44: cproto.MemberTypeInfo.PurchaseBonusEntry
-	nil,                       // 45: cproto.MemberTypeInfo.DailyRewardEntry
-	nil,                       // 46: cproto.BuyMemberAck.BonusEntry
-	nil,                       // 47: cproto.ExchangeAck.ItemsEntry
-	nil,                       // 48: cproto.PhysOrdBrief.ItemsEntry
-	nil,                       // 49: cproto.PhysOrdSubmitReq.ItemsEntry
-	nil,                       // 50: cproto.VirtOrdBrief.ItemsEntry
-	nil,                       // 51: cproto.VirtOrdSubmitReq.ItemsEntry
-	nil,                       // 52: cproto.VipUpgradeAck.RewardsEntry
-	(*anypb.Any)(nil),         // 53: google.protobuf.Any
+	(*VipRewardReq)(nil),      // 38: cproto.VipRewardReq
+	(*VipRewardAck)(nil),      // 39: cproto.VipRewardAck
+	nil,                       // 40: cproto.BackpackAck.ItemsEntry
+	nil,                       // 41: cproto.PurchaseAck.GoodsEntry
+	nil,                       // 42: cproto.RegisterAck.AwardEntry
+	nil,                       // 43: cproto.PlayerInfoAck.ItemsEntry
+	nil,                       // 44: cproto.ItemsAck.ItemsEntry
+	nil,                       // 45: cproto.MemberTypeInfo.PurchaseBonusEntry
+	nil,                       // 46: cproto.MemberTypeInfo.DailyRewardEntry
+	nil,                       // 47: cproto.BuyMemberAck.BonusEntry
+	nil,                       // 48: cproto.ExchangeAck.ItemsEntry
+	nil,                       // 49: cproto.PhysOrdBrief.ItemsEntry
+	nil,                       // 50: cproto.PhysOrdSubmitReq.ItemsEntry
+	nil,                       // 51: cproto.VirtOrdBrief.ItemsEntry
+	nil,                       // 52: cproto.VirtOrdSubmitReq.ItemsEntry
+	nil,                       // 53: cproto.VipRewardAck.RewardsEntry
+	(*anypb.Any)(nil),         // 54: google.protobuf.Any
 }
 var file_account_proto_depIdxs = []int32{
-	53, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
-	53, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
+	54, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
+	54, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
 	15, // 2: cproto.WxLoginAck.player_info:type_name -> cproto.PlayerInfoAck
-	39, // 3: cproto.BackpackAck.items:type_name -> cproto.BackpackAck.ItemsEntry
-	40, // 4: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
+	40, // 3: cproto.BackpackAck.items:type_name -> cproto.BackpackAck.ItemsEntry
+	41, // 4: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
 	15, // 5: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
-	41, // 6: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
-	42, // 7: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
-	43, // 8: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
+	42, // 6: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
+	43, // 7: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
+	44, // 8: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
 	19, // 9: cproto.MemberInfoAck.types:type_name -> cproto.MemberTypeInfo
-	44, // 10: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
-	45, // 11: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
-	46, // 12: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
-	47, // 13: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
-	48, // 14: cproto.PhysOrdBrief.items:type_name -> cproto.PhysOrdBrief.ItemsEntry
-	49, // 15: cproto.PhysOrdSubmitReq.items:type_name -> cproto.PhysOrdSubmitReq.ItemsEntry
+	45, // 10: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
+	46, // 11: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
+	47, // 12: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
+	48, // 13: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
+	49, // 14: cproto.PhysOrdBrief.items:type_name -> cproto.PhysOrdBrief.ItemsEntry
+	50, // 15: cproto.PhysOrdSubmitReq.items:type_name -> cproto.PhysOrdSubmitReq.ItemsEntry
 	26, // 16: cproto.PhysOrdListAck.rows:type_name -> cproto.PhysOrdBrief
 	26, // 17: cproto.PhysOrdGetAck.base:type_name -> cproto.PhysOrdBrief
-	50, // 18: cproto.VirtOrdBrief.items:type_name -> cproto.VirtOrdBrief.ItemsEntry
-	51, // 19: cproto.VirtOrdSubmitReq.items:type_name -> cproto.VirtOrdSubmitReq.ItemsEntry
+	51, // 18: cproto.VirtOrdBrief.items:type_name -> cproto.VirtOrdBrief.ItemsEntry
+	52, // 19: cproto.VirtOrdSubmitReq.items:type_name -> cproto.VirtOrdSubmitReq.ItemsEntry
 	33, // 20: cproto.VirtOrdListAck.rows:type_name -> cproto.VirtOrdBrief
-	52, // 21: cproto.VipUpgradeAck.rewards:type_name -> cproto.VipUpgradeAck.RewardsEntry
+	53, // 21: cproto.VipRewardAck.rewards:type_name -> cproto.VipRewardAck.RewardsEntry
 	22, // [22:22] is the sub-list for method output_type
 	22, // [22:22] is the sub-list for method input_type
 	22, // [22:22] is the sub-list for extension type_name
@@ -2498,7 +2527,7 @@ func file_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   53,
+			NumMessages:   54,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
