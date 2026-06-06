@@ -213,3 +213,10 @@ message VirtOrdListAck {
   repeated VirtOrdBrief rows = 1;
   int32 total = 2;
 }
+
+message VipUpgradeAck {
+  int64 vip_exp = 1; // 当前VIP经验
+  int32 old_level = 2; // 升级前VIP等级
+  int32 new_level = 3; // 升级后VIP等级
+  map<int32, int64> rewards = 4; // 本次VIP升级奖励汇总
+}

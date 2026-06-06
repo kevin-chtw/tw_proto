@@ -44,6 +44,14 @@ message ChangeItemsAck {
     map<int32, int64> items = 2; //玩家物品
 }
 
+message RechargeReq {
+  string uid = 1; // 玩家ID
+  int32 price = 2; // 充值金额，单位元
+}
+
+message RechargeAck {
+}
+
 // 新手保护统计
 message GetNewbieStatsReq {
   string uid = 1;
