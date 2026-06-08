@@ -1375,6 +1375,86 @@ func (x *ExchangeAck) GetItems() map[int32]int64 {
 	return nil
 }
 
+type VipConfigReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VipConfigReq) Reset() {
+	*x = VipConfigReq{}
+	mi := &file_account_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VipConfigReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VipConfigReq) ProtoMessage() {}
+
+func (x *VipConfigReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VipConfigReq.ProtoReflect.Descriptor instead.
+func (*VipConfigReq) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{26}
+}
+
+type VipConfigAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Config        string                 `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"` // VIP配置，json格式
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VipConfigAck) Reset() {
+	*x = VipConfigAck{}
+	mi := &file_account_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VipConfigAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VipConfigAck) ProtoMessage() {}
+
+func (x *VipConfigAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VipConfigAck.ProtoReflect.Descriptor instead.
+func (*VipConfigAck) Descriptor() ([]byte, []int) {
+	return file_account_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *VipConfigAck) GetConfig() string {
+	if x != nil {
+		return x.Config
+	}
+	return ""
+}
+
 // 实物兑换订单 st: 0待发货 1已发货 2已完成 3已取消
 type PhysOrdBrief struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1388,7 +1468,7 @@ type PhysOrdBrief struct {
 
 func (x *PhysOrdBrief) Reset() {
 	*x = PhysOrdBrief{}
-	mi := &file_account_proto_msgTypes[26]
+	mi := &file_account_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1400,7 +1480,7 @@ func (x *PhysOrdBrief) String() string {
 func (*PhysOrdBrief) ProtoMessage() {}
 
 func (x *PhysOrdBrief) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[26]
+	mi := &file_account_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1413,7 +1493,7 @@ func (x *PhysOrdBrief) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdBrief.ProtoReflect.Descriptor instead.
 func (*PhysOrdBrief) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{26}
+	return file_account_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *PhysOrdBrief) GetId() uint64 {
@@ -1457,7 +1537,7 @@ type PhysOrdSubmitReq struct {
 
 func (x *PhysOrdSubmitReq) Reset() {
 	*x = PhysOrdSubmitReq{}
-	mi := &file_account_proto_msgTypes[27]
+	mi := &file_account_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1469,7 +1549,7 @@ func (x *PhysOrdSubmitReq) String() string {
 func (*PhysOrdSubmitReq) ProtoMessage() {}
 
 func (x *PhysOrdSubmitReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[27]
+	mi := &file_account_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1482,7 +1562,7 @@ func (x *PhysOrdSubmitReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdSubmitReq.ProtoReflect.Descriptor instead.
 func (*PhysOrdSubmitReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{27}
+	return file_account_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *PhysOrdSubmitReq) GetItems() map[int32]int64 {
@@ -1530,7 +1610,7 @@ type PhysOrdSubmitAck struct {
 
 func (x *PhysOrdSubmitAck) Reset() {
 	*x = PhysOrdSubmitAck{}
-	mi := &file_account_proto_msgTypes[28]
+	mi := &file_account_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1542,7 +1622,7 @@ func (x *PhysOrdSubmitAck) String() string {
 func (*PhysOrdSubmitAck) ProtoMessage() {}
 
 func (x *PhysOrdSubmitAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[28]
+	mi := &file_account_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1555,7 +1635,7 @@ func (x *PhysOrdSubmitAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdSubmitAck.ProtoReflect.Descriptor instead.
 func (*PhysOrdSubmitAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{28}
+	return file_account_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *PhysOrdSubmitAck) GetId() uint64 {
@@ -1582,7 +1662,7 @@ type PhysOrdListReq struct {
 
 func (x *PhysOrdListReq) Reset() {
 	*x = PhysOrdListReq{}
-	mi := &file_account_proto_msgTypes[29]
+	mi := &file_account_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1594,7 +1674,7 @@ func (x *PhysOrdListReq) String() string {
 func (*PhysOrdListReq) ProtoMessage() {}
 
 func (x *PhysOrdListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[29]
+	mi := &file_account_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1607,7 +1687,7 @@ func (x *PhysOrdListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdListReq.ProtoReflect.Descriptor instead.
 func (*PhysOrdListReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{29}
+	return file_account_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *PhysOrdListReq) GetPage() int32 {
@@ -1634,7 +1714,7 @@ type PhysOrdListAck struct {
 
 func (x *PhysOrdListAck) Reset() {
 	*x = PhysOrdListAck{}
-	mi := &file_account_proto_msgTypes[30]
+	mi := &file_account_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1646,7 +1726,7 @@ func (x *PhysOrdListAck) String() string {
 func (*PhysOrdListAck) ProtoMessage() {}
 
 func (x *PhysOrdListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[30]
+	mi := &file_account_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1659,7 +1739,7 @@ func (x *PhysOrdListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdListAck.ProtoReflect.Descriptor instead.
 func (*PhysOrdListAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{30}
+	return file_account_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *PhysOrdListAck) GetRows() []*PhysOrdBrief {
@@ -1685,7 +1765,7 @@ type PhysOrdGetReq struct {
 
 func (x *PhysOrdGetReq) Reset() {
 	*x = PhysOrdGetReq{}
-	mi := &file_account_proto_msgTypes[31]
+	mi := &file_account_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1697,7 +1777,7 @@ func (x *PhysOrdGetReq) String() string {
 func (*PhysOrdGetReq) ProtoMessage() {}
 
 func (x *PhysOrdGetReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[31]
+	mi := &file_account_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1710,7 +1790,7 @@ func (x *PhysOrdGetReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdGetReq.ProtoReflect.Descriptor instead.
 func (*PhysOrdGetReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{31}
+	return file_account_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *PhysOrdGetReq) GetId() uint64 {
@@ -1736,7 +1816,7 @@ type PhysOrdGetAck struct {
 
 func (x *PhysOrdGetAck) Reset() {
 	*x = PhysOrdGetAck{}
-	mi := &file_account_proto_msgTypes[32]
+	mi := &file_account_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1748,7 +1828,7 @@ func (x *PhysOrdGetAck) String() string {
 func (*PhysOrdGetAck) ProtoMessage() {}
 
 func (x *PhysOrdGetAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[32]
+	mi := &file_account_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1761,7 +1841,7 @@ func (x *PhysOrdGetAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdGetAck.ProtoReflect.Descriptor instead.
 func (*PhysOrdGetAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{32}
+	return file_account_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *PhysOrdGetAck) GetBase() *PhysOrdBrief {
@@ -1835,7 +1915,7 @@ type VirtOrdBrief struct {
 
 func (x *VirtOrdBrief) Reset() {
 	*x = VirtOrdBrief{}
-	mi := &file_account_proto_msgTypes[33]
+	mi := &file_account_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1847,7 +1927,7 @@ func (x *VirtOrdBrief) String() string {
 func (*VirtOrdBrief) ProtoMessage() {}
 
 func (x *VirtOrdBrief) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[33]
+	mi := &file_account_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1860,7 +1940,7 @@ func (x *VirtOrdBrief) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdBrief.ProtoReflect.Descriptor instead.
 func (*VirtOrdBrief) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{33}
+	return file_account_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *VirtOrdBrief) GetId() uint64 {
@@ -1909,7 +1989,7 @@ type VirtOrdSubmitReq struct {
 
 func (x *VirtOrdSubmitReq) Reset() {
 	*x = VirtOrdSubmitReq{}
-	mi := &file_account_proto_msgTypes[34]
+	mi := &file_account_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1921,7 +2001,7 @@ func (x *VirtOrdSubmitReq) String() string {
 func (*VirtOrdSubmitReq) ProtoMessage() {}
 
 func (x *VirtOrdSubmitReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[34]
+	mi := &file_account_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1934,7 +2014,7 @@ func (x *VirtOrdSubmitReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdSubmitReq.ProtoReflect.Descriptor instead.
 func (*VirtOrdSubmitReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{34}
+	return file_account_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *VirtOrdSubmitReq) GetItems() map[int32]int64 {
@@ -1968,7 +2048,7 @@ type VirtOrdSubmitAck struct {
 
 func (x *VirtOrdSubmitAck) Reset() {
 	*x = VirtOrdSubmitAck{}
-	mi := &file_account_proto_msgTypes[35]
+	mi := &file_account_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1980,7 +2060,7 @@ func (x *VirtOrdSubmitAck) String() string {
 func (*VirtOrdSubmitAck) ProtoMessage() {}
 
 func (x *VirtOrdSubmitAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[35]
+	mi := &file_account_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1993,7 +2073,7 @@ func (x *VirtOrdSubmitAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdSubmitAck.ProtoReflect.Descriptor instead.
 func (*VirtOrdSubmitAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{35}
+	return file_account_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *VirtOrdSubmitAck) GetId() uint64 {
@@ -2020,7 +2100,7 @@ type VirtOrdListReq struct {
 
 func (x *VirtOrdListReq) Reset() {
 	*x = VirtOrdListReq{}
-	mi := &file_account_proto_msgTypes[36]
+	mi := &file_account_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2032,7 +2112,7 @@ func (x *VirtOrdListReq) String() string {
 func (*VirtOrdListReq) ProtoMessage() {}
 
 func (x *VirtOrdListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[36]
+	mi := &file_account_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2045,7 +2125,7 @@ func (x *VirtOrdListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdListReq.ProtoReflect.Descriptor instead.
 func (*VirtOrdListReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{36}
+	return file_account_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *VirtOrdListReq) GetPage() int32 {
@@ -2072,7 +2152,7 @@ type VirtOrdListAck struct {
 
 func (x *VirtOrdListAck) Reset() {
 	*x = VirtOrdListAck{}
-	mi := &file_account_proto_msgTypes[37]
+	mi := &file_account_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2084,7 +2164,7 @@ func (x *VirtOrdListAck) String() string {
 func (*VirtOrdListAck) ProtoMessage() {}
 
 func (x *VirtOrdListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[37]
+	mi := &file_account_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2097,7 +2177,7 @@ func (x *VirtOrdListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdListAck.ProtoReflect.Descriptor instead.
 func (*VirtOrdListAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{37}
+	return file_account_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *VirtOrdListAck) GetRows() []*VirtOrdBrief {
@@ -2123,7 +2203,7 @@ type VipRewardReq struct {
 
 func (x *VipRewardReq) Reset() {
 	*x = VipRewardReq{}
-	mi := &file_account_proto_msgTypes[38]
+	mi := &file_account_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2135,7 +2215,7 @@ func (x *VipRewardReq) String() string {
 func (*VipRewardReq) ProtoMessage() {}
 
 func (x *VipRewardReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[38]
+	mi := &file_account_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2148,7 +2228,7 @@ func (x *VipRewardReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VipRewardReq.ProtoReflect.Descriptor instead.
 func (*VipRewardReq) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{38}
+	return file_account_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *VipRewardReq) GetVipLevel() int64 {
@@ -2168,7 +2248,7 @@ type VipRewardAck struct {
 
 func (x *VipRewardAck) Reset() {
 	*x = VipRewardAck{}
-	mi := &file_account_proto_msgTypes[39]
+	mi := &file_account_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2180,7 +2260,7 @@ func (x *VipRewardAck) String() string {
 func (*VipRewardAck) ProtoMessage() {}
 
 func (x *VipRewardAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_proto_msgTypes[39]
+	mi := &file_account_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2193,7 +2273,7 @@ func (x *VipRewardAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VipRewardAck.ProtoReflect.Descriptor instead.
 func (*VipRewardAck) Descriptor() ([]byte, []int) {
-	return file_account_proto_rawDescGZIP(), []int{39}
+	return file_account_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *VipRewardAck) GetVipLevel() int64 {
@@ -2338,7 +2418,10 @@ const file_account_proto_rawDesc = "" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xc6\x01\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x0e\n" +
+	"\fVipConfigReq\"&\n" +
+	"\fVipConfigAck\x12\x16\n" +
+	"\x06config\x18\x01 \x01(\tR\x06config\"\xc6\x01\n" +
 	"\fPhysOrdBrief\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\x05R\x06status\x12\x1d\n" +
@@ -2428,7 +2511,7 @@ func file_account_proto_rawDescGZIP() []byte {
 	return file_account_proto_rawDescData
 }
 
-var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 54)
+var file_account_proto_msgTypes = make([]protoimpl.MessageInfo, 56)
 var file_account_proto_goTypes = []any{
 	(*AccountReq)(nil),        // 0: cproto.AccountReq
 	(*AccountAck)(nil),        // 1: cproto.AccountAck
@@ -2456,59 +2539,61 @@ var file_account_proto_goTypes = []any{
 	(*ExchangeRateAck)(nil),   // 23: cproto.ExchangeRateAck
 	(*ExchangeReq)(nil),       // 24: cproto.ExchangeReq
 	(*ExchangeAck)(nil),       // 25: cproto.ExchangeAck
-	(*PhysOrdBrief)(nil),      // 26: cproto.PhysOrdBrief
-	(*PhysOrdSubmitReq)(nil),  // 27: cproto.PhysOrdSubmitReq
-	(*PhysOrdSubmitAck)(nil),  // 28: cproto.PhysOrdSubmitAck
-	(*PhysOrdListReq)(nil),    // 29: cproto.PhysOrdListReq
-	(*PhysOrdListAck)(nil),    // 30: cproto.PhysOrdListAck
-	(*PhysOrdGetReq)(nil),     // 31: cproto.PhysOrdGetReq
-	(*PhysOrdGetAck)(nil),     // 32: cproto.PhysOrdGetAck
-	(*VirtOrdBrief)(nil),      // 33: cproto.VirtOrdBrief
-	(*VirtOrdSubmitReq)(nil),  // 34: cproto.VirtOrdSubmitReq
-	(*VirtOrdSubmitAck)(nil),  // 35: cproto.VirtOrdSubmitAck
-	(*VirtOrdListReq)(nil),    // 36: cproto.VirtOrdListReq
-	(*VirtOrdListAck)(nil),    // 37: cproto.VirtOrdListAck
-	(*VipRewardReq)(nil),      // 38: cproto.VipRewardReq
-	(*VipRewardAck)(nil),      // 39: cproto.VipRewardAck
-	nil,                       // 40: cproto.BackpackAck.ItemsEntry
-	nil,                       // 41: cproto.PurchaseAck.GoodsEntry
-	nil,                       // 42: cproto.RegisterAck.AwardEntry
-	nil,                       // 43: cproto.PlayerInfoAck.ItemsEntry
-	nil,                       // 44: cproto.ItemsAck.ItemsEntry
-	nil,                       // 45: cproto.MemberTypeInfo.PurchaseBonusEntry
-	nil,                       // 46: cproto.MemberTypeInfo.DailyRewardEntry
-	nil,                       // 47: cproto.BuyMemberAck.BonusEntry
-	nil,                       // 48: cproto.ExchangeAck.ItemsEntry
-	nil,                       // 49: cproto.PhysOrdBrief.ItemsEntry
-	nil,                       // 50: cproto.PhysOrdSubmitReq.ItemsEntry
-	nil,                       // 51: cproto.VirtOrdBrief.ItemsEntry
-	nil,                       // 52: cproto.VirtOrdSubmitReq.ItemsEntry
-	nil,                       // 53: cproto.VipRewardAck.RewardsEntry
-	(*anypb.Any)(nil),         // 54: google.protobuf.Any
+	(*VipConfigReq)(nil),      // 26: cproto.VipConfigReq
+	(*VipConfigAck)(nil),      // 27: cproto.VipConfigAck
+	(*PhysOrdBrief)(nil),      // 28: cproto.PhysOrdBrief
+	(*PhysOrdSubmitReq)(nil),  // 29: cproto.PhysOrdSubmitReq
+	(*PhysOrdSubmitAck)(nil),  // 30: cproto.PhysOrdSubmitAck
+	(*PhysOrdListReq)(nil),    // 31: cproto.PhysOrdListReq
+	(*PhysOrdListAck)(nil),    // 32: cproto.PhysOrdListAck
+	(*PhysOrdGetReq)(nil),     // 33: cproto.PhysOrdGetReq
+	(*PhysOrdGetAck)(nil),     // 34: cproto.PhysOrdGetAck
+	(*VirtOrdBrief)(nil),      // 35: cproto.VirtOrdBrief
+	(*VirtOrdSubmitReq)(nil),  // 36: cproto.VirtOrdSubmitReq
+	(*VirtOrdSubmitAck)(nil),  // 37: cproto.VirtOrdSubmitAck
+	(*VirtOrdListReq)(nil),    // 38: cproto.VirtOrdListReq
+	(*VirtOrdListAck)(nil),    // 39: cproto.VirtOrdListAck
+	(*VipRewardReq)(nil),      // 40: cproto.VipRewardReq
+	(*VipRewardAck)(nil),      // 41: cproto.VipRewardAck
+	nil,                       // 42: cproto.BackpackAck.ItemsEntry
+	nil,                       // 43: cproto.PurchaseAck.GoodsEntry
+	nil,                       // 44: cproto.RegisterAck.AwardEntry
+	nil,                       // 45: cproto.PlayerInfoAck.ItemsEntry
+	nil,                       // 46: cproto.ItemsAck.ItemsEntry
+	nil,                       // 47: cproto.MemberTypeInfo.PurchaseBonusEntry
+	nil,                       // 48: cproto.MemberTypeInfo.DailyRewardEntry
+	nil,                       // 49: cproto.BuyMemberAck.BonusEntry
+	nil,                       // 50: cproto.ExchangeAck.ItemsEntry
+	nil,                       // 51: cproto.PhysOrdBrief.ItemsEntry
+	nil,                       // 52: cproto.PhysOrdSubmitReq.ItemsEntry
+	nil,                       // 53: cproto.VirtOrdBrief.ItemsEntry
+	nil,                       // 54: cproto.VirtOrdSubmitReq.ItemsEntry
+	nil,                       // 55: cproto.VipRewardAck.RewardsEntry
+	(*anypb.Any)(nil),         // 56: google.protobuf.Any
 }
 var file_account_proto_depIdxs = []int32{
-	54, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
-	54, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
+	56, // 0: cproto.AccountReq.req:type_name -> google.protobuf.Any
+	56, // 1: cproto.AccountAck.ack:type_name -> google.protobuf.Any
 	15, // 2: cproto.WxLoginAck.player_info:type_name -> cproto.PlayerInfoAck
-	40, // 3: cproto.BackpackAck.items:type_name -> cproto.BackpackAck.ItemsEntry
-	41, // 4: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
+	42, // 3: cproto.BackpackAck.items:type_name -> cproto.BackpackAck.ItemsEntry
+	43, // 4: cproto.PurchaseAck.goods:type_name -> cproto.PurchaseAck.GoodsEntry
 	15, // 5: cproto.RegisterAck.player_info:type_name -> cproto.PlayerInfoAck
-	42, // 6: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
-	43, // 7: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
-	44, // 8: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
+	44, // 6: cproto.RegisterAck.award:type_name -> cproto.RegisterAck.AwardEntry
+	45, // 7: cproto.PlayerInfoAck.items:type_name -> cproto.PlayerInfoAck.ItemsEntry
+	46, // 8: cproto.ItemsAck.items:type_name -> cproto.ItemsAck.ItemsEntry
 	19, // 9: cproto.MemberInfoAck.types:type_name -> cproto.MemberTypeInfo
-	45, // 10: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
-	46, // 11: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
-	47, // 12: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
-	48, // 13: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
-	49, // 14: cproto.PhysOrdBrief.items:type_name -> cproto.PhysOrdBrief.ItemsEntry
-	50, // 15: cproto.PhysOrdSubmitReq.items:type_name -> cproto.PhysOrdSubmitReq.ItemsEntry
-	26, // 16: cproto.PhysOrdListAck.rows:type_name -> cproto.PhysOrdBrief
-	26, // 17: cproto.PhysOrdGetAck.base:type_name -> cproto.PhysOrdBrief
-	51, // 18: cproto.VirtOrdBrief.items:type_name -> cproto.VirtOrdBrief.ItemsEntry
-	52, // 19: cproto.VirtOrdSubmitReq.items:type_name -> cproto.VirtOrdSubmitReq.ItemsEntry
-	33, // 20: cproto.VirtOrdListAck.rows:type_name -> cproto.VirtOrdBrief
-	53, // 21: cproto.VipRewardAck.rewards:type_name -> cproto.VipRewardAck.RewardsEntry
+	47, // 10: cproto.MemberTypeInfo.purchase_bonus:type_name -> cproto.MemberTypeInfo.PurchaseBonusEntry
+	48, // 11: cproto.MemberTypeInfo.daily_reward:type_name -> cproto.MemberTypeInfo.DailyRewardEntry
+	49, // 12: cproto.BuyMemberAck.bonus:type_name -> cproto.BuyMemberAck.BonusEntry
+	50, // 13: cproto.ExchangeAck.items:type_name -> cproto.ExchangeAck.ItemsEntry
+	51, // 14: cproto.PhysOrdBrief.items:type_name -> cproto.PhysOrdBrief.ItemsEntry
+	52, // 15: cproto.PhysOrdSubmitReq.items:type_name -> cproto.PhysOrdSubmitReq.ItemsEntry
+	28, // 16: cproto.PhysOrdListAck.rows:type_name -> cproto.PhysOrdBrief
+	28, // 17: cproto.PhysOrdGetAck.base:type_name -> cproto.PhysOrdBrief
+	53, // 18: cproto.VirtOrdBrief.items:type_name -> cproto.VirtOrdBrief.ItemsEntry
+	54, // 19: cproto.VirtOrdSubmitReq.items:type_name -> cproto.VirtOrdSubmitReq.ItemsEntry
+	35, // 20: cproto.VirtOrdListAck.rows:type_name -> cproto.VirtOrdBrief
+	55, // 21: cproto.VipRewardAck.rewards:type_name -> cproto.VipRewardAck.RewardsEntry
 	22, // [22:22] is the sub-list for method output_type
 	22, // [22:22] is the sub-list for method input_type
 	22, // [22:22] is the sub-list for extension type_name
@@ -2527,7 +2612,7 @@ func file_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_proto_rawDesc), len(file_account_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   54,
+			NumMessages:   56,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

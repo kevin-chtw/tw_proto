@@ -137,6 +137,13 @@ message ExchangeAck {
   map<int32, int64> items = 1; // 新物品id和数量
 }
 
+message VipConfigReq {
+}
+
+message VipConfigAck {
+  string config = 1; // VIP配置，json格式
+}
+
 // 实物兑换订单 st: 0待发货 1已发货 2已完成 3已取消
 message PhysOrdBrief {
   uint64 id = 1;
