@@ -63,6 +63,7 @@ message TablePlayerAck {
   int32 seat = 4; // 座位号
   bool ready = 5; // 是否准备
   map<int32,int64> items = 6; //物品数量
+  map<int32,int32> equipped = 7; // 当前穿戴(key=category 1~5, value=deco_id)
 }
 
 message TableMsgReq {  

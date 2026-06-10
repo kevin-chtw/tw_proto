@@ -244,19 +244,20 @@ func (x *AddTableReq) GetEmoteConf() []byte {
 
 type AddPlayerReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"`                                                                       // 玩家ID
-	Bot           bool                   `protobuf:"varint,2,opt,name=bot,proto3" json:"bot,omitempty"`                                                                                // 是否为机器人
-	Seat          int32                  `protobuf:"varint,3,opt,name=seat,proto3" json:"seat,omitempty"`                                                                              // 座位号
-	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`                                                                            // 玩家分数
-	Nickname      string                 `protobuf:"bytes,5,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                       // 玩家昵称
-	Avatar        string                 `protobuf:"bytes,6,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                           // 玩家头像
-	Items         map[int32]int64        `protobuf:"bytes,7,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //玩家物品
-	Ctrl          int32                  `protobuf:"varint,8,opt,name=ctrl,proto3" json:"ctrl,omitempty"`                                                                              // 0-不控制 1-放分(真人赢) 2-吃分(机器人赢)，新手保护期真人传1
-	BotLevel      int32                  `protobuf:"varint,9,opt,name=bot_level,json=botLevel,proto3" json:"bot_level,omitempty"`                                                      // 机器人等级 0-正常 1-低智能 2-弱智
-	ScoreBase     int64                  `protobuf:"varint,10,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                  //玩家档位基数
-	Tax           int64                  `protobuf:"varint,11,opt,name=tax,proto3" json:"tax,omitempty"`                                                                               //玩家桌费
-	ExchangeRate  int64                  `protobuf:"varint,12,opt,name=exchange_rate,json=exchangeRate,proto3" json:"exchange_rate,omitempty"`                                         //兑换比例
-	Matchid       int32                  `protobuf:"varint,13,opt,name=matchid,proto3" json:"matchid,omitempty"`                                                                       //玩家的matchid
+	Playerid      string                 `protobuf:"bytes,1,opt,name=playerid,proto3" json:"playerid,omitempty"`                                                                              // 玩家ID
+	Bot           bool                   `protobuf:"varint,2,opt,name=bot,proto3" json:"bot,omitempty"`                                                                                       // 是否为机器人
+	Seat          int32                  `protobuf:"varint,3,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                     // 座位号
+	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`                                                                                   // 玩家分数
+	Nickname      string                 `protobuf:"bytes,5,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                              // 玩家昵称
+	Avatar        string                 `protobuf:"bytes,6,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                                  // 玩家头像
+	Items         map[int32]int64        `protobuf:"bytes,7,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`        //玩家物品
+	Ctrl          int32                  `protobuf:"varint,8,opt,name=ctrl,proto3" json:"ctrl,omitempty"`                                                                                     // 0-不控制 1-放分(真人赢) 2-吃分(机器人赢)，新手保护期真人传1
+	BotLevel      int32                  `protobuf:"varint,9,opt,name=bot_level,json=botLevel,proto3" json:"bot_level,omitempty"`                                                             // 机器人等级 0-正常 1-低智能 2-弱智
+	ScoreBase     int64                  `protobuf:"varint,10,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                         //玩家档位基数
+	Tax           int64                  `protobuf:"varint,11,opt,name=tax,proto3" json:"tax,omitempty"`                                                                                      //玩家桌费
+	ExchangeRate  int64                  `protobuf:"varint,12,opt,name=exchange_rate,json=exchangeRate,proto3" json:"exchange_rate,omitempty"`                                                //兑换比例
+	Matchid       int32                  `protobuf:"varint,13,opt,name=matchid,proto3" json:"matchid,omitempty"`                                                                              //玩家的matchid
+	Equipped      map[int32]int32        `protobuf:"bytes,14,rep,name=equipped,proto3" json:"equipped,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -380,6 +381,13 @@ func (x *AddPlayerReq) GetMatchid() int32 {
 		return x.Matchid
 	}
 	return 0
+}
+
+func (x *AddPlayerReq) GetEquipped() map[int32]int32 {
+	if x != nil {
+		return x.Equipped
+	}
+	return nil
 }
 
 type CancelTableReq struct {
@@ -595,7 +603,7 @@ const file_game_remote_proto_rawDesc = "" +
 	"emote_conf\x18\b \x01(\fR\temoteConf\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xac\x03\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xa9\x04\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x10\n" +
 	"\x03bot\x18\x02 \x01(\bR\x03bot\x12\x12\n" +
@@ -611,11 +619,15 @@ const file_game_remote_proto_rawDesc = "" +
 	" \x01(\x03R\tscoreBase\x12\x10\n" +
 	"\x03tax\x18\v \x01(\x03R\x03tax\x12#\n" +
 	"\rexchange_rate\x18\f \x01(\x03R\fexchangeRate\x12\x18\n" +
-	"\amatchid\x18\r \x01(\x05R\amatchid\x1a8\n" +
+	"\amatchid\x18\r \x01(\x05R\amatchid\x12>\n" +
+	"\bequipped\x18\x0e \x03(\v2\".sproto.AddPlayerReq.EquippedEntryR\bequipped\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"(\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a;\n" +
+	"\rEquippedEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"(\n" +
 	"\x0eCancelTableReq\x12\x16\n" +
 	"\x06reason\x18\x01 \x01(\x05R\x06reason\"\n" +
 	"\n" +
@@ -639,7 +651,7 @@ func file_game_remote_proto_rawDescGZIP() []byte {
 	return file_game_remote_proto_rawDescData
 }
 
-var file_game_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_game_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_game_remote_proto_goTypes = []any{
 	(*GameReq)(nil),        // 0: sproto.GameReq
 	(*GameAck)(nil),        // 1: sproto.GameAck
@@ -651,18 +663,20 @@ var file_game_remote_proto_goTypes = []any{
 	(*ExitTableAck)(nil),   // 7: sproto.ExitTableAck
 	nil,                    // 8: sproto.AddTableReq.FdpropertyEntry
 	nil,                    // 9: sproto.AddPlayerReq.ItemsEntry
-	(*anypb.Any)(nil),      // 10: google.protobuf.Any
+	nil,                    // 10: sproto.AddPlayerReq.EquippedEntry
+	(*anypb.Any)(nil),      // 11: google.protobuf.Any
 }
 var file_game_remote_proto_depIdxs = []int32{
-	10, // 0: sproto.GameReq.req:type_name -> google.protobuf.Any
-	10, // 1: sproto.GameAck.ack:type_name -> google.protobuf.Any
+	11, // 0: sproto.GameReq.req:type_name -> google.protobuf.Any
+	11, // 1: sproto.GameAck.ack:type_name -> google.protobuf.Any
 	8,  // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
 	9,  // 3: sproto.AddPlayerReq.items:type_name -> sproto.AddPlayerReq.ItemsEntry
-	4,  // [4:4] is the sub-list for method output_type
-	4,  // [4:4] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	10, // 4: sproto.AddPlayerReq.equipped:type_name -> sproto.AddPlayerReq.EquippedEntry
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_game_remote_proto_init() }
@@ -676,7 +690,7 @@ func file_game_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_remote_proto_rawDesc), len(file_game_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

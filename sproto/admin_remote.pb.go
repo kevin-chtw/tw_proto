@@ -1044,6 +1044,403 @@ func (x *BonusCfgGetAck) GetRow() *BonusCfgRow {
 	return nil
 }
 
+// DecoCfg service (admin.decocfg.*) messages.
+type DecoCfgVersionReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DecoCfgVersionReq) Reset() {
+	*x = DecoCfgVersionReq{}
+	mi := &file_admin_remote_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DecoCfgVersionReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecoCfgVersionReq) ProtoMessage() {}
+
+func (x *DecoCfgVersionReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecoCfgVersionReq.ProtoReflect.Descriptor instead.
+func (*DecoCfgVersionReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *DecoCfgVersionReq) GetDummy() uint64 {
+	if x != nil {
+		return x.Dummy
+	}
+	return 0
+}
+
+type DecoCfgVersionAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Version       uint64                 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DecoCfgVersionAck) Reset() {
+	*x = DecoCfgVersionAck{}
+	mi := &file_admin_remote_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DecoCfgVersionAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecoCfgVersionAck) ProtoMessage() {}
+
+func (x *DecoCfgVersionAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecoCfgVersionAck.ProtoReflect.Descriptor instead.
+func (*DecoCfgVersionAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *DecoCfgVersionAck) GetVersion() uint64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type DecoCfgRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DecoId        int32                  `protobuf:"varint,1,opt,name=deco_id,json=decoId,proto3" json:"deco_id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Category      int32                  `protobuf:"varint,3,opt,name=category,proto3" json:"category,omitempty"` // 1=头像框 2=麻将牌桌 3=麻将牌背 4=扑克牌桌 5=扑克牌背
+	Status        int32                  `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`     // 0=禁用 1=启用
+	IsDefault     bool                   `protobuf:"varint,5,opt,name=is_default,json=isDefault,proto3" json:"is_default,omitempty"`
+	Sort          int32                  `protobuf:"varint,6,opt,name=sort,proto3" json:"sort,omitempty"`
+	Icon          string                 `protobuf:"bytes,7,opt,name=icon,proto3" json:"icon,omitempty"`
+	PreviewAsset  string                 `protobuf:"bytes,8,opt,name=preview_asset,json=previewAsset,proto3" json:"preview_asset,omitempty"`
+	AcquireDesc   string                 `protobuf:"bytes,9,opt,name=acquire_desc,json=acquireDesc,proto3" json:"acquire_desc,omitempty"`
+	Content       string                 `protobuf:"bytes,10,opt,name=content,proto3" json:"content,omitempty"` // 扩展 JSON（资源包、动画参数等）
+	Version       uint64                 `protobuf:"varint,11,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DecoCfgRow) Reset() {
+	*x = DecoCfgRow{}
+	mi := &file_admin_remote_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DecoCfgRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecoCfgRow) ProtoMessage() {}
+
+func (x *DecoCfgRow) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecoCfgRow.ProtoReflect.Descriptor instead.
+func (*DecoCfgRow) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *DecoCfgRow) GetDecoId() int32 {
+	if x != nil {
+		return x.DecoId
+	}
+	return 0
+}
+
+func (x *DecoCfgRow) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *DecoCfgRow) GetCategory() int32 {
+	if x != nil {
+		return x.Category
+	}
+	return 0
+}
+
+func (x *DecoCfgRow) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *DecoCfgRow) GetIsDefault() bool {
+	if x != nil {
+		return x.IsDefault
+	}
+	return false
+}
+
+func (x *DecoCfgRow) GetSort() int32 {
+	if x != nil {
+		return x.Sort
+	}
+	return 0
+}
+
+func (x *DecoCfgRow) GetIcon() string {
+	if x != nil {
+		return x.Icon
+	}
+	return ""
+}
+
+func (x *DecoCfgRow) GetPreviewAsset() string {
+	if x != nil {
+		return x.PreviewAsset
+	}
+	return ""
+}
+
+func (x *DecoCfgRow) GetAcquireDesc() string {
+	if x != nil {
+		return x.AcquireDesc
+	}
+	return ""
+}
+
+func (x *DecoCfgRow) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *DecoCfgRow) GetVersion() uint64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type DecoCfgListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DecoCfgListReq) Reset() {
+	*x = DecoCfgListReq{}
+	mi := &file_admin_remote_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DecoCfgListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecoCfgListReq) ProtoMessage() {}
+
+func (x *DecoCfgListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecoCfgListReq.ProtoReflect.Descriptor instead.
+func (*DecoCfgListReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *DecoCfgListReq) GetDummy() uint64 {
+	if x != nil {
+		return x.Dummy
+	}
+	return 0
+}
+
+type DecoCfgListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*DecoCfgRow          `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DecoCfgListAck) Reset() {
+	*x = DecoCfgListAck{}
+	mi := &file_admin_remote_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DecoCfgListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecoCfgListAck) ProtoMessage() {}
+
+func (x *DecoCfgListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecoCfgListAck.ProtoReflect.Descriptor instead.
+func (*DecoCfgListAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *DecoCfgListAck) GetRows() []*DecoCfgRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+type DecoCfgGetReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DecoId        int32                  `protobuf:"varint,1,opt,name=deco_id,json=decoId,proto3" json:"deco_id,omitempty"`
+	Category      int32                  `protobuf:"varint,2,opt,name=category,proto3" json:"category,omitempty"` // 1=头像框 2=麻将牌桌 3=麻将牌背 4=扑克牌桌 5=扑克牌背
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DecoCfgGetReq) Reset() {
+	*x = DecoCfgGetReq{}
+	mi := &file_admin_remote_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DecoCfgGetReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecoCfgGetReq) ProtoMessage() {}
+
+func (x *DecoCfgGetReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecoCfgGetReq.ProtoReflect.Descriptor instead.
+func (*DecoCfgGetReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *DecoCfgGetReq) GetDecoId() int32 {
+	if x != nil {
+		return x.DecoId
+	}
+	return 0
+}
+
+func (x *DecoCfgGetReq) GetCategory() int32 {
+	if x != nil {
+		return x.Category
+	}
+	return 0
+}
+
+type DecoCfgGetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Row           *DecoCfgRow            `protobuf:"bytes,1,opt,name=row,proto3" json:"row,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DecoCfgGetAck) Reset() {
+	*x = DecoCfgGetAck{}
+	mi := &file_admin_remote_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DecoCfgGetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecoCfgGetAck) ProtoMessage() {}
+
+func (x *DecoCfgGetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecoCfgGetAck.ProtoReflect.Descriptor instead.
+func (*DecoCfgGetAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *DecoCfgGetAck) GetRow() *DecoCfgRow {
+	if x != nil {
+		return x.Row
+	}
+	return nil
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -1107,7 +1504,35 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x0eBonusCfgGetReq\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\"7\n" +
 	"\x0eBonusCfgGetAck\x12%\n" +
-	"\x03row\x18\x01 \x01(\v2\x13.sproto.BonusCfgRowR\x03rowB\vZ\t../sprotob\x06proto3"
+	"\x03row\x18\x01 \x01(\v2\x13.sproto.BonusCfgRowR\x03row\")\n" +
+	"\x11DecoCfgVersionReq\x12\x14\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"-\n" +
+	"\x11DecoCfgVersionAck\x12\x18\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\xb0\x02\n" +
+	"\n" +
+	"DecoCfgRow\x12\x17\n" +
+	"\adeco_id\x18\x01 \x01(\x05R\x06decoId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
+	"\bcategory\x18\x03 \x01(\x05R\bcategory\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\x05R\x06status\x12\x1d\n" +
+	"\n" +
+	"is_default\x18\x05 \x01(\bR\tisDefault\x12\x12\n" +
+	"\x04sort\x18\x06 \x01(\x05R\x04sort\x12\x12\n" +
+	"\x04icon\x18\a \x01(\tR\x04icon\x12#\n" +
+	"\rpreview_asset\x18\b \x01(\tR\fpreviewAsset\x12!\n" +
+	"\facquire_desc\x18\t \x01(\tR\vacquireDesc\x12\x18\n" +
+	"\acontent\x18\n" +
+	" \x01(\tR\acontent\x12\x18\n" +
+	"\aversion\x18\v \x01(\x04R\aversion\"&\n" +
+	"\x0eDecoCfgListReq\x12\x14\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"8\n" +
+	"\x0eDecoCfgListAck\x12&\n" +
+	"\x04rows\x18\x01 \x03(\v2\x12.sproto.DecoCfgRowR\x04rows\"D\n" +
+	"\rDecoCfgGetReq\x12\x17\n" +
+	"\adeco_id\x18\x01 \x01(\x05R\x06decoId\x12\x1a\n" +
+	"\bcategory\x18\x02 \x01(\x05R\bcategory\"5\n" +
+	"\rDecoCfgGetAck\x12$\n" +
+	"\x03row\x18\x01 \x01(\v2\x12.sproto.DecoCfgRowR\x03rowB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once
@@ -1121,7 +1546,7 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_admin_remote_proto_goTypes = []any{
 	(*MatchCfgVersionReq)(nil), // 0: sproto.MatchCfgVersionReq
 	(*MatchCfgVersionAck)(nil), // 1: sproto.MatchCfgVersionAck
@@ -1144,6 +1569,13 @@ var file_admin_remote_proto_goTypes = []any{
 	(*BonusCfgListAck)(nil),    // 18: sproto.BonusCfgListAck
 	(*BonusCfgGetReq)(nil),     // 19: sproto.BonusCfgGetReq
 	(*BonusCfgGetAck)(nil),     // 20: sproto.BonusCfgGetAck
+	(*DecoCfgVersionReq)(nil),  // 21: sproto.DecoCfgVersionReq
+	(*DecoCfgVersionAck)(nil),  // 22: sproto.DecoCfgVersionAck
+	(*DecoCfgRow)(nil),         // 23: sproto.DecoCfgRow
+	(*DecoCfgListReq)(nil),     // 24: sproto.DecoCfgListReq
+	(*DecoCfgListAck)(nil),     // 25: sproto.DecoCfgListAck
+	(*DecoCfgGetReq)(nil),      // 26: sproto.DecoCfgGetReq
+	(*DecoCfgGetAck)(nil),      // 27: sproto.DecoCfgGetAck
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -1152,11 +1584,13 @@ var file_admin_remote_proto_depIdxs = []int32{
 	9,  // 3: sproto.SignCfgGetAck.row:type_name -> sproto.SignCfgRow
 	16, // 4: sproto.BonusCfgListAck.rows:type_name -> sproto.BonusCfgRow
 	16, // 5: sproto.BonusCfgGetAck.row:type_name -> sproto.BonusCfgRow
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	23, // 6: sproto.DecoCfgListAck.rows:type_name -> sproto.DecoCfgRow
+	23, // 7: sproto.DecoCfgGetAck.row:type_name -> sproto.DecoCfgRow
+	8,  // [8:8] is the sub-list for method output_type
+	8,  // [8:8] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_admin_remote_proto_init() }
@@ -1170,7 +1604,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   21,
+			NumMessages:   28,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

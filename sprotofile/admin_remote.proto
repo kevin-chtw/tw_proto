@@ -3,7 +3,7 @@ syntax = "proto3";
 package sproto;
 option go_package = "../sproto";
 
-// Admin remotes (matchcfg/signcfg/bonuscfg) messages.
+// Admin remotes (matchcfg/signcfg/bonuscfg/decocfg) messages.
 
 // MatchCfg service (admin.matchcfg.*) messages.
 message MatchCfgVersionReq {
@@ -104,3 +104,42 @@ message BonusCfgGetAck {
   BonusCfgRow row = 1;
 }
 
+// DecoCfg service (admin.decocfg.*) messages.
+message DecoCfgVersionReq {
+  uint64 dummy = 1;
+}
+
+message DecoCfgVersionAck {
+  uint64 version = 1;
+}
+
+message DecoCfgRow {
+  int32 deco_id = 1;
+  string name = 2;
+  int32 category = 3;       // 1=头像框 2=麻将牌桌 3=麻将牌背 4=扑克牌桌 5=扑克牌背
+  int32 status = 4;         // 0=禁用 1=启用
+  bool is_default = 5;
+  int32 sort = 6;
+  string icon = 7;
+  string preview_asset = 8;
+  string acquire_desc = 9;
+  string content = 10;      // 扩展 JSON（资源包、动画参数等）
+  uint64 version = 11;
+}
+
+message DecoCfgListReq {
+  uint64 dummy = 1;
+}
+
+message DecoCfgListAck {
+  repeated DecoCfgRow rows = 1;
+}
+
+message DecoCfgGetReq {
+  int32 deco_id = 1;
+  int32 category = 2; // 1=头像框 2=麻将牌桌 3=麻将牌背 4=扑克牌桌 5=扑克牌背
+}
+
+message DecoCfgGetAck {
+  DecoCfgRow row = 1;
+}

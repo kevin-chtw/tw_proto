@@ -507,12 +507,13 @@ func (x *EmoteAck) GetToSeat() int32 {
 
 type TablePlayerAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                 // 玩家ID
-	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                       // 玩家昵称
-	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                           // 玩家头像
-	Seat          int32                  `protobuf:"varint,4,opt,name=seat,proto3" json:"seat,omitempty"`                                                                              // 座位号
-	Ready         bool                   `protobuf:"varint,5,opt,name=ready,proto3" json:"ready,omitempty"`                                                                            // 是否准备
-	Items         map[int32]int64        `protobuf:"bytes,6,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //物品数量
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                       // 玩家ID
+	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                             // 玩家昵称
+	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                                 // 玩家头像
+	Seat          int32                  `protobuf:"varint,4,opt,name=seat,proto3" json:"seat,omitempty"`                                                                                    // 座位号
+	Ready         bool                   `protobuf:"varint,5,opt,name=ready,proto3" json:"ready,omitempty"`                                                                                  // 是否准备
+	Items         map[int32]int64        `protobuf:"bytes,6,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`       //物品数量
+	Equipped      map[int32]int32        `protobuf:"bytes,7,rep,name=equipped,proto3" json:"equipped,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 当前穿戴(key=category 1~5, value=deco_id)
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -585,6 +586,13 @@ func (x *TablePlayerAck) GetReady() bool {
 func (x *TablePlayerAck) GetItems() map[int32]int64 {
 	if x != nil {
 		return x.Items
+	}
+	return nil
+}
+
+func (x *TablePlayerAck) GetEquipped() map[int32]int32 {
+	if x != nil {
+		return x.Equipped
 	}
 	return nil
 }
@@ -1101,18 +1109,22 @@ const file_game_proto_rawDesc = "" +
 	"\bEmoteAck\x12\x19\n" +
 	"\bemote_id\x18\x01 \x01(\x05R\aemoteId\x12\x1b\n" +
 	"\tfrom_seat\x18\x02 \x01(\x05R\bfromSeat\x12\x17\n" +
-	"\ato_seat\x18\x03 \x01(\x05R\x06toSeat\"\xf3\x01\n" +
+	"\ato_seat\x18\x03 \x01(\x05R\x06toSeat\"\xf2\x02\n" +
 	"\x0eTablePlayerAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
 	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x12\x12\n" +
 	"\x04seat\x18\x04 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05ready\x18\x05 \x01(\bR\x05ready\x127\n" +
-	"\x05items\x18\x06 \x03(\v2!.cproto.TablePlayerAck.ItemsEntryR\x05items\x1a8\n" +
+	"\x05items\x18\x06 \x03(\v2!.cproto.TablePlayerAck.ItemsEntryR\x05items\x12@\n" +
+	"\bequipped\x18\a \x03(\v2$.cproto.TablePlayerAck.EquippedEntryR\bequipped\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x1f\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a;\n" +
+	"\rEquippedEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x1f\n" +
 	"\vTableMsgReq\x12\x10\n" +
 	"\x03msg\x18\x01 \x01(\fR\x03msg\"\x1f\n" +
 	"\vTableMsgAck\x12\x10\n" +
@@ -1152,7 +1164,7 @@ func file_game_proto_rawDescGZIP() []byte {
 	return file_game_proto_rawDescData
 }
 
-var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
+var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_game_proto_goTypes = []any{
 	(*GameReq)(nil),               // 0: cproto.GameReq
 	(*GameAck)(nil),               // 1: cproto.GameAck
@@ -1175,20 +1187,22 @@ var file_game_proto_goTypes = []any{
 	(*HisEndAck)(nil),             // 18: cproto.HisEndAck
 	nil,                           // 19: cproto.EnterGameAck.FdpropertyEntry
 	nil,                           // 20: cproto.TablePlayerAck.ItemsEntry
-	nil,                           // 21: cproto.GameDissolveAck.AgreedEntry
-	(*anypb.Any)(nil),             // 22: google.protobuf.Any
+	nil,                           // 21: cproto.TablePlayerAck.EquippedEntry
+	nil,                           // 22: cproto.GameDissolveAck.AgreedEntry
+	(*anypb.Any)(nil),             // 23: google.protobuf.Any
 }
 var file_game_proto_depIdxs = []int32{
-	22, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
-	22, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
+	23, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
+	23, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
 	19, // 2: cproto.EnterGameAck.fdproperty:type_name -> cproto.EnterGameAck.FdpropertyEntry
 	20, // 3: cproto.TablePlayerAck.items:type_name -> cproto.TablePlayerAck.ItemsEntry
-	21, // 4: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
-	5,  // [5:5] is the sub-list for method output_type
-	5,  // [5:5] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	21, // 4: cproto.TablePlayerAck.equipped:type_name -> cproto.TablePlayerAck.EquippedEntry
+	22, // 5: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
+	6,  // [6:6] is the sub-list for method output_type
+	6,  // [6:6] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_game_proto_init() }
@@ -1202,7 +1216,7 @@ func file_game_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_proto_rawDesc), len(file_game_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   22,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

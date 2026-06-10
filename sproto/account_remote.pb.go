@@ -260,10 +260,11 @@ func (x *PlayerInfoReq) GetUid() string {
 
 type PlayerInfoAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                 // 玩家ID
-	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                       // 玩家昵称
-	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                           // 玩家头像
-	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //玩家物品
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                       // 玩家ID
+	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                             // 玩家昵称
+	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                                 // 玩家头像
+	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`       //玩家物品
+	Equipped      map[int32]int32        `protobuf:"bytes,5,rep,name=equipped,proto3" json:"equipped,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -322,6 +323,13 @@ func (x *PlayerInfoAck) GetAvatar() string {
 func (x *PlayerInfoAck) GetItems() map[int32]int64 {
 	if x != nil {
 		return x.Items
+	}
+	return nil
+}
+
+func (x *PlayerInfoAck) GetEquipped() map[int32]int32 {
+	if x != nil {
+		return x.Equipped
 	}
 	return nil
 }
@@ -1382,6 +1390,111 @@ func (*VirtOrdMarkAck) Descriptor() ([]byte, []int) {
 	return file_account_remote_proto_rawDescGZIP(), []int{23}
 }
 
+// 运营/活动发放装扮拥有态（admin -> account.remote.message）
+type GrantDecoReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	DecoId        int32                  `protobuf:"varint,2,opt,name=deco_id,json=decoId,proto3" json:"deco_id,omitempty"`
+	ExpireAt      int64                  `protobuf:"varint,3,opt,name=expire_at,json=expireAt,proto3" json:"expire_at,omitempty"` // 到期时间（unix 秒，0=永久）
+	Category      int32                  `protobuf:"varint,4,opt,name=category,proto3" json:"category,omitempty"`                 // 1=头像框 2=麻将牌桌 3=麻将牌背 4=扑克牌桌 5=扑克牌背
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GrantDecoReq) Reset() {
+	*x = GrantDecoReq{}
+	mi := &file_account_remote_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GrantDecoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GrantDecoReq) ProtoMessage() {}
+
+func (x *GrantDecoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GrantDecoReq.ProtoReflect.Descriptor instead.
+func (*GrantDecoReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *GrantDecoReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *GrantDecoReq) GetDecoId() int32 {
+	if x != nil {
+		return x.DecoId
+	}
+	return 0
+}
+
+func (x *GrantDecoReq) GetExpireAt() int64 {
+	if x != nil {
+		return x.ExpireAt
+	}
+	return 0
+}
+
+func (x *GrantDecoReq) GetCategory() int32 {
+	if x != nil {
+		return x.Category
+	}
+	return 0
+}
+
+type GrantDecoAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GrantDecoAck) Reset() {
+	*x = GrantDecoAck{}
+	mi := &file_account_remote_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GrantDecoAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GrantDecoAck) ProtoMessage() {}
+
+func (x *GrantDecoAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GrantDecoAck.ProtoReflect.Descriptor instead.
+func (*GrantDecoAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{25}
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -1400,16 +1513,20 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\aexpired\x18\x02 \x01(\x03R\aexpired\"!\n" +
 	"\rPlayerInfoReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xc7\x01\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xc5\x02\n" +
 	"\rPlayerInfoAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
 	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x126\n" +
-	"\x05items\x18\x04 \x03(\v2 .sproto.PlayerInfoAck.ItemsEntryR\x05items\x1a8\n" +
+	"\x05items\x18\x04 \x03(\v2 .sproto.PlayerInfoAck.ItemsEntryR\x05items\x12?\n" +
+	"\bequipped\x18\x05 \x03(\v2#.sproto.PlayerInfoAck.EquippedEntryR\bequipped\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x95\x01\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a;\n" +
+	"\rEquippedEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x95\x01\n" +
 	"\x0eChangeItemsReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x127\n" +
 	"\x05items\x18\x02 \x03(\v2!.sproto.ChangeItemsReq.ItemsEntryR\x05items\x1a8\n" +
@@ -1496,7 +1613,13 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x0eVirtOrdMarkReq\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x0e\n" +
 	"\x02st\x18\x02 \x01(\x05R\x02st\"\x10\n" +
-	"\x0eVirtOrdMarkAckB\vZ\t../sprotob\x06proto3"
+	"\x0eVirtOrdMarkAck\"r\n" +
+	"\fGrantDecoReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x17\n" +
+	"\adeco_id\x18\x02 \x01(\x05R\x06decoId\x12\x1b\n" +
+	"\texpire_at\x18\x03 \x01(\x03R\bexpireAt\x12\x1a\n" +
+	"\bcategory\x18\x04 \x01(\x05R\bcategory\"\x0e\n" +
+	"\fGrantDecoAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -1510,7 +1633,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -1536,28 +1659,32 @@ var file_account_remote_proto_goTypes = []any{
 	(*VirtOrdAdminListAck)(nil),  // 21: sproto.VirtOrdAdminListAck
 	(*VirtOrdMarkReq)(nil),       // 22: sproto.VirtOrdMarkReq
 	(*VirtOrdMarkAck)(nil),       // 23: sproto.VirtOrdMarkAck
-	nil,                          // 24: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 25: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 26: sproto.ChangeItemsAck.ItemsEntry
-	nil,                          // 27: sproto.PhysOrdAdminRow.ItemsEntry
-	nil,                          // 28: sproto.VirtOrdAdminRow.ItemsEntry
-	(*anypb.Any)(nil),            // 29: google.protobuf.Any
+	(*GrantDecoReq)(nil),         // 24: sproto.GrantDecoReq
+	(*GrantDecoAck)(nil),         // 25: sproto.GrantDecoAck
+	nil,                          // 26: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 27: sproto.PlayerInfoAck.EquippedEntry
+	nil,                          // 28: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 29: sproto.ChangeItemsAck.ItemsEntry
+	nil,                          // 30: sproto.PhysOrdAdminRow.ItemsEntry
+	nil,                          // 31: sproto.VirtOrdAdminRow.ItemsEntry
+	(*anypb.Any)(nil),            // 32: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	29, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	29, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	24, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	25, // 3: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	26, // 4: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
-	27, // 5: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
-	17, // 6: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
-	28, // 7: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
-	20, // 8: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
-	9,  // [9:9] is the sub-list for method output_type
-	9,  // [9:9] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	32, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	32, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	26, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	27, // 3: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
+	28, // 4: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	29, // 5: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	30, // 6: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
+	17, // 7: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
+	31, // 8: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
+	20, // 9: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_account_remote_proto_init() }
@@ -1571,7 +1698,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   29,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

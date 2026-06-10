@@ -32,6 +32,7 @@ message PlayerInfoAck {
   string nickname = 2; // 玩家昵称
   string avatar = 3; // 玩家头像
   map<int32, int64> items = 4; //玩家物品
+  map<int32, int32> equipped = 5; // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
 }
 
 message ChangeItemsReq {
@@ -151,4 +152,15 @@ message VirtOrdMarkReq {
 }
 
 message VirtOrdMarkAck {
+}
+
+// 运营/活动发放装扮拥有态（admin -> account.remote.message）
+message GrantDecoReq {
+  string uid = 1;
+  int32 deco_id = 2;
+  int64 expire_at = 3;    // 到期时间（unix 秒，0=永久）
+  int32 category = 4;     // 1=头像框 2=麻将牌桌 3=麻将牌背 4=扑克牌桌 5=扑克牌背
+}
+
+message GrantDecoAck {
 }
