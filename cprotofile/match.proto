@@ -49,10 +49,6 @@ message ExitMatchReq{
 message FDResultReq {
 }
 
-message SwitchTableReq {
-  bool confirm = 1; // 确认从背包补充金币
-}
-
 message CancelRoomAck {
   int32 tableid = 1;
 }
