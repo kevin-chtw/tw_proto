@@ -40,6 +40,7 @@ message SignoutReq {//取消报名
 }
 
 message ContinueReq {
+  bool confirm = 1; // 确认从背包补充金币
 }
 
 message ExitMatchReq{  
@@ -48,7 +49,8 @@ message ExitMatchReq{
 message FDResultReq {
 }
 
-message SwitchTableReq {  
+message SwitchTableReq {
+  bool confirm = 1; // 确认从背包补充金币
 }
 
 message CancelRoomAck {

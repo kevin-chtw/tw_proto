@@ -380,6 +380,7 @@ func (*SignoutReq) Descriptor() ([]byte, []int) {
 
 type ContinueReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Confirm       bool                   `protobuf:"varint,1,opt,name=confirm,proto3" json:"confirm,omitempty"` // 确认从背包补充金币
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -412,6 +413,13 @@ func (x *ContinueReq) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ContinueReq.ProtoReflect.Descriptor instead.
 func (*ContinueReq) Descriptor() ([]byte, []int) {
 	return file_match_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ContinueReq) GetConfirm() bool {
+	if x != nil {
+		return x.Confirm
+	}
+	return false
 }
 
 type ExitMatchReq struct {
@@ -488,6 +496,7 @@ func (*FDResultReq) Descriptor() ([]byte, []int) {
 
 type SwitchTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Confirm       bool                   `protobuf:"varint,1,opt,name=confirm,proto3" json:"confirm,omitempty"` // 确认从背包补充金币
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -520,6 +529,13 @@ func (x *SwitchTableReq) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SwitchTableReq.ProtoReflect.Descriptor instead.
 func (*SwitchTableReq) Descriptor() ([]byte, []int) {
 	return file_match_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *SwitchTableReq) GetConfirm() bool {
+	if x != nil {
+		return x.Confirm
+	}
+	return false
 }
 
 type CancelRoomAck struct {
@@ -1162,11 +1178,13 @@ const file_match_proto_rawDesc = "" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\"\v\n" +
 	"\tSignupReq\"\f\n" +
 	"\n" +
-	"SignoutReq\"\r\n" +
-	"\vContinueReq\"\x0e\n" +
+	"SignoutReq\"'\n" +
+	"\vContinueReq\x12\x18\n" +
+	"\aconfirm\x18\x01 \x01(\bR\aconfirm\"\x0e\n" +
 	"\fExitMatchReq\"\r\n" +
-	"\vFDResultReq\"\x10\n" +
-	"\x0eSwitchTableReq\")\n" +
+	"\vFDResultReq\"*\n" +
+	"\x0eSwitchTableReq\x12\x18\n" +
+	"\aconfirm\x18\x01 \x01(\bR\aconfirm\")\n" +
 	"\rCancelRoomAck\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\"\xd0\x01\n" +
 	"\x0eStartClientAck\x12\x1d\n" +
