@@ -143,3 +143,42 @@ message DecoCfgGetReq {
 message DecoCfgGetAck {
   DecoCfgRow row = 1;
 }
+
+// ItemCfg service (admin.itemcfg.*) messages.
+message ItemCfgVersionReq {
+  uint64 dummy = 1;
+}
+
+message ItemCfgVersionAck {
+  uint64 version = 1;
+}
+
+message ItemDefRow {
+  int32 item_id = 1;
+  string name = 2;
+  int32 category = 3; // 1=虚拟兑换券 2=实物兑换券 3=装扮试用券 4=装扮解锁券 5=礼包
+  string icon = 4;
+  string desc = 5;
+  int32 sort = 6;
+  bool stackable = 7;
+  int32 max_stack = 8;
+  bool enabled = 9;
+  string meta = 10; // JSON
+  uint64 version = 11;
+}
+
+message ItemCfgListReq {
+  uint64 dummy = 1;
+}
+
+message ItemCfgListAck {
+  repeated ItemDefRow rows = 1;
+}
+
+message ItemCfgGetReq {
+  int32 item_id = 1;
+}
+
+message ItemCfgGetAck {
+  ItemDefRow row = 1;
+}
