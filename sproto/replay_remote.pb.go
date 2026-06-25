@@ -32,6 +32,7 @@ type ReplayPlayer struct {
 	Score         int64                  `protobuf:"varint,7,opt,name=score,proto3" json:"score,omitempty"`                          // 开局桌分（税后），局内统一坐标
 	ScoreBase     int64                  `protobuf:"varint,8,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"` // 玩家档位基数，回放展示时换算用
 	Tax           int64                  `protobuf:"varint,9,opt,name=tax,proto3" json:"tax,omitempty"`                              // 该玩家桌费
+	Bot           bool                   `protobuf:"varint,10,opt,name=bot,proto3" json:"bot,omitempty"`                             // 是否为机器人
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -129,6 +130,13 @@ func (x *ReplayPlayer) GetTax() int64 {
 	return 0
 }
 
+func (x *ReplayPlayer) GetBot() bool {
+	if x != nil {
+		return x.Bot
+	}
+	return false
+}
+
 type ReplayMessage struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Ts            int64                  `protobuf:"varint,1,opt,name=ts,proto3" json:"ts,omitempty"`     // 相对开局毫秒偏移
@@ -201,7 +209,6 @@ type ReplaySubmitReq struct {
 	EndTs         int64                  `protobuf:"varint,8,opt,name=end_ts,json=endTs,proto3" json:"end_ts,omitempty"`
 	Players       []*ReplayPlayer        `protobuf:"bytes,9,rep,name=players,proto3" json:"players,omitempty"`
 	Messages      []*ReplayMessage       `protobuf:"bytes,10,rep,name=messages,proto3" json:"messages,omitempty"`
-	RoundData     map[string]string      `protobuf:"bytes,11,rep,name=round_data,json=roundData,proto3" json:"round_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -302,13 +309,6 @@ func (x *ReplaySubmitReq) GetPlayers() []*ReplayPlayer {
 func (x *ReplaySubmitReq) GetMessages() []*ReplayMessage {
 	if x != nil {
 		return x.Messages
-	}
-	return nil
-}
-
-func (x *ReplaySubmitReq) GetRoundData() map[string]string {
-	if x != nil {
-		return x.RoundData
 	}
 	return nil
 }
@@ -647,9 +647,8 @@ func (x *ReplayAdminGetReq) GetId() uint64 {
 
 type ReplayAdminGetAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	GzipContent   []byte                 `protobuf:"bytes,1,opt,name=gzip_content,json=gzipContent,proto3" json:"gzip_content,omitempty"`
-	JsonContent   []byte                 `protobuf:"bytes,2,opt,name=json_content,json=jsonContent,proto3" json:"json_content,omitempty"`
-	Filename      string                 `protobuf:"bytes,3,opt,name=filename,proto3" json:"filename,omitempty"`
+	Content       []byte                 `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"` // 磁盘原始内容（gzip）
+	Filename      string                 `protobuf:"bytes,2,opt,name=filename,proto3" json:"filename,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -684,16 +683,9 @@ func (*ReplayAdminGetAck) Descriptor() ([]byte, []int) {
 	return file_replay_remote_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ReplayAdminGetAck) GetGzipContent() []byte {
+func (x *ReplayAdminGetAck) GetContent() []byte {
 	if x != nil {
-		return x.GzipContent
-	}
-	return nil
-}
-
-func (x *ReplayAdminGetAck) GetJsonContent() []byte {
-	if x != nil {
-		return x.JsonContent
+		return x.Content
 	}
 	return nil
 }
@@ -709,7 +701,7 @@ var File_replay_remote_proto protoreflect.FileDescriptor
 
 const file_replay_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x13replay_remote.proto\x12\x06sproto\"\x9d\x03\n" +
+	"\x13replay_remote.proto\x12\x06sproto\"\xaf\x03\n" +
 	"\fReplayPlayer\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
@@ -720,7 +712,9 @@ const file_replay_remote_proto_rawDesc = "" +
 	"\x05score\x18\a \x01(\x03R\x05score\x12\x1d\n" +
 	"\n" +
 	"score_base\x18\b \x01(\x03R\tscoreBase\x12\x10\n" +
-	"\x03tax\x18\t \x01(\x03R\x03tax\x1a8\n" +
+	"\x03tax\x18\t \x01(\x03R\x03tax\x12\x10\n" +
+	"\x03bot\x18\n" +
+	" \x01(\bR\x03bot\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
@@ -731,7 +725,7 @@ const file_replay_remote_proto_rawDesc = "" +
 	"\rReplayMessage\x12\x0e\n" +
 	"\x02ts\x18\x01 \x01(\x03R\x02ts\x12\x12\n" +
 	"\x04seat\x18\x02 \x01(\x05R\x04seat\x12\x18\n" +
-	"\apayload\x18\x03 \x01(\tR\apayload\"\xe2\x03\n" +
+	"\apayload\x18\x03 \x01(\tR\apayload\"\xdd\x02\n" +
 	"\x0fReplaySubmitReq\x12\x1b\n" +
 	"\tgame_type\x18\x01 \x01(\tR\bgameType\x12\x19\n" +
 	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\x12\x19\n" +
@@ -745,12 +739,7 @@ const file_replay_remote_proto_rawDesc = "" +
 	"\x06end_ts\x18\b \x01(\x03R\x05endTs\x12.\n" +
 	"\aplayers\x18\t \x03(\v2\x14.sproto.ReplayPlayerR\aplayers\x121\n" +
 	"\bmessages\x18\n" +
-	" \x03(\v2\x15.sproto.ReplayMessageR\bmessages\x12E\n" +
-	"\n" +
-	"round_data\x18\v \x03(\v2&.sproto.ReplaySubmitReq.RoundDataEntryR\troundData\x1a<\n" +
-	"\x0eRoundDataEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x11\n" +
+	" \x03(\v2\x15.sproto.ReplayMessageR\bmessages\"\x11\n" +
 	"\x0fReplaySubmitAck\"\xa6\x01\n" +
 	"\x12ReplayAdminListReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1b\n" +
@@ -776,11 +765,10 @@ const file_replay_remote_proto_rawDesc = "" +
 	"\x05items\x18\x01 \x03(\v2\x1b.sproto.ReplayAdminListItemR\x05items\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\"#\n" +
 	"\x11ReplayAdminGetReq\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\"u\n" +
-	"\x11ReplayAdminGetAck\x12!\n" +
-	"\fgzip_content\x18\x01 \x01(\fR\vgzipContent\x12!\n" +
-	"\fjson_content\x18\x02 \x01(\fR\vjsonContent\x12\x1a\n" +
-	"\bfilename\x18\x03 \x01(\tR\bfilenameB\vZ\t../sprotob\x06proto3"
+	"\x02id\x18\x01 \x01(\x04R\x02id\"I\n" +
+	"\x11ReplayAdminGetAck\x12\x18\n" +
+	"\acontent\x18\x01 \x01(\fR\acontent\x12\x1a\n" +
+	"\bfilename\x18\x02 \x01(\tR\bfilenameB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_replay_remote_proto_rawDescOnce sync.Once
@@ -794,7 +782,7 @@ func file_replay_remote_proto_rawDescGZIP() []byte {
 	return file_replay_remote_proto_rawDescData
 }
 
-var file_replay_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_replay_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_replay_remote_proto_goTypes = []any{
 	(*ReplayPlayer)(nil),        // 0: sproto.ReplayPlayer
 	(*ReplayMessage)(nil),       // 1: sproto.ReplayMessage
@@ -807,20 +795,18 @@ var file_replay_remote_proto_goTypes = []any{
 	(*ReplayAdminGetAck)(nil),   // 8: sproto.ReplayAdminGetAck
 	nil,                         // 9: sproto.ReplayPlayer.ItemsEntry
 	nil,                         // 10: sproto.ReplayPlayer.EquippedEntry
-	nil,                         // 11: sproto.ReplaySubmitReq.RoundDataEntry
 }
 var file_replay_remote_proto_depIdxs = []int32{
 	9,  // 0: sproto.ReplayPlayer.items:type_name -> sproto.ReplayPlayer.ItemsEntry
 	10, // 1: sproto.ReplayPlayer.equipped:type_name -> sproto.ReplayPlayer.EquippedEntry
 	0,  // 2: sproto.ReplaySubmitReq.players:type_name -> sproto.ReplayPlayer
 	1,  // 3: sproto.ReplaySubmitReq.messages:type_name -> sproto.ReplayMessage
-	11, // 4: sproto.ReplaySubmitReq.round_data:type_name -> sproto.ReplaySubmitReq.RoundDataEntry
-	5,  // 5: sproto.ReplayAdminListAck.items:type_name -> sproto.ReplayAdminListItem
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	5,  // 4: sproto.ReplayAdminListAck.items:type_name -> sproto.ReplayAdminListItem
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_replay_remote_proto_init() }
@@ -834,7 +820,7 @@ func file_replay_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_replay_remote_proto_rawDesc), len(file_replay_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

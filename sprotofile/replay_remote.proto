@@ -13,6 +13,7 @@ message ReplayPlayer {
   int64 score = 7; // 开局桌分（税后），局内统一坐标
   int64 score_base = 8; // 玩家档位基数，回放展示时换算用
   int64 tax = 9; // 该玩家桌费
+  bool bot = 10; // 是否为机器人
 }
 
 message ReplayMessage {
@@ -32,7 +33,6 @@ message ReplaySubmitReq {
   int64 end_ts = 8;
   repeated ReplayPlayer players = 9;
   repeated ReplayMessage messages = 10;
-  map<string, string> round_data = 11;
 }
 
 message ReplaySubmitAck {}
@@ -69,7 +69,6 @@ message ReplayAdminGetReq {
 }
 
 message ReplayAdminGetAck {
-  bytes gzip_content = 1;
-  bytes json_content = 2;
-  string filename = 3;
+  bytes content = 1; // 磁盘原始内容（gzip）
+  string filename = 2;
 }
