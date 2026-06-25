@@ -338,6 +338,8 @@ type ChangeItemsReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                 //用户id
 	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //玩家物品
+	Reason        string                 `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`                                                                           // 变动原因（见 tw_common/utils Coin* 中文常量）
+	Remark        string                 `protobuf:"bytes,4,opt,name=remark,proto3" json:"remark,omitempty"`                                                                           // 展示说明（后台/客户端账单详情）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -384,6 +386,20 @@ func (x *ChangeItemsReq) GetItems() map[int32]int64 {
 		return x.Items
 	}
 	return nil
+}
+
+func (x *ChangeItemsReq) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *ChangeItemsReq) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
 }
 
 type ChangeItemsAck struct {
@@ -1495,6 +1511,235 @@ func (*GrantDecoAck) Descriptor() ([]byte, []int) {
 	return file_account_remote_proto_rawDescGZIP(), []int{25}
 }
 
+// 运营后台：按 UID 查询玩家金币账单
+type CoinBillAdminListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
+	Size          int32                  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
+	StartTs       int64                  `protobuf:"varint,4,opt,name=start_ts,json=startTs,proto3" json:"start_ts,omitempty"` // 可选，unix 秒
+	EndTs         int64                  `protobuf:"varint,5,opt,name=end_ts,json=endTs,proto3" json:"end_ts,omitempty"`
+	Reason        string                 `protobuf:"bytes,6,opt,name=reason,proto3" json:"reason,omitempty"` // 可选，空=全部
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CoinBillAdminListReq) Reset() {
+	*x = CoinBillAdminListReq{}
+	mi := &file_account_remote_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CoinBillAdminListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CoinBillAdminListReq) ProtoMessage() {}
+
+func (x *CoinBillAdminListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CoinBillAdminListReq.ProtoReflect.Descriptor instead.
+func (*CoinBillAdminListReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *CoinBillAdminListReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *CoinBillAdminListReq) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *CoinBillAdminListReq) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+func (x *CoinBillAdminListReq) GetStartTs() int64 {
+	if x != nil {
+		return x.StartTs
+	}
+	return 0
+}
+
+func (x *CoinBillAdminListReq) GetEndTs() int64 {
+	if x != nil {
+		return x.EndTs
+	}
+	return 0
+}
+
+func (x *CoinBillAdminListReq) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type CoinBillAdminRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Delta         int64                  `protobuf:"varint,3,opt,name=delta,proto3" json:"delta,omitempty"`
+	BalanceAfter  int64                  `protobuf:"varint,4,opt,name=balance_after,json=balanceAfter,proto3" json:"balance_after,omitempty"`
+	Reason        string                 `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
+	Remark        string                 `protobuf:"bytes,6,opt,name=remark,proto3" json:"remark,omitempty"`
+	CreatedTs     int64                  `protobuf:"varint,7,opt,name=created_ts,json=createdTs,proto3" json:"created_ts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CoinBillAdminRow) Reset() {
+	*x = CoinBillAdminRow{}
+	mi := &file_account_remote_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CoinBillAdminRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CoinBillAdminRow) ProtoMessage() {}
+
+func (x *CoinBillAdminRow) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CoinBillAdminRow.ProtoReflect.Descriptor instead.
+func (*CoinBillAdminRow) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *CoinBillAdminRow) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *CoinBillAdminRow) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *CoinBillAdminRow) GetDelta() int64 {
+	if x != nil {
+		return x.Delta
+	}
+	return 0
+}
+
+func (x *CoinBillAdminRow) GetBalanceAfter() int64 {
+	if x != nil {
+		return x.BalanceAfter
+	}
+	return 0
+}
+
+func (x *CoinBillAdminRow) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *CoinBillAdminRow) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+func (x *CoinBillAdminRow) GetCreatedTs() int64 {
+	if x != nil {
+		return x.CreatedTs
+	}
+	return 0
+}
+
+type CoinBillAdminListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*CoinBillAdminRow    `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CoinBillAdminListAck) Reset() {
+	*x = CoinBillAdminListAck{}
+	mi := &file_account_remote_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CoinBillAdminListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CoinBillAdminListAck) ProtoMessage() {}
+
+func (x *CoinBillAdminListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CoinBillAdminListAck.ProtoReflect.Descriptor instead.
+func (*CoinBillAdminListAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *CoinBillAdminListAck) GetRows() []*CoinBillAdminRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+func (x *CoinBillAdminListAck) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -1526,10 +1771,12 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a;\n" +
 	"\rEquippedEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x95\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xc5\x01\n" +
 	"\x0eChangeItemsReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x127\n" +
-	"\x05items\x18\x02 \x03(\v2!.sproto.ChangeItemsReq.ItemsEntryR\x05items\x1a8\n" +
+	"\x05items\x18\x02 \x03(\v2!.sproto.ChangeItemsReq.ItemsEntryR\x05items\x12\x16\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\x12\x16\n" +
+	"\x06remark\x18\x04 \x01(\tR\x06remark\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
@@ -1619,7 +1866,26 @@ const file_account_remote_proto_rawDesc = "" +
 	"\adeco_id\x18\x02 \x01(\x05R\x06decoId\x12\x1b\n" +
 	"\texpire_at\x18\x03 \x01(\x03R\bexpireAt\x12\x1a\n" +
 	"\bcategory\x18\x04 \x01(\x05R\bcategory\"\x0e\n" +
-	"\fGrantDecoAckB\vZ\t../sprotob\x06proto3"
+	"\fGrantDecoAck\"\x9a\x01\n" +
+	"\x14CoinBillAdminListReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x12\n" +
+	"\x04size\x18\x03 \x01(\x05R\x04size\x12\x19\n" +
+	"\bstart_ts\x18\x04 \x01(\x03R\astartTs\x12\x15\n" +
+	"\x06end_ts\x18\x05 \x01(\x03R\x05endTs\x12\x16\n" +
+	"\x06reason\x18\x06 \x01(\tR\x06reason\"\xbe\x01\n" +
+	"\x10CoinBillAdminRow\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x14\n" +
+	"\x05delta\x18\x03 \x01(\x03R\x05delta\x12#\n" +
+	"\rbalance_after\x18\x04 \x01(\x03R\fbalanceAfter\x12\x16\n" +
+	"\x06reason\x18\x05 \x01(\tR\x06reason\x12\x16\n" +
+	"\x06remark\x18\x06 \x01(\tR\x06remark\x12\x1d\n" +
+	"\n" +
+	"created_ts\x18\a \x01(\x03R\tcreatedTs\"Z\n" +
+	"\x14CoinBillAdminListAck\x12,\n" +
+	"\x04rows\x18\x01 \x03(\v2\x18.sproto.CoinBillAdminRowR\x04rows\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05totalB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -1633,7 +1899,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -1661,30 +1927,34 @@ var file_account_remote_proto_goTypes = []any{
 	(*VirtOrdMarkAck)(nil),       // 23: sproto.VirtOrdMarkAck
 	(*GrantDecoReq)(nil),         // 24: sproto.GrantDecoReq
 	(*GrantDecoAck)(nil),         // 25: sproto.GrantDecoAck
-	nil,                          // 26: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 27: sproto.PlayerInfoAck.EquippedEntry
-	nil,                          // 28: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 29: sproto.ChangeItemsAck.ItemsEntry
-	nil,                          // 30: sproto.PhysOrdAdminRow.ItemsEntry
-	nil,                          // 31: sproto.VirtOrdAdminRow.ItemsEntry
-	(*anypb.Any)(nil),            // 32: google.protobuf.Any
+	(*CoinBillAdminListReq)(nil), // 26: sproto.CoinBillAdminListReq
+	(*CoinBillAdminRow)(nil),     // 27: sproto.CoinBillAdminRow
+	(*CoinBillAdminListAck)(nil), // 28: sproto.CoinBillAdminListAck
+	nil,                          // 29: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 30: sproto.PlayerInfoAck.EquippedEntry
+	nil,                          // 31: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 32: sproto.ChangeItemsAck.ItemsEntry
+	nil,                          // 33: sproto.PhysOrdAdminRow.ItemsEntry
+	nil,                          // 34: sproto.VirtOrdAdminRow.ItemsEntry
+	(*anypb.Any)(nil),            // 35: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	32, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	32, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	26, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	27, // 3: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
-	28, // 4: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	29, // 5: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
-	30, // 6: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
+	35, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	35, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	29, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	30, // 3: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
+	31, // 4: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	32, // 5: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	33, // 6: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
 	17, // 7: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
-	31, // 8: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
+	34, // 8: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
 	20, // 9: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	27, // 10: sproto.CoinBillAdminListAck.rows:type_name -> sproto.CoinBillAdminRow
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_account_remote_proto_init() }
@@ -1698,7 +1968,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   32,
+			NumMessages:   35,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

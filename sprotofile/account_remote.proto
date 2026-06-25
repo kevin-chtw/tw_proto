@@ -38,6 +38,8 @@ message PlayerInfoAck {
 message ChangeItemsReq {
     string uid = 1; //用户id
     map<int32, int64> items = 2; //玩家物品
+    string reason = 3; // 变动原因（见 tw_common/utils Coin* 中文常量）
+    string remark = 4; // 展示说明（后台/客户端账单详情）
 }
 
 message ChangeItemsAck {
@@ -163,4 +165,29 @@ message GrantDecoReq {
 }
 
 message GrantDecoAck {
+}
+
+// 运营后台：按 UID 查询玩家金币账单
+message CoinBillAdminListReq {
+  string uid = 1;
+  int32 page = 2;
+  int32 size = 3;
+  int64 start_ts = 4; // 可选，unix 秒
+  int64 end_ts = 5;
+  string reason = 6;  // 可选，空=全部
+}
+
+message CoinBillAdminRow {
+  uint64 id = 1;
+  string uid = 2;
+  int64 delta = 3;
+  int64 balance_after = 4;
+  string reason = 5;
+  string remark = 6;
+  int64 created_ts = 7;
+}
+
+message CoinBillAdminListAck {
+  repeated CoinBillAdminRow rows = 1;
+  int32 total = 2;
 }
