@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package sproto;
+option go_package = "../sproto";
+
+message ReplayPlayer {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int32 seat = 4;
+  map<int32, int64> items = 5;
+  map<int32, int32> equipped = 6;
+  int64 score = 7; // 开局桌分（税后），局内统一坐标
+  int64 score_base = 8; // 玩家档位基数，回放展示时换算用
+  int64 tax = 9; // 该玩家桌费
+}
+
+message ReplayMessage {
+  int64 ts = 1; // 相对开局毫秒偏移
+  int32 seat = 2; // -2 表示广播(SeatAll)
+  string payload = 3;
+}
+
+message ReplaySubmitReq {
+  string game_type = 1;
+  int32 match_id = 2;
+  int32 table_id = 3;
+  int32 cur_game_count = 4;
+  string match_type = 5;
+  int64 score_base = 6; // 基数
+  int64 start_ts = 7;
+  int64 end_ts = 8;
+  repeated ReplayPlayer players = 9;
+  repeated ReplayMessage messages = 10;
+  map<string, string> round_data = 11;
+}
+
+message ReplaySubmitAck {}
