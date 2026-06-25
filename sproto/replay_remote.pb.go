@@ -349,6 +349,362 @@ func (*ReplaySubmitAck) Descriptor() ([]byte, []int) {
 	return file_replay_remote_proto_rawDescGZIP(), []int{3}
 }
 
+type ReplayAdminListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                           // 必填
+	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"` // 可选，为空则查该用户全部游戏
+	StartTs       int64                  `protobuf:"varint,3,opt,name=start_ts,json=startTs,proto3" json:"start_ts,omitempty"`
+	EndTs         int64                  `protobuf:"varint,4,opt,name=end_ts,json=endTs,proto3" json:"end_ts,omitempty"`
+	Page          int32                  `protobuf:"varint,5,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize      int32                  `protobuf:"varint,6,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReplayAdminListReq) Reset() {
+	*x = ReplayAdminListReq{}
+	mi := &file_replay_remote_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReplayAdminListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReplayAdminListReq) ProtoMessage() {}
+
+func (x *ReplayAdminListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_replay_remote_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReplayAdminListReq.ProtoReflect.Descriptor instead.
+func (*ReplayAdminListReq) Descriptor() ([]byte, []int) {
+	return file_replay_remote_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ReplayAdminListReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *ReplayAdminListReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+func (x *ReplayAdminListReq) GetStartTs() int64 {
+	if x != nil {
+		return x.StartTs
+	}
+	return 0
+}
+
+func (x *ReplayAdminListReq) GetEndTs() int64 {
+	if x != nil {
+		return x.EndTs
+	}
+	return 0
+}
+
+func (x *ReplayAdminListReq) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *ReplayAdminListReq) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+type ReplayAdminListItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	GameType      string                 `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	TableId       int32                  `protobuf:"varint,5,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
+	CurGameCount  int32                  `protobuf:"varint,6,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"`
+	MatchType     string                 `protobuf:"bytes,7,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`
+	Seat          int32                  `protobuf:"varint,8,opt,name=seat,proto3" json:"seat,omitempty"`
+	StartTs       int64                  `protobuf:"varint,9,opt,name=start_ts,json=startTs,proto3" json:"start_ts,omitempty"`
+	EndTs         int64                  `protobuf:"varint,10,opt,name=end_ts,json=endTs,proto3" json:"end_ts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReplayAdminListItem) Reset() {
+	*x = ReplayAdminListItem{}
+	mi := &file_replay_remote_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReplayAdminListItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReplayAdminListItem) ProtoMessage() {}
+
+func (x *ReplayAdminListItem) ProtoReflect() protoreflect.Message {
+	mi := &file_replay_remote_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReplayAdminListItem.ProtoReflect.Descriptor instead.
+func (*ReplayAdminListItem) Descriptor() ([]byte, []int) {
+	return file_replay_remote_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ReplayAdminListItem) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ReplayAdminListItem) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *ReplayAdminListItem) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+func (x *ReplayAdminListItem) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *ReplayAdminListItem) GetTableId() int32 {
+	if x != nil {
+		return x.TableId
+	}
+	return 0
+}
+
+func (x *ReplayAdminListItem) GetCurGameCount() int32 {
+	if x != nil {
+		return x.CurGameCount
+	}
+	return 0
+}
+
+func (x *ReplayAdminListItem) GetMatchType() string {
+	if x != nil {
+		return x.MatchType
+	}
+	return ""
+}
+
+func (x *ReplayAdminListItem) GetSeat() int32 {
+	if x != nil {
+		return x.Seat
+	}
+	return 0
+}
+
+func (x *ReplayAdminListItem) GetStartTs() int64 {
+	if x != nil {
+		return x.StartTs
+	}
+	return 0
+}
+
+func (x *ReplayAdminListItem) GetEndTs() int64 {
+	if x != nil {
+		return x.EndTs
+	}
+	return 0
+}
+
+type ReplayAdminListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*ReplayAdminListItem `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReplayAdminListAck) Reset() {
+	*x = ReplayAdminListAck{}
+	mi := &file_replay_remote_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReplayAdminListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReplayAdminListAck) ProtoMessage() {}
+
+func (x *ReplayAdminListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_replay_remote_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReplayAdminListAck.ProtoReflect.Descriptor instead.
+func (*ReplayAdminListAck) Descriptor() ([]byte, []int) {
+	return file_replay_remote_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ReplayAdminListAck) GetItems() []*ReplayAdminListItem {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ReplayAdminListAck) GetTotal() int64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+type ReplayAdminGetReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // user_replay 主键
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReplayAdminGetReq) Reset() {
+	*x = ReplayAdminGetReq{}
+	mi := &file_replay_remote_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReplayAdminGetReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReplayAdminGetReq) ProtoMessage() {}
+
+func (x *ReplayAdminGetReq) ProtoReflect() protoreflect.Message {
+	mi := &file_replay_remote_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReplayAdminGetReq.ProtoReflect.Descriptor instead.
+func (*ReplayAdminGetReq) Descriptor() ([]byte, []int) {
+	return file_replay_remote_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ReplayAdminGetReq) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type ReplayAdminGetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GzipContent   []byte                 `protobuf:"bytes,1,opt,name=gzip_content,json=gzipContent,proto3" json:"gzip_content,omitempty"`
+	JsonContent   []byte                 `protobuf:"bytes,2,opt,name=json_content,json=jsonContent,proto3" json:"json_content,omitempty"`
+	Filename      string                 `protobuf:"bytes,3,opt,name=filename,proto3" json:"filename,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReplayAdminGetAck) Reset() {
+	*x = ReplayAdminGetAck{}
+	mi := &file_replay_remote_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReplayAdminGetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReplayAdminGetAck) ProtoMessage() {}
+
+func (x *ReplayAdminGetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_replay_remote_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReplayAdminGetAck.ProtoReflect.Descriptor instead.
+func (*ReplayAdminGetAck) Descriptor() ([]byte, []int) {
+	return file_replay_remote_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ReplayAdminGetAck) GetGzipContent() []byte {
+	if x != nil {
+		return x.GzipContent
+	}
+	return nil
+}
+
+func (x *ReplayAdminGetAck) GetJsonContent() []byte {
+	if x != nil {
+		return x.JsonContent
+	}
+	return nil
+}
+
+func (x *ReplayAdminGetAck) GetFilename() string {
+	if x != nil {
+		return x.Filename
+	}
+	return ""
+}
+
 var File_replay_remote_proto protoreflect.FileDescriptor
 
 const file_replay_remote_proto_rawDesc = "" +
@@ -395,7 +751,36 @@ const file_replay_remote_proto_rawDesc = "" +
 	"\x0eRoundDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x11\n" +
-	"\x0fReplaySubmitAckB\vZ\t../sprotob\x06proto3"
+	"\x0fReplaySubmitAck\"\xa6\x01\n" +
+	"\x12ReplayAdminListReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1b\n" +
+	"\tgame_type\x18\x02 \x01(\tR\bgameType\x12\x19\n" +
+	"\bstart_ts\x18\x03 \x01(\x03R\astartTs\x12\x15\n" +
+	"\x06end_ts\x18\x04 \x01(\x03R\x05endTs\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\"\x95\x02\n" +
+	"\x13ReplayAdminListItem\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x1b\n" +
+	"\tgame_type\x18\x03 \x01(\tR\bgameType\x12\x19\n" +
+	"\bmatch_id\x18\x04 \x01(\x05R\amatchId\x12\x19\n" +
+	"\btable_id\x18\x05 \x01(\x05R\atableId\x12$\n" +
+	"\x0ecur_game_count\x18\x06 \x01(\x05R\fcurGameCount\x12\x1d\n" +
+	"\n" +
+	"match_type\x18\a \x01(\tR\tmatchType\x12\x12\n" +
+	"\x04seat\x18\b \x01(\x05R\x04seat\x12\x19\n" +
+	"\bstart_ts\x18\t \x01(\x03R\astartTs\x12\x15\n" +
+	"\x06end_ts\x18\n" +
+	" \x01(\x03R\x05endTs\"]\n" +
+	"\x12ReplayAdminListAck\x121\n" +
+	"\x05items\x18\x01 \x03(\v2\x1b.sproto.ReplayAdminListItemR\x05items\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total\"#\n" +
+	"\x11ReplayAdminGetReq\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\"u\n" +
+	"\x11ReplayAdminGetAck\x12!\n" +
+	"\fgzip_content\x18\x01 \x01(\fR\vgzipContent\x12!\n" +
+	"\fjson_content\x18\x02 \x01(\fR\vjsonContent\x12\x1a\n" +
+	"\bfilename\x18\x03 \x01(\tR\bfilenameB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_replay_remote_proto_rawDescOnce sync.Once
@@ -409,27 +794,33 @@ func file_replay_remote_proto_rawDescGZIP() []byte {
 	return file_replay_remote_proto_rawDescData
 }
 
-var file_replay_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_replay_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_replay_remote_proto_goTypes = []any{
-	(*ReplayPlayer)(nil),    // 0: sproto.ReplayPlayer
-	(*ReplayMessage)(nil),   // 1: sproto.ReplayMessage
-	(*ReplaySubmitReq)(nil), // 2: sproto.ReplaySubmitReq
-	(*ReplaySubmitAck)(nil), // 3: sproto.ReplaySubmitAck
-	nil,                     // 4: sproto.ReplayPlayer.ItemsEntry
-	nil,                     // 5: sproto.ReplayPlayer.EquippedEntry
-	nil,                     // 6: sproto.ReplaySubmitReq.RoundDataEntry
+	(*ReplayPlayer)(nil),        // 0: sproto.ReplayPlayer
+	(*ReplayMessage)(nil),       // 1: sproto.ReplayMessage
+	(*ReplaySubmitReq)(nil),     // 2: sproto.ReplaySubmitReq
+	(*ReplaySubmitAck)(nil),     // 3: sproto.ReplaySubmitAck
+	(*ReplayAdminListReq)(nil),  // 4: sproto.ReplayAdminListReq
+	(*ReplayAdminListItem)(nil), // 5: sproto.ReplayAdminListItem
+	(*ReplayAdminListAck)(nil),  // 6: sproto.ReplayAdminListAck
+	(*ReplayAdminGetReq)(nil),   // 7: sproto.ReplayAdminGetReq
+	(*ReplayAdminGetAck)(nil),   // 8: sproto.ReplayAdminGetAck
+	nil,                         // 9: sproto.ReplayPlayer.ItemsEntry
+	nil,                         // 10: sproto.ReplayPlayer.EquippedEntry
+	nil,                         // 11: sproto.ReplaySubmitReq.RoundDataEntry
 }
 var file_replay_remote_proto_depIdxs = []int32{
-	4, // 0: sproto.ReplayPlayer.items:type_name -> sproto.ReplayPlayer.ItemsEntry
-	5, // 1: sproto.ReplayPlayer.equipped:type_name -> sproto.ReplayPlayer.EquippedEntry
-	0, // 2: sproto.ReplaySubmitReq.players:type_name -> sproto.ReplayPlayer
-	1, // 3: sproto.ReplaySubmitReq.messages:type_name -> sproto.ReplayMessage
-	6, // 4: sproto.ReplaySubmitReq.round_data:type_name -> sproto.ReplaySubmitReq.RoundDataEntry
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	9,  // 0: sproto.ReplayPlayer.items:type_name -> sproto.ReplayPlayer.ItemsEntry
+	10, // 1: sproto.ReplayPlayer.equipped:type_name -> sproto.ReplayPlayer.EquippedEntry
+	0,  // 2: sproto.ReplaySubmitReq.players:type_name -> sproto.ReplayPlayer
+	1,  // 3: sproto.ReplaySubmitReq.messages:type_name -> sproto.ReplayMessage
+	11, // 4: sproto.ReplaySubmitReq.round_data:type_name -> sproto.ReplaySubmitReq.RoundDataEntry
+	5,  // 5: sproto.ReplayAdminListAck.items:type_name -> sproto.ReplayAdminListItem
+	6,  // [6:6] is the sub-list for method output_type
+	6,  // [6:6] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_replay_remote_proto_init() }
@@ -443,7 +834,7 @@ func file_replay_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_replay_remote_proto_rawDesc), len(file_replay_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
