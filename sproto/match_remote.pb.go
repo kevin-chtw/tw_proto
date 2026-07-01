@@ -418,6 +418,51 @@ func (x *NetStateAck) GetUid() string {
 	return ""
 }
 
+// ForceExitReq 由新比赛报名/进桌触发，通知旧比赛服强制退出该玩家（等同服务端 ExitMatch）。
+type ForceExitReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ForceExitReq) Reset() {
+	*x = ForceExitReq{}
+	mi := &file_match_remote_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ForceExitReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForceExitReq) ProtoMessage() {}
+
+func (x *ForceExitReq) ProtoReflect() protoreflect.Message {
+	mi := &file_match_remote_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForceExitReq.ProtoReflect.Descriptor instead.
+func (*ForceExitReq) Descriptor() ([]byte, []int) {
+	return file_match_remote_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ForceExitReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
 var File_match_remote_proto protoreflect.FileDescriptor
 
 const file_match_remote_proto_rawDesc = "" +
@@ -451,6 +496,8 @@ const file_match_remote_proto_rawDesc = "" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
 	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\"\x1f\n" +
 	"\vNetStateAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\" \n" +
+	"\fForceExitReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uidB\vZ\t../sprotob\x06proto3"
 
 var (
@@ -465,7 +512,7 @@ func file_match_remote_proto_rawDescGZIP() []byte {
 	return file_match_remote_proto_rawDescData
 }
 
-var file_match_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_match_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_match_remote_proto_goTypes = []any{
 	(*MatchReq)(nil),        // 0: sproto.MatchReq
 	(*MatchAck)(nil),        // 1: sproto.MatchAck
@@ -474,13 +521,14 @@ var file_match_remote_proto_goTypes = []any{
 	(*PlayerResultReq)(nil), // 4: sproto.PlayerResultReq
 	(*GameOverReq)(nil),     // 5: sproto.GameOverReq
 	(*NetStateAck)(nil),     // 6: sproto.NetStateAck
-	nil,                     // 7: sproto.GameResultReq.RoundDataEntry
-	(*anypb.Any)(nil),       // 8: google.protobuf.Any
+	(*ForceExitReq)(nil),    // 7: sproto.ForceExitReq
+	nil,                     // 8: sproto.GameResultReq.RoundDataEntry
+	(*anypb.Any)(nil),       // 9: google.protobuf.Any
 }
 var file_match_remote_proto_depIdxs = []int32{
-	8, // 0: sproto.MatchReq.req:type_name -> google.protobuf.Any
-	8, // 1: sproto.MatchAck.ack:type_name -> google.protobuf.Any
-	7, // 2: sproto.GameResultReq.round_data:type_name -> sproto.GameResultReq.RoundDataEntry
+	9, // 0: sproto.MatchReq.req:type_name -> google.protobuf.Any
+	9, // 1: sproto.MatchAck.ack:type_name -> google.protobuf.Any
+	8, // 2: sproto.GameResultReq.round_data:type_name -> sproto.GameResultReq.RoundDataEntry
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -499,7 +547,7 @@ func file_match_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_remote_proto_rawDesc), len(file_match_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

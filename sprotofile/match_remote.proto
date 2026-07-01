@@ -43,3 +43,8 @@ message GameOverReq {
 message NetStateAck {
   string uid = 1;
 }
+
+// ForceExitReq 由新比赛报名/进桌触发，通知旧比赛服强制退出该玩家（等同服务端 ExitMatch）。
+message ForceExitReq {
+  string uid = 1;
+}
