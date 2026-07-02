@@ -125,6 +125,7 @@ message DecoCfgRow {
   string acquire_desc = 9;
   string content = 10;      // 扩展 JSON（资源包、动画参数等）
   uint64 version = 11;
+  string unlock = 12;       // 解锁条件 JSON（vip_level / vip_reward_claimed）
 }
 
 message DecoCfgListReq {

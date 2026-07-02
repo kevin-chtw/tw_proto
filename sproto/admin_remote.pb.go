@@ -1146,6 +1146,7 @@ type DecoCfgRow struct {
 	AcquireDesc   string                 `protobuf:"bytes,9,opt,name=acquire_desc,json=acquireDesc,proto3" json:"acquire_desc,omitempty"`
 	Content       string                 `protobuf:"bytes,10,opt,name=content,proto3" json:"content,omitempty"` // 扩展 JSON（资源包、动画参数等）
 	Version       uint64                 `protobuf:"varint,11,opt,name=version,proto3" json:"version,omitempty"`
+	Unlock        string                 `protobuf:"bytes,12,opt,name=unlock,proto3" json:"unlock,omitempty"` // 解锁条件 JSON（vip_level / vip_reward_claimed / owned / purchase 等）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1255,6 +1256,13 @@ func (x *DecoCfgRow) GetVersion() uint64 {
 		return x.Version
 	}
 	return 0
+}
+
+func (x *DecoCfgRow) GetUnlock() string {
+	if x != nil {
+		return x.Unlock
+	}
+	return ""
 }
 
 type DecoCfgListReq struct {
@@ -1897,7 +1905,7 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x11DecoCfgVersionReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"-\n" +
 	"\x11DecoCfgVersionAck\x12\x18\n" +
-	"\aversion\x18\x01 \x01(\x04R\aversion\"\xb0\x02\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\xc8\x02\n" +
 	"\n" +
 	"DecoCfgRow\x12\x17\n" +
 	"\adeco_id\x18\x01 \x01(\x05R\x06decoId\x12\x12\n" +
@@ -1912,7 +1920,8 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\facquire_desc\x18\t \x01(\tR\vacquireDesc\x12\x18\n" +
 	"\acontent\x18\n" +
 	" \x01(\tR\acontent\x12\x18\n" +
-	"\aversion\x18\v \x01(\x04R\aversion\"&\n" +
+	"\aversion\x18\v \x01(\x04R\aversion\x12\x16\n" +
+	"\x06unlock\x18\f \x01(\tR\x06unlock\"&\n" +
 	"\x0eDecoCfgListReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"8\n" +
 	"\x0eDecoCfgListAck\x12&\n" +
