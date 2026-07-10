@@ -21,8 +21,9 @@ message CreatePayOrderReq {
   string server_id = 2;
   string session_id = 3;
   int32 price = 4;
-  int32 pay_type = 5;      // 支付类型: 1-微信, 2-支付宝
+  int32 pay_type = 5;      // 支付类型: 1-微信, 2-支付宝, 3-荣耀
   int32 pay_method = 6;    // 支付方式: 1-JSAPI, 2-NATIVE, 3-H5, 4-APP
+  string product_id = 7;   // 商品ID，荣耀等渠道支付时使用
 }
 
 // 创建支付订单响应
@@ -51,4 +52,13 @@ message CancelOrderReq {
 }
 
 message CancelOrderAck {
+}
+
+// 荣耀支付确认请求（客户端支付完成后上报 purchaseToken）
+message ConfirmHonorPayReq {
+  string order_id = 1;
+  string purchase_token = 2;
+}
+
+message ConfirmHonorPayAck {
 }

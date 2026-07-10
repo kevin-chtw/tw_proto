@@ -14,4 +14,5 @@ message NeedPayAck {
   string server_id = 2;
   uint64 session_id = 3;
   int32 price = 4;
+  string product_id = 5; // 渠道商品ID: sycee_{id}_{price} / member_{type}_{price} / act_{type}_{pkg}_{price}
 }

@@ -119,8 +119,9 @@ type CreatePayOrderReq struct {
 	ServerId      string                 `protobuf:"bytes,2,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
 	SessionId     string                 `protobuf:"bytes,3,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	Price         int32                  `protobuf:"varint,4,opt,name=price,proto3" json:"price,omitempty"`
-	PayType       int32                  `protobuf:"varint,5,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty"`       // 支付类型: 1-微信, 2-支付宝
+	PayType       int32                  `protobuf:"varint,5,opt,name=pay_type,json=payType,proto3" json:"pay_type,omitempty"`       // 支付类型: 1-微信, 2-支付宝, 3-荣耀
 	PayMethod     int32                  `protobuf:"varint,6,opt,name=pay_method,json=payMethod,proto3" json:"pay_method,omitempty"` // 支付方式: 1-JSAPI, 2-NATIVE, 3-H5, 4-APP
+	ProductId     string                 `protobuf:"bytes,7,opt,name=product_id,json=productId,proto3" json:"product_id,omitempty"`  // 商品ID，荣耀等渠道支付时使用
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -195,6 +196,13 @@ func (x *CreatePayOrderReq) GetPayMethod() int32 {
 		return x.PayMethod
 	}
 	return 0
+}
+
+func (x *CreatePayOrderReq) GetProductId() string {
+	if x != nil {
+		return x.ProductId
+	}
+	return ""
 }
 
 // 创建支付订单响应
@@ -453,6 +461,95 @@ func (*CancelOrderAck) Descriptor() ([]byte, []int) {
 	return file_pay_proto_rawDescGZIP(), []int{7}
 }
 
+// 荣耀支付确认请求（客户端支付完成后上报 purchaseToken）
+type ConfirmHonorPayReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OrderId       string                 `protobuf:"bytes,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
+	PurchaseToken string                 `protobuf:"bytes,2,opt,name=purchase_token,json=purchaseToken,proto3" json:"purchase_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfirmHonorPayReq) Reset() {
+	*x = ConfirmHonorPayReq{}
+	mi := &file_pay_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfirmHonorPayReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfirmHonorPayReq) ProtoMessage() {}
+
+func (x *ConfirmHonorPayReq) ProtoReflect() protoreflect.Message {
+	mi := &file_pay_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfirmHonorPayReq.ProtoReflect.Descriptor instead.
+func (*ConfirmHonorPayReq) Descriptor() ([]byte, []int) {
+	return file_pay_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ConfirmHonorPayReq) GetOrderId() string {
+	if x != nil {
+		return x.OrderId
+	}
+	return ""
+}
+
+func (x *ConfirmHonorPayReq) GetPurchaseToken() string {
+	if x != nil {
+		return x.PurchaseToken
+	}
+	return ""
+}
+
+type ConfirmHonorPayAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfirmHonorPayAck) Reset() {
+	*x = ConfirmHonorPayAck{}
+	mi := &file_pay_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfirmHonorPayAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfirmHonorPayAck) ProtoMessage() {}
+
+func (x *ConfirmHonorPayAck) ProtoReflect() protoreflect.Message {
+	mi := &file_pay_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfirmHonorPayAck.ProtoReflect.Descriptor instead.
+func (*ConfirmHonorPayAck) Descriptor() ([]byte, []int) {
+	return file_pay_proto_rawDescGZIP(), []int{9}
+}
+
 var File_pay_proto protoreflect.FileDescriptor
 
 const file_pay_proto_rawDesc = "" +
@@ -461,7 +558,7 @@ const file_pay_proto_rawDesc = "" +
 	"\x06PayReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"0\n" +
 	"\x06PayAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xc0\x01\n" +
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xdf\x01\n" +
 	"\x11CreatePayOrderReq\x12\x1f\n" +
 	"\vserver_type\x18\x01 \x01(\tR\n" +
 	"serverType\x12\x1b\n" +
@@ -471,7 +568,9 @@ const file_pay_proto_rawDesc = "" +
 	"\x05price\x18\x04 \x01(\x05R\x05price\x12\x19\n" +
 	"\bpay_type\x18\x05 \x01(\x05R\apayType\x12\x1d\n" +
 	"\n" +
-	"pay_method\x18\x06 \x01(\x05R\tpayMethod\"M\n" +
+	"pay_method\x18\x06 \x01(\x05R\tpayMethod\x12\x1d\n" +
+	"\n" +
+	"product_id\x18\a \x01(\tR\tproductId\"M\n" +
 	"\x11CreatePayOrderAck\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\x12\x1d\n" +
 	"\n" +
@@ -487,7 +586,11 @@ const file_pay_proto_rawDesc = "" +
 	"\ttotal_fee\x18\x05 \x01(\x03R\btotalFee\"+\n" +
 	"\x0eCancelOrderReq\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\"\x10\n" +
-	"\x0eCancelOrderAckB\vZ\t../cprotob\x06proto3"
+	"\x0eCancelOrderAck\"V\n" +
+	"\x12ConfirmHonorPayReq\x12\x19\n" +
+	"\border_id\x18\x01 \x01(\tR\aorderId\x12%\n" +
+	"\x0epurchase_token\x18\x02 \x01(\tR\rpurchaseToken\"\x14\n" +
+	"\x12ConfirmHonorPayAckB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_pay_proto_rawDescOnce sync.Once
@@ -501,26 +604,28 @@ func file_pay_proto_rawDescGZIP() []byte {
 	return file_pay_proto_rawDescData
 }
 
-var file_pay_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_pay_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_pay_proto_goTypes = []any{
-	(*PayReq)(nil),            // 0: cproto.PayReq
-	(*PayAck)(nil),            // 1: cproto.PayAck
-	(*CreatePayOrderReq)(nil), // 2: cproto.CreatePayOrderReq
-	(*CreatePayOrderAck)(nil), // 3: cproto.CreatePayOrderAck
-	(*QueryOrderReq)(nil),     // 4: cproto.QueryOrderReq
-	(*QueryOrderAck)(nil),     // 5: cproto.QueryOrderAck
-	(*CancelOrderReq)(nil),    // 6: cproto.CancelOrderReq
-	(*CancelOrderAck)(nil),    // 7: cproto.CancelOrderAck
-	(*anypb.Any)(nil),         // 8: google.protobuf.Any
+	(*PayReq)(nil),             // 0: cproto.PayReq
+	(*PayAck)(nil),             // 1: cproto.PayAck
+	(*CreatePayOrderReq)(nil),  // 2: cproto.CreatePayOrderReq
+	(*CreatePayOrderAck)(nil),  // 3: cproto.CreatePayOrderAck
+	(*QueryOrderReq)(nil),      // 4: cproto.QueryOrderReq
+	(*QueryOrderAck)(nil),      // 5: cproto.QueryOrderAck
+	(*CancelOrderReq)(nil),     // 6: cproto.CancelOrderReq
+	(*CancelOrderAck)(nil),     // 7: cproto.CancelOrderAck
+	(*ConfirmHonorPayReq)(nil), // 8: cproto.ConfirmHonorPayReq
+	(*ConfirmHonorPayAck)(nil), // 9: cproto.ConfirmHonorPayAck
+	(*anypb.Any)(nil),          // 10: google.protobuf.Any
 }
 var file_pay_proto_depIdxs = []int32{
-	8, // 0: cproto.PayReq.req:type_name -> google.protobuf.Any
-	8, // 1: cproto.PayAck.ack:type_name -> google.protobuf.Any
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	10, // 0: cproto.PayReq.req:type_name -> google.protobuf.Any
+	10, // 1: cproto.PayAck.ack:type_name -> google.protobuf.Any
+	2,  // [2:2] is the sub-list for method output_type
+	2,  // [2:2] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_pay_proto_init() }
@@ -534,7 +639,7 @@ func file_pay_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pay_proto_rawDesc), len(file_pay_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

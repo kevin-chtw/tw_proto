@@ -87,6 +87,7 @@ type NeedPayAck struct {
 	ServerId      string                 `protobuf:"bytes,2,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
 	SessionId     uint64                 `protobuf:"varint,3,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	Price         int32                  `protobuf:"varint,4,opt,name=price,proto3" json:"price,omitempty"`
+	ProductId     string                 `protobuf:"bytes,5,opt,name=product_id,json=productId,proto3" json:"product_id,omitempty"` // 渠道商品ID: sycee_{id}_{price} / member_{type}_{price} / act_{type}_{pkg}_{price}
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -149,6 +150,13 @@ func (x *NeedPayAck) GetPrice() int32 {
 	return 0
 }
 
+func (x *NeedPayAck) GetProductId() string {
+	if x != nil {
+		return x.ProductId
+	}
+	return ""
+}
+
 var File_cerror_proto protoreflect.FileDescriptor
 
 const file_cerror_proto_rawDesc = "" +
@@ -157,7 +165,7 @@ const file_cerror_proto_rawDesc = "" +
 	"\bErrorAck\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\x05R\x04code\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x16\n" +
-	"\x06detail\x18\x03 \x01(\tR\x06detail\"\x7f\n" +
+	"\x06detail\x18\x03 \x01(\tR\x06detail\"\x9e\x01\n" +
 	"\n" +
 	"NeedPayAck\x12\x1f\n" +
 	"\vserver_type\x18\x01 \x01(\tR\n" +
@@ -165,7 +173,9 @@ const file_cerror_proto_rawDesc = "" +
 	"\tserver_id\x18\x02 \x01(\tR\bserverId\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x03 \x01(\x04R\tsessionId\x12\x14\n" +
-	"\x05price\x18\x04 \x01(\x05R\x05priceB\vZ\t../cprotob\x06proto3"
+	"\x05price\x18\x04 \x01(\x05R\x05price\x12\x1d\n" +
+	"\n" +
+	"product_id\x18\x05 \x01(\tR\tproductIdB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_cerror_proto_rawDescOnce sync.Once
