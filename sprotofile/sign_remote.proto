@@ -9,4 +9,6 @@ message SignReq {
   int32 cond_index = 3; //条件索引
 }
 
-message SignAck {}
+message SignAck {
+  int64 carry_max = 1; //报名时实际可携带分上限
+}

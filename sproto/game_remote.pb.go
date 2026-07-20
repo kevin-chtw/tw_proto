@@ -251,7 +251,7 @@ type AddPlayerReq struct {
 	Nickname      string                 `protobuf:"bytes,5,opt,name=nickname,proto3" json:"nickname,omitempty"`                                                                              // 玩家昵称
 	Avatar        string                 `protobuf:"bytes,6,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                                  // 玩家头像
 	Items         map[int32]int64        `protobuf:"bytes,7,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`        //玩家物品
-	Ctrl          int32                  `protobuf:"varint,8,opt,name=ctrl,proto3" json:"ctrl,omitempty"`                                                                                     // 0-不控制 1-放分(真人赢) 2-吃分(机器人赢)，新手保护期真人传1
+	Ctrl          int32                  `protobuf:"varint,8,opt,name=ctrl,proto3" json:"ctrl,omitempty"`                                                                                     // 0-不控制 1-赢分 2-输分，新手保护期真人传1
 	BotLevel      int32                  `protobuf:"varint,9,opt,name=bot_level,json=botLevel,proto3" json:"bot_level,omitempty"`                                                             // 机器人等级 0-正常 1-低智能 2-弱智
 	ScoreBase     int64                  `protobuf:"varint,10,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`                                                         //玩家档位基数
 	Tax           int64                  `protobuf:"varint,11,opt,name=tax,proto3" json:"tax,omitempty"`                                                                                      //玩家桌费

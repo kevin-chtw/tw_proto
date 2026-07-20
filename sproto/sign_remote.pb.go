@@ -83,6 +83,7 @@ func (x *SignReq) GetCondIndex() int32 {
 
 type SignAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	CarryMax      int64                  `protobuf:"varint,1,opt,name=carry_max,json=carryMax,proto3" json:"carry_max,omitempty"` //报名时实际可携带分上限
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -117,6 +118,13 @@ func (*SignAck) Descriptor() ([]byte, []int) {
 	return file_sign_remote_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *SignAck) GetCarryMax() int64 {
+	if x != nil {
+		return x.CarryMax
+	}
+	return 0
+}
+
 var File_sign_remote_proto protoreflect.FileDescriptor
 
 const file_sign_remote_proto_rawDesc = "" +
@@ -126,8 +134,9 @@ const file_sign_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1d\n" +
 	"\n" +
-	"cond_index\x18\x03 \x01(\x05R\tcondIndex\"\t\n" +
-	"\aSignAckB\vZ\t../sprotob\x06proto3"
+	"cond_index\x18\x03 \x01(\x05R\tcondIndex\"&\n" +
+	"\aSignAck\x12\x1b\n" +
+	"\tcarry_max\x18\x01 \x01(\x03R\bcarryMaxB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_sign_remote_proto_rawDescOnce sync.Once

@@ -1146,7 +1146,7 @@ type DecoCfgRow struct {
 	AcquireDesc   string                 `protobuf:"bytes,9,opt,name=acquire_desc,json=acquireDesc,proto3" json:"acquire_desc,omitempty"`
 	Content       string                 `protobuf:"bytes,10,opt,name=content,proto3" json:"content,omitempty"` // 扩展 JSON（资源包、动画参数等）
 	Version       uint64                 `protobuf:"varint,11,opt,name=version,proto3" json:"version,omitempty"`
-	Unlock        string                 `protobuf:"bytes,12,opt,name=unlock,proto3" json:"unlock,omitempty"` // 解锁条件 JSON（vip_level / vip_reward_claimed / owned / purchase 等）
+	Unlock        string                 `protobuf:"bytes,12,opt,name=unlock,proto3" json:"unlock,omitempty"` // 解锁条件 JSON（vip_level / vip_reward_claimed）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }

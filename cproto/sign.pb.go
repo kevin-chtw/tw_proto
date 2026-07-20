@@ -246,8 +246,9 @@ type MatchSignAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GameType      string                 `protobuf:"bytes,1,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`    //游戏类型
 	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`                     //比赛ID
-	SignConds     []*CondGroup           `protobuf:"bytes,3,rep,name=sign_conds,json=signConds,proto3" json:"sign_conds,omitempty"` //报名条件 或的关系
-	ContConds     []*CondGroup           `protobuf:"bytes,4,rep,name=cont_conds,json=contConds,proto3" json:"cont_conds,omitempty"` //继续条件 或的关系
+	CarryMax      int64                  `protobuf:"varint,3,opt,name=carry_max,json=carryMax,proto3" json:"carry_max,omitempty"`   //报名时实际可携带分上限
+	SignConds     []*CondGroup           `protobuf:"bytes,4,rep,name=sign_conds,json=signConds,proto3" json:"sign_conds,omitempty"` //报名条件 或的关系
+	ContConds     []*CondGroup           `protobuf:"bytes,5,rep,name=cont_conds,json=contConds,proto3" json:"cont_conds,omitempty"` //继续条件 或的关系
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -292,6 +293,13 @@ func (x *MatchSignAck) GetGameType() string {
 func (x *MatchSignAck) GetMatchid() int32 {
 	if x != nil {
 		return x.Matchid
+	}
+	return 0
+}
+
+func (x *MatchSignAck) GetCarryMax() int64 {
+	if x != nil {
+		return x.CarryMax
 	}
 	return 0
 }
@@ -430,14 +438,15 @@ const file_sign_proto_rawDesc = "" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\"D\n" +
 	"\vSignListAck\x125\n" +
 	"\vmatch_signs\x18\x01 \x03(\v2\x14.cproto.MatchSignAckR\n" +
-	"matchSigns\"\xa9\x01\n" +
+	"matchSigns\"\xc6\x01\n" +
 	"\fMatchSignAck\x12\x1b\n" +
 	"\tgame_type\x18\x01 \x01(\tR\bgameType\x12\x18\n" +
-	"\amatchid\x18\x02 \x01(\x05R\amatchid\x120\n" +
+	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1b\n" +
+	"\tcarry_max\x18\x03 \x01(\x03R\bcarryMax\x120\n" +
 	"\n" +
-	"sign_conds\x18\x03 \x03(\v2\x11.cproto.CondGroupR\tsignConds\x120\n" +
+	"sign_conds\x18\x04 \x03(\v2\x11.cproto.CondGroupR\tsignConds\x120\n" +
 	"\n" +
-	"cont_conds\x18\x04 \x03(\v2\x11.cproto.CondGroupR\tcontConds\"G\n" +
+	"cont_conds\x18\x05 \x03(\v2\x11.cproto.CondGroupR\tcontConds\"G\n" +
 	"\tCondGroup\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12&\n" +
 	"\x05conds\x18\x02 \x03(\v2\x10.cproto.CondtionR\x05conds\"\xa1\x01\n" +

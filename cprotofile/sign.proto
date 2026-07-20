@@ -28,8 +28,9 @@ message SignListAck {
 message MatchSignAck {
     string game_type = 1; //游戏类型
     int32 matchid = 2; //比赛ID
-    repeated CondGroup sign_conds = 3; //报名条件 或的关系
-    repeated CondGroup cont_conds = 4; //继续条件 或的关系
+    int64 carry_max = 3; //报名时实际可携带分上限
+    repeated CondGroup sign_conds = 4; //报名条件 或的关系
+    repeated CondGroup cont_conds = 5; //继续条件 或的关系
 }
 
 message CondGroup {
