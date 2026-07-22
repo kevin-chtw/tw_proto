@@ -1110,6 +1110,8 @@ type VirtOrdAdminListReq struct {
 	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
 	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
 	Size          int32                  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
+	StartTs       int64                  `protobuf:"varint,4,opt,name=start_ts,json=startTs,proto3" json:"start_ts,omitempty"` // 可选，按创建时间过滤，unix 秒
+	EndTs         int64                  `protobuf:"varint,5,opt,name=end_ts,json=endTs,proto3" json:"end_ts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1161,6 +1163,20 @@ func (x *VirtOrdAdminListReq) GetPage() int32 {
 func (x *VirtOrdAdminListReq) GetSize() int32 {
 	if x != nil {
 		return x.Size
+	}
+	return 0
+}
+
+func (x *VirtOrdAdminListReq) GetStartTs() int64 {
+	if x != nil {
+		return x.StartTs
+	}
+	return 0
+}
+
+func (x *VirtOrdAdminListReq) GetEndTs() int64 {
+	if x != nil {
+		return x.EndTs
 	}
 	return 0
 }
@@ -1835,11 +1851,13 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"X\n" +
 	"\x13PhysOrdAdminListAck\x12+\n" +
 	"\x04rows\x18\x01 \x03(\v2\x17.sproto.PhysOrdAdminRowR\x04rows\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"U\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\x87\x01\n" +
 	"\x13VirtOrdAdminListReq\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\x05R\x06status\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x12\n" +
-	"\x04size\x18\x03 \x01(\x05R\x04size\"\xa1\x02\n" +
+	"\x04size\x18\x03 \x01(\x05R\x04size\x12\x19\n" +
+	"\bstart_ts\x18\x04 \x01(\x03R\astartTs\x12\x15\n" +
+	"\x06end_ts\x18\x05 \x01(\x03R\x05endTs\"\xa1\x02\n" +
 	"\x0fVirtOrdAdminRow\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x16\n" +

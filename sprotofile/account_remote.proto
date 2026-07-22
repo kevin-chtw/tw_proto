@@ -129,6 +129,8 @@ message VirtOrdAdminListReq {
   int32 status = 1;
   int32 page = 2;
   int32 size = 3;
+  int64 start_ts = 4; // 可选，按创建时间过滤，unix 秒
+  int64 end_ts = 5;
 }
 
 message VirtOrdAdminRow {
