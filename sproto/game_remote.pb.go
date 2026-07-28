@@ -258,6 +258,7 @@ type AddPlayerReq struct {
 	ExchangeRate  int64                  `protobuf:"varint,12,opt,name=exchange_rate,json=exchangeRate,proto3" json:"exchange_rate,omitempty"`                                                //兑换比例
 	Matchid       int32                  `protobuf:"varint,13,opt,name=matchid,proto3" json:"matchid,omitempty"`                                                                              //玩家的matchid
 	Equipped      map[int32]int32        `protobuf:"bytes,14,rep,name=equipped,proto3" json:"equipped,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
+	BotDriver     bool                   `protobuf:"varint,15,opt,name=bot_driver,json=botDriver,proto3" json:"bot_driver,omitempty"`                                                         // 真人座位由服务端 bot 代打，Ack 同时推给客户端（纯播放）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -388,6 +389,13 @@ func (x *AddPlayerReq) GetEquipped() map[int32]int32 {
 		return x.Equipped
 	}
 	return nil
+}
+
+func (x *AddPlayerReq) GetBotDriver() bool {
+	if x != nil {
+		return x.BotDriver
+	}
+	return false
 }
 
 type CancelTableReq struct {
@@ -603,7 +611,7 @@ const file_game_remote_proto_rawDesc = "" +
 	"emote_conf\x18\b \x01(\fR\temoteConf\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xa9\x04\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xc8\x04\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x10\n" +
 	"\x03bot\x18\x02 \x01(\bR\x03bot\x12\x12\n" +
@@ -620,7 +628,9 @@ const file_game_remote_proto_rawDesc = "" +
 	"\x03tax\x18\v \x01(\x03R\x03tax\x12#\n" +
 	"\rexchange_rate\x18\f \x01(\x03R\fexchangeRate\x12\x18\n" +
 	"\amatchid\x18\r \x01(\x05R\amatchid\x12>\n" +
-	"\bequipped\x18\x0e \x03(\v2\".sproto.AddPlayerReq.EquippedEntryR\bequipped\x1a8\n" +
+	"\bequipped\x18\x0e \x03(\v2\".sproto.AddPlayerReq.EquippedEntryR\bequipped\x12\x1d\n" +
+	"\n" +
+	"bot_driver\x18\x0f \x01(\bR\tbotDriver\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +

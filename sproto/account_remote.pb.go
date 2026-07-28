@@ -265,6 +265,7 @@ type PlayerInfoAck struct {
 	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                                                 // 玩家头像
 	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`       //玩家物品
 	Equipped      map[int32]int32        `protobuf:"bytes,5,rep,name=equipped,proto3" json:"equipped,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
+	LiveAi        bool                   `protobuf:"varint,6,opt,name=live_ai,json=liveAi,proto3" json:"live_ai,omitempty"`                                                                  // 直播 AI 号：进桌挂 bot_driver，客户端纯播放
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -332,6 +333,13 @@ func (x *PlayerInfoAck) GetEquipped() map[int32]int32 {
 		return x.Equipped
 	}
 	return nil
+}
+
+func (x *PlayerInfoAck) GetLiveAi() bool {
+	if x != nil {
+		return x.LiveAi
+	}
+	return false
 }
 
 type ChangeItemsReq struct {
@@ -1756,6 +1764,111 @@ func (x *CoinBillAdminListAck) GetTotal() int32 {
 	return 0
 }
 
+// 运营后台：设置账号直播 AI 标记（可随时开关）
+type SetLiveAiReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	LiveAi        bool                   `protobuf:"varint,2,opt,name=live_ai,json=liveAi,proto3" json:"live_ai,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetLiveAiReq) Reset() {
+	*x = SetLiveAiReq{}
+	mi := &file_account_remote_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetLiveAiReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetLiveAiReq) ProtoMessage() {}
+
+func (x *SetLiveAiReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetLiveAiReq.ProtoReflect.Descriptor instead.
+func (*SetLiveAiReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *SetLiveAiReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *SetLiveAiReq) GetLiveAi() bool {
+	if x != nil {
+		return x.LiveAi
+	}
+	return false
+}
+
+type SetLiveAiAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	LiveAi        bool                   `protobuf:"varint,2,opt,name=live_ai,json=liveAi,proto3" json:"live_ai,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetLiveAiAck) Reset() {
+	*x = SetLiveAiAck{}
+	mi := &file_account_remote_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetLiveAiAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetLiveAiAck) ProtoMessage() {}
+
+func (x *SetLiveAiAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetLiveAiAck.ProtoReflect.Descriptor instead.
+func (*SetLiveAiAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *SetLiveAiAck) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *SetLiveAiAck) GetLiveAi() bool {
+	if x != nil {
+		return x.LiveAi
+	}
+	return false
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -1774,13 +1887,14 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\aexpired\x18\x02 \x01(\x03R\aexpired\"!\n" +
 	"\rPlayerInfoReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xc5\x02\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xde\x02\n" +
 	"\rPlayerInfoAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
 	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x126\n" +
 	"\x05items\x18\x04 \x03(\v2 .sproto.PlayerInfoAck.ItemsEntryR\x05items\x12?\n" +
-	"\bequipped\x18\x05 \x03(\v2#.sproto.PlayerInfoAck.EquippedEntryR\bequipped\x1a8\n" +
+	"\bequipped\x18\x05 \x03(\v2#.sproto.PlayerInfoAck.EquippedEntryR\bequipped\x12\x17\n" +
+	"\alive_ai\x18\x06 \x01(\bR\x06liveAi\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
@@ -1903,7 +2017,13 @@ const file_account_remote_proto_rawDesc = "" +
 	"created_ts\x18\a \x01(\x03R\tcreatedTs\"Z\n" +
 	"\x14CoinBillAdminListAck\x12,\n" +
 	"\x04rows\x18\x01 \x03(\v2\x18.sproto.CoinBillAdminRowR\x04rows\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05totalB\vZ\t../sprotob\x06proto3"
+	"\x05total\x18\x02 \x01(\x05R\x05total\"9\n" +
+	"\fSetLiveAiReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x17\n" +
+	"\alive_ai\x18\x02 \x01(\bR\x06liveAi\"9\n" +
+	"\fSetLiveAiAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x17\n" +
+	"\alive_ai\x18\x02 \x01(\bR\x06liveAiB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -1917,7 +2037,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -1948,24 +2068,26 @@ var file_account_remote_proto_goTypes = []any{
 	(*CoinBillAdminListReq)(nil), // 26: sproto.CoinBillAdminListReq
 	(*CoinBillAdminRow)(nil),     // 27: sproto.CoinBillAdminRow
 	(*CoinBillAdminListAck)(nil), // 28: sproto.CoinBillAdminListAck
-	nil,                          // 29: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 30: sproto.PlayerInfoAck.EquippedEntry
-	nil,                          // 31: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 32: sproto.ChangeItemsAck.ItemsEntry
-	nil,                          // 33: sproto.PhysOrdAdminRow.ItemsEntry
-	nil,                          // 34: sproto.VirtOrdAdminRow.ItemsEntry
-	(*anypb.Any)(nil),            // 35: google.protobuf.Any
+	(*SetLiveAiReq)(nil),         // 29: sproto.SetLiveAiReq
+	(*SetLiveAiAck)(nil),         // 30: sproto.SetLiveAiAck
+	nil,                          // 31: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 32: sproto.PlayerInfoAck.EquippedEntry
+	nil,                          // 33: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 34: sproto.ChangeItemsAck.ItemsEntry
+	nil,                          // 35: sproto.PhysOrdAdminRow.ItemsEntry
+	nil,                          // 36: sproto.VirtOrdAdminRow.ItemsEntry
+	(*anypb.Any)(nil),            // 37: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	35, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	35, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	29, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	30, // 3: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
-	31, // 4: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	32, // 5: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
-	33, // 6: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
+	37, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	37, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	31, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	32, // 3: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
+	33, // 4: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	34, // 5: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	35, // 6: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
 	17, // 7: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
-	34, // 8: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
+	36, // 8: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
 	20, // 9: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
 	27, // 10: sproto.CoinBillAdminListAck.rows:type_name -> sproto.CoinBillAdminRow
 	11, // [11:11] is the sub-list for method output_type
@@ -1986,7 +2108,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   35,
+			NumMessages:   37,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -33,6 +33,7 @@ message PlayerInfoAck {
   string avatar = 3; // 玩家头像
   map<int32, int64> items = 4; //玩家物品
   map<int32, int32> equipped = 5; // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
+  bool live_ai = 6; // 直播 AI 号：进桌挂 bot_driver，客户端纯播放
 }
 
 message ChangeItemsReq {
@@ -193,3 +194,15 @@ message CoinBillAdminListAck {
   repeated CoinBillAdminRow rows = 1;
   int32 total = 2;
 }
+
+// 运营后台：设置账号直播 AI 标记（可随时开关）
+message SetLiveAiReq {
+  string uid = 1;
+  bool live_ai = 2;
+}
+
+message SetLiveAiAck {
+  string uid = 1;
+  bool live_ai = 2;
+}
+
