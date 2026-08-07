@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package sproto;
+option go_package = "../sproto";
+
+// DIY executor RPCs (tw_diy_svr). Not part of tw_tourney_svr runtime list service.
+
+message DiyCreateReq {
+  int32 match_id = 1;
+  string config_yaml_or_json = 2;
+  repeated string player_uids = 3;
+}
+
+message DiyCreateAck {
+  int64 tourney_id = 1;
+  int32 match_id = 2;
+  string err = 3;
+}
+
+message DiyStartReq {
+  int64 tourney_id = 1;
+  int32 match_id = 2;
+  repeated string player_uids = 3;
+}
+
+message DiyStartAck {
+  string status = 1;
+  string err = 2;
+}
+
+message DiyStatusReq {
+  int64 tourney_id = 1;
+  int32 match_id = 2;
+}
+
+message DiyStatusAck {
+  string status = 1;
+  int64 tourney_id = 2;
+  string err = 3;
+}
