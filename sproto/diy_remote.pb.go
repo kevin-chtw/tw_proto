@@ -365,6 +365,452 @@ func (x *DiyStatusAck) GetErr() string {
 	return ""
 }
 
+// Live table snapshot for a running DIY tourney (not replay).
+type DiyTablesReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TourneyId     int64                  `protobuf:"varint,1,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	MatchId       int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyTablesReq) Reset() {
+	*x = DiyTablesReq{}
+	mi := &file_diy_remote_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyTablesReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyTablesReq) ProtoMessage() {}
+
+func (x *DiyTablesReq) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyTablesReq.ProtoReflect.Descriptor instead.
+func (*DiyTablesReq) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DiyTablesReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiyTablesReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+type DiyTablePlayer struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Score         int64                  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`
+	WinScore      int64                  `protobuf:"varint,3,opt,name=win_score,json=winScore,proto3" json:"win_score,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyTablePlayer) Reset() {
+	*x = DiyTablePlayer{}
+	mi := &file_diy_remote_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyTablePlayer) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyTablePlayer) ProtoMessage() {}
+
+func (x *DiyTablePlayer) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyTablePlayer.ProtoReflect.Descriptor instead.
+func (*DiyTablePlayer) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DiyTablePlayer) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *DiyTablePlayer) GetScore() int64 {
+	if x != nil {
+		return x.Score
+	}
+	return 0
+}
+
+func (x *DiyTablePlayer) GetWinScore() int64 {
+	if x != nil {
+		return x.WinScore
+	}
+	return 0
+}
+
+type DiyTableInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TableId       int32                  `protobuf:"varint,1,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
+	PlayerCount   int32                  `protobuf:"varint,2,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`
+	Players       []*DiyTablePlayer      `protobuf:"bytes,3,rep,name=players,proto3" json:"players,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyTableInfo) Reset() {
+	*x = DiyTableInfo{}
+	mi := &file_diy_remote_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyTableInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyTableInfo) ProtoMessage() {}
+
+func (x *DiyTableInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyTableInfo.ProtoReflect.Descriptor instead.
+func (*DiyTableInfo) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DiyTableInfo) GetTableId() int32 {
+	if x != nil {
+		return x.TableId
+	}
+	return 0
+}
+
+func (x *DiyTableInfo) GetPlayerCount() int32 {
+	if x != nil {
+		return x.PlayerCount
+	}
+	return 0
+}
+
+func (x *DiyTableInfo) GetPlayers() []*DiyTablePlayer {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
+type DiyTablesAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TourneyId     int64                  `protobuf:"varint,1,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	StageId       int32                  `protobuf:"varint,2,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	Tables        []*DiyTableInfo        `protobuf:"bytes,4,rep,name=tables,proto3" json:"tables,omitempty"`
+	Err           string                 `protobuf:"bytes,5,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyTablesAck) Reset() {
+	*x = DiyTablesAck{}
+	mi := &file_diy_remote_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyTablesAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyTablesAck) ProtoMessage() {}
+
+func (x *DiyTablesAck) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyTablesAck.ProtoReflect.Descriptor instead.
+func (*DiyTablesAck) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DiyTablesAck) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiyTablesAck) GetStageId() int32 {
+	if x != nil {
+		return x.StageId
+	}
+	return 0
+}
+
+func (x *DiyTablesAck) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *DiyTablesAck) GetTables() []*DiyTableInfo {
+	if x != nil {
+		return x.Tables
+	}
+	return nil
+}
+
+func (x *DiyTablesAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
+// Live tourney list on this diy process (not tw_tourney_svr client list).
+type DiyListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GameType      string                 `protobuf:"bytes,1,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"` // optional; empty = all
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyListReq) Reset() {
+	*x = DiyListReq{}
+	mi := &file_diy_remote_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyListReq) ProtoMessage() {}
+
+func (x *DiyListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyListReq.ProtoReflect.Descriptor instead.
+func (*DiyListReq) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DiyListReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+type DiyListItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	StageId       int32                  `protobuf:"varint,4,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`
+	TableCount    int32                  `protobuf:"varint,5,opt,name=table_count,json=tableCount,proto3" json:"table_count,omitempty"`
+	PlayerCount   int32                  `protobuf:"varint,6,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`
+	Name          string                 `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
+	GameType      string                 `protobuf:"bytes,8,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyListItem) Reset() {
+	*x = DiyListItem{}
+	mi := &file_diy_remote_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyListItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyListItem) ProtoMessage() {}
+
+func (x *DiyListItem) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyListItem.ProtoReflect.Descriptor instead.
+func (*DiyListItem) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DiyListItem) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *DiyListItem) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiyListItem) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *DiyListItem) GetStageId() int32 {
+	if x != nil {
+		return x.StageId
+	}
+	return 0
+}
+
+func (x *DiyListItem) GetTableCount() int32 {
+	if x != nil {
+		return x.TableCount
+	}
+	return 0
+}
+
+func (x *DiyListItem) GetPlayerCount() int32 {
+	if x != nil {
+		return x.PlayerCount
+	}
+	return 0
+}
+
+func (x *DiyListItem) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *DiyListItem) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+type DiyListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*DiyListItem         `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	Err           string                 `protobuf:"bytes,2,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyListAck) Reset() {
+	*x = DiyListAck{}
+	mi := &file_diy_remote_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyListAck) ProtoMessage() {}
+
+func (x *DiyListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyListAck.ProtoReflect.Descriptor instead.
+func (*DiyListAck) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DiyListAck) GetItems() []*DiyListItem {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *DiyListAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
 var File_diy_remote_proto protoreflect.FileDescriptor
 
 const file_diy_remote_proto_rawDesc = "" +
@@ -397,7 +843,44 @@ const file_diy_remote_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x10\n" +
-	"\x03err\x18\x03 \x01(\tR\x03errB\vZ\t../sprotob\x06proto3"
+	"\x03err\x18\x03 \x01(\tR\x03err\"H\n" +
+	"\fDiyTablesReq\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\"U\n" +
+	"\x0eDiyTablePlayer\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x14\n" +
+	"\x05score\x18\x02 \x01(\x03R\x05score\x12\x1b\n" +
+	"\twin_score\x18\x03 \x01(\x03R\bwinScore\"~\n" +
+	"\fDiyTableInfo\x12\x19\n" +
+	"\btable_id\x18\x01 \x01(\x05R\atableId\x12!\n" +
+	"\fplayer_count\x18\x02 \x01(\x05R\vplayerCount\x120\n" +
+	"\aplayers\x18\x03 \x03(\v2\x16.sproto.DiyTablePlayerR\aplayers\"\xa0\x01\n" +
+	"\fDiyTablesAck\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
+	"\bstage_id\x18\x02 \x01(\x05R\astageId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12,\n" +
+	"\x06tables\x18\x04 \x03(\v2\x14.sproto.DiyTableInfoR\x06tables\x12\x10\n" +
+	"\x03err\x18\x05 \x01(\tR\x03err\")\n" +
+	"\n" +
+	"DiyListReq\x12\x1b\n" +
+	"\tgame_type\x18\x01 \x01(\tR\bgameType\"\xef\x01\n" +
+	"\vDiyListItem\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12\x19\n" +
+	"\bstage_id\x18\x04 \x01(\x05R\astageId\x12\x1f\n" +
+	"\vtable_count\x18\x05 \x01(\x05R\n" +
+	"tableCount\x12!\n" +
+	"\fplayer_count\x18\x06 \x01(\x05R\vplayerCount\x12\x12\n" +
+	"\x04name\x18\a \x01(\tR\x04name\x12\x1b\n" +
+	"\tgame_type\x18\b \x01(\tR\bgameType\"I\n" +
+	"\n" +
+	"DiyListAck\x12)\n" +
+	"\x05items\x18\x01 \x03(\v2\x13.sproto.DiyListItemR\x05items\x12\x10\n" +
+	"\x03err\x18\x02 \x01(\tR\x03errB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_diy_remote_proto_rawDescOnce sync.Once
@@ -411,21 +894,31 @@ func file_diy_remote_proto_rawDescGZIP() []byte {
 	return file_diy_remote_proto_rawDescData
 }
 
-var file_diy_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_diy_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_diy_remote_proto_goTypes = []any{
-	(*DiyCreateReq)(nil), // 0: sproto.DiyCreateReq
-	(*DiyCreateAck)(nil), // 1: sproto.DiyCreateAck
-	(*DiyStartReq)(nil),  // 2: sproto.DiyStartReq
-	(*DiyStartAck)(nil),  // 3: sproto.DiyStartAck
-	(*DiyStatusReq)(nil), // 4: sproto.DiyStatusReq
-	(*DiyStatusAck)(nil), // 5: sproto.DiyStatusAck
+	(*DiyCreateReq)(nil),   // 0: sproto.DiyCreateReq
+	(*DiyCreateAck)(nil),   // 1: sproto.DiyCreateAck
+	(*DiyStartReq)(nil),    // 2: sproto.DiyStartReq
+	(*DiyStartAck)(nil),    // 3: sproto.DiyStartAck
+	(*DiyStatusReq)(nil),   // 4: sproto.DiyStatusReq
+	(*DiyStatusAck)(nil),   // 5: sproto.DiyStatusAck
+	(*DiyTablesReq)(nil),   // 6: sproto.DiyTablesReq
+	(*DiyTablePlayer)(nil), // 7: sproto.DiyTablePlayer
+	(*DiyTableInfo)(nil),   // 8: sproto.DiyTableInfo
+	(*DiyTablesAck)(nil),   // 9: sproto.DiyTablesAck
+	(*DiyListReq)(nil),     // 10: sproto.DiyListReq
+	(*DiyListItem)(nil),    // 11: sproto.DiyListItem
+	(*DiyListAck)(nil),     // 12: sproto.DiyListAck
 }
 var file_diy_remote_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	7,  // 0: sproto.DiyTableInfo.players:type_name -> sproto.DiyTablePlayer
+	8,  // 1: sproto.DiyTablesAck.tables:type_name -> sproto.DiyTableInfo
+	11, // 2: sproto.DiyListAck.items:type_name -> sproto.DiyListItem
+	3,  // [3:3] is the sub-list for method output_type
+	3,  // [3:3] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_diy_remote_proto_init() }
@@ -439,7 +932,7 @@ func file_diy_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_diy_remote_proto_rawDesc), len(file_diy_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

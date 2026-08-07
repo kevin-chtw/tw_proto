@@ -38,3 +38,50 @@ message DiyStatusAck {
   int64 tourney_id = 2;
   string err = 3;
 }
+
+// Live table snapshot for a running DIY tourney (not replay).
+message DiyTablesReq {
+  int64 tourney_id = 1;
+  int32 match_id = 2;
+}
+
+message DiyTablePlayer {
+  string uid = 1;
+  int64 score = 2;
+  int64 win_score = 3;
+}
+
+message DiyTableInfo {
+  int32 table_id = 1;
+  int32 player_count = 2;
+  repeated DiyTablePlayer players = 3;
+}
+
+message DiyTablesAck {
+  int64 tourney_id = 1;
+  int32 stage_id = 2;
+  string status = 3;
+  repeated DiyTableInfo tables = 4;
+  string err = 5;
+}
+
+// Live tourney list on this diy process (not tw_tourney_svr client list).
+message DiyListReq {
+  string game_type = 1; // optional; empty = all
+}
+
+message DiyListItem {
+  int32 match_id = 1;
+  int64 tourney_id = 2;
+  string status = 3;
+  int32 stage_id = 4;
+  int32 table_count = 5;
+  int32 player_count = 6;
+  string name = 7;
+  string game_type = 8;
+}
+
+message DiyListAck {
+  repeated DiyListItem items = 1;
+  string err = 2;
+}
