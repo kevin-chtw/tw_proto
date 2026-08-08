@@ -625,6 +625,9 @@ type DiyTablesAck struct {
 	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
 	Tables        []*DiyTableInfo        `protobuf:"bytes,4,rep,name=tables,proto3" json:"tables,omitempty"`
 	Err           string                 `protobuf:"bytes,5,opt,name=err,proto3" json:"err,omitempty"`
+	Format        string                 `protobuf:"bytes,6,opt,name=format,proto3" json:"format,omitempty"`                            // swiss / knockout / fix_score
+	Round         int32                  `protobuf:"varint,7,opt,name=round,proto3" json:"round,omitempty"`                             // swiss 轮次；定局当前局；打立为 0
+	RoundTotal    int32                  `protobuf:"varint,8,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"` // 定局总局数 / 瑞士规划轮数；打立为 0
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -692,6 +695,27 @@ func (x *DiyTablesAck) GetErr() string {
 		return x.Err
 	}
 	return ""
+}
+
+func (x *DiyTablesAck) GetFormat() string {
+	if x != nil {
+		return x.Format
+	}
+	return ""
+}
+
+func (x *DiyTablesAck) GetRound() int32 {
+	if x != nil {
+		return x.Round
+	}
+	return 0
+}
+
+func (x *DiyTablesAck) GetRoundTotal() int32 {
+	if x != nil {
+		return x.RoundTotal
+	}
+	return 0
 }
 
 // Live tourney list on this diy process (not tw_tourney_svr client list).
@@ -938,14 +962,18 @@ const file_diy_remote_proto_rawDesc = "" +
 	"\fDiyTableInfo\x12\x19\n" +
 	"\btable_id\x18\x01 \x01(\x05R\atableId\x12!\n" +
 	"\fplayer_count\x18\x02 \x01(\x05R\vplayerCount\x120\n" +
-	"\aplayers\x18\x03 \x03(\v2\x16.sproto.DiyTablePlayerR\aplayers\"\xa0\x01\n" +
+	"\aplayers\x18\x03 \x03(\v2\x16.sproto.DiyTablePlayerR\aplayers\"\xef\x01\n" +
 	"\fDiyTablesAck\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
 	"\bstage_id\x18\x02 \x01(\x05R\astageId\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\tR\x06status\x12,\n" +
 	"\x06tables\x18\x04 \x03(\v2\x14.sproto.DiyTableInfoR\x06tables\x12\x10\n" +
-	"\x03err\x18\x05 \x01(\tR\x03err\")\n" +
+	"\x03err\x18\x05 \x01(\tR\x03err\x12\x16\n" +
+	"\x06format\x18\x06 \x01(\tR\x06format\x12\x14\n" +
+	"\x05round\x18\a \x01(\x05R\x05round\x12\x1f\n" +
+	"\vround_total\x18\b \x01(\x05R\n" +
+	"roundTotal\")\n" +
 	"\n" +
 	"DiyListReq\x12\x1b\n" +
 	"\tgame_type\x18\x01 \x01(\tR\bgameType\"\xef\x01\n" +

@@ -197,6 +197,7 @@ message DiySignupReportReq {
   int64 tourney_id = 2;
   string uid = 3;
   int64 signed_at_unix = 4;
+  string nickname = 5; // 报名时 diy 上报，admin 落库展示
 }
 
 message DiySignupReportAck {

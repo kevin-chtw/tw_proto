@@ -1913,6 +1913,7 @@ type DiySignupReportReq struct {
 	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
 	Uid           string                 `protobuf:"bytes,3,opt,name=uid,proto3" json:"uid,omitempty"`
 	SignedAtUnix  int64                  `protobuf:"varint,4,opt,name=signed_at_unix,json=signedAtUnix,proto3" json:"signed_at_unix,omitempty"`
+	Nickname      string                 `protobuf:"bytes,5,opt,name=nickname,proto3" json:"nickname,omitempty"` // 报名时 diy 上报，admin 落库展示
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1973,6 +1974,13 @@ func (x *DiySignupReportReq) GetSignedAtUnix() int64 {
 		return x.SignedAtUnix
 	}
 	return 0
+}
+
+func (x *DiySignupReportReq) GetNickname() string {
+	if x != nil {
+		return x.Nickname
+	}
+	return ""
 }
 
 type DiySignupReportAck struct {
@@ -2462,13 +2470,14 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x03R\x05score\x12\x12\n" +
 	"\x04rank\x18\x03 \x01(\x05R\x04rank\x12$\n" +
-	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\"\x86\x01\n" +
+	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\"\xa2\x01\n" +
 	"\x12DiySignupReportReq\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x10\n" +
 	"\x03uid\x18\x03 \x01(\tR\x03uid\x12$\n" +
-	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\"&\n" +
+	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\x12\x1a\n" +
+	"\bnickname\x18\x05 \x01(\tR\bnickname\"&\n" +
 	"\x12DiySignupReportAck\x12\x10\n" +
 	"\x03err\x18\x01 \x01(\tR\x03err\"a\n" +
 	"\x13DiySignoutReportReq\x12\x19\n" +

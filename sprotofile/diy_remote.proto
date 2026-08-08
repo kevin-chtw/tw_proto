@@ -71,6 +71,9 @@ message DiyTablesAck {
   string status = 3;
   repeated DiyTableInfo tables = 4;
   string err = 5;
+  string format = 6;      // swiss / knockout / fix_score
+  int32 round = 7;        // swiss 轮次；定局当前局；打立为 0
+  int32 round_total = 8;  // 定局总局数 / 瑞士规划轮数；打立为 0
 }
 
 // Live tourney list on this diy process (not tw_tourney_svr client list).
