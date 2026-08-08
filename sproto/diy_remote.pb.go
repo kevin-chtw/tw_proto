@@ -22,12 +22,11 @@ const (
 )
 
 type DiyCreateReq struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	MatchId          int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
-	ConfigYamlOrJson string                 `protobuf:"bytes,2,opt,name=config_yaml_or_json,json=configYamlOrJson,proto3" json:"config_yaml_or_json,omitempty"`
-	PlayerUids       []string               `protobuf:"bytes,3,rep,name=player_uids,json=playerUids,proto3" json:"player_uids,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	ConfigYaml    string                 `protobuf:"bytes,2,opt,name=config_yaml,json=configYaml,proto3" json:"config_yaml,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DiyCreateReq) Reset() {
@@ -67,18 +66,11 @@ func (x *DiyCreateReq) GetMatchId() int32 {
 	return 0
 }
 
-func (x *DiyCreateReq) GetConfigYamlOrJson() string {
+func (x *DiyCreateReq) GetConfigYaml() string {
 	if x != nil {
-		return x.ConfigYamlOrJson
+		return x.ConfigYaml
 	}
 	return ""
-}
-
-func (x *DiyCreateReq) GetPlayerUids() []string {
-	if x != nil {
-		return x.PlayerUids
-	}
-	return nil
 }
 
 type DiyCreateAck struct {
@@ -145,7 +137,6 @@ type DiyStartReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TourneyId     int64                  `protobuf:"varint,1,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
 	MatchId       int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
-	PlayerUids    []string               `protobuf:"bytes,3,rep,name=player_uids,json=playerUids,proto3" json:"player_uids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,13 +183,6 @@ func (x *DiyStartReq) GetMatchId() int32 {
 		return x.MatchId
 	}
 	return 0
-}
-
-func (x *DiyStartReq) GetPlayerUids() []string {
-	if x != nil {
-		return x.PlayerUids
-	}
-	return nil
 }
 
 type DiyStartAck struct {
@@ -911,23 +895,20 @@ var File_diy_remote_proto protoreflect.FileDescriptor
 
 const file_diy_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x10diy_remote.proto\x12\x06sproto\"y\n" +
+	"\x10diy_remote.proto\x12\x06sproto\"J\n" +
 	"\fDiyCreateReq\x12\x19\n" +
-	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12-\n" +
-	"\x13config_yaml_or_json\x18\x02 \x01(\tR\x10configYamlOrJson\x12\x1f\n" +
-	"\vplayer_uids\x18\x03 \x03(\tR\n" +
-	"playerUids\"Z\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1f\n" +
+	"\vconfig_yaml\x18\x02 \x01(\tR\n" +
+	"configYaml\"Z\n" +
 	"\fDiyCreateAck\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
 	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\x12\x10\n" +
-	"\x03err\x18\x03 \x01(\tR\x03err\"h\n" +
+	"\x03err\x18\x03 \x01(\tR\x03err\"G\n" +
 	"\vDiyStartReq\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
-	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\x12\x1f\n" +
-	"\vplayer_uids\x18\x03 \x03(\tR\n" +
-	"playerUids\"7\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\"7\n" +
 	"\vDiyStartAck\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x10\n" +
 	"\x03err\x18\x02 \x01(\tR\x03err\"H\n" +
