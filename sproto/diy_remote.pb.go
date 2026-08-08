@@ -365,6 +365,102 @@ func (x *DiyStatusAck) GetErr() string {
 	return ""
 }
 
+type DiyDestroyReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyDestroyReq) Reset() {
+	*x = DiyDestroyReq{}
+	mi := &file_diy_remote_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyDestroyReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyDestroyReq) ProtoMessage() {}
+
+func (x *DiyDestroyReq) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyDestroyReq.ProtoReflect.Descriptor instead.
+func (*DiyDestroyReq) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DiyDestroyReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *DiyDestroyReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+type DiyDestroyAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyDestroyAck) Reset() {
+	*x = DiyDestroyAck{}
+	mi := &file_diy_remote_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyDestroyAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyDestroyAck) ProtoMessage() {}
+
+func (x *DiyDestroyAck) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyDestroyAck.ProtoReflect.Descriptor instead.
+func (*DiyDestroyAck) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DiyDestroyAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
 // Live table snapshot for a running DIY tourney (not replay).
 type DiyTablesReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -376,7 +472,7 @@ type DiyTablesReq struct {
 
 func (x *DiyTablesReq) Reset() {
 	*x = DiyTablesReq{}
-	mi := &file_diy_remote_proto_msgTypes[6]
+	mi := &file_diy_remote_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -388,7 +484,7 @@ func (x *DiyTablesReq) String() string {
 func (*DiyTablesReq) ProtoMessage() {}
 
 func (x *DiyTablesReq) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[6]
+	mi := &file_diy_remote_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -401,7 +497,7 @@ func (x *DiyTablesReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyTablesReq.ProtoReflect.Descriptor instead.
 func (*DiyTablesReq) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{6}
+	return file_diy_remote_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DiyTablesReq) GetTourneyId() int64 {
@@ -429,7 +525,7 @@ type DiyTablePlayer struct {
 
 func (x *DiyTablePlayer) Reset() {
 	*x = DiyTablePlayer{}
-	mi := &file_diy_remote_proto_msgTypes[7]
+	mi := &file_diy_remote_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -441,7 +537,7 @@ func (x *DiyTablePlayer) String() string {
 func (*DiyTablePlayer) ProtoMessage() {}
 
 func (x *DiyTablePlayer) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[7]
+	mi := &file_diy_remote_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -454,7 +550,7 @@ func (x *DiyTablePlayer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyTablePlayer.ProtoReflect.Descriptor instead.
 func (*DiyTablePlayer) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{7}
+	return file_diy_remote_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DiyTablePlayer) GetUid() string {
@@ -489,7 +585,7 @@ type DiyTableInfo struct {
 
 func (x *DiyTableInfo) Reset() {
 	*x = DiyTableInfo{}
-	mi := &file_diy_remote_proto_msgTypes[8]
+	mi := &file_diy_remote_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -501,7 +597,7 @@ func (x *DiyTableInfo) String() string {
 func (*DiyTableInfo) ProtoMessage() {}
 
 func (x *DiyTableInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[8]
+	mi := &file_diy_remote_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -514,7 +610,7 @@ func (x *DiyTableInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyTableInfo.ProtoReflect.Descriptor instead.
 func (*DiyTableInfo) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{8}
+	return file_diy_remote_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DiyTableInfo) GetTableId() int32 {
@@ -551,7 +647,7 @@ type DiyTablesAck struct {
 
 func (x *DiyTablesAck) Reset() {
 	*x = DiyTablesAck{}
-	mi := &file_diy_remote_proto_msgTypes[9]
+	mi := &file_diy_remote_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -563,7 +659,7 @@ func (x *DiyTablesAck) String() string {
 func (*DiyTablesAck) ProtoMessage() {}
 
 func (x *DiyTablesAck) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[9]
+	mi := &file_diy_remote_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -576,7 +672,7 @@ func (x *DiyTablesAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyTablesAck.ProtoReflect.Descriptor instead.
 func (*DiyTablesAck) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{9}
+	return file_diy_remote_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DiyTablesAck) GetTourneyId() int64 {
@@ -624,7 +720,7 @@ type DiyListReq struct {
 
 func (x *DiyListReq) Reset() {
 	*x = DiyListReq{}
-	mi := &file_diy_remote_proto_msgTypes[10]
+	mi := &file_diy_remote_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -636,7 +732,7 @@ func (x *DiyListReq) String() string {
 func (*DiyListReq) ProtoMessage() {}
 
 func (x *DiyListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[10]
+	mi := &file_diy_remote_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -649,7 +745,7 @@ func (x *DiyListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyListReq.ProtoReflect.Descriptor instead.
 func (*DiyListReq) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{10}
+	return file_diy_remote_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DiyListReq) GetGameType() string {
@@ -675,7 +771,7 @@ type DiyListItem struct {
 
 func (x *DiyListItem) Reset() {
 	*x = DiyListItem{}
-	mi := &file_diy_remote_proto_msgTypes[11]
+	mi := &file_diy_remote_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -687,7 +783,7 @@ func (x *DiyListItem) String() string {
 func (*DiyListItem) ProtoMessage() {}
 
 func (x *DiyListItem) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[11]
+	mi := &file_diy_remote_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -700,7 +796,7 @@ func (x *DiyListItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyListItem.ProtoReflect.Descriptor instead.
 func (*DiyListItem) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{11}
+	return file_diy_remote_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DiyListItem) GetMatchId() int32 {
@@ -769,7 +865,7 @@ type DiyListAck struct {
 
 func (x *DiyListAck) Reset() {
 	*x = DiyListAck{}
-	mi := &file_diy_remote_proto_msgTypes[12]
+	mi := &file_diy_remote_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -781,7 +877,7 @@ func (x *DiyListAck) String() string {
 func (*DiyListAck) ProtoMessage() {}
 
 func (x *DiyListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[12]
+	mi := &file_diy_remote_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -794,7 +890,7 @@ func (x *DiyListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyListAck.ProtoReflect.Descriptor instead.
 func (*DiyListAck) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{12}
+	return file_diy_remote_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DiyListAck) GetItems() []*DiyListItem {
@@ -843,7 +939,13 @@ const file_diy_remote_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x10\n" +
-	"\x03err\x18\x03 \x01(\tR\x03err\"H\n" +
+	"\x03err\x18\x03 \x01(\tR\x03err\"I\n" +
+	"\rDiyDestroyReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\"!\n" +
+	"\rDiyDestroyAck\x12\x10\n" +
+	"\x03err\x18\x01 \x01(\tR\x03err\"H\n" +
 	"\fDiyTablesReq\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
@@ -894,7 +996,7 @@ func file_diy_remote_proto_rawDescGZIP() []byte {
 	return file_diy_remote_proto_rawDescData
 }
 
-var file_diy_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_diy_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_diy_remote_proto_goTypes = []any{
 	(*DiyCreateReq)(nil),   // 0: sproto.DiyCreateReq
 	(*DiyCreateAck)(nil),   // 1: sproto.DiyCreateAck
@@ -902,18 +1004,20 @@ var file_diy_remote_proto_goTypes = []any{
 	(*DiyStartAck)(nil),    // 3: sproto.DiyStartAck
 	(*DiyStatusReq)(nil),   // 4: sproto.DiyStatusReq
 	(*DiyStatusAck)(nil),   // 5: sproto.DiyStatusAck
-	(*DiyTablesReq)(nil),   // 6: sproto.DiyTablesReq
-	(*DiyTablePlayer)(nil), // 7: sproto.DiyTablePlayer
-	(*DiyTableInfo)(nil),   // 8: sproto.DiyTableInfo
-	(*DiyTablesAck)(nil),   // 9: sproto.DiyTablesAck
-	(*DiyListReq)(nil),     // 10: sproto.DiyListReq
-	(*DiyListItem)(nil),    // 11: sproto.DiyListItem
-	(*DiyListAck)(nil),     // 12: sproto.DiyListAck
+	(*DiyDestroyReq)(nil),  // 6: sproto.DiyDestroyReq
+	(*DiyDestroyAck)(nil),  // 7: sproto.DiyDestroyAck
+	(*DiyTablesReq)(nil),   // 8: sproto.DiyTablesReq
+	(*DiyTablePlayer)(nil), // 9: sproto.DiyTablePlayer
+	(*DiyTableInfo)(nil),   // 10: sproto.DiyTableInfo
+	(*DiyTablesAck)(nil),   // 11: sproto.DiyTablesAck
+	(*DiyListReq)(nil),     // 12: sproto.DiyListReq
+	(*DiyListItem)(nil),    // 13: sproto.DiyListItem
+	(*DiyListAck)(nil),     // 14: sproto.DiyListAck
 }
 var file_diy_remote_proto_depIdxs = []int32{
-	7,  // 0: sproto.DiyTableInfo.players:type_name -> sproto.DiyTablePlayer
-	8,  // 1: sproto.DiyTablesAck.tables:type_name -> sproto.DiyTableInfo
-	11, // 2: sproto.DiyListAck.items:type_name -> sproto.DiyListItem
+	9,  // 0: sproto.DiyTableInfo.players:type_name -> sproto.DiyTablePlayer
+	10, // 1: sproto.DiyTablesAck.tables:type_name -> sproto.DiyTableInfo
+	13, // 2: sproto.DiyListAck.items:type_name -> sproto.DiyListItem
 	3,  // [3:3] is the sub-list for method output_type
 	3,  // [3:3] is the sub-list for method input_type
 	3,  // [3:3] is the sub-list for extension type_name
@@ -932,7 +1036,7 @@ func file_diy_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_diy_remote_proto_rawDesc), len(file_diy_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

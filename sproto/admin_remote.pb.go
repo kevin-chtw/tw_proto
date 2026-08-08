@@ -1838,6 +1838,507 @@ func (x *ItemCfgGetAck) GetRow() *ItemDefRow {
 	return nil
 }
 
+// DiyReport service (admin.diyreport.*) — diy → admin push.
+type DiyPlayerInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Score         int64                  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`
+	Rank          int32                  `protobuf:"varint,3,opt,name=rank,proto3" json:"rank,omitempty"` // 0 = not ranked yet
+	SignedAtUnix  int64                  `protobuf:"varint,4,opt,name=signed_at_unix,json=signedAtUnix,proto3" json:"signed_at_unix,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyPlayerInfo) Reset() {
+	*x = DiyPlayerInfo{}
+	mi := &file_admin_remote_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyPlayerInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyPlayerInfo) ProtoMessage() {}
+
+func (x *DiyPlayerInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyPlayerInfo.ProtoReflect.Descriptor instead.
+func (*DiyPlayerInfo) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *DiyPlayerInfo) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *DiyPlayerInfo) GetScore() int64 {
+	if x != nil {
+		return x.Score
+	}
+	return 0
+}
+
+func (x *DiyPlayerInfo) GetRank() int32 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+func (x *DiyPlayerInfo) GetSignedAtUnix() int64 {
+	if x != nil {
+		return x.SignedAtUnix
+	}
+	return 0
+}
+
+type DiySignupReportReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	Uid           string                 `protobuf:"bytes,3,opt,name=uid,proto3" json:"uid,omitempty"`
+	SignedAtUnix  int64                  `protobuf:"varint,4,opt,name=signed_at_unix,json=signedAtUnix,proto3" json:"signed_at_unix,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiySignupReportReq) Reset() {
+	*x = DiySignupReportReq{}
+	mi := &file_admin_remote_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiySignupReportReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiySignupReportReq) ProtoMessage() {}
+
+func (x *DiySignupReportReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiySignupReportReq.ProtoReflect.Descriptor instead.
+func (*DiySignupReportReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *DiySignupReportReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *DiySignupReportReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiySignupReportReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *DiySignupReportReq) GetSignedAtUnix() int64 {
+	if x != nil {
+		return x.SignedAtUnix
+	}
+	return 0
+}
+
+type DiySignupReportAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiySignupReportAck) Reset() {
+	*x = DiySignupReportAck{}
+	mi := &file_admin_remote_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiySignupReportAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiySignupReportAck) ProtoMessage() {}
+
+func (x *DiySignupReportAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiySignupReportAck.ProtoReflect.Descriptor instead.
+func (*DiySignupReportAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *DiySignupReportAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
+type DiySignoutReportReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	Uid           string                 `protobuf:"bytes,3,opt,name=uid,proto3" json:"uid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiySignoutReportReq) Reset() {
+	*x = DiySignoutReportReq{}
+	mi := &file_admin_remote_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiySignoutReportReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiySignoutReportReq) ProtoMessage() {}
+
+func (x *DiySignoutReportReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiySignoutReportReq.ProtoReflect.Descriptor instead.
+func (*DiySignoutReportReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *DiySignoutReportReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *DiySignoutReportReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiySignoutReportReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+type DiySignoutReportAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiySignoutReportAck) Reset() {
+	*x = DiySignoutReportAck{}
+	mi := &file_admin_remote_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiySignoutReportAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiySignoutReportAck) ProtoMessage() {}
+
+func (x *DiySignoutReportAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiySignoutReportAck.ProtoReflect.Descriptor instead.
+func (*DiySignoutReportAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *DiySignoutReportAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
+type DiyResultsReportReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	Results       []*DiyPlayerInfo       `protobuf:"bytes,4,rep,name=results,proto3" json:"results,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyResultsReportReq) Reset() {
+	*x = DiyResultsReportReq{}
+	mi := &file_admin_remote_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyResultsReportReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyResultsReportReq) ProtoMessage() {}
+
+func (x *DiyResultsReportReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyResultsReportReq.ProtoReflect.Descriptor instead.
+func (*DiyResultsReportReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *DiyResultsReportReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *DiyResultsReportReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiyResultsReportReq) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *DiyResultsReportReq) GetResults() []*DiyPlayerInfo {
+	if x != nil {
+		return x.Results
+	}
+	return nil
+}
+
+type DiyResultsReportAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyResultsReportAck) Reset() {
+	*x = DiyResultsReportAck{}
+	mi := &file_admin_remote_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyResultsReportAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyResultsReportAck) ProtoMessage() {}
+
+func (x *DiyResultsReportAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyResultsReportAck.ProtoReflect.Descriptor instead.
+func (*DiyResultsReportAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *DiyResultsReportAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
+type DiyStatusReportReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyStatusReportReq) Reset() {
+	*x = DiyStatusReportReq{}
+	mi := &file_admin_remote_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyStatusReportReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyStatusReportReq) ProtoMessage() {}
+
+func (x *DiyStatusReportReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyStatusReportReq.ProtoReflect.Descriptor instead.
+func (*DiyStatusReportReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *DiyStatusReportReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *DiyStatusReportReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiyStatusReportReq) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type DiyStatusReportAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyStatusReportAck) Reset() {
+	*x = DiyStatusReportAck{}
+	mi := &file_admin_remote_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyStatusReportAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyStatusReportAck) ProtoMessage() {}
+
+func (x *DiyStatusReportAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyStatusReportAck.ProtoReflect.Descriptor instead.
+func (*DiyStatusReportAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *DiyStatusReportAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -1956,7 +2457,42 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\rItemCfgGetReq\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\x05R\x06itemId\"5\n" +
 	"\rItemCfgGetAck\x12$\n" +
-	"\x03row\x18\x01 \x01(\v2\x12.sproto.ItemDefRowR\x03rowB\vZ\t../sprotob\x06proto3"
+	"\x03row\x18\x01 \x01(\v2\x12.sproto.ItemDefRowR\x03row\"q\n" +
+	"\rDiyPlayerInfo\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x14\n" +
+	"\x05score\x18\x02 \x01(\x03R\x05score\x12\x12\n" +
+	"\x04rank\x18\x03 \x01(\x05R\x04rank\x12$\n" +
+	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\"\x86\x01\n" +
+	"\x12DiySignupReportReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x10\n" +
+	"\x03uid\x18\x03 \x01(\tR\x03uid\x12$\n" +
+	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\"&\n" +
+	"\x12DiySignupReportAck\x12\x10\n" +
+	"\x03err\x18\x01 \x01(\tR\x03err\"a\n" +
+	"\x13DiySignoutReportReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x10\n" +
+	"\x03uid\x18\x03 \x01(\tR\x03uid\"'\n" +
+	"\x13DiySignoutReportAck\x12\x10\n" +
+	"\x03err\x18\x01 \x01(\tR\x03err\"\x98\x01\n" +
+	"\x13DiyResultsReportReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12/\n" +
+	"\aresults\x18\x04 \x03(\v2\x15.sproto.DiyPlayerInfoR\aresults\"'\n" +
+	"\x13DiyResultsReportAck\x12\x10\n" +
+	"\x03err\x18\x01 \x01(\tR\x03err\"f\n" +
+	"\x12DiyStatusReportReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\"&\n" +
+	"\x12DiyStatusReportAck\x12\x10\n" +
+	"\x03err\x18\x01 \x01(\tR\x03errB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once
@@ -1970,43 +2506,52 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 44)
 var file_admin_remote_proto_goTypes = []any{
-	(*MatchCfgVersionReq)(nil), // 0: sproto.MatchCfgVersionReq
-	(*MatchCfgVersionAck)(nil), // 1: sproto.MatchCfgVersionAck
-	(*MatchCfgRow)(nil),        // 2: sproto.MatchCfgRow
-	(*MatchCfgListReq)(nil),    // 3: sproto.MatchCfgListReq
-	(*MatchCfgListAck)(nil),    // 4: sproto.MatchCfgListAck
-	(*MatchCfgGetReq)(nil),     // 5: sproto.MatchCfgGetReq
-	(*MatchCfgGetAck)(nil),     // 6: sproto.MatchCfgGetAck
-	(*SignCfgVersionReq)(nil),  // 7: sproto.SignCfgVersionReq
-	(*SignCfgVersionAck)(nil),  // 8: sproto.SignCfgVersionAck
-	(*SignCfgRow)(nil),         // 9: sproto.SignCfgRow
-	(*SignCfgListReq)(nil),     // 10: sproto.SignCfgListReq
-	(*SignCfgListAck)(nil),     // 11: sproto.SignCfgListAck
-	(*SignCfgGetReq)(nil),      // 12: sproto.SignCfgGetReq
-	(*SignCfgGetAck)(nil),      // 13: sproto.SignCfgGetAck
-	(*BonusCfgVersionReq)(nil), // 14: sproto.BonusCfgVersionReq
-	(*BonusCfgVersionAck)(nil), // 15: sproto.BonusCfgVersionAck
-	(*BonusCfgRow)(nil),        // 16: sproto.BonusCfgRow
-	(*BonusCfgListReq)(nil),    // 17: sproto.BonusCfgListReq
-	(*BonusCfgListAck)(nil),    // 18: sproto.BonusCfgListAck
-	(*BonusCfgGetReq)(nil),     // 19: sproto.BonusCfgGetReq
-	(*BonusCfgGetAck)(nil),     // 20: sproto.BonusCfgGetAck
-	(*DecoCfgVersionReq)(nil),  // 21: sproto.DecoCfgVersionReq
-	(*DecoCfgVersionAck)(nil),  // 22: sproto.DecoCfgVersionAck
-	(*DecoCfgRow)(nil),         // 23: sproto.DecoCfgRow
-	(*DecoCfgListReq)(nil),     // 24: sproto.DecoCfgListReq
-	(*DecoCfgListAck)(nil),     // 25: sproto.DecoCfgListAck
-	(*DecoCfgGetReq)(nil),      // 26: sproto.DecoCfgGetReq
-	(*DecoCfgGetAck)(nil),      // 27: sproto.DecoCfgGetAck
-	(*ItemCfgVersionReq)(nil),  // 28: sproto.ItemCfgVersionReq
-	(*ItemCfgVersionAck)(nil),  // 29: sproto.ItemCfgVersionAck
-	(*ItemDefRow)(nil),         // 30: sproto.ItemDefRow
-	(*ItemCfgListReq)(nil),     // 31: sproto.ItemCfgListReq
-	(*ItemCfgListAck)(nil),     // 32: sproto.ItemCfgListAck
-	(*ItemCfgGetReq)(nil),      // 33: sproto.ItemCfgGetReq
-	(*ItemCfgGetAck)(nil),      // 34: sproto.ItemCfgGetAck
+	(*MatchCfgVersionReq)(nil),  // 0: sproto.MatchCfgVersionReq
+	(*MatchCfgVersionAck)(nil),  // 1: sproto.MatchCfgVersionAck
+	(*MatchCfgRow)(nil),         // 2: sproto.MatchCfgRow
+	(*MatchCfgListReq)(nil),     // 3: sproto.MatchCfgListReq
+	(*MatchCfgListAck)(nil),     // 4: sproto.MatchCfgListAck
+	(*MatchCfgGetReq)(nil),      // 5: sproto.MatchCfgGetReq
+	(*MatchCfgGetAck)(nil),      // 6: sproto.MatchCfgGetAck
+	(*SignCfgVersionReq)(nil),   // 7: sproto.SignCfgVersionReq
+	(*SignCfgVersionAck)(nil),   // 8: sproto.SignCfgVersionAck
+	(*SignCfgRow)(nil),          // 9: sproto.SignCfgRow
+	(*SignCfgListReq)(nil),      // 10: sproto.SignCfgListReq
+	(*SignCfgListAck)(nil),      // 11: sproto.SignCfgListAck
+	(*SignCfgGetReq)(nil),       // 12: sproto.SignCfgGetReq
+	(*SignCfgGetAck)(nil),       // 13: sproto.SignCfgGetAck
+	(*BonusCfgVersionReq)(nil),  // 14: sproto.BonusCfgVersionReq
+	(*BonusCfgVersionAck)(nil),  // 15: sproto.BonusCfgVersionAck
+	(*BonusCfgRow)(nil),         // 16: sproto.BonusCfgRow
+	(*BonusCfgListReq)(nil),     // 17: sproto.BonusCfgListReq
+	(*BonusCfgListAck)(nil),     // 18: sproto.BonusCfgListAck
+	(*BonusCfgGetReq)(nil),      // 19: sproto.BonusCfgGetReq
+	(*BonusCfgGetAck)(nil),      // 20: sproto.BonusCfgGetAck
+	(*DecoCfgVersionReq)(nil),   // 21: sproto.DecoCfgVersionReq
+	(*DecoCfgVersionAck)(nil),   // 22: sproto.DecoCfgVersionAck
+	(*DecoCfgRow)(nil),          // 23: sproto.DecoCfgRow
+	(*DecoCfgListReq)(nil),      // 24: sproto.DecoCfgListReq
+	(*DecoCfgListAck)(nil),      // 25: sproto.DecoCfgListAck
+	(*DecoCfgGetReq)(nil),       // 26: sproto.DecoCfgGetReq
+	(*DecoCfgGetAck)(nil),       // 27: sproto.DecoCfgGetAck
+	(*ItemCfgVersionReq)(nil),   // 28: sproto.ItemCfgVersionReq
+	(*ItemCfgVersionAck)(nil),   // 29: sproto.ItemCfgVersionAck
+	(*ItemDefRow)(nil),          // 30: sproto.ItemDefRow
+	(*ItemCfgListReq)(nil),      // 31: sproto.ItemCfgListReq
+	(*ItemCfgListAck)(nil),      // 32: sproto.ItemCfgListAck
+	(*ItemCfgGetReq)(nil),       // 33: sproto.ItemCfgGetReq
+	(*ItemCfgGetAck)(nil),       // 34: sproto.ItemCfgGetAck
+	(*DiyPlayerInfo)(nil),       // 35: sproto.DiyPlayerInfo
+	(*DiySignupReportReq)(nil),  // 36: sproto.DiySignupReportReq
+	(*DiySignupReportAck)(nil),  // 37: sproto.DiySignupReportAck
+	(*DiySignoutReportReq)(nil), // 38: sproto.DiySignoutReportReq
+	(*DiySignoutReportAck)(nil), // 39: sproto.DiySignoutReportAck
+	(*DiyResultsReportReq)(nil), // 40: sproto.DiyResultsReportReq
+	(*DiyResultsReportAck)(nil), // 41: sproto.DiyResultsReportAck
+	(*DiyStatusReportReq)(nil),  // 42: sproto.DiyStatusReportReq
+	(*DiyStatusReportAck)(nil),  // 43: sproto.DiyStatusReportAck
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -2019,11 +2564,12 @@ var file_admin_remote_proto_depIdxs = []int32{
 	23, // 7: sproto.DecoCfgGetAck.row:type_name -> sproto.DecoCfgRow
 	30, // 8: sproto.ItemCfgListAck.rows:type_name -> sproto.ItemDefRow
 	30, // 9: sproto.ItemCfgGetAck.row:type_name -> sproto.ItemDefRow
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	35, // 10: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_admin_remote_proto_init() }
@@ -2037,7 +2583,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   35,
+			NumMessages:   44,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
