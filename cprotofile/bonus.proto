@@ -13,13 +13,21 @@ message BonusAck {
   google.protobuf.Any ack = 1;
 }
 
+message BonusListReq {
+    string game_type = 1; //游戏类型
+}
+
+message BonusListAck {
+    repeated MatchBonusAck match_bonuses = 1; //比赛ID对应的奖励配置
+}
+
 message MatchBonusReq {
     int32 matchid = 1; //比赛ID（admin bonus_bind 解析到 bonus_id）
 }
 
 message MatchBonusAck {
-    int32 bonusid = 1; //奖励配置ID（YAML）
-    int32 matchid = 2; //比赛ID（由绑定填充）
+    int32 matchid = 1; //比赛ID
+    string game_type = 2; //游戏类型
     string bonus_type = 3; //奖励类型 rank-排名，fixed-定副，streak-连胜
     string desn = 4; //奖励描述
     map<int32,int64> win_bonus = 5; //胜利奖励

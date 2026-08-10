@@ -110,6 +110,94 @@ func (x *BonusAck) GetAck() *anypb.Any {
 	return nil
 }
 
+type BonusListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GameType      string                 `protobuf:"bytes,1,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"` //游戏类型
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusListReq) Reset() {
+	*x = BonusListReq{}
+	mi := &file_bonus_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusListReq) ProtoMessage() {}
+
+func (x *BonusListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_bonus_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusListReq.ProtoReflect.Descriptor instead.
+func (*BonusListReq) Descriptor() ([]byte, []int) {
+	return file_bonus_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *BonusListReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+type BonusListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchBonuses  []*MatchBonusAck       `protobuf:"bytes,1,rep,name=match_bonuses,json=matchBonuses,proto3" json:"match_bonuses,omitempty"` //比赛ID对应的奖励配置
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusListAck) Reset() {
+	*x = BonusListAck{}
+	mi := &file_bonus_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusListAck) ProtoMessage() {}
+
+func (x *BonusListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_bonus_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusListAck.ProtoReflect.Descriptor instead.
+func (*BonusListAck) Descriptor() ([]byte, []int) {
+	return file_bonus_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *BonusListAck) GetMatchBonuses() []*MatchBonusAck {
+	if x != nil {
+		return x.MatchBonuses
+	}
+	return nil
+}
+
 type MatchBonusReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"` //比赛ID（admin bonus_bind 解析到 bonus_id）
@@ -119,7 +207,7 @@ type MatchBonusReq struct {
 
 func (x *MatchBonusReq) Reset() {
 	*x = MatchBonusReq{}
-	mi := &file_bonus_proto_msgTypes[2]
+	mi := &file_bonus_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +219,7 @@ func (x *MatchBonusReq) String() string {
 func (*MatchBonusReq) ProtoMessage() {}
 
 func (x *MatchBonusReq) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_proto_msgTypes[2]
+	mi := &file_bonus_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +232,7 @@ func (x *MatchBonusReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchBonusReq.ProtoReflect.Descriptor instead.
 func (*MatchBonusReq) Descriptor() ([]byte, []int) {
-	return file_bonus_proto_rawDescGZIP(), []int{2}
+	return file_bonus_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MatchBonusReq) GetMatchid() int32 {
@@ -156,8 +244,8 @@ func (x *MatchBonusReq) GetMatchid() int32 {
 
 type MatchBonusAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Bonusid       int32                  `protobuf:"varint,1,opt,name=bonusid,proto3" json:"bonusid,omitempty"`                                                                                              //奖励配置ID（YAML）
-	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`                                                                                              //比赛ID（由绑定填充）
+	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`                                                                                              //比赛ID
+	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`                                                                             //游戏类型
 	BonusType     string                 `protobuf:"bytes,3,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                          //奖励类型 rank-排名，fixed-定副，streak-连胜
 	Desn          string                 `protobuf:"bytes,4,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                                     //奖励描述
 	WinBonus      map[int32]int64        `protobuf:"bytes,5,rep,name=win_bonus,json=winBonus,proto3" json:"win_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //胜利奖励
@@ -168,7 +256,7 @@ type MatchBonusAck struct {
 
 func (x *MatchBonusAck) Reset() {
 	*x = MatchBonusAck{}
-	mi := &file_bonus_proto_msgTypes[3]
+	mi := &file_bonus_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -180,7 +268,7 @@ func (x *MatchBonusAck) String() string {
 func (*MatchBonusAck) ProtoMessage() {}
 
 func (x *MatchBonusAck) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_proto_msgTypes[3]
+	mi := &file_bonus_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -193,14 +281,7 @@ func (x *MatchBonusAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MatchBonusAck.ProtoReflect.Descriptor instead.
 func (*MatchBonusAck) Descriptor() ([]byte, []int) {
-	return file_bonus_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *MatchBonusAck) GetBonusid() int32 {
-	if x != nil {
-		return x.Bonusid
-	}
-	return 0
+	return file_bonus_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *MatchBonusAck) GetMatchid() int32 {
@@ -208,6 +289,13 @@ func (x *MatchBonusAck) GetMatchid() int32 {
 		return x.Matchid
 	}
 	return 0
+}
+
+func (x *MatchBonusAck) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
 }
 
 func (x *MatchBonusAck) GetBonusType() string {
@@ -248,7 +336,7 @@ type Bonus struct {
 
 func (x *Bonus) Reset() {
 	*x = Bonus{}
-	mi := &file_bonus_proto_msgTypes[4]
+	mi := &file_bonus_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -260,7 +348,7 @@ func (x *Bonus) String() string {
 func (*Bonus) ProtoMessage() {}
 
 func (x *Bonus) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_proto_msgTypes[4]
+	mi := &file_bonus_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -273,7 +361,7 @@ func (x *Bonus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Bonus.ProtoReflect.Descriptor instead.
 func (*Bonus) Descriptor() ([]byte, []int) {
-	return file_bonus_proto_rawDescGZIP(), []int{4}
+	return file_bonus_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Bonus) GetCond() int32 {
@@ -298,12 +386,16 @@ const file_bonus_proto_rawDesc = "" +
 	"\bBonusReq\x12&\n" +
 	"\x03req\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03req\"2\n" +
 	"\bBonusAck\x12&\n" +
-	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\")\n" +
+	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"+\n" +
+	"\fBonusListReq\x12\x1b\n" +
+	"\tgame_type\x18\x01 \x01(\tR\bgameType\"J\n" +
+	"\fBonusListAck\x12:\n" +
+	"\rmatch_bonuses\x18\x01 \x03(\v2\x15.cproto.MatchBonusAckR\fmatchBonuses\")\n" +
 	"\rMatchBonusReq\x12\x18\n" +
-	"\amatchid\x18\x01 \x01(\x05R\amatchid\"\x9a\x02\n" +
+	"\amatchid\x18\x01 \x01(\x05R\amatchid\"\x9d\x02\n" +
 	"\rMatchBonusAck\x12\x18\n" +
-	"\abonusid\x18\x01 \x01(\x05R\abonusid\x12\x18\n" +
-	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1d\n" +
+	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x1b\n" +
+	"\tgame_type\x18\x02 \x01(\tR\bgameType\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x03 \x01(\tR\tbonusType\x12\x12\n" +
 	"\x04desn\x18\x04 \x01(\tR\x04desn\x12@\n" +
@@ -332,28 +424,31 @@ func file_bonus_proto_rawDescGZIP() []byte {
 	return file_bonus_proto_rawDescData
 }
 
-var file_bonus_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_bonus_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_bonus_proto_goTypes = []any{
 	(*BonusReq)(nil),      // 0: cproto.BonusReq
 	(*BonusAck)(nil),      // 1: cproto.BonusAck
-	(*MatchBonusReq)(nil), // 2: cproto.MatchBonusReq
-	(*MatchBonusAck)(nil), // 3: cproto.MatchBonusAck
-	(*Bonus)(nil),         // 4: cproto.Bonus
-	nil,                   // 5: cproto.MatchBonusAck.WinBonusEntry
-	nil,                   // 6: cproto.Bonus.BonusValsEntry
-	(*anypb.Any)(nil),     // 7: google.protobuf.Any
+	(*BonusListReq)(nil),  // 2: cproto.BonusListReq
+	(*BonusListAck)(nil),  // 3: cproto.BonusListAck
+	(*MatchBonusReq)(nil), // 4: cproto.MatchBonusReq
+	(*MatchBonusAck)(nil), // 5: cproto.MatchBonusAck
+	(*Bonus)(nil),         // 6: cproto.Bonus
+	nil,                   // 7: cproto.MatchBonusAck.WinBonusEntry
+	nil,                   // 8: cproto.Bonus.BonusValsEntry
+	(*anypb.Any)(nil),     // 9: google.protobuf.Any
 }
 var file_bonus_proto_depIdxs = []int32{
-	7, // 0: cproto.BonusReq.req:type_name -> google.protobuf.Any
-	7, // 1: cproto.BonusAck.ack:type_name -> google.protobuf.Any
-	5, // 2: cproto.MatchBonusAck.win_bonus:type_name -> cproto.MatchBonusAck.WinBonusEntry
-	4, // 3: cproto.MatchBonusAck.bonus:type_name -> cproto.Bonus
-	6, // 4: cproto.Bonus.bonus_vals:type_name -> cproto.Bonus.BonusValsEntry
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	9, // 0: cproto.BonusReq.req:type_name -> google.protobuf.Any
+	9, // 1: cproto.BonusAck.ack:type_name -> google.protobuf.Any
+	5, // 2: cproto.BonusListAck.match_bonuses:type_name -> cproto.MatchBonusAck
+	7, // 3: cproto.MatchBonusAck.win_bonus:type_name -> cproto.MatchBonusAck.WinBonusEntry
+	6, // 4: cproto.MatchBonusAck.bonus:type_name -> cproto.Bonus
+	8, // 5: cproto.Bonus.bonus_vals:type_name -> cproto.Bonus.BonusValsEntry
+	6, // [6:6] is the sub-list for method output_type
+	6, // [6:6] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_bonus_proto_init() }
@@ -367,7 +462,7 @@ func file_bonus_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_bonus_proto_rawDesc), len(file_bonus_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
