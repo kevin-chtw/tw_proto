@@ -14,11 +14,12 @@ message BonusAck {
 }
 
 message MatchBonusReq {
-    int32 bonusid = 1; //奖励配置ID
+    int32 matchid = 1; //比赛ID（admin bonus_bind 解析到 bonus_id）
 }
 
 message MatchBonusAck {
-    int32 bonusid = 1; //奖励配置ID
+    int32 bonusid = 1; //奖励配置ID（YAML）
+    int32 matchid = 2; //比赛ID（由绑定填充）
     string bonus_type = 3; //奖励类型 rank-排名，fixed-定副，streak-连胜
     string desn = 4; //奖励描述
     map<int32,int64> win_bonus = 5; //胜利奖励

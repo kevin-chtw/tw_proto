@@ -135,6 +135,37 @@ message BonusCfgGetAck {
   BonusCfgRow row = 1;
 }
 
+// BonusBind service (admin.bonusbind.*) — match_id → bonus_id
+message BonusBindVersionReq {
+  uint64 dummy = 1;
+}
+
+message BonusBindVersionAck {
+  uint64 version = 1;
+}
+
+message BonusBindRow {
+  int32 match_id = 1;
+  int32 bonus_id = 2;
+  string game_type = 3;
+}
+
+message BonusBindListReq {
+  string game_type = 1;
+}
+
+message BonusBindListAck {
+  repeated BonusBindRow rows = 1;
+}
+
+message BonusBindGetReq {
+  int32 match_id = 1;
+}
+
+message BonusBindGetAck {
+  BonusBindRow row = 1;
+}
+
 // DecoCfg service (admin.decocfg.*) messages.
 message DecoCfgVersionReq {
   uint64 dummy = 1;

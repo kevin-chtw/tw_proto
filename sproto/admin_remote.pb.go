@@ -1369,6 +1369,331 @@ func (x *BonusCfgGetAck) GetRow() *BonusCfgRow {
 	return nil
 }
 
+// BonusBind service (admin.bonusbind.*) — match_id → bonus_id
+type BonusBindVersionReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusBindVersionReq) Reset() {
+	*x = BonusBindVersionReq{}
+	mi := &file_admin_remote_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusBindVersionReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusBindVersionReq) ProtoMessage() {}
+
+func (x *BonusBindVersionReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusBindVersionReq.ProtoReflect.Descriptor instead.
+func (*BonusBindVersionReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *BonusBindVersionReq) GetDummy() uint64 {
+	if x != nil {
+		return x.Dummy
+	}
+	return 0
+}
+
+type BonusBindVersionAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Version       uint64                 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusBindVersionAck) Reset() {
+	*x = BonusBindVersionAck{}
+	mi := &file_admin_remote_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusBindVersionAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusBindVersionAck) ProtoMessage() {}
+
+func (x *BonusBindVersionAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusBindVersionAck.ProtoReflect.Descriptor instead.
+func (*BonusBindVersionAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *BonusBindVersionAck) GetVersion() uint64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type BonusBindRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	BonusId       int32                  `protobuf:"varint,2,opt,name=bonus_id,json=bonusId,proto3" json:"bonus_id,omitempty"`
+	GameType      string                 `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusBindRow) Reset() {
+	*x = BonusBindRow{}
+	mi := &file_admin_remote_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusBindRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusBindRow) ProtoMessage() {}
+
+func (x *BonusBindRow) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusBindRow.ProtoReflect.Descriptor instead.
+func (*BonusBindRow) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *BonusBindRow) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *BonusBindRow) GetBonusId() int32 {
+	if x != nil {
+		return x.BonusId
+	}
+	return 0
+}
+
+func (x *BonusBindRow) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+type BonusBindListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GameType      string                 `protobuf:"bytes,1,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusBindListReq) Reset() {
+	*x = BonusBindListReq{}
+	mi := &file_admin_remote_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusBindListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusBindListReq) ProtoMessage() {}
+
+func (x *BonusBindListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusBindListReq.ProtoReflect.Descriptor instead.
+func (*BonusBindListReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *BonusBindListReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+type BonusBindListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*BonusBindRow        `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusBindListAck) Reset() {
+	*x = BonusBindListAck{}
+	mi := &file_admin_remote_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusBindListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusBindListAck) ProtoMessage() {}
+
+func (x *BonusBindListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusBindListAck.ProtoReflect.Descriptor instead.
+func (*BonusBindListAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *BonusBindListAck) GetRows() []*BonusBindRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+type BonusBindGetReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusBindGetReq) Reset() {
+	*x = BonusBindGetReq{}
+	mi := &file_admin_remote_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusBindGetReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusBindGetReq) ProtoMessage() {}
+
+func (x *BonusBindGetReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusBindGetReq.ProtoReflect.Descriptor instead.
+func (*BonusBindGetReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *BonusBindGetReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+type BonusBindGetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Row           *BonusBindRow          `protobuf:"bytes,1,opt,name=row,proto3" json:"row,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusBindGetAck) Reset() {
+	*x = BonusBindGetAck{}
+	mi := &file_admin_remote_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusBindGetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusBindGetAck) ProtoMessage() {}
+
+func (x *BonusBindGetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusBindGetAck.ProtoReflect.Descriptor instead.
+func (*BonusBindGetAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *BonusBindGetAck) GetRow() *BonusBindRow {
+	if x != nil {
+		return x.Row
+	}
+	return nil
+}
+
 // DecoCfg service (admin.decocfg.*) messages.
 type DecoCfgVersionReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1379,7 +1704,7 @@ type DecoCfgVersionReq struct {
 
 func (x *DecoCfgVersionReq) Reset() {
 	*x = DecoCfgVersionReq{}
-	mi := &file_admin_remote_proto_msgTypes[28]
+	mi := &file_admin_remote_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1391,7 +1716,7 @@ func (x *DecoCfgVersionReq) String() string {
 func (*DecoCfgVersionReq) ProtoMessage() {}
 
 func (x *DecoCfgVersionReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[28]
+	mi := &file_admin_remote_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1404,7 +1729,7 @@ func (x *DecoCfgVersionReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecoCfgVersionReq.ProtoReflect.Descriptor instead.
 func (*DecoCfgVersionReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{28}
+	return file_admin_remote_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *DecoCfgVersionReq) GetDummy() uint64 {
@@ -1423,7 +1748,7 @@ type DecoCfgVersionAck struct {
 
 func (x *DecoCfgVersionAck) Reset() {
 	*x = DecoCfgVersionAck{}
-	mi := &file_admin_remote_proto_msgTypes[29]
+	mi := &file_admin_remote_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1435,7 +1760,7 @@ func (x *DecoCfgVersionAck) String() string {
 func (*DecoCfgVersionAck) ProtoMessage() {}
 
 func (x *DecoCfgVersionAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[29]
+	mi := &file_admin_remote_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1448,7 +1773,7 @@ func (x *DecoCfgVersionAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecoCfgVersionAck.ProtoReflect.Descriptor instead.
 func (*DecoCfgVersionAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{29}
+	return file_admin_remote_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *DecoCfgVersionAck) GetVersion() uint64 {
@@ -1478,7 +1803,7 @@ type DecoCfgRow struct {
 
 func (x *DecoCfgRow) Reset() {
 	*x = DecoCfgRow{}
-	mi := &file_admin_remote_proto_msgTypes[30]
+	mi := &file_admin_remote_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1490,7 +1815,7 @@ func (x *DecoCfgRow) String() string {
 func (*DecoCfgRow) ProtoMessage() {}
 
 func (x *DecoCfgRow) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[30]
+	mi := &file_admin_remote_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1503,7 +1828,7 @@ func (x *DecoCfgRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecoCfgRow.ProtoReflect.Descriptor instead.
 func (*DecoCfgRow) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{30}
+	return file_admin_remote_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *DecoCfgRow) GetDecoId() int32 {
@@ -1599,7 +1924,7 @@ type DecoCfgListReq struct {
 
 func (x *DecoCfgListReq) Reset() {
 	*x = DecoCfgListReq{}
-	mi := &file_admin_remote_proto_msgTypes[31]
+	mi := &file_admin_remote_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1611,7 +1936,7 @@ func (x *DecoCfgListReq) String() string {
 func (*DecoCfgListReq) ProtoMessage() {}
 
 func (x *DecoCfgListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[31]
+	mi := &file_admin_remote_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1624,7 +1949,7 @@ func (x *DecoCfgListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecoCfgListReq.ProtoReflect.Descriptor instead.
 func (*DecoCfgListReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{31}
+	return file_admin_remote_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *DecoCfgListReq) GetDummy() uint64 {
@@ -1643,7 +1968,7 @@ type DecoCfgListAck struct {
 
 func (x *DecoCfgListAck) Reset() {
 	*x = DecoCfgListAck{}
-	mi := &file_admin_remote_proto_msgTypes[32]
+	mi := &file_admin_remote_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1655,7 +1980,7 @@ func (x *DecoCfgListAck) String() string {
 func (*DecoCfgListAck) ProtoMessage() {}
 
 func (x *DecoCfgListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[32]
+	mi := &file_admin_remote_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1668,7 +1993,7 @@ func (x *DecoCfgListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecoCfgListAck.ProtoReflect.Descriptor instead.
 func (*DecoCfgListAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{32}
+	return file_admin_remote_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *DecoCfgListAck) GetRows() []*DecoCfgRow {
@@ -1688,7 +2013,7 @@ type DecoCfgGetReq struct {
 
 func (x *DecoCfgGetReq) Reset() {
 	*x = DecoCfgGetReq{}
-	mi := &file_admin_remote_proto_msgTypes[33]
+	mi := &file_admin_remote_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1700,7 +2025,7 @@ func (x *DecoCfgGetReq) String() string {
 func (*DecoCfgGetReq) ProtoMessage() {}
 
 func (x *DecoCfgGetReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[33]
+	mi := &file_admin_remote_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1713,7 +2038,7 @@ func (x *DecoCfgGetReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecoCfgGetReq.ProtoReflect.Descriptor instead.
 func (*DecoCfgGetReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{33}
+	return file_admin_remote_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *DecoCfgGetReq) GetDecoId() int32 {
@@ -1739,7 +2064,7 @@ type DecoCfgGetAck struct {
 
 func (x *DecoCfgGetAck) Reset() {
 	*x = DecoCfgGetAck{}
-	mi := &file_admin_remote_proto_msgTypes[34]
+	mi := &file_admin_remote_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1751,7 +2076,7 @@ func (x *DecoCfgGetAck) String() string {
 func (*DecoCfgGetAck) ProtoMessage() {}
 
 func (x *DecoCfgGetAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[34]
+	mi := &file_admin_remote_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1764,7 +2089,7 @@ func (x *DecoCfgGetAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecoCfgGetAck.ProtoReflect.Descriptor instead.
 func (*DecoCfgGetAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{34}
+	return file_admin_remote_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *DecoCfgGetAck) GetRow() *DecoCfgRow {
@@ -1784,7 +2109,7 @@ type ItemCfgVersionReq struct {
 
 func (x *ItemCfgVersionReq) Reset() {
 	*x = ItemCfgVersionReq{}
-	mi := &file_admin_remote_proto_msgTypes[35]
+	mi := &file_admin_remote_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1796,7 +2121,7 @@ func (x *ItemCfgVersionReq) String() string {
 func (*ItemCfgVersionReq) ProtoMessage() {}
 
 func (x *ItemCfgVersionReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[35]
+	mi := &file_admin_remote_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1809,7 +2134,7 @@ func (x *ItemCfgVersionReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemCfgVersionReq.ProtoReflect.Descriptor instead.
 func (*ItemCfgVersionReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{35}
+	return file_admin_remote_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *ItemCfgVersionReq) GetDummy() uint64 {
@@ -1828,7 +2153,7 @@ type ItemCfgVersionAck struct {
 
 func (x *ItemCfgVersionAck) Reset() {
 	*x = ItemCfgVersionAck{}
-	mi := &file_admin_remote_proto_msgTypes[36]
+	mi := &file_admin_remote_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1840,7 +2165,7 @@ func (x *ItemCfgVersionAck) String() string {
 func (*ItemCfgVersionAck) ProtoMessage() {}
 
 func (x *ItemCfgVersionAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[36]
+	mi := &file_admin_remote_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1853,7 +2178,7 @@ func (x *ItemCfgVersionAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemCfgVersionAck.ProtoReflect.Descriptor instead.
 func (*ItemCfgVersionAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{36}
+	return file_admin_remote_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *ItemCfgVersionAck) GetVersion() uint64 {
@@ -1882,7 +2207,7 @@ type ItemDefRow struct {
 
 func (x *ItemDefRow) Reset() {
 	*x = ItemDefRow{}
-	mi := &file_admin_remote_proto_msgTypes[37]
+	mi := &file_admin_remote_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1894,7 +2219,7 @@ func (x *ItemDefRow) String() string {
 func (*ItemDefRow) ProtoMessage() {}
 
 func (x *ItemDefRow) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[37]
+	mi := &file_admin_remote_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1907,7 +2232,7 @@ func (x *ItemDefRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemDefRow.ProtoReflect.Descriptor instead.
 func (*ItemDefRow) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{37}
+	return file_admin_remote_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *ItemDefRow) GetItemId() int32 {
@@ -1996,7 +2321,7 @@ type ItemCfgListReq struct {
 
 func (x *ItemCfgListReq) Reset() {
 	*x = ItemCfgListReq{}
-	mi := &file_admin_remote_proto_msgTypes[38]
+	mi := &file_admin_remote_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2008,7 +2333,7 @@ func (x *ItemCfgListReq) String() string {
 func (*ItemCfgListReq) ProtoMessage() {}
 
 func (x *ItemCfgListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[38]
+	mi := &file_admin_remote_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2021,7 +2346,7 @@ func (x *ItemCfgListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemCfgListReq.ProtoReflect.Descriptor instead.
 func (*ItemCfgListReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{38}
+	return file_admin_remote_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ItemCfgListReq) GetDummy() uint64 {
@@ -2040,7 +2365,7 @@ type ItemCfgListAck struct {
 
 func (x *ItemCfgListAck) Reset() {
 	*x = ItemCfgListAck{}
-	mi := &file_admin_remote_proto_msgTypes[39]
+	mi := &file_admin_remote_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2052,7 +2377,7 @@ func (x *ItemCfgListAck) String() string {
 func (*ItemCfgListAck) ProtoMessage() {}
 
 func (x *ItemCfgListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[39]
+	mi := &file_admin_remote_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2065,7 +2390,7 @@ func (x *ItemCfgListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemCfgListAck.ProtoReflect.Descriptor instead.
 func (*ItemCfgListAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{39}
+	return file_admin_remote_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *ItemCfgListAck) GetRows() []*ItemDefRow {
@@ -2084,7 +2409,7 @@ type ItemCfgGetReq struct {
 
 func (x *ItemCfgGetReq) Reset() {
 	*x = ItemCfgGetReq{}
-	mi := &file_admin_remote_proto_msgTypes[40]
+	mi := &file_admin_remote_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2096,7 +2421,7 @@ func (x *ItemCfgGetReq) String() string {
 func (*ItemCfgGetReq) ProtoMessage() {}
 
 func (x *ItemCfgGetReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[40]
+	mi := &file_admin_remote_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2109,7 +2434,7 @@ func (x *ItemCfgGetReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemCfgGetReq.ProtoReflect.Descriptor instead.
 func (*ItemCfgGetReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{40}
+	return file_admin_remote_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *ItemCfgGetReq) GetItemId() int32 {
@@ -2128,7 +2453,7 @@ type ItemCfgGetAck struct {
 
 func (x *ItemCfgGetAck) Reset() {
 	*x = ItemCfgGetAck{}
-	mi := &file_admin_remote_proto_msgTypes[41]
+	mi := &file_admin_remote_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2140,7 +2465,7 @@ func (x *ItemCfgGetAck) String() string {
 func (*ItemCfgGetAck) ProtoMessage() {}
 
 func (x *ItemCfgGetAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[41]
+	mi := &file_admin_remote_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2153,7 +2478,7 @@ func (x *ItemCfgGetAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemCfgGetAck.ProtoReflect.Descriptor instead.
 func (*ItemCfgGetAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{41}
+	return file_admin_remote_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *ItemCfgGetAck) GetRow() *ItemDefRow {
@@ -2176,7 +2501,7 @@ type DiyPlayerInfo struct {
 
 func (x *DiyPlayerInfo) Reset() {
 	*x = DiyPlayerInfo{}
-	mi := &file_admin_remote_proto_msgTypes[42]
+	mi := &file_admin_remote_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2188,7 +2513,7 @@ func (x *DiyPlayerInfo) String() string {
 func (*DiyPlayerInfo) ProtoMessage() {}
 
 func (x *DiyPlayerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[42]
+	mi := &file_admin_remote_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2201,7 +2526,7 @@ func (x *DiyPlayerInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyPlayerInfo.ProtoReflect.Descriptor instead.
 func (*DiyPlayerInfo) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{42}
+	return file_admin_remote_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *DiyPlayerInfo) GetUid() string {
@@ -2245,7 +2570,7 @@ type DiySignupReportReq struct {
 
 func (x *DiySignupReportReq) Reset() {
 	*x = DiySignupReportReq{}
-	mi := &file_admin_remote_proto_msgTypes[43]
+	mi := &file_admin_remote_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2257,7 +2582,7 @@ func (x *DiySignupReportReq) String() string {
 func (*DiySignupReportReq) ProtoMessage() {}
 
 func (x *DiySignupReportReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[43]
+	mi := &file_admin_remote_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2270,7 +2595,7 @@ func (x *DiySignupReportReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiySignupReportReq.ProtoReflect.Descriptor instead.
 func (*DiySignupReportReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{43}
+	return file_admin_remote_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *DiySignupReportReq) GetMatchId() int32 {
@@ -2317,7 +2642,7 @@ type DiySignupReportAck struct {
 
 func (x *DiySignupReportAck) Reset() {
 	*x = DiySignupReportAck{}
-	mi := &file_admin_remote_proto_msgTypes[44]
+	mi := &file_admin_remote_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2329,7 +2654,7 @@ func (x *DiySignupReportAck) String() string {
 func (*DiySignupReportAck) ProtoMessage() {}
 
 func (x *DiySignupReportAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[44]
+	mi := &file_admin_remote_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2342,7 +2667,7 @@ func (x *DiySignupReportAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiySignupReportAck.ProtoReflect.Descriptor instead.
 func (*DiySignupReportAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{44}
+	return file_admin_remote_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *DiySignupReportAck) GetErr() string {
@@ -2363,7 +2688,7 @@ type DiySignoutReportReq struct {
 
 func (x *DiySignoutReportReq) Reset() {
 	*x = DiySignoutReportReq{}
-	mi := &file_admin_remote_proto_msgTypes[45]
+	mi := &file_admin_remote_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2375,7 +2700,7 @@ func (x *DiySignoutReportReq) String() string {
 func (*DiySignoutReportReq) ProtoMessage() {}
 
 func (x *DiySignoutReportReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[45]
+	mi := &file_admin_remote_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2388,7 +2713,7 @@ func (x *DiySignoutReportReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiySignoutReportReq.ProtoReflect.Descriptor instead.
 func (*DiySignoutReportReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{45}
+	return file_admin_remote_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *DiySignoutReportReq) GetMatchId() int32 {
@@ -2421,7 +2746,7 @@ type DiySignoutReportAck struct {
 
 func (x *DiySignoutReportAck) Reset() {
 	*x = DiySignoutReportAck{}
-	mi := &file_admin_remote_proto_msgTypes[46]
+	mi := &file_admin_remote_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2433,7 +2758,7 @@ func (x *DiySignoutReportAck) String() string {
 func (*DiySignoutReportAck) ProtoMessage() {}
 
 func (x *DiySignoutReportAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[46]
+	mi := &file_admin_remote_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2446,7 +2771,7 @@ func (x *DiySignoutReportAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiySignoutReportAck.ProtoReflect.Descriptor instead.
 func (*DiySignoutReportAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{46}
+	return file_admin_remote_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *DiySignoutReportAck) GetErr() string {
@@ -2468,7 +2793,7 @@ type DiyResultsReportReq struct {
 
 func (x *DiyResultsReportReq) Reset() {
 	*x = DiyResultsReportReq{}
-	mi := &file_admin_remote_proto_msgTypes[47]
+	mi := &file_admin_remote_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2480,7 +2805,7 @@ func (x *DiyResultsReportReq) String() string {
 func (*DiyResultsReportReq) ProtoMessage() {}
 
 func (x *DiyResultsReportReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[47]
+	mi := &file_admin_remote_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2493,7 +2818,7 @@ func (x *DiyResultsReportReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyResultsReportReq.ProtoReflect.Descriptor instead.
 func (*DiyResultsReportReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{47}
+	return file_admin_remote_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *DiyResultsReportReq) GetMatchId() int32 {
@@ -2533,7 +2858,7 @@ type DiyResultsReportAck struct {
 
 func (x *DiyResultsReportAck) Reset() {
 	*x = DiyResultsReportAck{}
-	mi := &file_admin_remote_proto_msgTypes[48]
+	mi := &file_admin_remote_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2545,7 +2870,7 @@ func (x *DiyResultsReportAck) String() string {
 func (*DiyResultsReportAck) ProtoMessage() {}
 
 func (x *DiyResultsReportAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[48]
+	mi := &file_admin_remote_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2558,7 +2883,7 @@ func (x *DiyResultsReportAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyResultsReportAck.ProtoReflect.Descriptor instead.
 func (*DiyResultsReportAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{48}
+	return file_admin_remote_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *DiyResultsReportAck) GetErr() string {
@@ -2579,7 +2904,7 @@ type DiyStatusReportReq struct {
 
 func (x *DiyStatusReportReq) Reset() {
 	*x = DiyStatusReportReq{}
-	mi := &file_admin_remote_proto_msgTypes[49]
+	mi := &file_admin_remote_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2591,7 +2916,7 @@ func (x *DiyStatusReportReq) String() string {
 func (*DiyStatusReportReq) ProtoMessage() {}
 
 func (x *DiyStatusReportReq) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[49]
+	mi := &file_admin_remote_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2604,7 +2929,7 @@ func (x *DiyStatusReportReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyStatusReportReq.ProtoReflect.Descriptor instead.
 func (*DiyStatusReportReq) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{49}
+	return file_admin_remote_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *DiyStatusReportReq) GetMatchId() int32 {
@@ -2637,7 +2962,7 @@ type DiyStatusReportAck struct {
 
 func (x *DiyStatusReportAck) Reset() {
 	*x = DiyStatusReportAck{}
-	mi := &file_admin_remote_proto_msgTypes[50]
+	mi := &file_admin_remote_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2649,7 +2974,7 @@ func (x *DiyStatusReportAck) String() string {
 func (*DiyStatusReportAck) ProtoMessage() {}
 
 func (x *DiyStatusReportAck) ProtoReflect() protoreflect.Message {
-	mi := &file_admin_remote_proto_msgTypes[50]
+	mi := &file_admin_remote_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2662,7 +2987,7 @@ func (x *DiyStatusReportAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyStatusReportAck.ProtoReflect.Descriptor instead.
 func (*DiyStatusReportAck) Descriptor() ([]byte, []int) {
-	return file_admin_remote_proto_rawDescGZIP(), []int{50}
+	return file_admin_remote_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *DiyStatusReportAck) GetErr() string {
@@ -2751,7 +3076,23 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x0eBonusCfgGetReq\x12\x19\n" +
 	"\bbonus_id\x18\x01 \x01(\x05R\abonusId\"7\n" +
 	"\x0eBonusCfgGetAck\x12%\n" +
-	"\x03row\x18\x01 \x01(\v2\x13.sproto.BonusCfgRowR\x03row\")\n" +
+	"\x03row\x18\x01 \x01(\v2\x13.sproto.BonusCfgRowR\x03row\"+\n" +
+	"\x13BonusBindVersionReq\x12\x14\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"/\n" +
+	"\x13BonusBindVersionAck\x12\x18\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"a\n" +
+	"\fBonusBindRow\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x19\n" +
+	"\bbonus_id\x18\x02 \x01(\x05R\abonusId\x12\x1b\n" +
+	"\tgame_type\x18\x03 \x01(\tR\bgameType\"/\n" +
+	"\x10BonusBindListReq\x12\x1b\n" +
+	"\tgame_type\x18\x01 \x01(\tR\bgameType\"<\n" +
+	"\x10BonusBindListAck\x12(\n" +
+	"\x04rows\x18\x01 \x03(\v2\x14.sproto.BonusBindRowR\x04rows\",\n" +
+	"\x0fBonusBindGetReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\"9\n" +
+	"\x0fBonusBindGetAck\x12&\n" +
+	"\x03row\x18\x01 \x01(\v2\x14.sproto.BonusBindRowR\x03row\")\n" +
 	"\x11DecoCfgVersionReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"-\n" +
 	"\x11DecoCfgVersionAck\x12\x18\n" +
@@ -2856,7 +3197,7 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 58)
 var file_admin_remote_proto_goTypes = []any{
 	(*MatchCfgVersionReq)(nil),  // 0: sproto.MatchCfgVersionReq
 	(*MatchCfgVersionAck)(nil),  // 1: sproto.MatchCfgVersionAck
@@ -2886,29 +3227,36 @@ var file_admin_remote_proto_goTypes = []any{
 	(*BonusCfgListAck)(nil),     // 25: sproto.BonusCfgListAck
 	(*BonusCfgGetReq)(nil),      // 26: sproto.BonusCfgGetReq
 	(*BonusCfgGetAck)(nil),      // 27: sproto.BonusCfgGetAck
-	(*DecoCfgVersionReq)(nil),   // 28: sproto.DecoCfgVersionReq
-	(*DecoCfgVersionAck)(nil),   // 29: sproto.DecoCfgVersionAck
-	(*DecoCfgRow)(nil),          // 30: sproto.DecoCfgRow
-	(*DecoCfgListReq)(nil),      // 31: sproto.DecoCfgListReq
-	(*DecoCfgListAck)(nil),      // 32: sproto.DecoCfgListAck
-	(*DecoCfgGetReq)(nil),       // 33: sproto.DecoCfgGetReq
-	(*DecoCfgGetAck)(nil),       // 34: sproto.DecoCfgGetAck
-	(*ItemCfgVersionReq)(nil),   // 35: sproto.ItemCfgVersionReq
-	(*ItemCfgVersionAck)(nil),   // 36: sproto.ItemCfgVersionAck
-	(*ItemDefRow)(nil),          // 37: sproto.ItemDefRow
-	(*ItemCfgListReq)(nil),      // 38: sproto.ItemCfgListReq
-	(*ItemCfgListAck)(nil),      // 39: sproto.ItemCfgListAck
-	(*ItemCfgGetReq)(nil),       // 40: sproto.ItemCfgGetReq
-	(*ItemCfgGetAck)(nil),       // 41: sproto.ItemCfgGetAck
-	(*DiyPlayerInfo)(nil),       // 42: sproto.DiyPlayerInfo
-	(*DiySignupReportReq)(nil),  // 43: sproto.DiySignupReportReq
-	(*DiySignupReportAck)(nil),  // 44: sproto.DiySignupReportAck
-	(*DiySignoutReportReq)(nil), // 45: sproto.DiySignoutReportReq
-	(*DiySignoutReportAck)(nil), // 46: sproto.DiySignoutReportAck
-	(*DiyResultsReportReq)(nil), // 47: sproto.DiyResultsReportReq
-	(*DiyResultsReportAck)(nil), // 48: sproto.DiyResultsReportAck
-	(*DiyStatusReportReq)(nil),  // 49: sproto.DiyStatusReportReq
-	(*DiyStatusReportAck)(nil),  // 50: sproto.DiyStatusReportAck
+	(*BonusBindVersionReq)(nil), // 28: sproto.BonusBindVersionReq
+	(*BonusBindVersionAck)(nil), // 29: sproto.BonusBindVersionAck
+	(*BonusBindRow)(nil),        // 30: sproto.BonusBindRow
+	(*BonusBindListReq)(nil),    // 31: sproto.BonusBindListReq
+	(*BonusBindListAck)(nil),    // 32: sproto.BonusBindListAck
+	(*BonusBindGetReq)(nil),     // 33: sproto.BonusBindGetReq
+	(*BonusBindGetAck)(nil),     // 34: sproto.BonusBindGetAck
+	(*DecoCfgVersionReq)(nil),   // 35: sproto.DecoCfgVersionReq
+	(*DecoCfgVersionAck)(nil),   // 36: sproto.DecoCfgVersionAck
+	(*DecoCfgRow)(nil),          // 37: sproto.DecoCfgRow
+	(*DecoCfgListReq)(nil),      // 38: sproto.DecoCfgListReq
+	(*DecoCfgListAck)(nil),      // 39: sproto.DecoCfgListAck
+	(*DecoCfgGetReq)(nil),       // 40: sproto.DecoCfgGetReq
+	(*DecoCfgGetAck)(nil),       // 41: sproto.DecoCfgGetAck
+	(*ItemCfgVersionReq)(nil),   // 42: sproto.ItemCfgVersionReq
+	(*ItemCfgVersionAck)(nil),   // 43: sproto.ItemCfgVersionAck
+	(*ItemDefRow)(nil),          // 44: sproto.ItemDefRow
+	(*ItemCfgListReq)(nil),      // 45: sproto.ItemCfgListReq
+	(*ItemCfgListAck)(nil),      // 46: sproto.ItemCfgListAck
+	(*ItemCfgGetReq)(nil),       // 47: sproto.ItemCfgGetReq
+	(*ItemCfgGetAck)(nil),       // 48: sproto.ItemCfgGetAck
+	(*DiyPlayerInfo)(nil),       // 49: sproto.DiyPlayerInfo
+	(*DiySignupReportReq)(nil),  // 50: sproto.DiySignupReportReq
+	(*DiySignupReportAck)(nil),  // 51: sproto.DiySignupReportAck
+	(*DiySignoutReportReq)(nil), // 52: sproto.DiySignoutReportReq
+	(*DiySignoutReportAck)(nil), // 53: sproto.DiySignoutReportAck
+	(*DiyResultsReportReq)(nil), // 54: sproto.DiyResultsReportReq
+	(*DiyResultsReportAck)(nil), // 55: sproto.DiyResultsReportAck
+	(*DiyStatusReportReq)(nil),  // 56: sproto.DiyStatusReportReq
+	(*DiyStatusReportAck)(nil),  // 57: sproto.DiyStatusReportAck
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -2919,16 +3267,18 @@ var file_admin_remote_proto_depIdxs = []int32{
 	16, // 5: sproto.SignBindGetAck.row:type_name -> sproto.SignBindRow
 	23, // 6: sproto.BonusCfgListAck.rows:type_name -> sproto.BonusCfgRow
 	23, // 7: sproto.BonusCfgGetAck.row:type_name -> sproto.BonusCfgRow
-	30, // 8: sproto.DecoCfgListAck.rows:type_name -> sproto.DecoCfgRow
-	30, // 9: sproto.DecoCfgGetAck.row:type_name -> sproto.DecoCfgRow
-	37, // 10: sproto.ItemCfgListAck.rows:type_name -> sproto.ItemDefRow
-	37, // 11: sproto.ItemCfgGetAck.row:type_name -> sproto.ItemDefRow
-	42, // 12: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
-	13, // [13:13] is the sub-list for method output_type
-	13, // [13:13] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	30, // 8: sproto.BonusBindListAck.rows:type_name -> sproto.BonusBindRow
+	30, // 9: sproto.BonusBindGetAck.row:type_name -> sproto.BonusBindRow
+	37, // 10: sproto.DecoCfgListAck.rows:type_name -> sproto.DecoCfgRow
+	37, // 11: sproto.DecoCfgGetAck.row:type_name -> sproto.DecoCfgRow
+	44, // 12: sproto.ItemCfgListAck.rows:type_name -> sproto.ItemDefRow
+	44, // 13: sproto.ItemCfgGetAck.row:type_name -> sproto.ItemDefRow
+	49, // 14: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
+	15, // [15:15] is the sub-list for method output_type
+	15, // [15:15] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_admin_remote_proto_init() }
@@ -2942,7 +3292,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   51,
+			NumMessages:   58,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
