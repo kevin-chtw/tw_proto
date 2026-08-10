@@ -47,11 +47,11 @@ message SignCfgVersionReq {
 }
 
 message SignCfgVersionAck {
-  uint64 version = 1; // max(version) within sign_cfg scope
+  uint64 version = 1; // max(id) across sign_cfg / history / sign_bind
 }
 
 message SignCfgRow {
-  int32 match_id = 1;
+  int32 sign_id = 1;
   string content = 2; // YAML
   uint64 version = 3;
 }
@@ -65,14 +65,45 @@ message SignCfgListAck {
 }
 
 message SignCfgGetReq {
-  int32 match_id = 1;
+  int32 sign_id = 1;
 }
 
 message SignCfgGetAck {
   SignCfgRow row = 1;
 }
 
-// BonusCfg service (admin.bonuscfg.*) — 数据存 match_cfg.server_type = bonus
+// SignBind service (admin.signbind.*) — match_id → sign_id
+message SignBindVersionReq {
+  uint64 dummy = 1;
+}
+
+message SignBindVersionAck {
+  uint64 version = 1;
+}
+
+message SignBindRow {
+  int32 match_id = 1;
+  int32 sign_id = 2;
+  string game_type = 3;
+}
+
+message SignBindListReq {
+  string game_type = 1; // optional filter
+}
+
+message SignBindListAck {
+  repeated SignBindRow rows = 1;
+}
+
+message SignBindGetReq {
+  int32 match_id = 1;
+}
+
+message SignBindGetAck {
+  SignBindRow row = 1;
+}
+
+// BonusCfg service (admin.bonuscfg.*) — 独立表 bonus_cfg*
 message BonusCfgVersionReq {
   uint64 dummy = 1;
 }
@@ -82,7 +113,7 @@ message BonusCfgVersionAck {
 }
 
 message BonusCfgRow {
-  int32 match_id = 1;
+  int32 bonus_id = 1;
   string name = 2;
   string content = 3; // YAML
   uint64 version = 4;
@@ -97,7 +128,7 @@ message BonusCfgListAck {
 }
 
 message BonusCfgGetReq {
-  int32 match_id = 1;
+  int32 bonus_id = 1;
 }
 
 message BonusCfgGetAck {

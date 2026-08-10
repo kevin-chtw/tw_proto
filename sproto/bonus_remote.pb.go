@@ -24,7 +24,7 @@ const (
 type BonusReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                            // 用户ID
-	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`                   //比赛ID
+	Bonusid       int32                  `protobuf:"varint,2,opt,name=bonusid,proto3" json:"bonusid,omitempty"`                   //奖励配置ID
 	WinScore      int64                  `protobuf:"varint,3,opt,name=win_score,json=winScore,proto3" json:"win_score,omitempty"` //赢分
 	Rank          int32                  `protobuf:"varint,4,opt,name=rank,proto3" json:"rank,omitempty"`                         //排名
 	unknownFields protoimpl.UnknownFields
@@ -68,9 +68,9 @@ func (x *BonusReq) GetUid() string {
 	return ""
 }
 
-func (x *BonusReq) GetMatchid() int32 {
+func (x *BonusReq) GetBonusid() int32 {
 	if x != nil {
-		return x.Matchid
+		return x.Bonusid
 	}
 	return 0
 }
@@ -172,7 +172,7 @@ const file_bonus_remote_proto_rawDesc = "" +
 	"\x12bonus_remote.proto\x12\x06sproto\"g\n" +
 	"\bBonusReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
-	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1b\n" +
+	"\abonusid\x18\x02 \x01(\x05R\abonusid\x12\x1b\n" +
 	"\twin_score\x18\x03 \x01(\x03R\bwinScore\x12\x12\n" +
 	"\x04rank\x18\x04 \x01(\x05R\x04rank\"\xc5\x02\n" +
 	"\bBonusAck\x12\x1d\n" +

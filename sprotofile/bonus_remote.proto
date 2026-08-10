@@ -5,7 +5,7 @@ option go_package = "../sproto";
 
 message BonusReq {
   string uid = 1;// 用户ID
-  int32 matchid = 2; //比赛ID
+  int32 bonusid = 2; //奖励配置ID
   int64 win_score = 3; //赢分
   int32 rank = 4; //排名
 }
