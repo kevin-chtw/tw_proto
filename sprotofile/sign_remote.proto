@@ -12,3 +12,7 @@ message SignReq {
 message SignAck {
   int64 carry_max = 1; //报名时实际可携带分上限
 }
+
+// Admin 通知 sign 全量重载 cfg + bind
+message SignReloadReq {}
+message SignReloadAck {}

@@ -17,3 +17,7 @@ message BonusAck {
   int32 next_cond = 4; //下一奖励条件
   map<int32,int64> next_bonus = 5; //下一级奖金详情
 }
+
+// Admin 通知 bonus 全量重载 cfg + bind
+message BonusReloadReq {}
+message BonusReloadAck {}

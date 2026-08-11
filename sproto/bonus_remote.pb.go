@@ -165,6 +165,79 @@ func (x *BonusAck) GetNextBonus() map[int32]int64 {
 	return nil
 }
 
+// Admin 通知 bonus 全量重载 cfg + bind
+type BonusReloadReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusReloadReq) Reset() {
+	*x = BonusReloadReq{}
+	mi := &file_bonus_remote_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusReloadReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusReloadReq) ProtoMessage() {}
+
+func (x *BonusReloadReq) ProtoReflect() protoreflect.Message {
+	mi := &file_bonus_remote_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusReloadReq.ProtoReflect.Descriptor instead.
+func (*BonusReloadReq) Descriptor() ([]byte, []int) {
+	return file_bonus_remote_proto_rawDescGZIP(), []int{2}
+}
+
+type BonusReloadAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusReloadAck) Reset() {
+	*x = BonusReloadAck{}
+	mi := &file_bonus_remote_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusReloadAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusReloadAck) ProtoMessage() {}
+
+func (x *BonusReloadAck) ProtoReflect() protoreflect.Message {
+	mi := &file_bonus_remote_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusReloadAck.ProtoReflect.Descriptor instead.
+func (*BonusReloadAck) Descriptor() ([]byte, []int) {
+	return file_bonus_remote_proto_rawDescGZIP(), []int{3}
+}
+
 var File_bonus_remote_proto protoreflect.FileDescriptor
 
 const file_bonus_remote_proto_rawDesc = "" +
@@ -189,7 +262,9 @@ const file_bonus_remote_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a<\n" +
 	"\x0eNextBonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../sprotob\x06proto3"
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x10\n" +
+	"\x0eBonusReloadReq\"\x10\n" +
+	"\x0eBonusReloadAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_bonus_remote_proto_rawDescOnce sync.Once
@@ -203,16 +278,18 @@ func file_bonus_remote_proto_rawDescGZIP() []byte {
 	return file_bonus_remote_proto_rawDescData
 }
 
-var file_bonus_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_bonus_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_bonus_remote_proto_goTypes = []any{
-	(*BonusReq)(nil), // 0: sproto.BonusReq
-	(*BonusAck)(nil), // 1: sproto.BonusAck
-	nil,              // 2: sproto.BonusAck.BonusEntry
-	nil,              // 3: sproto.BonusAck.NextBonusEntry
+	(*BonusReq)(nil),       // 0: sproto.BonusReq
+	(*BonusAck)(nil),       // 1: sproto.BonusAck
+	(*BonusReloadReq)(nil), // 2: sproto.BonusReloadReq
+	(*BonusReloadAck)(nil), // 3: sproto.BonusReloadAck
+	nil,                    // 4: sproto.BonusAck.BonusEntry
+	nil,                    // 5: sproto.BonusAck.NextBonusEntry
 }
 var file_bonus_remote_proto_depIdxs = []int32{
-	2, // 0: sproto.BonusAck.bonus:type_name -> sproto.BonusAck.BonusEntry
-	3, // 1: sproto.BonusAck.next_bonus:type_name -> sproto.BonusAck.NextBonusEntry
+	4, // 0: sproto.BonusAck.bonus:type_name -> sproto.BonusAck.BonusEntry
+	5, // 1: sproto.BonusAck.next_bonus:type_name -> sproto.BonusAck.NextBonusEntry
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -231,7 +308,7 @@ func file_bonus_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_bonus_remote_proto_rawDesc), len(file_bonus_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

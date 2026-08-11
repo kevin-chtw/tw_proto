@@ -125,6 +125,79 @@ func (x *SignAck) GetCarryMax() int64 {
 	return 0
 }
 
+// Admin 通知 sign 全量重载 cfg + bind
+type SignReloadReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignReloadReq) Reset() {
+	*x = SignReloadReq{}
+	mi := &file_sign_remote_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignReloadReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignReloadReq) ProtoMessage() {}
+
+func (x *SignReloadReq) ProtoReflect() protoreflect.Message {
+	mi := &file_sign_remote_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignReloadReq.ProtoReflect.Descriptor instead.
+func (*SignReloadReq) Descriptor() ([]byte, []int) {
+	return file_sign_remote_proto_rawDescGZIP(), []int{2}
+}
+
+type SignReloadAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignReloadAck) Reset() {
+	*x = SignReloadAck{}
+	mi := &file_sign_remote_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignReloadAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignReloadAck) ProtoMessage() {}
+
+func (x *SignReloadAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sign_remote_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignReloadAck.ProtoReflect.Descriptor instead.
+func (*SignReloadAck) Descriptor() ([]byte, []int) {
+	return file_sign_remote_proto_rawDescGZIP(), []int{3}
+}
+
 var File_sign_remote_proto protoreflect.FileDescriptor
 
 const file_sign_remote_proto_rawDesc = "" +
@@ -136,7 +209,9 @@ const file_sign_remote_proto_rawDesc = "" +
 	"\n" +
 	"cond_index\x18\x03 \x01(\x05R\tcondIndex\"&\n" +
 	"\aSignAck\x12\x1b\n" +
-	"\tcarry_max\x18\x01 \x01(\x03R\bcarryMaxB\vZ\t../sprotob\x06proto3"
+	"\tcarry_max\x18\x01 \x01(\x03R\bcarryMax\"\x0f\n" +
+	"\rSignReloadReq\"\x0f\n" +
+	"\rSignReloadAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_sign_remote_proto_rawDescOnce sync.Once
@@ -150,10 +225,12 @@ func file_sign_remote_proto_rawDescGZIP() []byte {
 	return file_sign_remote_proto_rawDescData
 }
 
-var file_sign_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_sign_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_sign_remote_proto_goTypes = []any{
-	(*SignReq)(nil), // 0: sproto.SignReq
-	(*SignAck)(nil), // 1: sproto.SignAck
+	(*SignReq)(nil),       // 0: sproto.SignReq
+	(*SignAck)(nil),       // 1: sproto.SignAck
+	(*SignReloadReq)(nil), // 2: sproto.SignReloadReq
+	(*SignReloadAck)(nil), // 3: sproto.SignReloadAck
 }
 var file_sign_remote_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -174,7 +251,7 @@ func file_sign_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sign_remote_proto_rawDesc), len(file_sign_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
