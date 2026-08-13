@@ -394,6 +394,79 @@ func (x *FDPutTableidReq) GetTableid() int32 {
 	return 0
 }
 
+// Admin 通知 tourney 重载定点赛展示信息（format_desc / 开赛时间）
+type TourneyReloadReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TourneyReloadReq) Reset() {
+	*x = TourneyReloadReq{}
+	mi := &file_tourney_remote_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TourneyReloadReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TourneyReloadReq) ProtoMessage() {}
+
+func (x *TourneyReloadReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TourneyReloadReq.ProtoReflect.Descriptor instead.
+func (*TourneyReloadReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{7}
+}
+
+type TourneyReloadAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TourneyReloadAck) Reset() {
+	*x = TourneyReloadAck{}
+	mi := &file_tourney_remote_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TourneyReloadAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TourneyReloadAck) ProtoMessage() {}
+
+func (x *TourneyReloadAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TourneyReloadAck.ProtoReflect.Descriptor instead.
+func (*TourneyReloadAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{8}
+}
+
 var File_tourney_remote_proto protoreflect.FileDescriptor
 
 const file_tourney_remote_proto_rawDesc = "" +
@@ -424,7 +497,9 @@ const file_tourney_remote_proto_rawDesc = "" +
 	"\x10FDTakeTableidAck\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\"+\n" +
 	"\x0fFDPutTableidReq\x12\x18\n" +
-	"\atableid\x18\x01 \x01(\x05R\atableidB\vZ\t../sprotob\x06proto3"
+	"\atableid\x18\x01 \x01(\x05R\atableid\"\x12\n" +
+	"\x10TourneyReloadReq\"\x12\n" +
+	"\x10TourneyReloadAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_tourney_remote_proto_rawDescOnce sync.Once
@@ -438,7 +513,7 @@ func file_tourney_remote_proto_rawDescGZIP() []byte {
 	return file_tourney_remote_proto_rawDescData
 }
 
-var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_tourney_remote_proto_goTypes = []any{
 	(*TourneyReq)(nil),       // 0: sproto.TourneyReq
 	(*TourneyAck)(nil),       // 1: sproto.TourneyAck
@@ -447,11 +522,13 @@ var file_tourney_remote_proto_goTypes = []any{
 	(*FDTakeTableidReq)(nil), // 4: sproto.FDTakeTableidReq
 	(*FDTakeTableidAck)(nil), // 5: sproto.FDTakeTableidAck
 	(*FDPutTableidReq)(nil),  // 6: sproto.FDPutTableidReq
-	(*anypb.Any)(nil),        // 7: google.protobuf.Any
+	(*TourneyReloadReq)(nil), // 7: sproto.TourneyReloadReq
+	(*TourneyReloadAck)(nil), // 8: sproto.TourneyReloadAck
+	(*anypb.Any)(nil),        // 9: google.protobuf.Any
 }
 var file_tourney_remote_proto_depIdxs = []int32{
-	7, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
-	7, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
+	9, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
+	9, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
 	3, // 2: sproto.TourneyUpdateReq.infos:type_name -> sproto.TourneyInfo
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
@@ -471,7 +548,7 @@ func file_tourney_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tourney_remote_proto_rawDesc), len(file_tourney_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

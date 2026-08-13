@@ -40,3 +40,7 @@ message FDTakeTableidAck {
 message FDPutTableidReq {
   int32 tableid = 1; //房间ID
 }
+
+// Admin 通知 tourney 重载定点赛展示信息（format_desc / 开赛时间）
+message TourneyReloadReq {}
+message TourneyReloadAck {}
