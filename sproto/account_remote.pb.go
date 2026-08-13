@@ -266,6 +266,7 @@ type PlayerInfoAck struct {
 	Items         map[int32]int64        `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`       //玩家物品
 	Equipped      map[int32]int32        `protobuf:"bytes,5,rep,name=equipped,proto3" json:"equipped,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
 	LiveAi        bool                   `protobuf:"varint,6,opt,name=live_ai,json=liveAi,proto3" json:"live_ai,omitempty"`                                                                  // 直播 AI 号：进桌挂 bot_driver，客户端纯播放
+	City          string                 `protobuf:"bytes,7,opt,name=city,proto3" json:"city,omitempty"`                                                                                     // 展示城市
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -340,6 +341,13 @@ func (x *PlayerInfoAck) GetLiveAi() bool {
 		return x.LiveAi
 	}
 	return false
+}
+
+func (x *PlayerInfoAck) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
 }
 
 type ChangeItemsReq struct {
@@ -1887,14 +1895,15 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\aexpired\x18\x02 \x01(\x03R\aexpired\"!\n" +
 	"\rPlayerInfoReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xde\x02\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"\xf2\x02\n" +
 	"\rPlayerInfoAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
 	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x126\n" +
 	"\x05items\x18\x04 \x03(\v2 .sproto.PlayerInfoAck.ItemsEntryR\x05items\x12?\n" +
 	"\bequipped\x18\x05 \x03(\v2#.sproto.PlayerInfoAck.EquippedEntryR\bequipped\x12\x17\n" +
-	"\alive_ai\x18\x06 \x01(\bR\x06liveAi\x1a8\n" +
+	"\alive_ai\x18\x06 \x01(\bR\x06liveAi\x12\x12\n" +
+	"\x04city\x18\a \x01(\tR\x04city\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +

@@ -7,13 +7,12 @@
 package sproto
 
 import (
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
-
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	anypb "google.golang.org/protobuf/types/known/anypb"
+	reflect "reflect"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -261,6 +260,7 @@ type AddPlayerReq struct {
 	Equipped      map[int32]int32        `protobuf:"bytes,14,rep,name=equipped,proto3" json:"equipped,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
 	BotDriver     bool                   `protobuf:"varint,15,opt,name=bot_driver,json=botDriver,proto3" json:"bot_driver,omitempty"`                                                         // 真人座位由服务端 bot 代打，Ack 同时推给客户端（纯播放）
 	Channel       string                 `protobuf:"bytes,16,opt,name=channel,proto3" json:"channel,omitempty"`                                                                               // 登录渠道快照（握手原值）
+	City          string                 `protobuf:"bytes,17,opt,name=city,proto3" json:"city,omitempty"`                                                                                     // 展示城市
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -403,6 +403,13 @@ func (x *AddPlayerReq) GetBotDriver() bool {
 func (x *AddPlayerReq) GetChannel() string {
 	if x != nil {
 		return x.Channel
+	}
+	return ""
+}
+
+func (x *AddPlayerReq) GetCity() string {
+	if x != nil {
+		return x.City
 	}
 	return ""
 }
@@ -620,7 +627,7 @@ const file_game_remote_proto_rawDesc = "" +
 	"emote_conf\x18\b \x01(\fR\temoteConf\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xe2\x04\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xf6\x04\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x10\n" +
 	"\x03bot\x18\x02 \x01(\bR\x03bot\x12\x12\n" +
@@ -640,7 +647,8 @@ const file_game_remote_proto_rawDesc = "" +
 	"\bequipped\x18\x0e \x03(\v2\".sproto.AddPlayerReq.EquippedEntryR\bequipped\x12\x1d\n" +
 	"\n" +
 	"bot_driver\x18\x0f \x01(\bR\tbotDriver\x12\x18\n" +
-	"\achannel\x18\x10 \x01(\tR\achannel\x1a8\n" +
+	"\achannel\x18\x10 \x01(\tR\achannel\x12\x12\n" +
+	"\x04city\x18\x11 \x01(\tR\x04city\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +

@@ -34,6 +34,7 @@ message PlayerInfoAck {
   map<int32, int64> items = 4; //玩家物品
   map<int32, int32> equipped = 5; // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
   bool live_ai = 6; // 直播 AI 号：进桌挂 bot_driver，客户端纯播放
+  string city = 7; // 展示城市
 }
 
 message ChangeItemsReq {

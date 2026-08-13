@@ -45,6 +45,7 @@ message AddPlayerReq {
   map<int32, int32> equipped = 14; // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
   bool bot_driver = 15; // 真人座位由服务端 bot 代打，Ack 同时推给客户端（纯播放）
   string channel = 16; // 登录渠道快照（握手原值）
+  string city = 17; // 展示城市
 }
 
 message CancelTableReq {

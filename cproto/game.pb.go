@@ -514,6 +514,7 @@ type TablePlayerAck struct {
 	Ready         bool                   `protobuf:"varint,5,opt,name=ready,proto3" json:"ready,omitempty"`                                                                                  // 是否准备
 	Items         map[int32]int64        `protobuf:"bytes,6,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`       //物品数量
 	Equipped      map[int32]int32        `protobuf:"bytes,7,rep,name=equipped,proto3" json:"equipped,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 当前穿戴(key=category 1~5, value=deco_id)
+	City          string                 `protobuf:"bytes,8,opt,name=city,proto3" json:"city,omitempty"`                                                                                     // 展示城市
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -595,6 +596,13 @@ func (x *TablePlayerAck) GetEquipped() map[int32]int32 {
 		return x.Equipped
 	}
 	return nil
+}
+
+func (x *TablePlayerAck) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
 }
 
 type TableMsgReq struct {
@@ -1109,7 +1117,7 @@ const file_game_proto_rawDesc = "" +
 	"\bEmoteAck\x12\x19\n" +
 	"\bemote_id\x18\x01 \x01(\x05R\aemoteId\x12\x1b\n" +
 	"\tfrom_seat\x18\x02 \x01(\x05R\bfromSeat\x12\x17\n" +
-	"\ato_seat\x18\x03 \x01(\x05R\x06toSeat\"\xf2\x02\n" +
+	"\ato_seat\x18\x03 \x01(\x05R\x06toSeat\"\x86\x03\n" +
 	"\x0eTablePlayerAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
@@ -1117,7 +1125,8 @@ const file_game_proto_rawDesc = "" +
 	"\x04seat\x18\x04 \x01(\x05R\x04seat\x12\x14\n" +
 	"\x05ready\x18\x05 \x01(\bR\x05ready\x127\n" +
 	"\x05items\x18\x06 \x03(\v2!.cproto.TablePlayerAck.ItemsEntryR\x05items\x12@\n" +
-	"\bequipped\x18\a \x03(\v2$.cproto.TablePlayerAck.EquippedEntryR\bequipped\x1a8\n" +
+	"\bequipped\x18\a \x03(\v2$.cproto.TablePlayerAck.EquippedEntryR\bequipped\x12\x12\n" +
+	"\x04city\x18\b \x01(\tR\x04city\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
