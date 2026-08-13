@@ -7,6 +7,7 @@ message SignReq {
   string uid = 1;// 用户ID
   int32 matchid = 2; //比赛ID
   int32 cond_index = 3; //条件索引
+  string channel = 4; // 登录渠道快照（握手原值）
 }
 
 message SignAck {

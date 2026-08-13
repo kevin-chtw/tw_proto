@@ -25,6 +25,7 @@ type PayResultReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SessionId     uint64                 `protobuf:"varint,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	Success       bool                   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
+	Channel       string                 `protobuf:"bytes,3,opt,name=channel,proto3" json:"channel,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -73,6 +74,13 @@ func (x *PayResultReq) GetSuccess() bool {
 	return false
 }
 
+func (x *PayResultReq) GetChannel() string {
+	if x != nil {
+		return x.Channel
+	}
+	return ""
+}
+
 type PayResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -113,11 +121,12 @@ var File_pay_notify_proto protoreflect.FileDescriptor
 
 const file_pay_notify_proto_rawDesc = "" +
 	"\n" +
-	"\x10pay_notify.proto\x12\x06sproto\"G\n" +
+	"\x10pay_notify.proto\x12\x06sproto\"a\n" +
 	"\fPayResultReq\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\x04R\tsessionId\x12\x18\n" +
-	"\asuccess\x18\x02 \x01(\bR\asuccess\"\x0e\n" +
+	"\asuccess\x18\x02 \x01(\bR\asuccess\x12\x18\n" +
+	"\achannel\x18\x03 \x01(\tR\achannel\"\x0e\n" +
 	"\fPayResultAckB\vZ\t../sprotob\x06proto3"
 
 var (

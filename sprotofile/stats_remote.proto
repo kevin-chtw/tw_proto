@@ -9,6 +9,7 @@ message StatsReq {
   string uid = 2;      // 用户ID
   string data = 3;     // JSON格式的事件数据
   int64 timestamp = 4; // 时间戳(毫秒)
+  string channel = 5;  // 登录渠道
 }
 
 // 统计事件响应

@@ -7,11 +7,12 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -26,6 +27,7 @@ type SignReq struct {
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                               // 用户ID
 	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`                      //比赛ID
 	CondIndex     int32                  `protobuf:"varint,3,opt,name=cond_index,json=condIndex,proto3" json:"cond_index,omitempty"` //条件索引
+	Channel       string                 `protobuf:"bytes,4,opt,name=channel,proto3" json:"channel,omitempty"`                       // 登录渠道快照（握手原值）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -79,6 +81,13 @@ func (x *SignReq) GetCondIndex() int32 {
 		return x.CondIndex
 	}
 	return 0
+}
+
+func (x *SignReq) GetChannel() string {
+	if x != nil {
+		return x.Channel
+	}
+	return ""
 }
 
 type SignAck struct {
@@ -202,12 +211,13 @@ var File_sign_remote_proto protoreflect.FileDescriptor
 
 const file_sign_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x11sign_remote.proto\x12\x06sproto\"T\n" +
+	"\x11sign_remote.proto\x12\x06sproto\"n\n" +
 	"\aSignReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1d\n" +
 	"\n" +
-	"cond_index\x18\x03 \x01(\x05R\tcondIndex\"&\n" +
+	"cond_index\x18\x03 \x01(\x05R\tcondIndex\x12\x18\n" +
+	"\achannel\x18\x04 \x01(\tR\achannel\"&\n" +
 	"\aSignAck\x12\x1b\n" +
 	"\tcarry_max\x18\x01 \x01(\x03R\bcarryMax\"\x0f\n" +
 	"\rSignReloadReq\"\x0f\n" +
