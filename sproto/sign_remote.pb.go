@@ -7,12 +7,11 @@
 package sproto
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -93,6 +92,7 @@ func (x *SignReq) GetChannel() string {
 type SignAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CarryMax      int64                  `protobuf:"varint,1,opt,name=carry_max,json=carryMax,proto3" json:"carry_max,omitempty"` //报名时实际可携带分上限
+	Fee           map[int32]int64        `protobuf:"bytes,2,rep,name=fee,proto3" json:"fee,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -134,6 +134,117 @@ func (x *SignAck) GetCarryMax() int64 {
 	return 0
 }
 
+func (x *SignAck) GetFee() map[int32]int64 {
+	if x != nil {
+		return x.Fee
+	}
+	return nil
+}
+
+type SignRefundReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	GameType      string                 `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	Fee           map[int32]int64        `protobuf:"bytes,4,rep,name=fee,proto3" json:"fee,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignRefundReq) Reset() {
+	*x = SignRefundReq{}
+	mi := &file_sign_remote_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignRefundReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignRefundReq) ProtoMessage() {}
+
+func (x *SignRefundReq) ProtoReflect() protoreflect.Message {
+	mi := &file_sign_remote_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignRefundReq.ProtoReflect.Descriptor instead.
+func (*SignRefundReq) Descriptor() ([]byte, []int) {
+	return file_sign_remote_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SignRefundReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *SignRefundReq) GetMatchid() int32 {
+	if x != nil {
+		return x.Matchid
+	}
+	return 0
+}
+
+func (x *SignRefundReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+func (x *SignRefundReq) GetFee() map[int32]int64 {
+	if x != nil {
+		return x.Fee
+	}
+	return nil
+}
+
+type SignRefundAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignRefundAck) Reset() {
+	*x = SignRefundAck{}
+	mi := &file_sign_remote_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignRefundAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignRefundAck) ProtoMessage() {}
+
+func (x *SignRefundAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sign_remote_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignRefundAck.ProtoReflect.Descriptor instead.
+func (*SignRefundAck) Descriptor() ([]byte, []int) {
+	return file_sign_remote_proto_rawDescGZIP(), []int{3}
+}
+
 // Admin 通知 sign 全量重载 cfg + bind
 type SignReloadReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -143,7 +254,7 @@ type SignReloadReq struct {
 
 func (x *SignReloadReq) Reset() {
 	*x = SignReloadReq{}
-	mi := &file_sign_remote_proto_msgTypes[2]
+	mi := &file_sign_remote_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -155,7 +266,7 @@ func (x *SignReloadReq) String() string {
 func (*SignReloadReq) ProtoMessage() {}
 
 func (x *SignReloadReq) ProtoReflect() protoreflect.Message {
-	mi := &file_sign_remote_proto_msgTypes[2]
+	mi := &file_sign_remote_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -168,7 +279,7 @@ func (x *SignReloadReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SignReloadReq.ProtoReflect.Descriptor instead.
 func (*SignReloadReq) Descriptor() ([]byte, []int) {
-	return file_sign_remote_proto_rawDescGZIP(), []int{2}
+	return file_sign_remote_proto_rawDescGZIP(), []int{4}
 }
 
 type SignReloadAck struct {
@@ -179,7 +290,7 @@ type SignReloadAck struct {
 
 func (x *SignReloadAck) Reset() {
 	*x = SignReloadAck{}
-	mi := &file_sign_remote_proto_msgTypes[3]
+	mi := &file_sign_remote_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -191,7 +302,7 @@ func (x *SignReloadAck) String() string {
 func (*SignReloadAck) ProtoMessage() {}
 
 func (x *SignReloadAck) ProtoReflect() protoreflect.Message {
-	mi := &file_sign_remote_proto_msgTypes[3]
+	mi := &file_sign_remote_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -204,7 +315,7 @@ func (x *SignReloadAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SignReloadAck.ProtoReflect.Descriptor instead.
 func (*SignReloadAck) Descriptor() ([]byte, []int) {
-	return file_sign_remote_proto_rawDescGZIP(), []int{3}
+	return file_sign_remote_proto_rawDescGZIP(), []int{5}
 }
 
 var File_sign_remote_proto protoreflect.FileDescriptor
@@ -217,9 +328,22 @@ const file_sign_remote_proto_rawDesc = "" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1d\n" +
 	"\n" +
 	"cond_index\x18\x03 \x01(\x05R\tcondIndex\x12\x18\n" +
-	"\achannel\x18\x04 \x01(\tR\achannel\"&\n" +
+	"\achannel\x18\x04 \x01(\tR\achannel\"\x8a\x01\n" +
 	"\aSignAck\x12\x1b\n" +
-	"\tcarry_max\x18\x01 \x01(\x03R\bcarryMax\"\x0f\n" +
+	"\tcarry_max\x18\x01 \x01(\x03R\bcarryMax\x12*\n" +
+	"\x03fee\x18\x02 \x03(\v2\x18.sproto.SignAck.FeeEntryR\x03fee\x1a6\n" +
+	"\bFeeEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xc2\x01\n" +
+	"\rSignRefundReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
+	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1b\n" +
+	"\tgame_type\x18\x03 \x01(\tR\bgameType\x120\n" +
+	"\x03fee\x18\x04 \x03(\v2\x1e.sproto.SignRefundReq.FeeEntryR\x03fee\x1a6\n" +
+	"\bFeeEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x0f\n" +
+	"\rSignRefundAck\"\x0f\n" +
 	"\rSignReloadReq\"\x0f\n" +
 	"\rSignReloadAckB\vZ\t../sprotob\x06proto3"
 
@@ -235,19 +359,25 @@ func file_sign_remote_proto_rawDescGZIP() []byte {
 	return file_sign_remote_proto_rawDescData
 }
 
-var file_sign_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sign_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_sign_remote_proto_goTypes = []any{
 	(*SignReq)(nil),       // 0: sproto.SignReq
 	(*SignAck)(nil),       // 1: sproto.SignAck
-	(*SignReloadReq)(nil), // 2: sproto.SignReloadReq
-	(*SignReloadAck)(nil), // 3: sproto.SignReloadAck
+	(*SignRefundReq)(nil), // 2: sproto.SignRefundReq
+	(*SignRefundAck)(nil), // 3: sproto.SignRefundAck
+	(*SignReloadReq)(nil), // 4: sproto.SignReloadReq
+	(*SignReloadAck)(nil), // 5: sproto.SignReloadAck
+	nil,                   // 6: sproto.SignAck.FeeEntry
+	nil,                   // 7: sproto.SignRefundReq.FeeEntry
 }
 var file_sign_remote_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: sproto.SignAck.fee:type_name -> sproto.SignAck.FeeEntry
+	7, // 1: sproto.SignRefundReq.fee:type_name -> sproto.SignRefundReq.FeeEntry
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_sign_remote_proto_init() }
@@ -261,7 +391,7 @@ func file_sign_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sign_remote_proto_rawDesc), len(file_sign_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

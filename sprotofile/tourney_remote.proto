@@ -44,3 +44,36 @@ message FDPutTableidReq {
 // Admin 通知 tourney 重载定点赛展示信息（format_desc / 开赛时间）
 message TourneyReloadReq {}
 message TourneyReloadAck {}
+
+message SignupRegisterReq {
+  string uid = 1;
+  string server_type = 2;
+  string server_id = 3;
+  int32  match_id = 4;
+  int64  tourney_id = 5;
+  string game_type = 6;
+  int64  next_start_ts = 7;
+  map<int32, int64> fee = 8;
+}
+
+message SignupUnregisterReq {
+  string uid = 1;
+  string server_type = 2;
+  int32  match_id = 3;
+}
+
+message SignupListReq {
+  string server_type = 1;
+  int32  match_id = 2;
+}
+
+message SignupListAck {
+  repeated SignupRegisterReq entries = 1;
+}
+
+message SignupTouchReq {
+  string uid = 1;
+  string server_type = 2;
+  string server_id = 3;
+  int32  match_id = 4;
+}

@@ -467,6 +467,330 @@ func (*TourneyReloadAck) Descriptor() ([]byte, []int) {
 	return file_tourney_remote_proto_rawDescGZIP(), []int{8}
 }
 
+type SignupRegisterReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	ServerType    string                 `protobuf:"bytes,2,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"`
+	ServerId      string                 `protobuf:"bytes,3,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
+	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	TourneyId     int64                  `protobuf:"varint,5,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	GameType      string                 `protobuf:"bytes,6,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	NextStartTs   int64                  `protobuf:"varint,7,opt,name=next_start_ts,json=nextStartTs,proto3" json:"next_start_ts,omitempty"`
+	Fee           map[int32]int64        `protobuf:"bytes,8,rep,name=fee,proto3" json:"fee,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupRegisterReq) Reset() {
+	*x = SignupRegisterReq{}
+	mi := &file_tourney_remote_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupRegisterReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupRegisterReq) ProtoMessage() {}
+
+func (x *SignupRegisterReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupRegisterReq.ProtoReflect.Descriptor instead.
+func (*SignupRegisterReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *SignupRegisterReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *SignupRegisterReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *SignupRegisterReq) GetServerId() string {
+	if x != nil {
+		return x.ServerId
+	}
+	return ""
+}
+
+func (x *SignupRegisterReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *SignupRegisterReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *SignupRegisterReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+func (x *SignupRegisterReq) GetNextStartTs() int64 {
+	if x != nil {
+		return x.NextStartTs
+	}
+	return 0
+}
+
+func (x *SignupRegisterReq) GetFee() map[int32]int64 {
+	if x != nil {
+		return x.Fee
+	}
+	return nil
+}
+
+type SignupUnregisterReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	ServerType    string                 `protobuf:"bytes,2,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"`
+	MatchId       int32                  `protobuf:"varint,3,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupUnregisterReq) Reset() {
+	*x = SignupUnregisterReq{}
+	mi := &file_tourney_remote_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupUnregisterReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupUnregisterReq) ProtoMessage() {}
+
+func (x *SignupUnregisterReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupUnregisterReq.ProtoReflect.Descriptor instead.
+func (*SignupUnregisterReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *SignupUnregisterReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *SignupUnregisterReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *SignupUnregisterReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+type SignupListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerType    string                 `protobuf:"bytes,1,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"`
+	MatchId       int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupListReq) Reset() {
+	*x = SignupListReq{}
+	mi := &file_tourney_remote_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupListReq) ProtoMessage() {}
+
+func (x *SignupListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupListReq.ProtoReflect.Descriptor instead.
+func (*SignupListReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *SignupListReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *SignupListReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+type SignupListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Entries       []*SignupRegisterReq   `protobuf:"bytes,1,rep,name=entries,proto3" json:"entries,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupListAck) Reset() {
+	*x = SignupListAck{}
+	mi := &file_tourney_remote_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupListAck) ProtoMessage() {}
+
+func (x *SignupListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupListAck.ProtoReflect.Descriptor instead.
+func (*SignupListAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *SignupListAck) GetEntries() []*SignupRegisterReq {
+	if x != nil {
+		return x.Entries
+	}
+	return nil
+}
+
+type SignupTouchReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	ServerType    string                 `protobuf:"bytes,2,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"`
+	ServerId      string                 `protobuf:"bytes,3,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
+	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupTouchReq) Reset() {
+	*x = SignupTouchReq{}
+	mi := &file_tourney_remote_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupTouchReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupTouchReq) ProtoMessage() {}
+
+func (x *SignupTouchReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupTouchReq.ProtoReflect.Descriptor instead.
+func (*SignupTouchReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *SignupTouchReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *SignupTouchReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *SignupTouchReq) GetServerId() string {
+	if x != nil {
+		return x.ServerId
+	}
+	return ""
+}
+
+func (x *SignupTouchReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
 var File_tourney_remote_proto protoreflect.FileDescriptor
 
 const file_tourney_remote_proto_rawDesc = "" +
@@ -499,7 +823,38 @@ const file_tourney_remote_proto_rawDesc = "" +
 	"\x0fFDPutTableidReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\"\x12\n" +
 	"\x10TourneyReloadReq\"\x12\n" +
-	"\x10TourneyReloadAckB\vZ\t../sprotob\x06proto3"
+	"\x10TourneyReloadAck\"\xcc\x02\n" +
+	"\x11SignupRegisterReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1f\n" +
+	"\vserver_type\x18\x02 \x01(\tR\n" +
+	"serverType\x12\x1b\n" +
+	"\tserver_id\x18\x03 \x01(\tR\bserverId\x12\x19\n" +
+	"\bmatch_id\x18\x04 \x01(\x05R\amatchId\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x05 \x01(\x03R\ttourneyId\x12\x1b\n" +
+	"\tgame_type\x18\x06 \x01(\tR\bgameType\x12\"\n" +
+	"\rnext_start_ts\x18\a \x01(\x03R\vnextStartTs\x124\n" +
+	"\x03fee\x18\b \x03(\v2\".sproto.SignupRegisterReq.FeeEntryR\x03fee\x1a6\n" +
+	"\bFeeEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"c\n" +
+	"\x13SignupUnregisterReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1f\n" +
+	"\vserver_type\x18\x02 \x01(\tR\n" +
+	"serverType\x12\x19\n" +
+	"\bmatch_id\x18\x03 \x01(\x05R\amatchId\"K\n" +
+	"\rSignupListReq\x12\x1f\n" +
+	"\vserver_type\x18\x01 \x01(\tR\n" +
+	"serverType\x12\x19\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\"D\n" +
+	"\rSignupListAck\x123\n" +
+	"\aentries\x18\x01 \x03(\v2\x19.sproto.SignupRegisterReqR\aentries\"{\n" +
+	"\x0eSignupTouchReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1f\n" +
+	"\vserver_type\x18\x02 \x01(\tR\n" +
+	"serverType\x12\x1b\n" +
+	"\tserver_id\x18\x03 \x01(\tR\bserverId\x12\x19\n" +
+	"\bmatch_id\x18\x04 \x01(\x05R\amatchIdB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_tourney_remote_proto_rawDescOnce sync.Once
@@ -513,28 +868,36 @@ func file_tourney_remote_proto_rawDescGZIP() []byte {
 	return file_tourney_remote_proto_rawDescData
 }
 
-var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_tourney_remote_proto_goTypes = []any{
-	(*TourneyReq)(nil),       // 0: sproto.TourneyReq
-	(*TourneyAck)(nil),       // 1: sproto.TourneyAck
-	(*TourneyUpdateReq)(nil), // 2: sproto.TourneyUpdateReq
-	(*TourneyInfo)(nil),      // 3: sproto.TourneyInfo
-	(*FDTakeTableidReq)(nil), // 4: sproto.FDTakeTableidReq
-	(*FDTakeTableidAck)(nil), // 5: sproto.FDTakeTableidAck
-	(*FDPutTableidReq)(nil),  // 6: sproto.FDPutTableidReq
-	(*TourneyReloadReq)(nil), // 7: sproto.TourneyReloadReq
-	(*TourneyReloadAck)(nil), // 8: sproto.TourneyReloadAck
-	(*anypb.Any)(nil),        // 9: google.protobuf.Any
+	(*TourneyReq)(nil),          // 0: sproto.TourneyReq
+	(*TourneyAck)(nil),          // 1: sproto.TourneyAck
+	(*TourneyUpdateReq)(nil),    // 2: sproto.TourneyUpdateReq
+	(*TourneyInfo)(nil),         // 3: sproto.TourneyInfo
+	(*FDTakeTableidReq)(nil),    // 4: sproto.FDTakeTableidReq
+	(*FDTakeTableidAck)(nil),    // 5: sproto.FDTakeTableidAck
+	(*FDPutTableidReq)(nil),     // 6: sproto.FDPutTableidReq
+	(*TourneyReloadReq)(nil),    // 7: sproto.TourneyReloadReq
+	(*TourneyReloadAck)(nil),    // 8: sproto.TourneyReloadAck
+	(*SignupRegisterReq)(nil),   // 9: sproto.SignupRegisterReq
+	(*SignupUnregisterReq)(nil), // 10: sproto.SignupUnregisterReq
+	(*SignupListReq)(nil),       // 11: sproto.SignupListReq
+	(*SignupListAck)(nil),       // 12: sproto.SignupListAck
+	(*SignupTouchReq)(nil),      // 13: sproto.SignupTouchReq
+	nil,                         // 14: sproto.SignupRegisterReq.FeeEntry
+	(*anypb.Any)(nil),           // 15: google.protobuf.Any
 }
 var file_tourney_remote_proto_depIdxs = []int32{
-	9, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
-	9, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
-	3, // 2: sproto.TourneyUpdateReq.infos:type_name -> sproto.TourneyInfo
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	15, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
+	15, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
+	3,  // 2: sproto.TourneyUpdateReq.infos:type_name -> sproto.TourneyInfo
+	14, // 3: sproto.SignupRegisterReq.fee:type_name -> sproto.SignupRegisterReq.FeeEntry
+	9,  // 4: sproto.SignupListAck.entries:type_name -> sproto.SignupRegisterReq
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_tourney_remote_proto_init() }
@@ -548,7 +911,7 @@ func file_tourney_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tourney_remote_proto_rawDesc), len(file_tourney_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

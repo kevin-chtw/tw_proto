@@ -12,7 +12,17 @@ message SignReq {
 
 message SignAck {
   int64 carry_max = 1; //报名时实际可携带分上限
+  map<int32, int64> fee = 2;
 }
+
+message SignRefundReq {
+  string uid = 1;
+  int32 matchid = 2;
+  string game_type = 3;
+  map<int32, int64> fee = 4;
+}
+
+message SignRefundAck {}
 
 // Admin 通知 sign 全量重载 cfg + bind
 message SignReloadReq {}
