@@ -1026,8 +1026,9 @@ func (x *FDRoundResultAck) GetRoundData() string {
 
 type StageResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Result        int32                  `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"` // 1-晋级，2-待定，3-淘汰,4-组桌中
-	Rank          int32                  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"`     //当前名次
+	Result        int32                  `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`                                 // 1-晋级，2-待定，3-淘汰,4-组桌中,5-完赛
+	Rank          int32                  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"`                                     //当前名次
+	RemainTables  int32                  `protobuf:"varint,3,opt,name=remain_tables,json=remainTables,proto3" json:"remain_tables,omitempty"` // 当前阶段还在打的桌数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1076,6 +1077,157 @@ func (x *StageResultAck) GetRank() int32 {
 	return 0
 }
 
+func (x *StageResultAck) GetRemainTables() int32 {
+	if x != nil {
+		return x.RemainTables
+	}
+	return 0
+}
+
+type StageProgressAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StageId       int32                  `protobuf:"varint,1,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`          // 当前阶段，从 1
+	StageCount    int32                  `protobuf:"varint,2,opt,name=stage_count,json=stageCount,proto3" json:"stage_count,omitempty"` // 配置 stages 条数
+	Format        string                 `protobuf:"bytes,3,opt,name=format,proto3" json:"format,omitempty"`                            // knockout / swiss / fix_score
+	Round         int32                  `protobuf:"varint,4,opt,name=round,proto3" json:"round,omitempty"`                             // 瑞士当前轮 / 定局当前局；打立为 0
+	RoundTotal    int32                  `protobuf:"varint,5,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"` // 瑞士规划轮数 / 定局总局数；打立为 0
+	Rank          int32                  `protobuf:"varint,6,opt,name=rank,proto3" json:"rank,omitempty"`                               // 当前名次（本阶段仍在场玩家）
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StageProgressAck) Reset() {
+	*x = StageProgressAck{}
+	mi := &file_match_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StageProgressAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StageProgressAck) ProtoMessage() {}
+
+func (x *StageProgressAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StageProgressAck.ProtoReflect.Descriptor instead.
+func (*StageProgressAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *StageProgressAck) GetStageId() int32 {
+	if x != nil {
+		return x.StageId
+	}
+	return 0
+}
+
+func (x *StageProgressAck) GetStageCount() int32 {
+	if x != nil {
+		return x.StageCount
+	}
+	return 0
+}
+
+func (x *StageProgressAck) GetFormat() string {
+	if x != nil {
+		return x.Format
+	}
+	return ""
+}
+
+func (x *StageProgressAck) GetRound() int32 {
+	if x != nil {
+		return x.Round
+	}
+	return 0
+}
+
+func (x *StageProgressAck) GetRoundTotal() int32 {
+	if x != nil {
+		return x.RoundTotal
+	}
+	return 0
+}
+
+func (x *StageProgressAck) GetRank() int32 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+type StageOverAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rank          int32                  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	Score         int64                  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`
+	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 本阶段结束排名奖
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StageOverAck) Reset() {
+	*x = StageOverAck{}
+	mi := &file_match_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StageOverAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StageOverAck) ProtoMessage() {}
+
+func (x *StageOverAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StageOverAck.ProtoReflect.Descriptor instead.
+func (*StageOverAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *StageOverAck) GetRank() int32 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+func (x *StageOverAck) GetScore() int64 {
+	if x != nil {
+		return x.Score
+	}
+	return 0
+}
+
+func (x *StageOverAck) GetBonus() map[int32]int64 {
+	if x != nil {
+		return x.Bonus
+	}
+	return nil
+}
+
 type BonusRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	BonusType     string                 `protobuf:"bytes,1,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                             //奖金类型
@@ -1089,7 +1241,7 @@ type BonusRewardAck struct {
 
 func (x *BonusRewardAck) Reset() {
 	*x = BonusRewardAck{}
-	mi := &file_match_proto_msgTypes[21]
+	mi := &file_match_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1101,7 +1253,7 @@ func (x *BonusRewardAck) String() string {
 func (*BonusRewardAck) ProtoMessage() {}
 
 func (x *BonusRewardAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[21]
+	mi := &file_match_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1114,7 +1266,7 @@ func (x *BonusRewardAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusRewardAck.ProtoReflect.Descriptor instead.
 func (*BonusRewardAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{21}
+	return file_match_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *BonusRewardAck) GetBonusType() string {
@@ -1241,10 +1393,28 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
 	"\x0fPlayerDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"<\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"a\n" +
 	"\x0eStageResultAck\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\x05R\x06result\x12\x12\n" +
-	"\x04rank\x18\x02 \x01(\x05R\x04rank\"\xd7\x02\n" +
+	"\x04rank\x18\x02 \x01(\x05R\x04rank\x12#\n" +
+	"\rremain_tables\x18\x03 \x01(\x05R\fremainTables\"\xb1\x01\n" +
+	"\x10StageProgressAck\x12\x19\n" +
+	"\bstage_id\x18\x01 \x01(\x05R\astageId\x12\x1f\n" +
+	"\vstage_count\x18\x02 \x01(\x05R\n" +
+	"stageCount\x12\x16\n" +
+	"\x06format\x18\x03 \x01(\tR\x06format\x12\x14\n" +
+	"\x05round\x18\x04 \x01(\x05R\x05round\x12\x1f\n" +
+	"\vround_total\x18\x05 \x01(\x05R\n" +
+	"roundTotal\x12\x12\n" +
+	"\x04rank\x18\x06 \x01(\x05R\x04rank\"\xa9\x01\n" +
+	"\fStageOverAck\x12\x12\n" +
+	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12\x14\n" +
+	"\x05score\x18\x02 \x01(\x03R\x05score\x125\n" +
+	"\x05bonus\x18\x03 \x03(\v2\x1f.cproto.StageOverAck.BonusEntryR\x05bonus\x1a8\n" +
+	"\n" +
+	"BonusEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xd7\x02\n" +
 	"\x0eBonusRewardAck\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x01 \x01(\tR\tbonusType\x12\x12\n" +
@@ -1273,7 +1443,7 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_match_proto_goTypes = []any{
 	(*MatchReq)(nil),         // 0: cproto.MatchReq
 	(*MatchAck)(nil),         // 1: cproto.MatchAck
@@ -1296,33 +1466,37 @@ var file_match_proto_goTypes = []any{
 	(*FDResultAck)(nil),      // 18: cproto.FDResultAck
 	(*FDRoundResultAck)(nil), // 19: cproto.FDRoundResultAck
 	(*StageResultAck)(nil),   // 20: cproto.StageResultAck
-	(*BonusRewardAck)(nil),   // 21: cproto.BonusRewardAck
-	nil,                      // 22: cproto.CreateRoomReq.PropertiesEntry
-	nil,                      // 23: cproto.CreateRoomReq.MatchConfigEntry
-	nil,                      // 24: cproto.FDResultAck.ScoresEntry
-	nil,                      // 25: cproto.FDResultAck.PlayerDataEntry
-	nil,                      // 26: cproto.FDRoundResultAck.ScoresEntry
-	nil,                      // 27: cproto.FDRoundResultAck.PlayerDataEntry
-	nil,                      // 28: cproto.BonusRewardAck.BonusEntry
-	nil,                      // 29: cproto.BonusRewardAck.NextBonusEntry
-	(*anypb.Any)(nil),        // 30: google.protobuf.Any
+	(*StageProgressAck)(nil), // 21: cproto.StageProgressAck
+	(*StageOverAck)(nil),     // 22: cproto.StageOverAck
+	(*BonusRewardAck)(nil),   // 23: cproto.BonusRewardAck
+	nil,                      // 24: cproto.CreateRoomReq.PropertiesEntry
+	nil,                      // 25: cproto.CreateRoomReq.MatchConfigEntry
+	nil,                      // 26: cproto.FDResultAck.ScoresEntry
+	nil,                      // 27: cproto.FDResultAck.PlayerDataEntry
+	nil,                      // 28: cproto.FDRoundResultAck.ScoresEntry
+	nil,                      // 29: cproto.FDRoundResultAck.PlayerDataEntry
+	nil,                      // 30: cproto.StageOverAck.BonusEntry
+	nil,                      // 31: cproto.BonusRewardAck.BonusEntry
+	nil,                      // 32: cproto.BonusRewardAck.NextBonusEntry
+	(*anypb.Any)(nil),        // 33: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	30, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	30, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
-	22, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
-	23, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
-	24, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
-	25, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
-	26, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
-	27, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
-	28, // 8: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
-	29, // 9: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	33, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	33, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	24, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
+	25, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
+	26, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
+	27, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
+	28, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
+	29, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
+	30, // 8: cproto.StageOverAck.bonus:type_name -> cproto.StageOverAck.BonusEntry
+	31, // 9: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
+	32, // 10: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
@@ -1336,7 +1510,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   30,
+			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

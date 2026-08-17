@@ -103,8 +103,24 @@ message FDRoundResultAck {
 }
 
 message StageResultAck {
-  int32 result = 1; // 1-晋级，2-待定，3-淘汰,4-组桌中
-  int32 rank =2; //当前名次
+  int32 result = 1; // 1-晋级，2-待定，3-淘汰,4-组桌中,5-完赛
+  int32 rank = 2; //当前名次
+  int32 remain_tables = 3; // 当前阶段还在打的桌数
+}
+
+message StageProgressAck {
+  int32 stage_id = 1; // 当前阶段，从 1
+  int32 stage_count = 2; // 配置 stages 条数
+  string format = 3; // knockout / swiss / fix_score
+  int32 round = 4; // 瑞士当前轮 / 定局当前局；打立为 0
+  int32 round_total = 5; // 瑞士规划轮数 / 定局总局数；打立为 0
+  int32 rank = 6; // 当前名次（本阶段仍在场玩家）
+}
+
+message StageOverAck {
+  int32 rank = 1;
+  int64 score = 2;
+  map<int32,int64> bonus = 3; // 本阶段结束排名奖
 }
 
 message BonusRewardAck {
