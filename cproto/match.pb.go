@@ -1029,6 +1029,8 @@ type StageResultAck struct {
 	Result        int32                  `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`                                 // 1-晋级，2-待定，3-淘汰,4-组桌中,5-完赛
 	Rank          int32                  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"`                                     //当前名次
 	RemainTables  int32                  `protobuf:"varint,3,opt,name=remain_tables,json=remainTables,proto3" json:"remain_tables,omitempty"` // 当前阶段还在打的桌数
+	WinCount      int32                  `protobuf:"varint,4,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`             // 整场胜次数
+	LoseCount     int32                  `protobuf:"varint,5,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`          // 整场负次数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1084,6 +1086,20 @@ func (x *StageResultAck) GetRemainTables() int32 {
 	return 0
 }
 
+func (x *StageResultAck) GetWinCount() int32 {
+	if x != nil {
+		return x.WinCount
+	}
+	return 0
+}
+
+func (x *StageResultAck) GetLoseCount() int32 {
+	if x != nil {
+		return x.LoseCount
+	}
+	return 0
+}
+
 type StageProgressAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	StageId       int32                  `protobuf:"varint,1,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`          // 当前阶段，从 1
@@ -1092,6 +1108,9 @@ type StageProgressAck struct {
 	Round         int32                  `protobuf:"varint,4,opt,name=round,proto3" json:"round,omitempty"`                             // 瑞士当前轮 / 定局当前局；打立为 0
 	RoundTotal    int32                  `protobuf:"varint,5,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"` // 瑞士规划轮数 / 定局总局数；打立为 0
 	Rank          int32                  `protobuf:"varint,6,opt,name=rank,proto3" json:"rank,omitempty"`                               // 当前名次（本阶段仍在场玩家）
+	State         int32                  `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`                             // 0-对局中，1-轮空
+	WinCount      int32                  `protobuf:"varint,8,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`       // 整场胜次数
+	LoseCount     int32                  `protobuf:"varint,9,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`    // 整场负次数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1164,6 +1183,27 @@ func (x *StageProgressAck) GetRoundTotal() int32 {
 func (x *StageProgressAck) GetRank() int32 {
 	if x != nil {
 		return x.Rank
+	}
+	return 0
+}
+
+func (x *StageProgressAck) GetState() int32 {
+	if x != nil {
+		return x.State
+	}
+	return 0
+}
+
+func (x *StageProgressAck) GetWinCount() int32 {
+	if x != nil {
+		return x.WinCount
+	}
+	return 0
+}
+
+func (x *StageProgressAck) GetLoseCount() int32 {
+	if x != nil {
+		return x.LoseCount
 	}
 	return 0
 }
@@ -1393,11 +1433,14 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
 	"\x0fPlayerDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"a\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9d\x01\n" +
 	"\x0eStageResultAck\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\x05R\x06result\x12\x12\n" +
 	"\x04rank\x18\x02 \x01(\x05R\x04rank\x12#\n" +
-	"\rremain_tables\x18\x03 \x01(\x05R\fremainTables\"\xb1\x01\n" +
+	"\rremain_tables\x18\x03 \x01(\x05R\fremainTables\x12\x1b\n" +
+	"\twin_count\x18\x04 \x01(\x05R\bwinCount\x12\x1d\n" +
+	"\n" +
+	"lose_count\x18\x05 \x01(\x05R\tloseCount\"\x83\x02\n" +
 	"\x10StageProgressAck\x12\x19\n" +
 	"\bstage_id\x18\x01 \x01(\x05R\astageId\x12\x1f\n" +
 	"\vstage_count\x18\x02 \x01(\x05R\n" +
@@ -1406,7 +1449,11 @@ const file_match_proto_rawDesc = "" +
 	"\x05round\x18\x04 \x01(\x05R\x05round\x12\x1f\n" +
 	"\vround_total\x18\x05 \x01(\x05R\n" +
 	"roundTotal\x12\x12\n" +
-	"\x04rank\x18\x06 \x01(\x05R\x04rank\"\xa9\x01\n" +
+	"\x04rank\x18\x06 \x01(\x05R\x04rank\x12\x14\n" +
+	"\x05state\x18\a \x01(\x05R\x05state\x12\x1b\n" +
+	"\twin_count\x18\b \x01(\x05R\bwinCount\x12\x1d\n" +
+	"\n" +
+	"lose_count\x18\t \x01(\x05R\tloseCount\"\xa9\x01\n" +
 	"\fStageOverAck\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x03R\x05score\x125\n" +
