@@ -108,6 +108,9 @@ message StageResultAck {
   int32 remain_tables = 3; // 当前阶段还在打的桌数
   int32 win_count = 4; // 整场胜次数
   int32 lose_count = 5; // 整场负次数
+  string format = 6; // knockout / swiss / fix_score
+  int32 round = 7; // 瑞士当前轮；打立/定局为 0
+  repeated int32 promote_counts = 8; // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
 }
 
 message StageProgressAck {

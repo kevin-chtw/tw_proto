@@ -1026,11 +1026,14 @@ func (x *FDRoundResultAck) GetRoundData() string {
 
 type StageResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Result        int32                  `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`                                 // 1-晋级，2-待定，3-淘汰,4-组桌中,5-完赛
-	Rank          int32                  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"`                                     //当前名次
-	RemainTables  int32                  `protobuf:"varint,3,opt,name=remain_tables,json=remainTables,proto3" json:"remain_tables,omitempty"` // 当前阶段还在打的桌数
-	WinCount      int32                  `protobuf:"varint,4,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`             // 整场胜次数
-	LoseCount     int32                  `protobuf:"varint,5,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`          // 整场负次数
+	Result        int32                  `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`                                           // 1-晋级，2-待定，3-淘汰,4-组桌中,5-完赛
+	Rank          int32                  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"`                                               //当前名次
+	RemainTables  int32                  `protobuf:"varint,3,opt,name=remain_tables,json=remainTables,proto3" json:"remain_tables,omitempty"`           // 当前阶段还在打的桌数
+	WinCount      int32                  `protobuf:"varint,4,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`                       // 整场胜次数
+	LoseCount     int32                  `protobuf:"varint,5,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`                    // 整场负次数
+	Format        string                 `protobuf:"bytes,6,opt,name=format,proto3" json:"format,omitempty"`                                            // knockout / swiss / fix_score
+	Round         int32                  `protobuf:"varint,7,opt,name=round,proto3" json:"round,omitempty"`                                             // 瑞士当前轮；打立/定局为 0
+	PromoteCounts []int32                `protobuf:"varint,8,rep,packed,name=promote_counts,json=promoteCounts,proto3" json:"promote_counts,omitempty"` // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1098,6 +1101,27 @@ func (x *StageResultAck) GetLoseCount() int32 {
 		return x.LoseCount
 	}
 	return 0
+}
+
+func (x *StageResultAck) GetFormat() string {
+	if x != nil {
+		return x.Format
+	}
+	return ""
+}
+
+func (x *StageResultAck) GetRound() int32 {
+	if x != nil {
+		return x.Round
+	}
+	return 0
+}
+
+func (x *StageResultAck) GetPromoteCounts() []int32 {
+	if x != nil {
+		return x.PromoteCounts
+	}
+	return nil
 }
 
 type StageProgressAck struct {
@@ -1433,14 +1457,17 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
 	"\x0fPlayerDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9d\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xf2\x01\n" +
 	"\x0eStageResultAck\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\x05R\x06result\x12\x12\n" +
 	"\x04rank\x18\x02 \x01(\x05R\x04rank\x12#\n" +
 	"\rremain_tables\x18\x03 \x01(\x05R\fremainTables\x12\x1b\n" +
 	"\twin_count\x18\x04 \x01(\x05R\bwinCount\x12\x1d\n" +
 	"\n" +
-	"lose_count\x18\x05 \x01(\x05R\tloseCount\"\x83\x02\n" +
+	"lose_count\x18\x05 \x01(\x05R\tloseCount\x12\x16\n" +
+	"\x06format\x18\x06 \x01(\tR\x06format\x12\x14\n" +
+	"\x05round\x18\a \x01(\x05R\x05round\x12%\n" +
+	"\x0epromote_counts\x18\b \x03(\x05R\rpromoteCounts\"\x83\x02\n" +
 	"\x10StageProgressAck\x12\x19\n" +
 	"\bstage_id\x18\x01 \x01(\x05R\astageId\x12\x1f\n" +
 	"\vstage_count\x18\x02 \x01(\x05R\n" +
