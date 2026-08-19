@@ -21,3 +21,18 @@ message BonusAck {
 // Admin 通知 bonus 全量重载 cfg + bind
 message BonusReloadReq {}
 message BonusReloadAck {}
+
+message BonusDiyUpsertReq {
+  int32 match_id = 1;
+  string content = 2; // rank YAML
+  int32 ttl_sec = 3;  // 0 = default 7d
+}
+message BonusDiyUpsertAck {
+  string err = 1;
+}
+message BonusDiyDeleteReq {
+  int32 match_id = 1;
+}
+message BonusDiyDeleteAck {
+  string err = 1;
+}
