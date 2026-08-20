@@ -131,6 +131,22 @@ message StageOverAck {
   map<int32,int64> bonus = 3; // 本阶段结束排名奖
 }
 
+message RankListReq {
+}
+
+message RankListItem {
+  int32 rank = 1;
+  string uid = 2;
+  string nickname = 3;
+  int64 score = 4; // 游戏分
+  int32 result = 5; // 1-晋级，2-待定，3-淘汰，4-组桌中，5-完赛
+}
+
+message RankListAck {
+  repeated RankListItem players = 1; // 当前阶段全量，按 rank 升序
+  RankListItem self = 2; // 请求者一行；不在榜上则 uid 为空
+}
+
 message BonusRewardAck {
   string bonus_type = 1; //奖金类型
   int32 cond = 2; //奖金条件索引

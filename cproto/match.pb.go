@@ -1292,6 +1292,170 @@ func (x *StageOverAck) GetBonus() map[int32]int64 {
 	return nil
 }
 
+type RankListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RankListReq) Reset() {
+	*x = RankListReq{}
+	mi := &file_match_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RankListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RankListReq) ProtoMessage() {}
+
+func (x *RankListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RankListReq.ProtoReflect.Descriptor instead.
+func (*RankListReq) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{23}
+}
+
+type RankListItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rank          int32                  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
+	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Nickname      string                 `protobuf:"bytes,3,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`   // 游戏分
+	Result        int32                  `protobuf:"varint,5,opt,name=result,proto3" json:"result,omitempty"` // 1-晋级，2-待定，3-淘汰，4-组桌中，5-完赛
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RankListItem) Reset() {
+	*x = RankListItem{}
+	mi := &file_match_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RankListItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RankListItem) ProtoMessage() {}
+
+func (x *RankListItem) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RankListItem.ProtoReflect.Descriptor instead.
+func (*RankListItem) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *RankListItem) GetRank() int32 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+func (x *RankListItem) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *RankListItem) GetNickname() string {
+	if x != nil {
+		return x.Nickname
+	}
+	return ""
+}
+
+func (x *RankListItem) GetScore() int64 {
+	if x != nil {
+		return x.Score
+	}
+	return 0
+}
+
+func (x *RankListItem) GetResult() int32 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+type RankListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Players       []*RankListItem        `protobuf:"bytes,1,rep,name=players,proto3" json:"players,omitempty"` // 当前阶段全量，按 rank 升序
+	Self          *RankListItem          `protobuf:"bytes,2,opt,name=self,proto3" json:"self,omitempty"`       // 请求者一行；不在榜上则 uid 为空
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RankListAck) Reset() {
+	*x = RankListAck{}
+	mi := &file_match_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RankListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RankListAck) ProtoMessage() {}
+
+func (x *RankListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RankListAck.ProtoReflect.Descriptor instead.
+func (*RankListAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *RankListAck) GetPlayers() []*RankListItem {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
+func (x *RankListAck) GetSelf() *RankListItem {
+	if x != nil {
+		return x.Self
+	}
+	return nil
+}
+
 type BonusRewardAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	BonusType     string                 `protobuf:"bytes,1,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                             //奖金类型
@@ -1305,7 +1469,7 @@ type BonusRewardAck struct {
 
 func (x *BonusRewardAck) Reset() {
 	*x = BonusRewardAck{}
-	mi := &file_match_proto_msgTypes[23]
+	mi := &file_match_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1317,7 +1481,7 @@ func (x *BonusRewardAck) String() string {
 func (*BonusRewardAck) ProtoMessage() {}
 
 func (x *BonusRewardAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[23]
+	mi := &file_match_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1330,7 +1494,7 @@ func (x *BonusRewardAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusRewardAck.ProtoReflect.Descriptor instead.
 func (*BonusRewardAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{23}
+	return file_match_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *BonusRewardAck) GetBonusType() string {
@@ -1488,7 +1652,17 @@ const file_match_proto_rawDesc = "" +
 	"\n" +
 	"BonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xd7\x02\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\r\n" +
+	"\vRankListReq\"~\n" +
+	"\fRankListItem\x12\x12\n" +
+	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x1a\n" +
+	"\bnickname\x18\x03 \x01(\tR\bnickname\x12\x14\n" +
+	"\x05score\x18\x04 \x01(\x03R\x05score\x12\x16\n" +
+	"\x06result\x18\x05 \x01(\x05R\x06result\"g\n" +
+	"\vRankListAck\x12.\n" +
+	"\aplayers\x18\x01 \x03(\v2\x14.cproto.RankListItemR\aplayers\x12(\n" +
+	"\x04self\x18\x02 \x01(\v2\x14.cproto.RankListItemR\x04self\"\xd7\x02\n" +
 	"\x0eBonusRewardAck\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x01 \x01(\tR\tbonusType\x12\x12\n" +
@@ -1517,7 +1691,7 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
 var file_match_proto_goTypes = []any{
 	(*MatchReq)(nil),         // 0: cproto.MatchReq
 	(*MatchAck)(nil),         // 1: cproto.MatchAck
@@ -1542,35 +1716,40 @@ var file_match_proto_goTypes = []any{
 	(*StageResultAck)(nil),   // 20: cproto.StageResultAck
 	(*StageProgressAck)(nil), // 21: cproto.StageProgressAck
 	(*StageOverAck)(nil),     // 22: cproto.StageOverAck
-	(*BonusRewardAck)(nil),   // 23: cproto.BonusRewardAck
-	nil,                      // 24: cproto.CreateRoomReq.PropertiesEntry
-	nil,                      // 25: cproto.CreateRoomReq.MatchConfigEntry
-	nil,                      // 26: cproto.FDResultAck.ScoresEntry
-	nil,                      // 27: cproto.FDResultAck.PlayerDataEntry
-	nil,                      // 28: cproto.FDRoundResultAck.ScoresEntry
-	nil,                      // 29: cproto.FDRoundResultAck.PlayerDataEntry
-	nil,                      // 30: cproto.StageOverAck.BonusEntry
-	nil,                      // 31: cproto.BonusRewardAck.BonusEntry
-	nil,                      // 32: cproto.BonusRewardAck.NextBonusEntry
-	(*anypb.Any)(nil),        // 33: google.protobuf.Any
+	(*RankListReq)(nil),      // 23: cproto.RankListReq
+	(*RankListItem)(nil),     // 24: cproto.RankListItem
+	(*RankListAck)(nil),      // 25: cproto.RankListAck
+	(*BonusRewardAck)(nil),   // 26: cproto.BonusRewardAck
+	nil,                      // 27: cproto.CreateRoomReq.PropertiesEntry
+	nil,                      // 28: cproto.CreateRoomReq.MatchConfigEntry
+	nil,                      // 29: cproto.FDResultAck.ScoresEntry
+	nil,                      // 30: cproto.FDResultAck.PlayerDataEntry
+	nil,                      // 31: cproto.FDRoundResultAck.ScoresEntry
+	nil,                      // 32: cproto.FDRoundResultAck.PlayerDataEntry
+	nil,                      // 33: cproto.StageOverAck.BonusEntry
+	nil,                      // 34: cproto.BonusRewardAck.BonusEntry
+	nil,                      // 35: cproto.BonusRewardAck.NextBonusEntry
+	(*anypb.Any)(nil),        // 36: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	33, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	33, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
-	24, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
-	25, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
-	26, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
-	27, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
-	28, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
-	29, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
-	30, // 8: cproto.StageOverAck.bonus:type_name -> cproto.StageOverAck.BonusEntry
-	31, // 9: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
-	32, // 10: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
-	11, // [11:11] is the sub-list for method output_type
-	11, // [11:11] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	36, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	36, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	27, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
+	28, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
+	29, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
+	30, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
+	31, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
+	32, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
+	33, // 8: cproto.StageOverAck.bonus:type_name -> cproto.StageOverAck.BonusEntry
+	24, // 9: cproto.RankListAck.players:type_name -> cproto.RankListItem
+	24, // 10: cproto.RankListAck.self:type_name -> cproto.RankListItem
+	34, // 11: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
+	35, // 12: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
+	13, // [13:13] is the sub-list for method output_type
+	13, // [13:13] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_match_proto_init() }
@@ -1584,7 +1763,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   33,
+			NumMessages:   36,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
