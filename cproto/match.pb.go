@@ -1026,14 +1026,17 @@ func (x *FDRoundResultAck) GetRoundData() string {
 
 type StageResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Result        int32                  `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`                                           // 1-晋级，2-待定，3-淘汰,4-组桌中,5-完赛
+	Result        int32                  `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`                                           // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛
 	Rank          int32                  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"`                                               //当前名次
 	RemainTables  int32                  `protobuf:"varint,3,opt,name=remain_tables,json=remainTables,proto3" json:"remain_tables,omitempty"`           // 当前阶段还在打的桌数
 	WinCount      int32                  `protobuf:"varint,4,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`                       // 整场胜次数
 	LoseCount     int32                  `protobuf:"varint,5,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`                    // 整场负次数
 	Format        string                 `protobuf:"bytes,6,opt,name=format,proto3" json:"format,omitempty"`                                            // knockout / swiss / fix_score
-	Round         int32                  `protobuf:"varint,7,opt,name=round,proto3" json:"round,omitempty"`                                             // 瑞士当前轮；打立/定局为 0
+	Round         int32                  `protobuf:"varint,7,opt,name=round,proto3" json:"round,omitempty"`                                             // 瑞士当前轮 / 定局当前局；打立为 0
 	PromoteCounts []int32                `protobuf:"varint,8,rep,packed,name=promote_counts,json=promoteCounts,proto3" json:"promote_counts,omitempty"` // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
+	StageId       int32                  `protobuf:"varint,9,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`                          // 当前阶段，从 1
+	StageCount    int32                  `protobuf:"varint,10,opt,name=stage_count,json=stageCount,proto3" json:"stage_count,omitempty"`                // 配置 stages 条数
+	RoundTotal    int32                  `protobuf:"varint,11,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"`                // 瑞士规划轮数 / 定局总局数；打立为 0
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1124,110 +1127,23 @@ func (x *StageResultAck) GetPromoteCounts() []int32 {
 	return nil
 }
 
-type StageProgressAck struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	StageId       int32                  `protobuf:"varint,1,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`          // 当前阶段，从 1
-	StageCount    int32                  `protobuf:"varint,2,opt,name=stage_count,json=stageCount,proto3" json:"stage_count,omitempty"` // 配置 stages 条数
-	Format        string                 `protobuf:"bytes,3,opt,name=format,proto3" json:"format,omitempty"`                            // knockout / swiss / fix_score
-	Round         int32                  `protobuf:"varint,4,opt,name=round,proto3" json:"round,omitempty"`                             // 瑞士当前轮 / 定局当前局；打立为 0
-	RoundTotal    int32                  `protobuf:"varint,5,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"` // 瑞士规划轮数 / 定局总局数；打立为 0
-	Rank          int32                  `protobuf:"varint,6,opt,name=rank,proto3" json:"rank,omitempty"`                               // 当前名次（本阶段仍在场玩家）
-	State         int32                  `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`                             // 0-对局中，1-轮空
-	WinCount      int32                  `protobuf:"varint,8,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`       // 整场胜次数
-	LoseCount     int32                  `protobuf:"varint,9,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`    // 整场负次数
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StageProgressAck) Reset() {
-	*x = StageProgressAck{}
-	mi := &file_match_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StageProgressAck) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StageProgressAck) ProtoMessage() {}
-
-func (x *StageProgressAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StageProgressAck.ProtoReflect.Descriptor instead.
-func (*StageProgressAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *StageProgressAck) GetStageId() int32 {
+func (x *StageResultAck) GetStageId() int32 {
 	if x != nil {
 		return x.StageId
 	}
 	return 0
 }
 
-func (x *StageProgressAck) GetStageCount() int32 {
+func (x *StageResultAck) GetStageCount() int32 {
 	if x != nil {
 		return x.StageCount
 	}
 	return 0
 }
 
-func (x *StageProgressAck) GetFormat() string {
-	if x != nil {
-		return x.Format
-	}
-	return ""
-}
-
-func (x *StageProgressAck) GetRound() int32 {
-	if x != nil {
-		return x.Round
-	}
-	return 0
-}
-
-func (x *StageProgressAck) GetRoundTotal() int32 {
+func (x *StageResultAck) GetRoundTotal() int32 {
 	if x != nil {
 		return x.RoundTotal
-	}
-	return 0
-}
-
-func (x *StageProgressAck) GetRank() int32 {
-	if x != nil {
-		return x.Rank
-	}
-	return 0
-}
-
-func (x *StageProgressAck) GetState() int32 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *StageProgressAck) GetWinCount() int32 {
-	if x != nil {
-		return x.WinCount
-	}
-	return 0
-}
-
-func (x *StageProgressAck) GetLoseCount() int32 {
-	if x != nil {
-		return x.LoseCount
 	}
 	return 0
 }
@@ -1243,7 +1159,7 @@ type StageOverAck struct {
 
 func (x *StageOverAck) Reset() {
 	*x = StageOverAck{}
-	mi := &file_match_proto_msgTypes[22]
+	mi := &file_match_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1255,7 +1171,7 @@ func (x *StageOverAck) String() string {
 func (*StageOverAck) ProtoMessage() {}
 
 func (x *StageOverAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[22]
+	mi := &file_match_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1268,7 +1184,7 @@ func (x *StageOverAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StageOverAck.ProtoReflect.Descriptor instead.
 func (*StageOverAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{22}
+	return file_match_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *StageOverAck) GetRank() int32 {
@@ -1300,7 +1216,7 @@ type RankListReq struct {
 
 func (x *RankListReq) Reset() {
 	*x = RankListReq{}
-	mi := &file_match_proto_msgTypes[23]
+	mi := &file_match_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1312,7 +1228,7 @@ func (x *RankListReq) String() string {
 func (*RankListReq) ProtoMessage() {}
 
 func (x *RankListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[23]
+	mi := &file_match_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1325,7 +1241,7 @@ func (x *RankListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RankListReq.ProtoReflect.Descriptor instead.
 func (*RankListReq) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{23}
+	return file_match_proto_rawDescGZIP(), []int{22}
 }
 
 type RankListItem struct {
@@ -1334,14 +1250,14 @@ type RankListItem struct {
 	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
 	Nickname      string                 `protobuf:"bytes,3,opt,name=nickname,proto3" json:"nickname,omitempty"`
 	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`   // 游戏分
-	Result        int32                  `protobuf:"varint,5,opt,name=result,proto3" json:"result,omitempty"` // 1-晋级，2-待定，3-淘汰，4-组桌中，5-完赛
+	Result        int32                  `protobuf:"varint,5,opt,name=result,proto3" json:"result,omitempty"` // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RankListItem) Reset() {
 	*x = RankListItem{}
-	mi := &file_match_proto_msgTypes[24]
+	mi := &file_match_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1353,7 +1269,7 @@ func (x *RankListItem) String() string {
 func (*RankListItem) ProtoMessage() {}
 
 func (x *RankListItem) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[24]
+	mi := &file_match_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1366,7 +1282,7 @@ func (x *RankListItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RankListItem.ProtoReflect.Descriptor instead.
 func (*RankListItem) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{24}
+	return file_match_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *RankListItem) GetRank() int32 {
@@ -1414,7 +1330,7 @@ type RankListAck struct {
 
 func (x *RankListAck) Reset() {
 	*x = RankListAck{}
-	mi := &file_match_proto_msgTypes[25]
+	mi := &file_match_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1426,7 +1342,7 @@ func (x *RankListAck) String() string {
 func (*RankListAck) ProtoMessage() {}
 
 func (x *RankListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[25]
+	mi := &file_match_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1439,7 +1355,7 @@ func (x *RankListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RankListAck.ProtoReflect.Descriptor instead.
 func (*RankListAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{25}
+	return file_match_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *RankListAck) GetPlayers() []*RankListItem {
@@ -1469,7 +1385,7 @@ type BonusRewardAck struct {
 
 func (x *BonusRewardAck) Reset() {
 	*x = BonusRewardAck{}
-	mi := &file_match_proto_msgTypes[26]
+	mi := &file_match_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1481,7 +1397,7 @@ func (x *BonusRewardAck) String() string {
 func (*BonusRewardAck) ProtoMessage() {}
 
 func (x *BonusRewardAck) ProtoReflect() protoreflect.Message {
-	mi := &file_match_proto_msgTypes[26]
+	mi := &file_match_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1494,7 +1410,7 @@ func (x *BonusRewardAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusRewardAck.ProtoReflect.Descriptor instead.
 func (*BonusRewardAck) Descriptor() ([]byte, []int) {
-	return file_match_proto_rawDescGZIP(), []int{26}
+	return file_match_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *BonusRewardAck) GetBonusType() string {
@@ -1621,7 +1537,7 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
 	"\x0fPlayerDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xf2\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xcf\x02\n" +
 	"\x0eStageResultAck\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\x05R\x06result\x12\x12\n" +
 	"\x04rank\x18\x02 \x01(\x05R\x04rank\x12#\n" +
@@ -1631,20 +1547,13 @@ const file_match_proto_rawDesc = "" +
 	"lose_count\x18\x05 \x01(\x05R\tloseCount\x12\x16\n" +
 	"\x06format\x18\x06 \x01(\tR\x06format\x12\x14\n" +
 	"\x05round\x18\a \x01(\x05R\x05round\x12%\n" +
-	"\x0epromote_counts\x18\b \x03(\x05R\rpromoteCounts\"\x83\x02\n" +
-	"\x10StageProgressAck\x12\x19\n" +
-	"\bstage_id\x18\x01 \x01(\x05R\astageId\x12\x1f\n" +
-	"\vstage_count\x18\x02 \x01(\x05R\n" +
-	"stageCount\x12\x16\n" +
-	"\x06format\x18\x03 \x01(\tR\x06format\x12\x14\n" +
-	"\x05round\x18\x04 \x01(\x05R\x05round\x12\x1f\n" +
-	"\vround_total\x18\x05 \x01(\x05R\n" +
-	"roundTotal\x12\x12\n" +
-	"\x04rank\x18\x06 \x01(\x05R\x04rank\x12\x14\n" +
-	"\x05state\x18\a \x01(\x05R\x05state\x12\x1b\n" +
-	"\twin_count\x18\b \x01(\x05R\bwinCount\x12\x1d\n" +
-	"\n" +
-	"lose_count\x18\t \x01(\x05R\tloseCount\"\xa9\x01\n" +
+	"\x0epromote_counts\x18\b \x03(\x05R\rpromoteCounts\x12\x19\n" +
+	"\bstage_id\x18\t \x01(\x05R\astageId\x12\x1f\n" +
+	"\vstage_count\x18\n" +
+	" \x01(\x05R\n" +
+	"stageCount\x12\x1f\n" +
+	"\vround_total\x18\v \x01(\x05R\n" +
+	"roundTotal\"\xa9\x01\n" +
 	"\fStageOverAck\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x03R\x05score\x125\n" +
@@ -1691,7 +1600,7 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
 var file_match_proto_goTypes = []any{
 	(*MatchReq)(nil),         // 0: cproto.MatchReq
 	(*MatchAck)(nil),         // 1: cproto.MatchAck
@@ -1714,37 +1623,36 @@ var file_match_proto_goTypes = []any{
 	(*FDResultAck)(nil),      // 18: cproto.FDResultAck
 	(*FDRoundResultAck)(nil), // 19: cproto.FDRoundResultAck
 	(*StageResultAck)(nil),   // 20: cproto.StageResultAck
-	(*StageProgressAck)(nil), // 21: cproto.StageProgressAck
-	(*StageOverAck)(nil),     // 22: cproto.StageOverAck
-	(*RankListReq)(nil),      // 23: cproto.RankListReq
-	(*RankListItem)(nil),     // 24: cproto.RankListItem
-	(*RankListAck)(nil),      // 25: cproto.RankListAck
-	(*BonusRewardAck)(nil),   // 26: cproto.BonusRewardAck
-	nil,                      // 27: cproto.CreateRoomReq.PropertiesEntry
-	nil,                      // 28: cproto.CreateRoomReq.MatchConfigEntry
-	nil,                      // 29: cproto.FDResultAck.ScoresEntry
-	nil,                      // 30: cproto.FDResultAck.PlayerDataEntry
-	nil,                      // 31: cproto.FDRoundResultAck.ScoresEntry
-	nil,                      // 32: cproto.FDRoundResultAck.PlayerDataEntry
-	nil,                      // 33: cproto.StageOverAck.BonusEntry
-	nil,                      // 34: cproto.BonusRewardAck.BonusEntry
-	nil,                      // 35: cproto.BonusRewardAck.NextBonusEntry
-	(*anypb.Any)(nil),        // 36: google.protobuf.Any
+	(*StageOverAck)(nil),     // 21: cproto.StageOverAck
+	(*RankListReq)(nil),      // 22: cproto.RankListReq
+	(*RankListItem)(nil),     // 23: cproto.RankListItem
+	(*RankListAck)(nil),      // 24: cproto.RankListAck
+	(*BonusRewardAck)(nil),   // 25: cproto.BonusRewardAck
+	nil,                      // 26: cproto.CreateRoomReq.PropertiesEntry
+	nil,                      // 27: cproto.CreateRoomReq.MatchConfigEntry
+	nil,                      // 28: cproto.FDResultAck.ScoresEntry
+	nil,                      // 29: cproto.FDResultAck.PlayerDataEntry
+	nil,                      // 30: cproto.FDRoundResultAck.ScoresEntry
+	nil,                      // 31: cproto.FDRoundResultAck.PlayerDataEntry
+	nil,                      // 32: cproto.StageOverAck.BonusEntry
+	nil,                      // 33: cproto.BonusRewardAck.BonusEntry
+	nil,                      // 34: cproto.BonusRewardAck.NextBonusEntry
+	(*anypb.Any)(nil),        // 35: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	36, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	36, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
-	27, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
-	28, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
-	29, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
-	30, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
-	31, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
-	32, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
-	33, // 8: cproto.StageOverAck.bonus:type_name -> cproto.StageOverAck.BonusEntry
-	24, // 9: cproto.RankListAck.players:type_name -> cproto.RankListItem
-	24, // 10: cproto.RankListAck.self:type_name -> cproto.RankListItem
-	34, // 11: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
-	35, // 12: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
+	35, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	35, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	26, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
+	27, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
+	28, // 4: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
+	29, // 5: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
+	30, // 6: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
+	31, // 7: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
+	32, // 8: cproto.StageOverAck.bonus:type_name -> cproto.StageOverAck.BonusEntry
+	23, // 9: cproto.RankListAck.players:type_name -> cproto.RankListItem
+	23, // 10: cproto.RankListAck.self:type_name -> cproto.RankListItem
+	33, // 11: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
+	34, // 12: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
 	13, // [13:13] is the sub-list for method output_type
 	13, // [13:13] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
@@ -1763,7 +1671,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   36,
+			NumMessages:   35,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
