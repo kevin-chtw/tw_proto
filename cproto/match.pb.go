@@ -1037,6 +1037,7 @@ type StageResultAck struct {
 	StageId       int32                  `protobuf:"varint,9,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`                          // 当前阶段，从 1
 	StageCount    int32                  `protobuf:"varint,10,opt,name=stage_count,json=stageCount,proto3" json:"stage_count,omitempty"`                // 配置 stages 条数
 	RoundTotal    int32                  `protobuf:"varint,11,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"`                // 瑞士规划轮数 / 定局总局数；打立为 0
+	PlayerCount   int32                  `protobuf:"varint,12,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`             // 当前轮次玩家数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1144,6 +1145,13 @@ func (x *StageResultAck) GetStageCount() int32 {
 func (x *StageResultAck) GetRoundTotal() int32 {
 	if x != nil {
 		return x.RoundTotal
+	}
+	return 0
+}
+
+func (x *StageResultAck) GetPlayerCount() int32 {
+	if x != nil {
+		return x.PlayerCount
 	}
 	return 0
 }
@@ -1537,7 +1545,7 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
 	"\x0fPlayerDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xcf\x02\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xf2\x02\n" +
 	"\x0eStageResultAck\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\x05R\x06result\x12\x12\n" +
 	"\x04rank\x18\x02 \x01(\x05R\x04rank\x12#\n" +
@@ -1553,7 +1561,8 @@ const file_match_proto_rawDesc = "" +
 	" \x01(\x05R\n" +
 	"stageCount\x12\x1f\n" +
 	"\vround_total\x18\v \x01(\x05R\n" +
-	"roundTotal\"\xa9\x01\n" +
+	"roundTotal\x12!\n" +
+	"\fplayer_count\x18\f \x01(\x05R\vplayerCount\"\xa9\x01\n" +
 	"\fStageOverAck\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x03R\x05score\x125\n" +

@@ -114,6 +114,7 @@ message StageResultAck {
   int32 stage_id = 9; // 当前阶段，从 1
   int32 stage_count = 10; // 配置 stages 条数
   int32 round_total = 11; // 瑞士规划轮数 / 定局总局数；打立为 0
+  int32 player_count = 12; // 当前轮次玩家数
 }
 
 message StageOverAck {
