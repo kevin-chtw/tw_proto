@@ -115,7 +115,7 @@ message FDRoundResultAck {
 }
 
 message StageResultAck {
-  int32 result = 1; // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛
+  int32 result = 1; // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛，6-组桌中
   int32 remain_tables = 2; // 当前阶段还在打的桌数
   int32 win_count = 3; // 整场胜次数
   int32 lose_count = 4; // 整场负次数
@@ -128,6 +128,14 @@ message StageOverAck {
   map<int32,int64> bonus = 3; // 本阶段结束排名奖
 }
 
+// 打立达到截断人数，停止组桌
+message KnockoutCutoffAck {
+  int32 cutoff_count = 1; // 截断人数
+  int32 player_count = 2; // 当前存活人数
+  int32 remain_tables = 3; // 还在打的桌数
+  int32 stage_id = 4;
+}
+
 message RankListReq {
 }
 
@@ -136,7 +144,7 @@ message RankListItem {
   string uid = 2;
   string nickname = 3;
   int64 score = 4; // 游戏分
-  int32 result = 5; // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛
+  int32 result = 5; // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛，6-组桌中
 }
 
 message RankListAck {
