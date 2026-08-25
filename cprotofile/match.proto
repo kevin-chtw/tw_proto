@@ -53,6 +53,17 @@ message CancelRoomAck {
   int32 tableid = 1;
 }
 
+message StageInfo {
+  int32 rank = 1; //当前名次
+  int32 player_count = 2; // 当前轮次玩家数
+  int32 stage_id = 3; // 当前阶段，从 1
+  int32 stage_count = 4; // 配置 stages 条数
+  string format = 5; // knockout / swiss / fix_score
+  int32 round = 6; // 瑞士当前轮 / 定局当前局；打立为 0
+  int32 round_total = 7; // 瑞士规划轮数 / 定局总局数；打立为 0
+  repeated int32 promote_counts = 8; // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
+}
+
 message StartClientAck {
   string match_type = 1; //比赛类型
   string game_type = 2; //游戏类型
@@ -61,6 +72,7 @@ message StartClientAck {
   int32 table_id = 5; //桌号
   int64 score_base = 6; //基数
   int64 tax = 7; // 服务费
+  StageInfo stage_info = 8; // 当前阶段；非锦标赛为空
 }
 
 message SignupAck {
@@ -104,17 +116,10 @@ message FDRoundResultAck {
 
 message StageResultAck {
   int32 result = 1; // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛
-  int32 rank = 2; //当前名次
-  int32 remain_tables = 3; // 当前阶段还在打的桌数
-  int32 win_count = 4; // 整场胜次数
-  int32 lose_count = 5; // 整场负次数
-  string format = 6; // knockout / swiss / fix_score
-  int32 round = 7; // 瑞士当前轮 / 定局当前局；打立为 0
-  repeated int32 promote_counts = 8; // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
-  int32 stage_id = 9; // 当前阶段，从 1
-  int32 stage_count = 10; // 配置 stages 条数
-  int32 round_total = 11; // 瑞士规划轮数 / 定局总局数；打立为 0
-  int32 player_count = 12; // 当前轮次玩家数
+  int32 remain_tables = 2; // 当前阶段还在打的桌数
+  int32 win_count = 3; // 整场胜次数
+  int32 lose_count = 4; // 整场负次数
+  StageInfo stage_info = 5;
 }
 
 message StageOverAck {
