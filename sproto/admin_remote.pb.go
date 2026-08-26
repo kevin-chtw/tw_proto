@@ -433,7 +433,7 @@ func (x *SignCfgVersionReq) GetDummy() uint64 {
 
 type SignCfgVersionAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Version       uint64                 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"` // max(id) across sign_cfg / history / sign_bind
+	Version       uint64                 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"` // max(id) across sign_cfg / history
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -480,6 +480,8 @@ type SignCfgRow struct {
 	SignId        int32                  `protobuf:"varint,1,opt,name=sign_id,json=signId,proto3" json:"sign_id,omitempty"`
 	Content       string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"` // YAML
 	Version       uint64                 `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
+	GameType      string                 `protobuf:"bytes,4,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -535,9 +537,24 @@ func (x *SignCfgRow) GetVersion() uint64 {
 	return 0
 }
 
+func (x *SignCfgRow) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+func (x *SignCfgRow) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 type SignCfgListReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -577,6 +594,13 @@ func (x *SignCfgListReq) GetDummy() uint64 {
 		return x.Dummy
 	}
 	return 0
+}
+
+func (x *SignCfgListReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
 }
 
 type SignCfgListAck struct {
@@ -1131,6 +1155,7 @@ type BonusCfgRow struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"` // YAML
 	Version       uint64                 `protobuf:"varint,4,opt,name=version,proto3" json:"version,omitempty"`
+	GameType      string                 `protobuf:"bytes,5,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1193,9 +1218,17 @@ func (x *BonusCfgRow) GetVersion() uint64 {
 	return 0
 }
 
+func (x *BonusCfgRow) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
 type BonusCfgListReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1235,6 +1268,13 @@ func (x *BonusCfgListReq) GetDummy() uint64 {
 		return x.Dummy
 	}
 	return 0
+}
+
+func (x *BonusCfgListReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
 }
 
 type BonusCfgListAck struct {
@@ -3030,14 +3070,17 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x11SignCfgVersionReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"-\n" +
 	"\x11SignCfgVersionAck\x12\x18\n" +
-	"\aversion\x18\x01 \x01(\x04R\aversion\"Y\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\x8a\x01\n" +
 	"\n" +
 	"SignCfgRow\x12\x17\n" +
 	"\asign_id\x18\x01 \x01(\x05R\x06signId\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\x04R\aversion\"&\n" +
+	"\aversion\x18\x03 \x01(\x04R\aversion\x12\x1b\n" +
+	"\tgame_type\x18\x04 \x01(\tR\bgameType\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\"C\n" +
 	"\x0eSignCfgListReq\x12\x14\n" +
-	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"8\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\x12\x1b\n" +
+	"\tgame_type\x18\x02 \x01(\tR\bgameType\"8\n" +
 	"\x0eSignCfgListAck\x12&\n" +
 	"\x04rows\x18\x01 \x03(\v2\x12.sproto.SignCfgRowR\x04rows\"(\n" +
 	"\rSignCfgGetReq\x12\x17\n" +
@@ -3063,14 +3106,16 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x12BonusCfgVersionReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\".\n" +
 	"\x12BonusCfgVersionAck\x12\x18\n" +
-	"\aversion\x18\x01 \x01(\x04R\aversion\"p\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\x8d\x01\n" +
 	"\vBonusCfgRow\x12\x19\n" +
 	"\bbonus_id\x18\x01 \x01(\x05R\abonusId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
 	"\acontent\x18\x03 \x01(\tR\acontent\x12\x18\n" +
-	"\aversion\x18\x04 \x01(\x04R\aversion\"'\n" +
+	"\aversion\x18\x04 \x01(\x04R\aversion\x12\x1b\n" +
+	"\tgame_type\x18\x05 \x01(\tR\bgameType\"D\n" +
 	"\x0fBonusCfgListReq\x12\x14\n" +
-	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\":\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\x12\x1b\n" +
+	"\tgame_type\x18\x02 \x01(\tR\bgameType\":\n" +
 	"\x0fBonusCfgListAck\x12'\n" +
 	"\x04rows\x18\x01 \x03(\v2\x13.sproto.BonusCfgRowR\x04rows\"+\n" +
 	"\x0eBonusCfgGetReq\x12\x19\n" +

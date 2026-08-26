@@ -47,17 +47,20 @@ message SignCfgVersionReq {
 }
 
 message SignCfgVersionAck {
-  uint64 version = 1; // max(id) across sign_cfg / history / sign_bind
+  uint64 version = 1; // max(id) across sign_cfg / history
 }
 
 message SignCfgRow {
   int32 sign_id = 1;
   string content = 2; // YAML
   uint64 version = 3;
+  string game_type = 4;
+  string name = 5;
 }
 
 message SignCfgListReq {
   uint64 dummy = 1;
+  string game_type = 2;
 }
 
 message SignCfgListAck {
@@ -117,10 +120,12 @@ message BonusCfgRow {
   string name = 2;
   string content = 3; // YAML
   uint64 version = 4;
+  string game_type = 5;
 }
 
 message BonusCfgListReq {
   uint64 dummy = 1;
+  string game_type = 2;
 }
 
 message BonusCfgListAck {
