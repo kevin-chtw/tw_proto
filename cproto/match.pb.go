@@ -548,6 +548,7 @@ type StageInfo struct {
 	Round         int32                  `protobuf:"varint,6,opt,name=round,proto3" json:"round,omitempty"`                                             // 瑞士当前轮 / 定局当前局；打立为 0
 	RoundTotal    int32                  `protobuf:"varint,7,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"`                 // 瑞士规划轮数 / 定局总局数；打立为 0
 	PromoteCounts []int32                `protobuf:"varint,8,rep,packed,name=promote_counts,json=promoteCounts,proto3" json:"promote_counts,omitempty"` // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
+	Group         string                 `protobuf:"bytes,9,opt,name=group,proto3" json:"group,omitempty"`                                              // 分组编号 A/B/C；未分组为空
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -636,6 +637,13 @@ func (x *StageInfo) GetPromoteCounts() []int32 {
 		return x.PromoteCounts
 	}
 	return nil
+}
+
+func (x *StageInfo) GetGroup() string {
+	if x != nil {
+		return x.Group
+	}
+	return ""
 }
 
 type StartClientAck struct {
@@ -1617,7 +1625,7 @@ const file_match_proto_rawDesc = "" +
 	"\fExitMatchReq\"\r\n" +
 	"\vFDResultReq\")\n" +
 	"\rCancelRoomAck\x12\x18\n" +
-	"\atableid\x18\x01 \x01(\x05R\atableid\"\xf4\x01\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\"\x8a\x02\n" +
 	"\tStageInfo\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12!\n" +
 	"\fplayer_count\x18\x02 \x01(\x05R\vplayerCount\x12\x19\n" +
@@ -1628,7 +1636,8 @@ const file_match_proto_rawDesc = "" +
 	"\x05round\x18\x06 \x01(\x05R\x05round\x12\x1f\n" +
 	"\vround_total\x18\a \x01(\x05R\n" +
 	"roundTotal\x12%\n" +
-	"\x0epromote_counts\x18\b \x03(\x05R\rpromoteCounts\"\x82\x02\n" +
+	"\x0epromote_counts\x18\b \x03(\x05R\rpromoteCounts\x12\x14\n" +
+	"\x05group\x18\t \x01(\tR\x05group\"\x82\x02\n" +
 	"\x0eStartClientAck\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1b\n" +
