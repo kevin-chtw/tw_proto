@@ -55,14 +55,15 @@ message CancelRoomAck {
 
 message StageInfo {
   int32 rank = 1; //当前名次
-  int32 player_count = 2; // 当前轮次玩家数
+  int32 player_count = 2; // 当前还在场人数
   int32 stage_id = 3; // 当前阶段，从 1
   int32 stage_count = 4; // 配置 stages 条数
   string format = 5; // knockout / swiss / fix_score
-  int32 round = 6; // 瑞士当前轮 / 定局当前局；打立为 0
-  int32 round_total = 7; // 瑞士规划轮数 / 定局总局数；打立为 0
+  int32 round = 6; // 瑞士当前轮；打立/定局为 0
+  int32 round_total = 7; // 瑞士规划轮数；打立/定局为 0
   repeated int32 promote_counts = 8; // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
   string group = 9; // 分组编号 A/B/C；未分组为空
+  int32 initial_count = 10; // 当前阶段开打时人数
 }
 
 message StartClientAck {

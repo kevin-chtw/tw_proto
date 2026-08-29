@@ -541,14 +541,15 @@ func (x *CancelRoomAck) GetTableid() int32 {
 type StageInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Rank          int32                  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`                                               //当前名次
-	PlayerCount   int32                  `protobuf:"varint,2,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`              // 当前轮次玩家数
+	PlayerCount   int32                  `protobuf:"varint,2,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`              // 当前还在场人数
 	StageId       int32                  `protobuf:"varint,3,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`                          // 当前阶段，从 1
 	StageCount    int32                  `protobuf:"varint,4,opt,name=stage_count,json=stageCount,proto3" json:"stage_count,omitempty"`                 // 配置 stages 条数
 	Format        string                 `protobuf:"bytes,5,opt,name=format,proto3" json:"format,omitempty"`                                            // knockout / swiss / fix_score
-	Round         int32                  `protobuf:"varint,6,opt,name=round,proto3" json:"round,omitempty"`                                             // 瑞士当前轮 / 定局当前局；打立为 0
-	RoundTotal    int32                  `protobuf:"varint,7,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"`                 // 瑞士规划轮数 / 定局总局数；打立为 0
+	Round         int32                  `protobuf:"varint,6,opt,name=round,proto3" json:"round,omitempty"`                                             // 瑞士当前轮；打立/定局为 0
+	RoundTotal    int32                  `protobuf:"varint,7,opt,name=round_total,json=roundTotal,proto3" json:"round_total,omitempty"`                 // 瑞士规划轮数；打立/定局为 0
 	PromoteCounts []int32                `protobuf:"varint,8,rep,packed,name=promote_counts,json=promoteCounts,proto3" json:"promote_counts,omitempty"` // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
 	Group         string                 `protobuf:"bytes,9,opt,name=group,proto3" json:"group,omitempty"`                                              // 分组编号 A/B/C；未分组为空
+	InitialCount  int32                  `protobuf:"varint,10,opt,name=initial_count,json=initialCount,proto3" json:"initial_count,omitempty"`          // 当前阶段开打时人数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -644,6 +645,13 @@ func (x *StageInfo) GetGroup() string {
 		return x.Group
 	}
 	return ""
+}
+
+func (x *StageInfo) GetInitialCount() int32 {
+	if x != nil {
+		return x.InitialCount
+	}
+	return 0
 }
 
 type StartClientAck struct {
@@ -1625,7 +1633,7 @@ const file_match_proto_rawDesc = "" +
 	"\fExitMatchReq\"\r\n" +
 	"\vFDResultReq\")\n" +
 	"\rCancelRoomAck\x12\x18\n" +
-	"\atableid\x18\x01 \x01(\x05R\atableid\"\x8a\x02\n" +
+	"\atableid\x18\x01 \x01(\x05R\atableid\"\xaf\x02\n" +
 	"\tStageInfo\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12!\n" +
 	"\fplayer_count\x18\x02 \x01(\x05R\vplayerCount\x12\x19\n" +
@@ -1637,7 +1645,9 @@ const file_match_proto_rawDesc = "" +
 	"\vround_total\x18\a \x01(\x05R\n" +
 	"roundTotal\x12%\n" +
 	"\x0epromote_counts\x18\b \x03(\x05R\rpromoteCounts\x12\x14\n" +
-	"\x05group\x18\t \x01(\tR\x05group\"\x82\x02\n" +
+	"\x05group\x18\t \x01(\tR\x05group\x12#\n" +
+	"\rinitial_count\x18\n" +
+	" \x01(\x05R\finitialCount\"\x82\x02\n" +
 	"\x0eStartClientAck\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1b\n" +
