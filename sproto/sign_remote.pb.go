@@ -318,6 +318,198 @@ func (*SignReloadAck) Descriptor() ([]byte, []int) {
 	return file_sign_remote_proto_rawDescGZIP(), []int{5}
 }
 
+type SignDiyUpsertReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	Content       string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`              // sign YAML
+	TtlSec        int32                  `protobuf:"varint,3,opt,name=ttl_sec,json=ttlSec,proto3" json:"ttl_sec,omitempty"` // 0 = default 7d
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignDiyUpsertReq) Reset() {
+	*x = SignDiyUpsertReq{}
+	mi := &file_sign_remote_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignDiyUpsertReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignDiyUpsertReq) ProtoMessage() {}
+
+func (x *SignDiyUpsertReq) ProtoReflect() protoreflect.Message {
+	mi := &file_sign_remote_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignDiyUpsertReq.ProtoReflect.Descriptor instead.
+func (*SignDiyUpsertReq) Descriptor() ([]byte, []int) {
+	return file_sign_remote_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *SignDiyUpsertReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *SignDiyUpsertReq) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *SignDiyUpsertReq) GetTtlSec() int32 {
+	if x != nil {
+		return x.TtlSec
+	}
+	return 0
+}
+
+type SignDiyUpsertAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignDiyUpsertAck) Reset() {
+	*x = SignDiyUpsertAck{}
+	mi := &file_sign_remote_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignDiyUpsertAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignDiyUpsertAck) ProtoMessage() {}
+
+func (x *SignDiyUpsertAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sign_remote_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignDiyUpsertAck.ProtoReflect.Descriptor instead.
+func (*SignDiyUpsertAck) Descriptor() ([]byte, []int) {
+	return file_sign_remote_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SignDiyUpsertAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
+type SignDiyDeleteReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignDiyDeleteReq) Reset() {
+	*x = SignDiyDeleteReq{}
+	mi := &file_sign_remote_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignDiyDeleteReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignDiyDeleteReq) ProtoMessage() {}
+
+func (x *SignDiyDeleteReq) ProtoReflect() protoreflect.Message {
+	mi := &file_sign_remote_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignDiyDeleteReq.ProtoReflect.Descriptor instead.
+func (*SignDiyDeleteReq) Descriptor() ([]byte, []int) {
+	return file_sign_remote_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *SignDiyDeleteReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+type SignDiyDeleteAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignDiyDeleteAck) Reset() {
+	*x = SignDiyDeleteAck{}
+	mi := &file_sign_remote_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignDiyDeleteAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignDiyDeleteAck) ProtoMessage() {}
+
+func (x *SignDiyDeleteAck) ProtoReflect() protoreflect.Message {
+	mi := &file_sign_remote_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignDiyDeleteAck.ProtoReflect.Descriptor instead.
+func (*SignDiyDeleteAck) Descriptor() ([]byte, []int) {
+	return file_sign_remote_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *SignDiyDeleteAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
 var File_sign_remote_proto protoreflect.FileDescriptor
 
 const file_sign_remote_proto_rawDesc = "" +
@@ -345,7 +537,17 @@ const file_sign_remote_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x0f\n" +
 	"\rSignRefundAck\"\x0f\n" +
 	"\rSignReloadReq\"\x0f\n" +
-	"\rSignReloadAckB\vZ\t../sprotob\x06proto3"
+	"\rSignReloadAck\"`\n" +
+	"\x10SignDiyUpsertReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x18\n" +
+	"\acontent\x18\x02 \x01(\tR\acontent\x12\x17\n" +
+	"\attl_sec\x18\x03 \x01(\x05R\x06ttlSec\"$\n" +
+	"\x10SignDiyUpsertAck\x12\x10\n" +
+	"\x03err\x18\x01 \x01(\tR\x03err\"-\n" +
+	"\x10SignDiyDeleteReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\"$\n" +
+	"\x10SignDiyDeleteAck\x12\x10\n" +
+	"\x03err\x18\x01 \x01(\tR\x03errB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_sign_remote_proto_rawDescOnce sync.Once
@@ -359,25 +561,29 @@ func file_sign_remote_proto_rawDescGZIP() []byte {
 	return file_sign_remote_proto_rawDescData
 }
 
-var file_sign_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_sign_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_sign_remote_proto_goTypes = []any{
-	(*SignReq)(nil),       // 0: sproto.SignReq
-	(*SignAck)(nil),       // 1: sproto.SignAck
-	(*SignRefundReq)(nil), // 2: sproto.SignRefundReq
-	(*SignRefundAck)(nil), // 3: sproto.SignRefundAck
-	(*SignReloadReq)(nil), // 4: sproto.SignReloadReq
-	(*SignReloadAck)(nil), // 5: sproto.SignReloadAck
-	nil,                   // 6: sproto.SignAck.FeeEntry
-	nil,                   // 7: sproto.SignRefundReq.FeeEntry
+	(*SignReq)(nil),          // 0: sproto.SignReq
+	(*SignAck)(nil),          // 1: sproto.SignAck
+	(*SignRefundReq)(nil),    // 2: sproto.SignRefundReq
+	(*SignRefundAck)(nil),    // 3: sproto.SignRefundAck
+	(*SignReloadReq)(nil),    // 4: sproto.SignReloadReq
+	(*SignReloadAck)(nil),    // 5: sproto.SignReloadAck
+	(*SignDiyUpsertReq)(nil), // 6: sproto.SignDiyUpsertReq
+	(*SignDiyUpsertAck)(nil), // 7: sproto.SignDiyUpsertAck
+	(*SignDiyDeleteReq)(nil), // 8: sproto.SignDiyDeleteReq
+	(*SignDiyDeleteAck)(nil), // 9: sproto.SignDiyDeleteAck
+	nil,                      // 10: sproto.SignAck.FeeEntry
+	nil,                      // 11: sproto.SignRefundReq.FeeEntry
 }
 var file_sign_remote_proto_depIdxs = []int32{
-	6, // 0: sproto.SignAck.fee:type_name -> sproto.SignAck.FeeEntry
-	7, // 1: sproto.SignRefundReq.fee:type_name -> sproto.SignRefundReq.FeeEntry
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	10, // 0: sproto.SignAck.fee:type_name -> sproto.SignAck.FeeEntry
+	11, // 1: sproto.SignRefundReq.fee:type_name -> sproto.SignRefundReq.FeeEntry
+	2,  // [2:2] is the sub-list for method output_type
+	2,  // [2:2] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_sign_remote_proto_init() }
@@ -391,7 +597,7 @@ func file_sign_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sign_remote_proto_rawDesc), len(file_sign_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

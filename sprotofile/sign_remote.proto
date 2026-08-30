@@ -27,3 +27,18 @@ message SignRefundAck {}
 // Admin 通知 sign 全量重载 cfg + bind
 message SignReloadReq {}
 message SignReloadAck {}
+
+message SignDiyUpsertReq {
+  int32 match_id = 1;
+  string content = 2; // sign YAML
+  int32 ttl_sec = 3;  // 0 = default 7d
+}
+message SignDiyUpsertAck {
+  string err = 1;
+}
+message SignDiyDeleteReq {
+  int32 match_id = 1;
+}
+message SignDiyDeleteAck {
+  string err = 1;
+}
