@@ -29,6 +29,7 @@ type StatsReq struct {
 	Data          string                 `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`                       // JSON格式的事件数据
 	Timestamp     int64                  `protobuf:"varint,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`            // 时间戳(毫秒)
 	Channel       string                 `protobuf:"bytes,5,opt,name=channel,proto3" json:"channel,omitempty"`                 // 登录渠道
+	OrgId         uint32                 `protobuf:"varint,6,opt,name=org_id,json=orgId,proto3" json:"org_id,omitempty"`       // 办赛单位；0 表示未归因
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -96,6 +97,13 @@ func (x *StatsReq) GetChannel() string {
 		return x.Channel
 	}
 	return ""
+}
+
+func (x *StatsReq) GetOrgId() uint32 {
+	if x != nil {
+		return x.OrgId
+	}
+	return 0
 }
 
 // 统计事件响应
@@ -322,13 +330,14 @@ var File_stats_remote_proto protoreflect.FileDescriptor
 
 const file_stats_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x12stats_remote.proto\x12\x06sproto\"\x83\x01\n" +
+	"\x12stats_remote.proto\x12\x06sproto\"\x9a\x01\n" +
 	"\bStatsReq\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\x05R\aeventId\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x12\n" +
 	"\x04data\x18\x03 \x01(\tR\x04data\x12\x1c\n" +
 	"\ttimestamp\x18\x04 \x01(\x03R\ttimestamp\x12\x18\n" +
-	"\achannel\x18\x05 \x01(\tR\achannel\"\n" +
+	"\achannel\x18\x05 \x01(\tR\achannel\x12\x15\n" +
+	"\x06org_id\x18\x06 \x01(\rR\x05orgId\"\n" +
 	"\n" +
 	"\bStatsAck\"\xdb\x01\n" +
 	"\rStatsQueryReq\x12\x16\n" +

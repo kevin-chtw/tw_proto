@@ -10,6 +10,7 @@ message StatsReq {
   string data = 3;     // JSON格式的事件数据
   int64 timestamp = 4; // 时间戳(毫秒)
   string channel = 5;  // 登录渠道
+  uint32 org_id = 6; // 办赛单位；0 表示未归因
 }
 
 // 统计事件响应
