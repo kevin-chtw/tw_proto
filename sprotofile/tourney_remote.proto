@@ -25,6 +25,7 @@ message TourneyInfo {
     string serverid = 5; //服务器ID
     int32 online = 6; //在线人数
     int64 score_base = 7;//基数
+    string zone = 8; //赛区；空表示未配置
 }
 
 message FDTakeTableidReq {

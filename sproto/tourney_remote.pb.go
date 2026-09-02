@@ -163,6 +163,7 @@ type TourneyInfo struct {
 	Serverid      string                 `protobuf:"bytes,5,opt,name=serverid,proto3" json:"serverid,omitempty"`                     //服务器ID
 	Online        int32                  `protobuf:"varint,6,opt,name=online,proto3" json:"online,omitempty"`                        //在线人数
 	ScoreBase     int64                  `protobuf:"varint,7,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"` //基数
+	Zone          string                 `protobuf:"bytes,8,opt,name=zone,proto3" json:"zone,omitempty"`                             //赛区；空表示未配置
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -244,6 +245,13 @@ func (x *TourneyInfo) GetScoreBase() int64 {
 		return x.ScoreBase
 	}
 	return 0
+}
+
+func (x *TourneyInfo) GetZone() string {
+	if x != nil {
+		return x.Zone
+	}
+	return ""
 }
 
 type FDTakeTableidReq struct {
@@ -803,7 +811,7 @@ const file_tourney_remote_proto_rawDesc = "" +
 	"TourneyAck\x12&\n" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"=\n" +
 	"\x10TourneyUpdateReq\x12)\n" +
-	"\x05infos\x18\x01 \x03(\v2\x13.sproto.TourneyInfoR\x05infos\"\xc0\x01\n" +
+	"\x05infos\x18\x01 \x03(\v2\x13.sproto.TourneyInfoR\x05infos\"\xd4\x01\n" +
 	"\vTourneyInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1b\n" +
@@ -813,7 +821,8 @@ const file_tourney_remote_proto_rawDesc = "" +
 	"\bserverid\x18\x05 \x01(\tR\bserverid\x12\x16\n" +
 	"\x06online\x18\x06 \x01(\x05R\x06online\x12\x1d\n" +
 	"\n" +
-	"score_base\x18\a \x01(\x03R\tscoreBase\"e\n" +
+	"score_base\x18\a \x01(\x03R\tscoreBase\x12\x12\n" +
+	"\x04zone\x18\b \x01(\tR\x04zone\"e\n" +
 	"\x10FDTakeTableidReq\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x1a\n" +
 	"\bserverid\x18\x02 \x01(\tR\bserverid\x12\x1b\n" +
