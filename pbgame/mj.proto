@@ -80,6 +80,7 @@ message MJHuData {
   int32 gen = 2; //根数
   int64 multi = 3; //倍数
   repeated int32 hu_types = 4; // 胡的类型
+  map<int32, int32> extra = 5; //玩法扩展
 }
 
 message MJDrawAck {
