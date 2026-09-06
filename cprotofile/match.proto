@@ -53,17 +53,29 @@ message CancelRoomAck {
   int32 tableid = 1;
 }
 
+// 跳台一条：该轮赛制 + 本台开打人数。打立、定局整阶段各 1 条；瑞士每轮 1 条。
+// 上一阶段晋级人数是下一阶段第一台的 count，不要再标成上一阶段。
+message TourneyRound {
+  string format = 1; // knockout / swiss / fix_score
+  int32 count = 2; // 本台开打人数（打立第一台=整场人数）
+  int32 games = 3; // 定局: YAML games；瑞士: games_per_round，缺省 1；打立: 1
+}
+
+// 锦标赛进度。入桌/重连在 StartClientAck.stage_info，本桌结束在 StageResultAck.stage_info。
+// 前端接法：
+//   跳台列表 = rounds（按下标 0..n-1 画）
+//   当前台 = rounds[round]（round 从 0，不要当「第几阶段」）
+//   当前赛制/局数 = rounds[round].format / .games
+//   规划人数 = rounds[round].count；现场还在场人数 = player_count
+//   文案「第 N 轮」= round+1；「共 N 轮」= len(rounds)
+//   待定/晋级/淘汰看 StageResultAck.result；剩余桌数看 remain_tables
+//   非锦标赛 stage_info 为空
 message StageInfo {
-  int32 rank = 1; //当前名次
-  int32 player_count = 2; // 当前还在场人数
-  int32 stage_id = 3; // 当前阶段，从 1
-  int32 stage_count = 4; // 配置 stages 条数
-  string format = 5; // knockout / swiss / fix_score
-  int32 round = 6; // 瑞士当前轮；打立/定局为 0
-  int32 round_total = 7; // 瑞士规划轮数；打立/定局为 0
-  repeated int32 promote_counts = 8; // 打立: [晋级人数]; 瑞士: 各轮晋级人数; 定局: 空
-  string group = 9; // 分组编号 A/B/C；未分组为空
-  int32 initial_count = 10; // 当前阶段开打时人数
+  int32 rank = 1; // 当前名次
+  int32 player_count = 2; // 当前还在场人数（现场值，不是规划人数）
+  int32 round = 3; // 当前跳台下标，从 0；取 rounds[round]
+  repeated TourneyRound rounds = 4;
+  string group = 5; // 分组 A/B/C；未分组为空
 }
 
 message StartClientAck {
@@ -74,7 +86,7 @@ message StartClientAck {
   int32 table_id = 5; //桌号
   int64 score_base = 6; //基数
   int64 tax = 7; // 服务费
-  StageInfo stage_info = 8; // 当前阶段；非锦标赛为空
+  StageInfo stage_info = 8; // 锦标赛进度，见 StageInfo 注释；非锦标赛为空
 }
 
 message SignupAck {
@@ -121,7 +133,7 @@ message StageResultAck {
   int32 remain_tables = 2; // 当前阶段还在打的桌数
   int32 win_count = 3; // 整场胜次数
   int32 lose_count = 4; // 整场负次数
-  StageInfo stage_info = 5;
+  StageInfo stage_info = 5; // 同 StartClientAck，桌结/等待刷新时带整场跳台
 }
 
 message StageOverAck {
