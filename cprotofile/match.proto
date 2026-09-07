@@ -69,6 +69,7 @@ message TourneyRound {
 //   规划人数 = rounds[round].count；现场还在场人数 = player_count
 //   文案「第 N 轮」= round+1；「共 N 轮」= len(rounds)
 //   待定/晋级/淘汰看 StageResultAck.result；剩余桌数看 remain_tables
+//   跨台：确认晋级后 result=1，延迟后再 StartClientAck 进开赛区
 //   非锦标赛 stage_info 为空
 message StageInfo {
   int32 rank = 1; // 当前名次
