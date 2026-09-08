@@ -24,7 +24,7 @@ const (
 type BonusReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                            // 用户ID
-	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`                   //比赛ID（admin bonus_bind 解析到 bonus_id）
+	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"`                   //比赛ID（= bonus_cfg.match_id）
 	WinScore      int64                  `protobuf:"varint,3,opt,name=win_score,json=winScore,proto3" json:"win_score,omitempty"` //赢分
 	Rank          int32                  `protobuf:"varint,4,opt,name=rank,proto3" json:"rank,omitempty"`                         //排名
 	unknownFields protoimpl.UnknownFields

@@ -3037,6 +3037,331 @@ func (x *DiyStatusReportAck) GetErr() string {
 	return ""
 }
 
+// ActivityCfg service (admin.activitycfg.*)
+type ActivityCfgRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	ActType       string                 `protobuf:"bytes,3,opt,name=act_type,json=actType,proto3" json:"act_type,omitempty"`
+	Content       string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
+	Version       uint64                 `protobuf:"varint,5,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivityCfgRow) Reset() {
+	*x = ActivityCfgRow{}
+	mi := &file_admin_remote_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivityCfgRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivityCfgRow) ProtoMessage() {}
+
+func (x *ActivityCfgRow) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivityCfgRow.ProtoReflect.Descriptor instead.
+func (*ActivityCfgRow) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *ActivityCfgRow) GetActivityId() int32 {
+	if x != nil {
+		return x.ActivityId
+	}
+	return 0
+}
+
+func (x *ActivityCfgRow) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ActivityCfgRow) GetActType() string {
+	if x != nil {
+		return x.ActType
+	}
+	return ""
+}
+
+func (x *ActivityCfgRow) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *ActivityCfgRow) GetVersion() uint64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type ActivityCfgVersionReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivityCfgVersionReq) Reset() {
+	*x = ActivityCfgVersionReq{}
+	mi := &file_admin_remote_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivityCfgVersionReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivityCfgVersionReq) ProtoMessage() {}
+
+func (x *ActivityCfgVersionReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivityCfgVersionReq.ProtoReflect.Descriptor instead.
+func (*ActivityCfgVersionReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{59}
+}
+
+type ActivityCfgVersionAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Version       uint64                 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivityCfgVersionAck) Reset() {
+	*x = ActivityCfgVersionAck{}
+	mi := &file_admin_remote_proto_msgTypes[60]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivityCfgVersionAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivityCfgVersionAck) ProtoMessage() {}
+
+func (x *ActivityCfgVersionAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[60]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivityCfgVersionAck.ProtoReflect.Descriptor instead.
+func (*ActivityCfgVersionAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{60}
+}
+
+func (x *ActivityCfgVersionAck) GetVersion() uint64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type ActivityCfgListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivityCfgListReq) Reset() {
+	*x = ActivityCfgListReq{}
+	mi := &file_admin_remote_proto_msgTypes[61]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivityCfgListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivityCfgListReq) ProtoMessage() {}
+
+func (x *ActivityCfgListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[61]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivityCfgListReq.ProtoReflect.Descriptor instead.
+func (*ActivityCfgListReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{61}
+}
+
+type ActivityCfgListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*ActivityCfgRow      `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivityCfgListAck) Reset() {
+	*x = ActivityCfgListAck{}
+	mi := &file_admin_remote_proto_msgTypes[62]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivityCfgListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivityCfgListAck) ProtoMessage() {}
+
+func (x *ActivityCfgListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[62]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivityCfgListAck.ProtoReflect.Descriptor instead.
+func (*ActivityCfgListAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *ActivityCfgListAck) GetRows() []*ActivityCfgRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+type ActivityCfgGetReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ActivityId    int32                  `protobuf:"varint,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivityCfgGetReq) Reset() {
+	*x = ActivityCfgGetReq{}
+	mi := &file_admin_remote_proto_msgTypes[63]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivityCfgGetReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivityCfgGetReq) ProtoMessage() {}
+
+func (x *ActivityCfgGetReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[63]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivityCfgGetReq.ProtoReflect.Descriptor instead.
+func (*ActivityCfgGetReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *ActivityCfgGetReq) GetActivityId() int32 {
+	if x != nil {
+		return x.ActivityId
+	}
+	return 0
+}
+
+type ActivityCfgGetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Row           *ActivityCfgRow        `protobuf:"bytes,1,opt,name=row,proto3" json:"row,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivityCfgGetAck) Reset() {
+	*x = ActivityCfgGetAck{}
+	mi := &file_admin_remote_proto_msgTypes[64]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivityCfgGetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivityCfgGetAck) ProtoMessage() {}
+
+func (x *ActivityCfgGetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[64]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivityCfgGetAck.ProtoReflect.Descriptor instead.
+func (*ActivityCfgGetAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *ActivityCfgGetAck) GetRow() *ActivityCfgRow {
+	if x != nil {
+		return x.Row
+	}
+	return nil
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -3228,7 +3553,25 @@ const file_admin_remote_proto_rawDesc = "" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\tR\x06status\"&\n" +
 	"\x12DiyStatusReportAck\x12\x10\n" +
-	"\x03err\x18\x01 \x01(\tR\x03errB\vZ\t../sprotob\x06proto3"
+	"\x03err\x18\x01 \x01(\tR\x03err\"\x94\x01\n" +
+	"\x0eActivityCfgRow\x12\x1f\n" +
+	"\vactivity_id\x18\x01 \x01(\x05R\n" +
+	"activityId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
+	"\bact_type\x18\x03 \x01(\tR\aactType\x12\x18\n" +
+	"\acontent\x18\x04 \x01(\tR\acontent\x12\x18\n" +
+	"\aversion\x18\x05 \x01(\x04R\aversion\"\x17\n" +
+	"\x15ActivityCfgVersionReq\"1\n" +
+	"\x15ActivityCfgVersionAck\x12\x18\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\x14\n" +
+	"\x12ActivityCfgListReq\"@\n" +
+	"\x12ActivityCfgListAck\x12*\n" +
+	"\x04rows\x18\x01 \x03(\v2\x16.sproto.ActivityCfgRowR\x04rows\"4\n" +
+	"\x11ActivityCfgGetReq\x12\x1f\n" +
+	"\vactivity_id\x18\x01 \x01(\x05R\n" +
+	"activityId\"=\n" +
+	"\x11ActivityCfgGetAck\x12(\n" +
+	"\x03row\x18\x01 \x01(\v2\x16.sproto.ActivityCfgRowR\x03rowB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once
@@ -3242,66 +3585,73 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 58)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 65)
 var file_admin_remote_proto_goTypes = []any{
-	(*MatchCfgVersionReq)(nil),  // 0: sproto.MatchCfgVersionReq
-	(*MatchCfgVersionAck)(nil),  // 1: sproto.MatchCfgVersionAck
-	(*MatchCfgRow)(nil),         // 2: sproto.MatchCfgRow
-	(*MatchCfgListReq)(nil),     // 3: sproto.MatchCfgListReq
-	(*MatchCfgListAck)(nil),     // 4: sproto.MatchCfgListAck
-	(*MatchCfgGetReq)(nil),      // 5: sproto.MatchCfgGetReq
-	(*MatchCfgGetAck)(nil),      // 6: sproto.MatchCfgGetAck
-	(*SignCfgVersionReq)(nil),   // 7: sproto.SignCfgVersionReq
-	(*SignCfgVersionAck)(nil),   // 8: sproto.SignCfgVersionAck
-	(*SignCfgRow)(nil),          // 9: sproto.SignCfgRow
-	(*SignCfgListReq)(nil),      // 10: sproto.SignCfgListReq
-	(*SignCfgListAck)(nil),      // 11: sproto.SignCfgListAck
-	(*SignCfgGetReq)(nil),       // 12: sproto.SignCfgGetReq
-	(*SignCfgGetAck)(nil),       // 13: sproto.SignCfgGetAck
-	(*SignBindVersionReq)(nil),  // 14: sproto.SignBindVersionReq
-	(*SignBindVersionAck)(nil),  // 15: sproto.SignBindVersionAck
-	(*SignBindRow)(nil),         // 16: sproto.SignBindRow
-	(*SignBindListReq)(nil),     // 17: sproto.SignBindListReq
-	(*SignBindListAck)(nil),     // 18: sproto.SignBindListAck
-	(*SignBindGetReq)(nil),      // 19: sproto.SignBindGetReq
-	(*SignBindGetAck)(nil),      // 20: sproto.SignBindGetAck
-	(*BonusCfgVersionReq)(nil),  // 21: sproto.BonusCfgVersionReq
-	(*BonusCfgVersionAck)(nil),  // 22: sproto.BonusCfgVersionAck
-	(*BonusCfgRow)(nil),         // 23: sproto.BonusCfgRow
-	(*BonusCfgListReq)(nil),     // 24: sproto.BonusCfgListReq
-	(*BonusCfgListAck)(nil),     // 25: sproto.BonusCfgListAck
-	(*BonusCfgGetReq)(nil),      // 26: sproto.BonusCfgGetReq
-	(*BonusCfgGetAck)(nil),      // 27: sproto.BonusCfgGetAck
-	(*BonusBindVersionReq)(nil), // 28: sproto.BonusBindVersionReq
-	(*BonusBindVersionAck)(nil), // 29: sproto.BonusBindVersionAck
-	(*BonusBindRow)(nil),        // 30: sproto.BonusBindRow
-	(*BonusBindListReq)(nil),    // 31: sproto.BonusBindListReq
-	(*BonusBindListAck)(nil),    // 32: sproto.BonusBindListAck
-	(*BonusBindGetReq)(nil),     // 33: sproto.BonusBindGetReq
-	(*BonusBindGetAck)(nil),     // 34: sproto.BonusBindGetAck
-	(*DecoCfgVersionReq)(nil),   // 35: sproto.DecoCfgVersionReq
-	(*DecoCfgVersionAck)(nil),   // 36: sproto.DecoCfgVersionAck
-	(*DecoCfgRow)(nil),          // 37: sproto.DecoCfgRow
-	(*DecoCfgListReq)(nil),      // 38: sproto.DecoCfgListReq
-	(*DecoCfgListAck)(nil),      // 39: sproto.DecoCfgListAck
-	(*DecoCfgGetReq)(nil),       // 40: sproto.DecoCfgGetReq
-	(*DecoCfgGetAck)(nil),       // 41: sproto.DecoCfgGetAck
-	(*ItemCfgVersionReq)(nil),   // 42: sproto.ItemCfgVersionReq
-	(*ItemCfgVersionAck)(nil),   // 43: sproto.ItemCfgVersionAck
-	(*ItemDefRow)(nil),          // 44: sproto.ItemDefRow
-	(*ItemCfgListReq)(nil),      // 45: sproto.ItemCfgListReq
-	(*ItemCfgListAck)(nil),      // 46: sproto.ItemCfgListAck
-	(*ItemCfgGetReq)(nil),       // 47: sproto.ItemCfgGetReq
-	(*ItemCfgGetAck)(nil),       // 48: sproto.ItemCfgGetAck
-	(*DiyPlayerInfo)(nil),       // 49: sproto.DiyPlayerInfo
-	(*DiySignupReportReq)(nil),  // 50: sproto.DiySignupReportReq
-	(*DiySignupReportAck)(nil),  // 51: sproto.DiySignupReportAck
-	(*DiySignoutReportReq)(nil), // 52: sproto.DiySignoutReportReq
-	(*DiySignoutReportAck)(nil), // 53: sproto.DiySignoutReportAck
-	(*DiyResultsReportReq)(nil), // 54: sproto.DiyResultsReportReq
-	(*DiyResultsReportAck)(nil), // 55: sproto.DiyResultsReportAck
-	(*DiyStatusReportReq)(nil),  // 56: sproto.DiyStatusReportReq
-	(*DiyStatusReportAck)(nil),  // 57: sproto.DiyStatusReportAck
+	(*MatchCfgVersionReq)(nil),    // 0: sproto.MatchCfgVersionReq
+	(*MatchCfgVersionAck)(nil),    // 1: sproto.MatchCfgVersionAck
+	(*MatchCfgRow)(nil),           // 2: sproto.MatchCfgRow
+	(*MatchCfgListReq)(nil),       // 3: sproto.MatchCfgListReq
+	(*MatchCfgListAck)(nil),       // 4: sproto.MatchCfgListAck
+	(*MatchCfgGetReq)(nil),        // 5: sproto.MatchCfgGetReq
+	(*MatchCfgGetAck)(nil),        // 6: sproto.MatchCfgGetAck
+	(*SignCfgVersionReq)(nil),     // 7: sproto.SignCfgVersionReq
+	(*SignCfgVersionAck)(nil),     // 8: sproto.SignCfgVersionAck
+	(*SignCfgRow)(nil),            // 9: sproto.SignCfgRow
+	(*SignCfgListReq)(nil),        // 10: sproto.SignCfgListReq
+	(*SignCfgListAck)(nil),        // 11: sproto.SignCfgListAck
+	(*SignCfgGetReq)(nil),         // 12: sproto.SignCfgGetReq
+	(*SignCfgGetAck)(nil),         // 13: sproto.SignCfgGetAck
+	(*SignBindVersionReq)(nil),    // 14: sproto.SignBindVersionReq
+	(*SignBindVersionAck)(nil),    // 15: sproto.SignBindVersionAck
+	(*SignBindRow)(nil),           // 16: sproto.SignBindRow
+	(*SignBindListReq)(nil),       // 17: sproto.SignBindListReq
+	(*SignBindListAck)(nil),       // 18: sproto.SignBindListAck
+	(*SignBindGetReq)(nil),        // 19: sproto.SignBindGetReq
+	(*SignBindGetAck)(nil),        // 20: sproto.SignBindGetAck
+	(*BonusCfgVersionReq)(nil),    // 21: sproto.BonusCfgVersionReq
+	(*BonusCfgVersionAck)(nil),    // 22: sproto.BonusCfgVersionAck
+	(*BonusCfgRow)(nil),           // 23: sproto.BonusCfgRow
+	(*BonusCfgListReq)(nil),       // 24: sproto.BonusCfgListReq
+	(*BonusCfgListAck)(nil),       // 25: sproto.BonusCfgListAck
+	(*BonusCfgGetReq)(nil),        // 26: sproto.BonusCfgGetReq
+	(*BonusCfgGetAck)(nil),        // 27: sproto.BonusCfgGetAck
+	(*BonusBindVersionReq)(nil),   // 28: sproto.BonusBindVersionReq
+	(*BonusBindVersionAck)(nil),   // 29: sproto.BonusBindVersionAck
+	(*BonusBindRow)(nil),          // 30: sproto.BonusBindRow
+	(*BonusBindListReq)(nil),      // 31: sproto.BonusBindListReq
+	(*BonusBindListAck)(nil),      // 32: sproto.BonusBindListAck
+	(*BonusBindGetReq)(nil),       // 33: sproto.BonusBindGetReq
+	(*BonusBindGetAck)(nil),       // 34: sproto.BonusBindGetAck
+	(*DecoCfgVersionReq)(nil),     // 35: sproto.DecoCfgVersionReq
+	(*DecoCfgVersionAck)(nil),     // 36: sproto.DecoCfgVersionAck
+	(*DecoCfgRow)(nil),            // 37: sproto.DecoCfgRow
+	(*DecoCfgListReq)(nil),        // 38: sproto.DecoCfgListReq
+	(*DecoCfgListAck)(nil),        // 39: sproto.DecoCfgListAck
+	(*DecoCfgGetReq)(nil),         // 40: sproto.DecoCfgGetReq
+	(*DecoCfgGetAck)(nil),         // 41: sproto.DecoCfgGetAck
+	(*ItemCfgVersionReq)(nil),     // 42: sproto.ItemCfgVersionReq
+	(*ItemCfgVersionAck)(nil),     // 43: sproto.ItemCfgVersionAck
+	(*ItemDefRow)(nil),            // 44: sproto.ItemDefRow
+	(*ItemCfgListReq)(nil),        // 45: sproto.ItemCfgListReq
+	(*ItemCfgListAck)(nil),        // 46: sproto.ItemCfgListAck
+	(*ItemCfgGetReq)(nil),         // 47: sproto.ItemCfgGetReq
+	(*ItemCfgGetAck)(nil),         // 48: sproto.ItemCfgGetAck
+	(*DiyPlayerInfo)(nil),         // 49: sproto.DiyPlayerInfo
+	(*DiySignupReportReq)(nil),    // 50: sproto.DiySignupReportReq
+	(*DiySignupReportAck)(nil),    // 51: sproto.DiySignupReportAck
+	(*DiySignoutReportReq)(nil),   // 52: sproto.DiySignoutReportReq
+	(*DiySignoutReportAck)(nil),   // 53: sproto.DiySignoutReportAck
+	(*DiyResultsReportReq)(nil),   // 54: sproto.DiyResultsReportReq
+	(*DiyResultsReportAck)(nil),   // 55: sproto.DiyResultsReportAck
+	(*DiyStatusReportReq)(nil),    // 56: sproto.DiyStatusReportReq
+	(*DiyStatusReportAck)(nil),    // 57: sproto.DiyStatusReportAck
+	(*ActivityCfgRow)(nil),        // 58: sproto.ActivityCfgRow
+	(*ActivityCfgVersionReq)(nil), // 59: sproto.ActivityCfgVersionReq
+	(*ActivityCfgVersionAck)(nil), // 60: sproto.ActivityCfgVersionAck
+	(*ActivityCfgListReq)(nil),    // 61: sproto.ActivityCfgListReq
+	(*ActivityCfgListAck)(nil),    // 62: sproto.ActivityCfgListAck
+	(*ActivityCfgGetReq)(nil),     // 63: sproto.ActivityCfgGetReq
+	(*ActivityCfgGetAck)(nil),     // 64: sproto.ActivityCfgGetAck
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -3319,11 +3669,13 @@ var file_admin_remote_proto_depIdxs = []int32{
 	44, // 12: sproto.ItemCfgListAck.rows:type_name -> sproto.ItemDefRow
 	44, // 13: sproto.ItemCfgGetAck.row:type_name -> sproto.ItemDefRow
 	49, // 14: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
-	15, // [15:15] is the sub-list for method output_type
-	15, // [15:15] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	58, // 15: sproto.ActivityCfgListAck.rows:type_name -> sproto.ActivityCfgRow
+	58, // 16: sproto.ActivityCfgGetAck.row:type_name -> sproto.ActivityCfgRow
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_admin_remote_proto_init() }
@@ -3337,7 +3689,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   58,
+			NumMessages:   65,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -14,3 +14,8 @@ message ActivityReq {
 // 发布活动事件响应
 message ActivityAck {
 }
+
+message ActivityReloadReq {
+  int32 activity_id = 1; // 0=全量；>0 只热更该活动
+}
+message ActivityReloadAck {}
