@@ -110,6 +110,9 @@ message RestAck {
 message ExitMatchAck { //弹回大厅
 }
 
+message MatchBanruptAck { //真破产，触发弹窗
+}
+
 // 比赛结果上报
 message FDResultAck {
   int32 tableid = 1;
