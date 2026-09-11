@@ -68,7 +68,8 @@ message TourneyRound {
 //   当前赛制/局数 = rounds[round].format / .games
 //   规划人数 = rounds[round].count；现场还在场人数 = player_count
 //   文案「第 N 轮」= round+1；「共 N 轮」= len(rounds)
-//   待定/晋级/淘汰看 StageResultAck.result；剩余桌数看 remain_tables
+//   待定/晋级/淘汰 = result；剩余桌数 = remain_tables；胜负场 = win_count/lose_count
+//   重连休息界面只看 StartClientAck.stage_info 即可，不必等 StageResultAck
 //   跨台：确认晋级后 result=1，延迟后再 StartClientAck 进开赛区
 //   非锦标赛 stage_info 为空
 message StageInfo {
@@ -77,6 +78,10 @@ message StageInfo {
   int32 round = 3; // 当前跳台下标，从 0；取 rounds[round]
   repeated TourneyRound rounds = 4;
   string group = 5; // 分组 A/B/C；未分组为空
+  int32 result = 6; // 0游戏中 1晋级 2待定 3淘汰 4轮空 5完赛 6组桌中
+  int32 remain_tables = 7; // 当前阶段还在打的桌数
+  int32 win_count = 8; // 整场胜次数
+  int32 lose_count = 9; // 整场负次数
 }
 
 message StartClientAck {
@@ -133,11 +138,7 @@ message FDRoundResultAck {
 }
 
 message StageResultAck {
-  int32 result = 1; // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛，6-组桌中
-  int32 remain_tables = 2; // 当前阶段还在打的桌数
-  int32 win_count = 3; // 整场胜次数
-  int32 lose_count = 4; // 整场负次数
-  StageInfo stage_info = 5; // 同 StartClientAck，桌结/等待刷新时带整场跳台
+  StageInfo stage_info = 5; // 同 StartClientAck.stage_info
 }
 
 message StageOverAck {

@@ -608,7 +608,8 @@ func (x *TourneyRound) GetGames() int32 {
 //	当前赛制/局数 = rounds[round].format / .games
 //	规划人数 = rounds[round].count；现场还在场人数 = player_count
 //	文案「第 N 轮」= round+1；「共 N 轮」= len(rounds)
-//	待定/晋级/淘汰看 StageResultAck.result；剩余桌数看 remain_tables
+//	待定/晋级/淘汰 = result；剩余桌数 = remain_tables；胜负场 = win_count/lose_count
+//	重连休息界面只看 StartClientAck.stage_info 即可，不必等 StageResultAck
 //	跨台：确认晋级后 result=1，延迟后再 StartClientAck 进开赛区
 //	非锦标赛 stage_info 为空
 type StageInfo struct {
@@ -617,7 +618,11 @@ type StageInfo struct {
 	PlayerCount   int32                  `protobuf:"varint,2,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"` // 当前还在场人数（现场值，不是规划人数）
 	Round         int32                  `protobuf:"varint,3,opt,name=round,proto3" json:"round,omitempty"`                                // 当前跳台下标，从 0；取 rounds[round]
 	Rounds        []*TourneyRound        `protobuf:"bytes,4,rep,name=rounds,proto3" json:"rounds,omitempty"`
-	Group         string                 `protobuf:"bytes,5,opt,name=group,proto3" json:"group,omitempty"` // 分组 A/B/C；未分组为空
+	Group         string                 `protobuf:"bytes,5,opt,name=group,proto3" json:"group,omitempty"`                                    // 分组 A/B/C；未分组为空
+	Result        int32                  `protobuf:"varint,6,opt,name=result,proto3" json:"result,omitempty"`                                 // 0游戏中 1晋级 2待定 3淘汰 4轮空 5完赛 6组桌中
+	RemainTables  int32                  `protobuf:"varint,7,opt,name=remain_tables,json=remainTables,proto3" json:"remain_tables,omitempty"` // 当前阶段还在打的桌数
+	WinCount      int32                  `protobuf:"varint,8,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`             // 整场胜次数
+	LoseCount     int32                  `protobuf:"varint,9,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`          // 整场负次数
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -685,6 +690,34 @@ func (x *StageInfo) GetGroup() string {
 		return x.Group
 	}
 	return ""
+}
+
+func (x *StageInfo) GetResult() int32 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+func (x *StageInfo) GetRemainTables() int32 {
+	if x != nil {
+		return x.RemainTables
+	}
+	return 0
+}
+
+func (x *StageInfo) GetWinCount() int32 {
+	if x != nil {
+		return x.WinCount
+	}
+	return 0
+}
+
+func (x *StageInfo) GetLoseCount() int32 {
+	if x != nil {
+		return x.LoseCount
+	}
+	return 0
 }
 
 type StartClientAck struct {
@@ -1219,11 +1252,7 @@ func (x *FDRoundResultAck) GetRoundData() string {
 
 type StageResultAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Result        int32                  `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`                                 // 0-游戏中，1-晋级，2-待定，3-淘汰，4-轮空，5-完赛，6-组桌中
-	RemainTables  int32                  `protobuf:"varint,2,opt,name=remain_tables,json=remainTables,proto3" json:"remain_tables,omitempty"` // 当前阶段还在打的桌数
-	WinCount      int32                  `protobuf:"varint,3,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`             // 整场胜次数
-	LoseCount     int32                  `protobuf:"varint,4,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`          // 整场负次数
-	StageInfo     *StageInfo             `protobuf:"bytes,5,opt,name=stage_info,json=stageInfo,proto3" json:"stage_info,omitempty"`           // 同 StartClientAck，桌结/等待刷新时带整场跳台
+	StageInfo     *StageInfo             `protobuf:"bytes,5,opt,name=stage_info,json=stageInfo,proto3" json:"stage_info,omitempty"` // 同 StartClientAck.stage_info
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1256,34 +1285,6 @@ func (x *StageResultAck) ProtoReflect() protoreflect.Message {
 // Deprecated: Use StageResultAck.ProtoReflect.Descriptor instead.
 func (*StageResultAck) Descriptor() ([]byte, []int) {
 	return file_match_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *StageResultAck) GetResult() int32 {
-	if x != nil {
-		return x.Result
-	}
-	return 0
-}
-
-func (x *StageResultAck) GetRemainTables() int32 {
-	if x != nil {
-		return x.RemainTables
-	}
-	return 0
-}
-
-func (x *StageResultAck) GetWinCount() int32 {
-	if x != nil {
-		return x.WinCount
-	}
-	return 0
-}
-
-func (x *StageResultAck) GetLoseCount() int32 {
-	if x != nil {
-		return x.LoseCount
-	}
-	return 0
 }
 
 func (x *StageResultAck) GetStageInfo() *StageInfo {
@@ -1706,13 +1707,18 @@ const file_match_proto_rawDesc = "" +
 	"\fTourneyRound\x12\x16\n" +
 	"\x06format\x18\x01 \x01(\tR\x06format\x12\x14\n" +
 	"\x05count\x18\x02 \x01(\x05R\x05count\x12\x14\n" +
-	"\x05games\x18\x03 \x01(\x05R\x05games\"\x9c\x01\n" +
+	"\x05games\x18\x03 \x01(\x05R\x05games\"\x95\x02\n" +
 	"\tStageInfo\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12!\n" +
 	"\fplayer_count\x18\x02 \x01(\x05R\vplayerCount\x12\x14\n" +
 	"\x05round\x18\x03 \x01(\x05R\x05round\x12,\n" +
 	"\x06rounds\x18\x04 \x03(\v2\x14.cproto.TourneyRoundR\x06rounds\x12\x14\n" +
-	"\x05group\x18\x05 \x01(\tR\x05group\"\x82\x02\n" +
+	"\x05group\x18\x05 \x01(\tR\x05group\x12\x16\n" +
+	"\x06result\x18\x06 \x01(\x05R\x06result\x12#\n" +
+	"\rremain_tables\x18\a \x01(\x05R\fremainTables\x12\x1b\n" +
+	"\twin_count\x18\b \x01(\x05R\bwinCount\x12\x1d\n" +
+	"\n" +
+	"lose_count\x18\t \x01(\x05R\tloseCount\"\x82\x02\n" +
 	"\x0eStartClientAck\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1b\n" +
@@ -1764,13 +1770,8 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a=\n" +
 	"\x0fPlayerDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xbb\x01\n" +
-	"\x0eStageResultAck\x12\x16\n" +
-	"\x06result\x18\x01 \x01(\x05R\x06result\x12#\n" +
-	"\rremain_tables\x18\x02 \x01(\x05R\fremainTables\x12\x1b\n" +
-	"\twin_count\x18\x03 \x01(\x05R\bwinCount\x12\x1d\n" +
-	"\n" +
-	"lose_count\x18\x04 \x01(\x05R\tloseCount\x120\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"B\n" +
+	"\x0eStageResultAck\x120\n" +
 	"\n" +
 	"stage_info\x18\x05 \x01(\v2\x11.cproto.StageInfoR\tstageInfo\"\xa9\x01\n" +
 	"\fStageOverAck\x12\x12\n" +
