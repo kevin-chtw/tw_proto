@@ -608,6 +608,7 @@ func (x *TourneyRound) GetGames() int32 {
 //	当前赛制/局数 = rounds[round].format / .games
 //	规划人数 = rounds[round].count；现场还在场人数 = player_count
 //	文案「第 N 轮」= round+1；「共 N 轮」= len(rounds)
+//	比赛名称 = name
 //	待定/晋级/淘汰 = result；剩余桌数 = remain_tables；胜负场 = win_count/lose_count
 //	重连休息界面只看 StartClientAck.stage_info 即可，不必等 StageResultAck
 //	跨台：确认晋级后 result=1，延迟后再 StartClientAck 进开赛区
@@ -623,6 +624,7 @@ type StageInfo struct {
 	RemainTables  int32                  `protobuf:"varint,7,opt,name=remain_tables,json=remainTables,proto3" json:"remain_tables,omitempty"` // 当前阶段还在打的桌数
 	WinCount      int32                  `protobuf:"varint,8,opt,name=win_count,json=winCount,proto3" json:"win_count,omitempty"`             // 整场胜次数
 	LoseCount     int32                  `protobuf:"varint,9,opt,name=lose_count,json=loseCount,proto3" json:"lose_count,omitempty"`          // 整场负次数
+	Name          string                 `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`                                     // 比赛名称
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -718,6 +720,13 @@ func (x *StageInfo) GetLoseCount() int32 {
 		return x.LoseCount
 	}
 	return 0
+}
+
+func (x *StageInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
 }
 
 type StartClientAck struct {
@@ -1299,6 +1308,7 @@ type StageOverAck struct {
 	Rank          int32                  `protobuf:"varint,1,opt,name=rank,proto3" json:"rank,omitempty"`
 	Score         int64                  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`
 	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 本阶段结束排名奖
+	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`                                                                               // 比赛名称
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1352,6 +1362,13 @@ func (x *StageOverAck) GetBonus() map[int32]int64 {
 		return x.Bonus
 	}
 	return nil
+}
+
+func (x *StageOverAck) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
 }
 
 // 打立达到截断人数，停止组桌
@@ -1707,7 +1724,7 @@ const file_match_proto_rawDesc = "" +
 	"\fTourneyRound\x12\x16\n" +
 	"\x06format\x18\x01 \x01(\tR\x06format\x12\x14\n" +
 	"\x05count\x18\x02 \x01(\x05R\x05count\x12\x14\n" +
-	"\x05games\x18\x03 \x01(\x05R\x05games\"\x95\x02\n" +
+	"\x05games\x18\x03 \x01(\x05R\x05games\"\xa9\x02\n" +
 	"\tStageInfo\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12!\n" +
 	"\fplayer_count\x18\x02 \x01(\x05R\vplayerCount\x12\x14\n" +
@@ -1718,7 +1735,9 @@ const file_match_proto_rawDesc = "" +
 	"\rremain_tables\x18\a \x01(\x05R\fremainTables\x12\x1b\n" +
 	"\twin_count\x18\b \x01(\x05R\bwinCount\x12\x1d\n" +
 	"\n" +
-	"lose_count\x18\t \x01(\x05R\tloseCount\"\x82\x02\n" +
+	"lose_count\x18\t \x01(\x05R\tloseCount\x12\x12\n" +
+	"\x04name\x18\n" +
+	" \x01(\tR\x04name\"\x82\x02\n" +
 	"\x0eStartClientAck\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1b\n" +
@@ -1773,11 +1792,12 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"B\n" +
 	"\x0eStageResultAck\x120\n" +
 	"\n" +
-	"stage_info\x18\x05 \x01(\v2\x11.cproto.StageInfoR\tstageInfo\"\xa9\x01\n" +
+	"stage_info\x18\x05 \x01(\v2\x11.cproto.StageInfoR\tstageInfo\"\xbd\x01\n" +
 	"\fStageOverAck\x12\x12\n" +
 	"\x04rank\x18\x01 \x01(\x05R\x04rank\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x03R\x05score\x125\n" +
-	"\x05bonus\x18\x03 \x03(\v2\x1f.cproto.StageOverAck.BonusEntryR\x05bonus\x1a8\n" +
+	"\x05bonus\x18\x03 \x03(\v2\x1f.cproto.StageOverAck.BonusEntryR\x05bonus\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\x1a8\n" +
 	"\n" +
 	"BonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +

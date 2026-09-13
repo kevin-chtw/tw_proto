@@ -68,6 +68,7 @@ message TourneyRound {
 //   当前赛制/局数 = rounds[round].format / .games
 //   规划人数 = rounds[round].count；现场还在场人数 = player_count
 //   文案「第 N 轮」= round+1；「共 N 轮」= len(rounds)
+//   比赛名称 = name
 //   待定/晋级/淘汰 = result；剩余桌数 = remain_tables；胜负场 = win_count/lose_count
 //   重连休息界面只看 StartClientAck.stage_info 即可，不必等 StageResultAck
 //   跨台：确认晋级后 result=1，延迟后再 StartClientAck 进开赛区
@@ -82,6 +83,7 @@ message StageInfo {
   int32 remain_tables = 7; // 当前阶段还在打的桌数
   int32 win_count = 8; // 整场胜次数
   int32 lose_count = 9; // 整场负次数
+  string name = 10; // 比赛名称
 }
 
 message StartClientAck {
@@ -145,6 +147,7 @@ message StageOverAck {
   int32 rank = 1;
   int64 score = 2;
   map<int32,int64> bonus = 3; // 本阶段结束排名奖
+  string name = 4; // 比赛名称
 }
 
 // 打立达到截断人数，停止组桌
