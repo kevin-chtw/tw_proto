@@ -18,14 +18,9 @@ message TourneyUpdateReq {
 }
 
 message TourneyInfo {
-    int32 id = 1; //比赛ID
-    string name = 2; //比赛名称
-    string game_type = 3; //游戏类型
-    string match_type = 4; //比赛类型
-    string serverid = 5; //服务器ID
-    int32 online = 6; //在线人数
-    int64 score_base = 7;//基数
-    string zone = 8; //赛区；空表示未配置
+    int32 id = 1; //比赛ID（全局唯一）
+    string serverid = 2; //服务器ID
+    int32 online = 3; //在线人数
 }
 
 message FDTakeTableidReq {

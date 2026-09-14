@@ -22,6 +22,7 @@ message MatchCfgRow {
   uint64 version = 5;
   string game_type = 6;
   string placement_ips = 7; // JSON array string, e.g. ["10.0.1.3","10.0.1.4"]
+  repeated string channels = 8; // 空=全渠道可见
 }
 
 message MatchCfgListReq {
