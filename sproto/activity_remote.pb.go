@@ -27,6 +27,7 @@ type ActivityReq struct {
 	EventId       int32                  `protobuf:"varint,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"` // 事件ID
 	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`                         // 用户ID
 	Data          string                 `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`                       // 事件数据JSON字符串
+	Channel       string                 `protobuf:"bytes,4,opt,name=channel,proto3" json:"channel,omitempty"`                 // 登录渠道快照（握手原值）
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -78,6 +79,13 @@ func (x *ActivityReq) GetUid() string {
 func (x *ActivityReq) GetData() string {
 	if x != nil {
 		return x.Data
+	}
+	return ""
+}
+
+func (x *ActivityReq) GetChannel() string {
+	if x != nil {
+		return x.Channel
 	}
 	return ""
 }
@@ -203,11 +211,12 @@ var File_activity_remote_proto protoreflect.FileDescriptor
 
 const file_activity_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x15activity_remote.proto\x12\x06sproto\"N\n" +
+	"\x15activity_remote.proto\x12\x06sproto\"h\n" +
 	"\vActivityReq\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\x05R\aeventId\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\tR\x03uid\x12\x12\n" +
-	"\x04data\x18\x03 \x01(\tR\x04data\"\r\n" +
+	"\x04data\x18\x03 \x01(\tR\x04data\x12\x18\n" +
+	"\achannel\x18\x04 \x01(\tR\achannel\"\r\n" +
 	"\vActivityAck\"4\n" +
 	"\x11ActivityReloadReq\x12\x1f\n" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +

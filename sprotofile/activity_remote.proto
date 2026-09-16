@@ -9,6 +9,7 @@ message ActivityReq {
   int32 event_id = 1; // 事件ID
   string uid = 2; // 用户ID
   string data = 3; // 事件数据JSON字符串
+  string channel = 4; // 登录渠道快照（握手原值）
 }
 
 // 发布活动事件响应
