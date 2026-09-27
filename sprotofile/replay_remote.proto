@@ -14,6 +14,7 @@ message ReplayPlayer {
   int64 score_base = 8; // 玩家档位基数，回放展示时换算用
   int64 tax = 9; // 该玩家桌费
   bool bot = 10; // 是否为机器人
+  int32 ctrl = 11; // 0-不控制 1-赢分 2-输分，含机器人
 }
 
 message ReplayMessage {

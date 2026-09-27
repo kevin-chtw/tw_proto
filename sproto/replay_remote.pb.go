@@ -33,6 +33,7 @@ type ReplayPlayer struct {
 	ScoreBase     int64                  `protobuf:"varint,8,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"` // 玩家档位基数，回放展示时换算用
 	Tax           int64                  `protobuf:"varint,9,opt,name=tax,proto3" json:"tax,omitempty"`                              // 该玩家桌费
 	Bot           bool                   `protobuf:"varint,10,opt,name=bot,proto3" json:"bot,omitempty"`                             // 是否为机器人
+	Ctrl          int32                  `protobuf:"varint,11,opt,name=ctrl,proto3" json:"ctrl,omitempty"`                           // 0-不控制 1-赢分 2-输分，含机器人
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -135,6 +136,13 @@ func (x *ReplayPlayer) GetBot() bool {
 		return x.Bot
 	}
 	return false
+}
+
+func (x *ReplayPlayer) GetCtrl() int32 {
+	if x != nil {
+		return x.Ctrl
+	}
+	return 0
 }
 
 type ReplayMessage struct {
@@ -701,7 +709,7 @@ var File_replay_remote_proto protoreflect.FileDescriptor
 
 const file_replay_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x13replay_remote.proto\x12\x06sproto\"\xaf\x03\n" +
+	"\x13replay_remote.proto\x12\x06sproto\"\xc3\x03\n" +
 	"\fReplayPlayer\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
@@ -714,7 +722,8 @@ const file_replay_remote_proto_rawDesc = "" +
 	"score_base\x18\b \x01(\x03R\tscoreBase\x12\x10\n" +
 	"\x03tax\x18\t \x01(\x03R\x03tax\x12\x10\n" +
 	"\x03bot\x18\n" +
-	" \x01(\bR\x03bot\x1a8\n" +
+	" \x01(\bR\x03bot\x12\x12\n" +
+	"\x04ctrl\x18\v \x01(\x05R\x04ctrl\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
