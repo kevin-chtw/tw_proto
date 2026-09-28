@@ -294,6 +294,7 @@ type DiyStatusAck struct {
 	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
 	Err           string                 `protobuf:"bytes,3,opt,name=err,proto3" json:"err,omitempty"`
+	Paused        bool                   `protobuf:"varint,4,opt,name=paused,proto3" json:"paused,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -349,6 +350,221 @@ func (x *DiyStatusAck) GetErr() string {
 	return ""
 }
 
+func (x *DiyStatusAck) GetPaused() bool {
+	if x != nil {
+		return x.Paused
+	}
+	return false
+}
+
+type DiyPauseReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TourneyId     int64                  `protobuf:"varint,1,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	MatchId       int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyPauseReq) Reset() {
+	*x = DiyPauseReq{}
+	mi := &file_diy_remote_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyPauseReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyPauseReq) ProtoMessage() {}
+
+func (x *DiyPauseReq) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyPauseReq.ProtoReflect.Descriptor instead.
+func (*DiyPauseReq) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DiyPauseReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiyPauseReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+type DiyPauseAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Paused        bool                   `protobuf:"varint,1,opt,name=paused,proto3" json:"paused,omitempty"`
+	Err           string                 `protobuf:"bytes,2,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyPauseAck) Reset() {
+	*x = DiyPauseAck{}
+	mi := &file_diy_remote_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyPauseAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyPauseAck) ProtoMessage() {}
+
+func (x *DiyPauseAck) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyPauseAck.ProtoReflect.Descriptor instead.
+func (*DiyPauseAck) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DiyPauseAck) GetPaused() bool {
+	if x != nil {
+		return x.Paused
+	}
+	return false
+}
+
+func (x *DiyPauseAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
+type DiyResumeReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TourneyId     int64                  `protobuf:"varint,1,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	MatchId       int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyResumeReq) Reset() {
+	*x = DiyResumeReq{}
+	mi := &file_diy_remote_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyResumeReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyResumeReq) ProtoMessage() {}
+
+func (x *DiyResumeReq) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyResumeReq.ProtoReflect.Descriptor instead.
+func (*DiyResumeReq) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DiyResumeReq) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiyResumeReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+type DiyResumeAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Paused        bool                   `protobuf:"varint,1,opt,name=paused,proto3" json:"paused,omitempty"`
+	Err           string                 `protobuf:"bytes,2,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiyResumeAck) Reset() {
+	*x = DiyResumeAck{}
+	mi := &file_diy_remote_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiyResumeAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiyResumeAck) ProtoMessage() {}
+
+func (x *DiyResumeAck) ProtoReflect() protoreflect.Message {
+	mi := &file_diy_remote_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiyResumeAck.ProtoReflect.Descriptor instead.
+func (*DiyResumeAck) Descriptor() ([]byte, []int) {
+	return file_diy_remote_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DiyResumeAck) GetPaused() bool {
+	if x != nil {
+		return x.Paused
+	}
+	return false
+}
+
+func (x *DiyResumeAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
 type DiyDestroyReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
@@ -359,7 +575,7 @@ type DiyDestroyReq struct {
 
 func (x *DiyDestroyReq) Reset() {
 	*x = DiyDestroyReq{}
-	mi := &file_diy_remote_proto_msgTypes[6]
+	mi := &file_diy_remote_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -371,7 +587,7 @@ func (x *DiyDestroyReq) String() string {
 func (*DiyDestroyReq) ProtoMessage() {}
 
 func (x *DiyDestroyReq) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[6]
+	mi := &file_diy_remote_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -384,7 +600,7 @@ func (x *DiyDestroyReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyDestroyReq.ProtoReflect.Descriptor instead.
 func (*DiyDestroyReq) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{6}
+	return file_diy_remote_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DiyDestroyReq) GetMatchId() int32 {
@@ -410,7 +626,7 @@ type DiyDestroyAck struct {
 
 func (x *DiyDestroyAck) Reset() {
 	*x = DiyDestroyAck{}
-	mi := &file_diy_remote_proto_msgTypes[7]
+	mi := &file_diy_remote_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -422,7 +638,7 @@ func (x *DiyDestroyAck) String() string {
 func (*DiyDestroyAck) ProtoMessage() {}
 
 func (x *DiyDestroyAck) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[7]
+	mi := &file_diy_remote_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -435,7 +651,7 @@ func (x *DiyDestroyAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyDestroyAck.ProtoReflect.Descriptor instead.
 func (*DiyDestroyAck) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{7}
+	return file_diy_remote_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DiyDestroyAck) GetErr() string {
@@ -456,7 +672,7 @@ type DiyTablesReq struct {
 
 func (x *DiyTablesReq) Reset() {
 	*x = DiyTablesReq{}
-	mi := &file_diy_remote_proto_msgTypes[8]
+	mi := &file_diy_remote_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -468,7 +684,7 @@ func (x *DiyTablesReq) String() string {
 func (*DiyTablesReq) ProtoMessage() {}
 
 func (x *DiyTablesReq) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[8]
+	mi := &file_diy_remote_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -481,7 +697,7 @@ func (x *DiyTablesReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyTablesReq.ProtoReflect.Descriptor instead.
 func (*DiyTablesReq) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{8}
+	return file_diy_remote_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DiyTablesReq) GetTourneyId() int64 {
@@ -509,7 +725,7 @@ type DiyTablePlayer struct {
 
 func (x *DiyTablePlayer) Reset() {
 	*x = DiyTablePlayer{}
-	mi := &file_diy_remote_proto_msgTypes[9]
+	mi := &file_diy_remote_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -521,7 +737,7 @@ func (x *DiyTablePlayer) String() string {
 func (*DiyTablePlayer) ProtoMessage() {}
 
 func (x *DiyTablePlayer) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[9]
+	mi := &file_diy_remote_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -534,7 +750,7 @@ func (x *DiyTablePlayer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyTablePlayer.ProtoReflect.Descriptor instead.
 func (*DiyTablePlayer) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{9}
+	return file_diy_remote_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DiyTablePlayer) GetUid() string {
@@ -569,7 +785,7 @@ type DiyTableInfo struct {
 
 func (x *DiyTableInfo) Reset() {
 	*x = DiyTableInfo{}
-	mi := &file_diy_remote_proto_msgTypes[10]
+	mi := &file_diy_remote_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -581,7 +797,7 @@ func (x *DiyTableInfo) String() string {
 func (*DiyTableInfo) ProtoMessage() {}
 
 func (x *DiyTableInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[10]
+	mi := &file_diy_remote_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -594,7 +810,7 @@ func (x *DiyTableInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyTableInfo.ProtoReflect.Descriptor instead.
 func (*DiyTableInfo) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{10}
+	return file_diy_remote_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DiyTableInfo) GetTableId() int32 {
@@ -634,7 +850,7 @@ type DiyTablesAck struct {
 
 func (x *DiyTablesAck) Reset() {
 	*x = DiyTablesAck{}
-	mi := &file_diy_remote_proto_msgTypes[11]
+	mi := &file_diy_remote_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -646,7 +862,7 @@ func (x *DiyTablesAck) String() string {
 func (*DiyTablesAck) ProtoMessage() {}
 
 func (x *DiyTablesAck) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[11]
+	mi := &file_diy_remote_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -659,7 +875,7 @@ func (x *DiyTablesAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyTablesAck.ProtoReflect.Descriptor instead.
 func (*DiyTablesAck) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{11}
+	return file_diy_remote_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DiyTablesAck) GetTourneyId() int64 {
@@ -728,7 +944,7 @@ type DiyListReq struct {
 
 func (x *DiyListReq) Reset() {
 	*x = DiyListReq{}
-	mi := &file_diy_remote_proto_msgTypes[12]
+	mi := &file_diy_remote_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -740,7 +956,7 @@ func (x *DiyListReq) String() string {
 func (*DiyListReq) ProtoMessage() {}
 
 func (x *DiyListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[12]
+	mi := &file_diy_remote_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -753,7 +969,7 @@ func (x *DiyListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyListReq.ProtoReflect.Descriptor instead.
 func (*DiyListReq) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{12}
+	return file_diy_remote_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DiyListReq) GetGameType() string {
@@ -779,7 +995,7 @@ type DiyListItem struct {
 
 func (x *DiyListItem) Reset() {
 	*x = DiyListItem{}
-	mi := &file_diy_remote_proto_msgTypes[13]
+	mi := &file_diy_remote_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -791,7 +1007,7 @@ func (x *DiyListItem) String() string {
 func (*DiyListItem) ProtoMessage() {}
 
 func (x *DiyListItem) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[13]
+	mi := &file_diy_remote_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -804,7 +1020,7 @@ func (x *DiyListItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyListItem.ProtoReflect.Descriptor instead.
 func (*DiyListItem) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{13}
+	return file_diy_remote_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DiyListItem) GetMatchId() int32 {
@@ -873,7 +1089,7 @@ type DiyListAck struct {
 
 func (x *DiyListAck) Reset() {
 	*x = DiyListAck{}
-	mi := &file_diy_remote_proto_msgTypes[14]
+	mi := &file_diy_remote_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -885,7 +1101,7 @@ func (x *DiyListAck) String() string {
 func (*DiyListAck) ProtoMessage() {}
 
 func (x *DiyListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_diy_remote_proto_msgTypes[14]
+	mi := &file_diy_remote_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -898,7 +1114,7 @@ func (x *DiyListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiyListAck.ProtoReflect.Descriptor instead.
 func (*DiyListAck) Descriptor() ([]byte, []int) {
-	return file_diy_remote_proto_rawDescGZIP(), []int{14}
+	return file_diy_remote_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DiyListAck) GetItems() []*DiyListItem {
@@ -939,12 +1155,27 @@ const file_diy_remote_proto_rawDesc = "" +
 	"\fDiyStatusReq\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
-	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\"W\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\"o\n" +
 	"\fDiyStatusAck\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x10\n" +
-	"\x03err\x18\x03 \x01(\tR\x03err\"I\n" +
+	"\x03err\x18\x03 \x01(\tR\x03err\x12\x16\n" +
+	"\x06paused\x18\x04 \x01(\bR\x06paused\"G\n" +
+	"\vDiyPauseReq\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\"7\n" +
+	"\vDiyPauseAck\x12\x16\n" +
+	"\x06paused\x18\x01 \x01(\bR\x06paused\x12\x10\n" +
+	"\x03err\x18\x02 \x01(\tR\x03err\"H\n" +
+	"\fDiyResumeReq\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\"8\n" +
+	"\fDiyResumeAck\x12\x16\n" +
+	"\x06paused\x18\x01 \x01(\bR\x06paused\x12\x10\n" +
+	"\x03err\x18\x02 \x01(\tR\x03err\"I\n" +
 	"\rDiyDestroyReq\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
 	"\n" +
@@ -1005,7 +1236,7 @@ func file_diy_remote_proto_rawDescGZIP() []byte {
 	return file_diy_remote_proto_rawDescData
 }
 
-var file_diy_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_diy_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_diy_remote_proto_goTypes = []any{
 	(*DiyCreateReq)(nil),   // 0: sproto.DiyCreateReq
 	(*DiyCreateAck)(nil),   // 1: sproto.DiyCreateAck
@@ -1013,20 +1244,24 @@ var file_diy_remote_proto_goTypes = []any{
 	(*DiyStartAck)(nil),    // 3: sproto.DiyStartAck
 	(*DiyStatusReq)(nil),   // 4: sproto.DiyStatusReq
 	(*DiyStatusAck)(nil),   // 5: sproto.DiyStatusAck
-	(*DiyDestroyReq)(nil),  // 6: sproto.DiyDestroyReq
-	(*DiyDestroyAck)(nil),  // 7: sproto.DiyDestroyAck
-	(*DiyTablesReq)(nil),   // 8: sproto.DiyTablesReq
-	(*DiyTablePlayer)(nil), // 9: sproto.DiyTablePlayer
-	(*DiyTableInfo)(nil),   // 10: sproto.DiyTableInfo
-	(*DiyTablesAck)(nil),   // 11: sproto.DiyTablesAck
-	(*DiyListReq)(nil),     // 12: sproto.DiyListReq
-	(*DiyListItem)(nil),    // 13: sproto.DiyListItem
-	(*DiyListAck)(nil),     // 14: sproto.DiyListAck
+	(*DiyPauseReq)(nil),    // 6: sproto.DiyPauseReq
+	(*DiyPauseAck)(nil),    // 7: sproto.DiyPauseAck
+	(*DiyResumeReq)(nil),   // 8: sproto.DiyResumeReq
+	(*DiyResumeAck)(nil),   // 9: sproto.DiyResumeAck
+	(*DiyDestroyReq)(nil),  // 10: sproto.DiyDestroyReq
+	(*DiyDestroyAck)(nil),  // 11: sproto.DiyDestroyAck
+	(*DiyTablesReq)(nil),   // 12: sproto.DiyTablesReq
+	(*DiyTablePlayer)(nil), // 13: sproto.DiyTablePlayer
+	(*DiyTableInfo)(nil),   // 14: sproto.DiyTableInfo
+	(*DiyTablesAck)(nil),   // 15: sproto.DiyTablesAck
+	(*DiyListReq)(nil),     // 16: sproto.DiyListReq
+	(*DiyListItem)(nil),    // 17: sproto.DiyListItem
+	(*DiyListAck)(nil),     // 18: sproto.DiyListAck
 }
 var file_diy_remote_proto_depIdxs = []int32{
-	9,  // 0: sproto.DiyTableInfo.players:type_name -> sproto.DiyTablePlayer
-	10, // 1: sproto.DiyTablesAck.tables:type_name -> sproto.DiyTableInfo
-	13, // 2: sproto.DiyListAck.items:type_name -> sproto.DiyListItem
+	13, // 0: sproto.DiyTableInfo.players:type_name -> sproto.DiyTablePlayer
+	14, // 1: sproto.DiyTablesAck.tables:type_name -> sproto.DiyTableInfo
+	17, // 2: sproto.DiyListAck.items:type_name -> sproto.DiyListItem
 	3,  // [3:3] is the sub-list for method output_type
 	3,  // [3:3] is the sub-list for method input_type
 	3,  // [3:3] is the sub-list for extension type_name
@@ -1045,7 +1280,7 @@ func file_diy_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_diy_remote_proto_rawDesc), len(file_diy_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   15,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

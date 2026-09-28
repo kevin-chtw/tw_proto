@@ -181,3 +181,8 @@ message BonusRewardAck {
   int32 next_cond = 4; //下一奖励条件
   map<int32,int64> next_bonus = 5; //下一级奖金详情
 }
+
+// 比赛暂停。paused=true 停住本地倒计时；false 从剩下的时间接着走。
+message MatchPauseAck {
+  bool paused = 1;
+}

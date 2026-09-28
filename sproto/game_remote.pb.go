@@ -598,6 +598,50 @@ func (x *ExitTableAck) GetScore() int64 {
 	return 0
 }
 
+type PauseTableReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Paused        bool                   `protobuf:"varint,1,opt,name=paused,proto3" json:"paused,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PauseTableReq) Reset() {
+	*x = PauseTableReq{}
+	mi := &file_game_remote_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PauseTableReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PauseTableReq) ProtoMessage() {}
+
+func (x *PauseTableReq) ProtoReflect() protoreflect.Message {
+	mi := &file_game_remote_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PauseTableReq.ProtoReflect.Descriptor instead.
+func (*PauseTableReq) Descriptor() ([]byte, []int) {
+	return file_game_remote_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *PauseTableReq) GetPaused() bool {
+	if x != nil {
+		return x.Paused
+	}
+	return false
+}
+
 var File_game_remote_proto protoreflect.FileDescriptor
 
 const file_game_remote_proto_rawDesc = "" +
@@ -665,7 +709,9 @@ const file_game_remote_proto_rawDesc = "" +
 	"\x05fause\x18\x02 \x01(\bR\x05fause\"@\n" +
 	"\fExitTableAck\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x14\n" +
-	"\x05score\x18\x02 \x01(\x03R\x05scoreB\vZ\t../sprotob\x06proto3"
+	"\x05score\x18\x02 \x01(\x03R\x05score\"'\n" +
+	"\rPauseTableReq\x12\x16\n" +
+	"\x06paused\x18\x01 \x01(\bR\x06pausedB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_game_remote_proto_rawDescOnce sync.Once
@@ -679,7 +725,7 @@ func file_game_remote_proto_rawDescGZIP() []byte {
 	return file_game_remote_proto_rawDescData
 }
 
-var file_game_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_game_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_game_remote_proto_goTypes = []any{
 	(*GameReq)(nil),        // 0: sproto.GameReq
 	(*GameAck)(nil),        // 1: sproto.GameAck
@@ -689,17 +735,18 @@ var file_game_remote_proto_goTypes = []any{
 	(*EmptyAck)(nil),       // 5: sproto.EmptyAck
 	(*ExitTableReq)(nil),   // 6: sproto.ExitTableReq
 	(*ExitTableAck)(nil),   // 7: sproto.ExitTableAck
-	nil,                    // 8: sproto.AddTableReq.FdpropertyEntry
-	nil,                    // 9: sproto.AddPlayerReq.ItemsEntry
-	nil,                    // 10: sproto.AddPlayerReq.EquippedEntry
-	(*anypb.Any)(nil),      // 11: google.protobuf.Any
+	(*PauseTableReq)(nil),  // 8: sproto.PauseTableReq
+	nil,                    // 9: sproto.AddTableReq.FdpropertyEntry
+	nil,                    // 10: sproto.AddPlayerReq.ItemsEntry
+	nil,                    // 11: sproto.AddPlayerReq.EquippedEntry
+	(*anypb.Any)(nil),      // 12: google.protobuf.Any
 }
 var file_game_remote_proto_depIdxs = []int32{
-	11, // 0: sproto.GameReq.req:type_name -> google.protobuf.Any
-	11, // 1: sproto.GameAck.ack:type_name -> google.protobuf.Any
-	8,  // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
-	9,  // 3: sproto.AddPlayerReq.items:type_name -> sproto.AddPlayerReq.ItemsEntry
-	10, // 4: sproto.AddPlayerReq.equipped:type_name -> sproto.AddPlayerReq.EquippedEntry
+	12, // 0: sproto.GameReq.req:type_name -> google.protobuf.Any
+	12, // 1: sproto.GameAck.ack:type_name -> google.protobuf.Any
+	9,  // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
+	10, // 3: sproto.AddPlayerReq.items:type_name -> sproto.AddPlayerReq.ItemsEntry
+	11, // 4: sproto.AddPlayerReq.equipped:type_name -> sproto.AddPlayerReq.EquippedEntry
 	5,  // [5:5] is the sub-list for method output_type
 	5,  // [5:5] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
@@ -718,7 +765,7 @@ func file_game_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_remote_proto_rawDesc), len(file_game_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

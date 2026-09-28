@@ -63,3 +63,7 @@ message ExitTableAck {
   string playerid = 1; // 玩家ID
   int64 score = 2; // 玩家分数
 }
+
+message PauseTableReq {
+  bool paused = 1;
+}

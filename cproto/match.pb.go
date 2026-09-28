@@ -1680,6 +1680,51 @@ func (x *BonusRewardAck) GetNextBonus() map[int32]int64 {
 	return nil
 }
 
+// 比赛暂停。paused=true 停住本地倒计时；false 从剩下的时间接着走。
+type MatchPauseAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Paused        bool                   `protobuf:"varint,1,opt,name=paused,proto3" json:"paused,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MatchPauseAck) Reset() {
+	*x = MatchPauseAck{}
+	mi := &file_match_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MatchPauseAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchPauseAck) ProtoMessage() {}
+
+func (x *MatchPauseAck) ProtoReflect() protoreflect.Message {
+	mi := &file_match_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchPauseAck.ProtoReflect.Descriptor instead.
+func (*MatchPauseAck) Descriptor() ([]byte, []int) {
+	return file_match_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *MatchPauseAck) GetPaused() bool {
+	if x != nil {
+		return x.Paused
+	}
+	return false
+}
+
 var File_match_proto protoreflect.FileDescriptor
 
 const file_match_proto_rawDesc = "" +
@@ -1831,7 +1876,9 @@ const file_match_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a<\n" +
 	"\x0eNextBonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../cprotob\x06proto3"
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"'\n" +
+	"\rMatchPauseAck\x12\x16\n" +
+	"\x06paused\x18\x01 \x01(\bR\x06pausedB\vZ\t../cprotob\x06proto3"
 
 var (
 	file_match_proto_rawDescOnce sync.Once
@@ -1845,7 +1892,7 @@ func file_match_proto_rawDescGZIP() []byte {
 	return file_match_proto_rawDescData
 }
 
-var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 39)
+var file_match_proto_msgTypes = make([]protoimpl.MessageInfo, 40)
 var file_match_proto_goTypes = []any{
 	(*MatchReq)(nil),          // 0: cproto.MatchReq
 	(*MatchAck)(nil),          // 1: cproto.MatchAck
@@ -1877,34 +1924,35 @@ var file_match_proto_goTypes = []any{
 	(*RankListItem)(nil),      // 27: cproto.RankListItem
 	(*RankListAck)(nil),       // 28: cproto.RankListAck
 	(*BonusRewardAck)(nil),    // 29: cproto.BonusRewardAck
-	nil,                       // 30: cproto.CreateRoomReq.PropertiesEntry
-	nil,                       // 31: cproto.CreateRoomReq.MatchConfigEntry
-	nil,                       // 32: cproto.FDResultAck.ScoresEntry
-	nil,                       // 33: cproto.FDResultAck.PlayerDataEntry
-	nil,                       // 34: cproto.FDRoundResultAck.ScoresEntry
-	nil,                       // 35: cproto.FDRoundResultAck.PlayerDataEntry
-	nil,                       // 36: cproto.StageOverAck.BonusEntry
-	nil,                       // 37: cproto.BonusRewardAck.BonusEntry
-	nil,                       // 38: cproto.BonusRewardAck.NextBonusEntry
-	(*anypb.Any)(nil),         // 39: google.protobuf.Any
+	(*MatchPauseAck)(nil),     // 30: cproto.MatchPauseAck
+	nil,                       // 31: cproto.CreateRoomReq.PropertiesEntry
+	nil,                       // 32: cproto.CreateRoomReq.MatchConfigEntry
+	nil,                       // 33: cproto.FDResultAck.ScoresEntry
+	nil,                       // 34: cproto.FDResultAck.PlayerDataEntry
+	nil,                       // 35: cproto.FDRoundResultAck.ScoresEntry
+	nil,                       // 36: cproto.FDRoundResultAck.PlayerDataEntry
+	nil,                       // 37: cproto.StageOverAck.BonusEntry
+	nil,                       // 38: cproto.BonusRewardAck.BonusEntry
+	nil,                       // 39: cproto.BonusRewardAck.NextBonusEntry
+	(*anypb.Any)(nil),         // 40: google.protobuf.Any
 }
 var file_match_proto_depIdxs = []int32{
-	39, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
-	39, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
-	30, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
-	31, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
+	40, // 0: cproto.MatchReq.req:type_name -> google.protobuf.Any
+	40, // 1: cproto.MatchAck.ack:type_name -> google.protobuf.Any
+	31, // 2: cproto.CreateRoomReq.properties:type_name -> cproto.CreateRoomReq.PropertiesEntry
+	32, // 3: cproto.CreateRoomReq.match_config:type_name -> cproto.CreateRoomReq.MatchConfigEntry
 	11, // 4: cproto.StageInfo.rounds:type_name -> cproto.TourneyRound
 	12, // 5: cproto.StartClientAck.stage_info:type_name -> cproto.StageInfo
-	32, // 6: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
-	33, // 7: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
-	34, // 8: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
-	35, // 9: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
+	33, // 6: cproto.FDResultAck.scores:type_name -> cproto.FDResultAck.ScoresEntry
+	34, // 7: cproto.FDResultAck.player_data:type_name -> cproto.FDResultAck.PlayerDataEntry
+	35, // 8: cproto.FDRoundResultAck.scores:type_name -> cproto.FDRoundResultAck.ScoresEntry
+	36, // 9: cproto.FDRoundResultAck.player_data:type_name -> cproto.FDRoundResultAck.PlayerDataEntry
 	12, // 10: cproto.StageResultAck.stage_info:type_name -> cproto.StageInfo
-	36, // 11: cproto.StageOverAck.bonus:type_name -> cproto.StageOverAck.BonusEntry
+	37, // 11: cproto.StageOverAck.bonus:type_name -> cproto.StageOverAck.BonusEntry
 	27, // 12: cproto.RankListAck.players:type_name -> cproto.RankListItem
 	27, // 13: cproto.RankListAck.self:type_name -> cproto.RankListItem
-	37, // 14: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
-	38, // 15: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
+	38, // 14: cproto.BonusRewardAck.bonus:type_name -> cproto.BonusRewardAck.BonusEntry
+	39, // 15: cproto.BonusRewardAck.next_bonus:type_name -> cproto.BonusRewardAck.NextBonusEntry
 	16, // [16:16] is the sub-list for method output_type
 	16, // [16:16] is the sub-list for method input_type
 	16, // [16:16] is the sub-list for extension type_name
@@ -1923,7 +1971,7 @@ func file_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_match_proto_rawDesc), len(file_match_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   39,
+			NumMessages:   40,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

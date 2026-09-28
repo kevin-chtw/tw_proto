@@ -36,6 +36,24 @@ message DiyStatusAck {
   string status = 1;
   int64 tourney_id = 2;
   string err = 3;
+  bool paused = 4;
+}
+
+message DiyPauseReq {
+  int64 tourney_id = 1;
+  int32 match_id = 2;
+}
+message DiyPauseAck {
+  bool paused = 1;
+  string err = 2;
+}
+message DiyResumeReq {
+  int64 tourney_id = 1;
+  int32 match_id = 2;
+}
+message DiyResumeAck {
+  bool paused = 1;
+  string err = 2;
 }
 
 message DiyDestroyReq {
