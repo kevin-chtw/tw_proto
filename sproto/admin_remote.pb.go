@@ -120,6 +120,7 @@ type MatchCfgRow struct {
 	GameType      string                 `protobuf:"bytes,6,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
 	PlacementIps  string                 `protobuf:"bytes,7,opt,name=placement_ips,json=placementIps,proto3" json:"placement_ips,omitempty"` // JSON array string, e.g. ["10.0.1.3","10.0.1.4"]
 	Channels      []string               `protobuf:"bytes,8,rep,name=channels,proto3" json:"channels,omitempty"`                             // 空=全渠道可见
+	Disabled      bool                   `protobuf:"varint,9,opt,name=disabled,proto3" json:"disabled,omitempty"`                            // 大厅隐藏；缺省为显示
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -208,6 +209,13 @@ func (x *MatchCfgRow) GetChannels() []string {
 		return x.Channels
 	}
 	return nil
+}
+
+func (x *MatchCfgRow) GetDisabled() bool {
+	if x != nil {
+		return x.Disabled
+	}
+	return false
 }
 
 type MatchCfgListReq struct {
@@ -3379,7 +3387,7 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\vserver_type\x18\x01 \x01(\tR\n" +
 	"serverType\".\n" +
 	"\x12MatchCfgVersionAck\x12\x18\n" +
-	"\aversion\x18\x01 \x01(\x04R\aversion\"\xef\x01\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\x8b\x02\n" +
 	"\vMatchCfgRow\x12\x1f\n" +
 	"\vserver_type\x18\x01 \x01(\tR\n" +
 	"serverType\x12\x19\n" +
@@ -3389,7 +3397,8 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\aversion\x18\x05 \x01(\x04R\aversion\x12\x1b\n" +
 	"\tgame_type\x18\x06 \x01(\tR\bgameType\x12#\n" +
 	"\rplacement_ips\x18\a \x01(\tR\fplacementIps\x12\x1a\n" +
-	"\bchannels\x18\b \x03(\tR\bchannels\"2\n" +
+	"\bchannels\x18\b \x03(\tR\bchannels\x12\x1a\n" +
+	"\bdisabled\x18\t \x01(\bR\bdisabled\"2\n" +
 	"\x0fMatchCfgListReq\x12\x1f\n" +
 	"\vserver_type\x18\x01 \x01(\tR\n" +
 	"serverType\":\n" +
