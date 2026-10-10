@@ -3,7 +3,7 @@ syntax = "proto3";
 package sproto;
 option go_package = "../sproto";
 
-// Admin remotes (matchcfg/signcfg/bonuscfg/decocfg/itemcfg/diyreport/activitycfg) messages.
+// Admin remotes (matchcfg/signcfg/bonuscfg/decocfg/itemcfg/diyreport/activitycfg/channelcfg) messages.
 
 // MatchCfg service (admin.matchcfg.*) messages.
 message MatchCfgVersionReq {
@@ -318,4 +318,26 @@ message ActivityCfgListReq {}
 message ActivityCfgListAck { repeated ActivityCfgRow rows = 1; }
 message ActivityCfgGetReq { int32 activity_id = 1; }
 message ActivityCfgGetAck { ActivityCfgRow row = 1; }
+
+// ChannelCfg service (admin.channelcfg.*) messages.
+message ChannelCfgVersionReq {
+  uint64 dummy = 1;
+}
+
+message ChannelCfgVersionAck {
+  uint64 version = 1;
+}
+
+message ChannelCfgRow {
+  string code = 1;
+  map<int32, string> entries = 2;
+}
+
+message ChannelCfgListReq {
+  uint64 dummy = 1;
+}
+
+message ChannelCfgListAck {
+  repeated ChannelCfgRow rows = 1;
+}
 

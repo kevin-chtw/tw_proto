@@ -3378,6 +3378,235 @@ func (x *ActivityCfgGetAck) GetRow() *ActivityCfgRow {
 	return nil
 }
 
+// ChannelCfg service (admin.channelcfg.*) messages.
+type ChannelCfgVersionReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChannelCfgVersionReq) Reset() {
+	*x = ChannelCfgVersionReq{}
+	mi := &file_admin_remote_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChannelCfgVersionReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChannelCfgVersionReq) ProtoMessage() {}
+
+func (x *ChannelCfgVersionReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChannelCfgVersionReq.ProtoReflect.Descriptor instead.
+func (*ChannelCfgVersionReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *ChannelCfgVersionReq) GetDummy() uint64 {
+	if x != nil {
+		return x.Dummy
+	}
+	return 0
+}
+
+type ChannelCfgVersionAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Version       uint64                 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChannelCfgVersionAck) Reset() {
+	*x = ChannelCfgVersionAck{}
+	mi := &file_admin_remote_proto_msgTypes[66]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChannelCfgVersionAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChannelCfgVersionAck) ProtoMessage() {}
+
+func (x *ChannelCfgVersionAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[66]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChannelCfgVersionAck.ProtoReflect.Descriptor instead.
+func (*ChannelCfgVersionAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{66}
+}
+
+func (x *ChannelCfgVersionAck) GetVersion() uint64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type ChannelCfgRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Entries       map[int32]string       `protobuf:"bytes,2,rep,name=entries,proto3" json:"entries,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChannelCfgRow) Reset() {
+	*x = ChannelCfgRow{}
+	mi := &file_admin_remote_proto_msgTypes[67]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChannelCfgRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChannelCfgRow) ProtoMessage() {}
+
+func (x *ChannelCfgRow) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[67]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChannelCfgRow.ProtoReflect.Descriptor instead.
+func (*ChannelCfgRow) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{67}
+}
+
+func (x *ChannelCfgRow) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ChannelCfgRow) GetEntries() map[int32]string {
+	if x != nil {
+		return x.Entries
+	}
+	return nil
+}
+
+type ChannelCfgListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChannelCfgListReq) Reset() {
+	*x = ChannelCfgListReq{}
+	mi := &file_admin_remote_proto_msgTypes[68]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChannelCfgListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChannelCfgListReq) ProtoMessage() {}
+
+func (x *ChannelCfgListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[68]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChannelCfgListReq.ProtoReflect.Descriptor instead.
+func (*ChannelCfgListReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{68}
+}
+
+func (x *ChannelCfgListReq) GetDummy() uint64 {
+	if x != nil {
+		return x.Dummy
+	}
+	return 0
+}
+
+type ChannelCfgListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*ChannelCfgRow       `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChannelCfgListAck) Reset() {
+	*x = ChannelCfgListAck{}
+	mi := &file_admin_remote_proto_msgTypes[69]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChannelCfgListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChannelCfgListAck) ProtoMessage() {}
+
+func (x *ChannelCfgListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[69]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChannelCfgListAck.ProtoReflect.Descriptor instead.
+func (*ChannelCfgListAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{69}
+}
+
+func (x *ChannelCfgListAck) GetRows() []*ChannelCfgRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -3589,7 +3818,21 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\vactivity_id\x18\x01 \x01(\x05R\n" +
 	"activityId\"=\n" +
 	"\x11ActivityCfgGetAck\x12(\n" +
-	"\x03row\x18\x01 \x01(\v2\x16.sproto.ActivityCfgRowR\x03rowB\vZ\t../sprotob\x06proto3"
+	"\x03row\x18\x01 \x01(\v2\x16.sproto.ActivityCfgRowR\x03row\",\n" +
+	"\x14ChannelCfgVersionReq\x12\x14\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"0\n" +
+	"\x14ChannelCfgVersionAck\x12\x18\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\x9d\x01\n" +
+	"\rChannelCfgRow\x12\x12\n" +
+	"\x04code\x18\x01 \x01(\tR\x04code\x12<\n" +
+	"\aentries\x18\x02 \x03(\v2\".sproto.ChannelCfgRow.EntriesEntryR\aentries\x1a:\n" +
+	"\fEntriesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\")\n" +
+	"\x11ChannelCfgListReq\x12\x14\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\">\n" +
+	"\x11ChannelCfgListAck\x12)\n" +
+	"\x04rows\x18\x01 \x03(\v2\x15.sproto.ChannelCfgRowR\x04rowsB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once
@@ -3603,7 +3846,7 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 65)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 71)
 var file_admin_remote_proto_goTypes = []any{
 	(*MatchCfgVersionReq)(nil),    // 0: sproto.MatchCfgVersionReq
 	(*MatchCfgVersionAck)(nil),    // 1: sproto.MatchCfgVersionAck
@@ -3670,6 +3913,12 @@ var file_admin_remote_proto_goTypes = []any{
 	(*ActivityCfgListAck)(nil),    // 62: sproto.ActivityCfgListAck
 	(*ActivityCfgGetReq)(nil),     // 63: sproto.ActivityCfgGetReq
 	(*ActivityCfgGetAck)(nil),     // 64: sproto.ActivityCfgGetAck
+	(*ChannelCfgVersionReq)(nil),  // 65: sproto.ChannelCfgVersionReq
+	(*ChannelCfgVersionAck)(nil),  // 66: sproto.ChannelCfgVersionAck
+	(*ChannelCfgRow)(nil),         // 67: sproto.ChannelCfgRow
+	(*ChannelCfgListReq)(nil),     // 68: sproto.ChannelCfgListReq
+	(*ChannelCfgListAck)(nil),     // 69: sproto.ChannelCfgListAck
+	nil,                           // 70: sproto.ChannelCfgRow.EntriesEntry
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -3689,11 +3938,13 @@ var file_admin_remote_proto_depIdxs = []int32{
 	49, // 14: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
 	58, // 15: sproto.ActivityCfgListAck.rows:type_name -> sproto.ActivityCfgRow
 	58, // 16: sproto.ActivityCfgGetAck.row:type_name -> sproto.ActivityCfgRow
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	70, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
+	67, // 18: sproto.ChannelCfgListAck.rows:type_name -> sproto.ChannelCfgRow
+	19, // [19:19] is the sub-list for method output_type
+	19, // [19:19] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_admin_remote_proto_init() }
@@ -3707,7 +3958,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   65,
+			NumMessages:   71,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
