@@ -26,6 +26,18 @@ message GameReadyReq {
   bool ready = 1; // 是否准备
 }
 
+// 手动选座。seat 为目标座位。-1 表示站起，自动模式不允许站起
+message GameSeatReq {
+  int32 seat = 1;
+}
+
+// 选座广播。seat = -1 表示站起。
+message GameSeatAck {
+  string uid = 1; // 玩家
+  int32 seat = 2; // 新座位，-1 站起
+  bool ready = 3; // 选座后的准备状态
+}
+
 //解散请求
 message GameDissolveReq {
   bool agree = 1; //是否同意解散
@@ -47,6 +59,7 @@ message EnterGameAck {
   string desn = 7; // 游戏描述
   map<string,int32> fdproperty = 8; // 好友房自选配置
   bytes emote_conf = 9; // 表情配置(JSON快照，按match下发)
+  int32 seat_mode = 10; // 0 自动落座，1 手动选座
 }
 
 // 表情广播：不写入历史消息，断线重连不补发

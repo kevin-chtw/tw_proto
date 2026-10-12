@@ -152,6 +152,7 @@ type AddTableReq struct {
 	Desn          string                 `protobuf:"bytes,6,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        // 游戏描述
 	Fdproperty    map[string]int32       `protobuf:"bytes,7,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
 	EmoteConf     []byte                 `protobuf:"bytes,8,opt,name=emote_conf,json=emoteConf,proto3" json:"emote_conf,omitempty"`                                                             // 表情配置(JSON快照，按match下发)
+	SeatMode      int32                  `protobuf:"varint,9,opt,name=seat_mode,json=seatMode,proto3" json:"seat_mode,omitempty"`                                                               // 0 自动落座，1 手动选座
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -240,6 +241,13 @@ func (x *AddTableReq) GetEmoteConf() []byte {
 		return x.EmoteConf
 	}
 	return nil
+}
+
+func (x *AddTableReq) GetSeatMode() int32 {
+	if x != nil {
+		return x.SeatMode
+	}
+	return 0
 }
 
 type AddPlayerReq struct {
@@ -654,7 +662,7 @@ const file_game_remote_proto_rawDesc = "" +
 	"\aGameAck\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
-	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xdb\x02\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xf8\x02\n" +
 	"\vAddTableReq\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1d\n" +
@@ -668,7 +676,8 @@ const file_game_remote_proto_rawDesc = "" +
 	"fdproperty\x18\a \x03(\v2#.sproto.AddTableReq.FdpropertyEntryR\n" +
 	"fdproperty\x12\x1d\n" +
 	"\n" +
-	"emote_conf\x18\b \x01(\fR\temoteConf\x1a=\n" +
+	"emote_conf\x18\b \x01(\fR\temoteConf\x12\x1b\n" +
+	"\tseat_mode\x18\t \x01(\x05R\bseatMode\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xf6\x04\n" +
