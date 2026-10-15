@@ -2257,6 +2257,7 @@ type ItemDefRow struct {
 	Enabled       bool                   `protobuf:"varint,9,opt,name=enabled,proto3" json:"enabled,omitempty"`
 	Meta          string                 `protobuf:"bytes,10,opt,name=meta,proto3" json:"meta,omitempty"` // JSON
 	Version       uint64                 `protobuf:"varint,11,opt,name=version,proto3" json:"version,omitempty"`
+	Channels      []string               `protobuf:"bytes,12,rep,name=channels,proto3" json:"channels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2366,6 +2367,13 @@ func (x *ItemDefRow) GetVersion() uint64 {
 		return x.Version
 	}
 	return 0
+}
+
+func (x *ItemDefRow) GetChannels() []string {
+	if x != nil {
+		return x.Channels
+	}
+	return nil
 }
 
 type ItemCfgListReq struct {
@@ -3742,7 +3750,7 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x11ItemCfgVersionReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"-\n" +
 	"\x11ItemCfgVersionAck\x12\x18\n" +
-	"\aversion\x18\x01 \x01(\x04R\aversion\"\x94\x02\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\xb0\x02\n" +
 	"\n" +
 	"ItemDefRow\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\x05R\x06itemId\x12\x12\n" +
@@ -3756,7 +3764,8 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\aenabled\x18\t \x01(\bR\aenabled\x12\x12\n" +
 	"\x04meta\x18\n" +
 	" \x01(\tR\x04meta\x12\x18\n" +
-	"\aversion\x18\v \x01(\x04R\aversion\"&\n" +
+	"\aversion\x18\v \x01(\x04R\aversion\x12\x1a\n" +
+	"\bchannels\x18\f \x03(\tR\bchannels\"&\n" +
 	"\x0eItemCfgListReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"8\n" +
 	"\x0eItemCfgListAck\x12&\n" +

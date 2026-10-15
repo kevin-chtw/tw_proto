@@ -235,6 +235,7 @@ message ItemDefRow {
   bool enabled = 9;
   string meta = 10; // JSON
   uint64 version = 11;
+  repeated string channels = 12;
 }
 
 message ItemCfgListReq {
