@@ -3615,6 +3615,275 @@ func (x *ChannelCfgListAck) GetRows() []*ChannelCfgRow {
 	return nil
 }
 
+// NoticeCfg service (admin.noticecfg.*)
+type NoticeCfgVersionReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NoticeCfgVersionReq) Reset() {
+	*x = NoticeCfgVersionReq{}
+	mi := &file_admin_remote_proto_msgTypes[70]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NoticeCfgVersionReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NoticeCfgVersionReq) ProtoMessage() {}
+
+func (x *NoticeCfgVersionReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[70]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NoticeCfgVersionReq.ProtoReflect.Descriptor instead.
+func (*NoticeCfgVersionReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{70}
+}
+
+func (x *NoticeCfgVersionReq) GetDummy() uint64 {
+	if x != nil {
+		return x.Dummy
+	}
+	return 0
+}
+
+type NoticeCfgVersionAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Version       uint64                 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NoticeCfgVersionAck) Reset() {
+	*x = NoticeCfgVersionAck{}
+	mi := &file_admin_remote_proto_msgTypes[71]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NoticeCfgVersionAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NoticeCfgVersionAck) ProtoMessage() {}
+
+func (x *NoticeCfgVersionAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[71]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NoticeCfgVersionAck.ProtoReflect.Descriptor instead.
+func (*NoticeCfgVersionAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{71}
+}
+
+func (x *NoticeCfgVersionAck) GetVersion() uint64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type NoticeCfgListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Dummy         uint64                 `protobuf:"varint,1,opt,name=dummy,proto3" json:"dummy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NoticeCfgListReq) Reset() {
+	*x = NoticeCfgListReq{}
+	mi := &file_admin_remote_proto_msgTypes[72]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NoticeCfgListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NoticeCfgListReq) ProtoMessage() {}
+
+func (x *NoticeCfgListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[72]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NoticeCfgListReq.ProtoReflect.Descriptor instead.
+func (*NoticeCfgListReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{72}
+}
+
+func (x *NoticeCfgListReq) GetDummy() uint64 {
+	if x != nil {
+		return x.Dummy
+	}
+	return 0
+}
+
+type NoticeCfgListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*NoticeCfgRow        `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NoticeCfgListAck) Reset() {
+	*x = NoticeCfgListAck{}
+	mi := &file_admin_remote_proto_msgTypes[73]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NoticeCfgListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NoticeCfgListAck) ProtoMessage() {}
+
+func (x *NoticeCfgListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[73]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NoticeCfgListAck.ProtoReflect.Descriptor instead.
+func (*NoticeCfgListAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{73}
+}
+
+func (x *NoticeCfgListAck) GetRows() []*NoticeCfgRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+type NoticeCfgRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Sort          int32                  `protobuf:"varint,2,opt,name=sort,proto3" json:"sort,omitempty"`
+	Text          string                 `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	Image         string                 `protobuf:"bytes,4,opt,name=image,proto3" json:"image,omitempty"`
+	Channels      []string               `protobuf:"bytes,5,rep,name=channels,proto3" json:"channels,omitempty"`
+	NewUser       bool                   `protobuf:"varint,6,opt,name=new_user,json=newUser,proto3" json:"new_user,omitempty"`
+	Bounds        string                 `protobuf:"bytes,7,opt,name=bounds,proto3" json:"bounds,omitempty"` // JSON。键 vip_min、vip_max、coin_min、coin_max、honor_min、honor_max。缺键不限制，出现的 0 是合法边界
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NoticeCfgRow) Reset() {
+	*x = NoticeCfgRow{}
+	mi := &file_admin_remote_proto_msgTypes[74]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NoticeCfgRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NoticeCfgRow) ProtoMessage() {}
+
+func (x *NoticeCfgRow) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[74]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NoticeCfgRow.ProtoReflect.Descriptor instead.
+func (*NoticeCfgRow) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{74}
+}
+
+func (x *NoticeCfgRow) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *NoticeCfgRow) GetSort() int32 {
+	if x != nil {
+		return x.Sort
+	}
+	return 0
+}
+
+func (x *NoticeCfgRow) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *NoticeCfgRow) GetImage() string {
+	if x != nil {
+		return x.Image
+	}
+	return ""
+}
+
+func (x *NoticeCfgRow) GetChannels() []string {
+	if x != nil {
+		return x.Channels
+	}
+	return nil
+}
+
+func (x *NoticeCfgRow) GetNewUser() bool {
+	if x != nil {
+		return x.NewUser
+	}
+	return false
+}
+
+func (x *NoticeCfgRow) GetBounds() string {
+	if x != nil {
+		return x.Bounds
+	}
+	return ""
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -3841,7 +4110,23 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x11ChannelCfgListReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\">\n" +
 	"\x11ChannelCfgListAck\x12)\n" +
-	"\x04rows\x18\x01 \x03(\v2\x15.sproto.ChannelCfgRowR\x04rowsB\vZ\t../sprotob\x06proto3"
+	"\x04rows\x18\x01 \x03(\v2\x15.sproto.ChannelCfgRowR\x04rows\"+\n" +
+	"\x13NoticeCfgVersionReq\x12\x14\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"/\n" +
+	"\x13NoticeCfgVersionAck\x12\x18\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"(\n" +
+	"\x10NoticeCfgListReq\x12\x14\n" +
+	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"<\n" +
+	"\x10NoticeCfgListAck\x12(\n" +
+	"\x04rows\x18\x01 \x03(\v2\x14.sproto.NoticeCfgRowR\x04rows\"\xab\x01\n" +
+	"\fNoticeCfgRow\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x04sort\x18\x02 \x01(\x05R\x04sort\x12\x12\n" +
+	"\x04text\x18\x03 \x01(\tR\x04text\x12\x14\n" +
+	"\x05image\x18\x04 \x01(\tR\x05image\x12\x1a\n" +
+	"\bchannels\x18\x05 \x03(\tR\bchannels\x12\x19\n" +
+	"\bnew_user\x18\x06 \x01(\bR\anewUser\x12\x16\n" +
+	"\x06bounds\x18\a \x01(\tR\x06boundsB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once
@@ -3855,7 +4140,7 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 71)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 76)
 var file_admin_remote_proto_goTypes = []any{
 	(*MatchCfgVersionReq)(nil),    // 0: sproto.MatchCfgVersionReq
 	(*MatchCfgVersionAck)(nil),    // 1: sproto.MatchCfgVersionAck
@@ -3927,7 +4212,12 @@ var file_admin_remote_proto_goTypes = []any{
 	(*ChannelCfgRow)(nil),         // 67: sproto.ChannelCfgRow
 	(*ChannelCfgListReq)(nil),     // 68: sproto.ChannelCfgListReq
 	(*ChannelCfgListAck)(nil),     // 69: sproto.ChannelCfgListAck
-	nil,                           // 70: sproto.ChannelCfgRow.EntriesEntry
+	(*NoticeCfgVersionReq)(nil),   // 70: sproto.NoticeCfgVersionReq
+	(*NoticeCfgVersionAck)(nil),   // 71: sproto.NoticeCfgVersionAck
+	(*NoticeCfgListReq)(nil),      // 72: sproto.NoticeCfgListReq
+	(*NoticeCfgListAck)(nil),      // 73: sproto.NoticeCfgListAck
+	(*NoticeCfgRow)(nil),          // 74: sproto.NoticeCfgRow
+	nil,                           // 75: sproto.ChannelCfgRow.EntriesEntry
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -3947,13 +4237,14 @@ var file_admin_remote_proto_depIdxs = []int32{
 	49, // 14: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
 	58, // 15: sproto.ActivityCfgListAck.rows:type_name -> sproto.ActivityCfgRow
 	58, // 16: sproto.ActivityCfgGetAck.row:type_name -> sproto.ActivityCfgRow
-	70, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
+	75, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
 	67, // 18: sproto.ChannelCfgListAck.rows:type_name -> sproto.ChannelCfgRow
-	19, // [19:19] is the sub-list for method output_type
-	19, // [19:19] is the sub-list for method input_type
-	19, // [19:19] is the sub-list for extension type_name
-	19, // [19:19] is the sub-list for extension extendee
-	0,  // [0:19] is the sub-list for field type_name
+	74, // 19: sproto.NoticeCfgListAck.rows:type_name -> sproto.NoticeCfgRow
+	20, // [20:20] is the sub-list for method output_type
+	20, // [20:20] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_admin_remote_proto_init() }
@@ -3967,7 +4258,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   71,
+			NumMessages:   76,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

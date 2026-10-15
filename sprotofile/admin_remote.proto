@@ -342,3 +342,18 @@ message ChannelCfgListAck {
   repeated ChannelCfgRow rows = 1;
 }
 
+// NoticeCfg service (admin.noticecfg.*)
+message NoticeCfgVersionReq { uint64 dummy = 1; }
+message NoticeCfgVersionAck { uint64 version = 1; }
+message NoticeCfgListReq { uint64 dummy = 1; }
+message NoticeCfgListAck { repeated NoticeCfgRow rows = 1; }
+message NoticeCfgRow {
+  int32 id = 1;
+  int32 sort = 2;
+  string text = 3;
+  string image = 4;
+  repeated string channels = 5;
+  bool new_user = 6;
+  string bounds = 7; // JSON。键 vip_min、vip_max、coin_min、coin_max、honor_min、honor_max。缺键不限制，出现的 0 是合法边界
+}
+
