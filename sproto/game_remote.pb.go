@@ -269,6 +269,7 @@ type AddPlayerReq struct {
 	BotDriver     bool                   `protobuf:"varint,15,opt,name=bot_driver,json=botDriver,proto3" json:"bot_driver,omitempty"`                                                         // 真人座位由服务端 bot 代打，Ack 同时推给客户端（纯播放）
 	Channel       string                 `protobuf:"bytes,16,opt,name=channel,proto3" json:"channel,omitempty"`                                                                               // 登录渠道快照（握手原值）
 	City          string                 `protobuf:"bytes,17,opt,name=city,proto3" json:"city,omitempty"`                                                                                     // 展示城市
+	UsefulBoost   int32                  `protobuf:"varint,18,opt,name=useful_boost,json=usefulBoost,proto3" json:"useful_boost,omitempty"`                                                   // Ctrl=3 时加在控赢表有效进张上，0 表示不加
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -420,6 +421,13 @@ func (x *AddPlayerReq) GetCity() string {
 		return x.City
 	}
 	return ""
+}
+
+func (x *AddPlayerReq) GetUsefulBoost() int32 {
+	if x != nil {
+		return x.UsefulBoost
+	}
+	return 0
 }
 
 type CancelTableReq struct {
@@ -680,7 +688,7 @@ const file_game_remote_proto_rawDesc = "" +
 	"\tseat_mode\x18\t \x01(\x05R\bseatMode\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xf6\x04\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x99\x05\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x10\n" +
 	"\x03bot\x18\x02 \x01(\bR\x03bot\x12\x12\n" +
@@ -701,7 +709,8 @@ const file_game_remote_proto_rawDesc = "" +
 	"\n" +
 	"bot_driver\x18\x0f \x01(\bR\tbotDriver\x12\x18\n" +
 	"\achannel\x18\x10 \x01(\tR\achannel\x12\x12\n" +
-	"\x04city\x18\x11 \x01(\tR\x04city\x1a8\n" +
+	"\x04city\x18\x11 \x01(\tR\x04city\x12!\n" +
+	"\fuseful_boost\x18\x12 \x01(\x05R\vusefulBoost\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +

@@ -47,6 +47,7 @@ message AddPlayerReq {
   bool bot_driver = 15; // 真人座位由服务端 bot 代打，Ack 同时推给客户端（纯播放）
   string channel = 16; // 登录渠道快照（握手原值）
   string city = 17; // 展示城市
+  int32 useful_boost = 18; // Ctrl=3 时加在控赢表有效进张上，0 表示不加
 }
 
 message CancelTableReq {

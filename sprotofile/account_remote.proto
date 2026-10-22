@@ -57,21 +57,47 @@ message RechargeReq {
 message RechargeAck {
 }
 
+message GrantIceProtectReq {
+  string uid = 1;
+}
+message GrantIceProtectAck {}
+
+message MarkBankruptReq {
+  string uid = 1;
+}
+message MarkBankruptAck {}
+
+message ApplyDownshiftReq {
+  string uid = 1;
+  int32 venue_tier = 2;
+}
+message ApplyDownshiftAck {}
+
 // 新手保护统计
 message GetNewbieStatsReq {
   string uid = 1;
+  string game_type = 2; // 空表示不查连输
 }
 
 message GetNewbieStatsAck {
   int32 match_count = 1;      // lifetime总对局数
-  int32 pressure = 2;         // 压力值(连输数)
+  int32 pressure = 2;         // 所查玩法的连输数
   int32 protected_count = 3;  // 已消耗的新手保护局数
+  int32 ice_left = 4;
+  int32 broke_left = 5;
+  bool bankrupt_pending = 6;
+  int32 down_left = 7;
+  int32 last_tier = 8;
 }
 
 message UpdateNewbieStatsReq {
   string uid = 1;
   bool win = 2;              // 本局是否赢
   bool in_protected_room = 3; // 是否在新手/初级场保护局内
+  int32 venue_tier = 4;
+  bool count_match = 5;
+  bool protect_game = 6;
+  string game_type = 7; // 本局玩法
 }
 
 message UpdateNewbieStatsAck {
