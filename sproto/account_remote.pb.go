@@ -721,7 +721,7 @@ func (*MarkBankruptAck) Descriptor() ([]byte, []int) {
 type ApplyDownshiftReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	VenueTier     int32                  `protobuf:"varint,2,opt,name=venue_tier,json=venueTier,proto3" json:"venue_tier,omitempty"`
+	CoinMin       int32                  `protobuf:"varint,2,opt,name=coin_min,json=coinMin,proto3" json:"coin_min,omitempty"` // 本场金币下限，不大于 0 表示没有
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -763,9 +763,9 @@ func (x *ApplyDownshiftReq) GetUid() string {
 	return ""
 }
 
-func (x *ApplyDownshiftReq) GetVenueTier() int32 {
+func (x *ApplyDownshiftReq) GetCoinMin() int32 {
 	if x != nil {
-		return x.VenueTier
+		return x.CoinMin
 	}
 	return 0
 }
@@ -868,7 +868,7 @@ type GetNewbieStatsAck struct {
 	BrokeLeft       int32                  `protobuf:"varint,5,opt,name=broke_left,json=brokeLeft,proto3" json:"broke_left,omitempty"`
 	BankruptPending bool                   `protobuf:"varint,6,opt,name=bankrupt_pending,json=bankruptPending,proto3" json:"bankrupt_pending,omitempty"`
 	DownLeft        int32                  `protobuf:"varint,7,opt,name=down_left,json=downLeft,proto3" json:"down_left,omitempty"`
-	LastTier        int32                  `protobuf:"varint,8,opt,name=last_tier,json=lastTier,proto3" json:"last_tier,omitempty"`
+	LastCoinMin     int32                  `protobuf:"varint,8,opt,name=last_coin_min,json=lastCoinMin,proto3" json:"last_coin_min,omitempty"` // 上一局金币下限，0 表示没有
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -952,9 +952,9 @@ func (x *GetNewbieStatsAck) GetDownLeft() int32 {
 	return 0
 }
 
-func (x *GetNewbieStatsAck) GetLastTier() int32 {
+func (x *GetNewbieStatsAck) GetLastCoinMin() int32 {
 	if x != nil {
-		return x.LastTier
+		return x.LastCoinMin
 	}
 	return 0
 }
@@ -964,7 +964,7 @@ type UpdateNewbieStatsReq struct {
 	Uid             string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	Win             bool                   `protobuf:"varint,2,opt,name=win,proto3" json:"win,omitempty"`                                                  // 本局是否赢
 	InProtectedRoom bool                   `protobuf:"varint,3,opt,name=in_protected_room,json=inProtectedRoom,proto3" json:"in_protected_room,omitempty"` // 是否在新手/初级场保护局内
-	VenueTier       int32                  `protobuf:"varint,4,opt,name=venue_tier,json=venueTier,proto3" json:"venue_tier,omitempty"`
+	CoinMin         int32                  `protobuf:"varint,4,opt,name=coin_min,json=coinMin,proto3" json:"coin_min,omitempty"`                           // 本局金币下限，不大于 0 不更新
 	CountMatch      bool                   `protobuf:"varint,5,opt,name=count_match,json=countMatch,proto3" json:"count_match,omitempty"`
 	ProtectGame     bool                   `protobuf:"varint,6,opt,name=protect_game,json=protectGame,proto3" json:"protect_game,omitempty"`
 	GameType        string                 `protobuf:"bytes,7,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"` // 本局玩法
@@ -1023,9 +1023,9 @@ func (x *UpdateNewbieStatsReq) GetInProtectedRoom() bool {
 	return false
 }
 
-func (x *UpdateNewbieStatsReq) GetVenueTier() int32 {
+func (x *UpdateNewbieStatsReq) GetCoinMin() int32 {
 	if x != nil {
-		return x.VenueTier
+		return x.CoinMin
 	}
 	return 0
 }
@@ -2264,15 +2264,14 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x12GrantIceProtectAck\"#\n" +
 	"\x0fMarkBankruptReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\"\x11\n" +
-	"\x0fMarkBankruptAck\"D\n" +
+	"\x0fMarkBankruptAck\"@\n" +
 	"\x11ApplyDownshiftReq\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1d\n" +
-	"\n" +
-	"venue_tier\x18\x02 \x01(\x05R\tvenueTier\"\x13\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x19\n" +
+	"\bcoin_min\x18\x02 \x01(\x05R\acoinMin\"\x13\n" +
 	"\x11ApplyDownshiftAck\"B\n" +
 	"\x11GetNewbieStatsReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x1b\n" +
-	"\tgame_type\x18\x02 \x01(\tR\bgameType\"\x98\x02\n" +
+	"\tgame_type\x18\x02 \x01(\tR\bgameType\"\x9f\x02\n" +
 	"\x11GetNewbieStatsAck\x12\x1f\n" +
 	"\vmatch_count\x18\x01 \x01(\x05R\n" +
 	"matchCount\x12\x1a\n" +
@@ -2282,14 +2281,13 @@ const file_account_remote_proto_rawDesc = "" +
 	"\n" +
 	"broke_left\x18\x05 \x01(\x05R\tbrokeLeft\x12)\n" +
 	"\x10bankrupt_pending\x18\x06 \x01(\bR\x0fbankruptPending\x12\x1b\n" +
-	"\tdown_left\x18\a \x01(\x05R\bdownLeft\x12\x1b\n" +
-	"\tlast_tier\x18\b \x01(\x05R\blastTier\"\xe6\x01\n" +
+	"\tdown_left\x18\a \x01(\x05R\bdownLeft\x12\"\n" +
+	"\rlast_coin_min\x18\b \x01(\x05R\vlastCoinMin\"\xe2\x01\n" +
 	"\x14UpdateNewbieStatsReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x10\n" +
 	"\x03win\x18\x02 \x01(\bR\x03win\x12*\n" +
-	"\x11in_protected_room\x18\x03 \x01(\bR\x0finProtectedRoom\x12\x1d\n" +
-	"\n" +
-	"venue_tier\x18\x04 \x01(\x05R\tvenueTier\x12\x1f\n" +
+	"\x11in_protected_room\x18\x03 \x01(\bR\x0finProtectedRoom\x12\x19\n" +
+	"\bcoin_min\x18\x04 \x01(\x05R\acoinMin\x12\x1f\n" +
 	"\vcount_match\x18\x05 \x01(\bR\n" +
 	"countMatch\x12!\n" +
 	"\fprotect_game\x18\x06 \x01(\bR\vprotectGame\x12\x1b\n" +

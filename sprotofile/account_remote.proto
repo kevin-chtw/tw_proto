@@ -69,7 +69,7 @@ message MarkBankruptAck {}
 
 message ApplyDownshiftReq {
   string uid = 1;
-  int32 venue_tier = 2;
+  int32 coin_min = 2; // 本场金币下限，不大于 0 表示没有
 }
 message ApplyDownshiftAck {}
 
@@ -87,14 +87,14 @@ message GetNewbieStatsAck {
   int32 broke_left = 5;
   bool bankrupt_pending = 6;
   int32 down_left = 7;
-  int32 last_tier = 8;
+  int32 last_coin_min = 8; // 上一局金币下限，0 表示没有
 }
 
 message UpdateNewbieStatsReq {
   string uid = 1;
   bool win = 2;              // 本局是否赢
   bool in_protected_room = 3; // 是否在新手/初级场保护局内
-  int32 venue_tier = 4;
+  int32 coin_min = 4; // 本局金币下限，不大于 0 不更新
   bool count_match = 5;
   bool protect_game = 6;
   string game_type = 7; // 本局玩法
