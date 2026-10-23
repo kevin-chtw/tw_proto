@@ -233,3 +233,22 @@ message SetLiveAiAck {
   bool live_ai = 2;
 }
 
+message AssignDiyOrgReq {
+  string uid = 1;
+  uint32 org_id = 2;
+}
+message AssignDiyOrgAck {
+  string uid = 1;
+  uint32 org_id = 2;
+  string result = 3;
+}
+message ReleaseDiyOrgReq {
+  string uid = 1;
+  uint32 org_id = 2;
+}
+message ReleaseDiyOrgAck {
+  string uid = 1;
+  uint32 org_id = 2;
+  string result = 3;
+}
+

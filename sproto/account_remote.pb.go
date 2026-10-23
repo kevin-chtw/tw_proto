@@ -2205,6 +2205,230 @@ func (x *SetLiveAiAck) GetLiveAi() bool {
 	return false
 }
 
+type AssignDiyOrgReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	OrgId         uint32                 `protobuf:"varint,2,opt,name=org_id,json=orgId,proto3" json:"org_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssignDiyOrgReq) Reset() {
+	*x = AssignDiyOrgReq{}
+	mi := &file_account_remote_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssignDiyOrgReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssignDiyOrgReq) ProtoMessage() {}
+
+func (x *AssignDiyOrgReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssignDiyOrgReq.ProtoReflect.Descriptor instead.
+func (*AssignDiyOrgReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *AssignDiyOrgReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *AssignDiyOrgReq) GetOrgId() uint32 {
+	if x != nil {
+		return x.OrgId
+	}
+	return 0
+}
+
+type AssignDiyOrgAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	OrgId         uint32                 `protobuf:"varint,2,opt,name=org_id,json=orgId,proto3" json:"org_id,omitempty"`
+	Result        string                 `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssignDiyOrgAck) Reset() {
+	*x = AssignDiyOrgAck{}
+	mi := &file_account_remote_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssignDiyOrgAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssignDiyOrgAck) ProtoMessage() {}
+
+func (x *AssignDiyOrgAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssignDiyOrgAck.ProtoReflect.Descriptor instead.
+func (*AssignDiyOrgAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *AssignDiyOrgAck) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *AssignDiyOrgAck) GetOrgId() uint32 {
+	if x != nil {
+		return x.OrgId
+	}
+	return 0
+}
+
+func (x *AssignDiyOrgAck) GetResult() string {
+	if x != nil {
+		return x.Result
+	}
+	return ""
+}
+
+type ReleaseDiyOrgReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	OrgId         uint32                 `protobuf:"varint,2,opt,name=org_id,json=orgId,proto3" json:"org_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReleaseDiyOrgReq) Reset() {
+	*x = ReleaseDiyOrgReq{}
+	mi := &file_account_remote_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReleaseDiyOrgReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReleaseDiyOrgReq) ProtoMessage() {}
+
+func (x *ReleaseDiyOrgReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReleaseDiyOrgReq.ProtoReflect.Descriptor instead.
+func (*ReleaseDiyOrgReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *ReleaseDiyOrgReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *ReleaseDiyOrgReq) GetOrgId() uint32 {
+	if x != nil {
+		return x.OrgId
+	}
+	return 0
+}
+
+type ReleaseDiyOrgAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	OrgId         uint32                 `protobuf:"varint,2,opt,name=org_id,json=orgId,proto3" json:"org_id,omitempty"`
+	Result        string                 `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReleaseDiyOrgAck) Reset() {
+	*x = ReleaseDiyOrgAck{}
+	mi := &file_account_remote_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReleaseDiyOrgAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReleaseDiyOrgAck) ProtoMessage() {}
+
+func (x *ReleaseDiyOrgAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReleaseDiyOrgAck.ProtoReflect.Descriptor instead.
+func (*ReleaseDiyOrgAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *ReleaseDiyOrgAck) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *ReleaseDiyOrgAck) GetOrgId() uint32 {
+	if x != nil {
+		return x.OrgId
+	}
+	return 0
+}
+
+func (x *ReleaseDiyOrgAck) GetResult() string {
+	if x != nil {
+		return x.Result
+	}
+	return ""
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -2382,7 +2606,21 @@ const file_account_remote_proto_rawDesc = "" +
 	"\alive_ai\x18\x02 \x01(\bR\x06liveAi\"9\n" +
 	"\fSetLiveAiAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x17\n" +
-	"\alive_ai\x18\x02 \x01(\bR\x06liveAiB\vZ\t../sprotob\x06proto3"
+	"\alive_ai\x18\x02 \x01(\bR\x06liveAi\":\n" +
+	"\x0fAssignDiyOrgReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x15\n" +
+	"\x06org_id\x18\x02 \x01(\rR\x05orgId\"R\n" +
+	"\x0fAssignDiyOrgAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x15\n" +
+	"\x06org_id\x18\x02 \x01(\rR\x05orgId\x12\x16\n" +
+	"\x06result\x18\x03 \x01(\tR\x06result\";\n" +
+	"\x10ReleaseDiyOrgReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x15\n" +
+	"\x06org_id\x18\x02 \x01(\rR\x05orgId\"S\n" +
+	"\x10ReleaseDiyOrgAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x15\n" +
+	"\x06org_id\x18\x02 \x01(\rR\x05orgId\x12\x16\n" +
+	"\x06result\x18\x03 \x01(\tR\x06resultB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -2396,7 +2634,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 43)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 47)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -2435,24 +2673,28 @@ var file_account_remote_proto_goTypes = []any{
 	(*CoinBillAdminListAck)(nil), // 34: sproto.CoinBillAdminListAck
 	(*SetLiveAiReq)(nil),         // 35: sproto.SetLiveAiReq
 	(*SetLiveAiAck)(nil),         // 36: sproto.SetLiveAiAck
-	nil,                          // 37: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 38: sproto.PlayerInfoAck.EquippedEntry
-	nil,                          // 39: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 40: sproto.ChangeItemsAck.ItemsEntry
-	nil,                          // 41: sproto.PhysOrdAdminRow.ItemsEntry
-	nil,                          // 42: sproto.VirtOrdAdminRow.ItemsEntry
-	(*anypb.Any)(nil),            // 43: google.protobuf.Any
+	(*AssignDiyOrgReq)(nil),      // 37: sproto.AssignDiyOrgReq
+	(*AssignDiyOrgAck)(nil),      // 38: sproto.AssignDiyOrgAck
+	(*ReleaseDiyOrgReq)(nil),     // 39: sproto.ReleaseDiyOrgReq
+	(*ReleaseDiyOrgAck)(nil),     // 40: sproto.ReleaseDiyOrgAck
+	nil,                          // 41: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 42: sproto.PlayerInfoAck.EquippedEntry
+	nil,                          // 43: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 44: sproto.ChangeItemsAck.ItemsEntry
+	nil,                          // 45: sproto.PhysOrdAdminRow.ItemsEntry
+	nil,                          // 46: sproto.VirtOrdAdminRow.ItemsEntry
+	(*anypb.Any)(nil),            // 47: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	43, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	43, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
-	37, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	38, // 3: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
-	39, // 4: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	40, // 5: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
-	41, // 6: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
+	47, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	47, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	41, // 2: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	42, // 3: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
+	43, // 4: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	44, // 5: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	45, // 6: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
 	23, // 7: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
-	42, // 8: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
+	46, // 8: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
 	26, // 9: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
 	33, // 10: sproto.CoinBillAdminListAck.rows:type_name -> sproto.CoinBillAdminRow
 	11, // [11:11] is the sub-list for method output_type
@@ -2473,7 +2715,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   43,
+			NumMessages:   47,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
