@@ -23,6 +23,20 @@ message GetBotAck{
   int64 expired = 2; //过期时间
 }
 
+// 批量拉取 bot：一次 RPC 返回多个租约
+message GetBotsReq {
+  int32 count = 1; //需要拉取的 bot 数量，<=0 表示 1
+}
+
+message BotLease {
+  string uid = 1; //机器人id
+  int64 expired = 2; //过期时间
+}
+
+message GetBotsAck {
+  repeated BotLease bots = 1;
+}
+
 message PlayerInfoReq {
   string uid = 1; //用户id
 }
