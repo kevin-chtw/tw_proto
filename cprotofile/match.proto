@@ -95,6 +95,7 @@ message StartClientAck {
   int64 score_base = 6; //基数
   int64 tax = 7; // 服务费
   StageInfo stage_info = 8; // 锦标赛进度，见 StageInfo 注释；非锦标赛为空
+  string activity_id = 9; // 微信非聊天模式动态消息 activity_id
 }
 
 message SignupAck {

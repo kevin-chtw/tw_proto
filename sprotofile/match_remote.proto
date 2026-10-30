@@ -19,6 +19,12 @@ message NetStateReq {
   bool online = 2;
 }
 
+// GameStartReq 第一局真正开始时由游戏服发给比赛服。
+message GameStartReq {
+  int32 tableid = 1;
+  int32 cur_game_count = 2; // 当前游戏局数，第一局为 1
+}
+
 message GameResultReq {
   int32 tableid = 1;
   int32 cur_game_count = 2; // 当前游戏局数

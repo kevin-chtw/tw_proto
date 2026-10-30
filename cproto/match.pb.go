@@ -7,12 +7,13 @@
 package cproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 )
 
 const (
@@ -731,14 +732,15 @@ func (x *StageInfo) GetName() string {
 
 type StartClientAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`  //比赛类型
-	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`     //游戏类型
-	ServerId      string                 `protobuf:"bytes,3,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`     //游戏服务Id
-	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`       //比赛ID
-	TableId       int32                  `protobuf:"varint,5,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`       //桌号
-	ScoreBase     int64                  `protobuf:"varint,6,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"` //基数
-	Tax           int64                  `protobuf:"varint,7,opt,name=tax,proto3" json:"tax,omitempty"`                              // 服务费
-	StageInfo     *StageInfo             `protobuf:"bytes,8,opt,name=stage_info,json=stageInfo,proto3" json:"stage_info,omitempty"`  // 锦标赛进度，见 StageInfo 注释；非锦标赛为空
+	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`    //比赛类型
+	GameType      string                 `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`       //游戏类型
+	ServerId      string                 `protobuf:"bytes,3,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`       //游戏服务Id
+	MatchId       int32                  `protobuf:"varint,4,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`         //比赛ID
+	TableId       int32                  `protobuf:"varint,5,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`         //桌号
+	ScoreBase     int64                  `protobuf:"varint,6,opt,name=score_base,json=scoreBase,proto3" json:"score_base,omitempty"`   //基数
+	Tax           int64                  `protobuf:"varint,7,opt,name=tax,proto3" json:"tax,omitempty"`                                // 服务费
+	StageInfo     *StageInfo             `protobuf:"bytes,8,opt,name=stage_info,json=stageInfo,proto3" json:"stage_info,omitempty"`    // 锦标赛进度，见 StageInfo 注释；非锦标赛为空
+	ActivityId    string                 `protobuf:"bytes,9,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"` // 微信非聊天模式动态消息 activity_id
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -827,6 +829,13 @@ func (x *StartClientAck) GetStageInfo() *StageInfo {
 		return x.StageInfo
 	}
 	return nil
+}
+
+func (x *StartClientAck) GetActivityId() string {
+	if x != nil {
+		return x.ActivityId
+	}
+	return ""
 }
 
 type SignupAck struct {
@@ -1782,7 +1791,7 @@ const file_match_proto_rawDesc = "" +
 	"\n" +
 	"lose_count\x18\t \x01(\x05R\tloseCount\x12\x12\n" +
 	"\x04name\x18\n" +
-	" \x01(\tR\x04name\"\x82\x02\n" +
+	" \x01(\tR\x04name\"\xa3\x02\n" +
 	"\x0eStartClientAck\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1b\n" +
@@ -1794,7 +1803,9 @@ const file_match_proto_rawDesc = "" +
 	"score_base\x18\x06 \x01(\x03R\tscoreBase\x12\x10\n" +
 	"\x03tax\x18\a \x01(\x03R\x03tax\x120\n" +
 	"\n" +
-	"stage_info\x18\b \x01(\v2\x11.cproto.StageInfoR\tstageInfo\"\v\n" +
+	"stage_info\x18\b \x01(\v2\x11.cproto.StageInfoR\tstageInfo\x12\x1f\n" +
+	"\vactivity_id\x18\t \x01(\tR\n" +
+	"activityId\"\v\n" +
 	"\tSignupAck\"0\n" +
 	"\x0fSignupRemindAck\x12\x1d\n" +
 	"\n" +
