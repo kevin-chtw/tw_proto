@@ -357,3 +357,13 @@ message NoticeCfgRow {
   string bounds = 7; // JSON。键 vip_min、vip_max、coin_min、coin_max、honor_min、honor_max。缺键不限制，出现的 0 是合法边界
 }
 
+// WechatMinigame service (admin.wechat_minigame.*)
+message WechatMinigameGetReq {
+  string game_type = 1;
+}
+
+message WechatMinigameGetAck {
+  string app_id = 1;
+  string app_secret = 2;
+  string env_version = 3; // release/trial/develop
+}

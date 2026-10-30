@@ -7,11 +7,12 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -3884,6 +3885,111 @@ func (x *NoticeCfgRow) GetBounds() string {
 	return ""
 }
 
+// WechatMinigame service (admin.wechat_minigame.*)
+type WechatMinigameGetReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GameType      string                 `protobuf:"bytes,1,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WechatMinigameGetReq) Reset() {
+	*x = WechatMinigameGetReq{}
+	mi := &file_admin_remote_proto_msgTypes[75]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WechatMinigameGetReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WechatMinigameGetReq) ProtoMessage() {}
+
+func (x *WechatMinigameGetReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[75]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WechatMinigameGetReq.ProtoReflect.Descriptor instead.
+func (*WechatMinigameGetReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{75}
+}
+
+func (x *WechatMinigameGetReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+type WechatMinigameGetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AppId         string                 `protobuf:"bytes,1,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppSecret     string                 `protobuf:"bytes,2,opt,name=app_secret,json=appSecret,proto3" json:"app_secret,omitempty"`
+	EnvVersion    string                 `protobuf:"bytes,3,opt,name=env_version,json=envVersion,proto3" json:"env_version,omitempty"` // release/trial/develop
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WechatMinigameGetAck) Reset() {
+	*x = WechatMinigameGetAck{}
+	mi := &file_admin_remote_proto_msgTypes[76]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WechatMinigameGetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WechatMinigameGetAck) ProtoMessage() {}
+
+func (x *WechatMinigameGetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[76]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WechatMinigameGetAck.ProtoReflect.Descriptor instead.
+func (*WechatMinigameGetAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{76}
+}
+
+func (x *WechatMinigameGetAck) GetAppId() string {
+	if x != nil {
+		return x.AppId
+	}
+	return ""
+}
+
+func (x *WechatMinigameGetAck) GetAppSecret() string {
+	if x != nil {
+		return x.AppSecret
+	}
+	return ""
+}
+
+func (x *WechatMinigameGetAck) GetEnvVersion() string {
+	if x != nil {
+		return x.EnvVersion
+	}
+	return ""
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -4126,7 +4232,15 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x05image\x18\x04 \x01(\tR\x05image\x12\x1a\n" +
 	"\bchannels\x18\x05 \x03(\tR\bchannels\x12\x19\n" +
 	"\bnew_user\x18\x06 \x01(\bR\anewUser\x12\x16\n" +
-	"\x06bounds\x18\a \x01(\tR\x06boundsB\vZ\t../sprotob\x06proto3"
+	"\x06bounds\x18\a \x01(\tR\x06bounds\"3\n" +
+	"\x14WechatMinigameGetReq\x12\x1b\n" +
+	"\tgame_type\x18\x01 \x01(\tR\bgameType\"m\n" +
+	"\x14WechatMinigameGetAck\x12\x15\n" +
+	"\x06app_id\x18\x01 \x01(\tR\x05appId\x12\x1d\n" +
+	"\n" +
+	"app_secret\x18\x02 \x01(\tR\tappSecret\x12\x1f\n" +
+	"\venv_version\x18\x03 \x01(\tR\n" +
+	"envVersionB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once
@@ -4140,7 +4254,7 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 76)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 78)
 var file_admin_remote_proto_goTypes = []any{
 	(*MatchCfgVersionReq)(nil),    // 0: sproto.MatchCfgVersionReq
 	(*MatchCfgVersionAck)(nil),    // 1: sproto.MatchCfgVersionAck
@@ -4217,7 +4331,9 @@ var file_admin_remote_proto_goTypes = []any{
 	(*NoticeCfgListReq)(nil),      // 72: sproto.NoticeCfgListReq
 	(*NoticeCfgListAck)(nil),      // 73: sproto.NoticeCfgListAck
 	(*NoticeCfgRow)(nil),          // 74: sproto.NoticeCfgRow
-	nil,                           // 75: sproto.ChannelCfgRow.EntriesEntry
+	(*WechatMinigameGetReq)(nil),  // 75: sproto.WechatMinigameGetReq
+	(*WechatMinigameGetAck)(nil),  // 76: sproto.WechatMinigameGetAck
+	nil,                           // 77: sproto.ChannelCfgRow.EntriesEntry
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -4237,7 +4353,7 @@ var file_admin_remote_proto_depIdxs = []int32{
 	49, // 14: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
 	58, // 15: sproto.ActivityCfgListAck.rows:type_name -> sproto.ActivityCfgRow
 	58, // 16: sproto.ActivityCfgGetAck.row:type_name -> sproto.ActivityCfgRow
-	75, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
+	77, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
 	67, // 18: sproto.ChannelCfgListAck.rows:type_name -> sproto.ChannelCfgRow
 	74, // 19: sproto.NoticeCfgListAck.rows:type_name -> sproto.NoticeCfgRow
 	20, // [20:20] is the sub-list for method output_type
@@ -4258,7 +4374,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   76,
+			NumMessages:   78,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
