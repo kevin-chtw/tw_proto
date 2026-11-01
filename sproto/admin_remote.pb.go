@@ -3990,6 +3990,95 @@ func (x *WechatMinigameGetAck) GetEnvVersion() string {
 	return ""
 }
 
+// ObserveConfig service (admin.observeconfig.*)
+type ObserveConfigGetReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ObserveConfigGetReq) Reset() {
+	*x = ObserveConfigGetReq{}
+	mi := &file_admin_remote_proto_msgTypes[77]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ObserveConfigGetReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ObserveConfigGetReq) ProtoMessage() {}
+
+func (x *ObserveConfigGetReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[77]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ObserveConfigGetReq.ProtoReflect.Descriptor instead.
+func (*ObserveConfigGetReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{77}
+}
+
+type ObserveConfigGetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TokenSecret   string                 `protobuf:"bytes,1,opt,name=token_secret,json=tokenSecret,proto3" json:"token_secret,omitempty"`
+	TokenTtl      string                 `protobuf:"bytes,2,opt,name=token_ttl,json=tokenTtl,proto3" json:"token_ttl,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ObserveConfigGetAck) Reset() {
+	*x = ObserveConfigGetAck{}
+	mi := &file_admin_remote_proto_msgTypes[78]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ObserveConfigGetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ObserveConfigGetAck) ProtoMessage() {}
+
+func (x *ObserveConfigGetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[78]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ObserveConfigGetAck.ProtoReflect.Descriptor instead.
+func (*ObserveConfigGetAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{78}
+}
+
+func (x *ObserveConfigGetAck) GetTokenSecret() string {
+	if x != nil {
+		return x.TokenSecret
+	}
+	return ""
+}
+
+func (x *ObserveConfigGetAck) GetTokenTtl() string {
+	if x != nil {
+		return x.TokenTtl
+	}
+	return ""
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -4240,7 +4329,11 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\n" +
 	"app_secret\x18\x02 \x01(\tR\tappSecret\x12\x1f\n" +
 	"\venv_version\x18\x03 \x01(\tR\n" +
-	"envVersionB\vZ\t../sprotob\x06proto3"
+	"envVersion\"\x15\n" +
+	"\x13ObserveConfigGetReq\"U\n" +
+	"\x13ObserveConfigGetAck\x12!\n" +
+	"\ftoken_secret\x18\x01 \x01(\tR\vtokenSecret\x12\x1b\n" +
+	"\ttoken_ttl\x18\x02 \x01(\tR\btokenTtlB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once
@@ -4254,7 +4347,7 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 78)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 80)
 var file_admin_remote_proto_goTypes = []any{
 	(*MatchCfgVersionReq)(nil),    // 0: sproto.MatchCfgVersionReq
 	(*MatchCfgVersionAck)(nil),    // 1: sproto.MatchCfgVersionAck
@@ -4333,7 +4426,9 @@ var file_admin_remote_proto_goTypes = []any{
 	(*NoticeCfgRow)(nil),          // 74: sproto.NoticeCfgRow
 	(*WechatMinigameGetReq)(nil),  // 75: sproto.WechatMinigameGetReq
 	(*WechatMinigameGetAck)(nil),  // 76: sproto.WechatMinigameGetAck
-	nil,                           // 77: sproto.ChannelCfgRow.EntriesEntry
+	(*ObserveConfigGetReq)(nil),   // 77: sproto.ObserveConfigGetReq
+	(*ObserveConfigGetAck)(nil),   // 78: sproto.ObserveConfigGetAck
+	nil,                           // 79: sproto.ChannelCfgRow.EntriesEntry
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -4353,7 +4448,7 @@ var file_admin_remote_proto_depIdxs = []int32{
 	49, // 14: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
 	58, // 15: sproto.ActivityCfgListAck.rows:type_name -> sproto.ActivityCfgRow
 	58, // 16: sproto.ActivityCfgGetAck.row:type_name -> sproto.ActivityCfgRow
-	77, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
+	79, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
 	67, // 18: sproto.ChannelCfgListAck.rows:type_name -> sproto.ChannelCfgRow
 	74, // 19: sproto.NoticeCfgListAck.rows:type_name -> sproto.NoticeCfgRow
 	20, // [20:20] is the sub-list for method output_type
@@ -4374,7 +4469,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   78,
+			NumMessages:   80,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

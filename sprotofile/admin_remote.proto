@@ -367,3 +367,11 @@ message WechatMinigameGetAck {
   string app_secret = 2;
   string env_version = 3; // release/trial/develop
 }
+
+// ObserveConfig service (admin.observeconfig.*)
+message ObserveConfigGetReq {}
+
+message ObserveConfigGetAck {
+  string token_secret = 1;
+  string token_ttl = 2;
+}

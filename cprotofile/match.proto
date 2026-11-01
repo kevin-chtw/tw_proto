@@ -5,6 +5,11 @@ import "google/protobuf/any.proto";
 package cproto;
 option go_package = "../cproto";
 
+enum ClientRole {
+  PLAYER = 0;
+  OBSERVER = 1;
+}
+
 message MatchReq {
   string serverid = 1;
   int32 matchid = 2; // 比赛ID
@@ -44,6 +49,12 @@ message ContinueReq {
 }
 
 message ExitMatchReq{  
+}
+
+message ObserveMatchReq {
+  string follow_uid = 1;
+  string observe_token = 2;
+  int32 match_id = 3;
 }
 
 message FDResultReq {
@@ -96,6 +107,9 @@ message StartClientAck {
   int64 tax = 7; // 服务费
   StageInfo stage_info = 8; // 锦标赛进度，见 StageInfo 注释；非锦标赛为空
   string activity_id = 9; // 微信非聊天模式动态消息 activity_id
+  ClientRole role = 10; // 玩家或只读观察者
+  string follow_uid = 11; // Observer 跟随的玩家 UID
+  string observe_token = 12; // Observer 进入游戏服时使用的短期凭证
 }
 
 message SignupAck {

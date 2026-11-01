@@ -7,12 +7,13 @@
 package cproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 )
 
 const (
@@ -28,6 +29,8 @@ type GameReq struct {
 	Matchid       int32                  `protobuf:"varint,2,opt,name=matchid,proto3" json:"matchid,omitempty"` // 比赛ID
 	Tableid       int32                  `protobuf:"varint,3,opt,name=tableid,proto3" json:"tableid,omitempty"` // 桌号
 	Req           *anypb.Any             `protobuf:"bytes,4,opt,name=req,proto3" json:"req,omitempty"`
+	Role          ClientRole             `protobuf:"varint,5,opt,name=role,proto3,enum=cproto.ClientRole" json:"role,omitempty"`             // 玩家或只读观察者
+	ObserveToken  string                 `protobuf:"bytes,6,opt,name=observe_token,json=observeToken,proto3" json:"observe_token,omitempty"` // 观察者短期凭证
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -88,6 +91,20 @@ func (x *GameReq) GetReq() *anypb.Any {
 		return x.Req
 	}
 	return nil
+}
+
+func (x *GameReq) GetRole() ClientRole {
+	if x != nil {
+		return x.Role
+	}
+	return ClientRole_PLAYER
+}
+
+func (x *GameReq) GetObserveToken() string {
+	if x != nil {
+		return x.ObserveToken
+	}
+	return ""
 }
 
 type GameAck struct {
@@ -1192,12 +1209,14 @@ var File_game_proto protoreflect.FileDescriptor
 const file_game_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"game.proto\x12\x06cproto\x1a\x19google/protobuf/any.proto\"\x81\x01\n" +
+	"game.proto\x12\x06cproto\x1a\x19google/protobuf/any.proto\x1a\vmatch.proto\"\xce\x01\n" +
 	"\aGameReq\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x03 \x01(\x05R\atableid\x12&\n" +
-	"\x03req\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03req\"\x81\x01\n" +
+	"\x03req\x18\x04 \x01(\v2\x14.google.protobuf.AnyR\x03req\x12&\n" +
+	"\x04role\x18\x05 \x01(\x0e2\x12.cproto.ClientRoleR\x04role\x12#\n" +
+	"\robserve_token\x18\x06 \x01(\tR\fobserveToken\"\x81\x01\n" +
 	"\aGameAck\x12\x1a\n" +
 	"\bserverid\x18\x01 \x01(\tR\bserverid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x18\n" +
@@ -1323,19 +1342,21 @@ var file_game_proto_goTypes = []any{
 	nil,                           // 23: cproto.TablePlayerAck.EquippedEntry
 	nil,                           // 24: cproto.GameDissolveAck.AgreedEntry
 	(*anypb.Any)(nil),             // 25: google.protobuf.Any
+	(ClientRole)(0),               // 26: cproto.ClientRole
 }
 var file_game_proto_depIdxs = []int32{
 	25, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
-	25, // 1: cproto.GameAck.ack:type_name -> google.protobuf.Any
-	21, // 2: cproto.EnterGameAck.fdproperty:type_name -> cproto.EnterGameAck.FdpropertyEntry
-	22, // 3: cproto.TablePlayerAck.items:type_name -> cproto.TablePlayerAck.ItemsEntry
-	23, // 4: cproto.TablePlayerAck.equipped:type_name -> cproto.TablePlayerAck.EquippedEntry
-	24, // 5: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	26, // 1: cproto.GameReq.role:type_name -> cproto.ClientRole
+	25, // 2: cproto.GameAck.ack:type_name -> google.protobuf.Any
+	21, // 3: cproto.EnterGameAck.fdproperty:type_name -> cproto.EnterGameAck.FdpropertyEntry
+	22, // 4: cproto.TablePlayerAck.items:type_name -> cproto.TablePlayerAck.ItemsEntry
+	23, // 5: cproto.TablePlayerAck.equipped:type_name -> cproto.TablePlayerAck.EquippedEntry
+	24, // 6: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
+	7,  // [7:7] is the sub-list for method output_type
+	7,  // [7:7] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_game_proto_init() }
@@ -1343,6 +1364,7 @@ func file_game_proto_init() {
 	if File_game_proto != nil {
 		return
 	}
+	file_match_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
