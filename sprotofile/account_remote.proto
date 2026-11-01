@@ -200,17 +200,6 @@ message VirtOrdMarkReq {
 message VirtOrdMarkAck {
 }
 
-// 运营/活动发放装扮拥有态（admin -> account.remote.message）
-message GrantDecoReq {
-  string uid = 1;
-  int32 deco_id = 2;
-  int64 expire_at = 3;    // 到期时间（unix 秒，0=永久）
-  int32 category = 4;     // 1=头像框 2=麻将牌桌 3=麻将牌背 4=扑克牌桌 5=扑克牌背
-}
-
-message GrantDecoAck {
-}
-
 // 运营后台：按 UID 查询玩家金币账单
 message CoinBillAdminListReq {
   string uid = 1;
