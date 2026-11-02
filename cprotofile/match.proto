@@ -189,12 +189,18 @@ message RankListAck {
   RankListItem self = 2; // 请求者一行；不在榜上则 uid 为空
 }
 
+message BonusLevel {
+  int32 cond = 1; //局数档位
+  map<int32,int64> bonus = 2; //该档位原始奖励
+}
+
 message BonusRewardAck {
   string bonus_type = 1; //奖金类型
   int32 cond = 2; //奖金条件索引
   map<int32,int64> bonus = 3; //奖金详情
   int32 next_cond = 4; //下一奖励条件
   map<int32,int64> next_bonus = 5; //下一级奖金详情
+  repeated BonusLevel bonus_levels = 6; //定副完整档位
 }
 
 // 比赛暂停。paused=true 停住本地倒计时；false 从剩下的时间接着走。

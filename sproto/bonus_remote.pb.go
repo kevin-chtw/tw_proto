@@ -7,11 +7,12 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -89,6 +90,58 @@ func (x *BonusReq) GetRank() int32 {
 	return 0
 }
 
+type BonusLevel struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Cond          int32                  `protobuf:"varint,1,opt,name=cond,proto3" json:"cond,omitempty"`                                                                              //局数档位
+	Bonus         map[int32]int64        `protobuf:"bytes,2,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //该档位原始奖励
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BonusLevel) Reset() {
+	*x = BonusLevel{}
+	mi := &file_bonus_remote_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BonusLevel) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BonusLevel) ProtoMessage() {}
+
+func (x *BonusLevel) ProtoReflect() protoreflect.Message {
+	mi := &file_bonus_remote_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BonusLevel.ProtoReflect.Descriptor instead.
+func (*BonusLevel) Descriptor() ([]byte, []int) {
+	return file_bonus_remote_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *BonusLevel) GetCond() int32 {
+	if x != nil {
+		return x.Cond
+	}
+	return 0
+}
+
+func (x *BonusLevel) GetBonus() map[int32]int64 {
+	if x != nil {
+		return x.Bonus
+	}
+	return nil
+}
+
 type BonusAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	BonusType     string                 `protobuf:"bytes,1,opt,name=bonus_type,json=bonusType,proto3" json:"bonus_type,omitempty"`                                                                             //奖金类型
@@ -96,13 +149,14 @@ type BonusAck struct {
 	Bonus         map[int32]int64        `protobuf:"bytes,3,rep,name=bonus,proto3" json:"bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`                          //奖金详情
 	NextCond      int32                  `protobuf:"varint,4,opt,name=next_cond,json=nextCond,proto3" json:"next_cond,omitempty"`                                                                               //下一奖励条件
 	NextBonus     map[int32]int64        `protobuf:"bytes,5,rep,name=next_bonus,json=nextBonus,proto3" json:"next_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //下一级奖金详情
+	BonusLevels   []*BonusLevel          `protobuf:"bytes,6,rep,name=bonus_levels,json=bonusLevels,proto3" json:"bonus_levels,omitempty"`                                                                       //定副完整档位
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *BonusAck) Reset() {
 	*x = BonusAck{}
-	mi := &file_bonus_remote_proto_msgTypes[1]
+	mi := &file_bonus_remote_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -114,7 +168,7 @@ func (x *BonusAck) String() string {
 func (*BonusAck) ProtoMessage() {}
 
 func (x *BonusAck) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_remote_proto_msgTypes[1]
+	mi := &file_bonus_remote_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -127,7 +181,7 @@ func (x *BonusAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusAck.ProtoReflect.Descriptor instead.
 func (*BonusAck) Descriptor() ([]byte, []int) {
-	return file_bonus_remote_proto_rawDescGZIP(), []int{1}
+	return file_bonus_remote_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *BonusAck) GetBonusType() string {
@@ -165,6 +219,13 @@ func (x *BonusAck) GetNextBonus() map[int32]int64 {
 	return nil
 }
 
+func (x *BonusAck) GetBonusLevels() []*BonusLevel {
+	if x != nil {
+		return x.BonusLevels
+	}
+	return nil
+}
+
 // Admin 通知 bonus 全量重载 cfg + bind
 type BonusReloadReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -174,7 +235,7 @@ type BonusReloadReq struct {
 
 func (x *BonusReloadReq) Reset() {
 	*x = BonusReloadReq{}
-	mi := &file_bonus_remote_proto_msgTypes[2]
+	mi := &file_bonus_remote_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -186,7 +247,7 @@ func (x *BonusReloadReq) String() string {
 func (*BonusReloadReq) ProtoMessage() {}
 
 func (x *BonusReloadReq) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_remote_proto_msgTypes[2]
+	mi := &file_bonus_remote_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -199,7 +260,7 @@ func (x *BonusReloadReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusReloadReq.ProtoReflect.Descriptor instead.
 func (*BonusReloadReq) Descriptor() ([]byte, []int) {
-	return file_bonus_remote_proto_rawDescGZIP(), []int{2}
+	return file_bonus_remote_proto_rawDescGZIP(), []int{3}
 }
 
 type BonusReloadAck struct {
@@ -210,7 +271,7 @@ type BonusReloadAck struct {
 
 func (x *BonusReloadAck) Reset() {
 	*x = BonusReloadAck{}
-	mi := &file_bonus_remote_proto_msgTypes[3]
+	mi := &file_bonus_remote_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -222,7 +283,7 @@ func (x *BonusReloadAck) String() string {
 func (*BonusReloadAck) ProtoMessage() {}
 
 func (x *BonusReloadAck) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_remote_proto_msgTypes[3]
+	mi := &file_bonus_remote_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -235,7 +296,7 @@ func (x *BonusReloadAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusReloadAck.ProtoReflect.Descriptor instead.
 func (*BonusReloadAck) Descriptor() ([]byte, []int) {
-	return file_bonus_remote_proto_rawDescGZIP(), []int{3}
+	return file_bonus_remote_proto_rawDescGZIP(), []int{4}
 }
 
 type BonusDiyUpsertReq struct {
@@ -249,7 +310,7 @@ type BonusDiyUpsertReq struct {
 
 func (x *BonusDiyUpsertReq) Reset() {
 	*x = BonusDiyUpsertReq{}
-	mi := &file_bonus_remote_proto_msgTypes[4]
+	mi := &file_bonus_remote_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -261,7 +322,7 @@ func (x *BonusDiyUpsertReq) String() string {
 func (*BonusDiyUpsertReq) ProtoMessage() {}
 
 func (x *BonusDiyUpsertReq) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_remote_proto_msgTypes[4]
+	mi := &file_bonus_remote_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -274,7 +335,7 @@ func (x *BonusDiyUpsertReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusDiyUpsertReq.ProtoReflect.Descriptor instead.
 func (*BonusDiyUpsertReq) Descriptor() ([]byte, []int) {
-	return file_bonus_remote_proto_rawDescGZIP(), []int{4}
+	return file_bonus_remote_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *BonusDiyUpsertReq) GetMatchId() int32 {
@@ -307,7 +368,7 @@ type BonusDiyUpsertAck struct {
 
 func (x *BonusDiyUpsertAck) Reset() {
 	*x = BonusDiyUpsertAck{}
-	mi := &file_bonus_remote_proto_msgTypes[5]
+	mi := &file_bonus_remote_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -319,7 +380,7 @@ func (x *BonusDiyUpsertAck) String() string {
 func (*BonusDiyUpsertAck) ProtoMessage() {}
 
 func (x *BonusDiyUpsertAck) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_remote_proto_msgTypes[5]
+	mi := &file_bonus_remote_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -332,7 +393,7 @@ func (x *BonusDiyUpsertAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusDiyUpsertAck.ProtoReflect.Descriptor instead.
 func (*BonusDiyUpsertAck) Descriptor() ([]byte, []int) {
-	return file_bonus_remote_proto_rawDescGZIP(), []int{5}
+	return file_bonus_remote_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *BonusDiyUpsertAck) GetErr() string {
@@ -351,7 +412,7 @@ type BonusDiyDeleteReq struct {
 
 func (x *BonusDiyDeleteReq) Reset() {
 	*x = BonusDiyDeleteReq{}
-	mi := &file_bonus_remote_proto_msgTypes[6]
+	mi := &file_bonus_remote_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -363,7 +424,7 @@ func (x *BonusDiyDeleteReq) String() string {
 func (*BonusDiyDeleteReq) ProtoMessage() {}
 
 func (x *BonusDiyDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_remote_proto_msgTypes[6]
+	mi := &file_bonus_remote_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -376,7 +437,7 @@ func (x *BonusDiyDeleteReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusDiyDeleteReq.ProtoReflect.Descriptor instead.
 func (*BonusDiyDeleteReq) Descriptor() ([]byte, []int) {
-	return file_bonus_remote_proto_rawDescGZIP(), []int{6}
+	return file_bonus_remote_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *BonusDiyDeleteReq) GetMatchId() int32 {
@@ -395,7 +456,7 @@ type BonusDiyDeleteAck struct {
 
 func (x *BonusDiyDeleteAck) Reset() {
 	*x = BonusDiyDeleteAck{}
-	mi := &file_bonus_remote_proto_msgTypes[7]
+	mi := &file_bonus_remote_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -407,7 +468,7 @@ func (x *BonusDiyDeleteAck) String() string {
 func (*BonusDiyDeleteAck) ProtoMessage() {}
 
 func (x *BonusDiyDeleteAck) ProtoReflect() protoreflect.Message {
-	mi := &file_bonus_remote_proto_msgTypes[7]
+	mi := &file_bonus_remote_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -420,7 +481,7 @@ func (x *BonusDiyDeleteAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusDiyDeleteAck.ProtoReflect.Descriptor instead.
 func (*BonusDiyDeleteAck) Descriptor() ([]byte, []int) {
-	return file_bonus_remote_proto_rawDescGZIP(), []int{7}
+	return file_bonus_remote_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *BonusDiyDeleteAck) GetErr() string {
@@ -439,7 +500,15 @@ const file_bonus_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x18\n" +
 	"\amatchid\x18\x02 \x01(\x05R\amatchid\x12\x1b\n" +
 	"\twin_score\x18\x03 \x01(\x03R\bwinScore\x12\x12\n" +
-	"\x04rank\x18\x04 \x01(\x05R\x04rank\"\xc5\x02\n" +
+	"\x04rank\x18\x04 \x01(\x05R\x04rank\"\x8f\x01\n" +
+	"\n" +
+	"BonusLevel\x12\x12\n" +
+	"\x04cond\x18\x01 \x01(\x05R\x04cond\x123\n" +
+	"\x05bonus\x18\x02 \x03(\v2\x1d.sproto.BonusLevel.BonusEntryR\x05bonus\x1a8\n" +
+	"\n" +
+	"BonusEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xfc\x02\n" +
 	"\bBonusAck\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x01 \x01(\tR\tbonusType\x12\x12\n" +
@@ -447,7 +516,8 @@ const file_bonus_remote_proto_rawDesc = "" +
 	"\x05bonus\x18\x03 \x03(\v2\x1b.sproto.BonusAck.BonusEntryR\x05bonus\x12\x1b\n" +
 	"\tnext_cond\x18\x04 \x01(\x05R\bnextCond\x12>\n" +
 	"\n" +
-	"next_bonus\x18\x05 \x03(\v2\x1f.sproto.BonusAck.NextBonusEntryR\tnextBonus\x1a8\n" +
+	"next_bonus\x18\x05 \x03(\v2\x1f.sproto.BonusAck.NextBonusEntryR\tnextBonus\x125\n" +
+	"\fbonus_levels\x18\x06 \x03(\v2\x12.sproto.BonusLevelR\vbonusLevels\x1a8\n" +
 	"\n" +
 	"BonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
@@ -480,27 +550,31 @@ func file_bonus_remote_proto_rawDescGZIP() []byte {
 	return file_bonus_remote_proto_rawDescData
 }
 
-var file_bonus_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_bonus_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_bonus_remote_proto_goTypes = []any{
 	(*BonusReq)(nil),          // 0: sproto.BonusReq
-	(*BonusAck)(nil),          // 1: sproto.BonusAck
-	(*BonusReloadReq)(nil),    // 2: sproto.BonusReloadReq
-	(*BonusReloadAck)(nil),    // 3: sproto.BonusReloadAck
-	(*BonusDiyUpsertReq)(nil), // 4: sproto.BonusDiyUpsertReq
-	(*BonusDiyUpsertAck)(nil), // 5: sproto.BonusDiyUpsertAck
-	(*BonusDiyDeleteReq)(nil), // 6: sproto.BonusDiyDeleteReq
-	(*BonusDiyDeleteAck)(nil), // 7: sproto.BonusDiyDeleteAck
-	nil,                       // 8: sproto.BonusAck.BonusEntry
-	nil,                       // 9: sproto.BonusAck.NextBonusEntry
+	(*BonusLevel)(nil),        // 1: sproto.BonusLevel
+	(*BonusAck)(nil),          // 2: sproto.BonusAck
+	(*BonusReloadReq)(nil),    // 3: sproto.BonusReloadReq
+	(*BonusReloadAck)(nil),    // 4: sproto.BonusReloadAck
+	(*BonusDiyUpsertReq)(nil), // 5: sproto.BonusDiyUpsertReq
+	(*BonusDiyUpsertAck)(nil), // 6: sproto.BonusDiyUpsertAck
+	(*BonusDiyDeleteReq)(nil), // 7: sproto.BonusDiyDeleteReq
+	(*BonusDiyDeleteAck)(nil), // 8: sproto.BonusDiyDeleteAck
+	nil,                       // 9: sproto.BonusLevel.BonusEntry
+	nil,                       // 10: sproto.BonusAck.BonusEntry
+	nil,                       // 11: sproto.BonusAck.NextBonusEntry
 }
 var file_bonus_remote_proto_depIdxs = []int32{
-	8, // 0: sproto.BonusAck.bonus:type_name -> sproto.BonusAck.BonusEntry
-	9, // 1: sproto.BonusAck.next_bonus:type_name -> sproto.BonusAck.NextBonusEntry
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	9,  // 0: sproto.BonusLevel.bonus:type_name -> sproto.BonusLevel.BonusEntry
+	10, // 1: sproto.BonusAck.bonus:type_name -> sproto.BonusAck.BonusEntry
+	11, // 2: sproto.BonusAck.next_bonus:type_name -> sproto.BonusAck.NextBonusEntry
+	1,  // 3: sproto.BonusAck.bonus_levels:type_name -> sproto.BonusLevel
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_bonus_remote_proto_init() }
@@ -514,7 +588,7 @@ func file_bonus_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_bonus_remote_proto_rawDesc), len(file_bonus_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
