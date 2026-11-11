@@ -3797,6 +3797,7 @@ type NoticeCfgRow struct {
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Sort          int32                  `protobuf:"varint,2,opt,name=sort,proto3" json:"sort,omitempty"`
 	Text          string                 `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	Image         string                 `protobuf:"bytes,4,opt,name=image,proto3" json:"image,omitempty"`
 	Channels      []string               `protobuf:"bytes,5,rep,name=channels,proto3" json:"channels,omitempty"`
 	NewUser       bool                   `protobuf:"varint,6,opt,name=new_user,json=newUser,proto3" json:"new_user,omitempty"`
 	Bounds        string                 `protobuf:"bytes,7,opt,name=bounds,proto3" json:"bounds,omitempty"` // JSON。键 vip_min、vip_max、coin_min、coin_max、honor_min、honor_max。缺键不限制，出现的 0 是合法边界
@@ -3854,6 +3855,13 @@ func (x *NoticeCfgRow) GetSort() int32 {
 func (x *NoticeCfgRow) GetText() string {
 	if x != nil {
 		return x.Text
+	}
+	return ""
+}
+
+func (x *NoticeCfgRow) GetImage() string {
+	if x != nil {
+		return x.Image
 	}
 	return ""
 }
@@ -4328,11 +4336,12 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x10NoticeCfgListReq\x12\x14\n" +
 	"\x05dummy\x18\x01 \x01(\x04R\x05dummy\"<\n" +
 	"\x10NoticeCfgListAck\x12(\n" +
-	"\x04rows\x18\x01 \x03(\v2\x14.sproto.NoticeCfgRowR\x04rows\"\xdb\x01\n" +
+	"\x04rows\x18\x01 \x03(\v2\x14.sproto.NoticeCfgRowR\x04rows\"\xf1\x01\n" +
 	"\fNoticeCfgRow\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04sort\x18\x02 \x01(\x05R\x04sort\x12\x12\n" +
-	"\x04text\x18\x03 \x01(\tR\x04text\x12\x1a\n" +
+	"\x04text\x18\x03 \x01(\tR\x04text\x12\x14\n" +
+	"\x05image\x18\x04 \x01(\tR\x05image\x12\x1a\n" +
 	"\bchannels\x18\x05 \x03(\tR\bchannels\x12\x19\n" +
 	"\bnew_user\x18\x06 \x01(\bR\anewUser\x12\x16\n" +
 	"\x06bounds\x18\a \x01(\tR\x06bounds\x12\x19\n" +
