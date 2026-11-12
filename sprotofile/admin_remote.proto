@@ -378,3 +378,19 @@ message ObserveConfigGetAck {
   string token_secret = 1;
   string token_ttl = 2;
 }
+
+message DiySigningListReq {}
+
+message DiySigningListAck {
+  repeated DiySigningRow rows = 1;
+}
+
+message DiySigningRow {
+  int32 match_id = 1;
+  string config_yaml = 2;
+  int64 tourney_id = 3;
+  string start_mode = 4;
+  int64 start_at_unix = 5;
+  int32 start_players = 6;
+  bool paused = 7;
+}

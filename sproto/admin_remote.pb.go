@@ -4102,6 +4102,178 @@ func (x *ObserveConfigGetAck) GetTokenTtl() string {
 	return ""
 }
 
+type DiySigningListReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiySigningListReq) Reset() {
+	*x = DiySigningListReq{}
+	mi := &file_admin_remote_proto_msgTypes[79]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiySigningListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiySigningListReq) ProtoMessage() {}
+
+func (x *DiySigningListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[79]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiySigningListReq.ProtoReflect.Descriptor instead.
+func (*DiySigningListReq) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{79}
+}
+
+type DiySigningListAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*DiySigningRow       `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiySigningListAck) Reset() {
+	*x = DiySigningListAck{}
+	mi := &file_admin_remote_proto_msgTypes[80]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiySigningListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiySigningListAck) ProtoMessage() {}
+
+func (x *DiySigningListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[80]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiySigningListAck.ProtoReflect.Descriptor instead.
+func (*DiySigningListAck) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{80}
+}
+
+func (x *DiySigningListAck) GetRows() []*DiySigningRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+type DiySigningRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	ConfigYaml    string                 `protobuf:"bytes,2,opt,name=config_yaml,json=configYaml,proto3" json:"config_yaml,omitempty"`
+	TourneyId     int64                  `protobuf:"varint,3,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
+	StartMode     string                 `protobuf:"bytes,4,opt,name=start_mode,json=startMode,proto3" json:"start_mode,omitempty"`
+	StartAtUnix   int64                  `protobuf:"varint,5,opt,name=start_at_unix,json=startAtUnix,proto3" json:"start_at_unix,omitempty"`
+	StartPlayers  int32                  `protobuf:"varint,6,opt,name=start_players,json=startPlayers,proto3" json:"start_players,omitempty"`
+	Paused        bool                   `protobuf:"varint,7,opt,name=paused,proto3" json:"paused,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiySigningRow) Reset() {
+	*x = DiySigningRow{}
+	mi := &file_admin_remote_proto_msgTypes[81]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiySigningRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiySigningRow) ProtoMessage() {}
+
+func (x *DiySigningRow) ProtoReflect() protoreflect.Message {
+	mi := &file_admin_remote_proto_msgTypes[81]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiySigningRow.ProtoReflect.Descriptor instead.
+func (*DiySigningRow) Descriptor() ([]byte, []int) {
+	return file_admin_remote_proto_rawDescGZIP(), []int{81}
+}
+
+func (x *DiySigningRow) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *DiySigningRow) GetConfigYaml() string {
+	if x != nil {
+		return x.ConfigYaml
+	}
+	return ""
+}
+
+func (x *DiySigningRow) GetTourneyId() int64 {
+	if x != nil {
+		return x.TourneyId
+	}
+	return 0
+}
+
+func (x *DiySigningRow) GetStartMode() string {
+	if x != nil {
+		return x.StartMode
+	}
+	return ""
+}
+
+func (x *DiySigningRow) GetStartAtUnix() int64 {
+	if x != nil {
+		return x.StartAtUnix
+	}
+	return 0
+}
+
+func (x *DiySigningRow) GetStartPlayers() int32 {
+	if x != nil {
+		return x.StartPlayers
+	}
+	return 0
+}
+
+func (x *DiySigningRow) GetPaused() bool {
+	if x != nil {
+		return x.Paused
+	}
+	return false
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -4360,7 +4532,21 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x13ObserveConfigGetReq\"U\n" +
 	"\x13ObserveConfigGetAck\x12!\n" +
 	"\ftoken_secret\x18\x01 \x01(\tR\vtokenSecret\x12\x1b\n" +
-	"\ttoken_ttl\x18\x02 \x01(\tR\btokenTtlB\vZ\t../sprotob\x06proto3"
+	"\ttoken_ttl\x18\x02 \x01(\tR\btokenTtl\"\x13\n" +
+	"\x11DiySigningListReq\">\n" +
+	"\x11DiySigningListAck\x12)\n" +
+	"\x04rows\x18\x01 \x03(\v2\x15.sproto.DiySigningRowR\x04rows\"\xea\x01\n" +
+	"\rDiySigningRow\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1f\n" +
+	"\vconfig_yaml\x18\x02 \x01(\tR\n" +
+	"configYaml\x12\x1d\n" +
+	"\n" +
+	"tourney_id\x18\x03 \x01(\x03R\ttourneyId\x12\x1d\n" +
+	"\n" +
+	"start_mode\x18\x04 \x01(\tR\tstartMode\x12\"\n" +
+	"\rstart_at_unix\x18\x05 \x01(\x03R\vstartAtUnix\x12#\n" +
+	"\rstart_players\x18\x06 \x01(\x05R\fstartPlayers\x12\x16\n" +
+	"\x06paused\x18\a \x01(\bR\x06pausedB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once
@@ -4374,7 +4560,7 @@ func file_admin_remote_proto_rawDescGZIP() []byte {
 	return file_admin_remote_proto_rawDescData
 }
 
-var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 80)
+var file_admin_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 83)
 var file_admin_remote_proto_goTypes = []any{
 	(*MatchCfgVersionReq)(nil),    // 0: sproto.MatchCfgVersionReq
 	(*MatchCfgVersionAck)(nil),    // 1: sproto.MatchCfgVersionAck
@@ -4455,7 +4641,10 @@ var file_admin_remote_proto_goTypes = []any{
 	(*WechatMinigameGetAck)(nil),  // 76: sproto.WechatMinigameGetAck
 	(*ObserveConfigGetReq)(nil),   // 77: sproto.ObserveConfigGetReq
 	(*ObserveConfigGetAck)(nil),   // 78: sproto.ObserveConfigGetAck
-	nil,                           // 79: sproto.ChannelCfgRow.EntriesEntry
+	(*DiySigningListReq)(nil),     // 79: sproto.DiySigningListReq
+	(*DiySigningListAck)(nil),     // 80: sproto.DiySigningListAck
+	(*DiySigningRow)(nil),         // 81: sproto.DiySigningRow
+	nil,                           // 82: sproto.ChannelCfgRow.EntriesEntry
 }
 var file_admin_remote_proto_depIdxs = []int32{
 	2,  // 0: sproto.MatchCfgListAck.rows:type_name -> sproto.MatchCfgRow
@@ -4475,14 +4664,15 @@ var file_admin_remote_proto_depIdxs = []int32{
 	49, // 14: sproto.DiyResultsReportReq.results:type_name -> sproto.DiyPlayerInfo
 	58, // 15: sproto.ActivityCfgListAck.rows:type_name -> sproto.ActivityCfgRow
 	58, // 16: sproto.ActivityCfgGetAck.row:type_name -> sproto.ActivityCfgRow
-	79, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
+	82, // 17: sproto.ChannelCfgRow.entries:type_name -> sproto.ChannelCfgRow.EntriesEntry
 	67, // 18: sproto.ChannelCfgListAck.rows:type_name -> sproto.ChannelCfgRow
 	74, // 19: sproto.NoticeCfgListAck.rows:type_name -> sproto.NoticeCfgRow
-	20, // [20:20] is the sub-list for method output_type
-	20, // [20:20] is the sub-list for method input_type
-	20, // [20:20] is the sub-list for extension type_name
-	20, // [20:20] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	81, // 20: sproto.DiySigningListAck.rows:type_name -> sproto.DiySigningRow
+	21, // [21:21] is the sub-list for method output_type
+	21, // [21:21] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_admin_remote_proto_init() }
@@ -4496,7 +4686,7 @@ func file_admin_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_admin_remote_proto_rawDesc), len(file_admin_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   80,
+			NumMessages:   83,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

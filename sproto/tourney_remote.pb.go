@@ -759,6 +759,414 @@ func (x *SignupTouchReq) GetMatchId() int32 {
 	return 0
 }
 
+type SignupOwnerGetReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerType    string                 `protobuf:"bytes,1,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"`
+	MatchId       int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupOwnerGetReq) Reset() {
+	*x = SignupOwnerGetReq{}
+	mi := &file_tourney_remote_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupOwnerGetReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupOwnerGetReq) ProtoMessage() {}
+
+func (x *SignupOwnerGetReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupOwnerGetReq.ProtoReflect.Descriptor instead.
+func (*SignupOwnerGetReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *SignupOwnerGetReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *SignupOwnerGetReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+type SignupOwnerGetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OwnerId       string                 `protobuf:"bytes,1,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
+	Draining      bool                   `protobuf:"varint,2,opt,name=draining,proto3" json:"draining,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupOwnerGetAck) Reset() {
+	*x = SignupOwnerGetAck{}
+	mi := &file_tourney_remote_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupOwnerGetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupOwnerGetAck) ProtoMessage() {}
+
+func (x *SignupOwnerGetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupOwnerGetAck.ProtoReflect.Descriptor instead.
+func (*SignupOwnerGetAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *SignupOwnerGetAck) GetOwnerId() string {
+	if x != nil {
+		return x.OwnerId
+	}
+	return ""
+}
+
+func (x *SignupOwnerGetAck) GetDraining() bool {
+	if x != nil {
+		return x.Draining
+	}
+	return false
+}
+
+type SignupOwnerClaimReq struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	ServerType      string                 `protobuf:"bytes,1,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"`
+	MatchId         int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	ExpectedOwnerId string                 `protobuf:"bytes,3,opt,name=expected_owner_id,json=expectedOwnerId,proto3" json:"expected_owner_id,omitempty"`
+	NewOwnerId      string                 `protobuf:"bytes,4,opt,name=new_owner_id,json=newOwnerId,proto3" json:"new_owner_id,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *SignupOwnerClaimReq) Reset() {
+	*x = SignupOwnerClaimReq{}
+	mi := &file_tourney_remote_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupOwnerClaimReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupOwnerClaimReq) ProtoMessage() {}
+
+func (x *SignupOwnerClaimReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupOwnerClaimReq.ProtoReflect.Descriptor instead.
+func (*SignupOwnerClaimReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *SignupOwnerClaimReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *SignupOwnerClaimReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *SignupOwnerClaimReq) GetExpectedOwnerId() string {
+	if x != nil {
+		return x.ExpectedOwnerId
+	}
+	return ""
+}
+
+func (x *SignupOwnerClaimReq) GetNewOwnerId() string {
+	if x != nil {
+		return x.NewOwnerId
+	}
+	return ""
+}
+
+type SignupOwnerClaimAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Claimed       bool                   `protobuf:"varint,1,opt,name=claimed,proto3" json:"claimed,omitempty"`
+	OwnerId       string                 `protobuf:"bytes,2,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupOwnerClaimAck) Reset() {
+	*x = SignupOwnerClaimAck{}
+	mi := &file_tourney_remote_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupOwnerClaimAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupOwnerClaimAck) ProtoMessage() {}
+
+func (x *SignupOwnerClaimAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupOwnerClaimAck.ProtoReflect.Descriptor instead.
+func (*SignupOwnerClaimAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *SignupOwnerClaimAck) GetClaimed() bool {
+	if x != nil {
+		return x.Claimed
+	}
+	return false
+}
+
+func (x *SignupOwnerClaimAck) GetOwnerId() string {
+	if x != nil {
+		return x.OwnerId
+	}
+	return ""
+}
+
+type SignupOwnerReleaseReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerType    string                 `protobuf:"bytes,1,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"`
+	MatchId       int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	OwnerId       string                 `protobuf:"bytes,3,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupOwnerReleaseReq) Reset() {
+	*x = SignupOwnerReleaseReq{}
+	mi := &file_tourney_remote_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupOwnerReleaseReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupOwnerReleaseReq) ProtoMessage() {}
+
+func (x *SignupOwnerReleaseReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupOwnerReleaseReq.ProtoReflect.Descriptor instead.
+func (*SignupOwnerReleaseReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *SignupOwnerReleaseReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *SignupOwnerReleaseReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *SignupOwnerReleaseReq) GetOwnerId() string {
+	if x != nil {
+		return x.OwnerId
+	}
+	return ""
+}
+
+type SignupOwnerReleaseAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Released      bool                   `protobuf:"varint,1,opt,name=released,proto3" json:"released,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupOwnerReleaseAck) Reset() {
+	*x = SignupOwnerReleaseAck{}
+	mi := &file_tourney_remote_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupOwnerReleaseAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupOwnerReleaseAck) ProtoMessage() {}
+
+func (x *SignupOwnerReleaseAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupOwnerReleaseAck.ProtoReflect.Descriptor instead.
+func (*SignupOwnerReleaseAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *SignupOwnerReleaseAck) GetReleased() bool {
+	if x != nil {
+		return x.Released
+	}
+	return false
+}
+
+type SignupServerDrainReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerId      string                 `protobuf:"bytes,1,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupServerDrainReq) Reset() {
+	*x = SignupServerDrainReq{}
+	mi := &file_tourney_remote_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupServerDrainReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupServerDrainReq) ProtoMessage() {}
+
+func (x *SignupServerDrainReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupServerDrainReq.ProtoReflect.Descriptor instead.
+func (*SignupServerDrainReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *SignupServerDrainReq) GetServerId() string {
+	if x != nil {
+		return x.ServerId
+	}
+	return ""
+}
+
+type SignupServerDrainAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignupServerDrainAck) Reset() {
+	*x = SignupServerDrainAck{}
+	mi := &file_tourney_remote_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignupServerDrainAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignupServerDrainAck) ProtoMessage() {}
+
+func (x *SignupServerDrainAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignupServerDrainAck.ProtoReflect.Descriptor instead.
+func (*SignupServerDrainAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{21}
+}
+
 var File_tourney_remote_proto protoreflect.FileDescriptor
 
 const file_tourney_remote_proto_rawDesc = "" +
@@ -816,7 +1224,34 @@ const file_tourney_remote_proto_rawDesc = "" +
 	"\vserver_type\x18\x02 \x01(\tR\n" +
 	"serverType\x12\x1b\n" +
 	"\tserver_id\x18\x03 \x01(\tR\bserverId\x12\x19\n" +
-	"\bmatch_id\x18\x04 \x01(\x05R\amatchIdB\vZ\t../sprotob\x06proto3"
+	"\bmatch_id\x18\x04 \x01(\x05R\amatchId\"O\n" +
+	"\x11SignupOwnerGetReq\x12\x1f\n" +
+	"\vserver_type\x18\x01 \x01(\tR\n" +
+	"serverType\x12\x19\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\"J\n" +
+	"\x11SignupOwnerGetAck\x12\x19\n" +
+	"\bowner_id\x18\x01 \x01(\tR\aownerId\x12\x1a\n" +
+	"\bdraining\x18\x02 \x01(\bR\bdraining\"\x9f\x01\n" +
+	"\x13SignupOwnerClaimReq\x12\x1f\n" +
+	"\vserver_type\x18\x01 \x01(\tR\n" +
+	"serverType\x12\x19\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\x12*\n" +
+	"\x11expected_owner_id\x18\x03 \x01(\tR\x0fexpectedOwnerId\x12 \n" +
+	"\fnew_owner_id\x18\x04 \x01(\tR\n" +
+	"newOwnerId\"J\n" +
+	"\x13SignupOwnerClaimAck\x12\x18\n" +
+	"\aclaimed\x18\x01 \x01(\bR\aclaimed\x12\x19\n" +
+	"\bowner_id\x18\x02 \x01(\tR\aownerId\"n\n" +
+	"\x15SignupOwnerReleaseReq\x12\x1f\n" +
+	"\vserver_type\x18\x01 \x01(\tR\n" +
+	"serverType\x12\x19\n" +
+	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\x12\x19\n" +
+	"\bowner_id\x18\x03 \x01(\tR\aownerId\"3\n" +
+	"\x15SignupOwnerReleaseAck\x12\x1a\n" +
+	"\breleased\x18\x01 \x01(\bR\breleased\"3\n" +
+	"\x14SignupServerDrainReq\x12\x1b\n" +
+	"\tserver_id\x18\x01 \x01(\tR\bserverId\"\x16\n" +
+	"\x14SignupServerDrainAckB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_tourney_remote_proto_rawDescOnce sync.Once
@@ -830,30 +1265,38 @@ func file_tourney_remote_proto_rawDescGZIP() []byte {
 	return file_tourney_remote_proto_rawDescData
 }
 
-var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_tourney_remote_proto_goTypes = []any{
-	(*TourneyReq)(nil),          // 0: sproto.TourneyReq
-	(*TourneyAck)(nil),          // 1: sproto.TourneyAck
-	(*TourneyUpdateReq)(nil),    // 2: sproto.TourneyUpdateReq
-	(*TourneyInfo)(nil),         // 3: sproto.TourneyInfo
-	(*FDTakeTableidReq)(nil),    // 4: sproto.FDTakeTableidReq
-	(*FDTakeTableidAck)(nil),    // 5: sproto.FDTakeTableidAck
-	(*FDPutTableidReq)(nil),     // 6: sproto.FDPutTableidReq
-	(*TourneyReloadReq)(nil),    // 7: sproto.TourneyReloadReq
-	(*TourneyReloadAck)(nil),    // 8: sproto.TourneyReloadAck
-	(*SignupRegisterReq)(nil),   // 9: sproto.SignupRegisterReq
-	(*SignupUnregisterReq)(nil), // 10: sproto.SignupUnregisterReq
-	(*SignupListReq)(nil),       // 11: sproto.SignupListReq
-	(*SignupListAck)(nil),       // 12: sproto.SignupListAck
-	(*SignupTouchReq)(nil),      // 13: sproto.SignupTouchReq
-	nil,                         // 14: sproto.SignupRegisterReq.FeeEntry
-	(*anypb.Any)(nil),           // 15: google.protobuf.Any
+	(*TourneyReq)(nil),            // 0: sproto.TourneyReq
+	(*TourneyAck)(nil),            // 1: sproto.TourneyAck
+	(*TourneyUpdateReq)(nil),      // 2: sproto.TourneyUpdateReq
+	(*TourneyInfo)(nil),           // 3: sproto.TourneyInfo
+	(*FDTakeTableidReq)(nil),      // 4: sproto.FDTakeTableidReq
+	(*FDTakeTableidAck)(nil),      // 5: sproto.FDTakeTableidAck
+	(*FDPutTableidReq)(nil),       // 6: sproto.FDPutTableidReq
+	(*TourneyReloadReq)(nil),      // 7: sproto.TourneyReloadReq
+	(*TourneyReloadAck)(nil),      // 8: sproto.TourneyReloadAck
+	(*SignupRegisterReq)(nil),     // 9: sproto.SignupRegisterReq
+	(*SignupUnregisterReq)(nil),   // 10: sproto.SignupUnregisterReq
+	(*SignupListReq)(nil),         // 11: sproto.SignupListReq
+	(*SignupListAck)(nil),         // 12: sproto.SignupListAck
+	(*SignupTouchReq)(nil),        // 13: sproto.SignupTouchReq
+	(*SignupOwnerGetReq)(nil),     // 14: sproto.SignupOwnerGetReq
+	(*SignupOwnerGetAck)(nil),     // 15: sproto.SignupOwnerGetAck
+	(*SignupOwnerClaimReq)(nil),   // 16: sproto.SignupOwnerClaimReq
+	(*SignupOwnerClaimAck)(nil),   // 17: sproto.SignupOwnerClaimAck
+	(*SignupOwnerReleaseReq)(nil), // 18: sproto.SignupOwnerReleaseReq
+	(*SignupOwnerReleaseAck)(nil), // 19: sproto.SignupOwnerReleaseAck
+	(*SignupServerDrainReq)(nil),  // 20: sproto.SignupServerDrainReq
+	(*SignupServerDrainAck)(nil),  // 21: sproto.SignupServerDrainAck
+	nil,                           // 22: sproto.SignupRegisterReq.FeeEntry
+	(*anypb.Any)(nil),             // 23: google.protobuf.Any
 }
 var file_tourney_remote_proto_depIdxs = []int32{
-	15, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
-	15, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
+	23, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
+	23, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
 	3,  // 2: sproto.TourneyUpdateReq.infos:type_name -> sproto.TourneyInfo
-	14, // 3: sproto.SignupRegisterReq.fee:type_name -> sproto.SignupRegisterReq.FeeEntry
+	22, // 3: sproto.SignupRegisterReq.fee:type_name -> sproto.SignupRegisterReq.FeeEntry
 	9,  // 4: sproto.SignupListAck.entries:type_name -> sproto.SignupRegisterReq
 	5,  // [5:5] is the sub-list for method output_type
 	5,  // [5:5] is the sub-list for method input_type
@@ -873,7 +1316,7 @@ func file_tourney_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tourney_remote_proto_rawDesc), len(file_tourney_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   15,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

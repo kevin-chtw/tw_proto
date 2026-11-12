@@ -73,3 +73,41 @@ message SignupTouchReq {
   string server_id = 3;
   int32  match_id = 4;
 }
+
+message SignupOwnerGetReq {
+  string server_type = 1;
+  int32 match_id = 2;
+}
+
+message SignupOwnerGetAck {
+  string owner_id = 1;
+  bool draining = 2;
+}
+
+message SignupOwnerClaimReq {
+  string server_type = 1;
+  int32 match_id = 2;
+  string expected_owner_id = 3;
+  string new_owner_id = 4;
+}
+
+message SignupOwnerClaimAck {
+  bool claimed = 1;
+  string owner_id = 2;
+}
+
+message SignupOwnerReleaseReq {
+  string server_type = 1;
+  int32 match_id = 2;
+  string owner_id = 3;
+}
+
+message SignupOwnerReleaseAck {
+  bool released = 1;
+}
+
+message SignupServerDrainReq {
+  string server_id = 1;
+}
+
+message SignupServerDrainAck {}

@@ -22,6 +22,12 @@ message MatchAck {
   google.protobuf.Any ack = 3;
 }
 
+// 请求打到了旧比赛服。前端用 server_id 重发原请求。
+// server_id 为空时先刷新大厅或 MySignup。不要用外层 MatchAck.serverid。
+message MatchMovedAck {
+  string server_id = 1;
+}
+
 message CreateRoomReq {
   int32 game_count = 1; // 局数
   string desn = 2; //配置描述
