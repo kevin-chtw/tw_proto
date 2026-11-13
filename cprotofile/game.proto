@@ -100,6 +100,11 @@ message GameReadyAck {
   bool ready = 2; // 是否准备
 }
 
+message GameNetAck {
+  string uid = 1;
+  bool online = 2;
+}
+
 message GameDissolveAck {
   int64 starttime = 1; // 解散发起时间
   int64 endtime = 2; // 解散结束时间
