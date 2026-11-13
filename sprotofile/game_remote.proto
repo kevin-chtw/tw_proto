@@ -27,6 +27,7 @@ message AddTableReq {
   map<string,int32> fdproperty = 7; // 好友房自选配置
   bytes emote_conf = 8; // 表情配置(JSON快照，按match下发)
   int32 seat_mode = 9; // 0 自动落座，1 手动选座
+  string server_id = 10; // 比赛服 server id
 }
 
 message AddPlayerReq {
