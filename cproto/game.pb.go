@@ -7,13 +7,12 @@
 package cproto
 
 import (
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
-
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	anypb "google.golang.org/protobuf/types/known/anypb"
+	reflect "reflect"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -920,6 +919,58 @@ func (x *GameReadyAck) GetReady() bool {
 	return false
 }
 
+type GameNetAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Online        bool                   `protobuf:"varint,2,opt,name=online,proto3" json:"online,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GameNetAck) Reset() {
+	*x = GameNetAck{}
+	mi := &file_game_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GameNetAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GameNetAck) ProtoMessage() {}
+
+func (x *GameNetAck) ProtoReflect() protoreflect.Message {
+	mi := &file_game_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GameNetAck.ProtoReflect.Descriptor instead.
+func (*GameNetAck) Descriptor() ([]byte, []int) {
+	return file_game_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GameNetAck) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *GameNetAck) GetOnline() bool {
+	if x != nil {
+		return x.Online
+	}
+	return false
+}
+
 type GameDissolveAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Starttime     int64                  `protobuf:"varint,1,opt,name=starttime,proto3" json:"starttime,omitempty"`                                                                      // 解散发起时间
@@ -932,7 +983,7 @@ type GameDissolveAck struct {
 
 func (x *GameDissolveAck) Reset() {
 	*x = GameDissolveAck{}
-	mi := &file_game_proto_msgTypes[15]
+	mi := &file_game_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -944,7 +995,7 @@ func (x *GameDissolveAck) String() string {
 func (*GameDissolveAck) ProtoMessage() {}
 
 func (x *GameDissolveAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[15]
+	mi := &file_game_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -957,7 +1008,7 @@ func (x *GameDissolveAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameDissolveAck.ProtoReflect.Descriptor instead.
 func (*GameDissolveAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{15}
+	return file_game_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GameDissolveAck) GetStarttime() int64 {
@@ -997,7 +1048,7 @@ type GameDissolveResultAck struct {
 
 func (x *GameDissolveResultAck) Reset() {
 	*x = GameDissolveResultAck{}
-	mi := &file_game_proto_msgTypes[16]
+	mi := &file_game_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1009,7 +1060,7 @@ func (x *GameDissolveResultAck) String() string {
 func (*GameDissolveResultAck) ProtoMessage() {}
 
 func (x *GameDissolveResultAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[16]
+	mi := &file_game_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1022,7 +1073,7 @@ func (x *GameDissolveResultAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameDissolveResultAck.ProtoReflect.Descriptor instead.
 func (*GameDissolveResultAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{16}
+	return file_game_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GameDissolveResultAck) GetDissovle() bool {
@@ -1042,7 +1093,7 @@ type GameBeginAck struct {
 
 func (x *GameBeginAck) Reset() {
 	*x = GameBeginAck{}
-	mi := &file_game_proto_msgTypes[17]
+	mi := &file_game_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1054,7 +1105,7 @@ func (x *GameBeginAck) String() string {
 func (*GameBeginAck) ProtoMessage() {}
 
 func (x *GameBeginAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[17]
+	mi := &file_game_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1067,7 +1118,7 @@ func (x *GameBeginAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameBeginAck.ProtoReflect.Descriptor instead.
 func (*GameBeginAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{17}
+	return file_game_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GameBeginAck) GetCurGameCount() int32 {
@@ -1088,7 +1139,7 @@ type GameOverAck struct {
 
 func (x *GameOverAck) Reset() {
 	*x = GameOverAck{}
-	mi := &file_game_proto_msgTypes[18]
+	mi := &file_game_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1100,7 +1151,7 @@ func (x *GameOverAck) String() string {
 func (*GameOverAck) ProtoMessage() {}
 
 func (x *GameOverAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[18]
+	mi := &file_game_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1113,7 +1164,7 @@ func (x *GameOverAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameOverAck.ProtoReflect.Descriptor instead.
 func (*GameOverAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{18}
+	return file_game_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GameOverAck) GetCurGameCount() int32 {
@@ -1139,7 +1190,7 @@ type HisBeginAck struct {
 
 func (x *HisBeginAck) Reset() {
 	*x = HisBeginAck{}
-	mi := &file_game_proto_msgTypes[19]
+	mi := &file_game_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1151,7 +1202,7 @@ func (x *HisBeginAck) String() string {
 func (*HisBeginAck) ProtoMessage() {}
 
 func (x *HisBeginAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[19]
+	mi := &file_game_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1164,7 +1215,7 @@ func (x *HisBeginAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HisBeginAck.ProtoReflect.Descriptor instead.
 func (*HisBeginAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{19}
+	return file_game_proto_rawDescGZIP(), []int{20}
 }
 
 // 历史消息结束
@@ -1176,7 +1227,7 @@ type HisEndAck struct {
 
 func (x *HisEndAck) Reset() {
 	*x = HisEndAck{}
-	mi := &file_game_proto_msgTypes[20]
+	mi := &file_game_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1188,7 +1239,7 @@ func (x *HisEndAck) String() string {
 func (*HisEndAck) ProtoMessage() {}
 
 func (x *HisEndAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_proto_msgTypes[20]
+	mi := &file_game_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1201,7 +1252,7 @@ func (x *HisEndAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HisEndAck.ProtoReflect.Descriptor instead.
 func (*HisEndAck) Descriptor() ([]byte, []int) {
-	return file_game_proto_rawDescGZIP(), []int{20}
+	return file_game_proto_rawDescGZIP(), []int{21}
 }
 
 var File_game_proto protoreflect.FileDescriptor
@@ -1283,7 +1334,11 @@ const file_game_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\"8\n" +
 	"\fGameReadyAck\x12\x12\n" +
 	"\x04seat\x18\x01 \x01(\x05R\x04seat\x12\x14\n" +
-	"\x05ready\x18\x02 \x01(\bR\x05ready\"\xd5\x01\n" +
+	"\x05ready\x18\x02 \x01(\bR\x05ready\"6\n" +
+	"\n" +
+	"GameNetAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x16\n" +
+	"\x06online\x18\x02 \x01(\bR\x06online\"\xd5\x01\n" +
 	"\x0fGameDissolveAck\x12\x1c\n" +
 	"\tstarttime\x18\x01 \x01(\x03R\tstarttime\x12\x18\n" +
 	"\aendtime\x18\x02 \x01(\x03R\aendtime\x12\x12\n" +
@@ -1314,7 +1369,7 @@ func file_game_proto_rawDescGZIP() []byte {
 	return file_game_proto_rawDescData
 }
 
-var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_game_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
 var file_game_proto_goTypes = []any{
 	(*GameReq)(nil),               // 0: cproto.GameReq
 	(*GameAck)(nil),               // 1: cproto.GameAck
@@ -1331,27 +1386,28 @@ var file_game_proto_goTypes = []any{
 	(*TableMsgAck)(nil),           // 12: cproto.TableMsgAck
 	(*GameExitAck)(nil),           // 13: cproto.GameExitAck
 	(*GameReadyAck)(nil),          // 14: cproto.GameReadyAck
-	(*GameDissolveAck)(nil),       // 15: cproto.GameDissolveAck
-	(*GameDissolveResultAck)(nil), // 16: cproto.GameDissolveResultAck
-	(*GameBeginAck)(nil),          // 17: cproto.GameBeginAck
-	(*GameOverAck)(nil),           // 18: cproto.GameOverAck
-	(*HisBeginAck)(nil),           // 19: cproto.HisBeginAck
-	(*HisEndAck)(nil),             // 20: cproto.HisEndAck
-	nil,                           // 21: cproto.EnterGameAck.FdpropertyEntry
-	nil,                           // 22: cproto.TablePlayerAck.ItemsEntry
-	nil,                           // 23: cproto.TablePlayerAck.EquippedEntry
-	nil,                           // 24: cproto.GameDissolveAck.AgreedEntry
-	(*anypb.Any)(nil),             // 25: google.protobuf.Any
-	(ClientRole)(0),               // 26: cproto.ClientRole
+	(*GameNetAck)(nil),            // 15: cproto.GameNetAck
+	(*GameDissolveAck)(nil),       // 16: cproto.GameDissolveAck
+	(*GameDissolveResultAck)(nil), // 17: cproto.GameDissolveResultAck
+	(*GameBeginAck)(nil),          // 18: cproto.GameBeginAck
+	(*GameOverAck)(nil),           // 19: cproto.GameOverAck
+	(*HisBeginAck)(nil),           // 20: cproto.HisBeginAck
+	(*HisEndAck)(nil),             // 21: cproto.HisEndAck
+	nil,                           // 22: cproto.EnterGameAck.FdpropertyEntry
+	nil,                           // 23: cproto.TablePlayerAck.ItemsEntry
+	nil,                           // 24: cproto.TablePlayerAck.EquippedEntry
+	nil,                           // 25: cproto.GameDissolveAck.AgreedEntry
+	(*anypb.Any)(nil),             // 26: google.protobuf.Any
+	(ClientRole)(0),               // 27: cproto.ClientRole
 }
 var file_game_proto_depIdxs = []int32{
-	25, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
-	26, // 1: cproto.GameReq.role:type_name -> cproto.ClientRole
-	25, // 2: cproto.GameAck.ack:type_name -> google.protobuf.Any
-	21, // 3: cproto.EnterGameAck.fdproperty:type_name -> cproto.EnterGameAck.FdpropertyEntry
-	22, // 4: cproto.TablePlayerAck.items:type_name -> cproto.TablePlayerAck.ItemsEntry
-	23, // 5: cproto.TablePlayerAck.equipped:type_name -> cproto.TablePlayerAck.EquippedEntry
-	24, // 6: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
+	26, // 0: cproto.GameReq.req:type_name -> google.protobuf.Any
+	27, // 1: cproto.GameReq.role:type_name -> cproto.ClientRole
+	26, // 2: cproto.GameAck.ack:type_name -> google.protobuf.Any
+	22, // 3: cproto.EnterGameAck.fdproperty:type_name -> cproto.EnterGameAck.FdpropertyEntry
+	23, // 4: cproto.TablePlayerAck.items:type_name -> cproto.TablePlayerAck.ItemsEntry
+	24, // 5: cproto.TablePlayerAck.equipped:type_name -> cproto.TablePlayerAck.EquippedEntry
+	25, // 6: cproto.GameDissolveAck.agreed:type_name -> cproto.GameDissolveAck.AgreedEntry
 	7,  // [7:7] is the sub-list for method output_type
 	7,  // [7:7] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name
@@ -1371,7 +1427,7 @@ func file_game_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_proto_rawDesc), len(file_game_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
