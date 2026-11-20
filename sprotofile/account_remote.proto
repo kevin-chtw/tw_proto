@@ -49,7 +49,13 @@ message PlayerInfoAck {
   map<int32, int32> equipped = 5; // 当前穿戴(key=category 1~5, value=deco_id)，已做失效回退
   bool live_ai = 6; // 直播 AI 号：进桌挂 bot_driver，客户端纯播放
   string city = 7; // 展示城市
+  bool luck_next = 8; // 下一局运势标记，用过才清
 }
+
+message ClearLuckNextReq {
+  string uid = 1;
+}
+message ClearLuckNextAck {}
 
 message ChangeItemsReq {
     string uid = 1; //用户id
@@ -253,5 +259,10 @@ message ReleaseDiyOrgAck {
   string uid = 1;
   uint32 org_id = 2;
   string result = 3;
+}
+
+// LuckZeroPush 0 点清运势后，账号把已经编好的物品推送交给一台代理。
+message LuckZeroPush {
+  bytes data = 1;
 }
 

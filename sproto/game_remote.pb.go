@@ -278,6 +278,7 @@ type AddPlayerReq struct {
 	Channel       string                 `protobuf:"bytes,16,opt,name=channel,proto3" json:"channel,omitempty"`                                                                               // 登录渠道快照（握手原值）
 	City          string                 `protobuf:"bytes,17,opt,name=city,proto3" json:"city,omitempty"`                                                                                     // 展示城市
 	UsefulBoost   int32                  `protobuf:"varint,18,opt,name=useful_boost,json=usefulBoost,proto3" json:"useful_boost,omitempty"`                                                   // Ctrl=3 时加在控赢表有效进张上，0 表示不加
+	LuckNext      bool                   `protobuf:"varint,19,opt,name=luck_next,json=luckNext,proto3" json:"luck_next,omitempty"`                                                            // 下一局运势标记，进桌时从账号拷贝
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -438,6 +439,65 @@ func (x *AddPlayerReq) GetUsefulBoost() int32 {
 	return 0
 }
 
+func (x *AddPlayerReq) GetLuckNext() bool {
+	if x != nil {
+		return x.LuckNext
+	}
+	return false
+}
+
+type MarkLuckReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Luck          int64                  `protobuf:"varint,2,opt,name=luck,proto3" json:"luck,omitempty"` // 当前运势 1007
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MarkLuckReq) Reset() {
+	*x = MarkLuckReq{}
+	mi := &file_game_remote_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MarkLuckReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MarkLuckReq) ProtoMessage() {}
+
+func (x *MarkLuckReq) ProtoReflect() protoreflect.Message {
+	mi := &file_game_remote_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MarkLuckReq.ProtoReflect.Descriptor instead.
+func (*MarkLuckReq) Descriptor() ([]byte, []int) {
+	return file_game_remote_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *MarkLuckReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *MarkLuckReq) GetLuck() int64 {
+	if x != nil {
+		return x.Luck
+	}
+	return 0
+}
+
 type CancelTableReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Reason        int32                  `protobuf:"varint,1,opt,name=reason,proto3" json:"reason,omitempty"` // 取消原因
@@ -447,7 +507,7 @@ type CancelTableReq struct {
 
 func (x *CancelTableReq) Reset() {
 	*x = CancelTableReq{}
-	mi := &file_game_remote_proto_msgTypes[4]
+	mi := &file_game_remote_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -459,7 +519,7 @@ func (x *CancelTableReq) String() string {
 func (*CancelTableReq) ProtoMessage() {}
 
 func (x *CancelTableReq) ProtoReflect() protoreflect.Message {
-	mi := &file_game_remote_proto_msgTypes[4]
+	mi := &file_game_remote_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -472,7 +532,7 @@ func (x *CancelTableReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelTableReq.ProtoReflect.Descriptor instead.
 func (*CancelTableReq) Descriptor() ([]byte, []int) {
-	return file_game_remote_proto_rawDescGZIP(), []int{4}
+	return file_game_remote_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CancelTableReq) GetReason() int32 {
@@ -490,7 +550,7 @@ type EmptyAck struct {
 
 func (x *EmptyAck) Reset() {
 	*x = EmptyAck{}
-	mi := &file_game_remote_proto_msgTypes[5]
+	mi := &file_game_remote_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -502,7 +562,7 @@ func (x *EmptyAck) String() string {
 func (*EmptyAck) ProtoMessage() {}
 
 func (x *EmptyAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_remote_proto_msgTypes[5]
+	mi := &file_game_remote_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -515,7 +575,7 @@ func (x *EmptyAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EmptyAck.ProtoReflect.Descriptor instead.
 func (*EmptyAck) Descriptor() ([]byte, []int) {
-	return file_game_remote_proto_rawDescGZIP(), []int{5}
+	return file_game_remote_proto_rawDescGZIP(), []int{6}
 }
 
 type ExitTableReq struct {
@@ -528,7 +588,7 @@ type ExitTableReq struct {
 
 func (x *ExitTableReq) Reset() {
 	*x = ExitTableReq{}
-	mi := &file_game_remote_proto_msgTypes[6]
+	mi := &file_game_remote_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -540,7 +600,7 @@ func (x *ExitTableReq) String() string {
 func (*ExitTableReq) ProtoMessage() {}
 
 func (x *ExitTableReq) ProtoReflect() protoreflect.Message {
-	mi := &file_game_remote_proto_msgTypes[6]
+	mi := &file_game_remote_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -553,7 +613,7 @@ func (x *ExitTableReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExitTableReq.ProtoReflect.Descriptor instead.
 func (*ExitTableReq) Descriptor() ([]byte, []int) {
-	return file_game_remote_proto_rawDescGZIP(), []int{6}
+	return file_game_remote_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ExitTableReq) GetPlayerid() string {
@@ -580,7 +640,7 @@ type ExitTableAck struct {
 
 func (x *ExitTableAck) Reset() {
 	*x = ExitTableAck{}
-	mi := &file_game_remote_proto_msgTypes[7]
+	mi := &file_game_remote_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -592,7 +652,7 @@ func (x *ExitTableAck) String() string {
 func (*ExitTableAck) ProtoMessage() {}
 
 func (x *ExitTableAck) ProtoReflect() protoreflect.Message {
-	mi := &file_game_remote_proto_msgTypes[7]
+	mi := &file_game_remote_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -605,7 +665,7 @@ func (x *ExitTableAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExitTableAck.ProtoReflect.Descriptor instead.
 func (*ExitTableAck) Descriptor() ([]byte, []int) {
-	return file_game_remote_proto_rawDescGZIP(), []int{7}
+	return file_game_remote_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ExitTableAck) GetPlayerid() string {
@@ -631,7 +691,7 @@ type PauseTableReq struct {
 
 func (x *PauseTableReq) Reset() {
 	*x = PauseTableReq{}
-	mi := &file_game_remote_proto_msgTypes[8]
+	mi := &file_game_remote_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -643,7 +703,7 @@ func (x *PauseTableReq) String() string {
 func (*PauseTableReq) ProtoMessage() {}
 
 func (x *PauseTableReq) ProtoReflect() protoreflect.Message {
-	mi := &file_game_remote_proto_msgTypes[8]
+	mi := &file_game_remote_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -656,7 +716,7 @@ func (x *PauseTableReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PauseTableReq.ProtoReflect.Descriptor instead.
 func (*PauseTableReq) Descriptor() ([]byte, []int) {
-	return file_game_remote_proto_rawDescGZIP(), []int{8}
+	return file_game_remote_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *PauseTableReq) GetPaused() bool {
@@ -698,7 +758,7 @@ const file_game_remote_proto_rawDesc = "" +
 	" \x01(\tR\bserverId\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x99\x05\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xb6\x05\n" +
 	"\fAddPlayerReq\x12\x1a\n" +
 	"\bplayerid\x18\x01 \x01(\tR\bplayerid\x12\x10\n" +
 	"\x03bot\x18\x02 \x01(\bR\x03bot\x12\x12\n" +
@@ -720,14 +780,18 @@ const file_game_remote_proto_rawDesc = "" +
 	"bot_driver\x18\x0f \x01(\bR\tbotDriver\x12\x18\n" +
 	"\achannel\x18\x10 \x01(\tR\achannel\x12\x12\n" +
 	"\x04city\x18\x11 \x01(\tR\x04city\x12!\n" +
-	"\fuseful_boost\x18\x12 \x01(\x05R\vusefulBoost\x1a8\n" +
+	"\fuseful_boost\x18\x12 \x01(\x05R\vusefulBoost\x12\x1b\n" +
+	"\tluck_next\x18\x13 \x01(\bR\bluckNext\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a;\n" +
 	"\rEquippedEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"(\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"3\n" +
+	"\vMarkLuckReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
+	"\x04luck\x18\x02 \x01(\x03R\x04luck\"(\n" +
 	"\x0eCancelTableReq\x12\x16\n" +
 	"\x06reason\x18\x01 \x01(\x05R\x06reason\"\n" +
 	"\n" +
@@ -753,28 +817,29 @@ func file_game_remote_proto_rawDescGZIP() []byte {
 	return file_game_remote_proto_rawDescData
 }
 
-var file_game_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_game_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_game_remote_proto_goTypes = []any{
 	(*GameReq)(nil),        // 0: sproto.GameReq
 	(*GameAck)(nil),        // 1: sproto.GameAck
 	(*AddTableReq)(nil),    // 2: sproto.AddTableReq
 	(*AddPlayerReq)(nil),   // 3: sproto.AddPlayerReq
-	(*CancelTableReq)(nil), // 4: sproto.CancelTableReq
-	(*EmptyAck)(nil),       // 5: sproto.EmptyAck
-	(*ExitTableReq)(nil),   // 6: sproto.ExitTableReq
-	(*ExitTableAck)(nil),   // 7: sproto.ExitTableAck
-	(*PauseTableReq)(nil),  // 8: sproto.PauseTableReq
-	nil,                    // 9: sproto.AddTableReq.FdpropertyEntry
-	nil,                    // 10: sproto.AddPlayerReq.ItemsEntry
-	nil,                    // 11: sproto.AddPlayerReq.EquippedEntry
-	(*anypb.Any)(nil),      // 12: google.protobuf.Any
+	(*MarkLuckReq)(nil),    // 4: sproto.MarkLuckReq
+	(*CancelTableReq)(nil), // 5: sproto.CancelTableReq
+	(*EmptyAck)(nil),       // 6: sproto.EmptyAck
+	(*ExitTableReq)(nil),   // 7: sproto.ExitTableReq
+	(*ExitTableAck)(nil),   // 8: sproto.ExitTableAck
+	(*PauseTableReq)(nil),  // 9: sproto.PauseTableReq
+	nil,                    // 10: sproto.AddTableReq.FdpropertyEntry
+	nil,                    // 11: sproto.AddPlayerReq.ItemsEntry
+	nil,                    // 12: sproto.AddPlayerReq.EquippedEntry
+	(*anypb.Any)(nil),      // 13: google.protobuf.Any
 }
 var file_game_remote_proto_depIdxs = []int32{
-	12, // 0: sproto.GameReq.req:type_name -> google.protobuf.Any
-	12, // 1: sproto.GameAck.ack:type_name -> google.protobuf.Any
-	9,  // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
-	10, // 3: sproto.AddPlayerReq.items:type_name -> sproto.AddPlayerReq.ItemsEntry
-	11, // 4: sproto.AddPlayerReq.equipped:type_name -> sproto.AddPlayerReq.EquippedEntry
+	13, // 0: sproto.GameReq.req:type_name -> google.protobuf.Any
+	13, // 1: sproto.GameAck.ack:type_name -> google.protobuf.Any
+	10, // 2: sproto.AddTableReq.fdproperty:type_name -> sproto.AddTableReq.FdpropertyEntry
+	11, // 3: sproto.AddPlayerReq.items:type_name -> sproto.AddPlayerReq.ItemsEntry
+	12, // 4: sproto.AddPlayerReq.equipped:type_name -> sproto.AddPlayerReq.EquippedEntry
 	5,  // [5:5] is the sub-list for method output_type
 	5,  // [5:5] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
@@ -793,7 +858,7 @@ func file_game_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_game_remote_proto_rawDesc), len(file_game_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

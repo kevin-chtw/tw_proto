@@ -49,6 +49,12 @@ message AddPlayerReq {
   string channel = 16; // 登录渠道快照（握手原值）
   string city = 17; // 展示城市
   int32 useful_boost = 18; // Ctrl=3 时加在控赢表有效进张上，0 表示不加
+  bool luck_next = 19; // 下一局运势标记，进桌时从账号拷贝
+}
+
+message MarkLuckReq {
+  string uid = 1;
+  int64 luck = 2; // 当前运势 1007
 }
 
 message CancelTableReq {
