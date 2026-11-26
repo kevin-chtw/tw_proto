@@ -7,11 +7,12 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -78,6 +79,7 @@ type DiyCreateAck struct {
 	TourneyId     int64                  `protobuf:"varint,1,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
 	MatchId       int32                  `protobuf:"varint,2,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
 	Err           string                 `protobuf:"bytes,3,opt,name=err,proto3" json:"err,omitempty"`
+	ServerId      string                 `protobuf:"bytes,4,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -129,6 +131,13 @@ func (x *DiyCreateAck) GetMatchId() int32 {
 func (x *DiyCreateAck) GetErr() string {
 	if x != nil {
 		return x.Err
+	}
+	return ""
+}
+
+func (x *DiyCreateAck) GetServerId() string {
+	if x != nil {
+		return x.ServerId
 	}
 	return ""
 }
@@ -1139,12 +1148,13 @@ const file_diy_remote_proto_rawDesc = "" +
 	"\fDiyCreateReq\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1f\n" +
 	"\vconfig_yaml\x18\x02 \x01(\tR\n" +
-	"configYaml\"Z\n" +
+	"configYaml\"w\n" +
 	"\fDiyCreateAck\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +
 	"\bmatch_id\x18\x02 \x01(\x05R\amatchId\x12\x10\n" +
-	"\x03err\x18\x03 \x01(\tR\x03err\"G\n" +
+	"\x03err\x18\x03 \x01(\tR\x03err\x12\x1b\n" +
+	"\tserver_id\x18\x04 \x01(\tR\bserverId\"G\n" +
 	"\vDiyStartReq\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x01 \x01(\x03R\ttourneyId\x12\x19\n" +

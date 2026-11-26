@@ -69,6 +69,21 @@ message ChangeItemsAck {
     map<int32, int64> items = 2; //玩家物品
 }
 
+message FeeChangeReq {
+  string uid = 1;
+  string operation_id = 2;
+  int32 match_id = 3;
+  string game_type = 4;
+  map<int32, int64> fee = 5; // Original negative fee snapshot for charge and refund.
+  string action = 6; // charge / refund
+}
+
+message FeeChangeAck {
+  string uid = 1;
+  map<int32, int64> items = 2;
+  string state = 3; // applied / reversed
+}
+
 message RechargeReq {
   string uid = 1; // 玩家ID
   int32 price = 2; // 充值金额，单位元

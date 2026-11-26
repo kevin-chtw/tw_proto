@@ -173,11 +173,12 @@ func (x *NetStateReq) GetOnline() bool {
 
 // GameStartReq 第一局真正开始时由游戏服发给比赛服。
 type GameStartReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	CurGameCount  int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数，第一局为 1
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Tableid        int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	CurGameCount   int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数，第一局为 1
+	TableSessionId string                 `protobuf:"bytes,3,opt,name=table_session_id,json=tableSessionId,proto3" json:"table_session_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *GameStartReq) Reset() {
@@ -224,13 +225,21 @@ func (x *GameStartReq) GetCurGameCount() int32 {
 	return 0
 }
 
+func (x *GameStartReq) GetTableSessionId() string {
+	if x != nil {
+		return x.TableSessionId
+	}
+	return ""
+}
+
 type GameResultReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	CurGameCount  int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"`                                                               // 当前游戏局数
-	RoundData     map[string]string      `protobuf:"bytes,3,rep,name=round_data,json=roundData,proto3" json:"round_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 游戏回合数据
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Tableid        int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	CurGameCount   int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"`                                                               // 当前游戏局数
+	RoundData      map[string]string      `protobuf:"bytes,3,rep,name=round_data,json=roundData,proto3" json:"round_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"` // 游戏回合数据
+	TableSessionId string                 `protobuf:"bytes,4,opt,name=table_session_id,json=tableSessionId,proto3" json:"table_session_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *GameResultReq) Reset() {
@@ -284,17 +293,25 @@ func (x *GameResultReq) GetRoundData() map[string]string {
 	return nil
 }
 
+func (x *GameResultReq) GetTableSessionId() string {
+	if x != nil {
+		return x.TableSessionId
+	}
+	return ""
+}
+
 type PlayerResultReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
-	CurGameCount  int32                  `protobuf:"varint,3,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
-	Score         int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`                                     //玩家最终分数
-	Tax           int64                  `protobuf:"varint,5,opt,name=tax,proto3" json:"tax,omitempty"`                                         //税分
-	WinScore      int64                  `protobuf:"varint,6,opt,name=win_score,json=winScore,proto3" json:"win_score,omitempty"`               //输赢分
-	Stats         string                 `protobuf:"bytes,7,opt,name=stats,proto3" json:"stats,omitempty"`                                      // 游戏统计数据
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Tableid        int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Uid            string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	CurGameCount   int32                  `protobuf:"varint,3,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
+	Score          int64                  `protobuf:"varint,4,opt,name=score,proto3" json:"score,omitempty"`                                     //玩家最终分数
+	Tax            int64                  `protobuf:"varint,5,opt,name=tax,proto3" json:"tax,omitempty"`                                         //税分
+	WinScore       int64                  `protobuf:"varint,6,opt,name=win_score,json=winScore,proto3" json:"win_score,omitempty"`               //输赢分
+	Stats          string                 `protobuf:"bytes,7,opt,name=stats,proto3" json:"stats,omitempty"`                                      // 游戏统计数据
+	TableSessionId string                 `protobuf:"bytes,8,opt,name=table_session_id,json=tableSessionId,proto3" json:"table_session_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *PlayerResultReq) Reset() {
@@ -376,12 +393,20 @@ func (x *PlayerResultReq) GetStats() string {
 	return ""
 }
 
+func (x *PlayerResultReq) GetTableSessionId() string {
+	if x != nil {
+		return x.TableSessionId
+	}
+	return ""
+}
+
 type GameOverReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tableid       int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	CurGameCount  int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Tableid        int32                  `protobuf:"varint,1,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	CurGameCount   int32                  `protobuf:"varint,2,opt,name=cur_game_count,json=curGameCount,proto3" json:"cur_game_count,omitempty"` // 当前游戏局数
+	TableSessionId string                 `protobuf:"bytes,3,opt,name=table_session_id,json=tableSessionId,proto3" json:"table_session_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *GameOverReq) Reset() {
@@ -426,6 +451,13 @@ func (x *GameOverReq) GetCurGameCount() int32 {
 		return x.CurGameCount
 	}
 	return 0
+}
+
+func (x *GameOverReq) GetTableSessionId() string {
+	if x != nil {
+		return x.TableSessionId
+	}
+	return ""
 }
 
 type NetStateAck struct {
@@ -529,18 +561,20 @@ const file_match_remote_proto_rawDesc = "" +
 	"\x03ack\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"7\n" +
 	"\vNetStateReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x16\n" +
-	"\x06online\x18\x02 \x01(\bR\x06online\"N\n" +
+	"\x06online\x18\x02 \x01(\bR\x06online\"x\n" +
 	"\fGameStartReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
-	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\"\xd2\x01\n" +
+	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12(\n" +
+	"\x10table_session_id\x18\x03 \x01(\tR\x0etableSessionId\"\xfc\x01\n" +
 	"\rGameResultReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
 	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12C\n" +
 	"\n" +
-	"round_data\x18\x03 \x03(\v2$.sproto.GameResultReq.RoundDataEntryR\troundData\x1a<\n" +
+	"round_data\x18\x03 \x03(\v2$.sproto.GameResultReq.RoundDataEntryR\troundData\x12(\n" +
+	"\x10table_session_id\x18\x04 \x01(\tR\x0etableSessionId\x1a<\n" +
 	"\x0eRoundDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xbe\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe8\x01\n" +
 	"\x0fPlayerResultReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\tR\x03uid\x12$\n" +
@@ -548,10 +582,12 @@ const file_match_remote_proto_rawDesc = "" +
 	"\x05score\x18\x04 \x01(\x03R\x05score\x12\x10\n" +
 	"\x03tax\x18\x05 \x01(\x03R\x03tax\x12\x1b\n" +
 	"\twin_score\x18\x06 \x01(\x03R\bwinScore\x12\x14\n" +
-	"\x05stats\x18\a \x01(\tR\x05stats\"M\n" +
+	"\x05stats\x18\a \x01(\tR\x05stats\x12(\n" +
+	"\x10table_session_id\x18\b \x01(\tR\x0etableSessionId\"w\n" +
 	"\vGameOverReq\x12\x18\n" +
 	"\atableid\x18\x01 \x01(\x05R\atableid\x12$\n" +
-	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\"\x1f\n" +
+	"\x0ecur_game_count\x18\x02 \x01(\x05R\fcurGameCount\x12(\n" +
+	"\x10table_session_id\x18\x03 \x01(\tR\x0etableSessionId\"\x1f\n" +
 	"\vNetStateAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\" \n" +
 	"\fForceExitReq\x12\x10\n" +

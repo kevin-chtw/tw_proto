@@ -7,11 +7,12 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -121,6 +122,8 @@ type MatchCfgRow struct {
 	PlacementIps  string                 `protobuf:"bytes,7,opt,name=placement_ips,json=placementIps,proto3" json:"placement_ips,omitempty"` // JSON array string, e.g. ["10.0.1.3","10.0.1.4"]
 	Channels      []string               `protobuf:"bytes,8,rep,name=channels,proto3" json:"channels,omitempty"`                             // 空=全渠道可见
 	Disabled      bool                   `protobuf:"varint,9,opt,name=disabled,proto3" json:"disabled,omitempty"`                            // 大厅隐藏；缺省为显示
+	CreatorUid    string                 `protobuf:"bytes,10,opt,name=creator_uid,json=creatorUid,proto3" json:"creator_uid,omitempty"`      // 玩家自建赛事的创建者
+	EntryMode     string                 `protobuf:"bytes,11,opt,name=entry_mode,json=entryMode,proto3" json:"entry_mode,omitempty"`         // 缺省按 individual 解析
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -216,6 +219,20 @@ func (x *MatchCfgRow) GetDisabled() bool {
 		return x.Disabled
 	}
 	return false
+}
+
+func (x *MatchCfgRow) GetCreatorUid() string {
+	if x != nil {
+		return x.CreatorUid
+	}
+	return ""
+}
+
+func (x *MatchCfgRow) GetEntryMode() string {
+	if x != nil {
+		return x.EntryMode
+	}
+	return ""
 }
 
 type MatchCfgListReq struct {
@@ -2627,7 +2644,8 @@ type DiySignupReportReq struct {
 	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
 	Uid           string                 `protobuf:"bytes,3,opt,name=uid,proto3" json:"uid,omitempty"`
 	SignedAtUnix  int64                  `protobuf:"varint,4,opt,name=signed_at_unix,json=signedAtUnix,proto3" json:"signed_at_unix,omitempty"`
-	Nickname      string                 `protobuf:"bytes,5,opt,name=nickname,proto3" json:"nickname,omitempty"` // 报名时 diy 上报，admin 落库展示
+	Nickname      string                 `protobuf:"bytes,5,opt,name=nickname,proto3" json:"nickname,omitempty"`                       // 报名时 diy 上报，admin 落库展示
+	ServerType    string                 `protobuf:"bytes,6,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"` // 缺省为 diy
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2697,6 +2715,13 @@ func (x *DiySignupReportReq) GetNickname() string {
 	return ""
 }
 
+func (x *DiySignupReportReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
 type DiySignupReportAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
@@ -2746,6 +2771,7 @@ type DiySignoutReportReq struct {
 	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
 	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
 	Uid           string                 `protobuf:"bytes,3,opt,name=uid,proto3" json:"uid,omitempty"`
+	ServerType    string                 `protobuf:"bytes,4,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"` // 缺省为 diy
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2801,6 +2827,13 @@ func (x *DiySignoutReportReq) GetUid() string {
 	return ""
 }
 
+func (x *DiySignoutReportReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
 type DiySignoutReportAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
@@ -2851,6 +2884,7 @@ type DiyResultsReportReq struct {
 	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
 	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
 	Results       []*DiyPlayerInfo       `protobuf:"bytes,4,rep,name=results,proto3" json:"results,omitempty"`
+	ServerType    string                 `protobuf:"bytes,5,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"` // 缺省为 diy
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2913,6 +2947,13 @@ func (x *DiyResultsReportReq) GetResults() []*DiyPlayerInfo {
 	return nil
 }
 
+func (x *DiyResultsReportReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
 type DiyResultsReportAck struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Err           string                 `protobuf:"bytes,1,opt,name=err,proto3" json:"err,omitempty"`
@@ -2961,7 +3002,9 @@ type DiyStatusReportReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
 	TourneyId     int64                  `protobuf:"varint,2,opt,name=tourney_id,json=tourneyId,proto3" json:"tourney_id,omitempty"`
-	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`                           // starting 为开赛前的同步绑定
+	ServerType    string                 `protobuf:"bytes,4,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"` // 缺省为 diy
+	ServerId      string                 `protobuf:"bytes,5,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`       // starting 必填，标识执行服实例
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3013,6 +3056,20 @@ func (x *DiyStatusReportReq) GetTourneyId() int64 {
 func (x *DiyStatusReportReq) GetStatus() string {
 	if x != nil {
 		return x.Status
+	}
+	return ""
+}
+
+func (x *DiyStatusReportReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
+}
+
+func (x *DiyStatusReportReq) GetServerId() string {
+	if x != nil {
+		return x.ServerId
 	}
 	return ""
 }
@@ -4104,6 +4161,7 @@ func (x *ObserveConfigGetAck) GetTokenTtl() string {
 
 type DiySigningListReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerType    string                 `protobuf:"bytes,1,opt,name=server_type,json=serverType,proto3" json:"server_type,omitempty"` // 缺省为 diy
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4136,6 +4194,13 @@ func (x *DiySigningListReq) ProtoReflect() protoreflect.Message {
 // Deprecated: Use DiySigningListReq.ProtoReflect.Descriptor instead.
 func (*DiySigningListReq) Descriptor() ([]byte, []int) {
 	return file_admin_remote_proto_rawDescGZIP(), []int{79}
+}
+
+func (x *DiySigningListReq) GetServerType() string {
+	if x != nil {
+		return x.ServerType
+	}
+	return ""
 }
 
 type DiySigningListAck struct {
@@ -4191,6 +4256,8 @@ type DiySigningRow struct {
 	StartAtUnix   int64                  `protobuf:"varint,5,opt,name=start_at_unix,json=startAtUnix,proto3" json:"start_at_unix,omitempty"`
 	StartPlayers  int32                  `protobuf:"varint,6,opt,name=start_players,json=startPlayers,proto3" json:"start_players,omitempty"`
 	Paused        bool                   `protobuf:"varint,7,opt,name=paused,proto3" json:"paused,omitempty"`
+	EntryMode     string                 `protobuf:"bytes,8,opt,name=entry_mode,json=entryMode,proto3" json:"entry_mode,omitempty"`
+	CreatorUid    string                 `protobuf:"bytes,9,opt,name=creator_uid,json=creatorUid,proto3" json:"creator_uid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4274,6 +4341,20 @@ func (x *DiySigningRow) GetPaused() bool {
 	return false
 }
 
+func (x *DiySigningRow) GetEntryMode() string {
+	if x != nil {
+		return x.EntryMode
+	}
+	return ""
+}
+
+func (x *DiySigningRow) GetCreatorUid() string {
+	if x != nil {
+		return x.CreatorUid
+	}
+	return ""
+}
+
 var File_admin_remote_proto protoreflect.FileDescriptor
 
 const file_admin_remote_proto_rawDesc = "" +
@@ -4283,7 +4364,7 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\vserver_type\x18\x01 \x01(\tR\n" +
 	"serverType\".\n" +
 	"\x12MatchCfgVersionAck\x12\x18\n" +
-	"\aversion\x18\x01 \x01(\x04R\aversion\"\x8b\x02\n" +
+	"\aversion\x18\x01 \x01(\x04R\aversion\"\xcb\x02\n" +
 	"\vMatchCfgRow\x12\x1f\n" +
 	"\vserver_type\x18\x01 \x01(\tR\n" +
 	"serverType\x12\x19\n" +
@@ -4294,7 +4375,12 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\tgame_type\x18\x06 \x01(\tR\bgameType\x12#\n" +
 	"\rplacement_ips\x18\a \x01(\tR\fplacementIps\x12\x1a\n" +
 	"\bchannels\x18\b \x03(\tR\bchannels\x12\x1a\n" +
-	"\bdisabled\x18\t \x01(\bR\bdisabled\"2\n" +
+	"\bdisabled\x18\t \x01(\bR\bdisabled\x12\x1f\n" +
+	"\vcreator_uid\x18\n" +
+	" \x01(\tR\n" +
+	"creatorUid\x12\x1d\n" +
+	"\n" +
+	"entry_mode\x18\v \x01(\tR\tentryMode\"2\n" +
 	"\x0fMatchCfgListReq\x12\x1f\n" +
 	"\vserver_type\x18\x01 \x01(\tR\n" +
 	"serverType\":\n" +
@@ -4437,36 +4523,45 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x14\n" +
 	"\x05score\x18\x02 \x01(\x03R\x05score\x12\x12\n" +
 	"\x04rank\x18\x03 \x01(\x05R\x04rank\x12$\n" +
-	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\"\xa2\x01\n" +
+	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\"\xc3\x01\n" +
 	"\x12DiySignupReportReq\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x10\n" +
 	"\x03uid\x18\x03 \x01(\tR\x03uid\x12$\n" +
 	"\x0esigned_at_unix\x18\x04 \x01(\x03R\fsignedAtUnix\x12\x1a\n" +
-	"\bnickname\x18\x05 \x01(\tR\bnickname\"&\n" +
+	"\bnickname\x18\x05 \x01(\tR\bnickname\x12\x1f\n" +
+	"\vserver_type\x18\x06 \x01(\tR\n" +
+	"serverType\"&\n" +
 	"\x12DiySignupReportAck\x12\x10\n" +
-	"\x03err\x18\x01 \x01(\tR\x03err\"a\n" +
+	"\x03err\x18\x01 \x01(\tR\x03err\"\x82\x01\n" +
 	"\x13DiySignoutReportReq\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x10\n" +
-	"\x03uid\x18\x03 \x01(\tR\x03uid\"'\n" +
+	"\x03uid\x18\x03 \x01(\tR\x03uid\x12\x1f\n" +
+	"\vserver_type\x18\x04 \x01(\tR\n" +
+	"serverType\"'\n" +
 	"\x13DiySignoutReportAck\x12\x10\n" +
-	"\x03err\x18\x01 \x01(\tR\x03err\"\x98\x01\n" +
+	"\x03err\x18\x01 \x01(\tR\x03err\"\xb9\x01\n" +
 	"\x13DiyResultsReportReq\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\tR\x06status\x12/\n" +
-	"\aresults\x18\x04 \x03(\v2\x15.sproto.DiyPlayerInfoR\aresults\"'\n" +
+	"\aresults\x18\x04 \x03(\v2\x15.sproto.DiyPlayerInfoR\aresults\x12\x1f\n" +
+	"\vserver_type\x18\x05 \x01(\tR\n" +
+	"serverType\"'\n" +
 	"\x13DiyResultsReportAck\x12\x10\n" +
-	"\x03err\x18\x01 \x01(\tR\x03err\"f\n" +
+	"\x03err\x18\x01 \x01(\tR\x03err\"\xa4\x01\n" +
 	"\x12DiyStatusReportReq\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1d\n" +
 	"\n" +
 	"tourney_id\x18\x02 \x01(\x03R\ttourneyId\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"&\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12\x1f\n" +
+	"\vserver_type\x18\x04 \x01(\tR\n" +
+	"serverType\x12\x1b\n" +
+	"\tserver_id\x18\x05 \x01(\tR\bserverId\"&\n" +
 	"\x12DiyStatusReportAck\x12\x10\n" +
 	"\x03err\x18\x01 \x01(\tR\x03err\"\x94\x01\n" +
 	"\x0eActivityCfgRow\x12\x1f\n" +
@@ -4532,10 +4627,12 @@ const file_admin_remote_proto_rawDesc = "" +
 	"\x13ObserveConfigGetReq\"U\n" +
 	"\x13ObserveConfigGetAck\x12!\n" +
 	"\ftoken_secret\x18\x01 \x01(\tR\vtokenSecret\x12\x1b\n" +
-	"\ttoken_ttl\x18\x02 \x01(\tR\btokenTtl\"\x13\n" +
-	"\x11DiySigningListReq\">\n" +
+	"\ttoken_ttl\x18\x02 \x01(\tR\btokenTtl\"4\n" +
+	"\x11DiySigningListReq\x12\x1f\n" +
+	"\vserver_type\x18\x01 \x01(\tR\n" +
+	"serverType\">\n" +
 	"\x11DiySigningListAck\x12)\n" +
-	"\x04rows\x18\x01 \x03(\v2\x15.sproto.DiySigningRowR\x04rows\"\xea\x01\n" +
+	"\x04rows\x18\x01 \x03(\v2\x15.sproto.DiySigningRowR\x04rows\"\xaa\x02\n" +
 	"\rDiySigningRow\x12\x19\n" +
 	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x1f\n" +
 	"\vconfig_yaml\x18\x02 \x01(\tR\n" +
@@ -4546,7 +4643,11 @@ const file_admin_remote_proto_rawDesc = "" +
 	"start_mode\x18\x04 \x01(\tR\tstartMode\x12\"\n" +
 	"\rstart_at_unix\x18\x05 \x01(\x03R\vstartAtUnix\x12#\n" +
 	"\rstart_players\x18\x06 \x01(\x05R\fstartPlayers\x12\x16\n" +
-	"\x06paused\x18\a \x01(\bR\x06pausedB\vZ\t../sprotob\x06proto3"
+	"\x06paused\x18\a \x01(\bR\x06paused\x12\x1d\n" +
+	"\n" +
+	"entry_mode\x18\b \x01(\tR\tentryMode\x12\x1f\n" +
+	"\vcreator_uid\x18\t \x01(\tR\n" +
+	"creatorUidB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_admin_remote_proto_rawDescOnce sync.Once

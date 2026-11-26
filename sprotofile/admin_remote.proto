@@ -24,6 +24,8 @@ message MatchCfgRow {
   string placement_ips = 7; // JSON array string, e.g. ["10.0.1.3","10.0.1.4"]
   repeated string channels = 8; // 空=全渠道可见
   bool disabled = 9; // 大厅隐藏；缺省为显示
+  string creator_uid = 10; // 玩家自建赛事的创建者
+  string entry_mode = 11; // 缺省按 individual 解析
 }
 
 message MatchCfgListReq {
@@ -268,6 +270,7 @@ message DiySignupReportReq {
   string uid = 3;
   int64 signed_at_unix = 4;
   string nickname = 5; // 报名时 diy 上报，admin 落库展示
+  string server_type = 6; // 缺省为 diy
 }
 
 message DiySignupReportAck {
@@ -278,6 +281,7 @@ message DiySignoutReportReq {
   int32 match_id = 1;
   int64 tourney_id = 2;
   string uid = 3;
+  string server_type = 4; // 缺省为 diy
 }
 
 message DiySignoutReportAck {
@@ -289,6 +293,7 @@ message DiyResultsReportReq {
   int64 tourney_id = 2;
   string status = 3;
   repeated DiyPlayerInfo results = 4;
+  string server_type = 5; // 缺省为 diy
 }
 
 message DiyResultsReportAck {
@@ -298,7 +303,9 @@ message DiyResultsReportAck {
 message DiyStatusReportReq {
   int32 match_id = 1;
   int64 tourney_id = 2;
-  string status = 3;
+  string status = 3; // starting 为开赛前的同步绑定
+  string server_type = 4; // 缺省为 diy
+  string server_id = 5; // starting 必填，标识执行服实例
 }
 
 message DiyStatusReportAck {
@@ -379,7 +386,9 @@ message ObserveConfigGetAck {
   string token_ttl = 2;
 }
 
-message DiySigningListReq {}
+message DiySigningListReq {
+  string server_type = 1; // 缺省为 diy
+}
 
 message DiySigningListAck {
   repeated DiySigningRow rows = 1;
@@ -393,4 +402,6 @@ message DiySigningRow {
   int64 start_at_unix = 5;
   int32 start_players = 6;
   bool paused = 7;
+  string entry_mode = 8;
+  string creator_uid = 9;
 }

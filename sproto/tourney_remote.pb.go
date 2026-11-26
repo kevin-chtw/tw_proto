@@ -7,12 +7,13 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 )
 
 const (
@@ -1167,6 +1168,916 @@ func (*SignupServerDrainAck) Descriptor() ([]byte, []int) {
 	return file_tourney_remote_proto_rawDescGZIP(), []int{21}
 }
 
+type PairSignupReq struct {
+	state   protoimpl.MessageState `protogen:"open.v1"`
+	MatchId int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	OwnerId string                 `protobuf:"bytes,2,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
+	// Types that are valid to be assigned to Action:
+	//
+	//	*PairSignupReq_Invite
+	//	*PairSignupReq_Confirm
+	//	*PairSignupReq_Cancel
+	//	*PairSignupReq_Lock
+	//	*PairSignupReq_Prepare
+	//	*PairSignupReq_Commit
+	//	*PairSignupReq_Abort
+	Action        isPairSignupReq_Action `protobuf_oneof:"action"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupReq) Reset() {
+	*x = PairSignupReq{}
+	mi := &file_tourney_remote_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupReq) ProtoMessage() {}
+
+func (x *PairSignupReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupReq.ProtoReflect.Descriptor instead.
+func (*PairSignupReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *PairSignupReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *PairSignupReq) GetOwnerId() string {
+	if x != nil {
+		return x.OwnerId
+	}
+	return ""
+}
+
+func (x *PairSignupReq) GetAction() isPairSignupReq_Action {
+	if x != nil {
+		return x.Action
+	}
+	return nil
+}
+
+func (x *PairSignupReq) GetInvite() *PairSignupInvite {
+	if x != nil {
+		if x, ok := x.Action.(*PairSignupReq_Invite); ok {
+			return x.Invite
+		}
+	}
+	return nil
+}
+
+func (x *PairSignupReq) GetConfirm() *PairSignupConfirm {
+	if x != nil {
+		if x, ok := x.Action.(*PairSignupReq_Confirm); ok {
+			return x.Confirm
+		}
+	}
+	return nil
+}
+
+func (x *PairSignupReq) GetCancel() *PairSignupCancel {
+	if x != nil {
+		if x, ok := x.Action.(*PairSignupReq_Cancel); ok {
+			return x.Cancel
+		}
+	}
+	return nil
+}
+
+func (x *PairSignupReq) GetLock() *PairSignupLock {
+	if x != nil {
+		if x, ok := x.Action.(*PairSignupReq_Lock); ok {
+			return x.Lock
+		}
+	}
+	return nil
+}
+
+func (x *PairSignupReq) GetPrepare() *PairSignupPrepare {
+	if x != nil {
+		if x, ok := x.Action.(*PairSignupReq_Prepare); ok {
+			return x.Prepare
+		}
+	}
+	return nil
+}
+
+func (x *PairSignupReq) GetCommit() *PairSignupCommit {
+	if x != nil {
+		if x, ok := x.Action.(*PairSignupReq_Commit); ok {
+			return x.Commit
+		}
+	}
+	return nil
+}
+
+func (x *PairSignupReq) GetAbort() *PairSignupAbort {
+	if x != nil {
+		if x, ok := x.Action.(*PairSignupReq_Abort); ok {
+			return x.Abort
+		}
+	}
+	return nil
+}
+
+type isPairSignupReq_Action interface {
+	isPairSignupReq_Action()
+}
+
+type PairSignupReq_Invite struct {
+	Invite *PairSignupInvite `protobuf:"bytes,3,opt,name=invite,proto3,oneof"`
+}
+
+type PairSignupReq_Confirm struct {
+	Confirm *PairSignupConfirm `protobuf:"bytes,4,opt,name=confirm,proto3,oneof"`
+}
+
+type PairSignupReq_Cancel struct {
+	Cancel *PairSignupCancel `protobuf:"bytes,5,opt,name=cancel,proto3,oneof"`
+}
+
+type PairSignupReq_Lock struct {
+	Lock *PairSignupLock `protobuf:"bytes,6,opt,name=lock,proto3,oneof"`
+}
+
+type PairSignupReq_Prepare struct {
+	Prepare *PairSignupPrepare `protobuf:"bytes,7,opt,name=prepare,proto3,oneof"`
+}
+
+type PairSignupReq_Commit struct {
+	Commit *PairSignupCommit `protobuf:"bytes,8,opt,name=commit,proto3,oneof"`
+}
+
+type PairSignupReq_Abort struct {
+	Abort *PairSignupAbort `protobuf:"bytes,9,opt,name=abort,proto3,oneof"`
+}
+
+func (*PairSignupReq_Invite) isPairSignupReq_Action() {}
+
+func (*PairSignupReq_Confirm) isPairSignupReq_Action() {}
+
+func (*PairSignupReq_Cancel) isPairSignupReq_Action() {}
+
+func (*PairSignupReq_Lock) isPairSignupReq_Action() {}
+
+func (*PairSignupReq_Prepare) isPairSignupReq_Action() {}
+
+func (*PairSignupReq_Commit) isPairSignupReq_Action() {}
+
+func (*PairSignupReq_Abort) isPairSignupReq_Action() {}
+
+type PairSignupInvite struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	InviteId      string                 `protobuf:"bytes,1,opt,name=invite_id,json=inviteId,proto3" json:"invite_id,omitempty"`
+	Captain       *PairSignupMember      `protobuf:"bytes,2,opt,name=captain,proto3" json:"captain,omitempty"`
+	MaxPlayers    int32                  `protobuf:"varint,3,opt,name=max_players,json=maxPlayers,proto3" json:"max_players,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupInvite) Reset() {
+	*x = PairSignupInvite{}
+	mi := &file_tourney_remote_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupInvite) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupInvite) ProtoMessage() {}
+
+func (x *PairSignupInvite) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupInvite.ProtoReflect.Descriptor instead.
+func (*PairSignupInvite) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *PairSignupInvite) GetInviteId() string {
+	if x != nil {
+		return x.InviteId
+	}
+	return ""
+}
+
+func (x *PairSignupInvite) GetCaptain() *PairSignupMember {
+	if x != nil {
+		return x.Captain
+	}
+	return nil
+}
+
+func (x *PairSignupInvite) GetMaxPlayers() int32 {
+	if x != nil {
+		return x.MaxPlayers
+	}
+	return 0
+}
+
+type PairSignupConfirm struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	InviteId      string                 `protobuf:"bytes,1,opt,name=invite_id,json=inviteId,proto3" json:"invite_id,omitempty"`
+	Partner       *PairSignupMember      `protobuf:"bytes,2,opt,name=partner,proto3" json:"partner,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupConfirm) Reset() {
+	*x = PairSignupConfirm{}
+	mi := &file_tourney_remote_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupConfirm) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupConfirm) ProtoMessage() {}
+
+func (x *PairSignupConfirm) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupConfirm.ProtoReflect.Descriptor instead.
+func (*PairSignupConfirm) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *PairSignupConfirm) GetInviteId() string {
+	if x != nil {
+		return x.InviteId
+	}
+	return ""
+}
+
+func (x *PairSignupConfirm) GetPartner() *PairSignupMember {
+	if x != nil {
+		return x.Partner
+	}
+	return nil
+}
+
+type PairSignupCancel struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupCancel) Reset() {
+	*x = PairSignupCancel{}
+	mi := &file_tourney_remote_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupCancel) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupCancel) ProtoMessage() {}
+
+func (x *PairSignupCancel) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupCancel.ProtoReflect.Descriptor instead.
+func (*PairSignupCancel) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *PairSignupCancel) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+type PairSignupLock struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Started       bool                   `protobuf:"varint,1,opt,name=started,proto3" json:"started,omitempty"` // Actual execution has begun; permits normal snapshot expiry.
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupLock) Reset() {
+	*x = PairSignupLock{}
+	mi := &file_tourney_remote_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupLock) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupLock) ProtoMessage() {}
+
+func (x *PairSignupLock) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupLock.ProtoReflect.Descriptor instead.
+func (*PairSignupLock) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *PairSignupLock) GetStarted() bool {
+	if x != nil {
+		return x.Started
+	}
+	return false
+}
+
+type PairSignupPrepare struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	InviteId      string                 `protobuf:"bytes,1,opt,name=invite_id,json=inviteId,proto3" json:"invite_id,omitempty"`
+	AttemptId     string                 `protobuf:"bytes,2,opt,name=attempt_id,json=attemptId,proto3" json:"attempt_id,omitempty"`
+	Members       []*PairSignupMember    `protobuf:"bytes,3,rep,name=members,proto3" json:"members,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupPrepare) Reset() {
+	*x = PairSignupPrepare{}
+	mi := &file_tourney_remote_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupPrepare) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupPrepare) ProtoMessage() {}
+
+func (x *PairSignupPrepare) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupPrepare.ProtoReflect.Descriptor instead.
+func (*PairSignupPrepare) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *PairSignupPrepare) GetInviteId() string {
+	if x != nil {
+		return x.InviteId
+	}
+	return ""
+}
+
+func (x *PairSignupPrepare) GetAttemptId() string {
+	if x != nil {
+		return x.AttemptId
+	}
+	return ""
+}
+
+func (x *PairSignupPrepare) GetMembers() []*PairSignupMember {
+	if x != nil {
+		return x.Members
+	}
+	return nil
+}
+
+type PairSignupCommit struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	InviteId      string                 `protobuf:"bytes,1,opt,name=invite_id,json=inviteId,proto3" json:"invite_id,omitempty"`
+	AttemptId     string                 `protobuf:"bytes,2,opt,name=attempt_id,json=attemptId,proto3" json:"attempt_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupCommit) Reset() {
+	*x = PairSignupCommit{}
+	mi := &file_tourney_remote_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupCommit) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupCommit) ProtoMessage() {}
+
+func (x *PairSignupCommit) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupCommit.ProtoReflect.Descriptor instead.
+func (*PairSignupCommit) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *PairSignupCommit) GetInviteId() string {
+	if x != nil {
+		return x.InviteId
+	}
+	return ""
+}
+
+func (x *PairSignupCommit) GetAttemptId() string {
+	if x != nil {
+		return x.AttemptId
+	}
+	return ""
+}
+
+type PairSignupAbort struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	InviteId      string                 `protobuf:"bytes,1,opt,name=invite_id,json=inviteId,proto3" json:"invite_id,omitempty"`
+	AttemptId     string                 `protobuf:"bytes,2,opt,name=attempt_id,json=attemptId,proto3" json:"attempt_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupAbort) Reset() {
+	*x = PairSignupAbort{}
+	mi := &file_tourney_remote_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupAbort) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupAbort) ProtoMessage() {}
+
+func (x *PairSignupAbort) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupAbort.ProtoReflect.Descriptor instead.
+func (*PairSignupAbort) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *PairSignupAbort) GetInviteId() string {
+	if x != nil {
+		return x.InviteId
+	}
+	return ""
+}
+
+func (x *PairSignupAbort) GetAttemptId() string {
+	if x != nil {
+		return x.AttemptId
+	}
+	return ""
+}
+
+type PairSignupAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	State         *PairSignupState       `protobuf:"bytes,1,opt,name=state,proto3" json:"state,omitempty"`
+	Team          *PairSignupTeam        `protobuf:"bytes,2,opt,name=team,proto3" json:"team,omitempty"`
+	Err           string                 `protobuf:"bytes,3,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupAck) Reset() {
+	*x = PairSignupAck{}
+	mi := &file_tourney_remote_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupAck) ProtoMessage() {}
+
+func (x *PairSignupAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupAck.ProtoReflect.Descriptor instead.
+func (*PairSignupAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *PairSignupAck) GetState() *PairSignupState {
+	if x != nil {
+		return x.State
+	}
+	return nil
+}
+
+func (x *PairSignupAck) GetTeam() *PairSignupTeam {
+	if x != nil {
+		return x.Team
+	}
+	return nil
+}
+
+func (x *PairSignupAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
+type PairSignupLoadReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MatchId       int32                  `protobuf:"varint,1,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	OwnerId       string                 `protobuf:"bytes,2,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupLoadReq) Reset() {
+	*x = PairSignupLoadReq{}
+	mi := &file_tourney_remote_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupLoadReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupLoadReq) ProtoMessage() {}
+
+func (x *PairSignupLoadReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupLoadReq.ProtoReflect.Descriptor instead.
+func (*PairSignupLoadReq) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *PairSignupLoadReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *PairSignupLoadReq) GetOwnerId() string {
+	if x != nil {
+		return x.OwnerId
+	}
+	return ""
+}
+
+type PairSignupLoadAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	State         *PairSignupState       `protobuf:"bytes,1,opt,name=state,proto3" json:"state,omitempty"`
+	Err           string                 `protobuf:"bytes,2,opt,name=err,proto3" json:"err,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupLoadAck) Reset() {
+	*x = PairSignupLoadAck{}
+	mi := &file_tourney_remote_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupLoadAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupLoadAck) ProtoMessage() {}
+
+func (x *PairSignupLoadAck) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupLoadAck.ProtoReflect.Descriptor instead.
+func (*PairSignupLoadAck) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *PairSignupLoadAck) GetState() *PairSignupState {
+	if x != nil {
+		return x.State
+	}
+	return nil
+}
+
+func (x *PairSignupLoadAck) GetErr() string {
+	if x != nil {
+		return x.Err
+	}
+	return ""
+}
+
+type PairSignupState struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Locked        bool                   `protobuf:"varint,1,opt,name=locked,proto3" json:"locked,omitempty"`
+	Teams         []*PairSignupTeam      `protobuf:"bytes,2,rep,name=teams,proto3" json:"teams,omitempty"`
+	MaxPlayers    int32                  `protobuf:"varint,3,opt,name=max_players,json=maxPlayers,proto3" json:"max_players,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupState) Reset() {
+	*x = PairSignupState{}
+	mi := &file_tourney_remote_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupState) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupState) ProtoMessage() {}
+
+func (x *PairSignupState) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupState.ProtoReflect.Descriptor instead.
+func (*PairSignupState) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *PairSignupState) GetLocked() bool {
+	if x != nil {
+		return x.Locked
+	}
+	return false
+}
+
+func (x *PairSignupState) GetTeams() []*PairSignupTeam {
+	if x != nil {
+		return x.Teams
+	}
+	return nil
+}
+
+func (x *PairSignupState) GetMaxPlayers() int32 {
+	if x != nil {
+		return x.MaxPlayers
+	}
+	return 0
+}
+
+type PairSignupTeam struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	InviteId      string                 `protobuf:"bytes,2,opt,name=invite_id,json=inviteId,proto3" json:"invite_id,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"` // pending / billing / signed / refunding / cancelling / cancelled
+	Members       []*PairSignupMember    `protobuf:"bytes,4,rep,name=members,proto3" json:"members,omitempty"`
+	AttemptId     string                 `protobuf:"bytes,5,opt,name=attempt_id,json=attemptId,proto3" json:"attempt_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupTeam) Reset() {
+	*x = PairSignupTeam{}
+	mi := &file_tourney_remote_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupTeam) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupTeam) ProtoMessage() {}
+
+func (x *PairSignupTeam) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupTeam.ProtoReflect.Descriptor instead.
+func (*PairSignupTeam) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *PairSignupTeam) GetTeamId() string {
+	if x != nil {
+		return x.TeamId
+	}
+	return ""
+}
+
+func (x *PairSignupTeam) GetInviteId() string {
+	if x != nil {
+		return x.InviteId
+	}
+	return ""
+}
+
+func (x *PairSignupTeam) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *PairSignupTeam) GetMembers() []*PairSignupMember {
+	if x != nil {
+		return x.Members
+	}
+	return nil
+}
+
+func (x *PairSignupTeam) GetAttemptId() string {
+	if x != nil {
+		return x.AttemptId
+	}
+	return ""
+}
+
+type PairSignupMember struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Signup        *SignupRegisterReq     `protobuf:"bytes,1,opt,name=signup,proto3" json:"signup,omitempty"`
+	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	Avatar        string                 `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Channel       string                 `protobuf:"bytes,4,opt,name=channel,proto3" json:"channel,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PairSignupMember) Reset() {
+	*x = PairSignupMember{}
+	mi := &file_tourney_remote_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PairSignupMember) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PairSignupMember) ProtoMessage() {}
+
+func (x *PairSignupMember) ProtoReflect() protoreflect.Message {
+	mi := &file_tourney_remote_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PairSignupMember.ProtoReflect.Descriptor instead.
+func (*PairSignupMember) Descriptor() ([]byte, []int) {
+	return file_tourney_remote_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *PairSignupMember) GetSignup() *SignupRegisterReq {
+	if x != nil {
+		return x.Signup
+	}
+	return nil
+}
+
+func (x *PairSignupMember) GetNickname() string {
+	if x != nil {
+		return x.Nickname
+	}
+	return ""
+}
+
+func (x *PairSignupMember) GetAvatar() string {
+	if x != nil {
+		return x.Avatar
+	}
+	return ""
+}
+
+func (x *PairSignupMember) GetChannel() string {
+	if x != nil {
+		return x.Channel
+	}
+	return ""
+}
+
 var File_tourney_remote_proto protoreflect.FileDescriptor
 
 const file_tourney_remote_proto_rawDesc = "" +
@@ -1251,7 +2162,70 @@ const file_tourney_remote_proto_rawDesc = "" +
 	"\breleased\x18\x01 \x01(\bR\breleased\"3\n" +
 	"\x14SignupServerDrainReq\x12\x1b\n" +
 	"\tserver_id\x18\x01 \x01(\tR\bserverId\"\x16\n" +
-	"\x14SignupServerDrainAckB\vZ\t../sprotob\x06proto3"
+	"\x14SignupServerDrainAck\"\xb8\x03\n" +
+	"\rPairSignupReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x19\n" +
+	"\bowner_id\x18\x02 \x01(\tR\aownerId\x122\n" +
+	"\x06invite\x18\x03 \x01(\v2\x18.sproto.PairSignupInviteH\x00R\x06invite\x125\n" +
+	"\aconfirm\x18\x04 \x01(\v2\x19.sproto.PairSignupConfirmH\x00R\aconfirm\x122\n" +
+	"\x06cancel\x18\x05 \x01(\v2\x18.sproto.PairSignupCancelH\x00R\x06cancel\x12,\n" +
+	"\x04lock\x18\x06 \x01(\v2\x16.sproto.PairSignupLockH\x00R\x04lock\x125\n" +
+	"\aprepare\x18\a \x01(\v2\x19.sproto.PairSignupPrepareH\x00R\aprepare\x122\n" +
+	"\x06commit\x18\b \x01(\v2\x18.sproto.PairSignupCommitH\x00R\x06commit\x12/\n" +
+	"\x05abort\x18\t \x01(\v2\x17.sproto.PairSignupAbortH\x00R\x05abortB\b\n" +
+	"\x06action\"\x84\x01\n" +
+	"\x10PairSignupInvite\x12\x1b\n" +
+	"\tinvite_id\x18\x01 \x01(\tR\binviteId\x122\n" +
+	"\acaptain\x18\x02 \x01(\v2\x18.sproto.PairSignupMemberR\acaptain\x12\x1f\n" +
+	"\vmax_players\x18\x03 \x01(\x05R\n" +
+	"maxPlayers\"d\n" +
+	"\x11PairSignupConfirm\x12\x1b\n" +
+	"\tinvite_id\x18\x01 \x01(\tR\binviteId\x122\n" +
+	"\apartner\x18\x02 \x01(\v2\x18.sproto.PairSignupMemberR\apartner\"$\n" +
+	"\x10PairSignupCancel\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"*\n" +
+	"\x0ePairSignupLock\x12\x18\n" +
+	"\astarted\x18\x01 \x01(\bR\astarted\"\x83\x01\n" +
+	"\x11PairSignupPrepare\x12\x1b\n" +
+	"\tinvite_id\x18\x01 \x01(\tR\binviteId\x12\x1d\n" +
+	"\n" +
+	"attempt_id\x18\x02 \x01(\tR\tattemptId\x122\n" +
+	"\amembers\x18\x03 \x03(\v2\x18.sproto.PairSignupMemberR\amembers\"N\n" +
+	"\x10PairSignupCommit\x12\x1b\n" +
+	"\tinvite_id\x18\x01 \x01(\tR\binviteId\x12\x1d\n" +
+	"\n" +
+	"attempt_id\x18\x02 \x01(\tR\tattemptId\"M\n" +
+	"\x0fPairSignupAbort\x12\x1b\n" +
+	"\tinvite_id\x18\x01 \x01(\tR\binviteId\x12\x1d\n" +
+	"\n" +
+	"attempt_id\x18\x02 \x01(\tR\tattemptId\"|\n" +
+	"\rPairSignupAck\x12-\n" +
+	"\x05state\x18\x01 \x01(\v2\x17.sproto.PairSignupStateR\x05state\x12*\n" +
+	"\x04team\x18\x02 \x01(\v2\x16.sproto.PairSignupTeamR\x04team\x12\x10\n" +
+	"\x03err\x18\x03 \x01(\tR\x03err\"I\n" +
+	"\x11PairSignupLoadReq\x12\x19\n" +
+	"\bmatch_id\x18\x01 \x01(\x05R\amatchId\x12\x19\n" +
+	"\bowner_id\x18\x02 \x01(\tR\aownerId\"T\n" +
+	"\x11PairSignupLoadAck\x12-\n" +
+	"\x05state\x18\x01 \x01(\v2\x17.sproto.PairSignupStateR\x05state\x12\x10\n" +
+	"\x03err\x18\x02 \x01(\tR\x03err\"x\n" +
+	"\x0fPairSignupState\x12\x16\n" +
+	"\x06locked\x18\x01 \x01(\bR\x06locked\x12,\n" +
+	"\x05teams\x18\x02 \x03(\v2\x16.sproto.PairSignupTeamR\x05teams\x12\x1f\n" +
+	"\vmax_players\x18\x03 \x01(\x05R\n" +
+	"maxPlayers\"\xb1\x01\n" +
+	"\x0ePairSignupTeam\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12\x1b\n" +
+	"\tinvite_id\x18\x02 \x01(\tR\binviteId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x122\n" +
+	"\amembers\x18\x04 \x03(\v2\x18.sproto.PairSignupMemberR\amembers\x12\x1d\n" +
+	"\n" +
+	"attempt_id\x18\x05 \x01(\tR\tattemptId\"\x93\x01\n" +
+	"\x10PairSignupMember\x121\n" +
+	"\x06signup\x18\x01 \x01(\v2\x19.sproto.SignupRegisterReqR\x06signup\x12\x1a\n" +
+	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x16\n" +
+	"\x06avatar\x18\x03 \x01(\tR\x06avatar\x12\x18\n" +
+	"\achannel\x18\x04 \x01(\tR\achannelB\vZ\t../sprotob\x06proto3"
 
 var (
 	file_tourney_remote_proto_rawDescOnce sync.Once
@@ -1265,7 +2239,7 @@ func file_tourney_remote_proto_rawDescGZIP() []byte {
 	return file_tourney_remote_proto_rawDescData
 }
 
-var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_tourney_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
 var file_tourney_remote_proto_goTypes = []any{
 	(*TourneyReq)(nil),            // 0: sproto.TourneyReq
 	(*TourneyAck)(nil),            // 1: sproto.TourneyAck
@@ -1289,20 +2263,50 @@ var file_tourney_remote_proto_goTypes = []any{
 	(*SignupOwnerReleaseAck)(nil), // 19: sproto.SignupOwnerReleaseAck
 	(*SignupServerDrainReq)(nil),  // 20: sproto.SignupServerDrainReq
 	(*SignupServerDrainAck)(nil),  // 21: sproto.SignupServerDrainAck
-	nil,                           // 22: sproto.SignupRegisterReq.FeeEntry
-	(*anypb.Any)(nil),             // 23: google.protobuf.Any
+	(*PairSignupReq)(nil),         // 22: sproto.PairSignupReq
+	(*PairSignupInvite)(nil),      // 23: sproto.PairSignupInvite
+	(*PairSignupConfirm)(nil),     // 24: sproto.PairSignupConfirm
+	(*PairSignupCancel)(nil),      // 25: sproto.PairSignupCancel
+	(*PairSignupLock)(nil),        // 26: sproto.PairSignupLock
+	(*PairSignupPrepare)(nil),     // 27: sproto.PairSignupPrepare
+	(*PairSignupCommit)(nil),      // 28: sproto.PairSignupCommit
+	(*PairSignupAbort)(nil),       // 29: sproto.PairSignupAbort
+	(*PairSignupAck)(nil),         // 30: sproto.PairSignupAck
+	(*PairSignupLoadReq)(nil),     // 31: sproto.PairSignupLoadReq
+	(*PairSignupLoadAck)(nil),     // 32: sproto.PairSignupLoadAck
+	(*PairSignupState)(nil),       // 33: sproto.PairSignupState
+	(*PairSignupTeam)(nil),        // 34: sproto.PairSignupTeam
+	(*PairSignupMember)(nil),      // 35: sproto.PairSignupMember
+	nil,                           // 36: sproto.SignupRegisterReq.FeeEntry
+	(*anypb.Any)(nil),             // 37: google.protobuf.Any
 }
 var file_tourney_remote_proto_depIdxs = []int32{
-	23, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
-	23, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
+	37, // 0: sproto.TourneyReq.req:type_name -> google.protobuf.Any
+	37, // 1: sproto.TourneyAck.ack:type_name -> google.protobuf.Any
 	3,  // 2: sproto.TourneyUpdateReq.infos:type_name -> sproto.TourneyInfo
-	22, // 3: sproto.SignupRegisterReq.fee:type_name -> sproto.SignupRegisterReq.FeeEntry
+	36, // 3: sproto.SignupRegisterReq.fee:type_name -> sproto.SignupRegisterReq.FeeEntry
 	9,  // 4: sproto.SignupListAck.entries:type_name -> sproto.SignupRegisterReq
-	5,  // [5:5] is the sub-list for method output_type
-	5,  // [5:5] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	23, // 5: sproto.PairSignupReq.invite:type_name -> sproto.PairSignupInvite
+	24, // 6: sproto.PairSignupReq.confirm:type_name -> sproto.PairSignupConfirm
+	25, // 7: sproto.PairSignupReq.cancel:type_name -> sproto.PairSignupCancel
+	26, // 8: sproto.PairSignupReq.lock:type_name -> sproto.PairSignupLock
+	27, // 9: sproto.PairSignupReq.prepare:type_name -> sproto.PairSignupPrepare
+	28, // 10: sproto.PairSignupReq.commit:type_name -> sproto.PairSignupCommit
+	29, // 11: sproto.PairSignupReq.abort:type_name -> sproto.PairSignupAbort
+	35, // 12: sproto.PairSignupInvite.captain:type_name -> sproto.PairSignupMember
+	35, // 13: sproto.PairSignupConfirm.partner:type_name -> sproto.PairSignupMember
+	35, // 14: sproto.PairSignupPrepare.members:type_name -> sproto.PairSignupMember
+	33, // 15: sproto.PairSignupAck.state:type_name -> sproto.PairSignupState
+	34, // 16: sproto.PairSignupAck.team:type_name -> sproto.PairSignupTeam
+	33, // 17: sproto.PairSignupLoadAck.state:type_name -> sproto.PairSignupState
+	34, // 18: sproto.PairSignupState.teams:type_name -> sproto.PairSignupTeam
+	35, // 19: sproto.PairSignupTeam.members:type_name -> sproto.PairSignupMember
+	9,  // 20: sproto.PairSignupMember.signup:type_name -> sproto.SignupRegisterReq
+	21, // [21:21] is the sub-list for method output_type
+	21, // [21:21] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_tourney_remote_proto_init() }
@@ -1310,13 +2314,22 @@ func file_tourney_remote_proto_init() {
 	if File_tourney_remote_proto != nil {
 		return
 	}
+	file_tourney_remote_proto_msgTypes[22].OneofWrappers = []any{
+		(*PairSignupReq_Invite)(nil),
+		(*PairSignupReq_Confirm)(nil),
+		(*PairSignupReq_Cancel)(nil),
+		(*PairSignupReq_Lock)(nil),
+		(*PairSignupReq_Prepare)(nil),
+		(*PairSignupReq_Commit)(nil),
+		(*PairSignupReq_Abort)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tourney_remote_proto_rawDesc), len(file_tourney_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   23,
+			NumMessages:   37,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -111,3 +111,89 @@ message SignupServerDrainReq {
 }
 
 message SignupServerDrainAck {}
+
+message PairSignupReq {
+  int32 match_id = 1;
+  string owner_id = 2;
+  oneof action {
+    PairSignupInvite invite = 3;
+    PairSignupConfirm confirm = 4;
+    PairSignupCancel cancel = 5;
+    PairSignupLock lock = 6;
+    PairSignupPrepare prepare = 7;
+    PairSignupCommit commit = 8;
+    PairSignupAbort abort = 9;
+  }
+}
+
+message PairSignupInvite {
+  string invite_id = 1;
+  PairSignupMember captain = 2;
+  int32 max_players = 3;
+}
+
+message PairSignupConfirm {
+  string invite_id = 1;
+  PairSignupMember partner = 2;
+}
+
+message PairSignupCancel {
+  string uid = 1;
+}
+
+message PairSignupLock {
+  bool started = 1; // Actual execution has begun; permits normal snapshot expiry.
+}
+
+message PairSignupPrepare {
+  string invite_id = 1;
+  string attempt_id = 2;
+  repeated PairSignupMember members = 3;
+}
+
+message PairSignupCommit {
+  string invite_id = 1;
+  string attempt_id = 2;
+}
+
+message PairSignupAbort {
+  string invite_id = 1;
+  string attempt_id = 2;
+}
+
+message PairSignupAck {
+  PairSignupState state = 1;
+  PairSignupTeam team = 2;
+  string err = 3;
+}
+
+message PairSignupLoadReq {
+  int32 match_id = 1;
+  string owner_id = 2;
+}
+
+message PairSignupLoadAck {
+  PairSignupState state = 1;
+  string err = 2;
+}
+
+message PairSignupState {
+  bool locked = 1;
+  repeated PairSignupTeam teams = 2;
+  int32 max_players = 3;
+}
+
+message PairSignupTeam {
+  string team_id = 1;
+  string invite_id = 2;
+  string status = 3; // pending / billing / signed / refunding / cancelling / cancelled
+  repeated PairSignupMember members = 4;
+  string attempt_id = 5;
+}
+
+message PairSignupMember {
+  SignupRegisterReq signup = 1;
+  string nickname = 2;
+  string avatar = 3;
+  string channel = 4;
+}

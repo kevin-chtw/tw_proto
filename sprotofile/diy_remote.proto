@@ -15,6 +15,7 @@ message DiyCreateAck {
   int64 tourney_id = 1;
   int32 match_id = 2;
   string err = 3;
+  string server_id = 4;
 }
 
 message DiyStartReq {

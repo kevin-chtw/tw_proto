@@ -7,12 +7,13 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 )
 
 const (
@@ -699,6 +700,150 @@ func (x *ChangeItemsAck) GetItems() map[int32]int64 {
 	return nil
 }
 
+type FeeChangeReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	OperationId   string                 `protobuf:"bytes,2,opt,name=operation_id,json=operationId,proto3" json:"operation_id,omitempty"`
+	MatchId       int32                  `protobuf:"varint,3,opt,name=match_id,json=matchId,proto3" json:"match_id,omitempty"`
+	GameType      string                 `protobuf:"bytes,4,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	Fee           map[int32]int64        `protobuf:"bytes,5,rep,name=fee,proto3" json:"fee,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // Original negative fee snapshot for charge and refund.
+	Action        string                 `protobuf:"bytes,6,opt,name=action,proto3" json:"action,omitempty"`                                                                       // charge / refund
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FeeChangeReq) Reset() {
+	*x = FeeChangeReq{}
+	mi := &file_account_remote_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FeeChangeReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FeeChangeReq) ProtoMessage() {}
+
+func (x *FeeChangeReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FeeChangeReq.ProtoReflect.Descriptor instead.
+func (*FeeChangeReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *FeeChangeReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *FeeChangeReq) GetOperationId() string {
+	if x != nil {
+		return x.OperationId
+	}
+	return ""
+}
+
+func (x *FeeChangeReq) GetMatchId() int32 {
+	if x != nil {
+		return x.MatchId
+	}
+	return 0
+}
+
+func (x *FeeChangeReq) GetGameType() string {
+	if x != nil {
+		return x.GameType
+	}
+	return ""
+}
+
+func (x *FeeChangeReq) GetFee() map[int32]int64 {
+	if x != nil {
+		return x.Fee
+	}
+	return nil
+}
+
+func (x *FeeChangeReq) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+type FeeChangeAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Items         map[int32]int64        `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	State         string                 `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"` // applied / reversed
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FeeChangeAck) Reset() {
+	*x = FeeChangeAck{}
+	mi := &file_account_remote_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FeeChangeAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FeeChangeAck) ProtoMessage() {}
+
+func (x *FeeChangeAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FeeChangeAck.ProtoReflect.Descriptor instead.
+func (*FeeChangeAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *FeeChangeAck) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *FeeChangeAck) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *FeeChangeAck) GetState() string {
+	if x != nil {
+		return x.State
+	}
+	return ""
+}
+
 type RechargeReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`      // 玩家ID
@@ -709,7 +854,7 @@ type RechargeReq struct {
 
 func (x *RechargeReq) Reset() {
 	*x = RechargeReq{}
-	mi := &file_account_remote_proto_msgTypes[13]
+	mi := &file_account_remote_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -721,7 +866,7 @@ func (x *RechargeReq) String() string {
 func (*RechargeReq) ProtoMessage() {}
 
 func (x *RechargeReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[13]
+	mi := &file_account_remote_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -734,7 +879,7 @@ func (x *RechargeReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RechargeReq.ProtoReflect.Descriptor instead.
 func (*RechargeReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{13}
+	return file_account_remote_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *RechargeReq) GetUid() string {
@@ -759,7 +904,7 @@ type RechargeAck struct {
 
 func (x *RechargeAck) Reset() {
 	*x = RechargeAck{}
-	mi := &file_account_remote_proto_msgTypes[14]
+	mi := &file_account_remote_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -771,7 +916,7 @@ func (x *RechargeAck) String() string {
 func (*RechargeAck) ProtoMessage() {}
 
 func (x *RechargeAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[14]
+	mi := &file_account_remote_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -784,7 +929,7 @@ func (x *RechargeAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RechargeAck.ProtoReflect.Descriptor instead.
 func (*RechargeAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{14}
+	return file_account_remote_proto_rawDescGZIP(), []int{16}
 }
 
 type GrantIceProtectReq struct {
@@ -796,7 +941,7 @@ type GrantIceProtectReq struct {
 
 func (x *GrantIceProtectReq) Reset() {
 	*x = GrantIceProtectReq{}
-	mi := &file_account_remote_proto_msgTypes[15]
+	mi := &file_account_remote_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -808,7 +953,7 @@ func (x *GrantIceProtectReq) String() string {
 func (*GrantIceProtectReq) ProtoMessage() {}
 
 func (x *GrantIceProtectReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[15]
+	mi := &file_account_remote_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -821,7 +966,7 @@ func (x *GrantIceProtectReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantIceProtectReq.ProtoReflect.Descriptor instead.
 func (*GrantIceProtectReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{15}
+	return file_account_remote_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GrantIceProtectReq) GetUid() string {
@@ -839,7 +984,7 @@ type GrantIceProtectAck struct {
 
 func (x *GrantIceProtectAck) Reset() {
 	*x = GrantIceProtectAck{}
-	mi := &file_account_remote_proto_msgTypes[16]
+	mi := &file_account_remote_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -851,7 +996,7 @@ func (x *GrantIceProtectAck) String() string {
 func (*GrantIceProtectAck) ProtoMessage() {}
 
 func (x *GrantIceProtectAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[16]
+	mi := &file_account_remote_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -864,7 +1009,7 @@ func (x *GrantIceProtectAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantIceProtectAck.ProtoReflect.Descriptor instead.
 func (*GrantIceProtectAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{16}
+	return file_account_remote_proto_rawDescGZIP(), []int{18}
 }
 
 type MarkBankruptReq struct {
@@ -876,7 +1021,7 @@ type MarkBankruptReq struct {
 
 func (x *MarkBankruptReq) Reset() {
 	*x = MarkBankruptReq{}
-	mi := &file_account_remote_proto_msgTypes[17]
+	mi := &file_account_remote_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -888,7 +1033,7 @@ func (x *MarkBankruptReq) String() string {
 func (*MarkBankruptReq) ProtoMessage() {}
 
 func (x *MarkBankruptReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[17]
+	mi := &file_account_remote_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -901,7 +1046,7 @@ func (x *MarkBankruptReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MarkBankruptReq.ProtoReflect.Descriptor instead.
 func (*MarkBankruptReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{17}
+	return file_account_remote_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *MarkBankruptReq) GetUid() string {
@@ -919,7 +1064,7 @@ type MarkBankruptAck struct {
 
 func (x *MarkBankruptAck) Reset() {
 	*x = MarkBankruptAck{}
-	mi := &file_account_remote_proto_msgTypes[18]
+	mi := &file_account_remote_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -931,7 +1076,7 @@ func (x *MarkBankruptAck) String() string {
 func (*MarkBankruptAck) ProtoMessage() {}
 
 func (x *MarkBankruptAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[18]
+	mi := &file_account_remote_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -944,7 +1089,7 @@ func (x *MarkBankruptAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MarkBankruptAck.ProtoReflect.Descriptor instead.
 func (*MarkBankruptAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{18}
+	return file_account_remote_proto_rawDescGZIP(), []int{20}
 }
 
 type ApplyDownshiftReq struct {
@@ -957,7 +1102,7 @@ type ApplyDownshiftReq struct {
 
 func (x *ApplyDownshiftReq) Reset() {
 	*x = ApplyDownshiftReq{}
-	mi := &file_account_remote_proto_msgTypes[19]
+	mi := &file_account_remote_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -969,7 +1114,7 @@ func (x *ApplyDownshiftReq) String() string {
 func (*ApplyDownshiftReq) ProtoMessage() {}
 
 func (x *ApplyDownshiftReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[19]
+	mi := &file_account_remote_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -982,7 +1127,7 @@ func (x *ApplyDownshiftReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplyDownshiftReq.ProtoReflect.Descriptor instead.
 func (*ApplyDownshiftReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{19}
+	return file_account_remote_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ApplyDownshiftReq) GetUid() string {
@@ -1007,7 +1152,7 @@ type ApplyDownshiftAck struct {
 
 func (x *ApplyDownshiftAck) Reset() {
 	*x = ApplyDownshiftAck{}
-	mi := &file_account_remote_proto_msgTypes[20]
+	mi := &file_account_remote_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1019,7 +1164,7 @@ func (x *ApplyDownshiftAck) String() string {
 func (*ApplyDownshiftAck) ProtoMessage() {}
 
 func (x *ApplyDownshiftAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[20]
+	mi := &file_account_remote_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1032,7 +1177,7 @@ func (x *ApplyDownshiftAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplyDownshiftAck.ProtoReflect.Descriptor instead.
 func (*ApplyDownshiftAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{20}
+	return file_account_remote_proto_rawDescGZIP(), []int{22}
 }
 
 // 新手保护统计
@@ -1046,7 +1191,7 @@ type GetNewbieStatsReq struct {
 
 func (x *GetNewbieStatsReq) Reset() {
 	*x = GetNewbieStatsReq{}
-	mi := &file_account_remote_proto_msgTypes[21]
+	mi := &file_account_remote_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1058,7 +1203,7 @@ func (x *GetNewbieStatsReq) String() string {
 func (*GetNewbieStatsReq) ProtoMessage() {}
 
 func (x *GetNewbieStatsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[21]
+	mi := &file_account_remote_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1071,7 +1216,7 @@ func (x *GetNewbieStatsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNewbieStatsReq.ProtoReflect.Descriptor instead.
 func (*GetNewbieStatsReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{21}
+	return file_account_remote_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetNewbieStatsReq) GetUid() string {
@@ -1104,7 +1249,7 @@ type GetNewbieStatsAck struct {
 
 func (x *GetNewbieStatsAck) Reset() {
 	*x = GetNewbieStatsAck{}
-	mi := &file_account_remote_proto_msgTypes[22]
+	mi := &file_account_remote_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1116,7 +1261,7 @@ func (x *GetNewbieStatsAck) String() string {
 func (*GetNewbieStatsAck) ProtoMessage() {}
 
 func (x *GetNewbieStatsAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[22]
+	mi := &file_account_remote_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1129,7 +1274,7 @@ func (x *GetNewbieStatsAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNewbieStatsAck.ProtoReflect.Descriptor instead.
 func (*GetNewbieStatsAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{22}
+	return file_account_remote_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetNewbieStatsAck) GetMatchCount() int32 {
@@ -1203,7 +1348,7 @@ type UpdateNewbieStatsReq struct {
 
 func (x *UpdateNewbieStatsReq) Reset() {
 	*x = UpdateNewbieStatsReq{}
-	mi := &file_account_remote_proto_msgTypes[23]
+	mi := &file_account_remote_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1215,7 +1360,7 @@ func (x *UpdateNewbieStatsReq) String() string {
 func (*UpdateNewbieStatsReq) ProtoMessage() {}
 
 func (x *UpdateNewbieStatsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[23]
+	mi := &file_account_remote_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1228,7 +1373,7 @@ func (x *UpdateNewbieStatsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNewbieStatsReq.ProtoReflect.Descriptor instead.
 func (*UpdateNewbieStatsReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{23}
+	return file_account_remote_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *UpdateNewbieStatsReq) GetUid() string {
@@ -1288,7 +1433,7 @@ type UpdateNewbieStatsAck struct {
 
 func (x *UpdateNewbieStatsAck) Reset() {
 	*x = UpdateNewbieStatsAck{}
-	mi := &file_account_remote_proto_msgTypes[24]
+	mi := &file_account_remote_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1300,7 +1445,7 @@ func (x *UpdateNewbieStatsAck) String() string {
 func (*UpdateNewbieStatsAck) ProtoMessage() {}
 
 func (x *UpdateNewbieStatsAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[24]
+	mi := &file_account_remote_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1313,7 +1458,7 @@ func (x *UpdateNewbieStatsAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNewbieStatsAck.ProtoReflect.Descriptor instead.
 func (*UpdateNewbieStatsAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{24}
+	return file_account_remote_proto_rawDescGZIP(), []int{26}
 }
 
 // 运营发货/改状态 st: 1已发货(需expr) 2已完成 3已取消
@@ -1329,7 +1474,7 @@ type PhysOrdShipReq struct {
 
 func (x *PhysOrdShipReq) Reset() {
 	*x = PhysOrdShipReq{}
-	mi := &file_account_remote_proto_msgTypes[25]
+	mi := &file_account_remote_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1341,7 +1486,7 @@ func (x *PhysOrdShipReq) String() string {
 func (*PhysOrdShipReq) ProtoMessage() {}
 
 func (x *PhysOrdShipReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[25]
+	mi := &file_account_remote_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1354,7 +1499,7 @@ func (x *PhysOrdShipReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdShipReq.ProtoReflect.Descriptor instead.
 func (*PhysOrdShipReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{25}
+	return file_account_remote_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *PhysOrdShipReq) GetId() uint64 {
@@ -1393,7 +1538,7 @@ type PhysOrdShipAck struct {
 
 func (x *PhysOrdShipAck) Reset() {
 	*x = PhysOrdShipAck{}
-	mi := &file_account_remote_proto_msgTypes[26]
+	mi := &file_account_remote_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1405,7 +1550,7 @@ func (x *PhysOrdShipAck) String() string {
 func (*PhysOrdShipAck) ProtoMessage() {}
 
 func (x *PhysOrdShipAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[26]
+	mi := &file_account_remote_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1418,7 +1563,7 @@ func (x *PhysOrdShipAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdShipAck.ProtoReflect.Descriptor instead.
 func (*PhysOrdShipAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{26}
+	return file_account_remote_proto_rawDescGZIP(), []int{28}
 }
 
 // 运营后台：查询实物兑换订单（可用于待发货列表）
@@ -1439,7 +1584,7 @@ type PhysOrdAdminListReq struct {
 
 func (x *PhysOrdAdminListReq) Reset() {
 	*x = PhysOrdAdminListReq{}
-	mi := &file_account_remote_proto_msgTypes[27]
+	mi := &file_account_remote_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1451,7 +1596,7 @@ func (x *PhysOrdAdminListReq) String() string {
 func (*PhysOrdAdminListReq) ProtoMessage() {}
 
 func (x *PhysOrdAdminListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[27]
+	mi := &file_account_remote_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1464,7 +1609,7 @@ func (x *PhysOrdAdminListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdAdminListReq.ProtoReflect.Descriptor instead.
 func (*PhysOrdAdminListReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{27}
+	return file_account_remote_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *PhysOrdAdminListReq) GetStatus() int32 {
@@ -1508,7 +1653,7 @@ type PhysOrdAdminRow struct {
 
 func (x *PhysOrdAdminRow) Reset() {
 	*x = PhysOrdAdminRow{}
-	mi := &file_account_remote_proto_msgTypes[28]
+	mi := &file_account_remote_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1520,7 +1665,7 @@ func (x *PhysOrdAdminRow) String() string {
 func (*PhysOrdAdminRow) ProtoMessage() {}
 
 func (x *PhysOrdAdminRow) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[28]
+	mi := &file_account_remote_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1533,7 +1678,7 @@ func (x *PhysOrdAdminRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdAdminRow.ProtoReflect.Descriptor instead.
 func (*PhysOrdAdminRow) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{28}
+	return file_account_remote_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *PhysOrdAdminRow) GetId() uint64 {
@@ -1630,7 +1775,7 @@ type PhysOrdAdminListAck struct {
 
 func (x *PhysOrdAdminListAck) Reset() {
 	*x = PhysOrdAdminListAck{}
-	mi := &file_account_remote_proto_msgTypes[29]
+	mi := &file_account_remote_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1642,7 +1787,7 @@ func (x *PhysOrdAdminListAck) String() string {
 func (*PhysOrdAdminListAck) ProtoMessage() {}
 
 func (x *PhysOrdAdminListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[29]
+	mi := &file_account_remote_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1655,7 +1800,7 @@ func (x *PhysOrdAdminListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhysOrdAdminListAck.ProtoReflect.Descriptor instead.
 func (*PhysOrdAdminListAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{29}
+	return file_account_remote_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *PhysOrdAdminListAck) GetRows() []*PhysOrdAdminRow {
@@ -1691,7 +1836,7 @@ type VirtOrdAdminListReq struct {
 
 func (x *VirtOrdAdminListReq) Reset() {
 	*x = VirtOrdAdminListReq{}
-	mi := &file_account_remote_proto_msgTypes[30]
+	mi := &file_account_remote_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1703,7 +1848,7 @@ func (x *VirtOrdAdminListReq) String() string {
 func (*VirtOrdAdminListReq) ProtoMessage() {}
 
 func (x *VirtOrdAdminListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[30]
+	mi := &file_account_remote_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1716,7 +1861,7 @@ func (x *VirtOrdAdminListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdAdminListReq.ProtoReflect.Descriptor instead.
 func (*VirtOrdAdminListReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{30}
+	return file_account_remote_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *VirtOrdAdminListReq) GetStatus() int32 {
@@ -1770,7 +1915,7 @@ type VirtOrdAdminRow struct {
 
 func (x *VirtOrdAdminRow) Reset() {
 	*x = VirtOrdAdminRow{}
-	mi := &file_account_remote_proto_msgTypes[31]
+	mi := &file_account_remote_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1782,7 +1927,7 @@ func (x *VirtOrdAdminRow) String() string {
 func (*VirtOrdAdminRow) ProtoMessage() {}
 
 func (x *VirtOrdAdminRow) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[31]
+	mi := &file_account_remote_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1795,7 +1940,7 @@ func (x *VirtOrdAdminRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdAdminRow.ProtoReflect.Descriptor instead.
 func (*VirtOrdAdminRow) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{31}
+	return file_account_remote_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *VirtOrdAdminRow) GetId() uint64 {
@@ -1864,7 +2009,7 @@ type VirtOrdAdminListAck struct {
 
 func (x *VirtOrdAdminListAck) Reset() {
 	*x = VirtOrdAdminListAck{}
-	mi := &file_account_remote_proto_msgTypes[32]
+	mi := &file_account_remote_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1876,7 +2021,7 @@ func (x *VirtOrdAdminListAck) String() string {
 func (*VirtOrdAdminListAck) ProtoMessage() {}
 
 func (x *VirtOrdAdminListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[32]
+	mi := &file_account_remote_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1889,7 +2034,7 @@ func (x *VirtOrdAdminListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdAdminListAck.ProtoReflect.Descriptor instead.
 func (*VirtOrdAdminListAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{32}
+	return file_account_remote_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *VirtOrdAdminListAck) GetRows() []*VirtOrdAdminRow {
@@ -1917,7 +2062,7 @@ type VirtOrdMarkReq struct {
 
 func (x *VirtOrdMarkReq) Reset() {
 	*x = VirtOrdMarkReq{}
-	mi := &file_account_remote_proto_msgTypes[33]
+	mi := &file_account_remote_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1929,7 +2074,7 @@ func (x *VirtOrdMarkReq) String() string {
 func (*VirtOrdMarkReq) ProtoMessage() {}
 
 func (x *VirtOrdMarkReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[33]
+	mi := &file_account_remote_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1942,7 +2087,7 @@ func (x *VirtOrdMarkReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdMarkReq.ProtoReflect.Descriptor instead.
 func (*VirtOrdMarkReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{33}
+	return file_account_remote_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *VirtOrdMarkReq) GetId() uint64 {
@@ -1967,7 +2112,7 @@ type VirtOrdMarkAck struct {
 
 func (x *VirtOrdMarkAck) Reset() {
 	*x = VirtOrdMarkAck{}
-	mi := &file_account_remote_proto_msgTypes[34]
+	mi := &file_account_remote_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1979,7 +2124,7 @@ func (x *VirtOrdMarkAck) String() string {
 func (*VirtOrdMarkAck) ProtoMessage() {}
 
 func (x *VirtOrdMarkAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[34]
+	mi := &file_account_remote_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1992,7 +2137,7 @@ func (x *VirtOrdMarkAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtOrdMarkAck.ProtoReflect.Descriptor instead.
 func (*VirtOrdMarkAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{34}
+	return file_account_remote_proto_rawDescGZIP(), []int{36}
 }
 
 // 运营后台：按 UID 查询玩家金币账单
@@ -2010,7 +2155,7 @@ type CoinBillAdminListReq struct {
 
 func (x *CoinBillAdminListReq) Reset() {
 	*x = CoinBillAdminListReq{}
-	mi := &file_account_remote_proto_msgTypes[35]
+	mi := &file_account_remote_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2022,7 +2167,7 @@ func (x *CoinBillAdminListReq) String() string {
 func (*CoinBillAdminListReq) ProtoMessage() {}
 
 func (x *CoinBillAdminListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[35]
+	mi := &file_account_remote_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2035,7 +2180,7 @@ func (x *CoinBillAdminListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CoinBillAdminListReq.ProtoReflect.Descriptor instead.
 func (*CoinBillAdminListReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{35}
+	return file_account_remote_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *CoinBillAdminListReq) GetUid() string {
@@ -2095,7 +2240,7 @@ type CoinBillAdminRow struct {
 
 func (x *CoinBillAdminRow) Reset() {
 	*x = CoinBillAdminRow{}
-	mi := &file_account_remote_proto_msgTypes[36]
+	mi := &file_account_remote_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2107,7 +2252,7 @@ func (x *CoinBillAdminRow) String() string {
 func (*CoinBillAdminRow) ProtoMessage() {}
 
 func (x *CoinBillAdminRow) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[36]
+	mi := &file_account_remote_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2120,7 +2265,7 @@ func (x *CoinBillAdminRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CoinBillAdminRow.ProtoReflect.Descriptor instead.
 func (*CoinBillAdminRow) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{36}
+	return file_account_remote_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *CoinBillAdminRow) GetId() uint64 {
@@ -2182,7 +2327,7 @@ type CoinBillAdminListAck struct {
 
 func (x *CoinBillAdminListAck) Reset() {
 	*x = CoinBillAdminListAck{}
-	mi := &file_account_remote_proto_msgTypes[37]
+	mi := &file_account_remote_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2194,7 +2339,7 @@ func (x *CoinBillAdminListAck) String() string {
 func (*CoinBillAdminListAck) ProtoMessage() {}
 
 func (x *CoinBillAdminListAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[37]
+	mi := &file_account_remote_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2207,7 +2352,7 @@ func (x *CoinBillAdminListAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CoinBillAdminListAck.ProtoReflect.Descriptor instead.
 func (*CoinBillAdminListAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{37}
+	return file_account_remote_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *CoinBillAdminListAck) GetRows() []*CoinBillAdminRow {
@@ -2235,7 +2380,7 @@ type SetLiveAiReq struct {
 
 func (x *SetLiveAiReq) Reset() {
 	*x = SetLiveAiReq{}
-	mi := &file_account_remote_proto_msgTypes[38]
+	mi := &file_account_remote_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2247,7 +2392,7 @@ func (x *SetLiveAiReq) String() string {
 func (*SetLiveAiReq) ProtoMessage() {}
 
 func (x *SetLiveAiReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[38]
+	mi := &file_account_remote_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2260,7 +2405,7 @@ func (x *SetLiveAiReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetLiveAiReq.ProtoReflect.Descriptor instead.
 func (*SetLiveAiReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{38}
+	return file_account_remote_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *SetLiveAiReq) GetUid() string {
@@ -2287,7 +2432,7 @@ type SetLiveAiAck struct {
 
 func (x *SetLiveAiAck) Reset() {
 	*x = SetLiveAiAck{}
-	mi := &file_account_remote_proto_msgTypes[39]
+	mi := &file_account_remote_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2299,7 +2444,7 @@ func (x *SetLiveAiAck) String() string {
 func (*SetLiveAiAck) ProtoMessage() {}
 
 func (x *SetLiveAiAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[39]
+	mi := &file_account_remote_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2312,7 +2457,7 @@ func (x *SetLiveAiAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetLiveAiAck.ProtoReflect.Descriptor instead.
 func (*SetLiveAiAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{39}
+	return file_account_remote_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *SetLiveAiAck) GetUid() string {
@@ -2339,7 +2484,7 @@ type AssignDiyOrgReq struct {
 
 func (x *AssignDiyOrgReq) Reset() {
 	*x = AssignDiyOrgReq{}
-	mi := &file_account_remote_proto_msgTypes[40]
+	mi := &file_account_remote_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2351,7 +2496,7 @@ func (x *AssignDiyOrgReq) String() string {
 func (*AssignDiyOrgReq) ProtoMessage() {}
 
 func (x *AssignDiyOrgReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[40]
+	mi := &file_account_remote_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2364,7 +2509,7 @@ func (x *AssignDiyOrgReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignDiyOrgReq.ProtoReflect.Descriptor instead.
 func (*AssignDiyOrgReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{40}
+	return file_account_remote_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *AssignDiyOrgReq) GetUid() string {
@@ -2392,7 +2537,7 @@ type AssignDiyOrgAck struct {
 
 func (x *AssignDiyOrgAck) Reset() {
 	*x = AssignDiyOrgAck{}
-	mi := &file_account_remote_proto_msgTypes[41]
+	mi := &file_account_remote_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2404,7 +2549,7 @@ func (x *AssignDiyOrgAck) String() string {
 func (*AssignDiyOrgAck) ProtoMessage() {}
 
 func (x *AssignDiyOrgAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[41]
+	mi := &file_account_remote_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2417,7 +2562,7 @@ func (x *AssignDiyOrgAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignDiyOrgAck.ProtoReflect.Descriptor instead.
 func (*AssignDiyOrgAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{41}
+	return file_account_remote_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *AssignDiyOrgAck) GetUid() string {
@@ -2451,7 +2596,7 @@ type ReleaseDiyOrgReq struct {
 
 func (x *ReleaseDiyOrgReq) Reset() {
 	*x = ReleaseDiyOrgReq{}
-	mi := &file_account_remote_proto_msgTypes[42]
+	mi := &file_account_remote_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2463,7 +2608,7 @@ func (x *ReleaseDiyOrgReq) String() string {
 func (*ReleaseDiyOrgReq) ProtoMessage() {}
 
 func (x *ReleaseDiyOrgReq) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[42]
+	mi := &file_account_remote_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2476,7 +2621,7 @@ func (x *ReleaseDiyOrgReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleaseDiyOrgReq.ProtoReflect.Descriptor instead.
 func (*ReleaseDiyOrgReq) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{42}
+	return file_account_remote_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *ReleaseDiyOrgReq) GetUid() string {
@@ -2504,7 +2649,7 @@ type ReleaseDiyOrgAck struct {
 
 func (x *ReleaseDiyOrgAck) Reset() {
 	*x = ReleaseDiyOrgAck{}
-	mi := &file_account_remote_proto_msgTypes[43]
+	mi := &file_account_remote_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2516,7 +2661,7 @@ func (x *ReleaseDiyOrgAck) String() string {
 func (*ReleaseDiyOrgAck) ProtoMessage() {}
 
 func (x *ReleaseDiyOrgAck) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[43]
+	mi := &file_account_remote_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2529,7 +2674,7 @@ func (x *ReleaseDiyOrgAck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleaseDiyOrgAck.ProtoReflect.Descriptor instead.
 func (*ReleaseDiyOrgAck) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{43}
+	return file_account_remote_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ReleaseDiyOrgAck) GetUid() string {
@@ -2563,7 +2708,7 @@ type LuckZeroPush struct {
 
 func (x *LuckZeroPush) Reset() {
 	*x = LuckZeroPush{}
-	mi := &file_account_remote_proto_msgTypes[44]
+	mi := &file_account_remote_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2575,7 +2720,7 @@ func (x *LuckZeroPush) String() string {
 func (*LuckZeroPush) ProtoMessage() {}
 
 func (x *LuckZeroPush) ProtoReflect() protoreflect.Message {
-	mi := &file_account_remote_proto_msgTypes[44]
+	mi := &file_account_remote_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2588,7 +2733,7 @@ func (x *LuckZeroPush) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LuckZeroPush.ProtoReflect.Descriptor instead.
 func (*LuckZeroPush) Descriptor() ([]byte, []int) {
-	return file_account_remote_proto_rawDescGZIP(), []int{44}
+	return file_account_remote_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *LuckZeroPush) GetData() []byte {
@@ -2657,6 +2802,24 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x0eChangeItemsAck\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x127\n" +
 	"\x05items\x18\x02 \x03(\v2!.sproto.ChangeItemsAck.ItemsEntryR\x05items\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xfc\x01\n" +
+	"\fFeeChangeReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12!\n" +
+	"\foperation_id\x18\x02 \x01(\tR\voperationId\x12\x19\n" +
+	"\bmatch_id\x18\x03 \x01(\x05R\amatchId\x12\x1b\n" +
+	"\tgame_type\x18\x04 \x01(\tR\bgameType\x12/\n" +
+	"\x03fee\x18\x05 \x03(\v2\x1d.sproto.FeeChangeReq.FeeEntryR\x03fee\x12\x16\n" +
+	"\x06action\x18\x06 \x01(\tR\x06action\x1a6\n" +
+	"\bFeeEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xa7\x01\n" +
+	"\fFeeChangeAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x125\n" +
+	"\x05items\x18\x02 \x03(\v2\x1f.sproto.FeeChangeAck.ItemsEntryR\x05items\x12\x14\n" +
+	"\x05state\x18\x03 \x01(\tR\x05state\x1a8\n" +
 	"\n" +
 	"ItemsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
@@ -2812,7 +2975,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -2827,64 +2990,70 @@ var file_account_remote_proto_goTypes = []any{
 	(*ClearLuckNextAck)(nil),     // 10: sproto.ClearLuckNextAck
 	(*ChangeItemsReq)(nil),       // 11: sproto.ChangeItemsReq
 	(*ChangeItemsAck)(nil),       // 12: sproto.ChangeItemsAck
-	(*RechargeReq)(nil),          // 13: sproto.RechargeReq
-	(*RechargeAck)(nil),          // 14: sproto.RechargeAck
-	(*GrantIceProtectReq)(nil),   // 15: sproto.GrantIceProtectReq
-	(*GrantIceProtectAck)(nil),   // 16: sproto.GrantIceProtectAck
-	(*MarkBankruptReq)(nil),      // 17: sproto.MarkBankruptReq
-	(*MarkBankruptAck)(nil),      // 18: sproto.MarkBankruptAck
-	(*ApplyDownshiftReq)(nil),    // 19: sproto.ApplyDownshiftReq
-	(*ApplyDownshiftAck)(nil),    // 20: sproto.ApplyDownshiftAck
-	(*GetNewbieStatsReq)(nil),    // 21: sproto.GetNewbieStatsReq
-	(*GetNewbieStatsAck)(nil),    // 22: sproto.GetNewbieStatsAck
-	(*UpdateNewbieStatsReq)(nil), // 23: sproto.UpdateNewbieStatsReq
-	(*UpdateNewbieStatsAck)(nil), // 24: sproto.UpdateNewbieStatsAck
-	(*PhysOrdShipReq)(nil),       // 25: sproto.PhysOrdShipReq
-	(*PhysOrdShipAck)(nil),       // 26: sproto.PhysOrdShipAck
-	(*PhysOrdAdminListReq)(nil),  // 27: sproto.PhysOrdAdminListReq
-	(*PhysOrdAdminRow)(nil),      // 28: sproto.PhysOrdAdminRow
-	(*PhysOrdAdminListAck)(nil),  // 29: sproto.PhysOrdAdminListAck
-	(*VirtOrdAdminListReq)(nil),  // 30: sproto.VirtOrdAdminListReq
-	(*VirtOrdAdminRow)(nil),      // 31: sproto.VirtOrdAdminRow
-	(*VirtOrdAdminListAck)(nil),  // 32: sproto.VirtOrdAdminListAck
-	(*VirtOrdMarkReq)(nil),       // 33: sproto.VirtOrdMarkReq
-	(*VirtOrdMarkAck)(nil),       // 34: sproto.VirtOrdMarkAck
-	(*CoinBillAdminListReq)(nil), // 35: sproto.CoinBillAdminListReq
-	(*CoinBillAdminRow)(nil),     // 36: sproto.CoinBillAdminRow
-	(*CoinBillAdminListAck)(nil), // 37: sproto.CoinBillAdminListAck
-	(*SetLiveAiReq)(nil),         // 38: sproto.SetLiveAiReq
-	(*SetLiveAiAck)(nil),         // 39: sproto.SetLiveAiAck
-	(*AssignDiyOrgReq)(nil),      // 40: sproto.AssignDiyOrgReq
-	(*AssignDiyOrgAck)(nil),      // 41: sproto.AssignDiyOrgAck
-	(*ReleaseDiyOrgReq)(nil),     // 42: sproto.ReleaseDiyOrgReq
-	(*ReleaseDiyOrgAck)(nil),     // 43: sproto.ReleaseDiyOrgAck
-	(*LuckZeroPush)(nil),         // 44: sproto.LuckZeroPush
-	nil,                          // 45: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 46: sproto.PlayerInfoAck.EquippedEntry
-	nil,                          // 47: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 48: sproto.ChangeItemsAck.ItemsEntry
-	nil,                          // 49: sproto.PhysOrdAdminRow.ItemsEntry
-	nil,                          // 50: sproto.VirtOrdAdminRow.ItemsEntry
-	(*anypb.Any)(nil),            // 51: google.protobuf.Any
+	(*FeeChangeReq)(nil),         // 13: sproto.FeeChangeReq
+	(*FeeChangeAck)(nil),         // 14: sproto.FeeChangeAck
+	(*RechargeReq)(nil),          // 15: sproto.RechargeReq
+	(*RechargeAck)(nil),          // 16: sproto.RechargeAck
+	(*GrantIceProtectReq)(nil),   // 17: sproto.GrantIceProtectReq
+	(*GrantIceProtectAck)(nil),   // 18: sproto.GrantIceProtectAck
+	(*MarkBankruptReq)(nil),      // 19: sproto.MarkBankruptReq
+	(*MarkBankruptAck)(nil),      // 20: sproto.MarkBankruptAck
+	(*ApplyDownshiftReq)(nil),    // 21: sproto.ApplyDownshiftReq
+	(*ApplyDownshiftAck)(nil),    // 22: sproto.ApplyDownshiftAck
+	(*GetNewbieStatsReq)(nil),    // 23: sproto.GetNewbieStatsReq
+	(*GetNewbieStatsAck)(nil),    // 24: sproto.GetNewbieStatsAck
+	(*UpdateNewbieStatsReq)(nil), // 25: sproto.UpdateNewbieStatsReq
+	(*UpdateNewbieStatsAck)(nil), // 26: sproto.UpdateNewbieStatsAck
+	(*PhysOrdShipReq)(nil),       // 27: sproto.PhysOrdShipReq
+	(*PhysOrdShipAck)(nil),       // 28: sproto.PhysOrdShipAck
+	(*PhysOrdAdminListReq)(nil),  // 29: sproto.PhysOrdAdminListReq
+	(*PhysOrdAdminRow)(nil),      // 30: sproto.PhysOrdAdminRow
+	(*PhysOrdAdminListAck)(nil),  // 31: sproto.PhysOrdAdminListAck
+	(*VirtOrdAdminListReq)(nil),  // 32: sproto.VirtOrdAdminListReq
+	(*VirtOrdAdminRow)(nil),      // 33: sproto.VirtOrdAdminRow
+	(*VirtOrdAdminListAck)(nil),  // 34: sproto.VirtOrdAdminListAck
+	(*VirtOrdMarkReq)(nil),       // 35: sproto.VirtOrdMarkReq
+	(*VirtOrdMarkAck)(nil),       // 36: sproto.VirtOrdMarkAck
+	(*CoinBillAdminListReq)(nil), // 37: sproto.CoinBillAdminListReq
+	(*CoinBillAdminRow)(nil),     // 38: sproto.CoinBillAdminRow
+	(*CoinBillAdminListAck)(nil), // 39: sproto.CoinBillAdminListAck
+	(*SetLiveAiReq)(nil),         // 40: sproto.SetLiveAiReq
+	(*SetLiveAiAck)(nil),         // 41: sproto.SetLiveAiAck
+	(*AssignDiyOrgReq)(nil),      // 42: sproto.AssignDiyOrgReq
+	(*AssignDiyOrgAck)(nil),      // 43: sproto.AssignDiyOrgAck
+	(*ReleaseDiyOrgReq)(nil),     // 44: sproto.ReleaseDiyOrgReq
+	(*ReleaseDiyOrgAck)(nil),     // 45: sproto.ReleaseDiyOrgAck
+	(*LuckZeroPush)(nil),         // 46: sproto.LuckZeroPush
+	nil,                          // 47: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 48: sproto.PlayerInfoAck.EquippedEntry
+	nil,                          // 49: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 50: sproto.ChangeItemsAck.ItemsEntry
+	nil,                          // 51: sproto.FeeChangeReq.FeeEntry
+	nil,                          // 52: sproto.FeeChangeAck.ItemsEntry
+	nil,                          // 53: sproto.PhysOrdAdminRow.ItemsEntry
+	nil,                          // 54: sproto.VirtOrdAdminRow.ItemsEntry
+	(*anypb.Any)(nil),            // 55: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	51, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	51, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	55, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	55, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
 	5,  // 2: sproto.GetBotsAck.bots:type_name -> sproto.BotLease
-	45, // 3: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	46, // 4: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
-	47, // 5: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	48, // 6: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
-	49, // 7: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
-	28, // 8: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
-	50, // 9: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
-	31, // 10: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
-	36, // 11: sproto.CoinBillAdminListAck.rows:type_name -> sproto.CoinBillAdminRow
-	12, // [12:12] is the sub-list for method output_type
-	12, // [12:12] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	47, // 3: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	48, // 4: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
+	49, // 5: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	50, // 6: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	51, // 7: sproto.FeeChangeReq.fee:type_name -> sproto.FeeChangeReq.FeeEntry
+	52, // 8: sproto.FeeChangeAck.items:type_name -> sproto.FeeChangeAck.ItemsEntry
+	53, // 9: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
+	30, // 10: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
+	54, // 11: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
+	33, // 12: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
+	38, // 13: sproto.CoinBillAdminListAck.rows:type_name -> sproto.CoinBillAdminRow
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_account_remote_proto_init() }
@@ -2898,7 +3067,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   51,
+			NumMessages:   55,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

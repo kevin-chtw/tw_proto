@@ -50,6 +50,42 @@ message SignupReq {//报名
 message SignoutReq {//取消报名
 }
 
+message PairInviteReq {}
+
+message PairInviteAck {
+  string invite_id = 1;
+  PairTeam team = 2;
+  int32 signed_players = 3;
+}
+
+message PairConfirmReq {
+  string invite_id = 1;
+}
+
+message PairConfirmAck {
+  PairTeam team = 1;
+  int32 signed_players = 2;
+}
+
+message PairCancelReq {}
+
+message PairCancelAck {
+  PairTeam team = 1;
+  int32 signed_players = 2;
+}
+
+message PairTeam {
+  string team_id = 1;
+  string status = 2; // pending / signed / cancelled
+  repeated PairMember members = 3;
+}
+
+message PairMember {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+}
+
 message ContinueReq {
   bool confirm = 1; // 确认从背包补充金币
 }

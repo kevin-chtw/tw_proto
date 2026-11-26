@@ -9,6 +9,7 @@ message GameReq {
   int32 matchid = 1;
   int32 tableid = 2;
   google.protobuf.Any req = 3; // 请求内容
+  string table_session_id = 4;
 }
 
 message GameAck {
@@ -28,6 +29,7 @@ message AddTableReq {
   bytes emote_conf = 8; // 表情配置(JSON快照，按match下发)
   int32 seat_mode = 9; // 0 自动落座，1 手动选座
   string server_id = 10; // 比赛服 server id
+  string table_session_id = 11; // 一次开桌的标识；旧执行器缺省为空
 }
 
 message AddPlayerReq {
@@ -59,6 +61,7 @@ message MarkLuckReq {
 
 message CancelTableReq {
   int32 reason = 1; // 取消原因
+  string table_session_id = 2;
 } 
 
 message EmptyAck {}

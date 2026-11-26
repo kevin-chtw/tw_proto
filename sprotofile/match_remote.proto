@@ -23,12 +23,14 @@ message NetStateReq {
 message GameStartReq {
   int32 tableid = 1;
   int32 cur_game_count = 2; // 当前游戏局数，第一局为 1
+  string table_session_id = 3;
 }
 
 message GameResultReq {
   int32 tableid = 1;
   int32 cur_game_count = 2; // 当前游戏局数
   map<string,string> round_data = 3; // 游戏回合数据
+  string table_session_id = 4;
 }
 
 message PlayerResultReq {
@@ -39,11 +41,13 @@ message PlayerResultReq {
   int64 tax = 5; //税分
   int64 win_score = 6; //输赢分
   string stats = 7; // 游戏统计数据
+  string table_session_id = 8;
 }
 
 message GameOverReq {
   int32 tableid = 1;
   int32 cur_game_count = 2; // 当前游戏局数
+  string table_session_id = 3;
 }
 
 message NetStateAck {

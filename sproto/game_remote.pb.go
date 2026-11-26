@@ -7,12 +7,13 @@
 package sproto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	anypb "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 )
 
 const (
@@ -23,12 +24,13 @@ const (
 )
 
 type GameReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Matchid       int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
-	Tableid       int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
-	Req           *anypb.Any             `protobuf:"bytes,3,opt,name=req,proto3" json:"req,omitempty"` // 请求内容
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Matchid        int32                  `protobuf:"varint,1,opt,name=matchid,proto3" json:"matchid,omitempty"`
+	Tableid        int32                  `protobuf:"varint,2,opt,name=tableid,proto3" json:"tableid,omitempty"`
+	Req            *anypb.Any             `protobuf:"bytes,3,opt,name=req,proto3" json:"req,omitempty"` // 请求内容
+	TableSessionId string                 `protobuf:"bytes,4,opt,name=table_session_id,json=tableSessionId,proto3" json:"table_session_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *GameReq) Reset() {
@@ -80,6 +82,13 @@ func (x *GameReq) GetReq() *anypb.Any {
 		return x.Req
 	}
 	return nil
+}
+
+func (x *GameReq) GetTableSessionId() string {
+	if x != nil {
+		return x.TableSessionId
+	}
+	return ""
 }
 
 type GameAck struct {
@@ -143,19 +152,20 @@ func (x *GameAck) GetAck() *anypb.Any {
 }
 
 type AddTableReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	MatchType     string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`                                                             // 比赛服务类型
-	GameCount     int32                  `protobuf:"varint,2,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 游戏局数
-	PlayerCount   int32                  `protobuf:"varint,3,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`                                                      // 玩家数量
-	Property      string                 `protobuf:"bytes,4,opt,name=property,proto3" json:"property,omitempty"`                                                                                // 游戏配置
-	Creator       string                 `protobuf:"bytes,5,opt,name=creator,proto3" json:"creator,omitempty"`                                                                                  // 创建者
-	Desn          string                 `protobuf:"bytes,6,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        // 游戏描述
-	Fdproperty    map[string]int32       `protobuf:"bytes,7,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
-	EmoteConf     []byte                 `protobuf:"bytes,8,opt,name=emote_conf,json=emoteConf,proto3" json:"emote_conf,omitempty"`                                                             // 表情配置(JSON快照，按match下发)
-	SeatMode      int32                  `protobuf:"varint,9,opt,name=seat_mode,json=seatMode,proto3" json:"seat_mode,omitempty"`                                                               // 0 自动落座，1 手动选座
-	ServerId      string                 `protobuf:"bytes,10,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`                                                               // 比赛服 server id
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	MatchType      string                 `protobuf:"bytes,1,opt,name=match_type,json=matchType,proto3" json:"match_type,omitempty"`                                                             // 比赛服务类型
+	GameCount      int32                  `protobuf:"varint,2,opt,name=game_count,json=gameCount,proto3" json:"game_count,omitempty"`                                                            // 游戏局数
+	PlayerCount    int32                  `protobuf:"varint,3,opt,name=player_count,json=playerCount,proto3" json:"player_count,omitempty"`                                                      // 玩家数量
+	Property       string                 `protobuf:"bytes,4,opt,name=property,proto3" json:"property,omitempty"`                                                                                // 游戏配置
+	Creator        string                 `protobuf:"bytes,5,opt,name=creator,proto3" json:"creator,omitempty"`                                                                                  // 创建者
+	Desn           string                 `protobuf:"bytes,6,opt,name=desn,proto3" json:"desn,omitempty"`                                                                                        // 游戏描述
+	Fdproperty     map[string]int32       `protobuf:"bytes,7,rep,name=fdproperty,proto3" json:"fdproperty,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` // 好友房自选配置
+	EmoteConf      []byte                 `protobuf:"bytes,8,opt,name=emote_conf,json=emoteConf,proto3" json:"emote_conf,omitempty"`                                                             // 表情配置(JSON快照，按match下发)
+	SeatMode       int32                  `protobuf:"varint,9,opt,name=seat_mode,json=seatMode,proto3" json:"seat_mode,omitempty"`                                                               // 0 自动落座，1 手动选座
+	ServerId       string                 `protobuf:"bytes,10,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`                                                               // 比赛服 server id
+	TableSessionId string                 `protobuf:"bytes,11,opt,name=table_session_id,json=tableSessionId,proto3" json:"table_session_id,omitempty"`                                           // 一次开桌的标识；旧执行器缺省为空
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *AddTableReq) Reset() {
@@ -254,6 +264,13 @@ func (x *AddTableReq) GetSeatMode() int32 {
 func (x *AddTableReq) GetServerId() string {
 	if x != nil {
 		return x.ServerId
+	}
+	return ""
+}
+
+func (x *AddTableReq) GetTableSessionId() string {
+	if x != nil {
+		return x.TableSessionId
 	}
 	return ""
 }
@@ -499,10 +516,11 @@ func (x *MarkLuckReq) GetLuck() int64 {
 }
 
 type CancelTableReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Reason        int32                  `protobuf:"varint,1,opt,name=reason,proto3" json:"reason,omitempty"` // 取消原因
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Reason         int32                  `protobuf:"varint,1,opt,name=reason,proto3" json:"reason,omitempty"` // 取消原因
+	TableSessionId string                 `protobuf:"bytes,2,opt,name=table_session_id,json=tableSessionId,proto3" json:"table_session_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *CancelTableReq) Reset() {
@@ -540,6 +558,13 @@ func (x *CancelTableReq) GetReason() int32 {
 		return x.Reason
 	}
 	return 0
+}
+
+func (x *CancelTableReq) GetTableSessionId() string {
+	if x != nil {
+		return x.TableSessionId
+	}
+	return ""
 }
 
 type EmptyAck struct {
@@ -730,15 +755,16 @@ var File_game_remote_proto protoreflect.FileDescriptor
 
 const file_game_remote_proto_rawDesc = "" +
 	"\n" +
-	"\x11game_remote.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"e\n" +
+	"\x11game_remote.proto\x12\x06sproto\x1a\x19google/protobuf/any.proto\"\x8f\x01\n" +
 	"\aGameReq\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
-	"\x03req\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03req\"e\n" +
+	"\x03req\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03req\x12(\n" +
+	"\x10table_session_id\x18\x04 \x01(\tR\x0etableSessionId\"e\n" +
 	"\aGameAck\x12\x18\n" +
 	"\amatchid\x18\x01 \x01(\x05R\amatchid\x12\x18\n" +
 	"\atableid\x18\x02 \x01(\x05R\atableid\x12&\n" +
-	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\x95\x03\n" +
+	"\x03ack\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x03ack\"\xbf\x03\n" +
 	"\vAddTableReq\x12\x1d\n" +
 	"\n" +
 	"match_type\x18\x01 \x01(\tR\tmatchType\x12\x1d\n" +
@@ -755,7 +781,8 @@ const file_game_remote_proto_rawDesc = "" +
 	"emote_conf\x18\b \x01(\fR\temoteConf\x12\x1b\n" +
 	"\tseat_mode\x18\t \x01(\x05R\bseatMode\x12\x1b\n" +
 	"\tserver_id\x18\n" +
-	" \x01(\tR\bserverId\x1a=\n" +
+	" \x01(\tR\bserverId\x12(\n" +
+	"\x10table_session_id\x18\v \x01(\tR\x0etableSessionId\x1a=\n" +
 	"\x0fFdpropertyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xb6\x05\n" +
@@ -791,9 +818,10 @@ const file_game_remote_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"3\n" +
 	"\vMarkLuckReq\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
-	"\x04luck\x18\x02 \x01(\x03R\x04luck\"(\n" +
+	"\x04luck\x18\x02 \x01(\x03R\x04luck\"R\n" +
 	"\x0eCancelTableReq\x12\x16\n" +
-	"\x06reason\x18\x01 \x01(\x05R\x06reason\"\n" +
+	"\x06reason\x18\x01 \x01(\x05R\x06reason\x12(\n" +
+	"\x10table_session_id\x18\x02 \x01(\tR\x0etableSessionId\"\n" +
 	"\n" +
 	"\bEmptyAck\"@\n" +
 	"\fExitTableReq\x12\x1a\n" +
