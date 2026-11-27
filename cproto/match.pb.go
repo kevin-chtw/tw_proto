@@ -7,13 +7,12 @@
 package cproto
 
 import (
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
-
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	anypb "google.golang.org/protobuf/types/known/anypb"
+	reflect "reflect"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -2249,6 +2248,8 @@ type BonusRewardAck struct {
 	NextCond      int32                  `protobuf:"varint,4,opt,name=next_cond,json=nextCond,proto3" json:"next_cond,omitempty"`                                                                               //下一奖励条件
 	NextBonus     map[int32]int64        `protobuf:"bytes,5,rep,name=next_bonus,json=nextBonus,proto3" json:"next_bonus,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"` //下一级奖金详情
 	BonusLevels   []*BonusLevel          `protobuf:"bytes,6,rep,name=bonus_levels,json=bonusLevels,proto3" json:"bonus_levels,omitempty"`                                                                       //定副完整档位
+	RoundId       string                 `protobuf:"bytes,7,opt,name=round_id,json=roundId,proto3" json:"round_id,omitempty"`                                                                                   // crit：局键
+	EquipCoins    int64                  `protobuf:"varint,8,opt,name=equip_coins,json=equipCoins,proto3" json:"equip_coins,omitempty"`                                                                         // crit：装备加成金币
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2323,6 +2324,20 @@ func (x *BonusRewardAck) GetBonusLevels() []*BonusLevel {
 		return x.BonusLevels
 	}
 	return nil
+}
+
+func (x *BonusRewardAck) GetRoundId() string {
+	if x != nil {
+		return x.RoundId
+	}
+	return ""
+}
+
+func (x *BonusRewardAck) GetEquipCoins() int64 {
+	if x != nil {
+		return x.EquipCoins
+	}
+	return 0
 }
 
 // 比赛暂停。paused=true 停住本地倒计时；false 从剩下的时间接着走。
@@ -2551,7 +2566,7 @@ const file_match_proto_rawDesc = "" +
 	"\n" +
 	"BonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\x8e\x03\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xca\x03\n" +
 	"\x0eBonusRewardAck\x12\x1d\n" +
 	"\n" +
 	"bonus_type\x18\x01 \x01(\tR\tbonusType\x12\x12\n" +
@@ -2560,7 +2575,10 @@ const file_match_proto_rawDesc = "" +
 	"\tnext_cond\x18\x04 \x01(\x05R\bnextCond\x12D\n" +
 	"\n" +
 	"next_bonus\x18\x05 \x03(\v2%.cproto.BonusRewardAck.NextBonusEntryR\tnextBonus\x125\n" +
-	"\fbonus_levels\x18\x06 \x03(\v2\x12.cproto.BonusLevelR\vbonusLevels\x1a8\n" +
+	"\fbonus_levels\x18\x06 \x03(\v2\x12.cproto.BonusLevelR\vbonusLevels\x12\x19\n" +
+	"\bround_id\x18\a \x01(\tR\aroundId\x12\x1f\n" +
+	"\vequip_coins\x18\b \x01(\x03R\n" +
+	"equipCoins\x1a8\n" +
 	"\n" +
 	"BonusEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +

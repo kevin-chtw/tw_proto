@@ -243,6 +243,8 @@ message BonusRewardAck {
   int32 next_cond = 4; //下一奖励条件
   map<int32,int64> next_bonus = 5; //下一级奖金详情
   repeated BonusLevel bonus_levels = 6; //定副完整档位
+  string round_id = 7; // crit：局键
+  int64 equip_coins = 8; // crit：装备加成金币
 }
 
 // 比赛暂停。paused=true 停住本地倒计时；false 从剩下的时间接着走。
