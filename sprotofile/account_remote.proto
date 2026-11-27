@@ -281,3 +281,29 @@ message LuckZeroPush {
   bytes data = 1;
 }
 
+
+message DdzEquipStateReq {
+  string uid = 1;
+}
+
+message DdzEquipStateAck {
+  int32 tier = 1;
+  int32 level = 2;
+  int32 bonus_bp = 3;
+}
+
+message DdzAwardReq {
+  string uid = 1;
+  string operation_id = 2;
+  map<int32, int64> items = 3;
+  int32 unlock_tier = 4;
+  string reason = 5;
+  string remark = 6;
+}
+
+message DdzAwardAck {
+  string uid = 1;
+  map<int32, int64> balances = 2;
+  int32 equip_tier = 3;
+  int32 equip_level = 4;
+}

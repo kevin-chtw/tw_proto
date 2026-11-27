@@ -2743,6 +2743,262 @@ func (x *LuckZeroPush) GetData() []byte {
 	return nil
 }
 
+type DdzEquipStateReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DdzEquipStateReq) Reset() {
+	*x = DdzEquipStateReq{}
+	mi := &file_account_remote_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DdzEquipStateReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DdzEquipStateReq) ProtoMessage() {}
+
+func (x *DdzEquipStateReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DdzEquipStateReq.ProtoReflect.Descriptor instead.
+func (*DdzEquipStateReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *DdzEquipStateReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+type DdzEquipStateAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tier          int32                  `protobuf:"varint,1,opt,name=tier,proto3" json:"tier,omitempty"`
+	Level         int32                  `protobuf:"varint,2,opt,name=level,proto3" json:"level,omitempty"`
+	BonusBp       int32                  `protobuf:"varint,3,opt,name=bonus_bp,json=bonusBp,proto3" json:"bonus_bp,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DdzEquipStateAck) Reset() {
+	*x = DdzEquipStateAck{}
+	mi := &file_account_remote_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DdzEquipStateAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DdzEquipStateAck) ProtoMessage() {}
+
+func (x *DdzEquipStateAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DdzEquipStateAck.ProtoReflect.Descriptor instead.
+func (*DdzEquipStateAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *DdzEquipStateAck) GetTier() int32 {
+	if x != nil {
+		return x.Tier
+	}
+	return 0
+}
+
+func (x *DdzEquipStateAck) GetLevel() int32 {
+	if x != nil {
+		return x.Level
+	}
+	return 0
+}
+
+func (x *DdzEquipStateAck) GetBonusBp() int32 {
+	if x != nil {
+		return x.BonusBp
+	}
+	return 0
+}
+
+type DdzAwardReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	OperationId   string                 `protobuf:"bytes,2,opt,name=operation_id,json=operationId,proto3" json:"operation_id,omitempty"`
+	Items         map[int32]int64        `protobuf:"bytes,3,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	UnlockTier    int32                  `protobuf:"varint,4,opt,name=unlock_tier,json=unlockTier,proto3" json:"unlock_tier,omitempty"`
+	Reason        string                 `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
+	Remark        string                 `protobuf:"bytes,6,opt,name=remark,proto3" json:"remark,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DdzAwardReq) Reset() {
+	*x = DdzAwardReq{}
+	mi := &file_account_remote_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DdzAwardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DdzAwardReq) ProtoMessage() {}
+
+func (x *DdzAwardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DdzAwardReq.ProtoReflect.Descriptor instead.
+func (*DdzAwardReq) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *DdzAwardReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *DdzAwardReq) GetOperationId() string {
+	if x != nil {
+		return x.OperationId
+	}
+	return ""
+}
+
+func (x *DdzAwardReq) GetItems() map[int32]int64 {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *DdzAwardReq) GetUnlockTier() int32 {
+	if x != nil {
+		return x.UnlockTier
+	}
+	return 0
+}
+
+func (x *DdzAwardReq) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *DdzAwardReq) GetRemark() string {
+	if x != nil {
+		return x.Remark
+	}
+	return ""
+}
+
+type DdzAwardAck struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Balances      map[int32]int64        `protobuf:"bytes,2,rep,name=balances,proto3" json:"balances,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	EquipTier     int32                  `protobuf:"varint,3,opt,name=equip_tier,json=equipTier,proto3" json:"equip_tier,omitempty"`
+	EquipLevel    int32                  `protobuf:"varint,4,opt,name=equip_level,json=equipLevel,proto3" json:"equip_level,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DdzAwardAck) Reset() {
+	*x = DdzAwardAck{}
+	mi := &file_account_remote_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DdzAwardAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DdzAwardAck) ProtoMessage() {}
+
+func (x *DdzAwardAck) ProtoReflect() protoreflect.Message {
+	mi := &file_account_remote_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DdzAwardAck.ProtoReflect.Descriptor instead.
+func (*DdzAwardAck) Descriptor() ([]byte, []int) {
+	return file_account_remote_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *DdzAwardAck) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *DdzAwardAck) GetBalances() map[int32]int64 {
+	if x != nil {
+		return x.Balances
+	}
+	return nil
+}
+
+func (x *DdzAwardAck) GetEquipTier() int32 {
+	if x != nil {
+		return x.EquipTier
+	}
+	return 0
+}
+
+func (x *DdzAwardAck) GetEquipLevel() int32 {
+	if x != nil {
+		return x.EquipLevel
+	}
+	return 0
+}
+
 var File_account_remote_proto protoreflect.FileDescriptor
 
 const file_account_remote_proto_rawDesc = "" +
@@ -2961,7 +3217,35 @@ const file_account_remote_proto_rawDesc = "" +
 	"\x06org_id\x18\x02 \x01(\rR\x05orgId\x12\x16\n" +
 	"\x06result\x18\x03 \x01(\tR\x06result\"\"\n" +
 	"\fLuckZeroPush\x12\x12\n" +
-	"\x04data\x18\x01 \x01(\fR\x04dataB\vZ\t../sprotob\x06proto3"
+	"\x04data\x18\x01 \x01(\fR\x04data\"$\n" +
+	"\x10DdzEquipStateReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\"W\n" +
+	"\x10DdzEquipStateAck\x12\x12\n" +
+	"\x04tier\x18\x01 \x01(\x05R\x04tier\x12\x14\n" +
+	"\x05level\x18\x02 \x01(\x05R\x05level\x12\x19\n" +
+	"\bbonus_bp\x18\x03 \x01(\x05R\abonusBp\"\x83\x02\n" +
+	"\vDdzAwardReq\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12!\n" +
+	"\foperation_id\x18\x02 \x01(\tR\voperationId\x124\n" +
+	"\x05items\x18\x03 \x03(\v2\x1e.sproto.DdzAwardReq.ItemsEntryR\x05items\x12\x1f\n" +
+	"\vunlock_tier\x18\x04 \x01(\x05R\n" +
+	"unlockTier\x12\x16\n" +
+	"\x06reason\x18\x05 \x01(\tR\x06reason\x12\x16\n" +
+	"\x06remark\x18\x06 \x01(\tR\x06remark\x1a8\n" +
+	"\n" +
+	"ItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xdb\x01\n" +
+	"\vDdzAwardAck\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12=\n" +
+	"\bbalances\x18\x02 \x03(\v2!.sproto.DdzAwardAck.BalancesEntryR\bbalances\x12\x1d\n" +
+	"\n" +
+	"equip_tier\x18\x03 \x01(\x05R\tequipTier\x12\x1f\n" +
+	"\vequip_level\x18\x04 \x01(\x05R\n" +
+	"equipLevel\x1a;\n" +
+	"\rBalancesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01B\vZ\t../sprotob\x06proto3"
 
 var (
 	file_account_remote_proto_rawDescOnce sync.Once
@@ -2975,7 +3259,7 @@ func file_account_remote_proto_rawDescGZIP() []byte {
 	return file_account_remote_proto_rawDescData
 }
 
-var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
+var file_account_remote_proto_msgTypes = make([]protoimpl.MessageInfo, 61)
 var file_account_remote_proto_goTypes = []any{
 	(*AccountReq)(nil),           // 0: sproto.AccountReq
 	(*AccountAck)(nil),           // 1: sproto.AccountAck
@@ -3024,36 +3308,44 @@ var file_account_remote_proto_goTypes = []any{
 	(*ReleaseDiyOrgReq)(nil),     // 44: sproto.ReleaseDiyOrgReq
 	(*ReleaseDiyOrgAck)(nil),     // 45: sproto.ReleaseDiyOrgAck
 	(*LuckZeroPush)(nil),         // 46: sproto.LuckZeroPush
-	nil,                          // 47: sproto.PlayerInfoAck.ItemsEntry
-	nil,                          // 48: sproto.PlayerInfoAck.EquippedEntry
-	nil,                          // 49: sproto.ChangeItemsReq.ItemsEntry
-	nil,                          // 50: sproto.ChangeItemsAck.ItemsEntry
-	nil,                          // 51: sproto.FeeChangeReq.FeeEntry
-	nil,                          // 52: sproto.FeeChangeAck.ItemsEntry
-	nil,                          // 53: sproto.PhysOrdAdminRow.ItemsEntry
-	nil,                          // 54: sproto.VirtOrdAdminRow.ItemsEntry
-	(*anypb.Any)(nil),            // 55: google.protobuf.Any
+	(*DdzEquipStateReq)(nil),     // 47: sproto.DdzEquipStateReq
+	(*DdzEquipStateAck)(nil),     // 48: sproto.DdzEquipStateAck
+	(*DdzAwardReq)(nil),          // 49: sproto.DdzAwardReq
+	(*DdzAwardAck)(nil),          // 50: sproto.DdzAwardAck
+	nil,                          // 51: sproto.PlayerInfoAck.ItemsEntry
+	nil,                          // 52: sproto.PlayerInfoAck.EquippedEntry
+	nil,                          // 53: sproto.ChangeItemsReq.ItemsEntry
+	nil,                          // 54: sproto.ChangeItemsAck.ItemsEntry
+	nil,                          // 55: sproto.FeeChangeReq.FeeEntry
+	nil,                          // 56: sproto.FeeChangeAck.ItemsEntry
+	nil,                          // 57: sproto.PhysOrdAdminRow.ItemsEntry
+	nil,                          // 58: sproto.VirtOrdAdminRow.ItemsEntry
+	nil,                          // 59: sproto.DdzAwardReq.ItemsEntry
+	nil,                          // 60: sproto.DdzAwardAck.BalancesEntry
+	(*anypb.Any)(nil),            // 61: google.protobuf.Any
 }
 var file_account_remote_proto_depIdxs = []int32{
-	55, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
-	55, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
+	61, // 0: sproto.AccountReq.req:type_name -> google.protobuf.Any
+	61, // 1: sproto.AccountAck.ack:type_name -> google.protobuf.Any
 	5,  // 2: sproto.GetBotsAck.bots:type_name -> sproto.BotLease
-	47, // 3: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
-	48, // 4: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
-	49, // 5: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
-	50, // 6: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
-	51, // 7: sproto.FeeChangeReq.fee:type_name -> sproto.FeeChangeReq.FeeEntry
-	52, // 8: sproto.FeeChangeAck.items:type_name -> sproto.FeeChangeAck.ItemsEntry
-	53, // 9: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
+	51, // 3: sproto.PlayerInfoAck.items:type_name -> sproto.PlayerInfoAck.ItemsEntry
+	52, // 4: sproto.PlayerInfoAck.equipped:type_name -> sproto.PlayerInfoAck.EquippedEntry
+	53, // 5: sproto.ChangeItemsReq.items:type_name -> sproto.ChangeItemsReq.ItemsEntry
+	54, // 6: sproto.ChangeItemsAck.items:type_name -> sproto.ChangeItemsAck.ItemsEntry
+	55, // 7: sproto.FeeChangeReq.fee:type_name -> sproto.FeeChangeReq.FeeEntry
+	56, // 8: sproto.FeeChangeAck.items:type_name -> sproto.FeeChangeAck.ItemsEntry
+	57, // 9: sproto.PhysOrdAdminRow.items:type_name -> sproto.PhysOrdAdminRow.ItemsEntry
 	30, // 10: sproto.PhysOrdAdminListAck.rows:type_name -> sproto.PhysOrdAdminRow
-	54, // 11: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
+	58, // 11: sproto.VirtOrdAdminRow.items:type_name -> sproto.VirtOrdAdminRow.ItemsEntry
 	33, // 12: sproto.VirtOrdAdminListAck.rows:type_name -> sproto.VirtOrdAdminRow
 	38, // 13: sproto.CoinBillAdminListAck.rows:type_name -> sproto.CoinBillAdminRow
-	14, // [14:14] is the sub-list for method output_type
-	14, // [14:14] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	59, // 14: sproto.DdzAwardReq.items:type_name -> sproto.DdzAwardReq.ItemsEntry
+	60, // 15: sproto.DdzAwardAck.balances:type_name -> sproto.DdzAwardAck.BalancesEntry
+	16, // [16:16] is the sub-list for method output_type
+	16, // [16:16] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_account_remote_proto_init() }
@@ -3067,7 +3359,7 @@ func file_account_remote_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_account_remote_proto_rawDesc), len(file_account_remote_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   55,
+			NumMessages:   61,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
